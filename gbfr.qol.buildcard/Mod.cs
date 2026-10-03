@@ -51,6 +51,8 @@ public class Mod : ModBase // <= Do not Remove.
     private readonly IModConfig _modConfig;
 
     private FileLogger? _fileLogger;
+    private TextHooks? _textHooks;
+    private CharaStatusHooks? _charaStatusHooks;
     private ReflectionHooks? _reflectionHooks;
 
     public Mod(ModContext context)
@@ -98,6 +100,12 @@ public class Mod : ModBase // <= Do not Remove.
         _fileLogger = new FileLogger(_hooks, Path.Combine(modFolder, "FileLog.txt")) { Enabled = _configuration.LogFiles };
         _fileLogger.Init(scanManager, "granblue_fantasy_relink_er");
 
+        _textHooks = new TextHooks(_hooks, Path.Combine(modFolder, "TextLog.txt")) { Logging = _configuration.LogText };
+        _textHooks.Init(scanManager, "granblue_fantasy_relink_er");
+
+        _charaStatusHooks = new CharaStatusHooks(_hooks, Path.Combine(modFolder, "Dumps")) { Dumping = _configuration.DumpBuild };
+        _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
+
         _reflectionHooks = new ReflectionHooks(scanManager, _hooks);
         _reflectionHooks.Init("granblue_fantasy_relink_er");
     }
@@ -124,6 +132,10 @@ public class Mod : ModBase // <= Do not Remove.
         _configuration = configuration;
         if (_fileLogger is not null)
             _fileLogger.Enabled = configuration.LogFiles;
+        if (_textHooks is not null)
+            _textHooks.Logging = configuration.LogText;
+        if (_charaStatusHooks is not null)
+            _charaStatusHooks.Dumping = configuration.DumpBuild;
         _logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 
         if (configuration.DumpReflection)

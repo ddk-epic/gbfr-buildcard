@@ -30,6 +30,16 @@ public class Config : Configurable<Config>
     [DefaultValue(false)]
     public bool LogFiles { get; set; } = false;
 
+    [DisplayName("Log UI Text")]
+    [Description("Writes every change to a UI text, with the game code that set it, to TextLog.txt in the mod folder.")]
+    [DefaultValue(false)]
+    public bool LogText { get; set; } = false;
+
+    [DisplayName("Dump Build Data")]
+    [Description("Writes the character data each Character Details page is filled from to the Dumps folder in the mod folder.")]
+    [DefaultValue(false)]
+    public bool DumpBuild { get; set; } = false;
+
     [DisplayName("Dump Reflection")]
     [Description("Writes every reflected game class to ReflectionDump.cs in the mod folder each time the config is saved with this on.")]
     [DefaultValue(false)]

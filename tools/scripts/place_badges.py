@@ -9,7 +9,6 @@ INSET = 12
 
 LEFT = (16 - 1440) * S
 TOP = (720 - 16) * S
-STATUS_TOP = (720 - 1118) * S + 256 * (560 * S / 2032)  # top of the scaled status block (73)
 
 STATUS01 = (-1712, 0, 1336, 1884)  # loc_status01: pivot x, pivot y, width, height in loc_base01 coordinates
 BASE01 = (3424, 1884)  # loc_base01: width, height
@@ -63,6 +62,9 @@ def place(id_, x, y, parent_pivot, parent_size, pivot=None):
 STATUS01_PIVOT = (STATUS01[0], STATUS01[1], 0, 0.5)
 STATUS01_SIZE = STATUS01[2:]
 BASE01_PIVOT = (0, 0, 0.5, 0.5)
+
+# top of the scaled status block (73)
+STATUS_TOP = get_field(73, "Position")[1] + get_field(73, "SizeDelta")[1] * get_field(73, "Scale")[1] / 2
 
 # loc_name01: left-aligned above the status block, growing right with the name
 NAME_H = 72

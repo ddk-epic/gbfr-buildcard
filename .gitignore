@@ -7,3 +7,4 @@ tmp/
 .vscode/
 .idea/
 *.user
+__pycache__/

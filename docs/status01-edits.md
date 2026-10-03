@@ -2,11 +2,11 @@
 
 Append-only: new entries go at the bottom, existing entries are never changed. A later edit that undoes or changes an earlier one gets its own entry. Object Ids refer to the file as it was at that entry. Structure: [status01.md](status01.md).
 
-## 2026-10-03 · d6ca695 · Stock import
+## 2026-10-03 · Stock import
 
 `status01.prfb` from the game (v2.0.6), converted unchanged with `gbfr.uitools.exe b-convert`. 426 objects, Ids 0-425.
 
-## 2026-10-03 · 6c6097b · Build card section outlines
+## 2026-10-03 · Build card section outlines
 
 Script: `tools/scripts/scaffold.py`
 
@@ -15,7 +15,7 @@ Script: `tools/scripts/scaffold.py`
 | 2 `loc_base01` | 426 appended to `Children` |
 | 426-461 (new) | `loc_buildcard`, 3424x1712 (2:1), centred in `loc_base01`; the sharecard grid scaled x1.189 as 7 outlined sections (`bc_card`, `bc_portrait`, `bc_skills`, `bc_gear`, `bc_mtraits`, `bc_om`, `bc_summons`), each 4 sprite-less `Image` edges, 6 px |
 
-## 2026-10-03 · acf24f1 · Blocks scaled into their sections
+## 2026-10-03 · Blocks scaled into their sections
 
 Script: `tools/scripts/scale_blocks.py`
 
@@ -28,7 +28,7 @@ Script: `tools/scripts/scale_blocks.py`
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position`.
 
-## 2026-10-03 · cf69e02 · Badges moved into the yellow section
+## 2026-10-03 · Badges moved into the yellow section
 
 Script: `tools/scripts/place_badges.py`
 
@@ -42,3 +42,21 @@ Unscaled, stacked bottom-up in sharecard order with a 23 px (sharecard) gap: sta
 | 45 `loc_ml_level01` (Master Lvl) | 52 down with `level01`; `Position` 396, 731.978 |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position`.
+
+## 2026-10-03 · Status block stacked into one column
+
+Scripts: `tools/scripts/relayout_status.py`, then `tools/scripts/place_badges.py` to restack the badges above it
+
+| Objects | Change |
+|---|---|
+| 73 `loc_chr_status01` (status) | 1000x336, bottom of the yellow section; `Position` -2000.089, -361.327; `Scale` 0.666 |
+| 74 `chr_status01`, 76 `status_base01`, 78 `loc_status01` | resized to 1000x336 with the block; 75 `root` moved to the new top |
+| 76 `status_base01` | `SpriteName` `ps_cmn_base52` -> `ps_cmn_base54`, the same frame without the title tab |
+| 77 `status_ttl_text01` | `Active: false` |
+| 79 `loc_chr_icon01` | left column, vertically centred |
+| 86 `line01` | `Active: false` |
+| 87 `loc_hp`, 92 `loc_atk`, 97 `loc_crt`, 104 `loc_brk` | one column of 64-high rows, HP to Stun Power; crt and brk 40 left so their icons line up |
+| 7 `loc_name01` | `Position` -1692.978, -186.095 |
+| 17 `power01` | `Position` 151.022, -77.75 |
+
+`AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and size.

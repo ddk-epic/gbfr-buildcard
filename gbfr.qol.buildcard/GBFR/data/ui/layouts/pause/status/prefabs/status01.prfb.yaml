@@ -615,15 +615,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -1692.978, -325.956, 0
+  Position: -1692.978, -186.095, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 19.022, 616.044
+  AnchorPoint: 19.022, 755.905
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: 19.022, 580.044
-  OffsetMax: 1303.032, 652.044
+  OffsetMin: 19.022, 719.905
+  OffsetMax: 1303.032, 791.905
   SizeDelta: 1284.01, 72
 - Id: 8
   Name: loc_name01_icon
@@ -996,15 +996,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 151.022, -217.611, 0
+  Position: 151.022, -77.75, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 151.022, -1159.611
+  AnchorPoint: 151.022, -1019.75
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 59.022, -1251.611
-  OffsetMax: 243.022, -1067.611
+  OffsetMin: 59.022, -1111.75
+  OffsetMax: 243.022, -927.75
   SizeDelta: 184, 184
 - Id: 18
   Name: pwr_icon01
@@ -3144,16 +3144,16 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: -2000.089, -431.239, 0
+  Position: -2000.089, -361.327, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.328, 0.328, 1
+  Scale: 0.666, 0.666, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -2000.089, -431.239
+  AnchorPoint: -2000.089, -361.327
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -3016.089, -559.239
-  OffsetMax: -984.089, -303.239
-  SizeDelta: 2032, 256
+  OffsetMin: -2500.089, -529.327
+  OffsetMax: -1500.089, -193.327
+  SizeDelta: 1000, 336
 - Id: 74
   Name: chr_status01
   Children:
@@ -3166,15 +3166,15 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1016, -128
-  OffsetMax: 1016, 128
-  SizeDelta: 2032, 256
+  OffsetMin: -500, -168
+  OffsetMax: 500, 168
+  SizeDelta: 1000, 336
 - Id: 75
   Name: root
   Children:
   - 76
   Active: true
-  Position: 0, 128, 0
+  Position: 0, 168, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 1
@@ -3195,7 +3195,7 @@ Objects:
       Color: 1, 1, 1, 1
       Sprite:
         TexturePath: atlas/pause_pause_common
-        SpriteName: ps_cmn_base52
+        SpriteName: ps_cmn_base54
       Type: 1
       FillCenter: true
       FillMethod: 0
@@ -3208,16 +3208,16 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, -128, 0
+  Position: 0, -168, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1016, -128
-  OffsetMax: 1016, 128
-  SizeDelta: 2032, 256
+  OffsetMin: -500, -168
+  OffsetMax: 500, 168
+  SizeDelta: 1000, 336
 - Id: 77
   Name: status_ttl_text01
   Components:
@@ -3329,7 +3329,7 @@ Objects:
     Component:
       TextID: TXT_PAU_CHECK_STATUS
       Enable: true
-  Active: true
+  Active: false
   Position: 0, 108, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -3350,16 +3350,16 @@ Objects:
   - 97
   - 104
   Active: true
-  Position: 0, -128, 0
+  Position: 0, -168, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
-  OffsetMin: -1016, 0
-  OffsetMax: 1016, 236
-  SizeDelta: 2032, 236
+  OffsetMin: -500, 0
+  OffsetMax: 500, 336
+  SizeDelta: 1000, 336
 - Id: 79
   Name: loc_chr_icon01
   Children:
@@ -3384,7 +3384,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -904, 118, 0
+  Position: -388, 168, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -3667,7 +3667,7 @@ Objects:
       PreserveAspect: false
       E3ED5266: 0
       Enable: true
-  Active: true
+  Active: false
   Position: 0, 118, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -3686,15 +3686,15 @@ Objects:
   - 90
   - 91
   Active: true
-  Position: 0, 118, 0
+  Position: 516, 232, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0
-  AnchorPoint: 0, 0
+  AnchorPoint: 516, 64
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -736, 0
-  OffsetMax: 0, 64
+  OffsetMin: -220, 64
+  OffsetMax: 516, 128
   SizeDelta: 736, 64
 - Id: 88
   Name: hp_icon01
@@ -3992,15 +3992,15 @@ Objects:
   - 95
   - 96
   Active: true
-  Position: 0, 118, 0
+  Position: 516, 232, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: 0, 0
+  AnchorPoint: 516, 64
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -736, -64
-  OffsetMax: 0, 0
+  OffsetMin: -220, 0
+  OffsetMax: 516, 64
   SizeDelta: 736, 64
 - Id: 93
   Name: atk_icon01
@@ -4298,15 +4298,15 @@ Objects:
   - 100
   - 101
   Active: true
-  Position: 0, 118, 0
+  Position: -260, 104, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0
-  AnchorPoint: 0, 0
+  AnchorPoint: -260, -64
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 0, 0
-  OffsetMax: 736, 64
+  OffsetMin: -260, -64
+  OffsetMax: 476, 0
   SizeDelta: 736, 64
 - Id: 98
   Name: crt_icon01
@@ -4722,15 +4722,15 @@ Objects:
   - 107
   - 108
   Active: true
-  Position: 0, 118, 0
+  Position: -260, 104, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 1
-  AnchorPoint: 0, 0
+  AnchorPoint: -260, -64
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 0, -64
-  OffsetMax: 736, 0
+  OffsetMin: -260, -128
+  OffsetMax: 476, -64
   SizeDelta: 736, 64
 - Id: 105
   Name: brk_icon01

@@ -3144,15 +3144,15 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: 0, 758, 0
+  Position: -2000.089, -431.239, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.328, 0.328, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 758
+  AnchorPoint: -2000.089, -431.239
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1016, 630
-  OffsetMax: 1016, 886
+  OffsetMin: -3016.089, -559.239
+  OffsetMax: -984.089, -303.239
   SizeDelta: 2032, 256
 - Id: 74
   Name: chr_status01
@@ -5030,15 +5030,15 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: 0, 306, 0
+  Position: -1189.267, 707.82, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.442, 0.442, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 306
+  AnchorPoint: -1189.267, 707.82
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1016, 14
-  OffsetMax: 1016, 598
+  OffsetMin: -2205.267, 415.82
+  OffsetMax: -173.267, 999.82
   SizeDelta: 2032, 584
 - Id: 110
   Name: chr_status02
@@ -13710,15 +13710,15 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: 0, -186, 0
+  Position: -2000.089, -657.456, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.328, 0.328, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, -186
+  AnchorPoint: -2000.089, -657.456
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1016, -362
-  OffsetMax: 1016, -10
+  OffsetMin: -3016.089, -833.456
+  OffsetMax: -984.089, -481.456
   SizeDelta: 2032, 352
 - Id: 276
   Name: chr_status03
@@ -17815,7 +17815,7 @@ Objects:
     Component:
       Alpha: 1
       Enable: true
-  Active: true
+  Active: false
   Position: 0, -638, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1

@@ -16,4 +16,12 @@ public class MasterLevelSetter : Component
     public List<UIObjectRef> _B979D05E { get; set; }
     public UIObjectRef _C1A3D4C5 { get; set; }
     public UIObjectRef _ED5E938F { get; set; }
+    public UIObjectRef _0361FF00 { get; set; }
+    public UIObjectRef _1DA7BF61 { get; set; }
+    public UIObjectRef _1F32A79C { get; set; }
+    public UIObjectRef _3BDDD4AC { get; set; }
+    public UIObjectRef _D09C89BD { get; set; }
+    public List<UIObjectRef> _8D007349 { get; set; }
+    public UIObjectRef _63877750 { get; set; }
+    public UIObjectRef _9F8EA201 { get; set; }
 }

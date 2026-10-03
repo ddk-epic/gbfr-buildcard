@@ -5030,16 +5030,16 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: -1189.267, 707.82, 0
+  Position: -1189.267, 390.894, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.442, 0.442, 1
+  Scale: 0.829, 0.829, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1189.267, 707.82
+  AnchorPoint: -1189.267, 390.894
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2205.267, 415.82
-  OffsetMax: -173.267, 999.82
-  SizeDelta: 2032, 584
+  OffsetMin: -1731.267, -147.106
+  OffsetMax: -647.267, 928.894
+  SizeDelta: 1084, 1076
 - Id: 110
   Name: chr_status02
   Children:
@@ -5069,9 +5069,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1016, -292
-  OffsetMax: 1016, 292
-  SizeDelta: 2032, 584
+  OffsetMin: -542, -538
+  OffsetMax: 542, 538
+  SizeDelta: 1084, 1076
 - Id: 111
   Name: root
   Children:
@@ -5099,7 +5099,7 @@ Objects:
       Color: 1, 1, 1, 1
       Sprite:
         TexturePath: atlas/pause_pause_common
-        SpriteName: ps_cmn_base52
+        SpriteName: ps_cmn_base54
       Type: 1
       FillCenter: true
       FillMethod: 0
@@ -5119,9 +5119,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1016, -292
-  OffsetMax: 1016, 292
-  SizeDelta: 2032, 584
+  OffsetMin: -542, -538
+  OffsetMax: 542, 538
+  SizeDelta: 1084, 1076
 - Id: 113
   Name: ttl01_text01
   Components:
@@ -5238,7 +5238,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: 0, 272, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -5298,16 +5298,16 @@ Objects:
       _3A835D43: 0
       Enable: true
   Active: true
-  Position: 0, 200, 0
+  Position: 0, 474, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 200
+  AnchorPoint: 0, 474
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1016, 152
-  OffsetMax: 1016, 248
-  SizeDelta: 2032, 96
+  OffsetMin: -542, 426
+  OffsetMax: 542, 522
+  SizeDelta: 1084, 96
 - Id: 115
   Name: root
   Children:
@@ -5339,7 +5339,7 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: -1016, 0, 0
+  Position: -542, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -5916,15 +5916,15 @@ Objects:
   - 129
   - 130
   Active: true
-  Position: 296, 0, 0
+  Position: -178, -96, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: -720, 0
+  AnchorPoint: -720, -96
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -972, -48
-  OffsetMax: -720, 48
+  OffsetMin: -972, -144
+  OffsetMax: -720, -48
   SizeDelta: 252, 96
 - Id: 129
   Name: hp_icon01
@@ -6045,15 +6045,15 @@ Objects:
   - 132
   - 133
   Active: true
-  Position: 540, 0, 0
+  Position: 66, -96, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: -476, 0
+  AnchorPoint: -476, -96
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -728, -48
-  OffsetMax: -476, 48
+  OffsetMin: -728, -144
+  OffsetMax: -476, -48
   SizeDelta: 252, 96
 - Id: 132
   Name: atk_icon01
@@ -6174,15 +6174,15 @@ Objects:
   - 135
   - 136
   Active: true
-  Position: 732, 0, 0
+  Position: 258, -96, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: -284, 0
+  AnchorPoint: -284, -96
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -484, -48
-  OffsetMax: -284, 48
+  OffsetMin: -484, -144
+  OffsetMax: -284, -48
   SizeDelta: 200, 96
 - Id: 135
   Name: crt_icon01
@@ -6413,15 +6413,15 @@ Objects:
   - 140
   - 141
   Active: true
-  Position: 920, 0, 0
+  Position: 446, -96, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: -96, 0
+  AnchorPoint: -96, -96
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -296, -40
-  OffsetMax: -96, 40
+  OffsetMin: -296, -136
+  OffsetMax: -96, -56
   SizeDelta: 200, 80
 - Id: 140
   Name: brk_icon01
@@ -6574,7 +6574,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, -280, 0
+  Position: 0, -526, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0
@@ -6582,8 +6582,8 @@ Objects:
   AnchorMin: 0, 0
   AnchorMax: 1, 0
   OffsetMin: 12, 12
-  OffsetMax: -12, 444
-  SizeDelta: -24, 432
+  OffsetMax: -12, 852
+  SizeDelta: -24, 840
 - Id: 143
   Name: chr_status02_p02_01
   Children:
@@ -6619,15 +6619,15 @@ Objects:
         ObjectRefId: 147
       Enable: true
   Active: true
-  Position: -498, 385, 0
+  Position: -24, 793, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -498, 169
+  AnchorPoint: -24, 373
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -992, 135
-  OffsetMax: -4, 203
+  OffsetMin: -518, 339
+  OffsetMax: 470, 407
   SizeDelta: 988, 68
 - Id: 144
   Name: root
@@ -7212,15 +7212,15 @@ Objects:
         ObjectRefId: 158
       Enable: true
   Active: true
-  Position: 498, 385, 0
+  Position: -24, 725, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 498, 169
+  AnchorPoint: -24, 305
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 4, 135
-  OffsetMax: 992, 203
+  OffsetMin: -518, 271
+  OffsetMax: 470, 339
   SizeDelta: 988, 68
 - Id: 155
   Name: root
@@ -7805,15 +7805,15 @@ Objects:
         ObjectRefId: 169
       Enable: true
   Active: true
-  Position: -498, 317, 0
+  Position: -24, 657, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -498, 101
+  AnchorPoint: -24, 237
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -992, 67
-  OffsetMax: -4, 135
+  OffsetMin: -518, 203
+  OffsetMax: 470, 271
   SizeDelta: 988, 68
 - Id: 166
   Name: root
@@ -8398,15 +8398,15 @@ Objects:
         ObjectRefId: 180
       Enable: true
   Active: true
-  Position: 498, 317, 0
+  Position: -24, 589, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 498, 101
+  AnchorPoint: -24, 169
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 4, 67
-  OffsetMax: 992, 135
+  OffsetMin: -518, 135
+  OffsetMax: 470, 203
   SizeDelta: 988, 68
 - Id: 177
   Name: root
@@ -8991,15 +8991,15 @@ Objects:
         ObjectRefId: 191
       Enable: true
   Active: true
-  Position: -498, 249, 0
+  Position: -24, 521, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -498, 33
+  AnchorPoint: -24, 101
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -992, -1
-  OffsetMax: -4, 67
+  OffsetMin: -518, 67
+  OffsetMax: 470, 135
   SizeDelta: 988, 68
 - Id: 188
   Name: root
@@ -9584,15 +9584,15 @@ Objects:
         ObjectRefId: 202
       Enable: true
   Active: true
-  Position: 498, 249, 0
+  Position: -24, 453, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 498, 33
+  AnchorPoint: -24, 33
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 4, -1
-  OffsetMax: 992, 67
+  OffsetMin: -518, -1
+  OffsetMax: 470, 67
   SizeDelta: 988, 68
 - Id: 199
   Name: root
@@ -10177,15 +10177,15 @@ Objects:
         ObjectRefId: 213
       Enable: true
   Active: true
-  Position: -498, 181, 0
+  Position: -24, 385, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -498, -35
+  AnchorPoint: -24, -35
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -992, -69
-  OffsetMax: -4, -1
+  OffsetMin: -518, -69
+  OffsetMax: 470, -1
   SizeDelta: 988, 68
 - Id: 210
   Name: root
@@ -10770,15 +10770,15 @@ Objects:
         ObjectRefId: 224
       Enable: true
   Active: true
-  Position: 498, 181, 0
+  Position: -24, 317, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 498, -35
+  AnchorPoint: -24, -103
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 4, -69
-  OffsetMax: 992, -1
+  OffsetMin: -518, -137
+  OffsetMax: 470, -69
   SizeDelta: 988, 68
 - Id: 221
   Name: root
@@ -11363,15 +11363,15 @@ Objects:
         ObjectRefId: 235
       Enable: true
   Active: true
-  Position: -498, 113, 0
+  Position: -24, 249, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -498, -103
+  AnchorPoint: -24, -171
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -992, -137
-  OffsetMax: -4, -69
+  OffsetMin: -518, -205
+  OffsetMax: 470, -137
   SizeDelta: 988, 68
 - Id: 232
   Name: root
@@ -11956,15 +11956,15 @@ Objects:
         ObjectRefId: 246
       Enable: true
   Active: true
-  Position: 498, 113, 0
+  Position: -24, 181, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 498, -103
+  AnchorPoint: -24, -239
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 4, -137
-  OffsetMax: 992, -69
+  OffsetMin: -518, -273
+  OffsetMax: 470, -205
   SizeDelta: 988, 68
 - Id: 243
   Name: root
@@ -12549,15 +12549,15 @@ Objects:
         ObjectRefId: 257
       Enable: true
   Active: true
-  Position: -498, 45, 0
+  Position: -24, 113, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -498, -171
+  AnchorPoint: -24, -307
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -992, -205
-  OffsetMax: -4, -137
+  OffsetMin: -518, -341
+  OffsetMax: 470, -273
   SizeDelta: 988, 68
 - Id: 254
   Name: root
@@ -12594,7 +12594,7 @@ Objects:
       PreserveAspect: false
       E3ED5266: 0
       Enable: true
-  Active: false
+  Active: true
   Position: 0, -33, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -13142,15 +13142,15 @@ Objects:
         ObjectRefId: 268
       Enable: true
   Active: true
-  Position: 498, 45, 0
+  Position: -24, 45, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 498, -171
+  AnchorPoint: -24, -375
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 4, -205
-  OffsetMax: 992, -137
+  OffsetMin: -518, -409
+  OffsetMax: 470, -341
   SizeDelta: 988, 68
 - Id: 265
   Name: root

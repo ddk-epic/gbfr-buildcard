@@ -77,3 +77,21 @@ The cards keep their 1004x144 size: their sprite (`ps_cmn_ability_base04_02sub`)
 | 281, 303, 325, 347 (ability cards) | one column in that order (slots 1 to 4), 4 apart; `Position` y 222, 74, -74, -222 |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and size.
+
+## 2026-10-03 · Gear block stacked into one column
+
+Script: `tools/scripts/relayout_gear.py`
+
+| Objects | Change |
+|---|---|
+| 109 `loc_chr_status02` (gear) | 1084x1076, top of the cyan section, fitted to its width; `Position` -1189.267, 390.894; `Scale` 0.829 |
+| 110 `chr_status02`, 112 `status_base01` | resized to 1084x1076 with the block |
+| 112 `status_base01` | `SpriteName` `ps_cmn_base52` -> `ps_cmn_base54`, the same frame without the title tab |
+| 113 `ttl01_text01` | `Active: false` |
+| 114 `chr_status02_p01` (weapon) | 1084x96, at the top; 116 `loc_equip01` (icon, name, level) at its left edge |
+| 128 `loc_hp`, 131 `loc_atk`, 134 `loc_crt`, 139 `loc_brk` | a second line 96 below the weapon's, still right-aligned |
+| 142 `loc_status01` (sigil background) | `SizeDelta` -24, 840, 12 above the frame's bottom |
+| 143, 154, ..., 264 (sigil rows) | one column in slot order, 68 apart, left edge 24 from the frame's so the icons line up with the weapon's |
+| 255 slot 11's `line01` | `Active: true` |
+
+`AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and size.

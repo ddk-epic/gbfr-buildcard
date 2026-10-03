@@ -27,3 +27,18 @@ Script: `tools/scripts/scale_blocks.py`
 | 369 `loc_chr_status04` (support skills) | `Active: false` |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position`.
+
+## 2026-10-03 · cf69e02 · Badges moved into the yellow section
+
+Script: `tools/scripts/place_badges.py`
+
+Unscaled, stacked bottom-up in sharecard order with a 23 px (sharecard) gap: status block, name, PWR; the level pair at the top.
+
+| Objects | Change |
+|---|---|
+| 7 `loc_name01` (name band) | left edge of the yellow section, one gap above the status block; `Pivot` 0, 0.5 so the fitted width grows right; `Position` -1692.978, -325.956 |
+| 17 `power01` (PWR) | left-aligned, one gap above the name band; `Position` 151.022, -217.611 |
+| 21 `level01` (Lvl) | 52 down so the "Lvl" label clears the section top; `Position` 192, 695.978 |
+| 45 `loc_ml_level01` (Master Lvl) | 52 down with `level01`; `Position` 396, 731.978 |
+
+`AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position`.

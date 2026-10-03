@@ -60,3 +60,20 @@ Scripts: `tools/scripts/relayout_status.py`, then `tools/scripts/place_badges.py
 | 17 `power01` | `Position` 151.022, -77.75 |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and size.
+
+## 2026-10-03 · Skills block stacked into one column
+
+Script: `tools/scripts/relayout_skills.py`
+
+The cards keep their 1004x144 size: their sprite (`ps_cmn_ability_base04_02sub`) isn't sliced, so narrowing them would squash it.
+
+| Objects | Change |
+|---|---|
+| 275 `loc_chr_status03` (skills) | 1273.893x596, centre of the green section, fitted to its height; `Position` -2000.089, -657.456; `Scale` 0.523 |
+| 276 `chr_status03`, 278 `status_base01` | resized to 1273.893x596 with the block; 277 `root` moved to the new top |
+| 278 `status_base01` | `SpriteName` `ps_cmn_base52` -> `ps_cmn_base54`, the same frame without the title tab |
+| 279 `ttl01_text01` | `Active: false` |
+| 280 `loc_status01` | 1004x588, centred |
+| 281, 303, 325, 347 (ability cards) | one column in that order (slots 1 to 4), 4 apart; `Position` y 222, 74, -74, -222 |
+
+`AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and size.

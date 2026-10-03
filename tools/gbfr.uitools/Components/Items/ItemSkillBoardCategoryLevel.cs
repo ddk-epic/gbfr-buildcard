@@ -8,7 +8,7 @@ public class ItemSkillBoardCategoryLevel : Component
 {
     public UIObjectRef Animator { get; set; }
     public List<UIObjectRef> _54EACB6D { get; set; }
-    public List<UIObjectRef> _5EF8203A { get; set; }
+    public int _5EF8203A { get; set; }
     public List<UIObjectRef> _7C9C20D3 { get; set; }
     public List<UIObjectRef> _91934B96 { get; set; }
     public List<UIObjectRef> _DBEEB3FF { get; set; }

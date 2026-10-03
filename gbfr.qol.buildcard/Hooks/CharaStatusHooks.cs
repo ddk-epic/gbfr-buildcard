@@ -22,6 +22,9 @@ public unsafe class CharaStatusHooks
 
     public bool Dumping { get; set; }
 
+    // Raised after the game fills a CharaInfo: the component and the character struct.
+    public event Action<nint, nint>? Filled;
+
     private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private IHook<FillCharacterStatus>? _fillHook;
 
@@ -43,7 +46,11 @@ public unsafe class CharaStatusHooks
     private void FillImpl(nint charaInfo, nint chara, int index)
     {
         _fillHook!.OriginalFunction(charaInfo, chara, index);
-        if (Dumping && chara != 0)
+        if (chara == 0)
+            return;
+
+        Filled?.Invoke(charaInfo, chara);
+        if (Dumping)
             Dump(charaInfo, chara, index);
     }
 

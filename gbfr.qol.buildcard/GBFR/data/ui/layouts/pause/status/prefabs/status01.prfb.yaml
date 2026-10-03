@@ -176,6 +176,9 @@ Objects:
       - ComponentName: Text
         Index: 0
         ObjectRefId: 20
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 462
       Ability:
       - ComponentName: AbilityInfo
         Index: 0
@@ -20698,6 +20701,7 @@ Objects:
   - 447
   - 452
   - 457
+  - 462
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -21619,3 +21623,35 @@ Objects:
   OffsetMin: -6, 0
   OffsetMax: 0, 0
   SizeDelta: 6, 0
+- Id: 462
+  Name: bc_text01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: build card
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 48
+      Color: 0.19607843, 0.37254903, 0.4901961, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  Active: true
+  Position: -47.333, 812.978, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -47.333, 812.978
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -47.333, 748.978
+  OffsetMax: 1652.667, 812.978
+  SizeDelta: 1700, 64

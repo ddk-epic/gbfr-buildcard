@@ -9,6 +9,10 @@ class Prefab:
         text = open(path, encoding="utf-8").read()
         self.nl = "\r\n" if "\r\n" in text else "\n"
         self.lines = text.split(self.nl)
+        self.reindex()
+
+    def reindex(self):
+        # call after adding or removing lines
         self.starts = {}
         self.parents = {}
         for i, line in enumerate(self.lines):

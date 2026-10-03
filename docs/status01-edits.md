@@ -95,3 +95,15 @@ Script: `tools/scripts/relayout_gear.py`
 | 255 slot 11's `line01` | `Active: true` |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and size.
+
+## 2026-10-04 · Card text written by the mod
+
+Script: `tools/scripts/add_card_text.py`
+
+| Objects | Change |
+|---|---|
+| 462 `bc_text01` (new) | Text, 1700x64, top-left of the blue section; last child of 426 `loc_buildcard`, so Ids stay depth-first |
+| 426 `loc_buildcard` | 462 appended to `Children` |
+| 0 `status01`, `CharaInfo.Powers` | ref to 462's Text appended |
+
+The game writes PWR into every `Powers` text while filling the page; the mod finds 462 through that ref and overwrites it right after (`Hooks/CardWriter.cs`).

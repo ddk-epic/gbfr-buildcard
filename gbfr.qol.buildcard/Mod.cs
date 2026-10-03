@@ -53,6 +53,7 @@ public class Mod : ModBase // <= Do not Remove.
     private FileLogger? _fileLogger;
     private TextHooks? _textHooks;
     private CharaStatusHooks? _charaStatusHooks;
+    private CardWriter? _cardWriter;
     private ReflectionHooks? _reflectionHooks;
 
     public Mod(ModContext context)
@@ -105,6 +106,9 @@ public class Mod : ModBase // <= Do not Remove.
 
         _charaStatusHooks = new CharaStatusHooks(_hooks, Path.Combine(modFolder, "Dumps")) { Dumping = _configuration.DumpBuild };
         _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
+
+        _cardWriter = new CardWriter(_textHooks);
+        _charaStatusHooks.Filled += _cardWriter.OnFilled;
 
         _reflectionHooks = new ReflectionHooks(scanManager, _hooks);
         _reflectionHooks.Init("granblue_fantasy_relink_er");

@@ -8,8 +8,8 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 namespace gbfr.qol.buildcard.Hooks;
 
 // Hooks the function that fills a CharaInfo from a character, the Character Details page among others. With dumping
-// on, writes what it's filled from to the Dumps folder: the character struct, the equipment record it points to at
-// 0x5E60 (sigils, skills) and the CharaInfo component.
+// enabled, writes the character struct, the equipment record it points to at 0x5E60 (sigils, skills) and the
+// CharaInfo component to the Dumps folder.
 public unsafe class CharaStatusHooks
 {
     private const int CharaSize = 0x5F00;
@@ -71,8 +71,7 @@ public unsafe class CharaStatusHooks
         _index.WriteLine($"{DateTime.Now:HH:mm:ss.fff} key={key:X8} index={index} charaInfo={charaInfo:X} chara={chara:X} equip={equip:X}");
     }
 
-    // Reads through ReadProcessMemory (-1: this process) so a dump running past the end of an allocation fails
-    // instead of crashing.
+    // Reads through ReadProcessMemory (-1: the current process), which fails on unreadable memory.
     private void DumpMemory(nint address, int size, string name)
     {
         var buffer = new byte[size];

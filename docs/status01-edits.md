@@ -107,3 +107,18 @@ Script: `tools/scripts/add_card_text.py`
 | 0 `status01`, `CharaInfo.Powers` | ref to 462's Text appended |
 
 The game writes PWR into every `Powers` text while filling the page; the mod finds 462 through that ref and overwrites it right after (`Hooks/CardWriter.cs`).
+
+## 2026-10-04 · Master traits board
+
+Script: `tools/scripts/add_master_traits.py`
+
+| Objects | Change |
+|---|---|
+| 463 `bc_mtraits` (new) | container, same coordinates as 426 `loc_buildcard`; last child of 426 |
+| 464-556 (new) | Images: per style a top border in the style's colour (`bc_mt_<s>_border`) and 30 cell fills (`bc_mt_<s>_<r>_<c>_fill`) |
+| 557-767 (new) | Texts: the heading `bc_mt_heading`, then per style the title, the style name, per rank its label and count, then per rank and cell slot a picked (`_on`) and an unpicked (`_off`) text |
+| 557-767 | `LanguageSetter` with `ld_skipstd_b_sdf_material`; cell texts `LineSpacing` -35, English override 8 |
+| 462 `bc_text01` | perk summary: `FontSize` 22, right-aligned, 1070x38 at the heading's right; `LanguageSetter` added |
+| 0 `status01`, `CharaInfo.Powers` | refs to 557-767's Texts appended |
+
+The layout follows sharecard's board scaled by 3424/2880: three columns, rank sections of 4, 8, 8 and 10 cells in a two-column grid. The mod writes every text (`Hooks/CardWriter.cs`).

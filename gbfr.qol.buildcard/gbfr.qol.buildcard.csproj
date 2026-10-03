@@ -43,6 +43,10 @@
     <None Update="Signatures\*.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="Data\master_traits.tsv" LogicalName="master_traits.tsv" />
+    <None Update="GBFR\**\*.msg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

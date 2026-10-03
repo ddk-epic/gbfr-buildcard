@@ -1,0 +1,2895 @@
+3A583A9C	0	0	0	Artfully Adept	
+FCE3D57D	0	1	0		
+1AD4CC16	0	2	0		
+FF561659	0	0	1	Arts Lvl Dur +20%	
+34F7F412	0	0	2	Skill CD -2%	
+6FE2426B	0	0	3	DMG Cap +20%	
+5BAAAC7D	0	0	4	Max HP +15k	
+70A5D954	0	1	1	DMG skill: Power Raise charges faster	
+E98EB0C4	0	1	2	Skill CD -3%	
+4B930972	0	1	3	Power Raise Cap +45% / Charge +10%	
+FE7A1B05	0	1	4	Decimate ATK +10%	
+F098CE7B	0	1	5	Rain of Arrows add. DEF -5%	
+CCBE5F2D	0	1	6	DMG Cap +25%	
+87D37C0E	0	1	7	ATK +20%	
+F2115C12	0	1	8	Poison: DMG Cap +100%	
+F716D03C	0	2	1	Arts Lvl survives more DMG	
+EB56430B	0	2	2	Power Raise DMG +10% / Charge +20%	
+D332E75A	0	2	3	Combos raise Arts Lvl by +1	
+7F97D139	0	2	4	<d> Attacks Cap +35%	3F738EA0
+4A3B9DBB	0	2	5	Rage add. ATK +5%	
+3B149103	0	2	6	DMG Cap +20% ×Basic	
+2CD205C3	0	2	7	Overdrive Surge Stun Power +10%	
+75392FDE	0	2	8	Max HP +15k	
+4D949E7F	0	3	1	ATK +20% based on Arts Lvl	
+455FB112	0	3	2	Reginleiv Cap +45%	
+DC5C7814	0	3	3	Overdrive Surge ATK +10%	
+7DA22153	0	3	4	Stall CD -5%	
+A0A2CF25	0	3	5	Veil Debuff Immunity Dur +10%	
+5B9CDF67	0	3	6	Rain of Arrows ATK +10%	
+610EDEB6	0	3	7	Dodge: Shield 1k	
+81E24D06	0	3	8	DMG Cap +20% ×Basic	
+6442D3E9	0	3	9	Crit Rate +25%	
+35BA8728	0	3	10	Crit DMG +9%	
+A1927303	0	3	11	Guard Break +7%	
+6C30027E	0	3	12	DMG Cap +30%	
+816D7DB1	0	3	13	Summon Cost -1	
+7C39BB00	0	3	14	DMG Cap +30%	
+EC41AFA1	1	0	0	Combat Healer	
+8130D9EF	1	1	0		
+120D7A61	1	2	0		
+4FFFFCA3	1	0	1	Panacea→Shield	
+87DD8A72	1	0	2	ATK +20%	
+E9264877	1	0	3	DMG Cap +20%	
+ACB6619F	1	0	4	DEF +5%	
+C7B79DF3	1	1	1	Clarity DMG↑ 5%	
+8EAE1E3C	1	1	2	Panacea→Shield	
+36610EA3	1	1	3	Revive→Shield / 10% HP (stackable)	
+9C34E4EB	1	1	4	Dispel Cap +45%	
+9E4260B5	1	1	5	Miserable Mist Debuff Dur +10%	
+94AD444E	1	1	6	Skill DMG Cap +35%	
+95564982	1	1	7	Max HP +15k	
+182ADEEE	1	1	8	Burn: DMG Cap +100%	
+FB45DA38	1	2	1	Combat Healer ATK +5% Cap +5%/lvl	
+035599CA	1	2	2	Clarity DMG↑ 5%	
+66B43CA4	1	2	3	Add. ATK/Cap +10%	
+00440979	1	2	4	DMG Cap +30%	
+6E80C9A6	1	2	5	Armor Break CD -5%	
+DF1830DF	1	2	6	ATK +10% ×Attack	
+4D7F5BB5	1	2	7	Veil Supp DMG 10%	
+E83BE886	1	2	8	Revive→Shield / 10% HP (stackable)	
+891A2032	1	3	1	Buff Dur +10%	
+A34712B6	1	3	2	Combat Healer Dur +10%	
+47B8D0B4	1	3	3	Panacea→Shield	
+7930A93B	1	3	4	Revive→Shield / 10% HP (stackable)	
+5C244518	1	3	5	Clarity DMG↑ 5%	
+E9F10134	1	3	6	Dispel DEF↓ 10%	
+25EA0CC6	1	3	7	Armor Break add. DEF -5%	
+4CDB796A	1	3	8	Decimate Cap +45%	
+0CA61C4F	1	3	9	ATK +20% / DMG Cap +50%	
+BC7C8518	1	3	10	ATK +10% ×Attack	
+288268F1	1	3	11	DMG Cap +30%	
+0173B483	1	3	12	DMG Cap +30%	
+83628DA9	1	3	13	Summon Cost +1	
+BFF8FA3D	1	3	14	DMG Cap +30%	
+7C26D0C4	2	0	0	The Substitute	
+2599F537	2	1	0		
+BA87B078	2	2	0		
+BB225DB5	2	0	1	<d> Attacks Cap +35%	D4FBBE12
+40A7FA32	2	0	2	Charisma DEF +0.5%/lvl	
+F97D8D9D	2	0	3	DMG Cap +20%	
+439ADADA	2	0	4	Max HP +15k	
+FB069E02	2	1	1	Charisma DEF +0.5%/lvl	
+F2E6BAD0	2	1	2	Charisma DMG +1%/lvl	
+CF34D471	2	1	3	Phalanx CD -5%	
+6DCD33EF	2	1	4	Substitute CD -5%	
+14270990	2	1	5	Stall Slow Dur +10%	
+8DB964A4	2	1	6	Substitute: DMG Cap +50%	
+9D73EFBD	2	1	7	Crit Rate +15%	
+0B4F4F3F	2	1	8	Blight: DMG Cap +100%	
+4AE50D78	2	2	1	Charisma DMG +2%/lvl	
+2A6907CF	2	2	2	Substitute Cap↑ 10% to party	
+7AE8CA09	2	2	3	Skill DMG Cap +35%	
+7B0330D2	2	2	4	ATK +20%	
+F72740A2	2	2	5	Reginleiv ATK +10%	
+5FA720C9	2	2	6	HP +10k ×Def/Sup	
+3F1EA78E	2	2	7	Chain Burst Cap +40%	
+FB8CBCEA	2	2	8	Crit Rate +25%	
+5C26456F	2	3	1	Phalanx Shield 10% max HP	
+DA29AC43	2	3	2	Substitute CD -5%	
+84D6B6A1	2	3	3	Conduction Cap↑ (max +10%)	
+C8E17100	2	3	4	Miserable Mist add. ATK/DEF -5%	
+BD89FDC0	2	3	5	Conduction DMG↑ (max +10%)	
+6F55DCCF	2	3	6	Rage Cap↑ 10% to self	
+CAD0D9C0	2	3	7	Low HP: Crit Gauge -10%	
+471FF734	2	3	8	DEF +6% ×Def/Sup	
+0AB25BF1	2	3	9	Stun Power +4	
+F0C61FCF	2	3	10	Weak elem: DMG +10%	
+B2E8DD94	2	3	11	Crit DMG +9%	
+0BFF5E62	2	3	12	DMG Cap +30%	
+D9772E0F	2	3	13	Primal Burst DMG +25%	
+C2741680	2	3	14	DMG Cap +30%	
+23F3C22E	0	0	0	Artfully Adept	
+BFAE3318	0	1	0		
+6952E3DC	0	2	0		
+7A4F52B2	0	0	1	Arts Lvl Dur +20%	
+1BCA2589	0	0	2	Skill CD -2%	
+717BBFBB	0	0	3	DMG Cap +20%	
+EC0FE715	0	0	4	Max HP +15k	
+09620B9A	0	1	1	DMG skill: Power Raise charges faster	
+8213DA8D	0	1	2	Skill CD -3%	
+1977F08C	0	1	3	Power Raise Cap +45% / Charge +10%	
+E5B107FB	0	1	4	Decimate ATK +10%	
+8B2B9738	0	1	5	Rain of Arrows add. DEF -5%	
+08BC0FE3	0	1	6	DMG Cap +25%	
+76590FB1	0	1	7	ATK +20%	
+BAED4FD7	0	1	8	Poison: DMG Cap +100%	
+FAE4338D	0	2	1	Arts Lvl survives more DMG	
+9A6912FD	0	2	2	Power Raise DMG +10% / Charge +20%	
+4F61E631	0	2	3	Combos raise Arts Lvl by +1	
+5EF8EB3A	0	2	4	<d> Attacks Cap +35%	CD1A9778
+8099AF05	0	2	5	Rage add. ATK +5%	
+5F37FC5D	0	2	6	DMG Cap +20% ×Basic	
+1B5D2A4C	0	2	7	Overdrive Surge Stun Power +10%	
+45B415C8	0	2	8	Max HP +15k	
+A72504C5	0	3	1	ATK +20% based on Arts Lvl	
+28832F7A	0	3	2	Reginleiv Cap +45%	
+B49400EF	0	3	3	Overdrive Surge ATK +10%	
+5E82F393	0	3	4	Stall CD -5%	
+FC89C671	0	3	5	Veil Debuff Immunity Dur +10%	
+CB693969	0	3	6	Rain of Arrows ATK +10%	
+8890B54D	0	3	7	Dodge: Shield 1k	
+E5B5F7AC	0	3	8	DMG Cap +20% ×Basic	
+5BF9D32E	0	3	9	Crit Rate +25%	
+7FEA2F31	0	3	10	Crit DMG +9%	
+CE9E2184	0	3	11	Guard Break +7%	
+0A44B8F5	0	3	12	DMG Cap +30%	
+09AD8E55	0	3	13	Summon Cost -1	
+176918B1	0	3	14	DMG Cap +30%	
+DB71C42A	1	0	0	Combat Healer	
+22E4D968	1	1	0		
+4ADF173F	1	2	0		
+22E3A3B6	1	0	1	Panacea→Shield	
+3C763077	1	0	2	ATK +20%	
+B2A0BC2D	1	0	3	DMG Cap +20%	
+612B266C	1	0	4	DEF +5%	
+53A046C4	1	1	1	Clarity DMG↑ 5%	
+C6E379DB	1	1	2	Panacea→Shield	
+C8A53E37	1	1	3	Revive→Shield / 10% HP (stackable)	
+B11C50CE	1	1	4	Dispel Cap +45%	
+B1759719	1	1	5	Miserable Mist Debuff Dur +10%	
+19411F00	1	1	6	Skill DMG Cap +35%	
+EAA2D851	1	1	7	Max HP +15k	
+E51C4E5E	1	1	8	Burn: DMG Cap +100%	
+DD0528A2	1	2	1	Combat Healer ATK +5% Cap +5%/lvl	
+CB6DB8C9	1	2	2	Clarity DMG↑ 5%	
+C4BA1CDF	1	2	3	Add. ATK/Cap +10%	
+EB111DE6	1	2	4	DMG Cap +30%	
+8F02F2D1	1	2	5	Armor Break CD -5%	
+CC56FA40	1	2	6	ATK +10% ×Attack	
+7DC15993	1	2	7	Veil Supp DMG 10%	
+10E6C6A7	1	2	8	Revive→Shield / 10% HP (stackable)	
+82B06B36	1	3	1	Buff Dur +10%	
+6E6136E8	1	3	2	Combat Healer Dur +10%	
+0D9CBBC6	1	3	3	Panacea→Shield	
+56025C26	1	3	4	Revive→Shield / 10% HP (stackable)	
+FC74566C	1	3	5	Clarity DMG↑ 5%	
+17CE2B3B	1	3	6	Dispel DEF↓ 10%	
+562F53A9	1	3	7	Armor Break add. DEF -5%	
+604BFEF8	1	3	8	Decimate Cap +45%	
+7590CAB0	1	3	9	ATK +20% / DMG Cap +50%	
+01070DCF	1	3	10	ATK +10% ×Attack	
+90A5AED1	1	3	11	DMG Cap +30%	
+9B13EC43	1	3	12	DMG Cap +30%	
+45D0556E	1	3	13	Summon Cost +1	
+904A8A63	1	3	14	DMG Cap +30%	
+6017B9B5	2	0	0	The Substitute	
+56837323	2	1	0		
+F861AD23	2	2	0		
+D8BE949D	2	0	1	<d> Attacks Cap +35%	1B13427B
+EA6EE3AE	2	0	2	Charisma DEF +0.5%/lvl	
+B1DCAC78	2	0	3	DMG Cap +20%	
+05408E68	2	0	4	Max HP +15k	
+04ECFF09	2	1	1	Charisma DEF +0.5%/lvl	
+71BEB40D	2	1	2	Charisma DMG +1%/lvl	
+F173BA1A	2	1	3	Phalanx CD -5%	
+2935A165	2	1	4	Substitute CD -5%	
+42DD4D8D	2	1	5	Stall Slow Dur +10%	
+7918F6D4	2	1	6	Substitute: DMG Cap +50%	
+89C2D4D0	2	1	7	Crit Rate +15%	
+8681DFC5	2	1	8	Blight: DMG Cap +100%	
+BB3E173C	2	2	1	Charisma DMG +2%/lvl	
+732BB4E9	2	2	2	Substitute Cap↑ 10% to party	
+7CC8263C	2	2	3	Skill DMG Cap +35%	
+4ADB5639	2	2	4	ATK +20%	
+C9E9C615	2	2	5	Reginleiv ATK +10%	
+521C8D26	2	2	6	HP +10k ×Def/Sup	
+88C781F6	2	2	7	Chain Burst Cap +40%	
+3C2A53F9	2	2	8	Crit Rate +25%	
+82FA60A2	2	3	1	Phalanx Shield 10% max HP	
+9AB10764	2	3	2	Substitute CD -5%	
+2BB04CD3	2	3	3	Conduction Cap↑ (max +10%)	
+9BF7D9F3	2	3	4	Miserable Mist add. ATK/DEF -5%	
+9C7096AD	2	3	5	Conduction DMG↑ (max +10%)	
+68774EAC	2	3	6	Rage Cap↑ 10% to self	
+140DFBD3	2	3	7	Low HP: Crit Gauge -10%	
+F070F7FB	2	3	8	DEF +6% ×Def/Sup	
+82211B03	2	3	9	Stun Power +4	
+BBB3CE82	2	3	10	Weak elem: DMG +10%	
+F83C6D5F	2	3	11	Crit DMG +9%	
+67CAC394	2	3	12	DMG Cap +30%	
+114472D6	2	3	13	Primal Burst DMG +25%	
+9F6BC961	2	3	14	DMG Cap +30%	
+ECD375F1	0	0	0	Forever Ares	
+36CD451C	0	1	0		
+1C9F1973	0	2	0		
+19CFD22A	0	0	1	Ares summoned: ATK +10%	
+ADF50CCA	0	0	2	Blades of Frost ATK +20%	
+3657F90A	0	0	3	DMG Cap +15%	
+96FBF6C4	0	0	4	Max HP +15k	
+EAD13BAA	0	1	1	Damage Skill ATK +20%	
+97AAF030	0	1	2	Damage Skill Cap +20%	
+C2C9820A	0	1	3	Realm of Ice ATK +25%	
+C7387AED	0	1	4	Frozen Blade ATK +10%	
+763F3292	0	1	5	Enchanted Lands ATK +10%	
+52E40BE2	0	1	6	DMG Cap +20%	
+7A0BBDBB	0	1	7	ATK +30%	
+D7360AAF	0	1	8	Poison: DMG Cap +100%	
+A15352A4	0	2	1	Ares Summon Dur +1s	
+8AAC8D7D	0	2	2	Dual Raid DMG +5%/lvl	
+E1E52EE4	0	2	3	Ares summoned: ATK +10%	
+CFA6C145	0	2	4	<d> Combo Finishers Cap +35%	2149CA31
+6F79F894	0	2	5	Azure Sword CD -5%	
+91BC8D8C	0	2	6	DMG Cap +20% ×Basic	
+E9EF561C	0	2	7	Guard Break +7%	
+9498649E	0	2	8	Max HP +15k	
+A04A31B8	0	3	1	Ares summoned: DEF +5%	
+85FA2BCF	0	3	2	Frozen Blade Cap +45%	
+7DBA354B	0	3	3	Enchanted Lands Cap +45%	
+7E09668F	0	3	4	Dodge: Shield 1k	
+C5302039	0	3	5	DMG Cap +20% ×Basic	
+78A5F9FD	0	3	6	Crit Rate +25%	
+81ABF1AA	0	3	7	Crit DMG +9%	
+2BA8372C	0	3	8	DMG Cap +35%	
+B5B5796F	0	3	9	Summon Cost -1	
+BAECC3E0	0	3	10	DMG Cap +35%	
+DA587CB6	1	0	0	Army of Two	
+5D1BD323	1	1	0		
+31EEC149	1	2	0		
+C5073525	1	0	1	Ares summoned: ATK +10%	
+60BC9F42	1	0	2	Ares summons: DEF +10% max	
+09E8EF36	1	0	3	DMG Cap +15%	
+DDF0B162	1	0	4	DEF +5%	
+C2712E49	1	1	1	Ares summons: ATK +30% max	
+35659AD9	1	1	2	Ares summoned: DMG Cap +25%	
+CB5FCF74	1	1	3	Heal→Shield 5% max HP	
+5F744249	1	1	4	Sacred Winds CD -5%	
+023465DE	1	1	5	Winter's Rain Stun Power +10%	
+4AA06699	1	1	6	<d> Combo Finishers Cap +35%	4ABD66C2
+E577EBE2	1	1	7	Max HP +15k	
+EFF25E61	1	1	8	Burn: DMG Cap +100%	
+18111333	1	2	1	Special Supp DMG +20%	
+68EB5E6F	1	2	2	Ares summons: DMG Cap +40% max	
+51FF7C52	1	2	3	Ares dismissed: DMG Cut 20	
+6307C93A	1	2	4	Skill DMG Cap +30%	
+5438835F	1	2	5	DMG Cap +25%	
+3BB466EB	1	2	6	ATK +10% ×Attack	
+39B7B5DC	1	2	7	Chain Burst Cap +40%	
+82FF4581	1	2	8	ATK +30%	
+F423D7F9	1	3	1	Ares summoned: Drain	
+337ADCEF	1	3	2	Ares dismissed: ATK↑ 10%	
+BCA05A79	1	3	3	Azure Sword CD -5%	
+CC61D853	1	3	4	Sacred Winds CD -5%	
+42DAA163	1	3	5	Winter's Rain CD -5%	
+B4314703	1	3	6	ATK +20% / DMG Cap +50%	
+A5D51BF1	1	3	7	ATK +10% ×Attack	
+F22B3023	1	3	8	DMG Cap +35%	
+7F9C1F9B	1	3	9	Summon Cost +1	
+46A83A56	1	3	10	DMG Cap +35%	
+E6193E09	2	0	0	Blade Blue	
+60C122ED	2	1	0		
+F841FE71	2	2	0		
+6FCD1D81	2	0	1	Ares summoned: DMG Cap +25%	
+FA71D269	2	0	2	Blades of Frost ATK +20%	
+B764F28A	2	0	3	DMG Cap +15%	
+FC3AC2B2	2	0	4	Max HP +15k	
+43AFF92D	2	1	1	Blade Blue ATK +3% Cap +5%/lvl	
+8194A34C	2	1	2	Ares summoned: ATK +10%	
+87216451	2	1	3	Ares not summoned: ATK +10%	
+91D66F69	2	1	4	Emerald Shield add. DEF +5%	
+840602BB	2	1	5	Light Wall CD -5%	
+FCA5F391	2	1	6	<d> Attacks Cap +35%	1F86C946
+BAB3D34E	2	1	7	Crit Rate +15%	
+6B8605C4	2	1	8	Blight: DMG Cap +100%	
+36B06A33	2	2	1	Ares summon: Shield 1k to party	
+3E16FF98	2	2	2	Blade Blue ATK +3% Cap +5%/lvl	
+4558788A	2	2	3	Ares not summoned: DMG Cap +30%	
+FF6E9D48	2	2	4	DMG Cap +25%	
+17DDEDF1	2	2	5	Emerald Shield Buff Dur +10%	
+FBA557EC	2	2	6	HP +10k ×Def/Sup	
+9D9F77FC	2	2	7	Crit DMG +9%	
+D1C70FCE	2	2	8	Crit Rate +25%	
+723FB281	2	3	1	Skill DMG Cap +40%	
+CDE3CDF9	2	3	2	Light Wall Invincibility Dur +2s	
+7E1DDADC	2	3	3	Heal→Shield 5% max HP	
+45665D42	2	3	4	Low HP: Crit Gauge -10%	
+99654246	2	3	5	DEF +6% ×Def/Sup	
+75E000EF	2	3	6	Stun Power +4	
+BE93300A	2	3	7	Weak elem: DMG +10%	
+463F0F73	2	3	8	DMG Cap +35%	
+E85D6B6C	2	3	9	Primal Burst DMG +25%	
+211596C1	2	3	10	DMG Cap +35%	
+DC249AFD	0	0	0	Precision Blasting	
+A7D596E3	0	1	0		
+AD65FF5C	0	2	0		
+6D73B127	0	0	1	Heat Gauge Gain +10%	
+EB1000D5	0	0	2	Bull's Eye ATK +10%	
+7101C2A4	0	0	3	DMG Cap +15%	
+EDAF939A	0	0	4	Max HP +15k	
+57148C51	0	1	1	Heat Gauge Gain +10%	
+D056D3FC	0	1	2	Weak Point / Back Attacks: ATK +20%	
+EAAEA805	0	1	3	Damage skill: Heat Gauge Gain +10%	
+F9C8D181	0	1	4	Rhythmic Trigger attacks: ATK +10%	
+5720D3F3	0	1	5	Bullet Hail ATK +10%	
+2F261655	0	1	6	DMG Cap +20%	
+B02A1DA7	0	1	7	ATK +20%	
+EF0E4430	0	1	8	Poison: DMG Cap +100%	
+1D0E5627	0	2	1	Heat Gauge Gain +10%	
+1390B2ED	0	2	2	Bull's Eye Cap +35%	
+4B0FE9E0	0	2	3	All CD: Bull's Eye Supp DMG 10%	
+4B062891	0	2	4	ATK +20%	
+FBAAA999	0	2	5	Slag Shot Elemental ATK +10%	
+F80CD04C	0	2	6	DMG Cap +20% ×Basic	
+1C5ED73E	0	2	7	Guard Break +7%	
+1E1D637F	0	2	8	Max HP +15k	
+79AE29AE	0	3	1	Bull's Eye Charge Speed +10%	
+7D01D16F	0	3	2	Bullet Hail Cap +45%	
+67FAD3EC	0	3	3	Slag Shot Cap +45%	
+B871F84A	0	3	4	Dodge: Shield 1k	
+123C515A	0	3	5	DMG Cap +20% ×Basic	
+832CBC83	0	3	6	Crit Rate +25%	
+54F8599B	0	3	7	Crit DMG +9%	
+97CF7B3C	0	3	8	DMG Cap +30%	
+301DB751	0	3	9	Summon Cost -1	
+06861F93	0	3	10	DMG Cap +30%	
+1BDADFEC	1	0	0	Expert Coffinmaker	
+FB6A7B6C	1	1	0		
+CA33537B	1	2	0		
+8D7BE0FB	1	0	1	<d>/<d> Attacks Cap +20%	540045EA
+05C312C7	1	0	2	Attacks Range increased	
+61E575C4	1	0	3	DMG Cap +15%	
+4CA6D8F7	1	0	4	DEF +5%	
+7603DB98	1	1	1	ATK +10% max	
+6F59C630	1	1	2	Heat Gauge Gain +10%	
+B1B677B7	1	1	3	Rhythmic Trigger attacks: ATK +10%	
+273C51C2	1	1	4	Double Tap CD -5%	
+9B60EBE3	1	1	5	Link/SBA: Coffinmaker CD -50%	
+F4A1014D	1	1	6	<d> Attacks Cap +35%	AB43F3A4
+2BAC8AC7	1	1	7	Max HP +15k	
+58A65E44	1	1	8	Burn: DMG Cap +100%	
+13EB2449	1	2	1	5% chance to shorten skill cooldowns	
+6A04CE8E	1	2	2	DMG Cap +100% max	
+D9FC1E88	1	2	3	DMG +50% max	
+48D959C8	1	2	4	DMG Cap +30%	
+F77DB2A9	1	2	5	Full Heat: Stout Heart	
+7621EA39	1	2	6	ATK +10% ×Attack	
+0C835CE8	1	2	7	Chain Burst Cap +40%	
+B330F573	1	2	8	ATK +20%	
+D66B0667	1	3	1	Heat depletion penalty -10%	
+6A7E96B0	1	3	2	Wild Gunsmoke DEF↓ penalty -10%	
+FE61F2F0	1	3	3	Wild Gunsmoke: add. ATK +5% Dur +10%	
+0D65F6C5	1	3	4	Coffinmaker ATK +10%	
+EB35F4B9	1	3	5	Wild Gunsmoke add. ATK +5%	
+F01B1CFD	1	3	6	ATK +20% / DMG Cap +50%	
+C24921B9	1	3	7	ATK +10% ×Attack	
+3A4A6D6F	1	3	8	DMG Cap +30%	
+7ACB5D37	1	3	9	Summon Cost +1	
+9AFFD88A	1	3	10	DMG Cap +30%	
+C8B3FF29	2	0	0	Collateral Risk	
+C4D07AD1	2	1	0		
+4ECC6F15	2	2	0		
+3FC6028D	2	0	1	Skill DMG Cap +35%	
+BF3D8A5F	2	0	2	Skill CD -2%	
+EF26C036	2	0	3	DMG Cap +15%	
+41841A42	2	0	4	Max HP +15k	
+DAAE825C	2	1	1	Post-Collateral: HP +10%	
+B50073CB	2	1	2	Skill CD -3%	
+9D4145CA	2	1	3	DMG Cap +20%	
+25711CB0	2	1	4	Collateral CD -5%	
+E16515A5	2	1	5	Dur CD -5%	
+C8D9F842	2	1	6	Skill DMG Cap +35%	
+43D900AF	2	1	7	Crit Rate +15%	
+8542039E	2	1	8	Blight: DMG Cap +100%	
+180E1FF3	2	2	1	Collateral ATK +10%	
+3DCC2E79	2	2	2	Collateral: Shield Str +10k	
+F4BFCB8E	2	2	3	Dur lasts 30% longer	
+6550A6EA	2	2	4	<d> Attacks Cap +35%	0B03C565
+F906777F	2	2	5	Spitfire ATK +10%	
+97E62C54	2	2	6	HP +10k ×Def/Sup	
+55332492	2	2	7	Crit DMG +9%	
+A37D45A9	2	2	8	Crit Rate +25%	
+AD53AC8A	2	3	1	DMG Cap +30%	
+658A82AC	2	3	2	Collateral Cap +45%	
+DD78169C	2	3	3	Spitfire Cap +45%	
+0F127850	2	3	4	Low HP: Crit Gauge -10%	
+95A4D95D	2	3	5	DEF +6% ×Def/Sup	
+44851FBA	2	3	6	Stun Power +4	
+2EDE1773	2	3	7	Weak elem: DMG +10%	
+AD4FEF02	2	3	8	DMG Cap +30%	
+A8D98760	2	3	9	Primal Burst DMG +25%	
+D2BD3627	2	3	10	DMG Cap +30%	
+3785EE72	0	0	0	Pure Concentration	
+F9B30DD9	0	1	0		
+4A6C5654	0	2	0		
+A365CFE9	0	0	1	Charge Time -5%	
+8973409F	0	0	2	<d> Attacks Cap +35%	12A8943B
+26CA6784	0	0	3	DMG Cap +20%	
+E9C49E45	0	0	4	Max HP +15k	
+EA5F0170	0	1	1	SG V ATK +5%	
+0CC89769	0	1	2	Concen AoE: SG V DMG +10%	
+5C523370	0	1	3	Concen AoE Dur +10%	
+F04B29D5	0	1	4	Concen CD -5%	
+C8A6E7A1	0	1	5	Vortex CD -5%	
+0DB28BD5	0	1	6	DMG Cap +25%	
+DA201949	0	1	7	ATK +30%	
+FFF06F48	0	1	8	Poison: DMG Cap +100%	
+0975AE87	0	2	1	SG V ATK +10%	
+8B3E7AC4	0	2	2	Concen AoE: SG V DMG +15%	
+A077E416	0	2	3	Concen AoE: DMG Cut 20%	
+0270517B	0	2	4	<d> Attacks Cap +35%	186D8993
+F7FD447D	0	2	5	Concen CD -5%	
+8FB49A5E	0	2	6	DMG Cap +20% ×Basic	
+6B9A95E5	0	2	7	Guard Break +7%	
+40C91AD4	0	2	8	Max HP +15k	
+20460F91	0	3	1	Concen AoE: SG V DMG +25%	
+05880D7D	0	3	2	Vortex DEF↑ 10%	
+673247FF	0	3	3	Gravity Cap +45%	
+EE29AE1D	0	3	4	Dodge: Shield 1k	
+38ABFCEA	0	3	5	DMG Cap +20% ×Basic	
+63337477	0	3	6	Crit Rate +25%	
+D4B07E00	0	3	7	Crit DMG +9%	
+041394F5	0	3	8	DMG Cap +30%	
+DA42731F	0	3	9	Summon Cost -1	
+73E8F93B	0	3	10	DMG Cap +30%	
+09BDC3A0	1	0	0	Magic Chain	
+3F463165	1	1	0		
+C95593A9	1	2	0		
+76B84192	1	0	1	Skill CD -2%	
+F8F851BE	1	0	2	<d> Attacks Cap +35%	0DFD1F67
+6F2DF886	1	0	3	DMG Cap +20%	
+236D548B	1	0	4	DEF +5%	
+B03736EE	1	1	1	Skill CD -3%	
+79B7DB33	1	1	2	Skills ATK +10%	
+FAC9F61C	1	1	3	Lightning CD -5%	
+40B39304	1	1	4	Freeze ATK +10%	
+69B37B79	1	1	5	Fire ATK +10%	
+158B5940	1	1	6	Skill DMG Cap +35%	
+EF75D8C8	1	1	7	Max HP +15k	
+088C586D	1	1	8	Burn: DMG Cap +100%	
+5C5005FE	1	2	1	Magic Chain Dur +20%	
+DA7321C8	1	2	2	Freeze+Fire AoE ATK +50%	
+091D78E6	1	2	3	Fire+Lightning AoE Dur +10%	
+9C778A6F	1	2	4	DMG Cap +30%	
+E46B7B37	1	2	5	Gravity ATK +10%	
+61874818	1	2	6	ATK +10% ×Attack	
+49B189B3	1	2	7	Chain Burst Cap +40%	
+95D62EE6	1	2	8	ATK +30%	
+DBEA0DAC	1	3	1	Freeze+Lightning Debuff +10%	
+A84C9613	1	3	2	Lightning Paralysis Dur +2s	
+E0728731	1	3	3	Freeze Cap +45%	
+553DF136	1	3	4	Fire DMG Cap +45%	
+B6675D1F	1	3	5	DMG Cap +30%	
+9154CDC1	1	3	6	ATK +20% / DMG Cap +50%	
+4BFFC408	1	3	7	ATK +10% ×Attack	
+243B4D73	1	3	8	DMG Cap +30%	
+657E4CAB	1	3	9	Summon Cost +1	
+59A6921D	1	3	10	DMG Cap +30%	
+9FF0B805	2	0	0	Flowery Seven Overload	
+3FA5B223	2	1	0		
+161212CE	2	2	0		
+FD03402E	2	0	1	Charge Time -5%	
+780A74F2	2	0	2	<d> Attacks ATK +10%	7D8B4F5D
+8EC609FA	2	0	3	DMG Cap +20%	
+7B381383	2	0	4	Max HP +15k	
+43C8A2AF	2	1	1	F7 CD -1%	
+F7DFD9DE	2	1	2	F7 ATK +10%	
+62EDC813	2	1	3	F7 charge: DEF +5%	
+FFB344F9	2	1	4	F7 DMG Cap +45%	
+6F989A1C	2	1	5	Heal Winds→Shield 3k	
+0D270525	2	1	6	<d> Attacks Cap +35%	603A8A99
+5E66C92E	2	1	7	Crit Rate +15%	
+52079F66	2	1	8	Blight: DMG Cap +100%	
+22CED832	2	2	1	F7 Charge -5%	
+C7D42627	2	2	2	F7 ATK +10% Cap +50%	
+80C16439	2	2	3	Charge Time -5%	
+5CEF30D8	2	2	4	Skill DMG Cap +35%	
+57199019	2	2	5	F7 Stack ATK↓ 5%	
+723EB988	2	2	6	HP +10k ×Def/Sup	
+E95588B7	2	2	7	Crit DMG +9%	
+B1914469	2	2	8	Crit Rate +25%	
+2F1DB318	2	3	1	Enhances F7's DMG specs	
+3B38F41C	2	3	2	Heal Winds→Shield 3k	
+A836D58D	2	3	3	F7 DMG Cap +45%	
+F7A369FD	2	3	4	Low HP: Crit Gauge -10%	
+7472C384	2	3	5	DEF +6% ×Def/Sup	
+0B2EDA06	2	3	6	Stun Power +4	
+14A0F65F	2	3	7	Weak elem: DMG +10%	
+8F282522	2	3	8	DMG Cap +30%	
+D5440188	2	3	9	Primal Burst DMG +25%	
+FD2AF48D	2	3	10	DMG Cap +30%	
+A56678A9	0	0	0	Flawless Vision	
+F9FF6A94	0	1	0		
+A71284FC	0	2	0		
+C1A0DAE9	0	0	1	Vision: DEF +5%	
+37E3941A	0	0	2	Vision: ATK +10%	
+DCEBFA67	0	0	3	DMG Cap +15%	
+FD971D4C	0	0	4	Max HP +15k	
+E859A38A	0	1	1	Charged <d> attacks ATK +5%	5B0E4CEE
+ED851A2C	0	1	2	Skill CD -0.1%	
+F42FAB2A	0	1	3	Vision: DMG Cap +30%	
+B7B59F73	0	1	4	Sumrak Reduced recoil	
+8F8D53B4	0	1	5	Detonator ATK +10%	
+162F3E08	0	1	6	DMG Cap +20%	
+AC543CA2	0	1	7	Vision: Charge -5%	
+C7E42CC4	0	1	8	Poison: DMG Cap +100%	
+BC72704B	0	2	1	Detonator +30% no-CD chance	
+7B783DEE	0	2	2	Sniper Elite ATK +10% Cap +20%/lvl	
+EE2D86D3	0	2	3	Vision: DMG Cap +30%	
+507A682E	0	2	4	Skill DMG Cap +35%	
+151C609D	0	2	5	Sumrak Cap +45%	
+85AA37BD	0	2	6	DMG Cap +20% ×Basic	
+099756FA	0	2	7	Vision: Charge -5%	
+EC54817F	0	2	8	Max HP +15k	
+354D57F1	0	3	1	Vision: no interrupts	
+41B89B75	0	3	2	Detonator Cap +45%	
+A8D311AF	0	3	3	Skill CD -3%	
+8419747C	0	3	4	Dodge: Shield 1k	
+E058B7BF	0	3	5	DMG Cap +20% ×Basic	
+61A75B4D	0	3	6	Crit Rate +25%	
+4E3DF610	0	3	7	Crit DMG +9%	
+6FE5C40E	0	3	8	DMG Cap +35%	
+B1BBA893	0	3	9	Summon Cost -1	
+07CDD0F2	0	3	10	DMG Cap +35%	
+0A225055	1	0	0	Grenade Punch	
+B6668DC0	1	1	0		
+6D0B9C43	1	2	0		
+49BFC16B	1	0	1	Grenade ATK +10%	
+9D082F6C	1	0	2	Grenade Stun Power +5%	
+6D19A8E5	1	0	3	DMG Cap +15%	
+E5459868	1	0	4	DEF +5%	
+A3FA9179	1	1	1	Grenades ATK +10% vs weak pts	
+ACA41631	1	1	2	Grenade Cap +35%	
+8D682906	1	1	3	Skill CD -5%	
+4331E2A4	1	1	4	AP Round ATK +10%	
+6431C75C	1	1	5	Intercept Cap +45%	
+1B527DCC	1	1	6	ATK +30%	
+E7C1DB2F	1	1	7	Max HP +15k	
+D4781FAE	1	1	8	Burn: DMG Cap +100%	
+EC13D26E	1	2	1	Grenades ATK +30%	
+A3DCD7B0	1	2	2	Grenades Cap +50%	
+740617F7	1	2	3	AP Round can detonate grenades	
+394DB30E	1	2	4	<d> Attacks Cap +35%	F32F899F
+EAA08DF5	1	2	5	DMG Cap +25%	
+0BCF137C	1	2	6	ATK +10% ×Attack	
+455A8533	1	2	7	Chain Burst Cap +40%	
+8E8AB5B1	1	2	8	ATK +30%	
+8AAB0DAE	1	3	1	Melee detonation bonus DMG	
+EAF1247C	1	3	2	Intercept can detonate grenades	
+2A978D8A	1	3	3	AP Round Cap +45%	
+9CF886A5	1	3	4	Intercept Always Stout Heart	
+FBFD5311	1	3	5	Disruptor ATK↓ 10%	
+2D5BC667	1	3	6	ATK +20% / DMG Cap +50%	
+03997B00	1	3	7	ATK +10% ×Attack	
+4D7D2BA6	1	3	8	DMG Cap +35%	
+975E15EB	1	3	9	Summon Cost +1	
+76928083	1	3	10	DMG Cap +35%	
+96FDE7FD	2	0	0	Spitting Venom	
+EC57D0E4	2	1	0		
+BCBADE3D	2	2	0		
+8CE957C5	2	0	1	Skill DMG Cap +35%	
+899E1B2F	2	0	2	Venom Grenade add. DEF -5%	
+C696CE8F	2	0	3	DMG Cap +15%	
+7ED41B86	2	0	4	Max HP +15k	
+A4EBEE36	2	1	1	Crux Poison Dur +10%	
+48389947	2	1	2	Crux Poison DMG +10%	
+EA987881	2	1	3	Guard Break +7%	
+4C0EC46B	2	1	4	Venom Grenade ATK +10%	
+9182B847	2	1	5	Heal Bullet→Shield 5% max HP	
+85D3ABDC	2	1	6	Venom Grenade CD -5%	
+EC43C76D	2	1	7	Crit Rate +15%	
+37EFA0BC	2	1	8	Blight: DMG Cap +100%	
+2383DE88	2	2	1	Poison: ATK +10%	
+2B4AAE2D	2	2	2	Poison+Paralysis: ATK/DMG +10%	
+325239F0	2	2	3	Disruptor Cap +45%	
+024BBCB4	2	2	4	DMG Cap +25%	
+DA1A57DC	2	2	5	Paralysis Dur +10%	
+8D996EC9	2	2	6	HP +10k ×Def/Sup	
+11BD019A	2	2	7	Crit DMG +9%	
+5B98CAE8	2	2	8	Crit Rate +25%	
+11A3A822	2	3	1	Heal Bullet→Shield 5% max HP	
+BB9F6805	2	3	2	Venom Grenade Cap +45%	
+FE6D1408	2	3	3	Para Bullet CD -5%	
+13A10E2D	2	3	4	Low HP: Crit Gauge -10%	
+E45E48C7	2	3	5	DEF +6% ×Def/Sup	
+95C28564	2	3	6	Stun Power +4	
+B0BC1FB7	2	3	7	Weak elem: DMG +10%	
+20F1442A	2	3	8	DMG Cap +35%	
+8D0B1377	2	3	9	Primal Burst DMG +25%	
+45D86DCB	2	3	10	DMG Cap +35%	
+2A1E9175	0	0	0	Rose Requiem	
+ED9DDCD7	0	1	0		
+C6BFDFF4	0	2	0		
+463F934B	0	0	1	Skill CD -2%	
+62983970	0	0	2	Rose Attack Interval -10%	
+BD022411	0	0	3	DMG Cap +15%	
+DB7A3785	0	0	4	Max HP +15k	
+6FB6680C	0	1	1	Lvl 4 Roses Required -1	
+8E501CB4	0	1	2	Spiral Rose+: DMG Cut	
+82120BEF	0	1	3	Spiral Rose+ DMG +10% to Lost Love	
+46FAF283	0	1	4	Lost Love ATK +10%	
+04B8FF9F	0	1	5	Spiral Rose ATK +10%	
+A733025F	0	1	6	DMG Cap +20%	
+8DDAFDFB	0	1	7	ATK +20%	
+43216950	0	1	8	Poison: DMG Cap +100%	
+F944491F	0	2	1	Lost Love+: ATK↓ 10% to 5+ hits	
+0E3DC293	0	2	2	Lost Love+: DMG↑ 30%, rose Dur↑	
+3980C313	0	2	3	Spiral Rose+: Shield 3k	
+A2696476	0	2	4	ATK +20%	
+B9723D5A	0	2	5	Lost Love Cap +45%	
+0685C5D4	0	2	6	DMG Cap +20% ×Basic	
+7AA9C293	0	2	7	Guard Break +7%	
+AA2E4FF9	0	2	8	Max HP +15k	
+C572136D	0	3	1	Lost Love+ DMG +10%	
+0D7F26AE	0	3	2	Spiral Rose Cap +45%	
+8312CE47	0	3	3	Iron Maiden CD -5%	
+25793791	0	3	4	Dodge: Shield 1k	
+CF779F3C	0	3	5	DMG Cap +20% ×Basic	
+FEF0EC84	0	3	6	Crit Rate +25%	
+A06DAC3A	0	3	7	Crit DMG +9%	
+330DC835	0	3	8	DMG Cap +35%	
+E98A5B8C	0	3	9	Summon Cost -1	
+9222789B	0	3	10	DMG Cap +35%	
+DDDB9201	1	0	0	Battlefield Cultivator	
+FFE14F1D	1	1	0		
+0B291A6C	1	2	0		
+B3281E4E	1	0	1	<d> Attacks ATK +10%	A1E76054
+9E7DA79C	1	0	2	Rose ATK +10%	
+DA9F4B18	1	0	3	DMG Cap +15%	
+2354C188	1	0	4	DEF +5%	
+B123BFCF	1	1	1	Add. ATK -1%/rose lvl	
+3D0C43DB	1	1	2	Add. DEF -1%/rose lvl	
+2700E1C7	1	1	3	Regen to party members	
+4490766E	1	1	4	Rose Barrier CD -5%	
+629E4C12	1	1	5	Rose Tycoon CD -5%	
+1E2C9D11	1	1	6	<d> Attacks Cap +35%	B967FAAA
+6C83E001	1	1	7	Max HP +15k	
+690D401A	1	1	8	Burn: DMG Cap +100%	
+9C644E26	1	2	1	<d> Attacks Cap +35%	9D164121
+7829C011	1	2	2	Combo D ATK↑/DEF↑ +1%/rose lvl	
+D6DF331D	1	2	3	Rose Gauge Depletion Speed -10%	
+E4E9DAEE	1	2	4	Skill DMG Cap +35%	
+BBBC5ADB	1	2	5	DMG Cap +25%	
+AE216D09	1	2	6	ATK +10% ×Attack	
+546E9A97	1	2	7	Chain Burst Cap +40%	
+C7986D3F	1	2	8	ATK +20%	
+0435BA6A	1	3	1	3 overlapping AoEs: Skill CD -3%	
+9D8959EB	1	3	2	Iron Maiden Buff Dur +10%	
+EFDC1A7C	1	3	3	Rose Barrier Shield 15k/5k	
+EF788252	1	3	4	Rose Tycoon Poison Dur +10%	
+43D3626E	1	3	5	Sillage CD -5%	
+D29D06C3	1	3	6	ATK +20% / DMG Cap +50%	
+437D6785	1	3	7	ATK +10% ×Attack	
+198BC20B	1	3	8	DMG Cap +35%	
+7BBD0AE2	1	3	9	Summon Cost +1	
+CA3F6E3A	1	3	10	DMG Cap +35%	
+960314A6	2	0	0	Fortified Roses	
+FD1459DC	2	1	0		
+B1C4758E	2	2	0		
+BBE1044D	2	0	1	<d> Attacks ATK +10%	7764AEFB
+62E6EDB1	2	0	2	Skill CD -3%	
+32EC3569	2	0	3	DMG Cap +15%	
+C93F9E0E	2	0	4	Max HP +15k	
+03230E97	2	1	1	<d> Attacks Cap +35%	D25F6FC5
+45D0A8CD	2	1	2	Skill CD -0.1%	
+8E899AAB	2	1	3	Rose DMG Cap +30%	
+E9612211	2	1	4	Mesmerize CD -5%	
+5C391203	2	1	5	Bouquet CD -5%	
+725312BB	2	1	6	Skill DMG Cap +35%	
+40084D52	2	1	7	Crit Rate +15%	
+9F5657A9	2	1	8	Blight: DMG Cap +100%	
+E4DDAAE2	2	2	1	Roses 15% extra attack chance	
+4B68B7CF	2	2	2	Rose DMG Cap +30%	
+F803A804	2	2	3	Rose effect strength boosted	
+44085244	2	2	4	DMG Cap +25%	
+DE1B7545	2	2	5	Sillage CD -5%	
+17786E75	2	2	6	HP +10k ×Def/Sup	
+E703FCDA	2	2	7	Crit DMG +9%	
+77E424B6	2	2	8	Crit Rate +25%	
+C7173066	2	3	1	Rose effect dmg threshold -1M	
+A793295A	2	3	2	Bouquet Healing +10%	
+1B42E2AB	2	3	3	Mesmerize DMG↑ 10%	
+8C1F8840	2	3	4	Low HP: Crit Gauge -10%	
+72393370	2	3	5	DEF +6% ×Def/Sup	
+57B66C6D	2	3	6	Stun Power +4	
+07ADC9F3	2	3	7	Weak elem: DMG +10%	
+CEA40524	2	3	8	DMG Cap +35%	
+CC6BBA93	2	3	9	Primal Burst DMG +25%	
+6D360645	2	3	10	DMG Cap +35%	
+60700621	0	0	0	Phantastic Pets	
+F3DFC314	0	1	0		
+581E679D	0	2	0		
+DD26F39C	0	0	1	Pet summon: <d> Attacks ATK +10%	91857974
+27BB23E7	0	0	2	Pet summon: <d> Attacks ATK +10%	24E7A97E
+A5681E30	0	0	3	DMG Cap +15%	
+FA247ED1	0	0	4	Max HP +15k	
+56D1CDE6	0	1	1	Pet summon: <d> Attacks DMG Cap +30%	4658D4D0
+58BE0097	0	1	2	Pet summon: <d> Attacks DMG Cap +30%	F5BDE22A
+97DC97D3	0	1	3	Skill DMG Cap +35%	
+9D3603B6	0	1	4	Strafe ATK +10%	
+0C6D4E18	0	1	5	Sic 'Em! CD -5%	
+5C31D62B	0	1	6	DMG Cap +20%	
+540B6241	0	1	7	ATK +20%	
+42B8CEE8	0	1	8	Poison: DMG Cap +100%	
+A5B577FB	0	2	1	Pet Finisher DMG +30% / CD +10%	
+CBB24CA2	0	2	2	Pet summon: DEF +3%	
+F3AE4B30	0	2	3	Pet summon: DMG +5%	
+01496D2E	0	2	4	ATK +20%	
+00F62FDC	0	2	5	Blaues Gespenst Cap +45%	
+5523B3C0	0	2	6	DMG Cap +20% ×Basic	
+C9090714	0	2	7	Guard Break +7%	
+7994C3C1	0	2	8	Max HP +15k	
+A4BA884D	0	3	1	No pet: Skill CD -5%	
+45B8E75F	0	3	2	Purge Spirits CD -5%	
+F3EE6759	0	3	3	Pendel Cap +45%	
+BD1794FD	0	3	4	Sic 'Em! Slow Dur +10%	
+64BD1F93	0	3	5	DMG Cap +20% ×Basic	
+473F02ED	0	3	6	Crit Rate +25%	
+F50E1201	0	3	7	Crit DMG +9%	
+D043E7E7	0	3	8	DMG Cap +35%	
+F0855FA1	0	3	9	Summon Cost -1	
+7D27D45B	0	3	10	DMG Cap +35%	
+97F24C90	1	0	0	Self-Reliant Ghost	
+6801E334	1	1	0		
+20B43394	1	2	0		
+764E08C6	1	0	1	Skill CD -1%	
+C7B94928	1	0	2	No pet: DMG Cap +30%	
+C75B2377	1	0	3	DMG Cap +15%	
+39EB2B72	1	0	4	DEF +5%	
+170BD86C	1	1	1	Loving Trust lvl: restores HP	
+D45ED485	1	1	2	ATK +5% / DEF +2%	
+6F87C7BC	1	1	3	Pet DMG Cap +35%	
+FBF10A68	1	1	4	Purge Spirits Stun Power +10%	
+7EFF9CD1	1	1	5	Pendel ATK +10%	
+913B7FAC	1	1	6	<d> Attacks Cap +35%	4E346175
+DB9E669C	1	1	7	Max HP +15k	
+CBB24E36	1	1	8	Burn: DMG Cap +100%	
+4C89E976	1	2	1	Loving Trust DEF +1%/lvl	
+9F9E3FFF	1	2	2	Loving Trust Cap +20%/lvl	
+1442636A	1	2	3	On pet summon: Shield 1k	
+3F3BC372	1	2	4	<d> Attacks Cap +35%	59339A5E
+2E27F76A	1	2	5	DMG Cap +25%	
+8C65FA59	1	2	6	ATK +10% ×Attack	
+69BE1FDC	1	2	7	Chain Burst Cap +40%	
+367F38D7	1	2	8	ATK +20%	
+8FD8892A	1	3	1	Loving Trust DMG +3%/lvl	
+A4FC465A	1	3	2	Pet exit: Supp DMG +20%	
+227DFF3A	1	3	3	Strafe Cap +45%	
+DCCA0E29	1	3	4	Blaues Gespenst CD -5%	
+835EFF33	1	3	5	Dodge: Shield 1k	
+7898B744	1	3	6	ATK +20% / DMG Cap +50%	
+3CB40FFD	1	3	7	ATK +10% ×Attack	
+501E49EA	1	3	8	DMG Cap +35%	
+DE5586E8	1	3	9	Summon Cost +1	
+9A45315C	1	3	10	DMG Cap +35%	
+8796EA21	2	0	0	Spirited Support	
+200B32E0	2	1	0		
+60F96D30	2	2	0		
+3A1A6ADA	2	0	1	Skill DMG Cap +35%	
+5C8DB8EF	2	0	2	Skill CD -2%	
+E8005B2C	2	0	3	DMG Cap +15%	
+10C071F2	2	0	4	Max HP +15k	
+00BA74C0	2	1	1	Buff Dur +10%	
+169CE826	2	1	2	Debuff Dur +10%	
+1F0B4ED9	2	1	3	Skill CD -2%	
+6020E9FF	2	1	4	Benediction CD -5%	
+F39E93CF	2	1	5	Hinrichten CD -5%	
+502C1BFB	2	1	6	<d> Attacks Cap +35%	74D79AEF
+A9B3A68C	2	1	7	Crit Rate +15%	
+97DA4B69	2	1	8	Blight: DMG Cap +100%	
+49590EA0	2	2	1	Spiritbond DMG +3%/lvl	
+BF0EBFA8	2	2	2	Shield 1k / Link: max Spiritbond	
+B271EC42	2	2	3	Pet DMG Cap +30%	
+C73AFF9B	2	2	4	DMG Cap +25%	
+0F80063B	2	2	5	Umlauf CD -5%	
+C41F930F	2	2	6	HP +10k ×Def/Sup	
+9660164C	2	2	7	Crit DMG +9%	
+76EBEC73	2	2	8	Crit Rate +25%	
+E7E38491	2	3	1	Umlauf ATK +10%	
+1687C82D	2	3	2	Benediction Buff Dur +10%	
+50E97910	2	3	3	Hinrichten Buff Dur +10%	
+4BC09503	2	3	4	Low HP: Crit Gauge -10%	
+D1C69A9A	2	3	5	DEF +6% ×Def/Sup	
+620EC0F9	2	3	6	Stun Power +4	
+AC6A3749	2	3	7	Weak elem: DMG +10%	
+623E3592	2	3	8	DMG Cap +35%	
+7ABC3874	2	3	9	Primal Burst DMG +25%	
+926BA11D	2	3	10	DMG Cap +35%	
+D95EB781	0	0	0	Finish with Perfection	
+AD3E014A	0	1	0		
+06E5F77F	0	2	0		
+0E251F4F	0	0	1	Avalanche now ATK +2%/lvl	
+2E5C2905	0	0	2	<d> Finishers ATK +10%	9BCB2F05
+59B8CDA9	0	0	3	DMG Cap +15%	
+695A16B0	0	0	4	Max HP +15k	
+1580B5B6	0	1	1	<d> Finishers Cap +35%	9BE2147F
+4E40E05E	0	1	2	Perfect finisher window +10%	
+8FDAE1B6	0	1	3	Perfect Finishers ATK +10%	
+E28F7618	0	1	4	Lawinensturm ATK +10%	
+CF29ED11	0	1	5	Turbulenz ATK +10%	
+06185AF1	0	1	6	<d> Attacks Cap +35%	3D689F78
+41FD2A78	0	1	7	ATK +30%	
+8824630D	0	1	8	Poison: DMG Cap +100%	
+4F25620F	0	2	1	Enh. DMG Skills ATK +20% DMG +10%	
+EB30E3E3	0	2	2	Enh. DMG Skills Regen	
+ECDF0C66	0	2	3	Perfect Finishers Cap +35%	
+4A5D2FF8	0	2	4	Skill DMG Cap +35%	
+EC8922EB	0	2	5	Kaltzwinger ATK↓ 10%	
+9DF6B6DB	0	2	6	DMG Cap +20% ×Basic	
+637BE012	0	2	7	Guard Break +7%	
+F75BF478	0	2	8	Max HP +15k	
+A5292E0B	0	3	1	Enh. DMG Skills: ramps up	
+29EA090F	0	3	2	Turbulenz Cap +45%	
+001A6AB8	0	3	3	Kaltzwinger ATK↓ 10%	
+9E53C503	0	3	4	Dodge: Shield 1k	
+E97D87B6	0	3	5	DMG Cap +20% ×Basic	
+32DE4122	0	3	6	Crit Rate +25%	
+CAFBA95F	0	3	7	Crit DMG +9%	
+56E84C02	0	3	8	DMG Cap +35%	
+B0FA598E	0	3	9	Summon Cost -1	
+69A02E4A	0	3	10	DMG Cap +35%	
+FBBE6BAF	1	0	0	Artful Dodger	
+03B1C48B	1	1	0		
+9A498704	1	2	0		
+780832CE	1	0	1	Skill CD -2%	
+F1DC6370	1	0	2	<d> Attacks ATK +10% / DMG Cap +25%	17638BFC
+FEC5694D	1	0	3	DMG Cap +15%	
+25099BF0	1	0	4	DEF +5%	
+F4EAAFC9	1	1	1	Perfect dodge window +10%	
+F067598A	1	1	2	Mirror Image nullifies 1 more hit	
+0260E6E3	1	1	3	Enh. Finishers: DEF +10% max	
+6BA8C9E0	1	1	4	Luftspiegelung CD -5%	
+102D5C00	1	1	5	Schwertgeist Cap↑ 10% to party	
+E6ED02D4	1	1	6	DMG Cap +20%	
+553F1E7B	1	1	7	Max HP +15k	
+424E2A8B	1	1	8	Burn: DMG Cap +100%	
+A18DB9AB	1	2	1	Enh. Finishers Cap +15%/lvl	
+C9BC5CDE	1	2	2	Enh. Finishers DMG +3%/lvl	
+603BE304	1	2	3	DMG +5%	
+4D80915D	1	2	4	<d> Attacks Cap +35%	83066E23
+AFFDC48C	1	2	5	DMG Cap +25%	
+92B89BB9	1	2	6	ATK +10% ×Attack	
+68A36D99	1	2	7	Chain Burst Cap +40%	
+3DEF8E26	1	2	8	ATK +30%	
+C7C1CB5B	1	3	1	Perfect finisher: Supp DMG 30%	
+AF33347C	1	3	2	Blauer Dolch CD -5%	
+3CD56FCA	1	3	3	Schwertgeist DMG↑ 10% to party	
+6D5CBB6C	1	3	4	Luftspiegelung CD -5%	
+365D3871	1	3	5	Blauer Dolch Supp DMG Dur +10%	
+64BDD5F4	1	3	6	ATK +20% / DMG Cap +50%	
+2D954096	1	3	7	ATK +10% ×Attack	
+E33C36D0	1	3	8	DMG Cap +35%	
+96A2A701	1	3	9	Summon Cost +1	
+9D87B0CB	1	3	10	DMG Cap +35%	
+321EE2FA	2	0	0	Skill Acceleration	
+153BF1BA	2	1	0		
+0D329CE8	2	2	0		
+88174814	2	0	1	Avalanche now ATK +2%/lvl	
+38B075FF	2	0	2	Skill CD -3%	
+DD05C803	2	0	3	DMG Cap +15%	
+E3CBF111	2	0	4	Max HP +15k	
+2C881808	2	1	1	Avalanche lvl 5+: DMG Cap +8%/lvl	
+0C0FC511	2	1	2	Avalanche lvl: recovers HP	
+5E23F926	2	1	3	Skill DMG Cap +35%	
+11A85C13	2	1	4	Southern Cross ATK +10%	
+D8FD09D3	2	1	5	Blade Impulse ATK +10%	
+A98E5CF6	2	1	6	<d> Attacks Cap +35%	8133B160
+F7B00193	2	1	7	Crit Rate +15%	
+1AD7A8CA	2	1	8	Blight: DMG Cap +100%	
+D571A147	2	2	1	Avalanche 9: CD reset chance	
+14D32A0F	2	2	2	DMG skill CD -0.3%	
+B90178B8	2	2	3	Avalanche 9: ATK +50% Cap +50%	
+4DC557A2	2	2	4	DMG Cap +25%	
+8FAB0F41	2	2	5	Southern Cross Cap +45%	
+9BA3F2C6	2	2	6	HP +10k ×Def/Sup	
+5E93AD76	2	2	7	Crit DMG +9%	
+055D46E1	2	2	8	Crit Rate +25%	
+E0C68446	2	3	1	Avalanche 9 for 10s: Shield 10k	
+B57693D3	2	3	2	Blade Impulse Cap +45%	
+3E9185C5	2	3	3	Lawinensturm Cap +45%	
+F33502E3	2	3	4	Low HP: Crit Gauge -10%	
+F106FB87	2	3	5	DEF +6% ×Def/Sup	
+26F89DA8	2	3	6	Stun Power +4	
+BF33ECAD	2	3	7	Weak elem: DMG +10%	
+FA56DF52	2	3	8	DMG Cap +35%	
+0F7DA15A	2	3	9	Primal Burst DMG +25%	
+543AADA5	2	3	10	DMG Cap +35%	
+164B5647	0	0	0	Growing Hostility	
+7718124D	0	1	0		
+8F41A985	0	2	0		
+D38DE165	0	0	1	<d> Attacks ATK +10%	C942A47E
+F281AF95	0	0	2	<d> Combo Finishers ATK +10%	14570C48
+3A7C1EC1	0	0	3	DMG Cap +20%	
+DE9751ED	0	0	4	Max HP +15k	
+B64B3AAB	0	1	1	<d> Attacks Cap +35%	96C840AD
+38134BD5	0	1	2	Shield Str +10k	
+C00122F4	0	1	3	DEF +2%	
+3749D15A	0	1	4	Heroic Beat ATK +10%	
+ADB89FE0	0	1	5	Breakthrough CD -5%	
+BD033E6B	0	1	6	DMG Cap +25%	
+FB28E3C4	0	1	7	ATK +20%	
+C60C75F1	0	1	8	Poison: DMG Cap +100%	
+D05073DF	0	2	1	Hostility↑ Dur +20%	
+C2927F7C	0	2	2	Combo finishers Drain Amt/Cap +10%	
+49D36288	0	2	3	<d> Attacks Cap +35%	1C6113DB
+F386D9BE	0	2	4	ATK +20%	
+8E914D59	0	2	5	Heroic Beat Cap +45%	
+76EA9936	0	2	6	DMG Cap +20% ×Basic	
+10EF1C0B	0	2	7	Guard Break +7%	
+2136951C	0	2	8	Max HP +15k	
+2907C690	0	3	1	Heroic Vigor DMG +20% max	
+D143455A	0	3	2	Breakthrough Buff Dur +10%	
+B154FCC1	0	3	3	Arm Destruction Cap +45%	
+AC18D15B	0	3	4	Dodge: Shield 1k	
+4410D052	0	3	5	DMG Cap +20% ×Basic	
+03490762	0	3	6	Crit Rate +25%	
+F1B22C0E	0	3	7	Crit DMG +9%	
+6DA8A4A5	0	3	8	DMG Cap +35%	
+FEA529C1	0	3	9	Summon Cost -1	
+E8B5D93A	0	3	10	DMG Cap +35%	
+C7BA5829	1	0	0	Team Player	
+4401D00C	1	1	0		
+F8ABA78A	1	2	0		
+739082D4	1	0	1	Skill CD -2%	
+C3B8B62B	1	0	2	Skill DMG Cap +35%	
+2DD663B9	1	0	3	DMG Cap +20%	
+4BEF3AFF	1	0	4	DEF +5%	
+CDAE84D1	1	1	1	Buff Dur +10%	
+736D78F9	1	1	2	Skill CD -3%	
+68B756DE	1	1	3	Synergy Boost ATK +5% Cap +10%/lvl	
+CFA7952C	1	1	4	Soul Eruption add. ATK +5%	
+FB4F6190	1	1	5	Drachenstolz add. ATK/DEF +5%	
+0E32F1A8	1	1	6	<d> Attacks Cap +35%	237077AD
+9767CB50	1	1	7	Max HP +15k	
+5E38387D	1	1	8	Burn: DMG Cap +100%	
+61E16109	1	2	1	In Rampart 3s: DMG Cap↑ 15%	
+49B2A9D9	1	2	2	In Rampart 5s: DEF↑ 10%	
+898522B9	1	2	3	In Rampart 7s: DMG↑ 5%	
+8286952C	1	2	4	DMG Cap +30%	
+D5C30982	1	2	5	Rampart CD -5%	
+31BBE9B9	1	2	6	ATK +10% ×Attack	
+628BC063	1	2	7	Chain Burst Cap +40%	
+8A46D7BE	1	2	8	ATK +20%	
+3E28EEDF	1	3	1	Rampart: DMG skill CD -2%	
+25C1E58D	1	3	2	In Rampart 8s: Mirror Image	
+74E77901	1	3	3	Drachenstolz Buff Dur +10%	
+29DE3F76	1	3	4	Soul Eruption Buff Dur +10%	
+B2F5F244	1	3	5	Rampart CD -5%	
+C0A76266	1	3	6	ATK +20% / DMG Cap +50%	
+D396D8D4	1	3	7	ATK +10% ×Attack	
+8C63F059	1	3	8	DMG Cap +35%	
+8A80CDE3	1	3	9	Summon Cost +1	
+BFE5E89B	1	3	10	DMG Cap +35%	
+725EC346	2	0	0	Resolve	
+C0B94757	2	1	0		
+9F79F1DA	2	2	0		
+56699E41	2	0	1	Guard Break +10%	
+20356997	2	0	2	<d> block: DMG Cut 10%	770E1376
+397F06D9	2	0	3	DMG Cap +20%	
+5874438B	2	0	4	Max HP +15k	
+E29EEF6F	2	1	1	Beatdown Gauge Gain +10%	
+F4C61D50	2	1	2	<d> Combo Finishers Cap +35%	CAF34C71
+B7D9486A	2	1	3	<d> Attacks ATK +10%	DD9E25CF
+631FEA1E	2	1	4	Energy Destruction ATK +10%	
+7942955E	2	1	5	Rift Divider ATK +10%	
+03F58AB7	2	1	6	<d> Attacks Cap +35%	ED3868F6
+9175354A	2	1	7	Crit Rate +15%	
+A22CC9ED	2	1	8	Blight: DMG Cap +100%	
+F374BDC6	2	2	1	Perfect guard SBA +0.1%	
+E6DE16D8	2	2	2	<d> block: DMG Cut 10%	6DBA476F
+5F33E2C4	2	2	3	Beatdown: combos Drain Amt +1%	
+9852768C	2	2	4	Skill DMG Cap +35%	
+E1E2C390	2	2	5	Arm Destruction Stun Power +10%	
+99BC613E	2	2	6	HP +10k ×Def/Sup	
+75F8CDD2	2	2	7	Crit DMG +9%	
+570825AC	2	2	8	Crit Rate +25%	
+7A266BB1	2	3	1	Beatdown: combos DMG +5%	
+2383CE67	2	3	2	Rift Divider Cap +45%	
+2C79E14E	2	3	3	Energy Destruction Cap +45%	
+53EEBE58	2	3	4	Low HP: Crit Gauge -10%	
+906D40F3	2	3	5	DEF +6% ×Def/Sup	
+B4FE614B	2	3	6	Stun Power +4	
+FBBC93FE	2	3	7	Weak elem: DMG +10%	
+399C13FE	2	3	8	DMG Cap +35%	
+B9456517	2	3	9	Primal Burst DMG +25%	
+FCC9B6B0	2	3	10	DMG Cap +35%	
+19B5F235	0	0	0	Charge Forth	
+28B55274	0	1	0		
+4DA09694	0	2	0		
+3DA42C61	0	0	1	Charge Time -5%	
+FBE1A97F	0	0	2	Skill CD -2%	
+0148F6F7	0	0	3	DMG Cap +20%	
+17D247FD	0	0	4	Max HP +15k	
+0F5E7DEA	0	1	1	Stoked ATK +5% Cap +5% Schlacht++	
+2BDC0304	0	1	2	Charged <d> Attacks Cap +35%	F740583C
+F6CE927A	0	1	3	Skill CD reset chance↑	
+5E7AD010	0	1	4	Macht ATK +10%	
+25D64E43	0	1	5	X-Seele Petrified Dur +10%	
+D89C08B4	0	1	6	DMG Cap +25%	
+DD04EBFF	0	1	7	ATK +30%	
+C8DB2268	0	1	8	Poison: DMG Cap +100%	
+8468CD55	0	2	1	Skill DMG↑ ATK +5% Cap +5%	
+14D0F894	0	2	2	Stoked ATK +10% to Schlacht++	
+192A5120	0	2	3	Stoked Cap +20% to Schlacht++	
+6476E397	0	2	4	Skill DMG Cap +35%	
+FA9D0F8C	0	2	5	Roter Wirbel ATK +10%	
+6C1F5ECF	0	2	6	DMG Cap +20% ×Basic	
+EA2C8697	0	2	7	Guard Break +7%	
+9F0C4E7F	0	2	8	Max HP +15k	
+D0D1784D	0	3	1	Schlacht++: +1 CD reset chance	
+D9BAB0FD	0	3	2	Roter Wirbel Cap +45%	
+C0BB4CF5	0	3	3	Macht DMG Cap +45%	
+9B66E6ED	0	3	4	Dodge: Shield 1k	
+D17FCF8D	0	3	5	DMG Cap +20% ×Basic	
+F6784079	0	3	6	Crit Rate +25%	
+A02BE403	0	3	7	Crit DMG +9%	
+A6478048	0	3	8	DMG Cap +30%	
+9BF3769A	0	3	9	Summon Cost -1	
+3DE7570E	0	3	10	DMG Cap +30%	
+9553B16E	1	0	0	Molten Edge	
+C042812A	1	1	0		
+5814C88A	1	2	0		
+75D5ECB2	1	0	1	Charge Time -5%	
+4C5BA46E	1	0	2	Skill CD -3%	
+948F73A6	1	0	3	DMG Cap +20%	
+23E995AF	1	0	4	DEF +5%	
+8218E593	1	1	1	Molten ATK +1%/lvl	
+E2B3F055	1	1	2	Charged <d> Attacks ATK +10%	DB4A8B12
+FBBC5703	1	1	3	Molten Cap +10%/lvl	
+CC38828F	1	1	4	Flammenmarsch CD -5%	
+D18D3B9E	1	1	5	Träumerei CD -5%	
+3ED4D35B	1	1	6	Skill DMG Cap +35%	
+1091254B	1	1	7	Max HP +15k	
+46052DC1	1	1	8	Burn: DMG Cap +100%	
+0D35309F	1	2	1	Zerreissen hold bonus DMG↑	
+95A36BA2	1	2	2	Molten 9: Zerreissen CD -75%	
+3AB1BBFE	1	2	3	Molten 9 spent: DMG Cut	
+92F87A2E	1	2	4	<d> Attacks Cap +35%	A12046E6
+B04D2D11	1	2	5	Zerreissen ATK +10%	
+C8397ABA	1	2	6	ATK +10% ×Attack	
+0969AC1E	1	2	7	Chain Burst Cap +40%	
+46D98F5A	1	2	8	ATK +30%	
+185435FD	1	3	1	Skill cast: Zerreissen CD -25%	
+FDB6560F	1	3	2	Flammenmarsch Buff Dur +10%	
+5887EF97	1	3	3	Träumerei Buff Dur +10%	
+9837853A	1	3	4	Zerreissen Cap +45%	
+F46B41D9	1	3	5	DMG Cap +30%	
+B1F9E8C7	1	3	6	ATK +20% / DMG Cap +50%	
+1A3ED5F8	1	3	7	ATK +10% ×Attack	
+DD33B4EE	1	3	8	DMG Cap +30%	
+24D3B923	1	3	9	Summon Cost +1	
+599CEFF6	1	3	10	DMG Cap +30%	
+45F93675	2	0	0	Parry Me This	
+F04435EB	2	1	0		
+F4D5CED1	2	2	0		
+A8FA1985	2	0	1	Charged parry window +10%	
+684C800F	2	0	2	Charged <d> Attacks ATK +10%	FDC82F7C
+79C10551	2	0	3	DMG Cap +20%	
+AF9E0A81	2	0	4	Max HP +15k	
+58FF132A	2	1	1	Schlacht charge: DEF +5%	
+C97D1A7E	2	1	2	Flame Wolf Cap +5%	
+2D15A1C8	2	1	3	Burn inflicted on foes Dur +10%	
+0A6BE759	2	1	4	X-Seele CD -5%	
+F61D37D0	2	1	5	Royal Authority ATK +10%	
+9EBFA2D7	2	1	6	<d> Attacks Cap +35%	AC1C151F
+2A7DE638	2	1	7	Crit Rate +15%	
+3F17EDD4	2	1	8	Blight: DMG Cap +100%	
+20EDEB1D	2	2	1	Charged parry window +10%	
+863FF783	2	2	2	Flame Wolf Stun Power +5%/lvl	
+E7C11D6D	2	2	3	Flame Wolf Cap +10%/lvl	
+3C86E735	2	2	4	DMG Cap +30%	
+378929C5	2	2	5	Feuerangriff ATK +10%	
+E1C6BA8A	2	2	6	HP +10k ×Def/Sup	
+EA88EEF1	2	2	7	Crit DMG +9%	
+B99D6496	2	2	8	Crit Rate +25%	
+1AD31A90	2	3	1	Flame Wolf 5: <d> DMG +5%	58F0B215
+B22A050F	2	3	2	Royal Authority Cap +45%	
+D2575C21	2	3	3	Feuerangriff Cap +45%	
+EF3AC157	2	3	4	Low HP: Crit Gauge -10%	
+00B11216	2	3	5	DEF +6% ×Def/Sup	
+9CDE7953	2	3	6	Stun Power +4	
+BCC0E463	2	3	7	Weak elem: DMG +10%	
+55DBE865	2	3	8	DMG Cap +30%	
+4795C47E	2	3	9	Primal Burst DMG +25%	
+D31587B4	2	3	10	DMG Cap +30%	
+4CE38B11	0	0	0	Perfect Striker	
+419692FB	0	1	0		
+E1AD4DA3	0	2	0		
+7324BCF2	0	0	1	Dragonsbane ATK +2%/lvl	
+F5A35BBA	0	0	2	Perfect Strikes ATK +10%	
+8BD820E9	0	0	3	DMG Cap +15%	
+6B1C1057	0	0	4	Max HP +15k	
+44506C99	0	1	1	Dragonsbane ATK +2%/lvl	
+DD9E4C62	0	1	2	<d> Attacks ATK +10%	5640D832
+11FE0FF9	0	1	3	Dragonsbane lvl 3+: DMG Cap +5%	
+19096EE9	0	1	4	Draconic Stack add. ATK +5% Dur +10%	
+827E4237	0	1	5	Salvator CD -5%	
+96703952	0	1	6	<d> Attacks Cap +30%	8D1CE924
+15081104	0	1	7	ATK +20%	
+FF866725	0	1	8	Poison: DMG Cap +100%	
+1265C659	0	2	1	Dragonsbane ATK +2%/lvl	
+29CBFD1F	0	2	2	Dragonsbane lvl 5+: DEF +5%	
+0F895FC6	0	2	3	Dragonsbane lvl 7 Dur +30%	
+45503E84	0	2	4	DMG Cap +25%	
+1B9745FC	0	2	5	Verdrängen ATK +10%	
+6F090283	0	2	6	DMG Cap +20% ×Basic	
+125BED57	0	2	7	Guard Break +7%	
+BD96505B	0	2	8	Max HP +15k	
+ECD06867	0	3	1	Dragonsbane 7: perf exec DMG +5%	
+DFB3D168	0	3	2	Salvator Buff Dur 10%	
+789D8748	0	3	3	Draconic CD -5%	
+0D8EE893	0	3	4	Dodge: Shield 1k	
+5C9C0AB5	0	3	5	DMG Cap +20% ×Basic	
+B4B2BB52	0	3	6	Crit Rate +25%	
+76F60CA4	0	3	7	Crit DMG +9%	
+C53E72FD	0	3	8	DMG Cap +35%	
+09D3884B	0	3	9	Summon Cost -1	
+86886C85	0	3	10	DMG Cap +35%	
+944C385D	1	0	0	Skilled Slayer	
+DF70E23F	1	1	0		
+372CBEEF	1	2	0		
+66BE6A27	1	0	1	Skill CD -1%	
+4D96612D	1	0	2	At lvl 1 Dark Zeal ATK +5%	
+76D99054	1	0	3	DMG Cap +15%	
+57055B91	1	0	4	DEF +5%	
+3F7721EB	1	1	1	At lvl 1 Dark Zeal Cap +10%	
+106F4A7B	1	1	2	Skill DMG +2%	
+225B6CA8	1	1	3	Skill DMG Cap +35%	
+AA9840DF	1	1	4	Nelah Nav Stun Power +10%	
+F6C05376	1	1	5	Uwe ATK +10%	
+DA2A3658	1	1	6	ATK +20%	
+92450362	1	1	7	Max HP +15k	
+C2CF157A	1	1	8	Burn: DMG Cap +100%	
+B76C8677	1	2	1	Dark Zeal ATK +3%/lvl	
+CFB2800D	1	2	2	Dark Zeal Cap +5%/lvl	
+086C742F	1	2	3	Skill DMG +2%	
+DC67B7AA	1	2	4	<d> Attacks Cap +30%	00EA31B6
+05CB0A29	1	2	5	DMG Cap +25%	
+B4F91ADB	1	2	6	ATK +10% ×Attack	
+AAA219A3	1	2	7	Chain Burst Cap +40%	
+45915703	1	2	8	ATK +20%	
+6FF722E0	1	3	1	Skill DMG +2%	
+84E1B39C	1	3	2	Verdrängen Cap +45%	
+A0B060D9	1	3	3	Uwe DMG Cap +45%	
+9D4BF108	1	3	4	Manigance add. ATK/DEF +5%	
+45807A70	1	3	5	Nelah Nav CD -5%	
+80442DEA	1	3	6	ATK +20% / DMG Cap +50%	
+0C1D404B	1	3	7	ATK +10% ×Attack	
+8D99B09D	1	3	8	DMG Cap +35%	
+63CAE039	1	3	9	Summon Cost +1	
+EFF0D24C	1	3	10	DMG Cap +35%	
+15E1E269	2	0	0	Fueled by Pain	
+C17B1BB4	2	1	0		
+BB066554	2	2	0		
+2200F600	2	0	1	Skill CD -2%	
+40ECC8DD	2	0	2	L'Ombre d'Hier ATK +25% max	
+5BCCF0E8	2	0	3	DMG Cap +15%	
+D06C898B	2	0	4	Max HP +15k	
+7A0994BC	2	1	1	Skill DMG Cap +35%	
+3478DC97	2	1	2	L'Ombre d'Hier ATK +25% max	
+251E6DBD	2	1	3	Manigance CD -5%	
+AE5E7431	2	1	4	L'Ombre d'Hier Cap +45%	
+01178208	2	1	5	Mirage DMG Cut Dur +10%	
+82162B4D	2	1	6	DMG Cap +20%	
+DF994277	2	1	7	Crit Rate +15%	
+661E6CF0	2	1	8	Blight: DMG Cap +100%	
+35AEF633	2	2	1	Skill CD -2%	
+9C298B72	2	2	2	Daybreak 10: perf exec DMG +5%	
+9C61A3DF	2	2	3	L'Ombre d'Hier CD -5%	
+85EC7A21	2	2	4	<d> Attacks Cap +30%	64BE4356
+3A479E68	2	2	5	Mirage CD -5%	
+C6D3F453	2	2	6	HP +10k ×Def/Sup	
+A0A564EF	2	2	7	Crit DMG +9%	
+2559349E	2	2	8	Crit Rate +25%	
+9A0B3C89	2	3	1	Perfect Strikes Cap +40%	
+E9787E58	2	3	2	<d> Attacks Cap +40%	8566CCB3
+A311D0A0	2	3	3	Perfect Executions Cap +40%	
+B14DAC94	2	3	4	Low HP: Crit Gauge -10%	
+616CC698	2	3	5	DEF +6% ×Def/Sup	
+B2374953	2	3	6	Stun Power +4	
+A960C765	2	3	7	Weak elem: DMG +10%	
+AB451C42	2	3	8	DMG Cap +35%	
+6296309E	2	3	9	Primal Burst DMG +25%	
+C3BB3F2D	2	3	10	DMG Cap +35%	
+9ABAF95F	0	0	0	Noblest Stance	
+2E07016A	0	1	0		
+55B00BDD	0	2	0		
+BB4AFF1A	0	0	1	<d> Attacks ATK +10%	49AF246A
+57C5D612	0	0	2	Skill CD -2%	
+FF17AE85	0	0	3	DMG Cap +15%	
+84D73B2F	0	0	4	Max HP +15k	
+A97A2CEF	0	1	1	<d> Attacks ATK +10%	D8989FE9
+C43D48A4	0	1	2	<d> Attacks Cap +35%	E011B73F
+AC0F0D0C	0	1	3	Noble Order Dur +10%	
+5458F3EA	0	1	4	Holy Ladder ATK +10%	
+88B2A831	0	1	5	Rising Cut counter: Supp DMG 10%	
+13CBDEEC	0	1	6	Skill DMG Cap +35%	
+B4B782FF	0	1	7	ATK +20%	
+A6BF6627	0	1	8	Poison: DMG Cap +100%	
+11ADC5BC	0	2	1	<d> Attacks Cap +35%	E16C4AD6
+3AA47947	0	2	2	Noble Order ATK +10% Cap +10%	
+33E2C3BD	0	2	3	Noble Order ATK +2% Cap +5%/lvl	
+F24B5D73	0	2	4	DMG Cap +25%	
+58037B6D	0	2	5	Valiant Stance Stack add. ATK +5%	
+0CECE902	0	2	6	DMG Cap +20% ×Basic	
+D0159812	0	2	7	Guard Break +7%	
+32DC39FC	0	2	8	Max HP +15k	
+DE9A79B7	0	3	1	Noble Order: +50k dmg buffer	
+5A3CA634	0	3	2	Holy Ladder Cap +45%	
+B3E4B324	0	3	3	Valiant Stance CD -5%	
+37D5853B	0	3	4	Dodge: Shield 1k	
+4B40685C	0	3	5	DMG Cap +20% ×Basic	
+37264D95	0	3	6	Crit Rate +25%	
+4D4F220D	0	3	7	Crit DMG +9%	
+E7725D39	0	3	8	DMG Cap +35%	
+16812FA7	0	3	9	Summon Cost -1	
+99933260	0	3	10	DMG Cap +35%	
+4CE67126	1	0	0	Charge!	
+A302F0AD	1	1	0		
+22B6E931	1	2	0		
+2A1E6CF2	1	0	1	<d> block: Finisher ATK +10%	9F902431
+3EC468A3	1	0	2	<d> block: Shield 1k	E25B88A2
+2076D31A	1	0	3	DMG Cap +15%	
+5CDBB1A8	1	0	4	DEF +5%	
+EB129193	1	1	1	<d> Attacks ATK +10%	11CB3B2D
+847C548F	1	1	2	<d> Attacks Cap +35%	63E43909
+55BF852C	1	1	3	Diamond Cutter ATK +2%/lvl	
+13450E90	1	1	4	Königsschild DMG Cut -10%	
+28D3E74C	1	1	5	Shining Onslaught ATK +10%	
+6486C0DB	1	1	6	<d> Attacks Cap +35%	FF6720D6
+39BE7058	1	1	7	Max HP +15k	
+E5BEDBC0	1	1	8	Burn: DMG Cap +100%	
+C21F4496	1	2	1	Diamond Cutter Cap +20%/lvl	
+FEDDF0ED	1	2	2	Diamond Cutter ATK +2%/lvl	
+0A065361	1	2	3	Charged block window +10%	
+BAF68DDC	1	2	4	<d> Attacks Cap +35%	D1E1D86F
+4488AFDA	1	2	5	DMG Cap +25%	
+18D94758	1	2	6	ATK +10% ×Attack	
+EA813DFF	1	2	7	Chain Burst Cap +40%	
+01CACD7A	1	2	8	ATK +20%	
+C61718D6	1	3	1	Diamond Cutter Cap +20%/lvl	
+FBC1CBAA	1	3	2	<d> block: Finisher DMG Cap +40%	D7D20DB8
+E1902686	1	3	3	Königsschild DMG Cut Dur +10%	
+8B792E64	1	3	4	Sword of Lumiel Cap +45%	
+04F0A48C	1	3	5	Sacred Charge DMG↑ 10% to party	
+E920AFD4	1	3	6	ATK +20% / DMG Cap +50%	
+65363434	1	3	7	ATK +10% ×Attack	
+2DD962D8	1	3	8	DMG Cap +35%	
+28FE952A	1	3	9	Summon Cost +1	
+A274D5C6	1	3	10	DMG Cap +35%	
+CAA980BB	2	0	0	I Am Invincible	
+5D521DCD	2	1	0		
+010EE7CD	2	2	0		
+38BC48A8	2	0	1	Skill CD -3%	
+EB1C0193	2	0	2	Invincibility: ATK +10%	
+CCAB4F43	2	0	3	DMG Cap +15%	
+C4ACE2D6	2	0	4	Max HP +15k	
+C47D42FA	2	1	1	Invincibility: ATK +10%	
+2FA09148	2	1	2	Skill DMG Cap +35%	
+46E28604	2	1	3	Rising Cut CD -5%	
+6D92208F	2	1	4	Sword of Lumiel ATK +10%	
+4DB7A081	2	1	5	Invincible CD -5%	
+4516F783	2	1	6	DMG Cap +20%	
+8AC0CBA8	2	1	7	Crit Rate +15%	
+87EF37EB	2	1	8	Blight: DMG Cap +100%	
+71BD9B91	2	2	1	Invincibility: DMG Cap +30%	
+322F1412	2	2	2	Divine Justice Supp DMG +20%	
+EA9C9ED6	2	2	3	Enhanced Noble Stance: Cap +30%	
+EACBAAD9	2	2	4	ATK +20%	
+7FF8C785	2	2	5	Rising Cut Counter Stance Dur +10%	
+B8888243	2	2	6	HP +10k ×Def/Sup	
+982CAB78	2	2	7	Crit DMG +9%	
+0617F6C0	2	2	8	Crit Rate +25%	
+12C93043	2	3	1	Invincible CD -5%	
+41CC1F45	2	3	2	Shining Onslaught Cap +45%	
+C2A618A9	2	3	3	Sacred Charge Cap↑ 10% to party	
+893A455D	2	3	4	Low HP: Crit Gauge -10%	
+969EABEB	2	3	5	DEF +6% ×Def/Sup	
+5915357A	2	3	6	Stun Power +4	
+418609AE	2	3	7	Weak elem: DMG +10%	
+333AFCD6	2	3	8	DMG Cap +35%	
+8A58A7DB	2	3	9	Primal Burst DMG +25%	
+022199A4	2	3	10	DMG Cap +35%	
+394EBAC1	0	0	0	Triple Shroud Savvy	
+77424206	0	1	0		
+CF126644	0	2	0		
+EC766C3A	0	0	1	<d> Finishers ATK +10%	21506DF6
+19071406	0	0	2	Combo attacks ATK +15% max	
+CC4EDB70	0	0	3	DMG Cap +20%	
+17AE4472	0	0	4	Max HP +15k	
+380B18B6	0	1	1	<d> Attacks ATK +10%	C79E7CF9
+096EE43E	0	1	2	DMG Cap +5% max	
+BE8CA440	0	1	3	<d> Finishers Cap +35%	34FF1E1A
+58DD4B8A	0	1	4	Perpetual Rotation CD -5%	
+F009B5B5	0	1	5	Trice Blade add. ATK +5%	
+FA2E6F06	0	1	6	DMG Cap +20%	
+4D270035	0	1	7	ATK +20%	
+69100E1E	0	1	8	Poison: DMG Cap +100%	
+D9DE2C00	0	2	1	<d> finisher: 3 Shroud chance	462E3C37
+8831BF08	0	2	2	Combo attacks DMG Cap +30% max	
+3B0B8F45	0	2	3	Combo attack: 1 Shroud chance	
+19F89325	0	2	4	<d> Attacks Cap +35%	0637FE44
+56A8C179	0	2	5	Hymn of the Hundreds CD -5%	
+AF5DC56C	0	2	6	DMG Cap +20% ×Basic	
+5D706BF9	0	2	7	Guard Break +7%	
+197F50DD	0	2	8	Max HP +15k	
+F8C75DFE	0	3	1	<d> Finishers Cap +35%	7FD3DF42
+6E6A06A9	0	3	2	Perpetual Rotation CD -5%	
+5B6EB717	0	3	3	Trice Blade ATK↑ Dur +10%	
+4D20C754	0	3	4	Dodge: Shield 1k	
+7C9FEDFC	0	3	5	DMG Cap +20% ×Basic	
+E90440B9	0	3	6	Crit Rate +25%	
+7F685255	0	3	7	Crit DMG +9%	
+FC5EEA00	0	3	8	DMG Cap +25%	
+AC9FB7B0	0	3	9	Summon Cost -1	
+6E32FB6C	0	3	10	DMG Cap +25%	
+A3C64B2C	1	0	0	Speed Runner	
+6DC90E27	1	1	0		
+7CB734A4	1	2	0		
+EC6FAA50	1	0	1	<d> Finishers ATK +10%	BDF7BEEA
+182D9D17	1	0	2	Skill DMG Cap +35%	
+E7ED2A59	1	0	3	DMG Cap +20%	
+F4A68CF2	1	0	4	DEF +5%	
+3ACFFF14	1	1	1	<d> Finishers Cap +35%	2DCE1D0C
+E9C1C5A0	1	1	2	DMG Cap +20%	
+BDE14101	1	1	3	Flash Cut ATK +5%	
+9DEA2209	1	1	4	Flashing Void ATK +10%	
+363E274B	1	1	5	Sky Shatter ATK +10%	
+5F2AED01	1	1	6	ATK +20%	
+72ED0351	1	1	7	Max HP +15k	
+91A87565	1	1	8	Burn: DMG Cap +100%	
+26B53475	1	2	1	Flash Cut Cap +100%	
+E7810D1F	1	2	2	Skill DMG Cap +35%	
+7B2594A8	1	2	3	Flash Cut ATK / Cap / DMG +10/50/5%	
+03D5F214	1	2	4	<d> Attacks Cap +35%	E2F9694E
+0A5B778F	1	2	5	Empty Mist ATK +10%	
+3F301D2D	1	2	6	ATK +10% ×Attack	
+4D41DF3A	1	2	7	Chain Burst Cap +40%	
+65DF460F	1	2	8	ATK +20%	
+07E6B8EC	1	3	1	Flash Cut DMG +20%	
+2B8E50D6	1	3	2	Sky Shatter Cap +45%	
+BCBDE2FD	1	3	3	Flashing Void Cap +45%	
+1EA6042F	1	3	4	Empty Mist Cap +45%	
+29FAE564	1	3	5	DMG Cap +25%	
+A0E59FF7	1	3	6	ATK +20% / DMG Cap +50%	
+6F1D0115	1	3	7	ATK +10% ×Attack	
+4C83FBF1	1	3	8	DMG Cap +25%	
+ADAC6893	1	3	9	Summon Cost +1	
+33397D3A	1	3	10	DMG Cap +25%	
+F88599C1	2	0	0	Deft Deflection	
+9714ECBE	2	1	0		
+CE4166A1	2	2	0		
+E9D9604B	2	0	1	Upon countering ATK +10%	
+173C2CAA	2	0	2	<d> Attacks Cap +35%	6933AA69
+AFDCEC6A	2	0	3	DMG Cap +20%	
+D87EA9F0	2	0	4	Max HP +15k	
+D57A0963	2	1	1	<d>/Tit for Tat: DMG Cap +25%	69155F4C
+9B74C03C	2	1	2	DMG Cap↑ Dur +10%	
+B866A2F8	2	1	3	DMG Cap↑ Cap +10%	
+946B1857	2	1	4	Tit for Tat CD -5%	
+7D6F8A76	2	1	5	Awakening ATK +10%	
+35792542	2	1	6	<d> Attacks Cap +35%	6849AB7E
+ED00DA7B	2	1	7	Crit Rate +15%	
+3E6BF1AD	2	1	8	Blight: DMG Cap +100%	
+FADFF5BF	2	2	1	Payback ATK +3%	
+ABE34014	2	2	2	Payback Cap +5%	
+F6E66BD6	2	2	3	Payback lvl 10 DMG +2%	
+6F394B0D	2	2	4	DMG Cap +25%	
+A340600E	2	2	5	Awakening Cap +45%	
+446F48D4	2	2	6	HP +10k ×Def/Sup	
+FC676313	2	2	7	Crit DMG +9%	
+89EBF7ED	2	2	8	Crit Rate +25%	
+2432F8BE	2	3	1	Payback lvl 10 DMG +3%	
+31645C88	2	3	2	Hymn of the Hundreds CD -5%	
+C741141E	2	3	3	DMG Cap +25%	
+821F0156	2	3	4	Low HP: Crit Gauge -10%	
+3B57EEB8	2	3	5	DEF +6% ×Def/Sup	
+C2BCF827	2	3	6	Stun Power +4	
+734840D3	2	3	7	Weak elem: DMG +10%	
+16DBE21F	2	3	8	DMG Cap +25%	
+D49AFCF0	2	3	9	Primal Burst DMG +25%	
+682F1F11	2	3	10	DMG Cap +25%	
+13CCF9F5	0	0	0	Paradigm Shift	
+15BDD7CD	0	1	0		
+DC1AEEED	0	2	0		
+558FB64A	0	0	1	Dawnfly: ATK +10%	
+4DF3FA2B	0	0	2	Freeflutter: ATK +10%	
+BF4A3DD8	0	0	3	DMG Cap +20%	
+0F4D1B36	0	0	4	Max HP +15k	
+BE3B3C16	0	1	1	Enhanced Dawnfly Dur +10%	
+429742BD	0	1	2	Enhanced Freeflutter Dur +10%	
+B3918C8A	0	1	3	Zone Attack Charge Speed +20%	
+2BEC29AA	0	1	4	Dance of Blue Petals CD -5%	
+2C0D2DCE	0	1	5	Crescent Moon ATK +10%	
+C0B564F1	0	1	6	<d> Attacks Cap +35%	3B099C2C
+2F704EDD	0	1	7	ATK +20%	
+5B39F38A	0	1	8	Poison: DMG Cap +100%	
+5E6BAF7C	0	2	1	Enhanced Dawnfly Dur +10%	
+600D722F	0	2	2	Enhanced Freeflutter Dur +10%	
+1760E8B3	0	2	3	Enhanced Dawnfly Cap +5%	
+84AA3BDF	0	2	4	<d> Attacks Cap +35%	5EC10A4C
+AAA631F4	0	2	5	Dance of Pink Petals CD -5%	
+E314F76D	0	2	6	DMG Cap +20% ×Basic	
+95907C96	0	2	7	Guard Break +7%	
+278F8FEB	0	2	8	Max HP +15k	
+567AE48F	0	3	1	Enhanced Freeflutter Supp DMG +5%	
+987CCF45	0	3	2	Crescent Moon Cap +45%	
+59D58566	0	3	3	Dance of Pink Petals Buff Dur +10%	
+6BAD2E9B	0	3	4	Dodge: Shield 1k	
+D7D19A32	0	3	5	DMG Cap +20% ×Basic	
+064A5258	0	3	6	Crit Rate +25%	
+34DA94E2	0	3	7	Crit DMG +9%	
+A402E7A8	0	3	8	DMG Cap +35%	
+285970D5	0	3	9	Summon Cost -1	
+27E8EF12	0	3	10	DMG Cap +35%	
+BD7D2D0A	1	0	0	One Cut, One Kill	
+3E79B641	1	1	0		
+113C4FE3	1	2	0		
+774E29A8	1	0	1	Skill CD -1%	
+B9561313	1	0	2	Butterfly 6: attacks drain HP	
+375FE2A7	1	0	3	DMG Cap +20%	
+55ED886F	1	0	4	DEF +5%	
+2559CC5C	1	1	1	Skill DMG Cap +35%	
+8A1A0F14	1	1	2	ATK +18% max	
+A6F25F60	1	1	3	Dawnfly Finishers DMG +5%	
+36FD6644	1	1	4	Transient ATK +10%	
+C05DF79D	1	1	5	Kyokasuigetsu ATK +10%	
+0916B48A	1	1	6	ATK +20%	
+04FE3CD3	1	1	7	Max HP +15k	
+3D06EF88	1	1	8	Burn: DMG Cap +100%	
+A4B4813C	1	2	1	Skill CD -2%	
+75A6BC37	1	2	2	Butterfly 6: DMG Cap +35%	
+28A05965	1	2	3	DEF +6% max	
+F5182FE0	1	2	4	DMG Cap +30%	
+73CF906D	1	2	5	Butterfly 6: SBA Gauge Gain +10%	
+4FA96E46	1	2	6	ATK +10% ×Attack	
+BB29B1FE	1	2	7	Chain Burst Cap +40%	
+680DA36F	1	2	8	ATK +20%	
+05E38CB7	1	3	1	SBA: Kaleidoscope	
+30A6DAD1	1	3	2	Setsuna ATK +10%	
+3BFCC8FD	1	3	3	Kyokasuigetsu Cap +45%	
+90BCBBF4	1	3	4	Transient Cap +45%	
+5DAA4F40	1	3	5	Setsuna Cap +45%	
+CA19878A	1	3	6	ATK +20% / DMG Cap +50%	
+EC14130F	1	3	7	ATK +10% ×Attack	
+8D935110	1	3	8	DMG Cap +35%	
+52D3F626	1	3	9	Summon Cost +1	
+3734C665	1	3	10	DMG Cap +35%	
+485BB574	2	0	0	Devoted to Devotion	
+45EA47B8	2	1	0		
+013FD8A0	2	2	0		
+6CBD1B22	2	0	1	Hostility↑: ATK +10%	
+ECCDC787	2	0	2	Skill DMG Cap +35%	
+2C6A3769	2	0	3	DMG Cap +20%	
+3BA5A63F	2	0	4	Max HP +15k	
+C9347DF5	2	1	1	Dawnfly: ATK +10%	
+F442AB65	2	1	2	Freeflutter: ATK +10%	
+00C5600C	2	1	3	ATK +20% max	
+03CD2DC2	2	1	4	Utter Devotion CD -5%	
+4ED398B3	2	1	5	Apex of Nothingness counter: ATK↓ 10%	
+345B3558	2	1	6	DMG Cap +25%	
+3C115A0C	2	1	7	Crit Rate +15%	
+D4AA3AA4	2	1	8	Blight: DMG Cap +100%	
+FB4C0192	2	2	1	Hostility↑: DMG Cap +35%	
+9BE1F271	2	2	2	Skill CD -2%	
+759237FD	2	2	3	DMG Cap +40% max	
+C62F6083	2	2	4	<d> Attacks Cap +35%	9AC3C339
+62C9AB62	2	2	5	Utter Devotion Effect Dur +10%	
+8D868E06	2	2	6	HP +10k ×Def/Sup	
+06E8F1B1	2	2	7	Crit DMG +9%	
+1A9494B1	2	2	8	Crit Rate +25%	
+50B3D787	2	3	1	<d> stance shift finishers DMG +5%	F69A45F9
+4BB615A2	2	3	2	Apex of Nothingness Cap +45%	
+D94F875B	2	3	3	Dance of Blue Petals add. DEF +5%	
+D9ACFFEC	2	3	4	Low HP: Crit Gauge -10%	
+6E59E194	2	3	5	DEF +6% ×Def/Sup	
+465E5DB9	2	3	6	Stun Power +4	
+D3C949BC	2	3	7	Weak elem: DMG +10%	
+99E97F10	2	3	8	DMG Cap +35%	
+4E60FDC8	2	3	9	Primal Burst DMG +25%	
+4391D348	2	3	10	DMG Cap +35%	
+058BBCD0	0	0	0	Super Raging Fist	
+4347F727	0	1	0		
+C4D4A581	0	2	0		
+FF110FDD	0	0	1	DEF +5% max	
+D961B6BC	0	0	2	<d> Attacks ATK +10%	8B1E59D8
+98F8FB6C	0	0	3	DMG Cap +15%	
+6605A45D	0	0	4	Max HP +15k	
+8B09FF51	0	1	1	Raging Fist ATK +10%	
+BAAD4F99	0	1	2	Raging Fist Cap +30%	
+43C08449	0	1	3	Rage 10: no interrupts	
+9360C6E5	0	1	4	Branding Palm ATK +10%	
+29E9B2CC	0	1	5	Infernal Stomp CD -5%	
+71B97ED6	0	1	6	DMG Cap +15%	
+588E1527	0	1	7	ATK +20%	
+899C76E5	0	1	8	Poison: DMG Cap +100%	
+87DA9364	0	2	1	Rage starts at lvl 3	
+95B4E283	0	2	2	Raging Fist ATK +10%	
+1B32AC02	0	2	3	Raging Fist Cap +50%	
+26027AF8	0	2	4	<d> Attacks Cap +35%	3FDBD0AD
+F836222D	0	2	5	Rage CD -5%	
+FB6D1673	0	2	6	DMG Cap +20% ×Basic	
+638A0A8C	0	2	7	Guard Break +7%	
+D610A100	0	2	8	Max HP +15k	
+673DC60E	0	3	1	<d> Attacks Cap +40%	24FBE5E5
+30453742	0	3	2	Infernal Stomp Slow Dur +10%	
+A3403212	0	3	3	Rage CD -5%	
+9B212D26	0	3	4	Branding Palm Cap +45%	
+CC250D21	0	3	5	DMG Cap +20% ×Basic	
+5C78456D	0	3	6	Crit Rate +25%	
+BEBA572E	0	3	7	Crit DMG +9%	
+8AC1320F	0	3	8	DMG Cap +35%	
+5D7393CE	0	3	9	Summon Cost -1	
+DC3E78B6	0	3	10	DMG Cap +35%	
+6481EB8C	1	0	0	Roaring Lion	
+6641CB19	1	1	0		
+667F502F	1	2	0		
+23F6A36F	1	0	1	Rage 10: Raging Fist 10% reset Lion CD	
+CA3AF424	1	0	2	Rage 10: 10% DMG Cut chance	
+0D43D116	1	0	3	DMG Cap +15%	
+561C46D6	1	0	4	DEF +5%	
+FCD9DD72	1	1	1	ATK +5% Cap +5%	
+22420E05	1	1	2	Lion Buff Dur +10%	
+27CEEDB6	1	1	3	Charge Time -5%	
+FC7C51F7	1	1	4	DMG Cap +15%	
+37ACA82E	1	1	5	Dhyana CD -5%	
+23AE7B0D	1	1	6	<d> Attacks Cap +30%	A666DC57
+8566E9F9	1	1	7	Max HP +15k	
+DE989773	1	1	8	Burn: DMG Cap +100%	
+CE507A80	1	2	1	Potions Shield +10%	
+0ADF85D1	1	2	2	Hostility↑: Raging Fist Charge -5%	
+F964DF42	1	2	3	Jammed ATK +50%	
+6F7DD824	1	2	4	<d> Attacks Cap +35%	8539CD2F
+2DAFB593	1	2	5	Lion Buff Dur +10%	
+6921A67E	1	2	6	ATK +10% ×Attack	
+DAC36092	1	2	7	Chain Burst Cap +40%	
+1B0FB43C	1	2	8	ATK +20%	
+9FE14451	1	3	1	Lion's add. DEF +5%	
+ED6831A1	1	3	2	True Avidya CD -5%	
+2713397A	1	3	3	Lion CD -5%	
+2F7AA7E5	1	3	4	Dhyana→Shield 10% max HP	
+8B1C7196	1	3	5	True Avidya add. ATK +5%	
+B8D77CA4	1	3	6	ATK +20% / DMG Cap +50%	
+13B3D9B2	1	3	7	ATK +10% ×Attack	
+BA5F8B3C	1	3	8	DMG Cap +35%	
+ABFD8855	1	3	9	Summon Cost +1	
+551335B2	1	3	10	DMG Cap +35%	
+CBF2FA02	2	0	0	Raging Technique	
+CA764E6D	2	1	0		
+ACF71175	2	2	0		
+1DBAA4F6	2	0	1	Skill CD -5%	
+639D4A02	2	0	2	Skill DMG Cap +35%	
+1C6A0739	2	0	3	DMG Cap +15%	
+864A5842	2	0	4	Max HP +15k	
+0C2A9344	2	1	1	Skill CD -2% max	
+90B89DF2	2	1	2	Skill ATK +10%	
+BD394FCA	2	1	3	DMG Cap +15%	
+92DFE63B	2	1	4	Arhat Skybreaker ATK +10%	
+95E26831	2	1	5	Iron Shoulder ATK +10%	
+CB9FA6C3	2	1	6	ATK +20%	
+8390D8A0	2	1	7	Crit Rate +15%	
+4029AD10	2	1	8	Blight: DMG Cap +100%	
+CE8CEF40	2	2	1	Skill DMG Cap +35%	
+1C41B416	2	2	2	Damage skills Supp DMG +20%	
+984C1153	2	2	3	Charge Time -5%	
+93D32ADB	2	2	4	DMG Cap +25%	
+B7AFD138	2	2	5	Iron Shoulder Cap +45%	
+11ABDC33	2	2	6	HP +10k ×Def/Sup	
+66F62FD7	2	2	7	Crit DMG +9%	
+27548BD0	2	2	8	Crit Rate +25%	
+6826A44F	2	3	1	DEF +10% max	
+16C24FCE	2	3	2	Arhat Skybreaker Cap +45%	
+55163764	2	3	3	Dodge: Shield 1k	
+8538CFCE	2	3	4	Low HP: Crit Gauge -10%	
+5D2C48AE	2	3	5	DEF +6% ×Def/Sup	
+4A56BDFC	2	3	6	Stun Power +4	
+F03F3AEA	2	3	7	Weak elem: DMG +10%	
+CC83B289	2	3	8	DMG Cap +35%	
+015D1C43	2	3	9	Primal Burst DMG +25%	
+651F9AC4	2	3	10	DMG Cap +35%	
+971AA4EF	0	0	0	Intense Loops	
+6465C29F	0	1	0		
+08147508	0	2	0		
+108FE5C2	0	0	1	Loop Combos ATK +10%	
+7D835E79	0	0	2	<d> Attacks ATK +10%	CD34AC48
+67C74E8E	0	0	3	DMG Cap +15%	
+F89B7AD6	0	0	4	Max HP +15k	
+A6CF0B32	0	1	1	Loop Combos Cap +25%	
+BAA11FF0	0	1	2	<d> Attacks Cap +35%	A2F2F96B
+1BE0376E	0	1	3	DMG↑ DMG +2%	
+04C94EB6	0	1	4	Spear of Arvess ATK +10%	
+F442D3AD	0	1	5	Signo Drive CD -5%	
+9BDE159F	0	1	6	DMG Cap +20%	
+F932747F	0	1	7	ATK +20%	
+7BBE66E5	0	1	8	Poison: DMG Cap +100%	
+D5234FF3	0	2	1	Arvess Hammer: 1 follow-up	
+7B0C5482	0	2	2	Arvess Hammer -1 loop hit	
+885BE812	0	2	3	Loop Master DMG +3%	
+E6086FBA	0	2	4	<d> Attacks Cap +35%	7CB593E8
+54C572B4	0	2	5	Spear of Arvess Cap +45%	
+A75E8D3A	0	2	6	DMG Cap +20% ×Basic	
+AFA90789	0	2	7	Guard Break +7%	
+72BD8EA6	0	2	8	Max HP +15k	
+C93E84FE	0	3	1	Loop Master lvl 5 Cap +10%	
+A2E4A936	0	3	2	Signo Drive ATK↑ Dur +10%	
+75744A5E	0	3	3	Vengeful Flames CD -5%	
+609242DB	0	3	4	Dodge: Shield 1k	
+6E08BDD4	0	3	5	DMG Cap +20% ×Basic	
+A0F36718	0	3	6	Crit Rate +25%	
+09A80A52	0	3	7	Crit DMG +9%	
+5B4A1A79	0	3	8	DMG Cap +35%	
+05A3EB62	0	3	9	Summon Cost -1	
+450FBE29	0	3	10	DMG Cap +35%	
+9D221A4B	1	0	0	One with Skills	
+6A7E7383	1	1	0		
+55878F26	1	2	0		
+8DF7D815	1	0	1	Skill CD -2%	
+D28B8510	1	0	2	Skill ATK +10%	
+7A3EEF08	1	0	3	DMG Cap +15%	
+32F34097	1	0	4	DEF +5%	
+16066CFA	1	1	1	Further shortens skill cooldowns	
+BCFA6CF8	1	1	2	Arvess Hammer: Shield 200	
+B1A4D7D0	1	1	3	Arvess Fermare: DMG +5%	
+A97C46D3	1	1	4	Realm's Majesty ATK +10%	
+BFBA5DFF	1	1	5	Infinite Wonders ATK +10%	
+F0CD91C6	1	1	6	Skill DMG Cap +35%	
+77606D42	1	1	7	Max HP +15k	
+8D324DA8	1	1	8	Burn: DMG Cap +100%	
+8C621335	1	2	1	Skill DMG Cap +35%	
+B35F13AB	1	2	2	Further shortens skill cooldowns	
+8FBA7F97	1	2	3	Arvess Hammer DMG +10%	
+25186813	1	2	4	Arvess Hammer Cap +30%	
+3E949F21	1	2	5	DMG Cap +25%	
+9CF873B1	1	2	6	ATK +10% ×Attack	
+3A5F2169	1	2	7	Chain Burst Cap +40%	
+523DC373	1	2	8	ATK +20%	
+C46BD02D	1	3	1	Arvess Unleashed Supp DMG 10%	
+E721C89E	1	3	2	Thousand Flames CD -5%	
+9D3AE460	1	3	3	Realm's Majesty Cap +45%	
+D6210930	1	3	4	Infinite Wonders Cap +45%	
+7EE38116	1	3	5	Thousand Flames Burn Dur +20%	
+B5CD97C3	1	3	6	ATK +20% / DMG Cap +50%	
+722C6F11	1	3	7	ATK +10% ×Attack	
+77E28300	1	3	8	DMG Cap +35%	
+1BA76AF1	1	3	9	Summon Cost +1	
+43CA700A	1	3	10	DMG Cap +35%	
+3E799F4A	2	0	0	Out for Revenge	
+C04DA457	2	1	0		
+B5CE22E3	2	2	0		
+5778E714	2	0	1	Rhapsody/Realm's counter +10%	
+7E08F74B	2	0	2	<d> Attacks ATK +10%	8229EC78
+514DA47C	2	0	3	DMG Cap +15%	
+B470892D	2	0	4	Max HP +15k	
+6049B587	2	1	1	Skill CD -3%	
+F05263F9	2	1	2	<d> Attacks Cap +35%	459232D4
+920F56B7	2	1	3	Arvess Fermare: DMG Cap +10%	
+97FFA667	2	1	4	Rain of Fury ATK +10%	
+004F3AD5	2	1	5	Wingclipper CD -5%	
+CF1875B1	2	1	6	ATK +20%	
+637E9504	2	1	7	Crit Rate +15%	
+944DEC82	2	1	8	Blight: DMG Cap +100%	
+17E52427	2	2	1	Heavy Hammer DMG +0.5%	
+93F3DA42	2	2	2	Heavy Hammer lvl 5 Dur +20%	
+C852C995	2	2	3	Loop Finishers Arvess Hammer: ATK +10%	
+C0266F4C	2	2	4	DMG Cap +25%	
+BCB0A68C	2	2	5	Vengeful Flames Supp DMG Dur +10%	
+8D23631A	2	2	6	HP +10k ×Def/Sup	
+BC7F6214	2	2	7	Crit DMG +9%	
+5D6F7A29	2	2	8	Crit Rate +25%	
+96BC2674	2	3	1	Loop Finishers Arvess Hammer: Cap +40%	
+21600EEF	2	3	2	Rain of Fury Cap +45%	
+78ABEF6D	2	3	3	Wingclipper Paralysis Dur +10%	
+43E23932	2	3	4	Low HP: Crit Gauge -10%	
+B44C2642	2	3	5	DEF +6% ×Def/Sup	
+B99BFF56	2	3	6	Stun Power +4	
+0F72A2EE	2	3	7	Weak elem: DMG +10%	
+9557488B	2	3	8	DMG Cap +35%	
+4A520533	2	3	9	Primal Burst DMG +25%	
+77CD779A	2	3	10	DMG Cap +35%	
+48253F09	0	0	0	Hooked on Combos	
+9F8122EC	0	1	0		
+A6D25D7E	0	2	0		
+DF0BE531	0	0	1	Charge Time -5%	
+7ADE4DDF	0	0	2	Grynoth Gauge Gain +10%	
+15D40E3D	0	0	3	DMG Cap +15%	
+17395F00	0	0	4	Max HP +15k	
+7D02E149	0	1	1	Grynoth Unleashed ATK +10%	
+5CC9585E	0	1	2	Grynoth Unleashed DEF +3%	
+479724CA	0	1	3	Charged <d> Attacks Cap +35%	F23EC741
+1897EC39	0	1	4	Great Scythe Grynoth CD -5%	
+96313EC6	0	1	5	Damnation ATK +10%	
+FCB12CC5	0	1	6	DMG Cap +20%	
+994985A3	0	1	7	ATK +20%	
+FEBB072D	0	1	8	Poison: DMG Cap +100%	
+1715F420	0	2	1	Grynoth Unleashed ATK +10%	
+122A665F	0	2	2	<d> attacks ATK +10% Cap +20%	7D9DDE03
+CAE2C9D8	0	2	3	Grynoth Gauge Gain +10%	
+C9BAD252	0	2	4	<d> Attacks Cap +35%	96BCE26A
+DC22FF73	0	2	5	Immortal Pain CD -5%	
+24F57D07	0	2	6	DMG Cap +20% ×Basic	
+C06A31B9	0	2	7	Guard Break +7%	
+EB4099BA	0	2	8	Max HP +15k	
+D7FDEDD4	0	3	1	Enh. DMG time -5s	
+1BF96EC2	0	3	2	Skill CD -5%	
+FB5A90A7	0	3	3	Great Scythe Grynoth Stun Power +10%	
+9D7E5444	0	3	4	Dodge: Shield 1k	
+95D2BB0F	0	3	5	DMG Cap +20% ×Basic	
+516BF1BC	0	3	6	Crit Rate +25%	
+C95E9549	0	3	7	Crit DMG +9%	
+887AA9B7	0	3	8	DMG Cap +35%	
+1020E020	0	3	9	Summon Cost -1	
+47DEE0C2	0	3	10	DMG Cap +35%	
+ABBD6FEA	1	0	0	Large and In Charge	
+D2440F64	1	1	0		
+65882393	1	2	0		
+9D4CB395	1	0	1	Charge Time -5%	
+81146767	1	0	2	Charged <d> Attacks ATK +10%	67C4AE62
+43092735	1	0	3	DMG Cap +15%	
+C067A969	1	0	4	DEF +5%	
+9BA3962F	1	1	1	Charged <d> Attacks Cap +35%	BAB24DFA
+6EEFC30F	1	1	2	Ebony Glint Charge Time -2%/lvl	
+7DFEB56F	1	1	3	Grynoth fill: add. ATK/DEF +5%	
+931A3E43	1	1	4	Umbral Eclipse Slow Dur +2s	
+AD226D12	1	1	5	Violent Shadows CD -5%	
+E4A14640	1	1	6	ATK +20%	
+33CEA82E	1	1	7	Max HP +15k	
+B57FE21C	1	1	8	Burn: DMG Cap +100%	
+0BDBAB71	1	2	1	Ebony Glint Dur +10%	
+7D4DA096	1	2	2	Charged <d> Attacks Cap +35%	548B2549
+E9DB5C39	1	2	3	Ebony Glint Supp DMG 3%	
+76ECA037	1	2	4	Skill DMG Cap +35%	
+A6C6DD85	1	2	5	DMG Cap +25%	
+63A3F6F6	1	2	6	ATK +10% ×Attack	
+48BADFB4	1	2	7	Chain Burst Cap +40%	
+89CC2BDC	1	2	8	ATK +20%	
+66937659	1	3	1	Ebony Glint lvl 3 DMG +3%	
+B21BD81F	1	3	2	Umbral Eclipse CD -5%	
+88921A70	1	3	3	Violent Shadows Cap +45%	
+52609061	1	3	4	Immortal Pain CD -5%	
+236A3FAA	1	3	5	Damnation Cap +45%	
+31359646	1	3	6	ATK +20% / DMG Cap +50%	
+2ACF1B74	1	3	7	ATK +10% ×Attack	
+8CE2CF7C	1	3	8	DMG Cap +35%	
+09FABAFE	1	3	9	Summon Cost +1	
+FD3CC3BD	1	3	10	DMG Cap +35%	
+D3DE43C1	2	0	0	Punishing Parries	
+806182B2	2	1	0		
+CEE527C9	2	2	0		
+BDE97C6B	2	0	1	Charged <d> Attacks ATK +20%	FA37D78C
+7A6C4DE4	2	0	2	Grynoth fill: add. ATK/DEF +5%	
+933890F3	2	0	3	DMG Cap +15%	
+A5B1233F	2	0	4	Max HP +15k	
+30EBE433	2	1	1	DEF +5% while charging <d> attacks	3F0DB0CC
+8E25274F	2	1	2	Grynoth Gauge Gain +10%	
+AA08A700	2	1	3	Battalions of Fear ATK +10%	
+0A05E157	2	1	4	F. Tales's Drain→Shield 5% max HP	
+C81A0ED5	2	1	5	Netherwrath Cap +45%	
+12096C07	2	1	6	Skill DMG Cap +35%	
+4F61825B	2	1	7	Crit Rate +15%	
+FEC7607A	2	1	8	Blight: DMG Cap +100%	
+5CF0A5C9	2	2	1	DEF +5% while charging <d> attacks	4FD3B046
+8CC6CF76	2	2	2	Blood Blade DMG skill CD -2%/lvl	
+AB1DDAEB	2	2	3	Blood Blade Cap +10%/lvl	
+78B758DA	2	2	4	DMG Cap +25%	
+30CB20FC	2	2	5	Battalions of Fear Cap +45%	
+697A35D9	2	2	6	HP +10k ×Def/Sup	
+2CD752E8	2	2	7	Crit DMG +9%	
+5966C798	2	2	8	Crit Rate +25%	
+2AEB3B89	2	3	1	Blood Blade DMG +5%/lvl	
+5AB90A9E	2	3	2	F. Tales CD -5%	
+798008F3	2	3	3	Netherwrath ATK +10%	
+C66D8861	2	3	4	Low HP: Crit Gauge -10%	
+EAD384FA	2	3	5	DEF +6% ×Def/Sup	
+8789EB3A	2	3	6	Stun Power +4	
+B82E604E	2	3	7	Weak elem: DMG +10%	
+3A487CAF	2	3	8	DMG Cap +35%	
+63A3FDFB	2	3	9	Primal Burst DMG +25%	
+357328FC	2	3	10	DMG Cap +35%	
+6BF584F8	0	0	0	Crippling Combos	
+28C15663	0	1	0		
+1BEBDA05	0	2	0		
+5466A038	0	0	1	Charge Time -5%	
+36752531	0	0	2	<d> Combo Finishers ATK +10%	EDE828C4
+317F6C73	0	0	3	DMG Cap +15%	
+6FAEF9D1	0	0	4	Max HP +15k	
+B44F5D2D	0	1	1	Collapse ++ ATK +5% Cap +10%	
+8D0D33CD	0	1	2	Charge Time -5%	
+510763CD	0	1	3	Combo Finisher Debuff Chance +10%	
+13DED2AB	0	1	4	Mimic Doll ATK +10%	
+05B3F071	0	1	5	Mehen CD -5%	
+D4CC3053	0	1	6	DMG Cap +20%	
+D19B3E34	0	1	7	ATK +30%	
+963F1240	0	1	8	Poison: DMG Cap +100%	
+5F3E287C	0	2	1	Collapse ++ ATK +5% Cap +10%	
+365EF583	0	2	2	Combo Finisher Debuff +10%	
+4A0E5CEC	0	2	3	Debuff: Skill CD↓	
+BE8BE11E	0	2	4	Skill DMG Cap +35%	
+DC57D499	0	2	5	Disruption CD -5%	
+51368BA8	0	2	6	DMG Cap +20% ×Basic	
+C790EB67	0	2	7	Guard Break +7%	
+B735F827	0	2	8	Max HP +15k	
+ACFCCA8D	0	3	1	<d> Combo Finishers ATK +10%	F407CD4F
+DDC25C45	0	3	2	Rhizomata DEF↑ 5% to self	
+46BBD5AB	0	3	3	Mimic Doll Cap +45%	
+7DE744FA	0	3	4	Dodge: Shield 1k	
+D21555B9	0	3	5	DMG Cap +20% ×Basic	
+2821AF3B	0	3	6	Crit Rate +25%	
+3D92768B	0	3	7	Crit DMG +9%	
+228BBEA3	0	3	8	DMG Cap +30%	
+4DE5DF73	0	3	9	Summon Cost -1	
+D99BC040	0	3	10	DMG Cap +30%	
+67E999F5	1	0	0	Super Collapse	
+33104EC9	1	1	0		
+B6338B73	1	2	0		
+1D049433	1	0	1	Charged <d> Attacks ATK +10%	2B200CDE
+C47A5857	1	0	2	Charged <d> Attacks Cap +35%	E92992E2
+EB6A5FE9	1	0	3	DMG Cap +15%	
+80D01815	1	0	4	DEF +5%	
+066DA6AA	1	1	1	Charged <d> Attacks Cap +35%	405AF7D9
+46ADF532	1	1	2	Skill CD -3%	
+C96AA367	1	1	3	Reinforce→Shield 5% max HP	
+677D2F9A	1	1	4	Alexandria ATK +10%	
+0633FEC7	1	1	5	Pain Train ATK +10%	
+A5AC28E4	1	1	6	<d> Attacks Cap +35%	05AD5BA2
+EF4ECE24	1	1	7	Max HP +15k	
+2B1E1DD1	1	1	8	Burn: DMG Cap +100%	
+7D1832F7	1	2	1	Super Collapse ATK +10% Cap +30%	
+80CFE775	1	2	2	Instant Collapse +25% chance	
+9B018BCF	1	2	3	Instant Collapse: Cap +30%	
+BAB97A55	1	2	4	<d> Attacks Cap +35%	F75D583D
+C2CE284E	1	2	5	DMG Cap +25%	
+02EFAD1E	1	2	6	ATK +10% ×Attack	
+805B4A09	1	2	7	Chain Burst Cap +40%	
+08EEF4F0	1	2	8	ATK +30%	
+560DE3E1	1	3	1	DMG Cap +30%	
+B9481A8A	1	3	2	Pain Train Cap +45%	
+1764540A	1	3	3	Reinforce CD -5%	
+A91D9008	1	3	4	Alexandria Cap +45%	
+0206442E	1	3	5	Disruption ATK↓ 10%	
+26D99CDD	1	3	6	ATK +20% / DMG Cap +50%	
+41598D01	1	3	7	ATK +10% ×Attack	
+702B2312	1	3	8	DMG Cap +30%	
+F4B34F66	1	3	9	Summon Cost +1	
+17ACB7B6	1	3	10	DMG Cap +30%	
+72E2EF88	2	0	0	Alchemedic	
+CC5DB378	2	1	0		
+65E79257	2	2	0		
+C3568AD4	2	0	1	Skill CD -2%	
+CE366E88	2	0	2	Shield Str +3k	
+F4ABBB80	2	0	3	DMG Cap +15%	
+264E3A3E	2	0	4	Max HP +15k	
+9DE9BFCE	2	1	1	Rhizomata: Phantasmagoria to all	
+C2C8FEF2	2	1	2	Phantasmagoria Dur +10%	
+F1065350	2	1	3	Skill DMG Cap +35%	
+98FA651B	2	1	4	Rhizomata CD -5%	
+1B0AC364	2	1	5	Phantasmagoria CD -5%	
+C5210113	2	1	6	<d> Attacks Cap +35%	F1ECD0D9
+502C2DB2	2	1	7	Crit Rate +15%	
+7783F099	2	1	8	Blight: DMG Cap +100%	
+1DFD8A6B	2	2	1	Charged <d> Attacks ATK +10%	1F91E87E
+93EBE27C	2	2	2	Phantasmagoria grants Cap↑	
+728FF403	2	2	3	Collapse ++: 20% CD reset	
+7CA4EAF4	2	2	4	DMG Cap +25%	
+D0040CC9	2	2	5	Phantasmagoria Buff Dur +10%	
+16D8143D	2	2	6	HP +10k ×Def/Sup	
+722C4196	2	2	7	Crit DMG +9%	
+FDB253D6	2	2	8	Crit Rate +25%	
+046481E9	2	3	1	Phantasmagoria grants Cap↑	
+DF32BFD7	2	3	2	Reinforce→Shield 5% max HP	
+D3412CA4	2	3	3	Mehen ATK↓ Dur +10%	
+3ED58258	2	3	4	Low HP: Crit Gauge -10%	
+7DB26079	2	3	5	DEF +6% ×Def/Sup	
+E99D145C	2	3	6	Stun Power +4	
+DEB3CBF8	2	3	7	Weak elem: DMG +10%	
+26785ED4	2	3	8	DMG Cap +30%	
+905E6BC3	2	3	9	Primal Burst DMG +25%	
+AB2D8FF1	2	3	10	DMG Cap +30%	
+65EB5B0D	0	0	0	Faith in Godmight	
+FA6DDEEF	0	1	0		
+2C45F2D9	0	2	0		
+F2603291	0	0	1	Godmight: ATK +10%	
+8CD7228C	0	0	2	Damage skills CD -2%	
+BE398A6F	0	0	3	DMG Cap +15%	
+CC99793B	0	0	4	Max HP +15k	
+832B8533	0	1	1	Heliotrope Dur +2s	
+82128B63	0	1	2	Damage skills: Versalis Gauge +5%	
+5DF0D3A1	0	1	3	Godmight: <d> attacks ATK +10%	298B526E
+7A9E876D	0	1	4	Reginleiv ATK +10%	
+35501C4B	0	1	5	Scourge: Versalis Gauge +10%	
+EFCA376B	0	1	6	DMG Cap +20%	
+D52952CE	0	1	7	ATK +20%	
+54DDB048	0	1	8	Poison: DMG Cap +100%	
+B1F6F599	0	2	1	Heliotrope Dur +3s	
+0BBC1863	0	2	2	Godmight: <d> attacks ATK +10%	C9A860F0
+D6DD3FFB	0	2	3	Godmight end: Heliotrope lvl 3	
+5B8C4EFE	0	2	4	<d> Attacks Cap +35%	66CB1B19
+DA3A8C59	0	2	5	Substitute: ATK +20% DEF +10%	
+35C39E4F	0	2	6	DMG Cap +20% ×Basic	
+766E7E7E	0	2	7	Guard Break +7%	
+9FE4891A	0	2	8	Max HP +15k	
+D96016AC	0	3	1	Damage skills CD -2%	
+AE3FE84E	0	3	2	Godmight end: Skill CD reset	
+DC46D108	0	3	3	Arcadia CD -5%	
+803DF3AF	0	3	4	Dodge: Shield 1k	
+C4DB4AE2	0	3	5	DMG Cap +20% ×Basic	
+B9019F6B	0	3	6	Crit Rate +25%	
+0015065D	0	3	7	Crit DMG +9%	
+E470808C	0	3	8	DMG Cap +35%	
+B67128B0	0	3	9	Summon Cost -1	
+9BD26252	0	3	10	DMG Cap +35%	
+62B36C64	1	0	0	Faith in Dragonform	
+B1D2D5B3	1	1	0		
+7E6A9D63	1	2	0		
+90F48F3B	1	0	1	Skill CD -1%	
+6D6B6A24	1	0	2	Dragonform: ATK +10%	
+1C3C65C5	1	0	3	DMG Cap +15%	
+C69719AC	1	0	4	DEF +5%	
+0CF10C6A	1	1	1	Skill DMG Cap +35%	
+0CC358B9	1	1	2	Versalis Gauge +5%	
+0BE59A78	1	1	3	Dragonform: <d> Attacks ATK +10%	D3F338DA
+76429C96	1	1	4	Ragnarok Form CD -5%	
+8BF24629	1	1	5	Reginleiv Gains Drain	
+ACBABB37	1	1	6	<d> Attacks Cap +35%	2EB2031A
+D8BDFCC8	1	1	7	Max HP +15k	
+E5BCB35B	1	1	8	Burn: DMG Cap +100%	
+D74E86C8	1	2	1	Skill CD -2%	
+E23D4381	1	2	2	Dragonform: ATK +10%	
+90D46883	1	2	3	Untransformed: Versalis Gauge +10%	
+D8AC8D0E	1	2	4	<d> Attacks Cap +35%	42C132B3
+F2C52B65	1	2	5	DMG Cap +25%	
+7C4A0B22	1	2	6	ATK +10% ×Attack	
+B2413D40	1	2	7	Chain Burst Cap +40%	
+C677EB29	1	2	8	ATK +20%	
+316619F0	1	3	1	Dragonform: <d> Finishers ATK +10%	C88E6254
+28959992	1	3	2	Dragonform: DMG Cap +40%	
+5DC7E9F7	1	3	3	Ragnarok Form ATK↑ 15% to Id	
+A9C44F54	1	3	4	Ragnarok Form ATK↑ 5% to party	
+571F9012	1	3	5	Scourge CD -5%	
+C0444FC1	1	3	6	ATK +20% / DMG Cap +50%	
+2CD7F40E	1	3	7	ATK +10% ×Attack	
+E8ED2806	1	3	8	DMG Cap +35%	
+04ECBB67	1	3	9	Summon Cost +1	
+5FC15528	1	3	10	DMG Cap +35%	
+CA8C0EFF	2	0	0	Path of Vengeance	
+0D7CAF93	2	1	0		
+7657DE1D	2	2	0		
+A26830EA	2	0	1	F. Vengeance Charge -5%	
+7F1E1C9E	2	0	2	Skill DMG Cap +35%	
+91A82178	2	0	3	DMG Cap +15%	
+9F326041	2	0	4	Max HP +15k	
+BE62B8F6	2	1	1	F. Vengeance ATK +10%	
+32FBC89E	2	1	2	F. Vengeance stays in Dragonform	
+2BD4B8F8	2	1	3	F. Vengeance Gains Drain	
+8DD3D3F5	2	1	4	Unbound Cap +45%	
+84B80129	2	1	5	Unbound CD -5%	
+337B5B59	2	1	6	ATK +20%	
+15726E38	2	1	7	Crit Rate +15%	
+ED3A547D	2	1	8	Blight: DMG Cap +100%	
+3544CCB9	2	2	1	F. Vengeance ATK +10%	
+ADDDB94C	2	2	2	Skill CD -2%	
+7538D2E9	2	2	3	F. Vengeance CD -20%	
+E532D70B	2	2	4	DMG Cap +25%	
+74DD774E	2	2	5	Arcadia DEF↓ 10% to foes	
+79CFBFE1	2	2	6	HP +10k ×Def/Sup	
+A3624146	2	2	7	Crit DMG +9%	
+E970F703	2	2	8	Crit Rate +25%	
+FCC111F1	2	3	1	F. Vengeance Charge Time -15%	
+F972AF6B	2	3	2	Dragonform: Skill CD -3%	
+E1C05495	2	3	3	Never Enough Drain Amt +30% / ATK↑ 10%	
+A388CF7A	2	3	4	Low HP: Crit Gauge -10%	
+5F99DA11	2	3	5	DEF +6% ×Def/Sup	
+861CFB25	2	3	6	Stun Power +4	
+EF72EA8C	2	3	7	Weak elem: DMG +10%	
+063C78D0	2	3	8	DMG Cap +35%	
+E91F084A	2	3	9	Primal Burst DMG +25%	
+1BDF73CF	2	3	10	DMG Cap +35%	
+874A1BDE	0	0	0	Promising Wings	
+43C31EE7	0	1	0		
+506B3813	0	2	0		
+9C9E5160	0	0	1	<d> Attacks ATK +10%	207E5CDA
+0851BF62	0	0	2	<d> Combo Finishers ATK +10%	74486FDC
+91CD3756	0	0	3	DMG Cap +20%	
+A433320C	0	0	4	Max HP +15k	
+F34E02C1	0	1	1	<d> Attacks Cap +35%	BA904EDF
+6C87F7DA	0	1	2	<d> Combo Finishers Cap +35%	34379BE4
+2E924775	0	1	3	Archangel Gauge Gain +5%	
+07040C25	0	1	4	Ecliptica ATK +10%	
+D95BFF51	0	1	5	No Way Out ATK +10%	
+4841B5A8	0	1	6	DMG Cap +25%	
+0BB7E746	0	1	7	ATK +30%	
+5DAD921A	0	1	8	Poison: DMG Cap +100%	
+2C275ED3	0	2	1	Limitless Light ATK +10%	
+50B3DCD9	0	2	2	Limitless Light Dur +20%	
+F9E85E2F	0	2	3	C. Wings: DMG Cap +35%	
+8E0BFB37	0	2	4	<d> Attacks Cap +35%	083D4994
+35597BF4	0	2	5	Alone in Heaven CD -5%	
+0921F226	0	2	6	DMG Cap +20% ×Basic	
+687D4AD3	0	2	7	Guard Break +7%	
+CFD5448E	0	2	8	Max HP +15k	
+E21B35BC	0	3	1	Z. Strike DMG +5%	
+20A16AD0	0	3	2	No Way Out Cap +45%	
+849086AE	0	3	3	Ecliptica Cap +45%	
+5C14CB06	0	3	4	Dodge: Shield 1k	
+32E7F117	0	3	5	DMG Cap +20% ×Basic	
+25CA9444	0	3	6	Crit Rate +25%	
+F763F10D	0	3	7	Crit DMG +9%	
+E3FEC4EC	0	3	8	DMG Cap +35%	
+D9EA8557	0	3	9	Summon Cost -1	
+E4CD9765	0	3	10	DMG Cap +35%	
+0067B812	1	0	0	Finding Refuge	
+4944228A	1	1	0		
+5272426B	1	2	0		
+B023337F	1	0	1	C. Wings: ATK +10%	
+594A747B	1	0	2	C. Wings: DMG Cut	
+F8B3A416	1	0	3	DMG Cap +20%	
+77D1887B	1	0	4	DEF +5%	
+E7D5F63C	1	1	1	L. Refuge's Regen Healing +2%	
+DA48B1C0	1	1	2	L. Refuge's DMG↑ DMG +3%	
+FDFE0E89	1	1	3	L. Refuge Supp DMG +3%	
+B9A53511	1	1	4	P. of One CD -5%	
+0C229D8C	1	1	5	Talviyö ATK +10%	
+E5939083	1	1	6	<d> Attacks Cap +35%	5E122A21
+D3B2E047	1	1	7	Max HP +15k	
+1D98E9A2	1	1	8	Burn: DMG Cap +100%	
+FFC76A17	1	2	1	Sandalphon Buffs: Dur +10%	
+2485C27B	1	2	2	C. Wings end: P. of One CD reset	
+80F61427	1	2	3	Perfectly timed attacks Cap +35%	
+E3A01D05	1	2	4	Skill DMG Cap +35%	
+D32662A6	1	2	5	Revontulet Cap +45%	
+46072BA8	1	2	6	ATK +10% ×Attack	
+0F791A62	1	2	7	Chain Burst Cap +40%	
+6838E9EE	1	2	8	ATK +30%	
+E72D3028	1	3	1	C. Wings: L. Refuge lvl 3 ATK +15%	
+437020AD	1	3	2	C. Wings: DMG +5%	
+F789AD1E	1	3	3	Revontulet ATK +10%	
+0E8F6D65	1	3	4	Talviyö Cap +45%	
+5A138DF8	1	3	5	Alone in Heaven counter: DMG Cap↑ 10%	
+7B21FD67	1	3	6	ATK +20% / DMG Cap +50%	
+42C0A268	1	3	7	ATK +10% ×Attack	
+A3EC5342	1	3	8	DMG Cap +35%	
+985F6742	1	3	9	Summon Cost +1	
+D85E4F05	1	3	10	DMG Cap +35%	
+9239F96A	2	0	0	Bell Tolls for Thee	
+064AA8EC	2	1	0		
+6BB3E2BF	2	2	0		
+CEC52A41	2	0	1	C. Wings: Skill CD -2%	
+26E97213	2	0	2	C. Wings: E. Prison DMG↑ 5%	
+A7FB28D9	2	0	3	DMG Cap +20%	
+C0C69932	2	0	4	Max HP +15k	
+3C781678	2	1	1	Bell: Z. Strike 0.5% DMG/lvl	
+036170FA	2	1	2	C. Wings: No Way Out ATK +10% Cap +45%	
+0961A1D7	2	1	3	C. Wings: recovers 10% of his max HP	
+C56B90DA	2	1	4	Breath of Life→Shield 5% max HP	
+C32B0550	2	1	5	E. Prison CD -5%	
+C4EDBA31	2	1	6	Skill DMG Cap +35%	
+BF29E6D8	2	1	7	Crit Rate +15%	
+1C08E790	2	1	8	Blight: DMG Cap +100%	
+D6ECB2CE	2	2	1	C. Wings: Skill CD -2%	
+BE10F9C5	2	2	2	C. Wings end: Supp DMG 10%	
+7C1C4D09	2	2	3	C. Wings: Revontulet ATK +10% Cap +45%	
+665D131D	2	2	4	DMG Cap +30%	
+C6ED66AF	2	2	5	Breath of Life HP +10%/Shield +5%	
+38B6D897	2	2	6	HP +10k ×Def/Sup	
+098903AB	2	2	7	Crit DMG +9%	
+87B6C95F	2	2	8	Crit Rate +25%	
+8E0FA868	2	3	1	C. Wings: Breath of Life CD -5%	
+B0DFDC70	2	3	2	Bell 10 lost: E. Prison CD -50%	
+D6244FD9	2	3	3	E. Prison Elemental Friction Dur +10%	
+CE04FBD4	2	3	4	Low HP: Crit Gauge -10%	
+E8528A46	2	3	5	DEF +6% ×Def/Sup	
+42C6A67C	2	3	6	Stun Power +4	
+8DBA64F4	2	3	7	Weak elem: DMG +10%	
+534B228F	2	3	8	DMG Cap +35%	
+1C2FE7A1	2	3	9	Primal Burst DMG +25%	
+8B0C9056	2	3	10	DMG Cap +35%	
+24D6F865	0	0	0	Fueling the Avatar	
+2CF015B6	0	1	0		
+BEB48A4F	0	2	0		
+962E87C5	0	0	1	<d> Combo Finishers ATK +10%	2A4F6780
+340206BC	0	0	2	Avatar Gauge Gain +5%	
+943E78C5	0	0	3	DMG Cap +15%	
+AA9D4CA4	0	0	4	Max HP +15k	
+BF87BB3B	0	1	1	Combo finisher: Avatar Gauge Gain +10%	
+E2DFBF36	0	1	2	DMG skills: Avatar Gauge +10%	
+3A17212F	0	1	3	Avatar summon: ATK +10%	
+52C14EF2	0	1	4	Barrido ATK +10%	
+5EC4CF86	0	1	5	Rotura ATK +10%	
+C8EE0930	0	1	6	DMG Cap +20%	
+50735AB2	0	1	7	ATK +20%	
+83A288E7	0	1	8	Poison: DMG Cap +100%	
+F835BE0F	0	2	1	<d> Combo Finishers Cap +35%	3AB0E744
+6F84EE78	0	2	2	Avatar: Swordshine starts at lvl 1	
+5A384B95	0	2	3	Avatar summon: ATK +10%	
+D1B6DB58	0	2	4	<d> Attacks Cap +35%	B693B9F6
+AFB14D66	0	2	5	Tempesta CD -5%	
+0C77BE3A	0	2	6	DMG Cap +20% ×Basic	
+629E0D5C	0	2	7	Guard Break +7%	
+F0BA5AB2	0	2	8	Max HP +15k	
+0CF07374	0	3	1	Avatar summon: DMG Cap +40%	
+B28760A0	0	3	2	Barrido Cap +45%	
+6448A1BC	0	3	3	Tempesta add. ATK +5%	
+4BAFA7A6	0	3	4	Dodge: Shield 1k	
+FA135A45	0	3	5	DMG Cap +20% ×Basic	
+282A5646	0	3	6	Crit Rate +25%	
+5745F012	0	3	7	Crit DMG +9%	
+334DB1D5	0	3	8	DMG Cap +35%	
+72C19151	0	3	9	Summon Cost -1	
+B22200B1	0	3	10	DMG Cap +35%	
+7E9626EF	1	0	0	Sword Tempest	
+3550C2F7	1	1	0		
+6D4A0673	1	2	0		
+808E01A3	1	0	1	Skill ATK +10%	
+7A6D8DB0	1	0	2	Except Seven-Star's: CD -2%	
+40536ED1	1	0	3	DMG Cap +15%	
+DE77C3ED	1	0	4	DEF +5%	
+50BB602A	1	1	1	Skill DMG Cap +35%	
+4785132A	1	1	2	Infinito Creare ATK +10%	
+2A5F65B6	1	1	3	Avatar Finishers ATK +10%	
+41F46F3E	1	1	4	Infinito Creare Cap +45%	
+2C1720B3	1	1	5	Infinito Creare ATK +10%	
+D068F831	1	1	6	ATK +20%	
+EDC485CF	1	1	7	Max HP +15k	
+0B6F6608	1	1	8	Burn: DMG Cap +100%	
+D5B9290E	1	2	1	Except Seven-Star's: CD -5%	
+A7A30EA4	1	2	2	Skill DMG Cap +35%	
+5046BB4F	1	2	3	Avatar Finishers Cap +30%	
+4F448321	1	2	4	<d> Attacks Cap +35%	89595988
+791BB89D	1	2	5	DMG Cap +25%	
+FBA14828	1	2	6	ATK +10% ×Attack	
+6DBEFABC	1	2	7	Chain Burst Cap +40%	
+BD597E36	1	2	8	ATK +20%	
+50ABE127	1	3	1	Infinito Creare ATK +10%	
+EC771FD6	1	3	2	Infinito Creare Cap +45%	
+3A3E03E5	1	3	3	Seven-Star's: DMG↑ 30% to party	
+FE8616B4	1	3	4	Despedazar Cap +45%	
+EE118838	1	3	5	Rotura Stun Power +10%	
+09F04618	1	3	6	ATK +20% / DMG Cap +50%	
+86B9D5A3	1	3	7	ATK +10% ×Attack	
+1E4CB695	1	3	8	DMG Cap +35%	
+C675CFD1	1	3	9	Summon Cost +1	
+1F575127	1	3	10	DMG Cap +35%	
+D728F964	2	0	0	Tag Team	
+DBE0F236	2	1	0		
+727DA347	2	2	0		
+1F1355B4	2	0	1	No avatar: ATK +10%	
+94840FF2	2	0	2	Swordshine lvl 1+: Supp DMG	
+4E37455B	2	0	3	DMG Cap +15%	
+F40A401B	2	0	4	Max HP +15k	
+EAEDB794	2	1	1	No avatar: DMG Cap +25%	
+69DAED86	2	1	2	Healing +10%	
+88A2EF9C	2	1	3	Avatar ATK +10%	
+A727CE2D	2	1	4	Ispirazione CD -5%	
+C4C73D58	2	1	5	Despedazar ATK +10%	
+DDC352D1	2	1	6	<d> Attacks Cap +35%	961B2517
+96CD2024	2	1	7	Crit Rate +15%	
+DF1BDE5E	2	1	8	Blight: DMG Cap +100%	
+3DB748E6	2	2	1	Sovereign Cap +5%	
+D5E10BE8	2	2	2	Star Sea ATK +5%	
+F59B12A4	2	2	3	Avatar: no gauge drain briefly	
+2AB4E189	2	2	4	DMG Cap +25%	
+ECAD68C8	2	2	5	Prisión de Armas Cap +45%	
+51919DBB	2	2	6	HP +10k ×Def/Sup	
+F650F917	2	2	7	Crit DMG +9%	
+EDFF9758	2	2	8	Crit Rate +25%	
+1F6F9823	2	3	1	Avatar Finishers DMG +5%	
+5D5B2302	2	3	2	Ispirazione Supp DMG 10%	
+BAEEC865	2	3	3	Prisión de Armas Slow Dur +10%	
+053C168C	2	3	4	Low HP: Crit Gauge -10%	
+1B39AECF	2	3	5	DEF +6% ×Def/Sup	
+27D2E641	2	3	6	Stun Power +4	
+ACAB9C5F	2	3	7	Weak elem: DMG +10%	
+07937FAD	2	3	8	DMG Cap +35%	
+DF25FF57	2	3	9	Primal Burst DMG +25%	
+A4121927	2	3	10	DMG Cap +35%	
+7E36B21A	0	0	0	Hail to Multilock	
+E2791B69	0	1	0		
+BBF9A1AA	0	2	0		
+33137BB4	0	0	1	Multilock ATK +10%	
+C7D1BCC0	0	0	2	<d> Combo Finishers ATK +10%	2453A595
+30402FCC	0	0	3	DMG Cap +20%	
+500D8068	0	0	4	Max HP +15k	
+3D785FA1	0	1	1	Fully charged Multilock Cap +10%	
+C34E5C3E	0	1	2	Deadshot or Piercing Gleam: DMG +5%	
+5586083D	0	1	3	<d> Combo Finishers Cap +35%	AFA059F9
+C0E54A60	0	1	4	Merculight CD -5%	
+9CCB4A72	0	1	5	Peerless Eye CD -5%	
+968C7C9A	0	1	6	<d> Attacks Cap +35%	D7D8F725
+546316B9	0	1	7	ATK +30%	
+6FB37780	0	1	8	Poison: DMG Cap +100%	
+38E0520C	0	2	1	P. Gleam DMG +2% Ultrasight +1%	
+5AA1C4FE	0	2	2	Fully charged Multilock Cap +10%	
+13475EF7	0	2	3	Multilock Cap +35%	
+F027704A	0	2	4	<d> Attacks Cap +35%	5E0C88EF
+A50B5021	0	2	5	Clincher ATK +10%	
+42DFEDCA	0	2	6	DMG Cap +20% ×Basic	
+285C9BF3	0	2	7	Guard Break +7%	
+482F22B7	0	2	8	Max HP +15k	
+6E8C2E07	0	3	1	Piercing Gleam now starts at lvl 2	
+C2A2CA94	0	3	2	Peerless Eye Effect Dur +10%	
+566D8187	0	3	3	Merculight Buff Dur +10%	
+E4632768	0	3	4	Dodge: Shield 1k	
+8F25AE8B	0	3	5	DMG Cap +20% ×Basic	
+AFA8E7F8	0	3	6	Crit Rate +25%	
+33D6AACF	0	3	7	Crit DMG +9%	
+2284323A	0	3	8	DMG Cap +35%	
+9FAE9F3F	0	3	9	Summon Cost -1	
+7568D31F	0	3	10	DMG Cap +35%	
+34F96E76	1	0	0	Clinching Victory	
+F84531A4	1	1	0		
+3705F500	1	2	0		
+C71B6D23	1	0	1	Except Two-Crown's: CD -2%	
+2DCCB913	1	0	2	Clincher Cap +5%	
+672FB7E3	1	0	3	DMG Cap +20%	
+90C7CF40	1	0	4	DEF +5%	
+3460169A	1	1	1	Charged <d> Attacks ATK +10%	AFA3DD66
+FA5CF3E6	1	1	2	Enhanced Clincher ATK +2%/lvl	
+26A54F00	1	1	3	Debuffs: ATK +10% max	
+7BA621CF	1	1	4	Wheel of Death CD -5%	
+958D4A0F	1	1	5	Valiant Weave CD -5%	
+8D295697	1	1	6	Skill DMG Cap +35%	
+F79F40FD	1	1	7	Max HP +15k	
+47697789	1	1	8	Burn: DMG Cap +100%	
+4A341B35	1	2	1	Debuffs: DMG Cap +40% max	
+C29EE785	1	2	2	Except Two-Crown's: CD -3%	
+53F98A9B	1	2	3	Charged <d> Attacks Cap +35%	2C257546
+DF989BA0	1	2	4	DMG Cap +30%	
+AF3EB013	1	2	5	Lethal Rain CD -5%	
+34CB2144	1	2	6	ATK +10% ×Attack	
+54022696	1	2	7	Chain Burst Cap +40%	
+3D2923E6	1	2	8	ATK +30%	
+A8D0A7F1	1	3	1	Weave / Wheel / Rain DMG +20%	
+8E42D5F2	1	3	2	Wheel of Death Cap +45%	
+D22C2FC4	1	3	3	Valiant Weave Cap +45%	
+549E1619	1	3	4	Lethal Rain Cap +45%	
+F8E08A5F	1	3	5	Clincher Cap +45%	
+F26F93A0	1	3	6	ATK +20% / DMG Cap +50%	
+28F4A91E	1	3	7	ATK +10% ×Attack	
+9AE24134	1	3	8	DMG Cap +35%	
+0B7176C2	1	3	9	Summon Cost +1	
+845D3AFF	1	3	10	DMG Cap +35%	
+B2845904	2	0	0	Two-Crown's Master	
+8D290234	2	1	0		
+48C11B8F	2	2	0		
+766995EF	2	0	1	Power Finishers ATK +10%	
+745B654B	2	0	2	Ultrasight lvl starts at 1	
+A5425FF5	2	0	3	DMG Cap +20%	
+9EDCEB65	2	0	4	Max HP +15k	
+A6099A1F	2	1	1	Power Finishers Cap +30%	
+0D11E4D0	2	1	2	Two-Crown's CD -5%	
+1B6CC51A	2	1	3	Charged <d> Attacks ATK +10%	05231E50
+27AE8F02	2	1	4	Two-Crown's ATK +10%	
+1E937EB9	2	1	5	Depravity CD -5%	
+5244F6C5	2	1	6	DMG Cap +25%	
+81290589	2	1	7	Crit Rate +15%	
+FC99F31E	2	1	8	Blight: DMG Cap +100%	
+8A614776	2	2	1	Two-Crown's CD -5%	
+16C74C60	2	2	2	Dawnray/Dull Pt lvl dmg req↓	
+D4FA550C	2	2	3	Charged <d> Attacks Cap +35%	4A463044
+696ABBEF	2	2	4	Skill DMG Cap +35%	
+46F4D8C6	2	2	5	Depravity Cap +45%	
+A99C5C64	2	2	6	HP +10k ×Def/Sup	
+0DE6A13C	2	2	7	Crit DMG +9%	
+87C910DD	2	2	8	Crit Rate +25%	
+D7CA8D24	2	3	1	DMG↑ DMG +5%	
+507327BE	2	3	2	Link: Two-Crown's CD -5%	
+F95AD3F3	2	3	3	Two-Crown's Cap +45%	
+33BE7CA7	2	3	4	Low HP: Crit Gauge -10%	
+5EF0D5BD	2	3	5	DEF +6% ×Def/Sup	
+E679196F	2	3	6	Stun Power +4	
+900A0B57	2	3	7	Weak elem: DMG +10%	
+1905D71E	2	3	8	DMG Cap +35%	
+2C31C045	2	3	9	Primal Burst DMG +25%	
+E0BA6C84	2	3	10	DMG Cap +35%	
+E3EA15A1	0	0	0	Extreme Deathmatch	
+EED707E5	0	1	0		
+CAD7566C	0	2	0		
+AC0F33B7	0	0	1	Silver Wolf +5%	
+21266A3D	0	0	2	Deathmatch: Perfect <d> ATK +10%	EBEE4ABD
+47F7AFD8	0	0	3	DMG Cap +20%	
+3130C38D	0	0	4	Max HP +15k	
+E0D9FD6F	0	1	1	Silver Wolf +5%	
+6872749B	0	1	2	<d> power strikes DMG +3%	8096C7EB
+EC56FECD	0	1	3	Deathmatch: Perfect <d> ATK +10%	3DA60B3D
+542FEA97	0	1	4	Tip of the Spear DEF↑ Dur +10%	
+816475CA	0	1	5	Crit Rate +15%	
+18F97C4E	0	1	6	DMG Cap +25%	
+5D41AF40	0	1	7	ATK +20%	
+35D20780	0	1	8	Poison: DMG Cap +100%	
+995FF1BA	0	2	1	Deathmatch: <d> attacks ATK +10%	9EF9C0DF
+2432C1B5	0	2	2	Deathmatch: <d> attacks ATK +10%	B82ADF44
+2D4FD8DF	0	2	3	Daredevil max lvl 3	
+C31A9CDF	0	2	4	<d> Attacks Cap +35%	6F14D884
+A7DF136D	0	2	5	Tip of the Spear add. DEF +5%	
+6473424E	0	2	6	DMG Cap +20% ×Basic	
+9B58206B	0	2	7	Guard Break +7%	
+32F900E5	0	2	8	Max HP +15k	
+CB31566D	0	3	1	Deathmatch: DMG Cap +40%	
+F17DFC40	0	3	2	Explosive Plunge Cap +45%	
+B383B367	0	3	3	Impale Cap +45%	
+56BD5DB4	0	3	4	Dodge: Shield 1k	
+AEBF95FC	0	3	5	DMG Cap +20% ×Basic	
+DA17FAF2	0	3	6	Crit Rate +25%	
+C6519B47	0	3	7	Crit DMG +9%	
+1297BE2E	0	3	8	DMG Cap +35%	
+9A4DA376	0	3	9	Summon Cost -1	
+B44ECE6D	0	3	10	DMG Cap +35%	
+F9AD080C	1	0	0	Turbo Turbine	
+14FE6EBB	1	1	0		
+4585BD5B	1	2	0		
+7370E2BD	1	0	1	Turbine ATK +10%	
+3A60BC70	1	0	2	Turbine Finishers ATK +10%	
+8F534E37	1	0	3	DMG Cap +20%	
+DD674030	1	0	4	DEF +5%	
+186EDD47	1	1	1	Turbine ATK +10%	
+028D7018	1	1	2	Collapse: recover 3% HP	
+6FDE7620	1	1	3	Turbine Finishers Cap +30%	
+A3CFD17B	1	1	4	Deathmatch CD -5%	
+DB66CEE5	1	1	5	Dashing Lancer CD -5%	
+2F7AACB2	1	1	6	<d> Attacks Cap +35%	77923E6E
+E0DBE268	1	1	7	Max HP +15k	
+32FBF705	1	1	8	Burn: DMG Cap +100%	
+E5C51D76	1	2	1	Turbine Cap +35%	
+659FB301	1	2	2	Turbine perfect finishers DMG +20%	
+41131A3D	1	2	3	Dodge: resume Turbine charge	
+32D589BB	1	2	4	<d> Attacks Cap +35%	1B8434D5
+7EFC8A22	1	2	5	Cyclone Skullsplitter DEF↓ Dur +10%	
+31FE3D89	1	2	6	ATK +10% ×Attack	
+2DCE5C09	1	2	7	Chain Burst Cap +40%	
+444C6411	1	2	8	ATK +20%	
+24B9EBD6	1	3	1	Turbine collapse: removes a debuff	
+2377F83F	1	3	2	Deathmatch: armor stuns nearby foes	
+9553D84A	1	3	3	Deathmatch ATK↑ Dur +10%	
+FBA981E0	1	3	4	Dashing Lancer: Silver Wolf +10%	
+F8288DC5	1	3	5	Cyclone Skullsplitter CD -5%	
+82C74AE0	1	3	6	ATK +20% / DMG Cap +50%	
+DFFB3ABB	1	3	7	ATK +10% ×Attack	
+97081CFF	1	3	8	DMG Cap +35%	
+DF20622B	1	3	9	Summon Cost +1	
+9FF1242E	1	3	10	DMG Cap +35%	
+A77BE1B3	2	0	0	Put On a Show	
+07B634D9	2	1	0		
+E0EB43EB	2	2	0		
+6288F924	2	0	1	Skill DMG Cap +35%	
+9E46D0AA	2	0	2	Skill CD -2%	
+6D44D9B2	2	0	3	DMG Cap +20%	
+18BA43B9	2	0	4	Max HP +15k	
+9CFB105B	2	1	1	Skill CD -3%	
+9E587AFE	2	1	2	Wild Showman ATK +3%/lvl	
+B467ADE5	2	1	3	Skill DMG Cap +35%	
+194EBBC7	2	1	4	Eye of the Storm ATK +10%	
+773648C8	2	1	5	Explosive Plunge CD -5%	
+6407BF43	2	1	6	ATK +20%	
+AF0FC1FD	2	1	7	Crit Rate +15%	
+D3EDC42E	2	1	8	Blight: DMG Cap +100%	
+3A1EE871	2	2	1	Wild Showman ATK +10%/lvl	
+BB367B81	2	2	2	Wild Showman ATK +3%/lvl	
+929B4865	2	2	3	Wild Showman lvl 10 DMG +10%	
+4AE1F316	2	2	4	DMG Cap +30%	
+726AC977	2	2	5	Martial Spear: Silver Wolf +10%	
+1BB14980	2	2	6	HP +10k ×Def/Sup	
+974EE26B	2	2	7	Crit DMG +9%	
+3A374B08	2	2	8	Crit Rate +25%	
+11AA454B	2	3	1	Flashpoint Cap +100%	
+66CA4FB6	2	3	2	Martial Spear CD -5%	
+3C2C595F	2	3	3	Eye of the Storm Cap +45%	
+066F4EBC	2	3	4	Low HP: Crit Gauge -10%	
+DB8BEA6E	2	3	5	DEF +6% ×Def/Sup	
+560E9466	2	3	6	Stun Power +4	
+BFF7D2B4	2	3	7	Weak elem: DMG +10%	
+DDE80FDD	2	3	8	DMG Cap +35%	
+4D6F8BD2	2	3	9	Primal Burst DMG +25%	
+227B8840	2	3	10	DMG Cap +35%	
+678E3771	0	0	0	Ardent Dancer	
+8C75241D	0	1	0		
+723BCFA8	0	2	0		
+FE6A6BF3	0	0	1	Blade Dance Finishers ATK +10%	
+1318DC6E	0	0	2	Blade Dance Finishers Cap +20%	
+1C43B37E	0	0	3	DMG Cap +15%	
+9F182250	0	0	4	Max HP +15k	
+E4B46D49	0	1	1	Rank I perk: Veil Gauge Gain +5%	
+F30D72D7	0	1	2	<d> Attacks ATK +10%	5BBF4E2C
+ADB1584D	0	1	3	<d> Attacks Cap +35%	CF09E5D2
+B237C553	0	1	4	Nachtmusik ATK +10%	
+ED23CD4F	0	1	5	Spear of Legends CD -5%	
+D015BC23	0	1	6	DMG Cap +20%	
+A262DFBA	0	1	7	ATK +20%	
+DA96E27F	0	1	8	Poison: DMG Cap +100%	
+C8BC3DE8	0	2	1	Veil Gauge Gain +5%	
+5BA4F593	0	2	2	<d> Attacks ATK +10%	90A8DA5B
+5096A4D2	0	2	3	<d> Attacks Cap +35%	BB3731FB
+E172AFF9	0	2	4	ATK +20%	
+5B0252F5	0	2	5	Battle Hymn CD -5%	
+B8BA9485	0	2	6	DMG Cap +20% ×Basic	
+31F3C1AE	0	2	7	Guard Break +7%	
+0D8081EB	0	2	8	Max HP +15k	
+887F1560	0	3	1	Blade Dance ATK +5% DMG +10%	
+46BA2BD6	0	3	2	Nachtmusik Cap +45%	
+1A34048B	0	3	3	Battle Hymn DMG↑ 10%	
+F0543C68	0	3	4	Dodge: Shield 1k	
+F808CE53	0	3	5	DMG Cap +20% ×Basic	
+19859CAE	0	3	6	Crit Rate +25%	
+15E0DC37	0	3	7	Crit DMG +9%	
+C36F7F00	0	3	8	DMG Cap +30%	
+3C8498B1	0	3	9	Summon Cost -1	
+BEA23DDE	0	3	10	DMG Cap +30%	
+78A786B7	1	0	0	Superlative Sorcery	
+4DAB172E	1	1	0		
+F9895DBA	1	2	0		
+5FE2ECC7	1	0	1	Skill CD -2%	
+5594631C	1	0	2	Hammer / Pistol / Spear ATK +10%	
+51765230	1	0	3	DMG Cap +15%	
+E571EB10	1	0	4	DEF +5%	
+540A3FDF	1	1	1	Rank I perk: Veil Gauge Gain +2%	
+5A96D75C	1	1	2	Skill CD -3%	
+6F340AB1	1	1	3	A. Superiór ATK +2%/lvl	
+FCF0F2BE	1	1	4	Stave of Divinity→Shield 1k	
+DBB30CC4	1	1	5	Hammer of Thunder Cap +45%	
+C0809C80	1	1	6	Skill DMG Cap +35%	
+79E74684	1	1	7	Max HP +15k	
+B7451717	1	1	8	Burn: DMG Cap +100%	
+76976629	1	2	1	A. Superiór Cap +30%/lvl	
+A3ADCCF5	1	2	2	Hammer / Pistol / Spear ATK +10%	
+93C7E779	1	2	3	A. Superiór's max lvl is now 5	
+88AE2C56	1	2	4	<d> Attacks Cap +35%	5EE919F1
+BF816FD6	1	2	5	DMG Cap +25%	
+F4FDFFD5	1	2	6	ATK +10% ×Attack	
+BD63615A	1	2	7	Chain Burst Cap +40%	
+C819EF6F	1	2	8	ATK +20%	
+C4BA9D3C	1	3	1	Hammer / Pistol / Spear Cap +40%	
+2877B933	1	3	2	Pistol of Demons Cap +45%	
+0D5F3119	1	3	3	Spear of Legends add. DEF -5%	
+19544C9C	1	3	4	Pistol of Demons CD -5%	
+B62FB899	1	3	5	DMG Cap +30%	
+2C6A2BD1	1	3	6	ATK +20% / DMG Cap +50%	
+9CAB505F	1	3	7	ATK +10% ×Attack	
+B271E423	1	3	8	DMG Cap +30%	
+4E892660	1	3	9	Summon Cost +1	
+F2D2DF34	1	3	10	DMG Cap +30%	
+EFA2D23E	2	0	0	Sword Veil Guardianship	
+8C72F9F9	2	1	0		
+EE6AC5B1	2	2	0		
+D9C76D2E	2	0	1	Shield: ATK +5%	
+8AC86BEA	2	0	2	Shield: DMG Cap +20%	
+54D36A60	2	0	3	DMG Cap +15%	
+5FFFEB46	2	0	4	Max HP +15k	
+0020F6E9	2	1	1	Shield Str +5%	
+E517B6E4	2	1	2	Shield: DMG +5%	
+D806EF9D	2	1	3	Paeanic Aegis CD -5%	
+946237E5	2	1	4	Stave of Divinity CD -5%	
+E47200F6	2	1	5	Sostenuto Shield Str +5%	
+C852ECFC	2	1	6	<d> Attacks Cap +35%	61E2DBD5
+0882D494	2	1	7	Crit Rate +15%	
+8FCB9914	2	1	8	Blight: DMG Cap +100%	
+67EA264B	2	2	1	Shield loss: DMG↑ 5% to party	
+C7F1D50E	2	2	2	Veil Gauge Gain +5%	
+54E2D7A8	2	2	3	Skill DMG Cap +35%	
+7E863978	2	2	4	DMG Cap +25%	
+5140434B	2	2	5	Sostenuto CD -5%	
+E4EE7B0C	2	2	6	HP +10k ×Def/Sup	
+0E64DBB9	2	2	7	Crit DMG +9%	
+576B16CF	2	2	8	Crit Rate +25%	
+514978F5	2	3	1	DMG +30% max	
+89DDA1B5	2	3	2	Hammer of Thunder CD -5%	
+DB34F69A	2	3	3	Paeanic Aegis AoE Dur +10%	
+51798077	2	3	4	Low HP: Crit Gauge -10%	
+9806E78A	2	3	5	DEF +6% ×Def/Sup	
+4C06EF61	2	3	6	Stun Power +4	
+C091DCFE	2	3	7	Weak elem: DMG +10%	
+C4A3102D	2	3	8	DMG Cap +30%	
+8F58533D	2	3	9	Primal Burst DMG +25%	
+A421A88A	2	3	10	DMG Cap +30%	
+D8C19249	0	0	0	Hungry for Causality	
+C9B2D43C	0	1	0		
+56456E1E	0	2	0		
+42E1748D	0	0	1	Devour: ATK +10%	
+82875ADE	0	0	2	Red: DMG +5%	
+CCCC7AD0	0	0	3	DMG Cap +15%	
+75BFC753	0	0	4	Max HP +15k	
+5ECA1B6E	0	1	1	Green: Regen Healing +1%	
+57164930	0	1	2	Skill CD -0.5%	
+EBBB9867	0	1	3	Embrasque Gauge Gain +10%	
+EA3878C5	0	1	4	Star Chaser ATK +10%	
+62A5526D	0	1	5	Eternity Loop CD -5%	
+C75963C3	0	1	6	DMG Cap +20%	
+820F9FD2	0	1	7	ATK +30%	
+7B77B994	0	1	8	Poison: DMG Cap +100%	
+ABFB5060	0	2	1	Yellow: Removes 1 debuff every 20s	
+74FAE4BE	0	2	2	Devour: DMG Cap +50%	
+D3E07956	0	2	3	Devour: Skill DMG Cap +40%	
+11B25A8A	0	2	4	Skill DMG Cap +35%	
+6185BC68	0	2	5	Rising Nova effect↑	
+3CC2D9BA	0	2	6	DMG Cap +20% ×Basic	
+DF350742	0	2	7	Guard Break +7%	
+E3CD4A5B	0	2	8	Max HP +15k	
+37AA33AE	0	3	1	No Devour: DMG Cap +40%	
+4B45EF25	0	3	2	Eternity Loop Slow Dur +10%	
+C61FFA4E	0	3	3	Star Chaser Cap +45%	
+59013B02	0	3	4	Dodge: Shield 1k	
+941D7C03	0	3	5	DMG Cap +20% ×Basic	
+A68BAF59	0	3	6	Crit Rate +25%	
+BA2C0BD7	0	3	7	Crit DMG +9%	
+50706190	0	3	8	DMG Cap +35%	
+DF27BD02	0	3	9	Summon Cost -1	
+FCD250F3	0	3	10	DMG Cap +35%	
+9467C71A	1	0	0	On the Clock	
+D7244897	1	1	0		
+42C64BFB	1	2	0		
+0A37E0A8	1	0	1	Red DMG/Yellow DEF/Green Regen +2%	
+CB130D88	1	0	2	Green/Devour: Drain Cap +10%	
+B0463149	1	0	3	DMG Cap +15%	
+CDC7E678	1	0	4	DEF +5%	
+5DF0E3CA	1	1	1	Red DMG/Yellow DEF/Green Regen +2%	
+39BA1AA8	1	1	2	Yellow: DEF +5%	
+B3724DF8	1	1	3	Buff Dur +20%	
+D0490091	1	1	4	Unchained CD -5%	
+EE11CBF6	1	1	5	Riding Free ATK +10%	
+C9C06747	1	1	6	<d> Attacks Cap +35%	C745AA13
+9B1212CE	1	1	7	Max HP +15k	
+9A561546	1	1	8	Burn: DMG Cap +100%	
+2B494AC1	1	2	1	Embrasque Gauge Gain +10%	
+D53EC6F5	1	2	2	Red: Auto DMG -5%	
+32839D44	1	2	3	Devour: DMG +5%	
+17A44C24	1	2	4	<d> Attacks Cap +35%	7E1C1BBF
+AD3B776C	1	2	5	DMG Cap +25%	
+0836C968	1	2	6	ATK +10% ×Attack	
+9BA94A68	1	2	7	Chain Burst Cap +40%	
+BA6CDC80	1	2	8	ATK +30%	
+4274A118	1	3	1	Embrasque Unleashed 10: DMG +20%	
+58F643F8	1	3	2	Rising Nova CD -5%	
+96D21011	1	3	3	Hearts on Fire CD -5%	
+728CEBAD	1	3	4	Thunderbird Cap +45%	
+0B506F27	1	3	5	Unchained ×3: Heal 1k HP	
+B7E35071	1	3	6	ATK +20% / DMG Cap +50%	
+94C7D297	1	3	7	ATK +10% ×Attack	
+3A4DEB73	1	3	8	DMG Cap +35%	
+07B8ADEC	1	3	9	Summon Cost +1	
+4E18F553	1	3	10	DMG Cap +35%	
+A86CBC27	2	0	0	Skill Chain	
+7284D107	2	1	0		
+104AF31E	2	2	0		
+F7AD6A28	2	0	1	Skill CD -2%	
+7C7214E7	2	0	2	Yellow: DEF +5%	
+CCD2548A	2	0	3	DMG Cap +15%	
+41F2A180	2	0	4	Max HP +15k	
+0FD5C990	2	1	1	Skill CD -3%	
+4A4FCA49	2	1	2	Red/Devour: Supp/Auto DMG +10%	
+700D4B2C	2	1	3	ATK +10% max	
+48C3FCF7	2	1	4	Devour: Embrasque Charge Time -20%	
+DDF3FEEA	2	1	5	Hearts on Fire Drain Amt/Cap +10%	
+3A57C014	2	1	6	Skill DMG Cap +35%	
+275F7FDB	2	1	7	Crit Rate +15%	
+E503C77A	2	1	8	Blight: DMG Cap +100%	
+B5DA441B	2	2	1	Devour: DMG Cap +30%	
+2CADC058	2	2	2	Green/Devour: Full-HP Drain→Shield 3k	
+6A57B85F	2	2	3	Skills in the skill combo Cap +50%	
+184675C2	2	2	4	DMG Cap +25%	
+3161A400	2	2	5	Thunderbird Stun Power +10%	
+365FD0BA	2	2	6	HP +10k ×Def/Sup	
+96430ECA	2	2	7	Crit DMG +9%	
+EAD048D7	2	2	8	Crit Rate +25%	
+E7B79955	2	3	1	Skill DMG↑ ATK +5% Cap +20%	
+EE340D00	2	3	2	Riding Free Cap +45%	
+7F9D4D09	2	3	3	Embrasque ATK +10% Cap +45%	
+EEF32E23	2	3	4	Low HP: Crit Gauge -10%	
+EAE3A4A6	2	3	5	DEF +6% ×Def/Sup	
+E54BDF2B	2	3	6	Stun Power +4	
+8D8E0A31	2	3	7	Weak elem: DMG +10%	
+72B32969	2	3	8	DMG Cap +35%	
+0C3C7EB0	2	3	9	Primal Burst DMG +25%	
+29CED78B	2	3	10	DMG Cap +35%	
+99F6460D	0	0	0	Keep Your Foes Closer	
+4C2E2BF7	0	1	0		
+02551125	0	2	0		
+6641AE8C	0	0	1	Charge Time -5%	
+BB48A819	0	0	2	Grade II Shots ATK +10%	
+70A942FB	0	0	3	DMG Cap +15%	
+7DB9DEFE	0	0	4	Max HP +15k	
+13894C04	0	1	1	Charge Time -5%	
+FC56C59C	0	1	2	Grade II Shots Cap +30%	
+00F9FC23	0	1	3	Grade III Shots ATK +10%	
+40EFE61F	0	1	4	Slow Kill ATK↓ Dur +10%	
+5AEDDC3F	0	1	5	Fast Lane dodge: Loaded Gauge +20%	
+2869AFDB	0	1	6	DMG Cap +20%	
+04DC723F	0	1	7	ATK +30%	
+0E6A3EAD	0	1	8	Poison: DMG Cap +100%	
+FC75D4F0	0	2	1	Grade III Shots Cap +30%	
+A83DA788	0	2	2	Grade IV Shots ATK +10%	
+80BA56D1	0	2	3	Effective range is slightly longer	
+040324D8	0	2	4	Skill DMG Cap +35%	
+6DF07F92	0	2	5	Never Surrender Buff Dur +10%	
+40B8899C	0	2	6	DMG Cap +20% ×Basic	
+CBD9EC29	0	2	7	Guard Break +7%	
+BB5EB0CF	0	2	8	Max HP +15k	
+E8D9E57B	0	3	1	Grade IV shots Cap +40%	
+8DA19461	0	3	2	Slow Kill add. ATK -5%	
+9EE4707E	0	3	3	Fast Lane CD -5%	
+D39BE819	0	3	4	Dodge: Shield 1k	
+AB1A3D9B	0	3	5	DMG Cap +20% ×Basic	
+B2BCC90C	0	3	6	Crit Rate +25%	
+A6FEB9DE	0	3	7	Crit DMG +9%	
+2A9AE14E	0	3	8	DMG Cap +35%	
+AB47B6E9	0	3	9	Summon Cost -1	
+D5CEDC06	0	3	10	DMG Cap +35%	
+D994808E	1	0	0	Lightning Soldier	
+4BA48016	1	1	0		
+6807E2E7	1	2	0		
+4BC2A25C	1	0	1	Perfect reload: Loaded Gauge +10%	
+2577ACA6	1	0	2	Skill CD -2%	
+CEDDFADB	1	0	3	DMG Cap +15%	
+1B60D8BD	1	0	4	DEF +5%	
+A6ACB163	1	1	1	Perfect reload: Loaded Gauge +10%	
+3BF72D38	1	1	2	Skill CD -3%	
+D4F1DE25	1	1	3	Grade II Shots ATK +10%	
+A66C725D	1	1	4	Heaven Comes↓ ATK +10%	
+6A0681CB	1	1	5	Flamek Thunder Stun Power +10%	
+D6AB4516	1	1	6	Skill DMG Cap +35%	
+AA2598EE	1	1	7	Max HP +15k	
+ECAB9F9D	1	1	8	Burn: DMG Cap +100%	
+B40E41CB	1	2	1	Perfect reload window +10%	
+EC0680BC	1	2	2	Grade II Shots Cap +30%	
+90788B12	1	2	3	Marked foes +1	
+B498D300	1	2	4	<d> Attacks Cap +35%	C4908A34
+506A9668	1	2	5	DMG Cap +25%	
+ECC39772	1	2	6	ATK +10% ×Attack	
+7EE32D1B	1	2	7	Chain Burst Cap +40%	
+12B59BB8	1	2	8	ATK +30%	
+DCAD91D8	1	3	1	Empty clip: perfect reload HP +10%	
+5A3014E8	1	3	2	Heaven Comes↓ Cap +45%	
+A261BFDA	1	3	3	Forever Yours Cap +45%	
+878F126A	1	3	4	Flamek Thunder CD -5%	
+546E66AB	1	3	5	Forever Yours chains ×10	
+14E62A70	1	3	6	ATK +20% / DMG Cap +50%	
+5D60C2AA	1	3	7	ATK +10% ×Attack	
+DC20C855	1	3	8	DMG Cap +35%	
+0911A7A5	1	3	9	Summon Cost +1	
+F895D782	1	3	10	DMG Cap +35%	
+EDB9D7FC	2	0	0	Perfectionist	
+3634B2C7	2	1	0		
+D34478D8	2	2	0		
+3DCEC3EA	2	0	1	Strafe dodge: Loaded Gauge +10%	
+5B1D5529	2	0	2	Grade III Shots ATK +10%	
+F25F5260	2	0	3	DMG Cap +15%	
+65A1B807	2	0	4	Max HP +15k	
+A6B50EFC	2	1	1	Grade III Shots Cap +30%	
+4F74815C	2	1	2	Grade IV shots Cap +5%	
+93502640	2	1	3	Strafe Cap +25%	
+BA1CDBCE	2	1	4	Play with Fire CD -5%	
+9AFF8DC9	2	1	5	Acidrage counter: CD -10%	
+BCD9048C	2	1	6	<d> Attacks Cap +35%	54755AAB
+CEE98C73	2	1	7	Crit Rate +15%	
+F82BE008	2	1	8	Blight: DMG Cap +100%	
+367F8EA4	2	2	1	Flamek ATK +3% Cap +3%/lvl	
+09A4D6E8	2	2	2	DMG +10% max	
+8067744F	2	2	3	Charged Strafe dodge: Flamek lvl	
+7665D6F5	2	2	4	DMG Cap +25%	
+E3E08BB3	2	2	5	Play with Fire <d> Attacks: ATK +5%	2FC9F85F
+5D3950DD	2	2	6	HP +10k ×Def/Sup	
+1EE675F7	2	2	7	Crit DMG +9%	
+315F18C6	2	2	8	Crit Rate +25%	
+183A8807	2	3	1	Flamek DMG +1%/lvl	
+ED7B362C	2	3	2	Acidrage CD -5%	
+F690FD8E	2	3	3	Never Surrender CD -5%	
+4217FB28	2	3	4	Low HP: Crit Gauge -10%	
+6DB7BF89	2	3	5	DEF +6% ×Def/Sup	
+F7E39AC9	2	3	6	Stun Power +4	
+C6D918D6	2	3	7	Weak elem: DMG +10%	
+D95DF221	2	3	8	DMG Cap +35%	
+722FC1EF	2	3	9	Primal Burst DMG +25%	
+A2678764	2	3	10	DMG Cap +35%	
+DF550C8B	0	0	0	Flip the Tides	
+A0F29CB5	0	1	0		
+D70597E8	0	2	0		
+3EB68771	0	0	1	Upright Gauge Gain +10%	
+F6EEA9DF	0	0	2	<d> Attacks ATK +10%	B64F883C
+EE2B97FE	0	0	3	DMG Cap +15%	
+153ACC04	0	0	4	Max HP +15k	
+FEEE6C4D	0	1	1	Upright: ATK +10%	
+0D0D878A	0	1	2	Reversed: DMG Cap +30%	
+204748AF	0	1	3	Upright: DMG Cap +30%	
+9152CC70	0	1	4	Opportunity Knocks ATK +10%	
+89DE64F2	0	1	5	Dead Lands ATK +10%	
+C1C922A3	0	1	6	DMG Cap +20%	
+FF811986	0	1	7	ATK +20%	
+14CE4B4A	0	1	8	Poison: DMG Cap +100%	
+A2DF8EA3	0	2	1	Reversed Gauge Gain +10%	
+E07E9E4E	0	2	2	<d> Attacks Cap +35%	CBD4E4FD
+1ED59C2B	0	2	3	Buff Dur +10%	
+37C785E9	0	2	4	<d> Attacks Cap +35%	64717276
+0918F59F	0	2	5	Power Plant Cap +45%	
+15EB3BCB	0	2	6	DMG Cap +20% ×Basic	
+CC264F27	0	2	7	Guard Break +7%	
+0AAF687F	0	2	8	Max HP +15k	
+066F07BC	0	3	1	Reversed: ATK +10%	
+2235F9E4	0	3	2	Opportunity Knocks Cap +45%	
+A0673D10	0	3	3	Dead Lands Cap +45%	
+EF9F392F	0	3	4	Dodge: Shield 1k	
+F563CF13	0	3	5	DMG Cap +20% ×Basic	
+E9431CED	0	3	6	Crit Rate +25%	
+2A06D99E	0	3	7	Crit DMG +9%	
+4B8D0695	0	3	8	DMG Cap +35%	
+FF38AF86	0	3	9	Summon Cost -1	
+283D0823	0	3	10	DMG Cap +35%	
+567EBB0A	1	0	0	Allure of Strength	
+A60A4252	1	1	0		
+0A3319DC	1	2	0		
+47E6098E	1	0	1	Reversed Gauge Gain +10%	
+92058616	1	0	2	Skill CD -2%	
+AA354718	1	0	3	DMG Cap +15%	
+C852B6C6	1	0	4	DEF +5%	
+8FDF5A11	1	1	1	Upright Gauge Gain +10%	
+08143764	1	1	2	Reversed: ATK +10%	
+E0FE6130	1	1	3	Skill DMG Cap +35%	
+C4E01459	1	1	4	Splendor CD -5%	
+285DA7A7	1	1	5	Indominus CD -5%	
+EFFC34F4	1	1	6	<d> Attacks Cap +35%	67E726B8
+BE0250B0	1	1	7	Max HP +15k	
+DD4AE1B7	1	1	8	Burn: DMG Cap +100%	
+EE9F5845	1	2	1	Skill CD -3%	
+67CF2B6D	1	2	2	Upright: ATK +10%	
+D2F50A35	1	2	3	Reversed: DMG Cap +40%	
+71E37120	1	2	4	DMG Cap +25%	
+C04B287C	1	2	5	All Fall↓ DEF↓ Dur +10%	
+EFA27942	1	2	6	ATK +10% ×Attack	
+28D7A42B	1	2	7	Chain Burst Cap +40%	
+2EE48B14	1	2	8	ATK +20%	
+466B99E8	1	3	1	Upright: DMG Cap +40%	
+1FC199FB	1	3	2	Power Plant ATK +10%	
+7DDA2352	1	3	3	Splendor Shield Str +10%	
+59C2C55D	1	3	4	Indominus Drain: Amt/Cap +10%	
+34CFEB2B	1	3	5	All Fall↓ add. DEF -5%	
+4A3DD87B	1	3	6	ATK +20% / DMG Cap +50%	
+9780DEC0	1	3	7	ATK +10% ×Attack	
+3BDFA29A	1	3	8	DMG Cap +35%	
+C349CCF7	1	3	9	Summon Cost +1	
+1E98920C	1	3	10	DMG Cap +35%	
+881A8207	2	0	0	A Deal with The Devil	
+C2B61912	2	1	0		
+3D261969	2	2	0		
+A0FA80BF	2	0	1	Reversed: ATK +10%	
+8336A9D3	2	0	2	Reversed: DMG Cap +30%	
+EB5F9BE0	2	0	3	DMG Cap +15%	
+148C10B1	2	0	4	Max HP +15k	
+2B0C512C	2	1	1	Reversed Gauge Gain +10%	
+1A1D01FC	2	1	2	Upright: DMG Cap +30%	
+FC327E5F	2	1	3	Skill DMG Cap +35%	
+2A8D5D6A	2	1	4	Kick Face CD -5%	
+38BBE9FD	2	1	5	Crimson Nightmare ATK +10%	
+A1C03AFD	2	1	6	ATK +20%	
+D8CCAE61	2	1	7	Crit Rate +15%	
+E6D31D6A	2	1	8	Blight: DMG Cap +100%	
+126298B2	2	2	1	Upright Gauge Gain +10%	
+C9B01CC5	2	2	2	Strength Gains skills DMG +25%	
+70FA2719	2	2	3	Upright: ATK +10%	
+C33AF794	2	2	4	<d> Attacks Cap +35%	8A0924F8
+F4F0CD97	2	2	5	DMG Cap +25%	
+C420AB21	2	2	6	HP +10k ×Def/Sup	
+8732E48E	2	2	7	Crit DMG +9%	
+D61244EE	2	2	8	Crit Rate +25%	
+E00FC2E6	2	3	1	Strength Gains skills DMG +25%	
+0528478D	2	3	2	Kick Face counter: DMG↑ 5%	
+1E251FD0	2	3	3	Crimson Nightmare Cap +45%	
+CD76EF3B	2	3	4	Low HP: Crit Gauge -10%	
+AE3D8CB2	2	3	5	DEF +6% ×Def/Sup	
+AD2CEE11	2	3	6	Stun Power +4	
+27513ECD	2	3	7	Weak elem: DMG +10%	
+D356CDCE	2	3	8	DMG Cap +35%	
+5DEF0F14	2	3	9	Primal Burst DMG +25%	
+923EF9DD	2	3	10	DMG Cap +35%	
+0ED7E526	0	0	0	Finishing Touch	
+B195D265	0	1	0		
+56DEBAC8	0	2	0		
+2205F5AC	0	0	1	Voidskip Charge -5%	
+6D2D056A	0	0	2	M. Hands ATK +10%	
+22D3D429	0	0	3	DMG Cap +15%	
+AA5CB52D	0	0	4	Max HP +15k	
+71D93F23	0	1	1	M. Hands Cap +25%	
+1D8C9AAF	0	1	2	Finishers ATK +5%	
+2616C4A5	0	1	3	Blackflash -1 combo to charge	
+D22453DF	0	1	4	Claws CD -5%	
+8062E5FE	0	1	5	Cursed Funeral CD -5%	
+BD7C599B	0	1	6	DMG Cap +20%	
+3EF2113E	0	1	7	ATK +20%	
+32B14360	0	1	8	Poison: DMG Cap +100%	
+1C2C8224	0	2	1	After Voidskip: contact DMG	
+7ED3824F	0	2	2	Finisher orb DMG +0.5%	
+E63B4A69	0	2	3	Finishers ATK +5%	
+0E5A56C4	0	2	4	<d> Attacks Cap +35%	DA78EE5E
+BC051A31	0	2	5	DMG Cap +25%	
+C4F519AC	0	2	6	DMG Cap +20% ×Basic	
+8DBC7149	0	2	7	Guard Break +7%	
+61B25929	0	2	8	Max HP +15k	
+70314B2D	0	3	1	Enhanced Finishers DMG +0.5%/lvl	
+25333AF7	0	3	2	Claws counter: Supp DMG 10%	
+291A6D66	0	3	3	Cursed Funeral Shield Str +5%	
+3AD97C68	0	3	4	Dodge: Shield 1k	
+241DE78F	0	3	5	DMG Cap +20% ×Basic	
+51E0E4CC	0	3	6	Crit Rate +25%	
+9FD88F76	0	3	7	Crit DMG +9%	
+98C26CC7	0	3	8	DMG Cap +35%	
+54C7C5B0	0	3	9	Summon Cost -1	
+CD12665B	0	3	10	DMG Cap +35%	
+CD8AA9E7	1	0	0	Corrosive Black	
+CDA1CF76	1	1	0		
+0EC29528	1	2	0		
+19EF06FC	1	0	1	Skill CD -2%	
+5D52A9BF	1	0	2	Stomp Attacks ATK +10%	
+7E0C0CA5	1	0	3	DMG Cap +15%	
+EDC25291	1	0	4	DEF +5%	
+99A02DCA	1	1	1	Skill CD -3%	
+63611221	1	1	2	Listed perk skills Dur +10%	
+5FB5A918	1	1	3	After Voidskip: Skill CD↓	
+23F9FCB2	1	1	4	Black's Blessing Buff Dur +10%	
+70F588EC	1	1	5	Primordial Fear Petrified Dur +10%	
+91842E21	1	1	6	<d> Attacks Cap +35%	7241C5F4
+28BCAF27	1	1	7	Max HP +15k	
+3998838B	1	1	8	Burn: DMG Cap +100%	
+E7DF810A	1	2	1	Skill DMG Cap +35%	
+8BEECA92	1	2	2	Stomp Attacks Cap +30%	
+C522F4D3	1	2	3	Bonus AoE DMG +30%	
+34BF0317	1	2	4	DMG Cap +25%	
+BE180259	1	2	5	Abyss ATK +20%	
+DE58D1CB	1	2	6	ATK +10% ×Attack	
+5FFAD2BF	1	2	7	Chain Burst Cap +40%	
+E6040026	1	2	8	ATK +20%	
+2E4B72CE	1	3	1	Abyss M. Hands ATK↓ 2%	
+021E0AAD	1	3	2	Sphere Charge -5%	
+870BE46C	1	3	3	Black's Blessing add. ATK/DEF +5%	
+F9C0A936	1	3	4	Primordial Fear CD -5%	
+076A803C	1	3	5	Abyss AoE Dur +10%	
+A6F53518	1	3	6	ATK +20% / DMG Cap +50%	
+EF97A8A6	1	3	7	ATK +10% ×Attack	
+45172D0A	1	3	8	DMG Cap +35%	
+77031F8D	1	3	9	Summon Cost +1	
+F389373A	1	3	10	DMG Cap +35%	
+15690516	2	0	0	Hands of Malice	
+2C728E1D	2	1	0		
+A1EAAAAA	2	2	0		
+9B28653F	2	0	1	Voidskip Charge -5%	
+9D59956F	2	0	2	Skill ATK +10%	
+F8F5E347	2	0	3	DMG Cap +15%	
+4146357B	2	0	4	Max HP +15k	
+6A6C9472	2	1	1	M. Hands Drain	
+532511AA	2	1	2	M. Hands up to ATK +10% Cap +30%	
+DBB5BA87	2	1	3	Damage skills Cap +10%	
+E9DCC0B3	2	1	4	Calamity CD -5%	
+BEAE6026	2	1	5	Soul Breaker ATK +10%	
+CF8C4A86	2	1	6	Skill DMG Cap +35%	
+67FAAEC3	2	1	7	Crit Rate +15%	
+B01CE13A	2	1	8	Blight: DMG Cap +100%	
+EFEBFEBA	2	2	1	Skill DMG↑ ATK +5% Cap +20%	
+F0D53E68	2	2	2	Charged Blackflash: Malice lvl 3	
+CCB19C9B	2	2	3	DMG Cap +35% max	
+5CAC41EB	2	2	4	ATK +20%	
+804FE4BB	2	2	5	Sphere ATK +10%	
+DCD01D39	2	2	6	HP +10k ×Def/Sup	
+634DB7D3	2	2	7	Crit DMG +9%	
+D0EE248F	2	2	8	Crit Rate +25%	
+1B6B231E	2	3	1	Malice lvl 10: DMG +30%	
+323F5DA3	2	3	2	Calamity grants Mirror Image	
+9600DE30	2	3	3	Soul Breaker Cap +45%	
+C2DD389F	2	3	4	Low HP: Crit Gauge -10%	
+346E20C5	2	3	5	DEF +6% ×Def/Sup	
+999E01F8	2	3	6	Stun Power +4	
+F58D3884	2	3	7	Weak elem: DMG +10%	
+41176600	2	3	8	DMG Cap +35%	
+C9ACDFE1	2	3	9	Primal Burst DMG +25%	
+168F23C9	2	3	10	DMG Cap +35%	

@@ -107,7 +107,7 @@ public class Mod : ModBase // <= Do not Remove.
         _charaStatusHooks = new CharaStatusHooks(_hooks, Path.Combine(modFolder, "Dumps")) { Dumping = _configuration.DumpBuild };
         _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
 
-        _cardWriter = new CardWriter(_textHooks);
+        _cardWriter = new CardWriter(_textHooks, _logger);
         _charaStatusHooks.Filled += _cardWriter.OnFilled;
 
         _reflectionHooks = new ReflectionHooks(scanManager, _hooks);

@@ -9,7 +9,7 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Hooks the game's UI Text setters, and sets text through them. With logging on, writes every change to a Text
+// Hooks the game's UI Text setters, and sets text through them. With logging enabled, writes every change to a Text
 // component's text to a log file, with the game code that set it.
 // Signatures and parameters from Nenkai's gbfr.qol.detailedpercentages (MIT).
 public unsafe class TextHooks
@@ -17,7 +17,7 @@ public unsafe class TextHooks
     private const int MaxCallers = 8;
     private const int ScanSlots = 0x800;
     private const int BufferSize = 0x400;
-    private const uint NoHash = 0x887AE0B0;
+    public const uint NoHash = 0x887AE0B0;  // hash of an empty text id
 
     private readonly IReloadedHooks _hooks;
     private readonly StreamWriter _writer;
@@ -64,11 +64,12 @@ public unsafe class TextHooks
             Write("text", text, Encoding.UTF8.GetString((byte*)str->Ptr, (int)str->Length), $" hash={hash:X8} unk={unk}");
     }
 
-    public void Set(nint text, string value)
+    // hash: the custom XXHash32 of a text id, whose tags (text_*_tag.msg) draw icons on the value's <d> placeholders
+    public void Set(nint text, string value, uint hash = NoHash)
     {
         int length = Encoding.UTF8.GetBytes(value, new Span<byte>((void*)_buffer, BufferSize));
         var str = new GameString { Ptr = _buffer, Length = (uint)length };
-        _setTextHook?.OriginalFunction(text, &str, NoHash, -1);
+        _setTextHook?.OriginalFunction(text, &str, hash, -1);
     }
 
     private void SetFromIntImpl(nint text, long number)
@@ -82,15 +83,21 @@ public unsafe class TextHooks
     {
         lock (_writeLock)
         {
-            if (_lastText.TryGetValue(text, out string? last) && last == value)
-                return;
-            _lastText[text] = value;
-            _writer.WriteLine($"{DateTime.Now:HH:mm:ss.fff} {kind} {text:X} \"{value.Replace("\n", "\\n")}\"{extra} from{Callers()}");
+            try
+            {
+                if (_lastText.TryGetValue(text, out string? last) && last == value)
+                    return;
+                _lastText[text] = value;
+                _writer.WriteLine($"{DateTime.Now:HH:mm:ss.fff} {kind} {text:X} \"{value.Replace("\n", "\\n")}\"{extra} from{Callers()}");
+            }
+            catch (Exception e)
+            {
+                _writer.WriteLine($"{DateTime.Now:HH:mm:ss.fff} log failed: {e}");
+            }
         }
     }
 
-    // The hook's stub has no unwind info, so the stack can't be walked past it. Scans the raw stack instead for
-    // values in the exe's code: the return addresses, plus whatever stale ones are left in the frames.
+    // Scans the raw stack for values in the exe's code: return addresses and stale values left in earlier frames.
     private string Callers()
     {
         GetCurrentThreadStackLimits(out _, out nint high);

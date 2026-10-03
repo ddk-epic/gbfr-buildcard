@@ -1,0 +1,8 @@
+bin/
+obj/
+Publish/
+
+.vs/
+.vscode/
+.idea/
+*.user

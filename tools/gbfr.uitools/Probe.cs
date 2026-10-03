@@ -11,6 +11,7 @@ using GBFRDataTools.Hashing;
 public class Probe
 {
     private readonly byte[] _data;
+    internal byte[] Data => _data;
     private readonly TextWriter _out;
 
     private static readonly uint ComponentNameHash = XXHash32Custom.Hash("ComponentName");
@@ -197,7 +198,7 @@ public class Probe
         _out.WriteLine(Scalar(ofs, Math.Min(span, 16)));
     }
 
-    private string? ComponentNameOf(int tableBase)
+    internal string? ComponentNameOf(int tableBase)
     {
         int tableOfs = tableBase + I32(tableBase);
         int n = I32(tableOfs);
@@ -214,7 +215,7 @@ public class Probe
         return null;
     }
 
-    private int ComponentTableOf(int tableBase)
+    internal int ComponentTableOf(int tableBase)
     {
         int tableOfs = tableBase + I32(tableBase);
         int n = I32(tableOfs);
@@ -226,7 +227,7 @@ public class Probe
         throw new InvalidDataException("Component entry without Component field");
     }
 
-    private bool LooksLikeTable(int ofs)
+    internal bool LooksLikeTable(int ofs)
     {
         if (ofs + 4 > _data.Length)
             return false;
@@ -246,7 +247,7 @@ public class Probe
         return true;
     }
 
-    private bool LooksLikeString(int ofs, int span)
+    internal bool LooksLikeString(int ofs, int span)
     {
         if (ofs + 4 > _data.Length)
             return false;
@@ -262,7 +263,7 @@ public class Probe
         return true;
     }
 
-    private bool LooksLikeArray(int ofs)
+    internal bool LooksLikeArray(int ofs)
     {
         if (ofs + 4 > _data.Length)
             return false;
@@ -280,7 +281,7 @@ public class Probe
     }
 
     // An array whose first element is a table, a known hash (objref) or a string.
-    private bool LooksLikeElementArray(int ofs)
+    internal bool LooksLikeElementArray(int ofs)
     {
         if (!LooksLikeArray(ofs))
             return false;
@@ -309,6 +310,6 @@ public class Probe
         return sb.ToString();
     }
 
-    private int I32(int ofs) => BitConverter.ToInt32(_data, ofs);
-    private uint U32(int ofs) => BitConverter.ToUInt32(_data, ofs);
+    internal int I32(int ofs) => BitConverter.ToInt32(_data, ofs);
+    internal uint U32(int ofs) => BitConverter.ToUInt32(_data, ofs);
 }

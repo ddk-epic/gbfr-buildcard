@@ -79,6 +79,17 @@ if (args.Length >= 3 && args[0] == "survey")
     return;
 }
 
+// compare <original> <rebuilt>: fields whose content differs between the game's file and ours.
+if (args.Length >= 3 && args[0] == "compare")
+{
+    var compare = new Compare(File.ReadAllBytes(args[1]), File.ReadAllBytes(args[2]), Console.Out);
+    compare.Run();
+    foreach (var (field, count) in compare.Added)
+        Console.WriteLine($"added {field} x{count}");
+    Console.WriteLine($"{compare.Errors} error(s), {compare.Warnings} warning(s), {compare.Added.Count} added field kind(s)");
+    return;
+}
+
 MethodInfo main = Type.GetType("GBFRDataTools.Program, GBFRDataTools", throwOnError: true)!
     .GetMethod("Main", BindingFlags.NonPublic | BindingFlags.Static)!;
 main.Invoke(null, [args]);

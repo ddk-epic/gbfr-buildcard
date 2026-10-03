@@ -398,6 +398,7 @@ Objects:
   - 13
   - 16
   - 72
+  - 426
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -20687,3 +20688,934 @@ Objects:
   OffsetMin: -48, -48
   OffsetMax: 48, 48
   SizeDelta: 96, 96
+- Id: 426
+  Name: loc_buildcard
+  Children:
+  - 427
+  - 432
+  - 437
+  - 442
+  - 447
+  - 452
+  - 457
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -856
+  OffsetMax: 1712, 856
+  SizeDelta: 3424, 1712
+- Id: 427
+  Name: bc_card
+  Children:
+  - 428
+  - 429
+  - 430
+  - 431
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -856
+  OffsetMax: 1712, 856
+  SizeDelta: 3424, 1712
+- Id: 428
+  Name: bc_card_top
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 1
+  AnchorMax: 1, 1
+  OffsetMin: 0, -6
+  OffsetMax: 0, 0
+  SizeDelta: 0, 6
+- Id: 429
+  Name: bc_card_bottom
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, -856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 6
+  SizeDelta: 0, 6
+- Id: 430
+  Name: bc_card_left
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1712, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 1
+  OffsetMin: 0, 0
+  OffsetMax: 6, 0
+  SizeDelta: 6, 0
+- Id: 431
+  Name: bc_card_right
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1712, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 1, 0
+  AnchorMax: 1, 1
+  OffsetMin: -6, 0
+  OffsetMax: 0, 0
+  SizeDelta: 6, 0
+- Id: 432
+  Name: bc_portrait
+  Children:
+  - 433
+  - 434
+  - 435
+  - 436
+  Active: true
+  Position: -1360.09, 181.9, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -1360.09, 181.9
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1692.98, -473.18
+  OffsetMax: -1027.2, 836.98
+  SizeDelta: 665.78, 1310.16
+- Id: 433
+  Name: bc_portrait_top
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0.85, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 655.08, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 1
+  AnchorMax: 1, 1
+  OffsetMin: 0, -6
+  OffsetMax: 0, 0
+  SizeDelta: 0, 6
+- Id: 434
+  Name: bc_portrait_bottom
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0.85, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, -655.08, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 6
+  SizeDelta: 0, 6
+- Id: 435
+  Name: bc_portrait_left
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0.85, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -332.89, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 1
+  OffsetMin: 0, 0
+  OffsetMax: 6, 0
+  SizeDelta: 6, 0
+- Id: 436
+  Name: bc_portrait_right
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0.85, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 332.89, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 1, 0
+  AnchorMax: 1, 1
+  OffsetMin: -6, 0
+  OffsetMax: 0, 0
+  SizeDelta: 6, 0
+- Id: 437
+  Name: bc_skills
+  Children:
+  - 438
+  - 439
+  - 440
+  - 441
+  Active: true
+  Position: -1360.09, -657.46, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -1360.09, -657.46
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1692.98, -813.2
+  OffsetMax: -1027.2, -501.71
+  SizeDelta: 665.78, 311.49
+- Id: 438
+  Name: bc_skills_top
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0, 1, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 155.74, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 1
+  AnchorMax: 1, 1
+  OffsetMin: 0, -6
+  OffsetMax: 0, 0
+  SizeDelta: 0, 6
+- Id: 439
+  Name: bc_skills_bottom
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0, 1, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, -155.74, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 6
+  SizeDelta: 0, 6
+- Id: 440
+  Name: bc_skills_left
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0, 1, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -332.89, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 1
+  OffsetMin: 0, 0
+  OffsetMax: 6, 0
+  SizeDelta: 6, 0
+- Id: 441
+  Name: bc_skills_right
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0, 1, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 332.89, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 1, 0
+  AnchorMax: 1, 1
+  OffsetMin: -6, 0
+  OffsetMax: 0, 0
+  SizeDelta: 6, 0
+- Id: 442
+  Name: bc_gear
+  Children:
+  - 443
+  - 444
+  - 445
+  - 446
+  Active: true
+  Position: -549.27, 11.89, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -549.27, 11.89
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -998.67, -813.2
+  OffsetMax: -99.87, 836.98
+  SizeDelta: 898.8, 1650.18
+- Id: 443
+  Name: bc_gear_top
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 825.09, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 1
+  AnchorMax: 1, 1
+  OffsetMin: 0, -6
+  OffsetMax: 0, 0
+  SizeDelta: 0, 6
+- Id: 444
+  Name: bc_gear_bottom
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, -825.09, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 6
+  SizeDelta: 0, 6
+- Id: 445
+  Name: bc_gear_left
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -449.4, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 1
+  OffsetMin: 0, 0
+  OffsetMax: 6, 0
+  SizeDelta: 6, 0
+- Id: 446
+  Name: bc_gear_right
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 449.4, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 1, 0
+  AnchorMax: 1, 1
+  OffsetMin: -6, 0
+  OffsetMax: 0, 0
+  SizeDelta: 6, 0
+- Id: 447
+  Name: bc_mtraits
+  Children:
+  - 448
+  - 449
+  - 450
+  - 451
+  Active: true
+  Position: 810.82, 181.9, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 810.82, 181.9
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -71.33, -473.18
+  OffsetMax: 1692.98, 836.98
+  SizeDelta: 1764.31, 1310.16
+- Id: 448
+  Name: bc_mtraits_top
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.2, 0.4, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 655.08, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 1
+  AnchorMax: 1, 1
+  OffsetMin: 0, -6
+  OffsetMax: 0, 0
+  SizeDelta: 0, 6
+- Id: 449
+  Name: bc_mtraits_bottom
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.2, 0.4, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, -655.08, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 6
+  SizeDelta: 0, 6
+- Id: 450
+  Name: bc_mtraits_left
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.2, 0.4, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -882.16, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 1
+  OffsetMin: 0, 0
+  OffsetMax: 6, 0
+  SizeDelta: 6, 0
+- Id: 451
+  Name: bc_mtraits_right
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.2, 0.4, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 882.16, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 1, 0
+  AnchorMax: 1, 1
+  OffsetMin: -6, 0
+  OffsetMax: 0, 0
+  SizeDelta: 6, 0
+- Id: 452
+  Name: bc_om
+  Children:
+  - 453
+  - 454
+  - 455
+  - 456
+  Active: true
+  Position: 220.74, -657.46, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 220.74, -657.46
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -71.33, -813.2
+  OffsetMax: 512.8, -501.71
+  SizeDelta: 584.14, 311.49
+- Id: 453
+  Name: bc_om_top
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 155.74, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 1
+  AnchorMax: 1, 1
+  OffsetMin: 0, -6
+  OffsetMax: 0, 0
+  SizeDelta: 0, 6
+- Id: 454
+  Name: bc_om_bottom
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, -155.74, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 6
+  SizeDelta: 0, 6
+- Id: 455
+  Name: bc_om_left
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -292.07, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 1
+  OffsetMin: 0, 0
+  OffsetMax: 6, 0
+  SizeDelta: 6, 0
+- Id: 456
+  Name: bc_om_right
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 292.07, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 1, 0
+  AnchorMax: 1, 1
+  OffsetMin: -6, 0
+  OffsetMax: 0, 0
+  SizeDelta: 6, 0
+- Id: 457
+  Name: bc_summons
+  Children:
+  - 458
+  - 459
+  - 460
+  - 461
+  Active: true
+  Position: 1105.86, -657.46, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 1105.86, -657.46
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 518.75, -813.2
+  OffsetMax: 1692.98, -501.71
+  SizeDelta: 1174.23, 311.49
+- Id: 458
+  Name: bc_summons_top
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0.5, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 155.74, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 1
+  AnchorMax: 1, 1
+  OffsetMin: 0, -6
+  OffsetMax: 0, 0
+  SizeDelta: 0, 6
+- Id: 459
+  Name: bc_summons_bottom
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0.5, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, -155.74, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 6
+  SizeDelta: 0, 6
+- Id: 460
+  Name: bc_summons_left
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0.5, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -587.11, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 1
+  OffsetMin: 0, 0
+  OffsetMax: 6, 0
+  SizeDelta: 6, 0
+- Id: 461
+  Name: bc_summons_right
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 0.5, 0, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 587.11, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 1, 0
+  AnchorMax: 1, 1
+  OffsetMin: -6, 0
+  OffsetMax: 0, 0
+  SizeDelta: 6, 0

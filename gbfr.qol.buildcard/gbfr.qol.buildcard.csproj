@@ -56,4 +56,29 @@
     <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
   </ItemGroup>
 
+  <!-- UI overrides: GBFR/**/*.yaml are converted to the game's binary formats in the mod's GBFR folder. -->
+  <PropertyGroup>
+    <UiToolDir>$(MSBuildThisFileDirectory)..\tools\gbfr.uitools\</UiToolDir>
+    <UiToolExe>$(UiToolDir)bin\Release\net10.0\gbfr.uitools.exe</UiToolExe>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <UiSource Include="GBFR\**\*.yaml" />
+    <None Remove="@(UiSource)" />
+  </ItemGroup>
+
+  <Target Name="BuildUiTool" AfterTargets="Build" Condition="'@(UiSource)' != ''">
+    <Exec Command="dotnet build -c Release -nologo -v q" WorkingDirectory="$(UiToolDir)" />
+  </Target>
+
+  <Target Name="ConvertUiSources" AfterTargets="BuildUiTool" Condition="'@(UiSource)' != ''"
+          Inputs="@(UiSource);$(UiToolExe)"
+          Outputs="@(UiSource->'$(OutDir)GBFR\%(RecursiveDir)%(Filename)')">
+    <MakeDir Directories="@(UiSource->'$(OutDir)GBFR\%(RecursiveDir)')" />
+    <Delete Files="$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Filename)" />
+    <Exec Command="&quot;$(UiToolExe)&quot; b-convert -i &quot;%(UiSource.FullPath)&quot; -o &quot;$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Filename)&quot;" StandardOutputImportance="low" />
+    <Error Condition="!Exists('$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Filename)')"
+           Text="Converting %(UiSource.Identity) failed; run the tool on it for the error." />
+  </Target>
+
 </Project>

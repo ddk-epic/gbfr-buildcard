@@ -858,37 +858,37 @@ Objects:
         ObjectRefId: 1544
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1557
+        ObjectRefId: 1559
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1570
+        ObjectRefId: 1574
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1583
+        ObjectRefId: 1589
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1596
+        ObjectRefId: 1604
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1609
+        ObjectRefId: 1619
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1622
+        ObjectRefId: 1634
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1635
+        ObjectRefId: 1649
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1648
+        ObjectRefId: 1664
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1661
+        ObjectRefId: 1679
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1674
+        ObjectRefId: 1694
       - ComponentName: GemInfo
         Index: 0
-        ObjectRefId: 1687
+        ObjectRefId: 1709
       _6F3FE715:
       - ComponentName: Text
         Index: 0
@@ -53467,9 +53467,9 @@ Objects:
   AnchorPoint: 0, 96
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
-  OffsetMin: -568, 96
-  OffsetMax: 568, 98
-  SizeDelta: 1136, 2
+  OffsetMin: -633, 96
+  OffsetMax: 633, 98
+  SizeDelta: 1266, 2
 - Id: 1232
   Name: line02
   Children:
@@ -53497,9 +53497,9 @@ Objects:
   AnchorPoint: 0, -64
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -66
-  OffsetMax: 568, -64
-  SizeDelta: 1136, 2
+  OffsetMin: -633, -66
+  OffsetMax: 633, -64
+  SizeDelta: 1266, 2
 - Id: 1233
   Name: loc_name01_text
   Children:
@@ -53748,15 +53748,15 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: 0, -240, 0
+  Position: -65, -240, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 40
+  AnchorPoint: -65, 40
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 0, 40
-  OffsetMax: 0, 40
+  OffsetMin: -65, 40
+  OffsetMax: -65, 40
   SizeDelta: 0, 0
 - Id: 1240
   Name: level02
@@ -55544,15 +55544,15 @@ Objects:
         ObjectRefId: 1309
       Enable: true
   Active: true
-  Position: 0, -280, 0
+  Position: 65, -280, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 0
+  AnchorPoint: 65, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 0, 0
-  OffsetMax: 0, 0
+  OffsetMin: 65, 0
+  OffsetMax: 65, 0
   SizeDelta: 0, 0
 - Id: 1287
   Name: icon_limit01
@@ -58693,9 +58693,9 @@ Objects:
   AnchorPoint: 16, 20
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
-  OffsetMin: -496, 20
-  OffsetMax: 528, 76
-  SizeDelta: 1024, 56
+  OffsetMin: -561, 20
+  OffsetMax: 593, 76
+  SizeDelta: 1154, 56
 - Id: 1377
   Name: loc_hp01
   Children:
@@ -58720,7 +58720,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -512, 0, 0
+  Position: -577, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0
@@ -58728,8 +58728,8 @@ Objects:
   AnchorMin: 0, 0
   AnchorMax: 0, 0
   OffsetMin: 0, 0
-  OffsetMax: 256, 28
-  SizeDelta: 256, 28
+  OffsetMax: 288.5, 28
+  SizeDelta: 288.5, 28
 - Id: 1378
   Name: hp01_icon01
   Components:
@@ -58814,7 +58814,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 212, 31, 0
+  Position: 244.5, 31, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -58855,9 +58855,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
-  OffsetMin: -256, 0
+  OffsetMin: -288.5, 0
   OffsetMax: 0, 28
-  SizeDelta: 256, 28
+  SizeDelta: 288.5, 28
 - Id: 1381
   Name: atk01_icon01
   Components:
@@ -58879,7 +58879,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -221, 31, 0
+  Position: -253.5, 31, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -58985,8 +58985,8 @@ Objects:
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
   OffsetMin: 0, 0
-  OffsetMax: 256, 28
-  SizeDelta: 256, 28
+  OffsetMax: 288.5, 28
+  SizeDelta: 288.5, 28
 - Id: 1384
   Name: crt01_icon01
   Components:
@@ -59064,7 +59064,7 @@ Objects:
       TextID: TXT_PAU_PAR
       Enable: true
   Active: true
-  Position: 222, 27, 0
+  Position: 254.5, 27, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -59127,7 +59127,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 178, 31, 0
+  Position: 210.5, 31, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -59161,16 +59161,16 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 512, 0, 0
+  Position: 577, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0
   AnchorPoint: 0, 0
   AnchorMin: 1, 0
   AnchorMax: 1, 0
-  OffsetMin: -256, 0
+  OffsetMin: -288.5, 0
   OffsetMax: 0, 28
-  SizeDelta: 256, 28
+  SizeDelta: 288.5, 28
 - Id: 1388
   Name: brk01_icon01
   Components:
@@ -59192,7 +59192,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -221, 31, 0
+  Position: -253.5, 31, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -59289,15 +59289,15 @@ Objects:
       VerticalFit: 2
       Enable: true
   Active: true
-  Position: 568, -68, 0
+  Position: 633, -68, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -96, -68
+  AnchorPoint: -31, -68
   AnchorMin: 1, 1
   AnchorMax: 1, 1
-  OffsetMin: -488, -68
-  OffsetMax: -96, -68
+  OffsetMin: -423, -68
+  OffsetMax: -31, -68
   SizeDelta: 392, 0
 - Id: 1391
   Name: tag_skin01
@@ -59629,9 +59629,9 @@ Objects:
   AnchorPoint: 0, -46
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -82
-  OffsetMax: 568, -10
-  SizeDelta: 1136, 72
+  OffsetMin: -633, -82
+  OffsetMax: 633, -10
+  SizeDelta: 1266, 72
 - Id: 1399
   Name: root
   Children:
@@ -59744,7 +59744,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -480, 0, 0
+  Position: -545, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -59796,7 +59796,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -424, 0, 0
+  Position: -489, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -59835,7 +59835,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 56, 0
+      Padding: 28, 0, 40, 4
       Spacing: 2
       ChildAlignment: 8
       ChildControlWidth: false
@@ -59851,15 +59851,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 544, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -24, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -24, -28
-  OffsetMax: -24, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
 - Id: 1405
   Name: loc_lv01
@@ -59870,7 +59870,7 @@ Objects:
   - ComponentName: HorizontalLayoutGroup
     Component:
       Padding: 0, 0, 0, 0
-      Spacing: 24
+      Spacing: 8
       ChildAlignment: 5
       ChildControlWidth: false
       ChildControlHeight: false
@@ -59903,7 +59903,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -59952,7 +59952,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -59975,7 +59975,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -59986,7 +59986,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -59997,7 +59997,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60008,7 +60008,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60026,9 +60026,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
+  SizeDelta: 52.8, 50
 - Id: 1408
   Name: loc_lv02
   Children:
@@ -60215,7 +60215,7 @@ Objects:
         ObjectRefId: 1412
       Enable: true
   Active: true
-  Position: 540, 0, 0
+  Position: 605, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -60248,7 +60248,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -544, 0, 0
+  Position: -609, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -60369,9 +60369,9 @@ Objects:
   AnchorPoint: 0, -118
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -154
-  OffsetMax: 568, -82
-  SizeDelta: 1136, 72
+  OffsetMin: -633, -154
+  OffsetMax: 633, -82
+  SizeDelta: 1266, 72
 - Id: 1416
   Name: root
   Children:
@@ -60484,7 +60484,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -480, 0, 0
+  Position: -545, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -60536,7 +60536,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -424, 0, 0
+  Position: -489, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -60575,7 +60575,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 56, 0
+      Padding: 28, 0, 40, 4
       Spacing: 2
       ChildAlignment: 8
       ChildControlWidth: false
@@ -60591,15 +60591,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 544, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -24, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -24, -28
-  OffsetMax: -24, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
 - Id: 1422
   Name: loc_lv01
@@ -60610,7 +60610,7 @@ Objects:
   - ComponentName: HorizontalLayoutGroup
     Component:
       Padding: 0, 0, 0, 0
-      Spacing: 24
+      Spacing: 8
       ChildAlignment: 5
       ChildControlWidth: false
       ChildControlHeight: false
@@ -60643,7 +60643,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -60692,7 +60692,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -60715,7 +60715,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -60726,7 +60726,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60737,7 +60737,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60748,7 +60748,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60766,9 +60766,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
+  SizeDelta: 52.8, 50
 - Id: 1425
   Name: loc_lv02
   Children:
@@ -60955,7 +60955,7 @@ Objects:
         ObjectRefId: 1429
       Enable: true
   Active: true
-  Position: 540, 0, 0
+  Position: 605, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -60988,7 +60988,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -544, 0, 0
+  Position: -609, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -61109,9 +61109,9 @@ Objects:
   AnchorPoint: 0, -190
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -226
-  OffsetMax: 568, -154
-  SizeDelta: 1136, 72
+  OffsetMin: -633, -226
+  OffsetMax: 633, -154
+  SizeDelta: 1266, 72
 - Id: 1433
   Name: root
   Children:
@@ -61224,7 +61224,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -480, 0, 0
+  Position: -545, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -61276,7 +61276,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -424, 0, 0
+  Position: -489, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -61315,7 +61315,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 56, 0
+      Padding: 28, 0, 40, 4
       Spacing: 2
       ChildAlignment: 8
       ChildControlWidth: false
@@ -61331,15 +61331,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 544, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -24, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -24, -28
-  OffsetMax: -24, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
 - Id: 1439
   Name: loc_lv01
@@ -61350,7 +61350,7 @@ Objects:
   - ComponentName: HorizontalLayoutGroup
     Component:
       Padding: 0, 0, 0, 0
-      Spacing: 24
+      Spacing: 8
       ChildAlignment: 5
       ChildControlWidth: false
       ChildControlHeight: false
@@ -61383,7 +61383,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -61432,7 +61432,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -61455,7 +61455,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -61466,7 +61466,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -61477,7 +61477,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -61488,7 +61488,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -61506,9 +61506,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
+  SizeDelta: 52.8, 50
 - Id: 1442
   Name: loc_lv02
   Children:
@@ -61695,7 +61695,7 @@ Objects:
         ObjectRefId: 1446
       Enable: true
   Active: true
-  Position: 540, 0, 0
+  Position: 605, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -61728,7 +61728,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -544, 0, 0
+  Position: -609, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -61849,9 +61849,9 @@ Objects:
   AnchorPoint: 0, -262
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -298
-  OffsetMax: 568, -226
-  SizeDelta: 1136, 72
+  OffsetMin: -633, -298
+  OffsetMax: 633, -226
+  SizeDelta: 1266, 72
 - Id: 1450
   Name: root
   Children:
@@ -61964,7 +61964,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -480, 0, 0
+  Position: -545, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -62016,7 +62016,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -424, 0, 0
+  Position: -489, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -62055,7 +62055,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 56, 0
+      Padding: 28, 0, 40, 4
       Spacing: 2
       ChildAlignment: 8
       ChildControlWidth: false
@@ -62071,15 +62071,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 544, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -24, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -24, -28
-  OffsetMax: -24, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
 - Id: 1456
   Name: loc_lv01
@@ -62090,7 +62090,7 @@ Objects:
   - ComponentName: HorizontalLayoutGroup
     Component:
       Padding: 0, 0, 0, 0
-      Spacing: 24
+      Spacing: 8
       ChildAlignment: 5
       ChildControlWidth: false
       ChildControlHeight: false
@@ -62123,7 +62123,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -62172,7 +62172,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -62195,7 +62195,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -62206,7 +62206,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62217,7 +62217,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62228,7 +62228,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62246,9 +62246,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
+  SizeDelta: 52.8, 50
 - Id: 1459
   Name: loc_lv02
   Children:
@@ -62435,7 +62435,7 @@ Objects:
         ObjectRefId: 1463
       Enable: true
   Active: true
-  Position: 540, 0, 0
+  Position: 605, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -62468,7 +62468,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -544, 0, 0
+  Position: -609, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -62589,9 +62589,9 @@ Objects:
   AnchorPoint: 0, -334
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -370
-  OffsetMax: 568, -298
-  SizeDelta: 1136, 72
+  OffsetMin: -633, -370
+  OffsetMax: 633, -298
+  SizeDelta: 1266, 72
 - Id: 1467
   Name: root
   Children:
@@ -62704,7 +62704,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -480, 0, 0
+  Position: -545, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -62756,7 +62756,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -424, 0, 0
+  Position: -489, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -62795,7 +62795,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 56, 0
+      Padding: 28, 0, 40, 4
       Spacing: 2
       ChildAlignment: 8
       ChildControlWidth: false
@@ -62811,15 +62811,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 544, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -24, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -231.37, -28
-  OffsetMax: -24, 0
+  OffsetMin: -215.37, -28
+  OffsetMax: -8, 0
   SizeDelta: 207.37, 28
 - Id: 1473
   Name: loc_lv01
@@ -62830,7 +62830,7 @@ Objects:
   - ComponentName: HorizontalLayoutGroup
     Component:
       Padding: 0, 0, 0, 0
-      Spacing: 24
+      Spacing: 8
       ChildAlignment: 5
       ChildControlWidth: false
       ChildControlHeight: false
@@ -62863,7 +62863,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -62894,7 +62894,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -10.314999, 0, 0
+  Position: -10.315, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -62912,7 +62912,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -62935,7 +62935,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -62946,7 +62946,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62957,7 +62957,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62968,7 +62968,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62979,16 +62979,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 61.684998, 0, 0
+  Position: 61.685, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: 123.369995, -25
+  AnchorPoint: 123.37, -25
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 75.369995, -50
-  OffsetMax: 123.369995, 0
-  SizeDelta: 48, 50
+  OffsetMin: 70.57, -50
+  OffsetMax: 123.37, 0
+  SizeDelta: 52.8, 50
 - Id: 1476
   Name: loc_lv02
   Children:
@@ -63175,7 +63175,7 @@ Objects:
         ObjectRefId: 1480
       Enable: true
   Active: true
-  Position: 540, 0, 0
+  Position: 605, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -63208,7 +63208,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -544, 0, 0
+  Position: -609, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -63299,9 +63299,9 @@ Objects:
   AnchorPoint: 0, -54
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -600, -62
-  OffsetMax: 600, -46
-  SizeDelta: 1200, 16
+  OffsetMin: -633, -62
+  OffsetMax: 633, -46
+  SizeDelta: 1266, 16
 - Id: 1485
   Name: loc_ttl02_icon01
   Children:
@@ -63325,7 +63325,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: true
-  Position: -541, 22, 0
+  Position: -574, 22, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -63412,7 +63412,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 556, 24, 0
+  Position: 589, 24, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -63472,7 +63472,7 @@ Objects:
       TextID: TXT_BLS_BLESS_PLUS_SKILL
       Enable: true
   Active: true
-  Position: -514, 24, 0
+  Position: -547, 24, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -63559,9 +63559,9 @@ Objects:
   AnchorPoint: 0, -100
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -136
-  OffsetMax: 568, -64
-  SizeDelta: 1136, 72
+  OffsetMin: -633, -136
+  OffsetMax: 633, -64
+  SizeDelta: 1266, 72
 - Id: 1490
   Name: root
   Children:
@@ -63674,7 +63674,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -480, 0, 0
+  Position: -545, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -63726,7 +63726,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -424, 0, 0
+  Position: -489, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -63765,7 +63765,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 56, 0
+      Padding: 28, 0, 40, 4
       Spacing: 2
       ChildAlignment: 8
       ChildControlWidth: false
@@ -63781,15 +63781,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 544, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -24, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -239.37, -28
-  OffsetMax: -24, 0
+  OffsetMin: -223.37, -28
+  OffsetMax: -8, 0
   SizeDelta: 215.37, 28
 - Id: 1496
   Name: loc_lv01
@@ -63800,7 +63800,7 @@ Objects:
   - ComponentName: HorizontalLayoutGroup
     Component:
       Padding: 0, 0, 0, 0
-      Spacing: 24
+      Spacing: 8
       ChildAlignment: 5
       ChildControlWidth: false
       ChildControlHeight: false
@@ -63833,7 +63833,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -63864,7 +63864,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -14.314999, 0, 0
+  Position: -14.315, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -63882,7 +63882,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -63905,7 +63905,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -63916,7 +63916,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -63927,7 +63927,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -63938,7 +63938,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -63956,16 +63956,16 @@ Objects:
   AnchorPoint: 131.37, -25
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 83.369995, -50
+  OffsetMin: 78.57, -50
   OffsetMax: 131.37, 0
-  SizeDelta: 48, 50
+  SizeDelta: 52.8, 50
 - Id: 1499
   Name: loc_lv02
   Children:
   - 1500
   - 1502
   Active: false
-  Position: -5.369995, -36, 0
+  Position: -5.37, -36, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -64145,7 +64145,7 @@ Objects:
         ObjectRefId: 1503
       Enable: true
   Active: true
-  Position: 540, 0, 0
+  Position: 605, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -64178,7 +64178,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: false
-  Position: -544, 0, 0
+  Position: -609, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -64296,9 +64296,9 @@ Objects:
   AnchorPoint: 0, -172
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -208
-  OffsetMax: 568, -136
-  SizeDelta: 1136, 72
+  OffsetMin: -633, -208
+  OffsetMax: 633, -136
+  SizeDelta: 1266, 72
 - Id: 1507
   Name: root
   Children:
@@ -64411,7 +64411,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -480, 0, 0
+  Position: -545, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -64463,7 +64463,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -424, 0, 0
+  Position: -489, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -64502,7 +64502,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 56, 0
+      Padding: 28, 0, 40, 4
       Spacing: 2
       ChildAlignment: 8
       ChildControlWidth: false
@@ -64518,15 +64518,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 544, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -24, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -239.37, -28
-  OffsetMax: -24, 0
+  OffsetMin: -223.37, -28
+  OffsetMax: -8, 0
   SizeDelta: 215.37, 28
 - Id: 1513
   Name: loc_lv01
@@ -64537,7 +64537,7 @@ Objects:
   - ComponentName: HorizontalLayoutGroup
     Component:
       Padding: 0, 0, 0, 0
-      Spacing: 24
+      Spacing: 8
       ChildAlignment: 5
       ChildControlWidth: false
       ChildControlHeight: false
@@ -64570,7 +64570,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -64601,7 +64601,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -14.314999, 0, 0
+  Position: -14.315, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -64619,7 +64619,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -64642,7 +64642,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -64653,7 +64653,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -64664,7 +64664,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -64675,7 +64675,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -64693,16 +64693,16 @@ Objects:
   AnchorPoint: 131.37, -25
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 83.369995, -50
+  OffsetMin: 78.57, -50
   OffsetMax: 131.37, 0
-  SizeDelta: 48, 50
+  SizeDelta: 52.8, 50
 - Id: 1516
   Name: loc_lv02
   Children:
   - 1517
   - 1519
   Active: false
-  Position: -5.369995, -36, 0
+  Position: -5.37, -36, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -64882,7 +64882,7 @@ Objects:
         ObjectRefId: 1520
       Enable: true
   Active: true
-  Position: 540, 0, 0
+  Position: 605, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -64915,7 +64915,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: false
-  Position: -544, 0, 0
+  Position: -609, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -65033,9 +65033,9 @@ Objects:
   AnchorPoint: 0, -244
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -568, -280
-  OffsetMax: 568, -208
-  SizeDelta: 1136, 72
+  OffsetMin: -633, -280
+  OffsetMax: 633, -208
+  SizeDelta: 1266, 72
 - Id: 1524
   Name: root
   Children:
@@ -65148,7 +65148,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -480, 0, 0
+  Position: -545, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -65200,7 +65200,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -424, 0, 0
+  Position: -489, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -65239,7 +65239,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 56, 0
+      Padding: 28, 0, 40, 4
       Spacing: 2
       ChildAlignment: 8
       ChildControlWidth: false
@@ -65255,15 +65255,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 544, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -24, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -239.37, -28
-  OffsetMax: -24, 0
+  OffsetMin: -223.37, -28
+  OffsetMax: -8, 0
   SizeDelta: 215.37, 28
 - Id: 1530
   Name: loc_lv01
@@ -65274,7 +65274,7 @@ Objects:
   - ComponentName: HorizontalLayoutGroup
     Component:
       Padding: 0, 0, 0, 0
-      Spacing: 24
+      Spacing: 8
       ChildAlignment: 5
       ChildControlWidth: false
       ChildControlHeight: false
@@ -65307,7 +65307,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -65338,7 +65338,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -14.314999, 0, 0
+  Position: -14.315, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -65356,7 +65356,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -65379,7 +65379,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -65390,7 +65390,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -65401,7 +65401,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -65412,7 +65412,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -65430,16 +65430,16 @@ Objects:
   AnchorPoint: 131.37, -25
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 83.369995, -50
+  OffsetMin: 78.57, -50
   OffsetMax: 131.37, 0
-  SizeDelta: 48, 50
+  SizeDelta: 52.8, 50
 - Id: 1533
   Name: loc_lv02
   Children:
   - 1534
   - 1536
   Active: false
-  Position: -5.369995, -36, 0
+  Position: -5.37, -36, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -65619,7 +65619,7 @@ Objects:
         ObjectRefId: 1537
       Enable: true
   Active: true
-  Position: 540, 0, 0
+  Position: 605, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -65652,7 +65652,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: false
-  Position: -544, 0, 0
+  Position: -609, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -65807,17 +65807,17 @@ Objects:
   Name: loc_list_control01
   Children:
   - 1544
-  - 1557
-  - 1570
-  - 1583
-  - 1596
-  - 1609
-  - 1622
-  - 1635
-  - 1648
-  - 1661
-  - 1674
-  - 1687
+  - 1559
+  - 1574
+  - 1589
+  - 1604
+  - 1619
+  - 1634
+  - 1649
+  - 1664
+  - 1679
+  - 1694
+  - 1709
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -65842,9 +65842,6 @@ Objects:
   - ComponentName: GemInfo
     Component:
       Sets:
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1548
       - ComponentName: ''
         Index: -1
         ObjectRefId: 1550
@@ -65879,9 +65876,9 @@ Objects:
   AnchorPoint: 0, 440
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, 400
-  OffsetMax: 568, 480
-  SizeDelta: 1136, 80
+  OffsetMin: -633, 400
+  OffsetMax: 633, 480
+  SizeDelta: 1266, 80
 - Id: 1545
   Name: root
   Children:
@@ -65989,7 +65986,7 @@ Objects:
         ObjectRefId: 1548
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -66045,7 +66042,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -66084,7 +66081,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -66100,15 +66097,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
 - Id: 1551
   Name: loc_text01_03
@@ -66152,7 +66149,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -66208,7 +66205,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66246,7 +66243,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -66269,7 +66266,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66280,7 +66277,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66291,7 +66288,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66302,7 +66299,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66313,7 +66310,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66324,7 +66321,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66335,7 +66332,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66346,7 +66343,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66357,7 +66354,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66375,16 +66372,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
+  SizeDelta: 52.8, 50
 - Id: 1554
   Name: loc_icon_skill
   Children:
   - 1555
   - 1556
+  - 1557
+  - 1558
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -66429,6 +66428,10 @@ Objects:
       - ComponentName: SkillIconSetter
         Index: 0
         ObjectRefId: 1555
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1557
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -66438,16 +66441,16 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
 - Id: 1556
   Name: icon_skill02
   Components:
@@ -66483,6 +66486,10 @@ Objects:
       - ComponentName: SkillIconSetter
         Index: 0
         ObjectRefId: 1556
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1558
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -66492,52 +66499,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
 - Id: 1557
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1558
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1559
   Name: equip01_p01_02
   Children:
-  - 1558
+  - 1560
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1561
+        ObjectRefId: 1565
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1563
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1567
+        ObjectRefId: 1569
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1561
+        ObjectRefId: 1563
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1562
+        ObjectRefId: 1564
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1566
+        ObjectRefId: 1568
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1568
+        ObjectRefId: 1570
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1569
+        ObjectRefId: 1571
       Enable: true
   Active: true
   Position: 0, 360, 0
@@ -66547,75 +66653,14 @@ Objects:
   AnchorPoint: 0, 360
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, 320
-  OffsetMax: 568, 400
-  SizeDelta: 1136, 80
-- Id: 1558
-  Name: root
-  Children:
-  - 1559
-  - 1560
-  Active: true
-  Position: 0, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: 0, 0
-  AnchorMin: 0, 0
-  AnchorMax: 1, 1
-  OffsetMin: 0, 0
-  OffsetMax: 0, 0
-  SizeDelta: 0, 0
-- Id: 1559
-  Name: line
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 0.13725491, 0.19607843, 0.43137255, 0.2509804
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  Active: true
-  Position: 0, -40, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0
-  AnchorPoint: 0, 0
-  AnchorMin: 0, 0
-  AnchorMax: 1, 0
-  OffsetMin: 0, 0
-  OffsetMax: 0, 2
-  SizeDelta: 0, 2
+  OffsetMin: -633, 320
+  OffsetMax: 633, 400
+  SizeDelta: 1266, 80
 - Id: 1560
-  Name: loc_gene
+  Name: root
   Children:
   - 1561
   - 1562
-  - 1563
-  - 1567
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 0.31764707
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: false
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -66628,6 +66673,67 @@ Objects:
   OffsetMax: 0, 0
   SizeDelta: 0, 0
 - Id: 1561
+  Name: line
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.13725491, 0.19607843, 0.43137255, 0.2509804
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, -40, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 2
+  SizeDelta: 0, 2
+- Id: 1562
+  Name: loc_gene
+  Children:
+  - 1563
+  - 1564
+  - 1565
+  - 1569
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0.31764707
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: false
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1563
   Name: icon01
   Components:
   - ComponentName: Image
@@ -66654,10 +66760,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1561
+        ObjectRefId: 1563
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -66668,7 +66774,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1562
+- Id: 1564
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -66713,7 +66819,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -66724,10 +66830,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1563
+- Id: 1565
   Name: loc_text01_02
   Children:
-  - 1564
+  - 1566
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -66752,7 +66858,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -66768,21 +66874,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1564
+- Id: 1566
   Name: loc_text01_03
   Children:
-  - 1565
-  - 1566
+  - 1567
+  - 1568
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -66812,7 +66918,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1565
+- Id: 1567
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -66820,7 +66926,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -66876,7 +66982,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66906,7 +67012,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1566
+- Id: 1568
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -66914,7 +67020,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -66937,7 +67043,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66948,7 +67054,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66959,7 +67065,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66970,7 +67076,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66981,7 +67087,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66992,7 +67098,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67003,7 +67109,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67014,7 +67120,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67025,7 +67131,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67043,16 +67149,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1567
+  SizeDelta: 52.8, 50
+- Id: 1569
   Name: loc_icon_skill
   Children:
-  - 1568
-  - 1569
+  - 1570
+  - 1571
+  - 1572
+  - 1573
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -67062,7 +67170,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1568
+- Id: 1570
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -67088,7 +67196,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1568
+        ObjectRefId: 1570
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -67096,7 +67204,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1568
+        ObjectRefId: 1570
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1572
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -67106,17 +67218,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1569
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1571
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -67142,7 +67254,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1569
+        ObjectRefId: 1571
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -67150,7 +67262,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1569
+        ObjectRefId: 1571
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1573
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -67160,52 +67276,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1570
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1572
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1573
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1574
   Name: equip01_p01_03
   Children:
-  - 1571
+  - 1575
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1574
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1576
-      - ComponentName: ''
-        Index: -1
         ObjectRefId: 1580
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1584
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1574
+        ObjectRefId: 1578
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1575
+        ObjectRefId: 1579
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1579
+        ObjectRefId: 1583
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1581
+        ObjectRefId: 1585
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1582
+        ObjectRefId: 1586
       Enable: true
   Active: true
   Position: 0, 280, 0
@@ -67215,14 +67430,14 @@ Objects:
   AnchorPoint: 0, 280
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, 240
-  OffsetMax: 568, 320
-  SizeDelta: 1136, 80
-- Id: 1571
+  OffsetMin: -633, 240
+  OffsetMax: 633, 320
+  SizeDelta: 1266, 80
+- Id: 1575
   Name: root
   Children:
-  - 1572
-  - 1573
+  - 1576
+  - 1577
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -67234,7 +67449,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1572
+- Id: 1576
   Name: line
   Components:
   - ComponentName: Image
@@ -67262,13 +67477,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1573
+- Id: 1577
   Name: loc_gene
   Children:
-  - 1574
-  - 1575
-  - 1576
+  - 1578
+  - 1579
   - 1580
+  - 1584
   Components:
   - ComponentName: Image
     Component:
@@ -67295,7 +67510,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1574
+- Id: 1578
   Name: icon01
   Components:
   - ComponentName: Image
@@ -67322,10 +67537,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1574
+        ObjectRefId: 1578
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -67336,7 +67551,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1575
+- Id: 1579
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -67381,7 +67596,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -67392,10 +67607,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1576
+- Id: 1580
   Name: loc_text01_02
   Children:
-  - 1577
+  - 1581
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -67420,7 +67635,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -67436,21 +67651,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1577
+- Id: 1581
   Name: loc_text01_03
   Children:
-  - 1578
-  - 1579
+  - 1582
+  - 1583
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -67480,7 +67695,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1578
+- Id: 1582
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -67488,7 +67703,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -67544,7 +67759,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67574,7 +67789,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1579
+- Id: 1583
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -67582,7 +67797,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -67605,7 +67820,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67616,7 +67831,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67627,7 +67842,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67638,7 +67853,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67649,7 +67864,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67660,7 +67875,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67671,7 +67886,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67682,7 +67897,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67693,7 +67908,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67711,16 +67926,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1580
+  SizeDelta: 52.8, 50
+- Id: 1584
   Name: loc_icon_skill
   Children:
-  - 1581
-  - 1582
+  - 1585
+  - 1586
+  - 1587
+  - 1588
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -67730,7 +67947,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1581
+- Id: 1585
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -67756,7 +67973,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1581
+        ObjectRefId: 1585
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -67764,7 +67981,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1581
+        ObjectRefId: 1585
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1587
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -67774,17 +67995,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1582
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1586
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -67810,7 +68031,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1582
+        ObjectRefId: 1586
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -67818,7 +68039,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1582
+        ObjectRefId: 1586
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1588
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -67828,52 +68053,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1583
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1587
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1588
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1589
   Name: equip01_p01_04
   Children:
-  - 1584
+  - 1590
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1587
+        ObjectRefId: 1595
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1589
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1593
+        ObjectRefId: 1599
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1587
+        ObjectRefId: 1593
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1588
+        ObjectRefId: 1594
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1592
+        ObjectRefId: 1598
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1594
+        ObjectRefId: 1600
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1595
+        ObjectRefId: 1601
       Enable: true
   Active: true
   Position: 0, 200, 0
@@ -67883,14 +68207,14 @@ Objects:
   AnchorPoint: 0, 200
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, 160
-  OffsetMax: 568, 240
-  SizeDelta: 1136, 80
-- Id: 1584
+  OffsetMin: -633, 160
+  OffsetMax: 633, 240
+  SizeDelta: 1266, 80
+- Id: 1590
   Name: root
   Children:
-  - 1585
-  - 1586
+  - 1591
+  - 1592
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -67902,7 +68226,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1585
+- Id: 1591
   Name: line
   Components:
   - ComponentName: Image
@@ -67930,13 +68254,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1586
+- Id: 1592
   Name: loc_gene
   Children:
-  - 1587
-  - 1588
-  - 1589
   - 1593
+  - 1594
+  - 1595
+  - 1599
   Components:
   - ComponentName: Image
     Component:
@@ -67963,7 +68287,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1587
+- Id: 1593
   Name: icon01
   Components:
   - ComponentName: Image
@@ -67990,10 +68314,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1587
+        ObjectRefId: 1593
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -68004,7 +68328,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1588
+- Id: 1594
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -68049,7 +68373,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -68060,10 +68384,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1589
+- Id: 1595
   Name: loc_text01_02
   Children:
-  - 1590
+  - 1596
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -68088,7 +68412,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -68104,21 +68428,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1590
+- Id: 1596
   Name: loc_text01_03
   Children:
-  - 1591
-  - 1592
+  - 1597
+  - 1598
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -68148,7 +68472,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1591
+- Id: 1597
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -68156,7 +68480,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -68212,7 +68536,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68242,7 +68566,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1592
+- Id: 1598
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -68250,7 +68574,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -68273,7 +68597,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68284,7 +68608,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68295,7 +68619,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68306,7 +68630,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68317,7 +68641,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68328,7 +68652,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68339,7 +68663,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68350,7 +68674,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68361,7 +68685,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68379,16 +68703,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1593
+  SizeDelta: 52.8, 50
+- Id: 1599
   Name: loc_icon_skill
   Children:
-  - 1594
-  - 1595
+  - 1600
+  - 1601
+  - 1602
+  - 1603
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -68398,7 +68724,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1594
+- Id: 1600
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -68424,7 +68750,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1594
+        ObjectRefId: 1600
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -68432,7 +68758,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1594
+        ObjectRefId: 1600
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1602
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -68442,17 +68772,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1595
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1601
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -68478,7 +68808,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1595
+        ObjectRefId: 1601
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -68486,7 +68816,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1595
+        ObjectRefId: 1601
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1603
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -68496,52 +68830,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1596
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1602
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1603
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1604
   Name: equip01_p01_05
   Children:
-  - 1597
+  - 1605
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1600
+        ObjectRefId: 1610
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1602
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1606
+        ObjectRefId: 1614
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1600
+        ObjectRefId: 1608
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1601
+        ObjectRefId: 1609
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1605
+        ObjectRefId: 1613
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1607
+        ObjectRefId: 1615
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1608
+        ObjectRefId: 1616
       Enable: true
   Active: true
   Position: 0, 120, 0
@@ -68551,14 +68984,14 @@ Objects:
   AnchorPoint: 0, 120
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, 80
-  OffsetMax: 568, 160
-  SizeDelta: 1136, 80
-- Id: 1597
+  OffsetMin: -633, 80
+  OffsetMax: 633, 160
+  SizeDelta: 1266, 80
+- Id: 1605
   Name: root
   Children:
-  - 1598
-  - 1599
+  - 1606
+  - 1607
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -68570,7 +69003,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1598
+- Id: 1606
   Name: line
   Components:
   - ComponentName: Image
@@ -68598,13 +69031,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1599
+- Id: 1607
   Name: loc_gene
   Children:
-  - 1600
-  - 1601
-  - 1602
-  - 1606
+  - 1608
+  - 1609
+  - 1610
+  - 1614
   Components:
   - ComponentName: Image
     Component:
@@ -68631,7 +69064,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1600
+- Id: 1608
   Name: icon01
   Components:
   - ComponentName: Image
@@ -68658,10 +69091,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1600
+        ObjectRefId: 1608
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -68672,7 +69105,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1601
+- Id: 1609
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -68717,7 +69150,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -68728,10 +69161,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1602
+- Id: 1610
   Name: loc_text01_02
   Children:
-  - 1603
+  - 1611
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -68756,7 +69189,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -68772,21 +69205,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1603
+- Id: 1611
   Name: loc_text01_03
   Children:
-  - 1604
-  - 1605
+  - 1612
+  - 1613
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -68816,7 +69249,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1604
+- Id: 1612
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -68824,7 +69257,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -68880,7 +69313,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68910,7 +69343,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1605
+- Id: 1613
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -68918,7 +69351,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -68941,7 +69374,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68952,7 +69385,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68963,7 +69396,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68974,7 +69407,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68985,7 +69418,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68996,7 +69429,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69007,7 +69440,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69018,7 +69451,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69029,7 +69462,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69047,16 +69480,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1606
+  SizeDelta: 52.8, 50
+- Id: 1614
   Name: loc_icon_skill
   Children:
-  - 1607
-  - 1608
+  - 1615
+  - 1616
+  - 1617
+  - 1618
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -69066,7 +69501,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1607
+- Id: 1615
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -69092,7 +69527,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1607
+        ObjectRefId: 1615
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -69100,7 +69535,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1607
+        ObjectRefId: 1615
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1617
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -69110,17 +69549,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1608
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1616
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -69146,7 +69585,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1608
+        ObjectRefId: 1616
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -69154,7 +69593,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1608
+        ObjectRefId: 1616
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1618
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -69164,52 +69607,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1609
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1617
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1618
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1619
   Name: equip01_p01_06
   Children:
-  - 1610
+  - 1620
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1613
+        ObjectRefId: 1625
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1615
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1619
+        ObjectRefId: 1629
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1613
+        ObjectRefId: 1623
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1614
+        ObjectRefId: 1624
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1618
+        ObjectRefId: 1628
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1620
+        ObjectRefId: 1630
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1621
+        ObjectRefId: 1631
       Enable: true
   Active: true
   Position: 0, 40, 0
@@ -69219,14 +69761,14 @@ Objects:
   AnchorPoint: 0, 40
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, 0
-  OffsetMax: 568, 80
-  SizeDelta: 1136, 80
-- Id: 1610
+  OffsetMin: -633, 0
+  OffsetMax: 633, 80
+  SizeDelta: 1266, 80
+- Id: 1620
   Name: root
   Children:
-  - 1611
-  - 1612
+  - 1621
+  - 1622
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -69238,7 +69780,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1611
+- Id: 1621
   Name: line
   Components:
   - ComponentName: Image
@@ -69266,13 +69808,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1612
+- Id: 1622
   Name: loc_gene
   Children:
-  - 1613
-  - 1614
-  - 1615
-  - 1619
+  - 1623
+  - 1624
+  - 1625
+  - 1629
   Components:
   - ComponentName: Image
     Component:
@@ -69299,7 +69841,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1613
+- Id: 1623
   Name: icon01
   Components:
   - ComponentName: Image
@@ -69326,10 +69868,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1613
+        ObjectRefId: 1623
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -69340,7 +69882,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1614
+- Id: 1624
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -69385,7 +69927,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -69396,10 +69938,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1615
+- Id: 1625
   Name: loc_text01_02
   Children:
-  - 1616
+  - 1626
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -69424,7 +69966,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -69440,21 +69982,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1616
+- Id: 1626
   Name: loc_text01_03
   Children:
-  - 1617
-  - 1618
+  - 1627
+  - 1628
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -69484,7 +70026,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1617
+- Id: 1627
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -69492,7 +70034,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -69548,7 +70090,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69578,7 +70120,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1618
+- Id: 1628
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -69586,7 +70128,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -69609,7 +70151,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69620,7 +70162,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69631,7 +70173,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69642,7 +70184,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69653,7 +70195,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69664,7 +70206,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69675,7 +70217,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69686,7 +70228,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69697,7 +70239,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69715,16 +70257,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1619
+  SizeDelta: 52.8, 50
+- Id: 1629
   Name: loc_icon_skill
   Children:
-  - 1620
-  - 1621
+  - 1630
+  - 1631
+  - 1632
+  - 1633
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -69734,7 +70278,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1620
+- Id: 1630
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -69760,7 +70304,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1620
+        ObjectRefId: 1630
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -69768,7 +70312,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1620
+        ObjectRefId: 1630
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1632
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -69778,17 +70326,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1621
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1631
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -69814,7 +70362,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1621
+        ObjectRefId: 1631
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -69822,7 +70370,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1621
+        ObjectRefId: 1631
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1633
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -69832,52 +70384,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1622
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1632
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1633
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1634
   Name: equip01_p01_07
   Children:
-  - 1623
+  - 1635
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1626
+        ObjectRefId: 1640
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1628
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1632
+        ObjectRefId: 1644
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1626
+        ObjectRefId: 1638
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1627
+        ObjectRefId: 1639
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1631
+        ObjectRefId: 1643
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1633
+        ObjectRefId: 1645
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1634
+        ObjectRefId: 1646
       Enable: true
   Active: true
   Position: 0, -40, 0
@@ -69887,14 +70538,14 @@ Objects:
   AnchorPoint: 0, -40
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, -80
-  OffsetMax: 568, 0
-  SizeDelta: 1136, 80
-- Id: 1623
+  OffsetMin: -633, -80
+  OffsetMax: 633, 0
+  SizeDelta: 1266, 80
+- Id: 1635
   Name: root
   Children:
-  - 1624
-  - 1625
+  - 1636
+  - 1637
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -69906,7 +70557,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1624
+- Id: 1636
   Name: line
   Components:
   - ComponentName: Image
@@ -69934,13 +70585,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1625
+- Id: 1637
   Name: loc_gene
   Children:
-  - 1626
-  - 1627
-  - 1628
-  - 1632
+  - 1638
+  - 1639
+  - 1640
+  - 1644
   Components:
   - ComponentName: Image
     Component:
@@ -69967,7 +70618,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1626
+- Id: 1638
   Name: icon01
   Components:
   - ComponentName: Image
@@ -69994,10 +70645,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1626
+        ObjectRefId: 1638
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -70008,7 +70659,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1627
+- Id: 1639
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -70053,7 +70704,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -70064,10 +70715,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1628
+- Id: 1640
   Name: loc_text01_02
   Children:
-  - 1629
+  - 1641
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -70092,7 +70743,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -70108,21 +70759,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1629
+- Id: 1641
   Name: loc_text01_03
   Children:
-  - 1630
-  - 1631
+  - 1642
+  - 1643
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -70152,7 +70803,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1630
+- Id: 1642
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -70160,7 +70811,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -70216,7 +70867,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70246,7 +70897,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1631
+- Id: 1643
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -70254,7 +70905,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -70277,7 +70928,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70288,7 +70939,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70299,7 +70950,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70310,7 +70961,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70321,7 +70972,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70332,7 +70983,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70343,7 +70994,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70354,7 +71005,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70365,7 +71016,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70383,16 +71034,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1632
+  SizeDelta: 52.8, 50
+- Id: 1644
   Name: loc_icon_skill
   Children:
-  - 1633
-  - 1634
+  - 1645
+  - 1646
+  - 1647
+  - 1648
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -70402,7 +71055,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1633
+- Id: 1645
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -70428,7 +71081,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1633
+        ObjectRefId: 1645
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -70436,7 +71089,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1633
+        ObjectRefId: 1645
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1647
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -70446,17 +71103,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1634
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1646
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -70482,7 +71139,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1634
+        ObjectRefId: 1646
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -70490,7 +71147,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1634
+        ObjectRefId: 1646
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1648
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -70500,52 +71161,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1635
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1647
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1648
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1649
   Name: equip01_p01_08
   Children:
-  - 1636
+  - 1650
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1639
+        ObjectRefId: 1655
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1641
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1645
+        ObjectRefId: 1659
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1639
+        ObjectRefId: 1653
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1640
+        ObjectRefId: 1654
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1644
+        ObjectRefId: 1658
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1646
+        ObjectRefId: 1660
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1647
+        ObjectRefId: 1661
       Enable: true
   Active: true
   Position: 0, -120, 0
@@ -70555,14 +71315,14 @@ Objects:
   AnchorPoint: 0, -120
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, -160
-  OffsetMax: 568, -80
-  SizeDelta: 1136, 80
-- Id: 1636
+  OffsetMin: -633, -160
+  OffsetMax: 633, -80
+  SizeDelta: 1266, 80
+- Id: 1650
   Name: root
   Children:
-  - 1637
-  - 1638
+  - 1651
+  - 1652
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -70574,7 +71334,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1637
+- Id: 1651
   Name: line
   Components:
   - ComponentName: Image
@@ -70602,13 +71362,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1638
+- Id: 1652
   Name: loc_gene
   Children:
-  - 1639
-  - 1640
-  - 1641
-  - 1645
+  - 1653
+  - 1654
+  - 1655
+  - 1659
   Components:
   - ComponentName: Image
     Component:
@@ -70635,7 +71395,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1639
+- Id: 1653
   Name: icon01
   Components:
   - ComponentName: Image
@@ -70662,10 +71422,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1639
+        ObjectRefId: 1653
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -70676,7 +71436,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1640
+- Id: 1654
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -70721,7 +71481,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -70732,10 +71492,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1641
+- Id: 1655
   Name: loc_text01_02
   Children:
-  - 1642
+  - 1656
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -70760,7 +71520,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -70776,21 +71536,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1642
+- Id: 1656
   Name: loc_text01_03
   Children:
-  - 1643
-  - 1644
+  - 1657
+  - 1658
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -70820,7 +71580,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1643
+- Id: 1657
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -70828,7 +71588,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -70884,7 +71644,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70914,7 +71674,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1644
+- Id: 1658
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -70922,7 +71682,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -70945,7 +71705,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70956,7 +71716,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70967,7 +71727,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70978,7 +71738,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70989,7 +71749,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71000,7 +71760,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71011,7 +71771,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71022,7 +71782,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71033,7 +71793,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71051,16 +71811,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1645
+  SizeDelta: 52.8, 50
+- Id: 1659
   Name: loc_icon_skill
   Children:
-  - 1646
-  - 1647
+  - 1660
+  - 1661
+  - 1662
+  - 1663
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -71070,7 +71832,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1646
+- Id: 1660
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -71096,7 +71858,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1646
+        ObjectRefId: 1660
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -71104,7 +71866,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1646
+        ObjectRefId: 1660
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1662
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -71114,17 +71880,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1647
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1661
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -71150,7 +71916,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1647
+        ObjectRefId: 1661
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -71158,7 +71924,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1647
+        ObjectRefId: 1661
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1663
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -71168,52 +71938,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1648
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1662
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1663
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1664
   Name: equip01_p01_09
   Children:
-  - 1649
+  - 1665
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1652
+        ObjectRefId: 1670
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1654
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1658
+        ObjectRefId: 1674
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1652
+        ObjectRefId: 1668
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1653
+        ObjectRefId: 1669
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1657
+        ObjectRefId: 1673
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1659
+        ObjectRefId: 1675
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1660
+        ObjectRefId: 1676
       Enable: true
   Active: true
   Position: 0, -200, 0
@@ -71223,14 +72092,14 @@ Objects:
   AnchorPoint: 0, -200
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, -240
-  OffsetMax: 568, -160
-  SizeDelta: 1136, 80
-- Id: 1649
+  OffsetMin: -633, -240
+  OffsetMax: 633, -160
+  SizeDelta: 1266, 80
+- Id: 1665
   Name: root
   Children:
-  - 1650
-  - 1651
+  - 1666
+  - 1667
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -71242,7 +72111,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1650
+- Id: 1666
   Name: line
   Components:
   - ComponentName: Image
@@ -71270,13 +72139,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1651
+- Id: 1667
   Name: loc_gene
   Children:
-  - 1652
-  - 1653
-  - 1654
-  - 1658
+  - 1668
+  - 1669
+  - 1670
+  - 1674
   Components:
   - ComponentName: Image
     Component:
@@ -71303,7 +72172,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1652
+- Id: 1668
   Name: icon01
   Components:
   - ComponentName: Image
@@ -71330,10 +72199,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1652
+        ObjectRefId: 1668
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -71344,7 +72213,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1653
+- Id: 1669
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -71389,7 +72258,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -71400,10 +72269,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1654
+- Id: 1670
   Name: loc_text01_02
   Children:
-  - 1655
+  - 1671
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -71428,7 +72297,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -71444,21 +72313,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1655
+- Id: 1671
   Name: loc_text01_03
   Children:
-  - 1656
-  - 1657
+  - 1672
+  - 1673
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -71488,7 +72357,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1656
+- Id: 1672
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -71496,7 +72365,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -71552,7 +72421,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71582,7 +72451,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1657
+- Id: 1673
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -71590,7 +72459,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -71613,7 +72482,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71624,7 +72493,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71635,7 +72504,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71646,7 +72515,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71657,7 +72526,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71668,7 +72537,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71679,7 +72548,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71690,7 +72559,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71701,7 +72570,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71719,16 +72588,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1658
+  SizeDelta: 52.8, 50
+- Id: 1674
   Name: loc_icon_skill
   Children:
-  - 1659
-  - 1660
+  - 1675
+  - 1676
+  - 1677
+  - 1678
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -71738,7 +72609,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1659
+- Id: 1675
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -71764,7 +72635,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1659
+        ObjectRefId: 1675
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -71772,7 +72643,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1659
+        ObjectRefId: 1675
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1677
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -71782,17 +72657,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1660
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1676
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -71818,7 +72693,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1660
+        ObjectRefId: 1676
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -71826,7 +72701,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1660
+        ObjectRefId: 1676
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1678
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -71836,52 +72715,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1661
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1677
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1678
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1679
   Name: equip01_p01_10
   Children:
-  - 1662
+  - 1680
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1665
+        ObjectRefId: 1685
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1667
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1671
+        ObjectRefId: 1689
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1665
+        ObjectRefId: 1683
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1666
+        ObjectRefId: 1684
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1670
+        ObjectRefId: 1688
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1672
+        ObjectRefId: 1690
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1673
+        ObjectRefId: 1691
       Enable: true
   Active: true
   Position: 0, -280, 0
@@ -71891,14 +72869,14 @@ Objects:
   AnchorPoint: 0, -280
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, -320
-  OffsetMax: 568, -240
-  SizeDelta: 1136, 80
-- Id: 1662
+  OffsetMin: -633, -320
+  OffsetMax: 633, -240
+  SizeDelta: 1266, 80
+- Id: 1680
   Name: root
   Children:
-  - 1663
-  - 1664
+  - 1681
+  - 1682
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -71910,7 +72888,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1663
+- Id: 1681
   Name: line
   Components:
   - ComponentName: Image
@@ -71938,13 +72916,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1664
+- Id: 1682
   Name: loc_gene
   Children:
-  - 1665
-  - 1666
-  - 1667
-  - 1671
+  - 1683
+  - 1684
+  - 1685
+  - 1689
   Components:
   - ComponentName: Image
     Component:
@@ -71971,7 +72949,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1665
+- Id: 1683
   Name: icon01
   Components:
   - ComponentName: Image
@@ -71998,10 +72976,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1665
+        ObjectRefId: 1683
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -72012,7 +72990,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1666
+- Id: 1684
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -72057,7 +73035,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -72068,10 +73046,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1667
+- Id: 1685
   Name: loc_text01_02
   Children:
-  - 1668
+  - 1686
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -72096,7 +73074,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -72112,21 +73090,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1668
+- Id: 1686
   Name: loc_text01_03
   Children:
-  - 1669
-  - 1670
+  - 1687
+  - 1688
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -72156,7 +73134,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1669
+- Id: 1687
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -72164,7 +73142,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -72220,7 +73198,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72250,7 +73228,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1670
+- Id: 1688
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -72258,7 +73236,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -72281,7 +73259,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72292,7 +73270,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72303,7 +73281,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72314,7 +73292,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72325,7 +73303,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72336,7 +73314,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72347,7 +73325,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72358,7 +73336,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72369,7 +73347,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72387,16 +73365,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1671
+  SizeDelta: 52.8, 50
+- Id: 1689
   Name: loc_icon_skill
   Children:
-  - 1672
-  - 1673
+  - 1690
+  - 1691
+  - 1692
+  - 1693
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -72406,7 +73386,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1672
+- Id: 1690
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -72432,7 +73412,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1672
+        ObjectRefId: 1690
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -72440,7 +73420,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1672
+        ObjectRefId: 1690
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1692
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -72450,17 +73434,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1673
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1691
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -72486,7 +73470,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1673
+        ObjectRefId: 1691
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -72494,7 +73478,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1673
+        ObjectRefId: 1691
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1693
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -72504,52 +73492,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1674
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1692
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1693
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1694
   Name: equip01_p01_11
   Children:
-  - 1675
+  - 1695
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1678
+        ObjectRefId: 1700
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1680
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1684
+        ObjectRefId: 1704
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1678
+        ObjectRefId: 1698
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1679
+        ObjectRefId: 1699
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1683
+        ObjectRefId: 1703
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1685
+        ObjectRefId: 1705
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1686
+        ObjectRefId: 1706
       Enable: true
   Active: true
   Position: 0, -360, 0
@@ -72559,14 +73646,14 @@ Objects:
   AnchorPoint: 0, -360
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, -400
-  OffsetMax: 568, -320
-  SizeDelta: 1136, 80
-- Id: 1675
+  OffsetMin: -633, -400
+  OffsetMax: 633, -320
+  SizeDelta: 1266, 80
+- Id: 1695
   Name: root
   Children:
-  - 1676
-  - 1677
+  - 1696
+  - 1697
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -72578,7 +73665,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1676
+- Id: 1696
   Name: line
   Components:
   - ComponentName: Image
@@ -72606,13 +73693,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1677
+- Id: 1697
   Name: loc_gene
   Children:
-  - 1678
-  - 1679
-  - 1680
-  - 1684
+  - 1698
+  - 1699
+  - 1700
+  - 1704
   Components:
   - ComponentName: Image
     Component:
@@ -72639,7 +73726,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1678
+- Id: 1698
   Name: icon01
   Components:
   - ComponentName: Image
@@ -72666,10 +73753,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1678
+        ObjectRefId: 1698
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -72680,7 +73767,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1679
+- Id: 1699
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -72725,7 +73812,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -72736,10 +73823,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1680
+- Id: 1700
   Name: loc_text01_02
   Children:
-  - 1681
+  - 1701
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -72764,7 +73851,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -72780,21 +73867,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1681
+- Id: 1701
   Name: loc_text01_03
   Children:
-  - 1682
-  - 1683
+  - 1702
+  - 1703
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -72824,7 +73911,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1682
+- Id: 1702
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -72832,7 +73919,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -72888,7 +73975,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72918,7 +74005,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1683
+- Id: 1703
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -72926,7 +74013,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -72949,7 +74036,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72960,7 +74047,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72971,7 +74058,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72982,7 +74069,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72993,7 +74080,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73004,7 +74091,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73015,7 +74102,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73026,7 +74113,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73037,7 +74124,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73055,16 +74142,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1684
+  SizeDelta: 52.8, 50
+- Id: 1704
   Name: loc_icon_skill
   Children:
-  - 1685
-  - 1686
+  - 1705
+  - 1706
+  - 1707
+  - 1708
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -73074,7 +74163,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1685
+- Id: 1705
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -73100,7 +74189,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1685
+        ObjectRefId: 1705
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -73108,7 +74197,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1685
+        ObjectRefId: 1705
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1707
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -73118,17 +74211,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1686
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1706
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -73154,7 +74247,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1686
+        ObjectRefId: 1706
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -73162,7 +74255,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1686
+        ObjectRefId: 1706
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1708
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -73172,52 +74269,151 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
-- Id: 1687
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
+- Id: 1707
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1708
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80
+- Id: 1709
   Name: equip01_p01_12
   Children:
-  - 1688
+  - 1710
   Components:
   - ComponentName: GemInfo
     Component:
       Sets:
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1691
+        ObjectRefId: 1715
       - ComponentName: ''
         Index: -1
-        ObjectRefId: 1693
-      - ComponentName: ''
-        Index: -1
-        ObjectRefId: 1697
+        ObjectRefId: 1719
       Icon:
         ComponentName: GemIconSetter
         Index: 0
-        ObjectRefId: 1691
+        ObjectRefId: 1713
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1692
+        ObjectRefId: 1714
       Levels:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1696
+        ObjectRefId: 1718
       Skills:
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1698
+        ObjectRefId: 1720
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 1699
+        ObjectRefId: 1721
       Enable: true
   Active: true
   Position: 0, -440, 0
@@ -73227,14 +74423,14 @@ Objects:
   AnchorPoint: 0, -440
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -568, -480
-  OffsetMax: 568, -400
-  SizeDelta: 1136, 80
-- Id: 1688
+  OffsetMin: -633, -480
+  OffsetMax: 633, -400
+  SizeDelta: 1266, 80
+- Id: 1710
   Name: root
   Children:
-  - 1689
-  - 1690
+  - 1711
+  - 1712
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -73246,7 +74442,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1689
+- Id: 1711
   Name: line
   Components:
   - ComponentName: Image
@@ -73274,13 +74470,13 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 2
   SizeDelta: 0, 2
-- Id: 1690
+- Id: 1712
   Name: loc_gene
   Children:
-  - 1691
-  - 1692
-  - 1693
-  - 1697
+  - 1713
+  - 1714
+  - 1715
+  - 1719
   Components:
   - ComponentName: Image
     Component:
@@ -73307,7 +74503,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 1691
+- Id: 1713
   Name: icon01
   Components:
   - ComponentName: Image
@@ -73334,10 +74530,10 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1691
+        ObjectRefId: 1713
       Resetting: true
       Enable: true
-  Active: true
+  Active: false
   Position: -488, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -73348,7 +74544,7 @@ Objects:
   OffsetMin: 40, -40
   OffsetMax: 120, 40
   SizeDelta: 80, 80
-- Id: 1692
+- Id: 1714
   Name: text01_01
   Components:
   - ComponentName: Text
@@ -73393,7 +74589,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -436, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -73404,10 +74600,10 @@ Objects:
   OffsetMin: 132, -40
   OffsetMax: 132, 40
   SizeDelta: 0, 80
-- Id: 1693
+- Id: 1715
   Name: loc_text01_02
   Children:
-  - 1694
+  - 1716
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -73432,7 +74628,7 @@ Objects:
       Enable: true
   - ComponentName: HorizontalLayoutGroup
     Component:
-      Padding: 28, 0, 24, 0
+      Padding: 28, 0, 24, 4
       Spacing: 0
       ChildAlignment: 8
       ChildControlWidth: false
@@ -73448,21 +74644,21 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 396, 0, 0
+  Position: 625, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -172, 0
+  AnchorPoint: -8, 0
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -172, -28
-  OffsetMax: -172, 0
+  OffsetMin: -8, -28
+  OffsetMax: -8, 0
   SizeDelta: 0, 28
-- Id: 1694
+- Id: 1716
   Name: loc_text01_03
   Children:
-  - 1695
-  - 1696
+  - 1717
+  - 1718
   Components:
   - ComponentName: HorizontalLayoutGroup
     Component:
@@ -73492,7 +74688,7 @@ Objects:
   OffsetMin: 124.04, -25
   OffsetMax: 124.04, 25
   SizeDelta: 0, 50
-- Id: 1695
+- Id: 1717
   Name: text01_02
   Components:
   - ComponentName: Text
@@ -73500,7 +74696,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 32
+      FontSize: 40
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -73556,7 +74752,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 32
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73586,7 +74782,7 @@ Objects:
   OffsetMin: 40.04, -25
   OffsetMax: 40.04, 25
   SizeDelta: 0, 50
-- Id: 1696
+- Id: 1718
   Name: text01_03
   Components:
   - ComponentName: Text
@@ -73594,7 +74790,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 48
+      FontSize: 52.8
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -73617,7 +74813,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73628,7 +74824,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73639,7 +74835,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73650,7 +74846,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73661,7 +74857,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73672,7 +74868,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73683,7 +74879,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73694,7 +74890,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 44
+        FontSize: 48
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73705,7 +74901,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73723,16 +74919,18 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -48, -25
+  OffsetMin: -52.8, -25
   OffsetMax: 0, 25
-  SizeDelta: 48, 50
-- Id: 1697
+  SizeDelta: 52.8, 50
+- Id: 1719
   Name: loc_icon_skill
   Children:
-  - 1698
-  - 1699
+  - 1720
+  - 1721
+  - 1722
+  - 1723
   Active: true
-  Position: 528, 0, 0
+  Position: 593, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -73742,7 +74940,7 @@ Objects:
   OffsetMin: -152, -40
   OffsetMax: -40, 40
   SizeDelta: 112, 80
-- Id: 1698
+- Id: 1720
   Name: icon_skill01
   Components:
   - ComponentName: Image
@@ -73768,7 +74966,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1698
+        ObjectRefId: 1720
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -73776,7 +74974,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1698
+        ObjectRefId: 1720
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1722
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -73786,17 +74988,17 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -84, 0, 0
+  Position: -1178, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -28, 0
+  AnchorPoint: -1122, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -58, -30
-  OffsetMax: 2, 30
-  SizeDelta: 60, 60
-- Id: 1699
+  OffsetMin: -1158, -36
+  OffsetMax: -1086, 36
+  SizeDelta: 72, 72
+- Id: 1721
   Name: icon_skill02
   Components:
   - ComponentName: Image
@@ -73822,7 +75024,7 @@ Objects:
       Target:
         ComponentName: Image
         Index: 0
-        ObjectRefId: 1699
+        ObjectRefId: 1721
       Resetting: true
       Enable: true
   - ComponentName: SkillInfo
@@ -73830,7 +75032,11 @@ Objects:
       Icons:
       - ComponentName: SkillIconSetter
         Index: 0
-        ObjectRefId: 1699
+        ObjectRefId: 1721
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1723
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -73840,14 +75046,117 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -28, 0, 0
+  Position: -640.5, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 28, 0
+  AnchorPoint: -584.5, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2, -30
-  OffsetMax: 58, 30
-  SizeDelta: 60, 60
+  OffsetMin: -620.5, -36
+  OffsetMax: -548.5, 36
+  SizeDelta: 72, 72
 
+
+- Id: 1722
+  Name: bc_trait01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -1122, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -1010, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -1010, -40
+  OffsetMax: -568.5, 40
+  SizeDelta: 441.5, 80
+- Id: 1723
+  Name: bc_trait02
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -584.5, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: -472.5, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -472.5, -40
+  OffsetMax: -31, 40
+  SizeDelta: 441.5, 80

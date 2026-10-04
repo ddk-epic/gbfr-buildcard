@@ -102,3 +102,16 @@ class Prefab:
         self.set(id_, "AnchorPoint", (ax, ay))
         self.set(id_, "OffsetMin", (ax - piv[0] * w, ay - piv[1] * h))
         self.set(id_, "OffsetMax", (ax + (1 - piv[0]) * w, ay + (1 - piv[1]) * h))
+
+    def repin(self, id_):
+        # recomputes the Positions of the object's descendants from their AnchorPoints
+        for child in self.children(id_):
+            pw, ph = self.size(id_)
+            ppiv = self.vec(id_, "Pivot")
+            piv = self.vec(child, "Pivot")
+            amin, amax = self.vec(child, "AnchorMin"), self.vec(child, "AnchorMax")
+            ax, ay = self.vec(child, "AnchorPoint")
+            x = ax + (amin[0] + (amax[0] - amin[0]) * piv[0] - ppiv[0]) * pw
+            y = ay + (amin[1] + (amax[1] - amin[1]) * piv[1] - ppiv[1]) * ph
+            self.set(child, "Position", (x, y, 0))
+            self.repin(child)

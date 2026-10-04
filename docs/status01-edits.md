@@ -240,3 +240,25 @@ Scripts: `tools/scripts/rework_sigils.py`, then `tools/scripts/match_trait_rows.
 | 0 `status01`, `CharaInfo.Gem` | refs follow the renumbered rows |
 
 `GemInfo` passes both traits to the row's two `SkillInfo`s; the `SkillInfo` setter writes the trait name into every text in `Names`. `Padding` is left, top, right, bottom.
+
+## 2026-10-05 · Status block in a 2x2 grid, name and PWR restacked
+
+Scripts: `tools/scripts/stats_grid.py`, then `tools/scripts/scale_badges.py`
+
+Spacing follows sharecard's `StatusPanel` (border 1, padding 20/17.5, columns 9fr/11fr with a 25 gap, row gap 22.5), converted at the block's scale (0.56 sharecard pixels per unit).
+
+| Objects | Change |
+|---|---|
+| 73 `loc_chr_status01` (status) | 1000x182.41, bottom edge kept; `Position` -2000.089, -412.456 |
+| 74 `chr_status01`, 76 `status_base01`, 78 `loc_status01` | resized to 1000x182.41 with the block; 75 `root` moved to the new top |
+| 79 `loc_chr_icon01` (character icon and element) | `Active: false` |
+| 90, 95, 100, 107 (`hp_line01`, `atk_line01`, `crt_line01`, `brk_line01`) | `Active: false` |
+| 87 `loc_hp`, 92 `loc_atk` | left column, 488.911x64; `Position` 5.661, 97.294 and 5.661, 83.036 |
+| 97 `loc_crt`, 104 `loc_brk` | right column, 543.232x64; `Position` -82.446, 97.294 and -82.446, 83.036 |
+| 91, 96, 102, 108 (`hp_num01`, `atk_num01`, `crt_num01`, `brk_num01`) | `FontSize` 56 -> 44.8, every enabled override 45 (1.12x the labels' 40); `Margin` bottom 2 -> 0; raised 2.16 onto the labels' baseline |
+| 101 `loc_crt_num` | at the right column's digit edge; `Position` 509.232, 34.16 |
+| 103 `crt_num00` (percent sign) | `FontSize` 32 -> 29.12 (0.65x the number), Chinese overrides 36 -> 29; 26.736x29.12; `Position` 31.2, -5.27 |
+| 7 `loc_name01` | its bottom edge above the status block by the status-to-skills gap (28.4) plus the element icon's overhang (7); `Position` -1360.089, -291.11 |
+| 17 `power01` | the diamond's lowest point 28.4 above the name band; `Position` 97.727, -173.814 |
+
+`AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and size.

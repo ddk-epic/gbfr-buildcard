@@ -1288,15 +1288,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -1360.089, -181.672, 0
+  Position: -1360.089, -291.11, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 351.911, 760.328
+  AnchorPoint: 351.911, 650.89
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -290.094, 724.328
-  OffsetMax: 993.916, 796.328
+  OffsetMin: -290.094, 614.89
+  OffsetMax: 993.916, 686.89
   SizeDelta: 1284.01, 72
 - Id: 8
   Name: loc_name01_icon
@@ -1669,15 +1669,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 97.727, -76.575, 0
+  Position: 97.727, -173.814, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 97.727, -1018.575
+  AnchorPoint: 97.727, -1115.814
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 5.727, -1110.575
-  OffsetMax: 189.727, -926.575
+  OffsetMin: 5.727, -1207.814
+  OffsetMax: 189.727, -1023.814
   SizeDelta: 184, 184
 - Id: 18
   Name: pwr_icon01
@@ -3817,16 +3817,16 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: -2000.089, -361.327, 0
+  Position: -2000.089, -412.456, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.666, 0.666, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -2000.089, -361.327
+  AnchorPoint: -2000.089, -412.456
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2500.089, -529.327
-  OffsetMax: -1500.089, -193.327
-  SizeDelta: 1000, 336
+  OffsetMin: -2500.089, -503.661
+  OffsetMax: -1500.089, -321.251
+  SizeDelta: 1000, 182.41
 - Id: 74
   Name: chr_status01
   Children:
@@ -3839,15 +3839,15 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -500, -168
-  OffsetMax: 500, 168
-  SizeDelta: 1000, 336
+  OffsetMin: -500, -91.205
+  OffsetMax: 500, 91.205
+  SizeDelta: 1000, 182.41
 - Id: 75
   Name: root
   Children:
   - 76
   Active: true
-  Position: 0, 168, 0
+  Position: 0, 91.205, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 1
@@ -3881,16 +3881,16 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, -168, 0
+  Position: 0, -91.205, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -500, -168
-  OffsetMax: 500, 168
-  SizeDelta: 1000, 336
+  OffsetMin: -500, -91.205
+  OffsetMax: 500, 91.205
+  SizeDelta: 1000, 182.41
 - Id: 77
   Name: status_ttl_text01
   Components:
@@ -4023,7 +4023,7 @@ Objects:
   - 97
   - 104
   Active: true
-  Position: 0, -168, 0
+  Position: 0, -91.205, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0
@@ -4031,8 +4031,8 @@ Objects:
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
   OffsetMin: -500, 0
-  OffsetMax: 500, 336
-  SizeDelta: 1000, 336
+  OffsetMax: 500, 182.41
+  SizeDelta: 1000, 182.41
 - Id: 79
   Name: loc_chr_icon01
   Children:
@@ -4056,7 +4056,7 @@ Objects:
       PreserveAspect: false
       E3ED5266: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -388, 168, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -4359,16 +4359,16 @@ Objects:
   - 90
   - 91
   Active: true
-  Position: 516, 232, 0
+  Position: 5.661, 97.294, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0
-  AnchorPoint: 516, 64
+  AnchorPoint: 5.661, 6.089
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -220, 64
-  OffsetMax: 516, 128
-  SizeDelta: 736, 64
+  OffsetMin: -483.25, 6.089
+  OffsetMax: 5.661, 70.089
+  SizeDelta: 488.911, 64
 - Id: 88
   Name: hp_icon01
   Components:
@@ -4390,7 +4390,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -684, 32, 0
+  Position: -436.911, 32, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -4534,7 +4534,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -626, 32, 0
+  Position: -378.911, 32, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -4564,7 +4564,7 @@ Objects:
       PreserveAspect: false
       E3ED5266: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -264, 32, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -4583,9 +4583,9 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_prm_hp01
-      FontSize: 56
+      FontSize: 44.8
       Color: 0, 0.49019608, 0.3137255, 1
-      Margin: 0, 0, 0, 2
+      Margin: 0, 0, 0, 0
       IsGradient: false
       ColorMode: 3
       ColorTL: 1, 1, 1, 1
@@ -4603,7 +4603,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 52
+        FontSize: 45
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -4614,7 +4614,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 56
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -4625,7 +4625,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 56
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -4636,7 +4636,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 48
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -4647,15 +4647,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -72, 32, 0
+  Position: -72, 34.16, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: -72, 0
+  AnchorPoint: -72, 2.16
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -392, -25
-  OffsetMax: -72, 25
+  OffsetMin: -392, -22.84
+  OffsetMax: -72, 27.16
   SizeDelta: 320, 50
 - Id: 92
   Name: loc_atk
@@ -4665,16 +4665,16 @@ Objects:
   - 95
   - 96
   Active: true
-  Position: 516, 232, 0
+  Position: 5.661, 83.036, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: 516, 64
+  AnchorPoint: 5.661, -8.169
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -220, 0
-  OffsetMax: 516, 64
-  SizeDelta: 736, 64
+  OffsetMin: -483.25, -72.169
+  OffsetMax: 5.661, -8.169
+  SizeDelta: 488.911, 64
 - Id: 93
   Name: atk_icon01
   Components:
@@ -4696,7 +4696,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -684, -32, 0
+  Position: -436.911, -32, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -4840,7 +4840,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -626, -32, 0
+  Position: -378.911, -32, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -4870,7 +4870,7 @@ Objects:
       PreserveAspect: false
       E3ED5266: 0
       Enable: true
-  Active: true
+  Active: false
   Position: -264, -32, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -4889,9 +4889,9 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_prm_atk01
-      FontSize: 56
+      FontSize: 44.8
       Color: 0.7058824, 0.3529412, 0, 1
-      Margin: 0, 0, 0, 2
+      Margin: 0, 0, 0, 0
       IsGradient: false
       ColorMode: 3
       ColorTL: 1, 1, 1, 1
@@ -4909,7 +4909,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 52
+        FontSize: 45
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -4920,7 +4920,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 56
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -4931,7 +4931,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 56
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -4942,7 +4942,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 48
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -4953,15 +4953,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -72, -32, 0
+  Position: -72, -29.84, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: -72, 0
+  AnchorPoint: -72, 2.16
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -392, -25
-  OffsetMax: -72, 25
+  OffsetMin: -392, -22.84
+  OffsetMax: -72, 27.16
   SizeDelta: 320, 50
 - Id: 97
   Name: loc_crt
@@ -4971,16 +4971,16 @@ Objects:
   - 100
   - 101
   Active: true
-  Position: -260, 104, 0
+  Position: -82.446, 97.294, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0
-  AnchorPoint: -260, -64
+  AnchorPoint: -82.446, 6.089
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -260, -64
-  OffsetMax: 476, 0
-  SizeDelta: 736, 64
+  OffsetMin: -82.446, 6.089
+  OffsetMax: 460.786, 70.089
+  SizeDelta: 543.232, 64
 - Id: 98
   Name: crt_icon01
   Components:
@@ -5176,8 +5176,8 @@ Objects:
       PreserveAspect: false
       E3ED5266: 0
       Enable: true
-  Active: true
-  Position: 512, 32, 0
+  Active: false
+  Position: 319.232, 32, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -5210,15 +5210,15 @@ Objects:
       ChildForceExpandHeight: false
       Enable: false
   Active: true
-  Position: 702, 32, 0
+  Position: 509.232, 34.16, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: -34, 0
+  AnchorPoint: -34, 2.16
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -354, -44
-  OffsetMax: -34, 44
+  OffsetMin: -354, -41.84
+  OffsetMax: -34, 46.16
   SizeDelta: 320, 88
 - Id: 102
   Name: crt_num01
@@ -5228,9 +5228,9 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_prm_cmn01
-      FontSize: 56
+      FontSize: 44.8
       Color: 0.19607843, 0.37254903, 0.49019608, 1
-      Margin: 0, 0, 0, 2
+      Margin: 0, 0, 0, 0
       IsGradient: false
       ColorMode: 3
       ColorTL: 1, 1, 1, 1
@@ -5248,7 +5248,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 52
+        FontSize: 45
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -5259,7 +5259,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 56
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -5270,7 +5270,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 56
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -5281,7 +5281,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 48
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -5315,7 +5315,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
-      FontSize: 32
+      FontSize: 29.12
       Color: 0.19607843, 0.37254903, 0.49019608, 1
       Margin: 0, 0, 0, 0
       IsGradient: false
@@ -5335,7 +5335,7 @@ Objects:
       Overwrites:
       - Language: Chs
         EnableFS: true
-        FontSize: 36
+        FontSize: 29
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -5346,7 +5346,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 36
+        FontSize: 29
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -5377,16 +5377,16 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 32, -6, 0
+  Position: 31.2, -5.27, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: 32, -6
+  AnchorPoint: 31.2, -5.27
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: 2.6200008, -22
-  OffsetMax: 32, 10
-  SizeDelta: 29.38, 32
+  OffsetMin: 4.464, -19.83
+  OffsetMax: 31.2, 9.29
+  SizeDelta: 26.736, 29.12
 - Id: 104
   Name: loc_brk
   Children:
@@ -5395,16 +5395,16 @@ Objects:
   - 107
   - 108
   Active: true
-  Position: -260, 104, 0
+  Position: -82.446, 83.036, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 1
-  AnchorPoint: -260, -64
+  AnchorPoint: -82.446, -8.169
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -260, -128
-  OffsetMax: 476, -64
-  SizeDelta: 736, 64
+  OffsetMin: -82.446, -72.169
+  OffsetMax: 460.786, -8.169
+  SizeDelta: 543.232, 64
 - Id: 105
   Name: brk_icon01
   Components:
@@ -5600,8 +5600,8 @@ Objects:
       PreserveAspect: false
       E3ED5266: 0
       Enable: true
-  Active: true
-  Position: 512, -32, 0
+  Active: false
+  Position: 319.232, -32, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -5619,9 +5619,9 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_prm_cmn01
-      FontSize: 56
+      FontSize: 44.8
       Color: 0.19607843, 0.37254903, 0.49019608, 1
-      Margin: 0, 0, 0, 2
+      Margin: 0, 0, 0, 0
       IsGradient: false
       ColorMode: 3
       ColorTL: 1, 1, 1, 1
@@ -5639,7 +5639,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 52
+        FontSize: 45
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -5650,7 +5650,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 56
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -5661,7 +5661,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 56
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -5672,7 +5672,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 48
+        FontSize: 45
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -5683,15 +5683,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 702, -32, 0
+  Position: 509.232, -29.84, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: -34, 0
+  AnchorPoint: -34, 2.16
   AnchorMin: 1, 0.5
   AnchorMax: 1, 0.5
-  OffsetMin: -354, -25
-  OffsetMax: -34, 25
+  OffsetMin: -354, -22.84
+  OffsetMax: -34, 27.16
   SizeDelta: 320, 50
 - Id: 109
   Name: loc_chr_status02

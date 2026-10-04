@@ -118,3 +118,15 @@ def copy_objects(source, objects, ids, edit=None):
         out[0] = f"- Id: {ids[old]}"
         lines += out
     return lines
+
+def keep_components(block, names):
+    # removes the components not in names from an object's lines
+    i = block.index("  Components:") + 1
+    out, keep = block[:i], True
+    while block[i].startswith("  - ") or block[i].startswith("    "):
+        if block[i].startswith("  - ComponentName: "):
+            keep = block[i][len("  - ComponentName: "):] in names
+        if keep:
+            out.append(block[i])
+        i += 1
+    return out + block[i:]

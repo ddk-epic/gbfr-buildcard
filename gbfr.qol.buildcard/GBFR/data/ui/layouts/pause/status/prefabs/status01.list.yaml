@@ -6,6 +6,21 @@ TextureData:
   - layouts/common/masterlevel/noatlastextures/cmn_ml_mask02
   - layouts/pause/pause_common/noatlastextures/ps_cmn_line04
   - layouts/pause/pause_common/noatlastextures/ps_cmn_btn_eff_005
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_wave_eff04_add
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff01_add
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff01_mask
+  - layouts/pause/limitbonus/noatlastextures/ps_lb_effect01
+  - layouts/pause/limitbonus/noatlastextures/ps_lb_effect05
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff02_mask
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff03_01
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_cross_mask02
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_cross_eff03
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_cross_eff02
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_awake_wave01
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_awake_wave02
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_awake_mask03
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff03_02
+  - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff03_03
   Eng: []
   Jpn: []
   Deu: []
@@ -24,26 +39,39 @@ AtlasData:
   - atlas/common_icon_item
   - atlas/common_masterlevel
   - atlas/hud_linklevel
+  - atlas/common_image_equip
+  - atlas/common_number
+  - atlas/shop_awake
   Eng:
   - atlas/eng/common_icon_main
+  - atlas/eng/pause_pause_common
   Jpn:
   - atlas/jpn/common_icon_main
+  - atlas/jpn/pause_pause_common
   Deu:
   - atlas/deu/common_icon_main
+  - atlas/deu/pause_pause_common
   Fra:
   - atlas/fra/common_icon_main
+  - atlas/fra/pause_pause_common
   Esp:
   - atlas/esp/common_icon_main
+  - atlas/esp/pause_pause_common
   Ita:
   - atlas/ita/common_icon_main
+  - atlas/ita/pause_pause_common
   Por:
   - atlas/por/common_icon_main
+  - atlas/por/pause_pause_common
   Kor:
   - atlas/kor/common_icon_main
+  - atlas/kor/pause_pause_common
   Cht:
   - atlas/cht/common_icon_main
+  - atlas/cht/pause_pause_common
   Chs:
   - atlas/chs/common_icon_main
+  - atlas/chs/pause_pause_common
 Materials:
 - material/uidissolve
 - fonts/fot_skipstd_b_sdf_ol06
@@ -66,6 +94,12 @@ Materials:
 - fonts/fot_tsukuoldminpro_r_sdf_glow_w01
 - material/uiaddalphaa
 - fonts/fot_skipstd_b_sdf_ds01
+- material/uimultiplymonochrome
+- material/uidissolveadd
+- fonts/fot_skipstd_b_sdf_setting01
+- fonts/fot_newcinemaastd_d_sdf_ttl03
+- fonts/fot_newcinemaastd_d_sdf_ttl04
+- fonts/fot_tsukuoldminpro_r_sdf_ol07
 Animations:
 - layouts/pause/status/animations/status01_in01
 - layouts/pause/status/animations/status01_out01
@@ -89,6 +123,68 @@ Animations:
 - layouts/common/icon_main/animations/icon_list01_in02
 - layouts/common/icon_main/animations/icon_list01_out02
 - layouts/common/icon_main/animations/icon_list01_loop01
+- layouts/pause/pause_common/animations/pause_bg_item01_loop
+- layouts/common/image_equip/animations/image_equip_00_loop01
+- layouts/common/image_equip/animations/image_equip_00_loop02
+- layouts/common/image_equip/animations/image_equip_00_loop03
+- layouts/common/icon_main/animations/icon_limit01_next01
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_00
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_01
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_03
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_04
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_05
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_06
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_07
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_08
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_09
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_10
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_10_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_09_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_08_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_07_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_06_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_05_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_04_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_03_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_02_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_01_anim
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_10_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_09_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_08_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_07_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_06_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_05_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_04_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_03_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_02_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_01_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_awake_bar01_loop01
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_00
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_01
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_02
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_03
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_04
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_05
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_06
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_07
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_07_anim
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_06_anim
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_05_anim
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_04_anim
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_03_anim
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_02_anim
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_01_anim
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_07_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_06_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_05_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_04_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_03_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_02_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_01_anim_02
+- layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_loop01
+- layouts/common/icon_main/animations/icon_tri01_loop
+- layouts/common/icon_main/animations/icon_tri01_loop02
 ImageData:
 - data/image/elementicon
 - data/image/crossplay/platformicon01
@@ -108,6 +204,12 @@ ImageData:
 - data/image/summoniconbase
 - data/image/summonbaseparamicons
 - data/image/arrow/arrow03
+- data/image/awakeweapon/weaponeffectadd
+- data/image/awakeweapon/weaponeffect
+- data/image/numbermaxlv
+- data/image/limitstar
+- data/image/shop/shoprebuildswitchimage
+- data/image/plusimages
 LanguageData:
 - data/language/ld_skipstd_b_sdf_ol06
 - data/language/ld_skipstd_b_sdf_material
@@ -132,4 +234,10 @@ LanguageData:
 - data/language/ld_tsukuoldminpro_r_sdf_ds10
 - data/language/ld_tsukuoldminpro_r_sdf_material
 - data/language/ld_skipstd_b_sdf_ds01
+- data/language/ld_skipstd_b_sdf_setting01
+- data/language/ld_newcinemaastd_d_sdf_ttl03
+- data/language/ld_newcinemaastd_d_sdf_ttl04
+- data/language/ld_skipstd_b_sdf_ol09
+- data/language/ld_tsukuoldminpro_r_sdf_ol07
+- data/language/ld_tsukuoldminpro_r_sdf_ol09
 _9029CEE4: []

@@ -1,17 +1,21 @@
-# Usage: python sync_list.py <prefab.prfb.yaml> <prefab.list.yaml> <out.list.yaml>
+# Usage: python sync_list.py <prefab.prfb.yaml> <prefab.list.yaml> <out.list.yaml> [<source.list.yaml>...]
 # Adds the assets a prefab references and its list (the assets the game loads with the prefab) lacks: textures and
 # atlases (TexturePath), materials (MaterialPath), animations (AnimationPath), image data (ImageDataPath and
 # ImageDataPaths) and language data (LanguageData). Placeholder textures (*_dummy) and per-language atlases
-# (atlas/<language>/...) are left out, as in the game's lists. New entries go at the end of their section.
+# (atlas/<language>/...) are left out, as in the game's lists. Source lists are the lists of prefabs that objects were
+# copied from: their entries are added too, per-language ones included, except animations. New entries go at the end
+# of their section.
 import re, sys
 
 SECTIONS = ["TextureData", "AtlasData", "Materials", "Animations", "ImageData", "LanguageData"]
+PER_LANGUAGE = ["TextureData", "AtlasData"]  # sections split into Common and one list per language
 
 def prefab_assets(path):
-    assets = {s: [] for s in SECTIONS}
+    assets = {(s, "Common" if s in PER_LANGUAGE else None): [] for s in SECTIONS}
     def add(section, value):
-        if value not in assets[section]:
-            assets[section].append(value)
+        key = (section, "Common" if section in PER_LANGUAGE else None)
+        if value not in assets[key]:
+            assets[key].append(value)
     for line in open(path, encoding="utf-8").read().splitlines():
         m = re.match(r"\s*(?:- )?(\w+): (\S+)$", line)
         if m:
@@ -34,27 +38,49 @@ def prefab_assets(path):
             add("ImageData", m[1])
     return assets
 
-def section_items(lines, section):
-    # the range of the section's list (its Common list for TextureData and AtlasData) and its items
-    start = lines.index(f"{section}:") + 1
-    if section in ("TextureData", "AtlasData"):
-        start = lines.index("  Common:", start) + 1
-        if lines[start - 1] == "  Common: []":
-            raise ValueError(f"{section}.Common is empty")
-    end = start
+def find_list(lines, section, sub):
+    # the line of the list's key and the range of its items
+    key = lines.index(f"{section}:")
+    if sub:
+        key = next(i for i in range(key + 1, len(lines)) if re.match(rf"  {sub}:( \[\])?$", lines[i]))
+    start = end = key + 1
     while end < len(lines) and re.match(r"\s*- ", lines[end]):
         end += 1
-    return start, end, [re.match(r"\s*- (\S+)", line)[1] for line in lines[start:end]]
+    return key, start, end
+
+def list_assets(path):
+    # every list of a list file: {(section, language or Common or None): items}
+    lines = open(path, encoding="utf-8").read().splitlines()
+    assets = {}
+    for i, line in enumerate(lines):
+        if line.rstrip(":") in SECTIONS:
+            section = line.rstrip(":")
+        m = re.match(r"  (\w+):", line)
+        key = (section, m[1]) if m else (section, None) if line.endswith(":") and line[:-1] in SECTIONS else None
+        if key:
+            _, start, end = find_list(lines, *key)
+            assets[key] = [re.match(r"\s*- (\S+)", l)[1] for l in lines[start:end]]
+    return assets
 
 text = open(sys.argv[2], encoding="utf-8").read()
 nl = "\r\n" if "\r\n" in text else "\n"
 lines = text.split(nl)
+wanted = prefab_assets(sys.argv[1])
+for source in sys.argv[4:]:
+    for key, values in list_assets(source).items():
+        if key[0] != "Animations":
+            wanted[key] = wanted.get(key, []) + [v for v in values if v not in wanted.get(key, [])]
 added = []
-for section, values in prefab_assets(sys.argv[1]).items():
-    start, end, items = section_items(lines, section)
-    indent = re.match(r"(\s*- )", lines[start])[1] if end > start else "- "
+for (section, sub), values in wanted.items():
+    key, start, end = find_list(lines, section, sub)
+    items = [re.match(r"\s*- (\S+)", line)[1] for line in lines[start:end]]
     new = [v for v in values if v not in items]
+    if not new:
+        continue
+    if lines[key].endswith(" []"):
+        lines[key] = lines[key][:-3]
+    indent = "  - " if sub else "- "
     lines[end:end] = [f"{indent}{v}" for v in new]
-    added += [f"{section}: {v}" for v in new]
+    added += [f"{section}{'.' + sub if sub else ''}: {v}" for v in new]
 open(sys.argv[3], "w", encoding="utf-8", newline="").write(nl.join(lines))
 print("\n".join(added) or "nothing to add")

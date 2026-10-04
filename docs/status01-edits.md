@@ -158,3 +158,18 @@ Script: `tools/scripts/add_summons.py`, from `ui/layouts/pause/summon/prefabs/su
 | `status01.list` | `Materials` `fonts/fot_skipstd_b_sdf_ds01`, `ImageData` `data/image/summoniconframe01`, `summoniconbase`, `summonbaseparamicons`, `arrow/arrow03` and `LanguageData` `data/language/ld_skipstd_b_sdf_ds01` appended (`tools/scripts/sync_list.py`) |
 
 The mod calls the game's `SetSummonInfo` on each slot with the equipped summon's id (`Hooks/CardWriter.cs`); it fills the slot and, through the two refs, both rows.
+
+## 2026-10-04 · Weapon panel
+
+Script: `tools/scripts/add_weapon.py`, from `ui/layouts/pause/equip/prefabs/equip01_info_weapon01.prfb`
+
+| Objects | Change |
+|---|---|
+| 1123 `bc_weapon` (new) | copy of `equip01_info_weapon01` object 0 with only its `WeaponInfo`, `Scale` 0.749, at the top of the cyan section; last child of 426 `loc_buildcard` |
+| 1124-1543 (new) | copies of the panel's objects 1-420: name and series, art, gauge, level, stats, weapon trait rows and wrightstone trait rows |
+| 1124 `root` | `Active: true` (from false) |
+| 0 `status01`, `CharaInfo.Weapon` | ref changed from 114's `WeaponInfo` to 1123's |
+| 109 `loc_chr_status02` | `Active: false`: the gear block's weapon row and the sigils |
+| `status01.list` | the panel's referenced textures, atlases, materials, animations, image data and language data appended, then the rest of `equip01_info_weapon01.list` except animations (`tools/scripts/sync_list.py`) |
+
+The page fill calls the game's `WeaponInfo` setter on the ref in `CharaInfo.Weapon` with the character's weapon, which fills the whole panel. The art's `WeaponIconSetter` shows only textures that are already loaded; the mod adds the card's weapon to the art that the game's `LoadWeaponParty` loader loads while the Character Details page is open (`Hooks/WeaponArtHooks.cs`).

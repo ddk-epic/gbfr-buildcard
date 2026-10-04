@@ -85,4 +85,7 @@ public class WeaponInfo : Component
     public List<UIObjectRef> _A06B2ED6 { get; set; }
     public List<UIObjectRef> Images { get; set; }
     public UIObjectRef SkillList { get; set; }
+    public UIObjectRef _24E49AB7 { get; set; }
+    public UIObjectRef RebuildWeaponInfo { get; set; }
+    public UIObjectRef _B47B9FCC { get; set; }
 }

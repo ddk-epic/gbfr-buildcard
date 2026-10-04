@@ -9,7 +9,8 @@ namespace gbfr.qol.buildcard.Hooks;
 
 // Writes the master traits board, the Over Mastery lines and the summons onto the card's objects after the game fills
 // the page: texts through TextHooks, Over Mastery rows through their LimitBonusInfo, summon slots (with their trait and
-// equip bonus rows) through their SummonInfo. The objects are found through their refs in CharaInfo.Powers.
+// equip bonus rows) through their SummonInfo. The objects are found through their refs in CharaInfo.Powers. Also sets
+// the weapon whose art WeaponArtHooks loads.
 public unsafe class CardWriter
 {
     private const short SummaryTextId = 462;      // bc_text01
@@ -47,6 +48,7 @@ public unsafe class CardWriter
     private static readonly int MasterTraitTextCount = 1 + StyleNames.Length * TextsPerStyle;
 
     private readonly TextHooks _text;
+    private readonly WeaponArtHooks _weaponArt;
     private readonly ILogger _logger;
     private readonly Dictionary<uint, Cell> _cells = LoadCells();
     private delegate* unmanaged<nint, byte, void> _setActive;
@@ -57,9 +59,10 @@ public unsafe class CardWriter
     private readonly nint _summonInfoVtable;
     private bool _loggedComponents;
 
-    public CardWriter(TextHooks text, ILogger logger)
+    public CardWriter(TextHooks text, WeaponArtHooks weaponArt, ILogger logger)
     {
         _text = text;
+        _weaponArt = weaponArt;
         _logger = logger;
         _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
         if (_limitBonusInfoVtable == 0)
@@ -103,6 +106,7 @@ public unsafe class CardWriter
         WriteMasterTraits(refs, chara);
         WriteOverMastery(refs, chara);
         WriteSummons(refs, chara);
+        _weaponArt.Show(chara);
     }
 
     private void WriteMasterTraits(Dictionary<short, nint> refs, nint chara)

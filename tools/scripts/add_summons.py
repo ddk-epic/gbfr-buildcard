@@ -5,7 +5,7 @@
 # so that setting the summon also fills both rows. CharaInfo.Powers references the slot objects.
 import sys
 from prefab import Prefab
-from card import PARENT, S, add_powers, card, copy_objects
+from card import PARENT, S, add_powers, card, copy_objects, keep_components
 
 p = Prefab(sys.argv[1])
 slot_source = Prefab(sys.argv[2])
@@ -27,18 +27,6 @@ COLUMN_GAP = 10
 SCALE = (SECTION_W - COLUMN_GAP) / 2 * S / ROW_W
 SLOT_W, SLOT_H = ROW_W * SCALE / S, ROW_H * SCALE / S  # sharecard pixels
 PAD_TOP = 4
-
-def keep_components(block, names):
-    # removes the components not in names from an object's lines
-    i = block.index("  Components:") + 1
-    out, keep = block[:i], True
-    while block[i].startswith("  - ") or block[i].startswith("    "):
-        if block[i].startswith("  - ComponentName: "):
-            keep = block[i][len("  - ComponentName: "):] in names
-        if keep:
-            out.append(block[i])
-        i += 1
-    return out + block[i:]
 
 def slot(first_id, name):
     # the KEEP objects, then both rows, with ids from first_id; returns the lines and the slot's and rows' ids

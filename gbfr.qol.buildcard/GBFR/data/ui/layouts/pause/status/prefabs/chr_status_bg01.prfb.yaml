@@ -1,0 +1,358 @@
+Objects:
+- Id: 0
+  Name: chr_status_bg01
+  Children:
+  - 1
+  Components:
+  - ComponentName: Highlight
+    Component:
+      Enable: false
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/pause/status/animations/chr_status_bg01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/pause/status/animations/chr_status_bg01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/pause/status/animations/chr_status_bg01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/pause/status/animations/chr_status_bg01_out02
+      - Name: 01_switch
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/pause/status/animations/chr_status_bg01_out03_r
+        - WriteDefault: true
+          AnimationPath: layouts/pause/status/animations/chr_status_bg01_out03_l
+        - WriteDefault: true
+          AnimationPath: layouts/pause/status/animations/chr_status_bg01_in03_r
+        - WriteDefault: true
+          AnimationPath: layouts/pause/status/animations/chr_status_bg01_in03_l
+      Enable: true
+  - ComponentName: ControllerStatusBg
+    Component:
+      _4198DC44:
+        ComponentName: ''
+        Index: -1
+        ObjectRefId: 4
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/pause/status/animations/chr_status_bg01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/pause/status/animations/chr_status_bg01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/pause/status/animations/chr_status_bg01_out02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/pause/status/animations/chr_status_bg01_in02
+        Skip: false
+      - LayerName: 01_switch
+        Clips:
+        - layouts/pause/status/animations/chr_status_bg01_out03_l
+        Skip: false
+      - LayerName: 01_switch
+        Clips:
+        - layouts/pause/status/animations/chr_status_bg01_in03_l
+        Skip: false
+      - LayerName: 01_switch
+        Clips:
+        - layouts/pause/status/animations/chr_status_bg01_out03_r
+        Skip: false
+      - LayerName: 01_switch
+        Clips:
+        - layouts/pause/status/animations/chr_status_bg01_in03_r
+        Skip: false
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1920, -1080
+  OffsetMax: 1920, 1080
+  SizeDelta: 3840, 2160
+- Id: 1
+  Name: root
+  Children:
+  - 2
+  Components:
+  - ComponentName: Gauss
+    Component:
+      Rate: 0
+      IsFullscreen: true
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 2
+  Name: loc_bg
+  Children:
+  - 3
+  - 5
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1920, -1080
+  OffsetMax: 1920, 1080
+  SizeDelta: 3840, 2160
+- Id: 3
+  Name: bg01
+  Children:
+  - 4
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base53
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 72.5, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 72.5
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1736, -809
+  OffsetMax: 1736, 954
+  SizeDelta: 3472, 1763
+- Id: 4
+  Name: bg02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/pause/pause_common/noatlastextures/ps_cmn_base_st01
+        SpriteName: ps_cmn_base_st01
+      Type: 0
+      MaterialPath: material/uidissolve
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: Dissolve
+    Component:
+      DissolveTexture:
+        TexturePath: layouts/pause/pause_common/noatlastextures/ps_cmn_mask_st01
+        SpriteName: ''
+      Cutoff: 0
+      AddColor1Enabled: false
+      AddColor1: 0, 0.11764706, 0.3490566, 1
+      BorderWidth1: 0
+      AddColor2Enabled: false
+      AddColor2: 0, 0.11493367, 0.3207547, 1
+      BorderWidth2: 0
+      TrailEnabled: true
+      TrailWidth: 0.1
+      RenderType: 0
+      Enable: true
+  Active: true
+  Position: -1684, 914, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 28, -28
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 28, -1852
+  OffsetMax: 1428, -28
+  SizeDelta: 1400, 1824
+- Id: 5
+  Name: loc_line
+  Children:
+  - 6
+  - 7
+  - 8
+  - 9
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 6
+  Name: line01_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1715, -1080, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 205, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 0
+  OffsetMin: 203, 0
+  OffsetMax: 207, 552
+  SizeDelta: 4, 552
+- Id: 7
+  Name: line01_02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1920, -867, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 213
+  AnchorMin: 0, 0
+  AnchorMax: 0, 0
+  OffsetMin: 0, 211
+  OffsetMax: 1600, 215
+  SizeDelta: 1600, 4
+- Id: 8
+  Name: line02_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1713, 1080, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: -207, 0
+  AnchorMin: 1, 1
+  AnchorMax: 1, 1
+  OffsetMin: -209, -400
+  OffsetMax: -205, 0
+  SizeDelta: 4, 400
+- Id: 9
+  Name: line02_02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1920, 1017, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, -63
+  AnchorMin: 1, 1
+  AnchorMax: 1, 1
+  OffsetMin: -1600, -65
+  OffsetMax: 0, -61
+  SizeDelta: 1600, 4

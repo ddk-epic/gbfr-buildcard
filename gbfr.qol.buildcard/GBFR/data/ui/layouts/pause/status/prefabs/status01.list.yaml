@@ -1,0 +1,126 @@
+TextureData:
+  Common:
+  - layouts/pause/top/noatlastextures/ps_top_mask02
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_mask_gauge01
+  - layouts/common/masterlevel/noatlastextures/cmn_ml_mask01
+  - layouts/common/masterlevel/noatlastextures/cmn_ml_mask02
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_line04
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_btn_eff_005
+  Eng: []
+  Jpn: []
+  Deu: []
+  Fra: []
+  Esp: []
+  Ita: []
+  Por: []
+  Kor: []
+  Cht: []
+  Chs: []
+AtlasData:
+  Common:
+  - atlas/common_window
+  - atlas/pause_pause_common
+  - atlas/common_icon_main
+  - atlas/common_icon_item
+  - atlas/common_masterlevel
+  - atlas/hud_linklevel
+  Eng:
+  - atlas/eng/common_icon_main
+  Jpn:
+  - atlas/jpn/common_icon_main
+  Deu:
+  - atlas/deu/common_icon_main
+  Fra:
+  - atlas/fra/common_icon_main
+  Esp:
+  - atlas/esp/common_icon_main
+  Ita:
+  - atlas/ita/common_icon_main
+  Por:
+  - atlas/por/common_icon_main
+  Kor:
+  - atlas/kor/common_icon_main
+  Cht:
+  - atlas/cht/common_icon_main
+  Chs:
+  - atlas/chs/common_icon_main
+Materials:
+- material/uidissolve
+- fonts/fot_skipstd_b_sdf_ol06
+- fonts/fot_skipstd_b_sdf_ol11
+- fonts/fot_tsukuoldminpro_r_sdf_ol11
+- fonts/fot_tsukuoldminpro_r_sdf_ol06
+- material/uialphaa
+- material/uiadd
+- fonts/fot_tsukuoldminpro_r_sdf_ol10
+- fonts/fot_tsukuoldminpro_r_sdf_ml02
+- fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+- fonts/fot_skipstd_b_sdf_ol13
+- fonts/fot_tsukuoldminpro_r_sdf_prm_hp01
+- fonts/fot_tsukuoldminpro_r_sdf_prm_atk01
+- fonts/fot_tsukuoldminpro_r_sdf_prm_cmn01
+- fonts/fot_tsukuoldminpro_r_sdf_ds01
+- fonts/fot_tsukuoldminpro_r_sdf/fot_tsukuoldminpro_r_sdf_material
+- fonts/fot_skipstd_b_sdf_glow_w01
+- fonts/fot_tsukuoldminpro_r_sdf_ds10
+- fonts/fot_tsukuoldminpro_r_sdf_glow_w01
+- material/uiaddalphaa
+Animations:
+- layouts/pause/status/animations/status01_in01
+- layouts/pause/status/animations/status01_out01
+- layouts/pause/status/animations/status01_out03_l
+- layouts/pause/status/animations/status01_in02
+- layouts/pause/status/animations/status01_out02
+- layouts/pause/status/animations/status01_in03_l
+- layouts/pause/status/animations/status01_out03_r
+- layouts/pause/status/animations/status01_in03_r
+- layouts/common/masterlevel/animations/masterlevel02_loop01
+- layouts/common/masterlevel/animations/masterlevel02_mb_in01
+- layouts/common/masterlevel/animations/masterlevel02_mb_out01
+- layouts/pause/status/animations/chr_status02_in02
+- layouts/pause/status/animations/chr_status02_out02
+- layouts/common/button_system/animations/button_system01_push
+- layouts/common/button_system/animations/button_system01_keep
+- layouts/common/button_system/animations/button_system01_deactive
+- layouts/common/button_system/animations/button_system01_loop01
+- layouts/common/icon_main/animations/icon_list01_in01
+- layouts/common/icon_main/animations/icon_list01_out01
+- layouts/common/icon_main/animations/icon_list01_in02
+- layouts/common/icon_main/animations/icon_list01_out02
+- layouts/common/icon_main/animations/icon_list01_loop01
+ImageData:
+- data/image/elementicon
+- data/image/crossplay/platformicon01
+- data/image/lvgauge
+- data/image/numberlv
+- data/image/masterleveleffect
+- data/image/masterbreaknum01l
+- data/image/preset/symbol1
+- data/image/elementframe
+- data/image/buttoneffect
+- data/image/keyeffect
+- data/image/button
+- data/image/updateicon
+LanguageData:
+- data/language/ld_skipstd_b_sdf_ol06
+- data/language/ld_skipstd_b_sdf_material
+- data/language/ld_skipstd_b_sdf_glow_w01
+- data/language/ld_skipstd_b_sdf_ol11
+- data/language/ld_tsukuoldminpro_r_sdf_ol11
+- data/language/ld_tsukuoldminpro_r_sdf_ol06
+- data/language/ld_tsukuoldminpro_r_sdf_ol10
+- data/language/ld_tsukuoldminpro_r_sdf_ml02
+- data/language/ld_skipstd_b_sdf_ol14
+- data/language/ld_skipstd_b_sdf_ol15
+- data/language/ld_skipstd_b_sdf_ol07
+- data/language/ld_skipstd_b_sdf_ol16
+- data/language/ld_skipstd_b_sdf_ol13
+- data/language/ld_skipstd_b_sdf_ol08
+- data/language/ld_skipstd_b_sdf_ol17
+- data/language/ld_tsukuoldminpro_r_sdf_prm_hp01
+- data/language/ld_tsukuoldminpro_r_sdf_prm_atk01
+- data/language/ld_tsukuoldminpro_r_sdf_prm_cmn01
+- data/language/ld_tsukuoldminpro_r_sdf_ds01
+- data/language/ld_tsukuoldminpro_r_sdf_glow_w01
+- data/language/ld_tsukuoldminpro_r_sdf_ds10
+_9029CEE4: []

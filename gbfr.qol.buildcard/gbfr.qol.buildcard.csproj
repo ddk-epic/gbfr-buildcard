@@ -60,14 +60,16 @@
     <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
   </ItemGroup>
 
-  <!-- UI overrides: GBFR/**/*.yaml are converted to the game's binary formats in the mod's GBFR folder. -->
+  <!-- UI overrides: GBFR/**/*.prfb.yaml and *.list.yaml are converted to the game's binary formats in the mod's GBFR
+       folder, named by Binary. -->
   <PropertyGroup>
     <UiToolDir>$(MSBuildThisFileDirectory)..\tools\gbfr.uitools\</UiToolDir>
     <UiToolExe>$(UiToolDir)bin\Release\net10.0\gbfr.uitools.exe</UiToolExe>
   </PropertyGroup>
 
   <ItemGroup>
-    <UiSource Include="GBFR\**\*.yaml" />
+    <UiSource Include="GBFR\**\*.prfb.yaml" Binary="%(Filename)" />
+    <UiSource Include="GBFR\**\*.list.yaml" Binary="%(Filename).listb" />
     <None Remove="@(UiSource)" />
   </ItemGroup>
 
@@ -77,11 +79,11 @@
 
   <Target Name="ConvertUiSources" AfterTargets="BuildUiTool" Condition="'@(UiSource)' != ''"
           Inputs="@(UiSource);$(UiToolExe)"
-          Outputs="@(UiSource->'$(OutDir)GBFR\%(RecursiveDir)%(Filename)')">
+          Outputs="@(UiSource->'$(OutDir)GBFR\%(RecursiveDir)%(Binary)')">
     <MakeDir Directories="@(UiSource->'$(OutDir)GBFR\%(RecursiveDir)')" />
-    <Delete Files="$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Filename)" />
-    <Exec Command="&quot;$(UiToolExe)&quot; b-convert -i &quot;%(UiSource.FullPath)&quot; -o &quot;$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Filename)&quot;" StandardOutputImportance="low" />
-    <Error Condition="!Exists('$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Filename)')"
+    <Delete Files="$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Binary)" />
+    <Exec Command="&quot;$(UiToolExe)&quot; b-convert -i &quot;%(UiSource.FullPath)&quot; -o &quot;$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Binary)&quot;" StandardOutputImportance="low" />
+    <Error Condition="!Exists('$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Binary)')"
            Text="Converting %(UiSource.Identity) failed; run the tool on it for the error." />
   </Target>
 

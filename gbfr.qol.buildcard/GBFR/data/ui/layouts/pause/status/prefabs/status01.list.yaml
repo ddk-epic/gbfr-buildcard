@@ -186,6 +186,11 @@ Animations:
 - layouts/pause/pause_common/animations/ps_cmn_rebuild_bar01_loop01
 - layouts/common/icon_main/animations/icon_tri01_loop
 - layouts/common/icon_main/animations/icon_tri01_loop02
+- layouts/common/masterlevel/animations/masterlevel01_loop01
+- layouts/common/masterlevel/animations/masterlevel01_mb_in01
+- layouts/common/masterlevel/animations/masterlevel01_mb_out01
+- layouts/common/masterlevel/animations/masterlevel01_mb_in02
+- layouts/common/masterlevel/animations/masterlevel01_mb_out02
 ImageData:
 - data/image/elementicon
 - data/image/crossplay/platformicon01
@@ -211,6 +216,10 @@ ImageData:
 - data/image/limitstar
 - data/image/shop/shoprebuildswitchimage
 - data/image/plusimages
+- data/image/masterbreakhigheffect01
+- data/image/masterlevel01base
+- data/image/masterlevel01base_small
+- data/image/masterbreaknum01
 LanguageData:
 - data/language/ld_skipstd_b_sdf_ol06
 - data/language/ld_skipstd_b_sdf_material
@@ -241,4 +250,5 @@ LanguageData:
 - data/language/ld_skipstd_b_sdf_ol09
 - data/language/ld_tsukuoldminpro_r_sdf_ol07
 - data/language/ld_tsukuoldminpro_r_sdf_ol09
+- data/language/ld_tsukuoldminpro_r_sdf_ol08
 _9029CEE4: []

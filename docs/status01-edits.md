@@ -199,3 +199,23 @@ Script: `tools/scripts/mask_portrait.py`
 | `status01.list` | `ps_cmn_mask_chara02` appended (`tools/scripts/sync_list.py`) |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match. The art is cut at the card's left and top edges and fades out over its bottom edge.
+
+## 2026-10-04 · Gear column from the gear screen
+
+Script: `tools/scripts/stack_gear.py`, from `ui/layouts/pause/equip/prefabs/equip01_info01.prfb` (Weapon section), `equip01_info_weapon01.prfb` (trait rows) and `equip01_info02.prfb` (Sigils section)
+
+| Objects | Change |
+|---|---|
+| 1123-1543 (the equip screen's weapon panel) | removed |
+| 1123 `bc_weapon` (new) | copy of `equip01_info01` object 0 with only its `WeaponInfo`, `Scale` 0.705, at the top of the cyan section; last child of 426 `loc_buildcard` |
+| 1124-1396 (new) | copies of `equip01_info01`'s objects 1-273: title, name, art, level, gauge, stats |
+| 1124 `root` | `Active: true` (from false); 1397, 1483, 1540 and 1542 appended to `Children` |
+| 1248 `loc_max01` | `Active: true` (from false): the max level after the level |
+| 1278 `loc_exp01` | `Active: false` (from true): the exp bar |
+| 1397-1539 (new) | copies of `equip01_info_weapon01`'s objects 278-420: 1397 `loc_skill01` (weapon trait rows) and 1483 `loc_skill02` (imbued trait title and rows), below the stat row |
+| 1540-1699 (new) | copies of `equip01_info02`'s objects 3-162: 1540 `ttl01` (Sigils title) and 1542 `loc_gene01` with the 12 sigil rows (`GemInfo`) 1544, 1557, ..., 1687, below the imbued traits |
+| 1123's `WeaponInfo` | `Skills`, `PendulumSkillObj`, `PendulumSkills` and `PendulumNames` added, pointing at the copied trait rows as in `equip01_info_weapon01` |
+| 0 `status01`, `CharaInfo.Gem` | refs changed from 143, 154, ..., 264 (the gear block's sigil rows) to 1544, 1557, ..., 1687 |
+| `status01.list` | `equip01_info01.list` and `equip01_info02.list` merged, except animations (`tools/scripts/sync_list.py`) |
+
+The page fill calls the `WeaponInfo` setter on 1123, which fills the Weapon section and the trait rows, and the `GemInfo` setter on each sigil row. 109 `loc_chr_status02` stays hidden. `ItemLevel` reads `HideExp` but doesn't act on it; the gear screen's controller hides the exp bar, so 1278 is hidden in the prefab.

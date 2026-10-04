@@ -1089,15 +1089,15 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: -997, 11, 0
+  Position: -1310.156, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 715, 11
+  AnchorPoint: 401.844, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -728, -1455
-  OffsetMax: 2158, 1477
+  OffsetMin: -1041.156, -1466
+  OffsetMax: 1844.844, 1466
   SizeDelta: 2886, 2932
 - Id: 4
   Name: chr_img01
@@ -1150,7 +1150,7 @@ Objects:
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.788, 0.788, 1
   Pivot: 0.5, 0.5
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
@@ -1183,7 +1183,7 @@ Objects:
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.788, 0.788, 1
   Pivot: 0.5, 0.5
   AnchorPoint: 1443, -1466
   AnchorMin: 0, 1
@@ -1278,15 +1278,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -1692.978, -186.095, 0
+  Position: -1360.089, -181.672, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0, 0.5
-  AnchorPoint: 19.022, 755.905
+  Scale: 0.7, 0.7, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 351.911, 760.328
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: 19.022, 719.905
-  OffsetMax: 1303.032, 791.905
+  OffsetMin: -290.094, 724.328
+  OffsetMax: 993.916, 796.328
   SizeDelta: 1284.01, 72
 - Id: 8
   Name: loc_name01_icon
@@ -1659,15 +1659,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 151.022, -77.75, 0
+  Position: 97.727, -76.575, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 151.022, -1019.75
+  AnchorPoint: 97.727, -1018.575
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 59.022, -1111.75
-  OffsetMax: 243.022, -927.75
+  OffsetMin: 5.727, -1110.575
+  OffsetMax: 189.727, -926.575
   SizeDelta: 184, 184
 - Id: 18
   Name: pwr_icon01
@@ -1879,15 +1879,15 @@ Objects:
       HideExp: false
       Enable: true
   Active: true
-  Position: 192, 695.978, 0
+  Position: 119.483, 737.111, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 192, -246.022
+  AnchorPoint: 119.483, -204.889
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 32, -354.022
-  OffsetMax: 352, -138.022
+  OffsetMin: -40.517, -312.889
+  OffsetMax: 279.483, -96.889
   SizeDelta: 320, 216
 - Id: 22
   Name: root
@@ -2829,15 +2829,15 @@ Objects:
   - 46
   - 71
   Active: false
-  Position: 396, 731.978, 0
+  Position: 260.129, 760.889, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -272, 731.978
+  AnchorPoint: -407.871, 760.889
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -372, 631.978
-  OffsetMax: -172, 831.978
+  OffsetMin: -507.871, 660.889
+  OffsetMax: -307.871, 860.889
   SizeDelta: 200, 200
 - Id: 46
   Name: masterlevel02

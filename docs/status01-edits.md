@@ -173,3 +173,17 @@ Script: `tools/scripts/add_weapon.py`, from `ui/layouts/pause/equip/prefabs/equi
 | `status01.list` | the panel's referenced textures, atlases, materials, animations, image data and language data appended, then the rest of `equip01_info_weapon01.list` except animations (`tools/scripts/sync_list.py`) |
 
 The page fill calls the game's `WeaponInfo` setter on the ref in `CharaInfo.Weapon` with the character's weapon, which fills the whole panel. The art's `WeaponIconSetter` shows only textures that are already loaded; the mod adds the card's weapon to the art that the game's `LoadWeaponParty` loader loads while the Character Details page is open (`Hooks/WeaponArtHooks.cs`).
+
+## 2026-10-04 · Portrait and badges scaled
+
+Scripts: `tools/scripts/scale_portrait.py`, then `tools/scripts/scale_badges.py`
+
+| Objects | Change |
+|---|---|
+| 3 `loc_chr` (portrait) | centred on sharecard's art; `Position` -1310.156, 0 |
+| 4 `chr_img01`, 5 `chr_img01_mask` | `Scale` 0.788: the art 135% of the card's height, as on sharecard |
+| 21 `level01`, 45 `loc_ml_level01` | `Scale` 0.7; diamonds at sharecard's places; `Position` 119.483, 737.111 and 260.129, 760.889 |
+| 17 `power01` | `Scale` 0.7; `Position` 97.727, -76.575 |
+| 7 `loc_name01` | `Scale` 0.7; `Pivot` 0.5, 0.5, centred in the first column; `Position` -1360.089, -181.672 |
+
+`AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and `Pivot`.

@@ -1,16 +1,22 @@
+using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 
+using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Mod.Interfaces;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Writes the master traits board onto the card's Text objects after the game fills the page. The Text objects are
-// found through their refs in CharaInfo.Powers.
+// Writes the master traits board and the Over Mastery lines onto the card's objects after the game fills the page:
+// texts through TextHooks, Over Mastery rows through their LimitBonusInfo. The objects are found through their refs in
+// CharaInfo.Powers.
 public unsafe class CardWriter
 {
     private const short SummaryTextId = 462;      // bc_text01
     private const short MasterTraitTextsId = 557;  // bc_mt_heading, see tools/scripts/add_master_traits.py
+    private const short OverMasteryTextId = 769;  // bc_om_heading, see tools/scripts/add_over_mastery.py
+    private const short OverMasteryRowsId = 770;  // bc_om_0
+    private const int OverMasteryRowObjects = 32;  // objects per Over Mastery row
     private const int Powers = 0x3D0;
     private const int MaxRefs = 1024;
     private const int WrapLength = 19;
@@ -19,6 +25,11 @@ public unsafe class CardWriter
     private const int Entries = 0x170;
     private const int EntriesEnd = 0x58B8;
     private const int EntrySize = 0x38;
+
+    // chara: Over Mastery lines of 0x10 bytes, [limit_bonus_param key, 1 << (level - 1), unknown, float value]
+    private const int OverMastery = 0x58B8;
+    private const int OverMasteryLineSize = 0x10;
+    private const int OverMasteryLines = 4;
 
     private static readonly int[] Slots = [4, 8, 8, 10];
     private static readonly int[] Budgets = [10, 10, 10, 20];
@@ -30,11 +41,28 @@ public unsafe class CardWriter
     private readonly TextHooks _text;
     private readonly ILogger _logger;
     private readonly Dictionary<uint, Cell> _cells = LoadCells();
+    private delegate* unmanaged<nint, byte, void> _setActive;
+    private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
+    private readonly nint _exeBase = Process.GetCurrentProcess().MainModule!.BaseAddress;
+    private readonly nint _limitBonusInfoVtable;
+    private bool _loggedComponents;
 
     public CardWriter(TextHooks text, ILogger logger)
     {
         _text = text;
         _logger = logger;
+        _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
+        if (_limitBonusInfoVtable == 0)
+            _logger.WriteLine("[gbfr.qol.buildcard] LimitBonusInfo vtable not found", Color.Red);
+    }
+
+    // SetObjectActive(object, active), SetOverMasteryLine(LimitBonusInfo component, Over Mastery line)
+    public void Init(IScanManager scanManager, string signatureGroup)
+    {
+        scanManager.AddScan("SetObjectActive", signatureGroup, address =>
+            _setActive = (delegate* unmanaged<nint, byte, void>)(nint)address);
+        scanManager.AddScan("SetOverMasteryLine", signatureGroup, address =>
+            _setOverMasteryLine = (delegate* unmanaged<nint, nint, void>)(nint)address);
     }
 
     // Logs exceptions instead of letting them reach the game's frames.
@@ -52,10 +80,16 @@ public unsafe class CardWriter
 
     private void Write(nint charaInfo, nint chara)
     {
-        var refs = FindRefs(charaInfo, SummaryTextId, (short)(MasterTraitTextsId + MasterTraitTextCount - 1));
-        if (refs.Count != 1 + MasterTraitTextCount)
+        var refs = FindRefs(charaInfo, SummaryTextId, (short)(OverMasteryRowsId + (OverMasteryLines - 1) * OverMasteryRowObjects));
+        if (refs.Count != 1 + MasterTraitTextCount + 1 + OverMasteryLines)
             return;
 
+        WriteMasterTraits(refs, chara);
+        WriteOverMastery(refs, chara);
+    }
+
+    private void WriteMasterTraits(Dictionary<short, nint> refs, nint chara)
+    {
         var titles = new string[StyleNames.Length];
         var perks = new int[StyleNames.Length];
         var spent = new int[Slots.Length];
@@ -102,10 +136,64 @@ public unsafe class CardWriter
         }
     }
 
+    // Sets each row's LimitBonusInfo to its Over Mastery line, which fills the icon, name and value. Rows of lines
+    // with a value of 0 are hidden, as on the game's Over Mastery page.
+    private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
+    {
+        Set(refs, OverMasteryTextId, "OVER MASTERY");
+        for (int i = 0; i < OverMasteryLines; i++)
+        {
+            nint line = chara + OverMastery + i * OverMasteryLineSize;
+            int id = OverMasteryRowsId + i * OverMasteryRowObjects;
+            bool shown = *(float*)(line + 0xC) != 0;
+            if (shown)
+                SetOverMasteryLine(refs, id, line);
+            SetActive(refs, id, shown);
+        }
+    }
+
+    private void SetOverMasteryLine(Dictionary<short, nint> refs, int id, nint line)
+    {
+        if (_setOverMasteryLine == null || _limitBonusInfoVtable == 0 || !refs.TryGetValue((short)id, out nint r))
+            return;
+        nint limitBonusInfo = FindComponent(*(nint*)(r + 8), _limitBonusInfoVtable);
+        if (limitBonusInfo == 0)
+            LogComponentsOnce(*(nint*)(r + 8), "LimitBonusInfo", _limitBonusInfoVtable);
+        else
+            _setOverMasteryLine(limitBonusInfo, line);
+    }
+
+    // An object's components are a begin/end vector of 0x20-byte entries at +0x28, with the component at +0x18.
+    // Returns the first component with the given vtable, or 0.
+    private static nint FindComponent(nint obj, nint vtable)
+    {
+        for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
+        {
+            nint component = *(nint*)(entry + 0x18);
+            if (component != 0 && *(nint*)component == vtable)
+                return component;
+        }
+        return 0;
+    }
+
+    private void LogComponentsOnce(nint obj, string name, nint vtable)
+    {
+        if (_loggedComponents)
+            return;
+        _loggedComponents = true;
+        var vtables = new List<string>();
+        for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
+        {
+            nint component = *(nint*)(entry + 0x18);
+            vtables.Add(component == 0 ? "null" : $"exe+{*(nint*)component - _exeBase:X}");
+        }
+        _logger.WriteLine($"[gbfr.qol.buildcard] No {name} on a card object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
+    }
+
     private void SetCell(Dictionary<short, nint> refs, int id, Cell? cell)
     {
-        if (refs.TryGetValue((short)id, out nint text))
-            _text.Set(text, cell is { } c ? Wrap(c.Label) : "", cell?.TextHash ?? TextHooks.NoHash);
+        if (refs.TryGetValue((short)id, out nint r))
+            _text.Set(*(nint*)(r + 0x10), cell is { } c ? Wrap(c.Label) : "", cell?.TextHash ?? TextHooks.NoHash);
     }
 
     // Breaks a label of 19 characters or more into two lines at the space nearest its middle, counting a button
@@ -125,12 +213,18 @@ public unsafe class CardWriter
 
     private void Set(Dictionary<short, nint> refs, int id, string value)
     {
-        if (refs.TryGetValue((short)id, out nint text))
-            _text.Set(text, value);
+        if (refs.TryGetValue((short)id, out nint r))
+            _text.Set(*(nint*)(r + 0x10), value);
+    }
+
+    private void SetActive(Dictionary<short, nint> refs, int id, bool active)
+    {
+        if (_setActive != null && refs.TryGetValue((short)id, out nint r))
+            _setActive(*(nint*)(r + 8), active ? (byte)1 : (byte)0);
     }
 
     // CharaInfo.Powers is a begin/end vector of 0x20-byte refs: vtable, object at +8, component at +0x10, component
-    // name hash at +0x18, YAML ObjectRefId at +0x1E. Returns the components of the refs with ids in [firstId, lastId].
+    // name hash at +0x18, YAML ObjectRefId at +0x1E. Returns the refs with ids in [firstId, lastId].
     private static Dictionary<short, nint> FindRefs(nint charaInfo, short firstId, short lastId)
     {
         var found = new Dictionary<short, nint>();
@@ -143,7 +237,7 @@ public unsafe class CardWriter
         {
             short id = *(short*)(r + 0x1E);
             if (id >= firstId && id <= lastId)
-                found[id] = *(nint*)(r + 0x10);
+                found[id] = r;
         }
         return found;
     }

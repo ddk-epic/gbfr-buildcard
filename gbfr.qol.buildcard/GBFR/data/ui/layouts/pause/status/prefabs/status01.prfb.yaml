@@ -812,6 +812,21 @@ Objects:
       - ComponentName: Text
         Index: 0
         ObjectRefId: 767
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 769
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 770
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 802
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 834
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 866
       Ability:
       - ComponentName: AbilityInfo
         Index: 0
@@ -21336,6 +21351,7 @@ Objects:
   - 457
   - 462
   - 463
+  - 768
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -35567,3 +35583,4435 @@ Objects:
   OffsetMin: 1413.985, -451.778
   OffsetMax: 1663.255, -397.089
   SizeDelta: 249.27, 54.689
+- Id: 768
+  Name: bc_om
+  Children:
+  - 769
+  - 770
+  - 802
+  - 834
+  - 866
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -856
+  OffsetMax: 1712, 856
+  SizeDelta: 3424, 1712
+- Id: 769
+  Name: bc_om_heading
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: 'OVER MASTERY'
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 30
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Eng
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  Active: true
+  Position: -61.822, -506.467, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -61.822, -506.467
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -61.822, -554.023
+  OffsetMax: 508.845, -506.467
+  SizeDelta: 570.667, 47.556
+- Id: 770
+  Name: bc_om_0
+  Children:
+  - 771
+  Components:
+  - ComponentName: LimitBonusInfo
+    Component:
+      MeditationIcons:
+      - ComponentName: ImageMultiSetter
+        Index: 0
+        ObjectRefId: 774
+      MeditationStars:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 783
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 785
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 787
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 789
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 791
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 793
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 795
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 797
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 799
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 801
+      Name:
+        ComponentName: Text
+        Index: 0
+        ObjectRefId: 776
+      EffectValText:
+        ComponentName: Text
+        Index: 0
+        ObjectRefId: 779
+      PercentObj:
+        ComponentName: ''
+        Index: -1
+        ObjectRefId: 780
+      Enable: true
+  Active: true
+  Position: 216.432, -611.089, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.567, 0.567, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 216.432, -611.089
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -283.568, -734.089
+  OffsetMax: 716.432, -488.089
+  SizeDelta: 1000, 246
+- Id: 771
+  Name: root
+  Children:
+  - 772
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 772
+  Name: loc_list01
+  Children:
+  - 773
+  - 774
+  - 775
+  - 781
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 773
+  Name: line01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.07058824, 0.38039216, 0.6666667, 0.5019608
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, -123, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0
+  AnchorMax: 0.5, 0
+  OffsetMin: -500, 0
+  OffsetMax: 500, 2
+  SizeDelta: 1000, 2
+- Id: 774
+  Name: icon01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_lb/noatlastextures/cmn_iclb_s_dummy
+        SpriteName: 325029AB
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageMultiSetter
+    Component:
+      ImageDataPaths:
+      - data/image/meditationicons
+      - data/image/meditationlatters
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 774
+      Enable: true
+  Active: true
+  Position: -482, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 18, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 18, -44
+  OffsetMax: 106, 44
+  SizeDelta: 88, 88
+- Id: 775
+  Name: loc_text01
+  Children:
+  - 776
+  - 777
+  - 779
+  - 780
+  Components:
+  - ComponentName: HorizontalLayoutGroup
+    Component:
+      Padding: 0, 0, 0, 0
+      Spacing: 0
+      ChildAlignment: 3
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  Active: true
+  Position: -384, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 116, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 116, -20
+  OffsetMax: 850, 20
+  SizeDelta: 734, 40
+- Id: 776
+  Name: text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 40
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -44
+  OffsetMax: 600.01, 4
+  SizeDelta: 600.01, 48
+- Id: 777
+  Name: loc_icon_plus01
+  Children:
+  - 778
+  Active: true
+  Position: 604.01, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 604.01, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 604.01, -38
+  OffsetMax: 644.01, -2
+  SizeDelta: 40, 36
+- Id: 778
+  Name: icon_plus01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.196, 0.373, 0.49, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_plus01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: -4, 0
+  AnchorMin: 1, 0.5
+  AnchorMax: 1, 0.5
+  OffsetMin: -24, -10
+  OffsetMax: -4, 10
+  SizeDelta: 20, 20
+- Id: 779
+  Name: num01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_tsukuoldminpro_r_sdf_material
+      Overwrites:
+      - Language: Eng
+        EnableFS: true
+        FontSize: 40
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: -2, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Kor
+        EnableFS: true
+        FontSize: 44
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 2
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_tsukuoldminpro_r_sdf
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf/fot_tsukuoldminpro_r_sdf_material
+      FontSize: 48
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 3
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: -2
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 736.64, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 736.64, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 736.64, -44
+  OffsetMax: 829.27, 4
+  SizeDelta: 92.63, 48
+- Id: 780
+  Name: percent01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Chs
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 2, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Cht
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 2, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Kor
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, -1.5, 0, 0
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_PAR
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 40
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 514
+      Enable: true
+  Active: false
+  Position: 788.64, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 788.64, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 740.64, -44
+  OffsetMax: 788.64, 4
+  SizeDelta: 48, 48
+- Id: 781
+  Name: loc_star01
+  Children:
+  - 782
+  - 784
+  - 786
+  - 788
+  - 790
+  - 792
+  - 794
+  - 796
+  - 798
+  - 800
+  Active: false
+  Position: -388, 34, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 112, 34
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 112, 14
+  OffsetMax: 522, 54
+  SizeDelta: 410, 40
+- Id: 782
+  Name: star_base01
+  Children:
+  - 783
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 29, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -176, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -184, -8
+  OffsetMax: -168, 8
+  SizeDelta: 16, 16
+- Id: 783
+  Name: star01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 784
+  Name: star_base02
+  Children:
+  - 785
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 73, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -132, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -140, -8
+  OffsetMax: -124, 8
+  SizeDelta: 16, 16
+- Id: 785
+  Name: star02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 786
+  Name: star_base03
+  Children:
+  - 787
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 117, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -88, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -96, -8
+  OffsetMax: -80, 8
+  SizeDelta: 16, 16
+- Id: 787
+  Name: star03
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 788
+  Name: star_base04
+  Children:
+  - 789
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 161, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -44, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -52, -8
+  OffsetMax: -36, 8
+  SizeDelta: 16, 16
+- Id: 789
+  Name: star04
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 790
+  Name: star_base05
+  Children:
+  - 791
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 205, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -8, -8
+  OffsetMax: 8, 8
+  SizeDelta: 16, 16
+- Id: 791
+  Name: star05
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 792
+  Name: star_base06
+  Children:
+  - 793
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 249, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 44, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 36, -8
+  OffsetMax: 52, 8
+  SizeDelta: 16, 16
+- Id: 793
+  Name: star06
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 794
+  Name: star_base07
+  Children:
+  - 795
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 293, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 88, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 80, -8
+  OffsetMax: 96, 8
+  SizeDelta: 16, 16
+- Id: 795
+  Name: star07
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 796
+  Name: star_base08
+  Children:
+  - 797
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 337, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 132, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 124, -8
+  OffsetMax: 140, 8
+  SizeDelta: 16, 16
+- Id: 797
+  Name: star08
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 798
+  Name: star_base09
+  Children:
+  - 799
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 381, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 176, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 168, -8
+  OffsetMax: 184, 8
+  SizeDelta: 16, 16
+- Id: 799
+  Name: star09
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 800
+  Name: star_base10
+  Children:
+  - 801
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 425, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 220, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 212, -8
+  OffsetMax: 228, 8
+  SizeDelta: 16, 16
+- Id: 801
+  Name: star10
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 802
+  Name: bc_om_1
+  Children:
+  - 803
+  Components:
+  - ComponentName: LimitBonusInfo
+    Component:
+      MeditationIcons:
+      - ComponentName: ImageMultiSetter
+        Index: 0
+        ObjectRefId: 806
+      MeditationStars:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 815
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 817
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 819
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 821
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 823
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 825
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 827
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 829
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 831
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 833
+      Name:
+        ComponentName: Text
+        Index: 0
+        ObjectRefId: 808
+      EffectValText:
+        ComponentName: Text
+        Index: 0
+        ObjectRefId: 811
+      PercentObj:
+        ComponentName: ''
+        Index: -1
+        ObjectRefId: 812
+      Enable: true
+  Active: true
+  Position: 216.432, -658.644, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.567, 0.567, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 216.432, -658.644
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -283.568, -781.644
+  OffsetMax: 716.432, -535.644
+  SizeDelta: 1000, 246
+- Id: 803
+  Name: root
+  Children:
+  - 804
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 804
+  Name: loc_list01
+  Children:
+  - 805
+  - 806
+  - 807
+  - 813
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 805
+  Name: line01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.07058824, 0.38039216, 0.6666667, 0.5019608
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, -123, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0
+  AnchorMax: 0.5, 0
+  OffsetMin: -500, 0
+  OffsetMax: 500, 2
+  SizeDelta: 1000, 2
+- Id: 806
+  Name: icon01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_lb/noatlastextures/cmn_iclb_s_dummy
+        SpriteName: 325029AB
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageMultiSetter
+    Component:
+      ImageDataPaths:
+      - data/image/meditationicons
+      - data/image/meditationlatters
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 806
+      Enable: true
+  Active: true
+  Position: -482, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 18, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 18, -44
+  OffsetMax: 106, 44
+  SizeDelta: 88, 88
+- Id: 807
+  Name: loc_text01
+  Children:
+  - 808
+  - 809
+  - 811
+  - 812
+  Components:
+  - ComponentName: HorizontalLayoutGroup
+    Component:
+      Padding: 0, 0, 0, 0
+      Spacing: 0
+      ChildAlignment: 3
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  Active: true
+  Position: -384, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 116, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 116, -20
+  OffsetMax: 850, 20
+  SizeDelta: 734, 40
+- Id: 808
+  Name: text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 40
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -44
+  OffsetMax: 600.01, 4
+  SizeDelta: 600.01, 48
+- Id: 809
+  Name: loc_icon_plus01
+  Children:
+  - 810
+  Active: true
+  Position: 604.01, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 604.01, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 604.01, -38
+  OffsetMax: 644.01, -2
+  SizeDelta: 40, 36
+- Id: 810
+  Name: icon_plus01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.196, 0.373, 0.49, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_plus01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: -4, 0
+  AnchorMin: 1, 0.5
+  AnchorMax: 1, 0.5
+  OffsetMin: -24, -10
+  OffsetMax: -4, 10
+  SizeDelta: 20, 20
+- Id: 811
+  Name: num01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_tsukuoldminpro_r_sdf_material
+      Overwrites:
+      - Language: Eng
+        EnableFS: true
+        FontSize: 40
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: -2, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Kor
+        EnableFS: true
+        FontSize: 44
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 2
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_tsukuoldminpro_r_sdf
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf/fot_tsukuoldminpro_r_sdf_material
+      FontSize: 48
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 3
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: -2
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 736.64, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 736.64, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 736.64, -44
+  OffsetMax: 829.27, 4
+  SizeDelta: 92.63, 48
+- Id: 812
+  Name: percent01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Chs
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 2, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Cht
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 2, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Kor
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, -1.5, 0, 0
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_PAR
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 40
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 514
+      Enable: true
+  Active: false
+  Position: 788.64, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 788.64, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 740.64, -44
+  OffsetMax: 788.64, 4
+  SizeDelta: 48, 48
+- Id: 813
+  Name: loc_star01
+  Children:
+  - 814
+  - 816
+  - 818
+  - 820
+  - 822
+  - 824
+  - 826
+  - 828
+  - 830
+  - 832
+  Active: false
+  Position: -388, 34, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 112, 34
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 112, 14
+  OffsetMax: 522, 54
+  SizeDelta: 410, 40
+- Id: 814
+  Name: star_base01
+  Children:
+  - 815
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 29, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -176, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -184, -8
+  OffsetMax: -168, 8
+  SizeDelta: 16, 16
+- Id: 815
+  Name: star01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 816
+  Name: star_base02
+  Children:
+  - 817
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 73, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -132, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -140, -8
+  OffsetMax: -124, 8
+  SizeDelta: 16, 16
+- Id: 817
+  Name: star02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 818
+  Name: star_base03
+  Children:
+  - 819
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 117, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -88, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -96, -8
+  OffsetMax: -80, 8
+  SizeDelta: 16, 16
+- Id: 819
+  Name: star03
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 820
+  Name: star_base04
+  Children:
+  - 821
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 161, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -44, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -52, -8
+  OffsetMax: -36, 8
+  SizeDelta: 16, 16
+- Id: 821
+  Name: star04
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 822
+  Name: star_base05
+  Children:
+  - 823
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 205, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -8, -8
+  OffsetMax: 8, 8
+  SizeDelta: 16, 16
+- Id: 823
+  Name: star05
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 824
+  Name: star_base06
+  Children:
+  - 825
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 249, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 44, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 36, -8
+  OffsetMax: 52, 8
+  SizeDelta: 16, 16
+- Id: 825
+  Name: star06
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 826
+  Name: star_base07
+  Children:
+  - 827
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 293, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 88, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 80, -8
+  OffsetMax: 96, 8
+  SizeDelta: 16, 16
+- Id: 827
+  Name: star07
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 828
+  Name: star_base08
+  Children:
+  - 829
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 337, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 132, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 124, -8
+  OffsetMax: 140, 8
+  SizeDelta: 16, 16
+- Id: 829
+  Name: star08
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 830
+  Name: star_base09
+  Children:
+  - 831
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 381, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 176, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 168, -8
+  OffsetMax: 184, 8
+  SizeDelta: 16, 16
+- Id: 831
+  Name: star09
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 832
+  Name: star_base10
+  Children:
+  - 833
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 425, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 220, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 212, -8
+  OffsetMax: 228, 8
+  SizeDelta: 16, 16
+- Id: 833
+  Name: star10
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 834
+  Name: bc_om_2
+  Children:
+  - 835
+  Components:
+  - ComponentName: LimitBonusInfo
+    Component:
+      MeditationIcons:
+      - ComponentName: ImageMultiSetter
+        Index: 0
+        ObjectRefId: 838
+      MeditationStars:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 847
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 849
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 851
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 853
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 855
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 857
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 859
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 861
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 863
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 865
+      Name:
+        ComponentName: Text
+        Index: 0
+        ObjectRefId: 840
+      EffectValText:
+        ComponentName: Text
+        Index: 0
+        ObjectRefId: 843
+      PercentObj:
+        ComponentName: ''
+        Index: -1
+        ObjectRefId: 844
+      Enable: true
+  Active: true
+  Position: 216.432, -706.2, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.567, 0.567, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 216.432, -706.2
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -283.568, -829.2
+  OffsetMax: 716.432, -583.2
+  SizeDelta: 1000, 246
+- Id: 835
+  Name: root
+  Children:
+  - 836
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 836
+  Name: loc_list01
+  Children:
+  - 837
+  - 838
+  - 839
+  - 845
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 837
+  Name: line01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.07058824, 0.38039216, 0.6666667, 0.5019608
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, -123, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0
+  AnchorMax: 0.5, 0
+  OffsetMin: -500, 0
+  OffsetMax: 500, 2
+  SizeDelta: 1000, 2
+- Id: 838
+  Name: icon01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_lb/noatlastextures/cmn_iclb_s_dummy
+        SpriteName: 325029AB
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageMultiSetter
+    Component:
+      ImageDataPaths:
+      - data/image/meditationicons
+      - data/image/meditationlatters
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 838
+      Enable: true
+  Active: true
+  Position: -482, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 18, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 18, -44
+  OffsetMax: 106, 44
+  SizeDelta: 88, 88
+- Id: 839
+  Name: loc_text01
+  Children:
+  - 840
+  - 841
+  - 843
+  - 844
+  Components:
+  - ComponentName: HorizontalLayoutGroup
+    Component:
+      Padding: 0, 0, 0, 0
+      Spacing: 0
+      ChildAlignment: 3
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  Active: true
+  Position: -384, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 116, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 116, -20
+  OffsetMax: 850, 20
+  SizeDelta: 734, 40
+- Id: 840
+  Name: text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 40
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -44
+  OffsetMax: 600.01, 4
+  SizeDelta: 600.01, 48
+- Id: 841
+  Name: loc_icon_plus01
+  Children:
+  - 842
+  Active: true
+  Position: 604.01, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 604.01, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 604.01, -38
+  OffsetMax: 644.01, -2
+  SizeDelta: 40, 36
+- Id: 842
+  Name: icon_plus01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.196, 0.373, 0.49, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_plus01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: -4, 0
+  AnchorMin: 1, 0.5
+  AnchorMax: 1, 0.5
+  OffsetMin: -24, -10
+  OffsetMax: -4, 10
+  SizeDelta: 20, 20
+- Id: 843
+  Name: num01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_tsukuoldminpro_r_sdf_material
+      Overwrites:
+      - Language: Eng
+        EnableFS: true
+        FontSize: 40
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: -2, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Kor
+        EnableFS: true
+        FontSize: 44
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 2
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_tsukuoldminpro_r_sdf
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf/fot_tsukuoldminpro_r_sdf_material
+      FontSize: 48
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 3
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: -2
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 736.64, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 736.64, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 736.64, -44
+  OffsetMax: 829.27, 4
+  SizeDelta: 92.63, 48
+- Id: 844
+  Name: percent01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Chs
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 2, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Cht
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 2, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Kor
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, -1.5, 0, 0
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_PAR
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 40
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 514
+      Enable: true
+  Active: false
+  Position: 788.64, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 788.64, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 740.64, -44
+  OffsetMax: 788.64, 4
+  SizeDelta: 48, 48
+- Id: 845
+  Name: loc_star01
+  Children:
+  - 846
+  - 848
+  - 850
+  - 852
+  - 854
+  - 856
+  - 858
+  - 860
+  - 862
+  - 864
+  Active: false
+  Position: -388, 34, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 112, 34
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 112, 14
+  OffsetMax: 522, 54
+  SizeDelta: 410, 40
+- Id: 846
+  Name: star_base01
+  Children:
+  - 847
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 29, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -176, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -184, -8
+  OffsetMax: -168, 8
+  SizeDelta: 16, 16
+- Id: 847
+  Name: star01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 848
+  Name: star_base02
+  Children:
+  - 849
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 73, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -132, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -140, -8
+  OffsetMax: -124, 8
+  SizeDelta: 16, 16
+- Id: 849
+  Name: star02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 850
+  Name: star_base03
+  Children:
+  - 851
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 117, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -88, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -96, -8
+  OffsetMax: -80, 8
+  SizeDelta: 16, 16
+- Id: 851
+  Name: star03
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 852
+  Name: star_base04
+  Children:
+  - 853
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 161, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -44, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -52, -8
+  OffsetMax: -36, 8
+  SizeDelta: 16, 16
+- Id: 853
+  Name: star04
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 854
+  Name: star_base05
+  Children:
+  - 855
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 205, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -8, -8
+  OffsetMax: 8, 8
+  SizeDelta: 16, 16
+- Id: 855
+  Name: star05
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 856
+  Name: star_base06
+  Children:
+  - 857
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 249, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 44, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 36, -8
+  OffsetMax: 52, 8
+  SizeDelta: 16, 16
+- Id: 857
+  Name: star06
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 858
+  Name: star_base07
+  Children:
+  - 859
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 293, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 88, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 80, -8
+  OffsetMax: 96, 8
+  SizeDelta: 16, 16
+- Id: 859
+  Name: star07
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 860
+  Name: star_base08
+  Children:
+  - 861
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 337, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 132, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 124, -8
+  OffsetMax: 140, 8
+  SizeDelta: 16, 16
+- Id: 861
+  Name: star08
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 862
+  Name: star_base09
+  Children:
+  - 863
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 381, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 176, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 168, -8
+  OffsetMax: 184, 8
+  SizeDelta: 16, 16
+- Id: 863
+  Name: star09
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 864
+  Name: star_base10
+  Children:
+  - 865
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 425, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 220, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 212, -8
+  OffsetMax: 228, 8
+  SizeDelta: 16, 16
+- Id: 865
+  Name: star10
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 866
+  Name: bc_om_3
+  Children:
+  - 867
+  Components:
+  - ComponentName: LimitBonusInfo
+    Component:
+      MeditationIcons:
+      - ComponentName: ImageMultiSetter
+        Index: 0
+        ObjectRefId: 870
+      MeditationStars:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 879
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 881
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 883
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 885
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 887
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 889
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 891
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 893
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 895
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 897
+      Name:
+        ComponentName: Text
+        Index: 0
+        ObjectRefId: 872
+      EffectValText:
+        ComponentName: Text
+        Index: 0
+        ObjectRefId: 875
+      PercentObj:
+        ComponentName: ''
+        Index: -1
+        ObjectRefId: 876
+      Enable: true
+  Active: true
+  Position: 216.432, -753.756, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.567, 0.567, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 216.432, -753.756
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -283.568, -876.756
+  OffsetMax: 716.432, -630.756
+  SizeDelta: 1000, 246
+- Id: 867
+  Name: root
+  Children:
+  - 868
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 868
+  Name: loc_list01
+  Children:
+  - 869
+  - 870
+  - 871
+  - 877
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 869
+  Name: line01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.07058824, 0.38039216, 0.6666667, 0.5019608
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, -123, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0
+  AnchorMax: 0.5, 0
+  OffsetMin: -500, 0
+  OffsetMax: 500, 2
+  SizeDelta: 1000, 2
+- Id: 870
+  Name: icon01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_lb/noatlastextures/cmn_iclb_s_dummy
+        SpriteName: 325029AB
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageMultiSetter
+    Component:
+      ImageDataPaths:
+      - data/image/meditationicons
+      - data/image/meditationlatters
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 870
+      Enable: true
+  Active: true
+  Position: -482, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 18, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 18, -44
+  OffsetMax: 106, 44
+  SizeDelta: 88, 88
+- Id: 871
+  Name: loc_text01
+  Children:
+  - 872
+  - 873
+  - 875
+  - 876
+  Components:
+  - ComponentName: HorizontalLayoutGroup
+    Component:
+      Padding: 0, 0, 0, 0
+      Spacing: 0
+      ChildAlignment: 3
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  Active: true
+  Position: -384, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 116, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 116, -20
+  OffsetMax: 850, 20
+  SizeDelta: 734, 40
+- Id: 872
+  Name: text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 40
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -44
+  OffsetMax: 600.01, 4
+  SizeDelta: 600.01, 48
+- Id: 873
+  Name: loc_icon_plus01
+  Children:
+  - 874
+  Active: true
+  Position: 604.01, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 604.01, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 604.01, -38
+  OffsetMax: 644.01, -2
+  SizeDelta: 40, 36
+- Id: 874
+  Name: icon_plus01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.196, 0.373, 0.49, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_plus01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: -4, 0
+  AnchorMin: 1, 0.5
+  AnchorMax: 1, 0.5
+  OffsetMin: -24, -10
+  OffsetMax: -4, 10
+  SizeDelta: 20, 20
+- Id: 875
+  Name: num01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_tsukuoldminpro_r_sdf_material
+      Overwrites:
+      - Language: Eng
+        EnableFS: true
+        FontSize: 40
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: -2, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Kor
+        EnableFS: true
+        FontSize: 44
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 2
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_tsukuoldminpro_r_sdf
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf/fot_tsukuoldminpro_r_sdf_material
+      FontSize: 48
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 3
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: -2
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 736.64, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 736.64, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 736.64, -44
+  OffsetMax: 829.27, 4
+  SizeDelta: 92.63, 48
+- Id: 876
+  Name: percent01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Chs
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 2, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Cht
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 2, 0, 0
+        EnableAL: false
+        Alignment: 0
+      - Language: Kor
+        EnableFS: true
+        FontSize: 45
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, -1.5, 0, 0
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_PAR
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
+      FontSize: 40
+      Color: 0.196, 0.373, 0.49, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 514
+      Enable: true
+  Active: false
+  Position: 788.64, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 788.64, -20
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 740.64, -44
+  OffsetMax: 788.64, 4
+  SizeDelta: 48, 48
+- Id: 877
+  Name: loc_star01
+  Children:
+  - 878
+  - 880
+  - 882
+  - 884
+  - 886
+  - 888
+  - 890
+  - 892
+  - 894
+  - 896
+  Active: false
+  Position: -388, 34, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 112, 34
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 112, 14
+  OffsetMax: 522, 54
+  SizeDelta: 410, 40
+- Id: 878
+  Name: star_base01
+  Children:
+  - 879
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 29, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -176, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -184, -8
+  OffsetMax: -168, 8
+  SizeDelta: 16, 16
+- Id: 879
+  Name: star01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 880
+  Name: star_base02
+  Children:
+  - 881
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 73, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -132, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -140, -8
+  OffsetMax: -124, 8
+  SizeDelta: 16, 16
+- Id: 881
+  Name: star02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 882
+  Name: star_base03
+  Children:
+  - 883
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 117, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -88, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -96, -8
+  OffsetMax: -80, 8
+  SizeDelta: 16, 16
+- Id: 883
+  Name: star03
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 884
+  Name: star_base04
+  Children:
+  - 885
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 161, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -44, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -52, -8
+  OffsetMax: -36, 8
+  SizeDelta: 16, 16
+- Id: 885
+  Name: star04
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 886
+  Name: star_base05
+  Children:
+  - 887
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 205, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -8, -8
+  OffsetMax: 8, 8
+  SizeDelta: 16, 16
+- Id: 887
+  Name: star05
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 888
+  Name: star_base06
+  Children:
+  - 889
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 249, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 44, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 36, -8
+  OffsetMax: 52, 8
+  SizeDelta: 16, 16
+- Id: 889
+  Name: star06
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 890
+  Name: star_base07
+  Children:
+  - 891
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 293, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 88, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 80, -8
+  OffsetMax: 96, 8
+  SizeDelta: 16, 16
+- Id: 891
+  Name: star07
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 892
+  Name: star_base08
+  Children:
+  - 893
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 337, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 132, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 124, -8
+  OffsetMax: 140, 8
+  SizeDelta: 16, 16
+- Id: 893
+  Name: star08
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 894
+  Name: star_base09
+  Children:
+  - 895
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 381, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 176, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 168, -8
+  OffsetMax: 184, 8
+  SizeDelta: 16, 16
+- Id: 895
+  Name: star09
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40
+- Id: 896
+  Name: star_base10
+  Children:
+  - 897
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.11372549, 0.34117648, 0.6117647, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_tab_circle01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 425, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 220, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 212, -8
+  OffsetMax: 228, 8
+  SizeDelta: 16, 16
+- Id: 897
+  Name: star10
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.60784316, 0.84313726, 0.9607843, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_limit06
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -20, -20
+  OffsetMax: 20, 20
+  SizeDelta: 40, 40

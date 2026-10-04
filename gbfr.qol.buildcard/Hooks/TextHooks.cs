@@ -46,7 +46,7 @@ public unsafe class TextHooks
 
         ProcessModule exe = Process.GetCurrentProcess().MainModule!;
         _exeBase = exe.BaseAddress;
-        (_codeStart, _codeEnd) = FindSection(_exeBase, ".text") ?? (_exeBase, _exeBase + exe.ModuleMemorySize);
+        (_codeStart, _codeEnd) = PeImage.FindSection(_exeBase, ".text") ?? (_exeBase, _exeBase + exe.ModuleMemorySize);
     }
 
     public void Init(IScanManager scanManager, string signatureGroup)
@@ -115,19 +115,6 @@ public unsafe class TextHooks
             }
         }
         return callers.ToString();
-    }
-
-    private static (nint, nint)? FindSection(nint image, string name)
-    {
-        byte* nt = (byte*)image + *(int*)(image + 0x3C);
-        int sections = *(ushort*)(nt + 6);
-        byte* header = nt + 24 + *(ushort*)(nt + 20);
-        for (int i = 0; i < sections; i++, header += 40)
-        {
-            if (Encoding.ASCII.GetString(header, 8).TrimEnd('\0') == name)
-                return (image + *(int*)(header + 12), image + *(int*)(header + 12) + *(int*)(header + 8));
-        }
-        return null;
     }
 
     public struct GameString

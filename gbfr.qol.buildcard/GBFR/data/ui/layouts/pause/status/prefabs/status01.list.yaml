@@ -101,6 +101,8 @@ ImageData:
 - data/image/keyeffect
 - data/image/button
 - data/image/updateicon
+- data/image/meditationicons
+- data/image/meditationlatters
 LanguageData:
 - data/language/ld_skipstd_b_sdf_ol06
 - data/language/ld_skipstd_b_sdf_material
@@ -123,4 +125,5 @@ LanguageData:
 - data/language/ld_tsukuoldminpro_r_sdf_ds01
 - data/language/ld_tsukuoldminpro_r_sdf_glow_w01
 - data/language/ld_tsukuoldminpro_r_sdf_ds10
+- data/language/ld_tsukuoldminpro_r_sdf_material
 _9029CEE4: []

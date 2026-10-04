@@ -122,3 +122,22 @@ Script: `tools/scripts/add_master_traits.py`
 | 0 `status01`, `CharaInfo.Powers` | refs to 557-767's Texts appended |
 
 The layout follows sharecard's board scaled by 3424/2880: three columns, rank sections of 4, 8, 8 and 10 cells in a two-column grid. The mod writes every text (`Hooks/CardWriter.cs`).
+
+## 2026-10-04 · Over Mastery section
+
+Script: `tools/scripts/add_over_mastery.py`, from `ui/layouts/pause/limitbonus/prefabs/lb_ovtli02.prfb`
+
+| Objects | Change |
+|---|---|
+| 768 `bc_om` (new) | container, same coordinates as 426 `loc_buildcard`; last child of 426 |
+| 769 `bc_om_heading` (new) | Text with `LanguageSetter` |
+| 770, 802, 834, 866 `bc_om_<i>` (new) | copies of `lb_ovtli02` object 14 (`var00_lb_ovtli01_p01_01`, an Over Mastery row with `LimitBonusInfo`) and its subtree, 32 objects each, `Scale` 0.5674, one line per row in the magenta section |
+| +3 of each row (`line01`), +11 (`loc_star01`) | `Active: false` |
+| +4 of each row (`icon01`), +5 (`loc_text01`) | moved onto one line: icon at the row's left, name and value 10 right of it |
+| +6, +9, +10 (`text01`, `num01`, `percent01`), +8 (`icon_plus01`) | `Color` 0.196, 0.373, 0.49, 1 (from near-white) |
+| 0 `status01`, `CharaInfo.Powers` | ref to 769's Text appended, then plain object refs (`ComponentName: ''`, `Index: -1`) to the four rows |
+| `status01.list` | `ImageData` `data/image/meditationicons`, `meditationlatters` and `LanguageData` `data/language/ld_tsukuoldminpro_r_sdf_material` appended (`tools/scripts/sync_list.py`) |
+
+The mod calls the game's setter for an Over Mastery row on each row's `LimitBonusInfo` with the character's Over Mastery line, and hides rows whose line has no value (`Hooks/CardWriter.cs`). Plain object refs in `Powers` have no component, so the fill skips them.
+
+The list holds the assets the game loads with the prefab. Without the image data the rows' `ImageMultiSetter` has no sprite sets, and the setter faults on them.

@@ -108,6 +108,7 @@ public class Mod : ModBase // <= Do not Remove.
         _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
 
         _cardWriter = new CardWriter(_textHooks, _logger);
+        _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.Filled += _cardWriter.OnFilled;
 
         _reflectionHooks = new ReflectionHooks(scanManager, _hooks);

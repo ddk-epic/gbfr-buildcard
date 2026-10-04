@@ -65,6 +65,7 @@ Materials:
 - fonts/fot_tsukuoldminpro_r_sdf_ds10
 - fonts/fot_tsukuoldminpro_r_sdf_glow_w01
 - material/uiaddalphaa
+- fonts/fot_skipstd_b_sdf_ds01
 Animations:
 - layouts/pause/status/animations/status01_in01
 - layouts/pause/status/animations/status01_out01
@@ -103,6 +104,10 @@ ImageData:
 - data/image/updateicon
 - data/image/meditationicons
 - data/image/meditationlatters
+- data/image/summoniconframe01
+- data/image/summoniconbase
+- data/image/summonbaseparamicons
+- data/image/arrow/arrow03
 LanguageData:
 - data/language/ld_skipstd_b_sdf_ol06
 - data/language/ld_skipstd_b_sdf_material
@@ -126,4 +131,5 @@ LanguageData:
 - data/language/ld_tsukuoldminpro_r_sdf_glow_w01
 - data/language/ld_tsukuoldminpro_r_sdf_ds10
 - data/language/ld_tsukuoldminpro_r_sdf_material
+- data/language/ld_skipstd_b_sdf_ds01
 _9029CEE4: []

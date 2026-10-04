@@ -11,4 +11,5 @@ public class LimitBonusInfo : GBFRDataTools.Files.UI.Components.Infos.LimitBonus
     public UIObjectRef _8F46D0ED { get; set; }
     public UIObjectRef Canvas { get; set; }
     public UIObjectRef _B19B5491 { get; set; }
+    public List<UIObjectRef> Hides { get; set; }
 }

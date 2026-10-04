@@ -141,3 +141,20 @@ Script: `tools/scripts/add_over_mastery.py`, from `ui/layouts/pause/limitbonus/p
 The mod calls the game's setter for an Over Mastery row on each row's `LimitBonusInfo` with the character's Over Mastery line, and hides rows whose line has no value (`Hooks/CardWriter.cs`). Plain object refs in `Powers` have no component, so the fill skips them.
 
 The list holds the assets the game loads with the prefab. Without the image data the rows' `ImageMultiSetter` has no sprite sets, and the setter faults on them.
+
+## 2026-10-04 · Summons section
+
+Script: `tools/scripts/add_summons.py`, from `ui/layouts/pause/summon/prefabs/summon_list01.prfb` and `summon_info01.prfb`
+
+| Objects | Change |
+|---|---|
+| 898 `bc_smn` (new) | container, same coordinates as 426 `loc_buildcard`; last child of 426 |
+| 899, 955, 1011, 1067 `bc_smn_<i>` (new) | copies of `summon_list01` object 90 (summon equip slot) with only its `SummonInfo`, `Scale` 0.5116, in a 2x2 grid in the orange section; each the root of 56 objects |
+| +1-15 of each slot (new) | the slot's visible parts from `summon_list01`: frame `base01`, icon stack, both name texts, element badge |
+| +16-35 of each slot (new) | copy of `summon_info01` object 20 (`list_skill_p05_01`, trait row with `SkillInfo`) and its subtree, centred below the frame |
+| +36-55 of each slot (new) | copy of `summon_info01` object 43 (`list_skill_p05_02`, equip bonus row with `LimitBonusInfo`) and its subtree, below the trait row |
+| slot `SummonInfo` | `_5D33A08E` set to the trait row's `SkillInfo`, `F58112CE` to the equip bonus row's `LimitBonusInfo`, as in `summon_info01` |
+| 0 `status01`, `CharaInfo.Powers` | plain object refs to the four slots appended |
+| `status01.list` | `Materials` `fonts/fot_skipstd_b_sdf_ds01`, `ImageData` `data/image/summoniconframe01`, `summoniconbase`, `summonbaseparamicons`, `arrow/arrow03` and `LanguageData` `data/language/ld_skipstd_b_sdf_ds01` appended (`tools/scripts/sync_list.py`) |
+
+The mod calls the game's `SetSummonInfo` on each slot with the equipped summon's id (`Hooks/CardWriter.cs`); it fills the slot and, through the two refs, both rows.

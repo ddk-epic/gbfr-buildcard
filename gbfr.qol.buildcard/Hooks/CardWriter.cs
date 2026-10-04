@@ -7,9 +7,9 @@ using Reloaded.Mod.Interfaces;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Writes the master traits board and the Over Mastery lines onto the card's objects after the game fills the page:
-// texts through TextHooks, Over Mastery rows through their LimitBonusInfo. The objects are found through their refs in
-// CharaInfo.Powers.
+// Writes the master traits board, the Over Mastery lines and the summons onto the card's objects after the game fills
+// the page: texts through TextHooks, Over Mastery rows through their LimitBonusInfo, summon slots (with their trait and
+// equip bonus rows) through their SummonInfo. The objects are found through their refs in CharaInfo.Powers.
 public unsafe class CardWriter
 {
     private const short SummaryTextId = 462;      // bc_text01
@@ -17,6 +17,8 @@ public unsafe class CardWriter
     private const short OverMasteryTextId = 769;  // bc_om_heading, see tools/scripts/add_over_mastery.py
     private const short OverMasteryRowsId = 770;  // bc_om_0
     private const int OverMasteryRowObjects = 32;  // objects per Over Mastery row
+    private const short SummonSlotsId = 899;  // bc_smn_0, see tools/scripts/add_summons.py
+    private const int SummonObjects = 56;  // objects per summon slot, with its trait and equip bonus rows
     private const int Powers = 0x3D0;
     private const int MaxRefs = 1024;
     private const int WrapLength = 19;
@@ -31,6 +33,12 @@ public unsafe class CardWriter
     private const int OverMasteryLineSize = 0x10;
     private const int OverMasteryLines = 4;
 
+    // chara: equipped summons of 0x1C bytes, [summon key, summon id, trait key, equip bonus key, trait level, equip
+    // bonus level, unknown]
+    private const int Summons = 0x5DD8;
+    private const int SummonSize = 0x1C;
+    private const int SummonCount = 4;
+
     private static readonly int[] Slots = [4, 8, 8, 10];
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
@@ -43,8 +51,10 @@ public unsafe class CardWriter
     private readonly Dictionary<uint, Cell> _cells = LoadCells();
     private delegate* unmanaged<nint, byte, void> _setActive;
     private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
+    private delegate* unmanaged<nint, uint, void> _setSummonInfo;
     private readonly nint _exeBase = Process.GetCurrentProcess().MainModule!.BaseAddress;
     private readonly nint _limitBonusInfoVtable;
+    private readonly nint _summonInfoVtable;
     private bool _loggedComponents;
 
     public CardWriter(TextHooks text, ILogger logger)
@@ -54,15 +64,21 @@ public unsafe class CardWriter
         _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
         if (_limitBonusInfoVtable == 0)
             _logger.WriteLine("[gbfr.qol.buildcard] LimitBonusInfo vtable not found", Color.Red);
+        _summonInfoVtable = PeImage.FindVtable(_exeBase, ".?AVSummonInfo@component@ui@@");
+        if (_summonInfoVtable == 0)
+            _logger.WriteLine("[gbfr.qol.buildcard] SummonInfo vtable not found", Color.Red);
     }
 
-    // SetObjectActive(object, active), SetOverMasteryLine(LimitBonusInfo component, Over Mastery line)
+    // SetObjectActive(object, active), SetOverMasteryLine(LimitBonusInfo component, Over Mastery line),
+    // SetSummonInfo(SummonInfo component, summon id)
     public void Init(IScanManager scanManager, string signatureGroup)
     {
         scanManager.AddScan("SetObjectActive", signatureGroup, address =>
             _setActive = (delegate* unmanaged<nint, byte, void>)(nint)address);
         scanManager.AddScan("SetOverMasteryLine", signatureGroup, address =>
             _setOverMasteryLine = (delegate* unmanaged<nint, nint, void>)(nint)address);
+        scanManager.AddScan("SetSummonInfo", signatureGroup, address =>
+            _setSummonInfo = (delegate* unmanaged<nint, uint, void>)(nint)address);
     }
 
     // Logs exceptions instead of letting them reach the game's frames.
@@ -80,12 +96,13 @@ public unsafe class CardWriter
 
     private void Write(nint charaInfo, nint chara)
     {
-        var refs = FindRefs(charaInfo, SummaryTextId, (short)(OverMasteryRowsId + (OverMasteryLines - 1) * OverMasteryRowObjects));
-        if (refs.Count != 1 + MasterTraitTextCount + 1 + OverMasteryLines)
+        var refs = FindRefs(charaInfo, SummaryTextId, (short)(SummonSlotsId + (SummonCount - 1) * SummonObjects));
+        if (refs.Count != 1 + MasterTraitTextCount + 1 + OverMasteryLines + SummonCount)
             return;
 
         WriteMasterTraits(refs, chara);
         WriteOverMastery(refs, chara);
+        WriteSummons(refs, chara);
     }
 
     private void WriteMasterTraits(Dictionary<short, nint> refs, nint chara)
@@ -161,6 +178,25 @@ public unsafe class CardWriter
             LogComponentsOnce(*(nint*)(r + 8), "LimitBonusInfo", _limitBonusInfoVtable);
         else
             _setOverMasteryLine(limitBonusInfo, line);
+    }
+
+    // Sets each slot's SummonInfo to the equipped summon's id; the game fills the slot's trait and equip bonus rows
+    // from the summon.
+    private void WriteSummons(Dictionary<short, nint> refs, nint chara)
+    {
+        for (int i = 0; i < SummonCount; i++)
+            SetSummonInfo(refs, SummonSlotsId + i * SummonObjects, *(uint*)(chara + Summons + i * SummonSize + 4));
+    }
+
+    private void SetSummonInfo(Dictionary<short, nint> refs, int id, uint summonId)
+    {
+        if (_setSummonInfo == null || _summonInfoVtable == 0 || !refs.TryGetValue((short)id, out nint r))
+            return;
+        nint summonInfo = FindComponent(*(nint*)(r + 8), _summonInfoVtable);
+        if (summonInfo == 0)
+            LogComponentsOnce(*(nint*)(r + 8), "SummonInfo", _summonInfoVtable);
+        else
+            _setSummonInfo(summonInfo, summonId);
     }
 
     // An object's components are a begin/end vector of 0x20-byte entries at +0x28, with the component at +0x18.

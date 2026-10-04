@@ -15,3 +15,15 @@ Script: `tools/scripts/fit_background.py`
 | 3 `bg01` (white panel) | `SizeDelta` 3472, 1763, `Position` 0, 72.5: the sprite's opaque part covers the card (3424x1712 at y 74) |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match.
+
+## 2026-10-04 · Backdrop cut like sharecard's parchment
+
+Scripts: `tools/scripts/fit_backdrop.py`, then `tools/scripts/mask_backdrop.py`; mask texture: `tools/scripts/gen_backdrop_mask.py`
+
+| Objects | Change |
+|---|---|
+| 4 `bg02` (blue backdrop) | `SizeDelta` 1109.63, 1723.338, `AnchorPoint` 7.356, -18.331: the art spans sharecard's card x -10 to 918 at the card's height |
+| 3 `bg01` | `Mask` added, sprite `layouts/pause/status/noatlastextures/bc_backdrop_mask`: sharecard's parchment cut, the diagonal body edge and the spike |
+| `chr_status_bg01.list` | stock list added, `bc_backdrop_mask` appended (`tools/scripts/sync_list.py`) |
+
+`bc_backdrop_mask` is a 2048x1024 BC7 texture covering `bg01`'s rect, shipped in `ui/layouts/...` and `ui/fhd/...`: the game reads the `fhd` copy at 1080p, without falling back to the other.

@@ -35,7 +35,7 @@ def prefab_assets(path):
 
 def find_list(lines, section, sub):
     # the line of the list's key and the range of its items
-    key = lines.index(f"{section}:")
+    key = next(i for i, line in enumerate(lines) if re.match(rf"{section}:( \[\])?$", line))
     if sub:
         key = next(i for i in range(key + 1, len(lines)) if re.match(rf"  {sub}:( \[\])?$", lines[i]))
     start = end = key + 1

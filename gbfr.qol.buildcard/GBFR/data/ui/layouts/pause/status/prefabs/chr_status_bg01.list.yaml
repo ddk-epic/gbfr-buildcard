@@ -1,0 +1,42 @@
+TextureData:
+  Common:
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_base_st01
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_mask_st01
+  - layouts/pause/status/noatlastextures/bc_backdrop_mask
+  Eng: []
+  Jpn: []
+  Deu: []
+  Fra: []
+  Esp: []
+  Ita: []
+  Por: []
+  Kor: []
+  Cht: []
+  Chs: []
+AtlasData:
+  Common:
+  - atlas/pause_pause_common
+  Eng: []
+  Jpn: []
+  Deu: []
+  Fra: []
+  Esp: []
+  Ita: []
+  Por: []
+  Kor: []
+  Cht: []
+  Chs: []
+Materials:
+- material/uidissolve
+Animations:
+- layouts/pause/status/animations/chr_status_bg01_in01
+- layouts/pause/status/animations/chr_status_bg01_out01
+- layouts/pause/status/animations/chr_status_bg01_in02
+- layouts/pause/status/animations/chr_status_bg01_out02
+- layouts/pause/status/animations/chr_status_bg01_out03_r
+- layouts/pause/status/animations/chr_status_bg01_out03_l
+- layouts/pause/status/animations/chr_status_bg01_in03_r
+- layouts/pause/status/animations/chr_status_bg01_in03_l
+ImageData: []
+LanguageData: []
+_9029CEE4: []

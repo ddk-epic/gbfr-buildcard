@@ -167,6 +167,16 @@ Objects:
     Component:
       Alpha: 1
       Enable: true
+  - ComponentName: Mask
+    Component:
+      Sprite:
+        TexturePath: layouts/pause/status/noatlastextures/bc_backdrop_mask
+        SpriteName: bc_backdrop_mask
+      Offset: 0, 0
+      ChannelWeights: 0, 0, 0, 1
+      InvertMask: false
+      InvertOutsides: false
+      Enable: true
   Active: true
   Position: 0, 72.5, 0
   Rotation: 0, 0, 0, 1
@@ -216,16 +226,16 @@ Objects:
       RenderType: 0
       Enable: true
   Active: true
-  Position: -1684, 914, 0
+  Position: -1728.644, 863.169, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 1
-  AnchorPoint: 28, -28
+  AnchorPoint: 7.356, -18.331
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 28, -1852
-  OffsetMax: 1428, -28
-  SizeDelta: 1400, 1824
+  OffsetMin: 7.356, -1741.669
+  OffsetMax: 1116.986, -18.331
+  SizeDelta: 1109.63, 1723.338
 - Id: 5
   Name: loc_line
   Children:

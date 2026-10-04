@@ -39,7 +39,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <EmbeddedResource Include="Data\master_traits.tsv" LogicalName="master_traits.tsv" />
-    <None Update="GBFR\**\*.msg">
+    <None Update="GBFR\**\*.msg;GBFR\**\*.wtb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -64,6 +64,7 @@
   <ItemGroup>
     <UiSource Include="GBFR\**\*.prfb.yaml" Binary="%(Filename)" />
     <UiSource Include="GBFR\**\*.list.yaml" Binary="%(Filename).listb" />
+    <UiSource Include="GBFR\**\*.tex.yaml" Binary="%(Filename).texb" />
     <None Remove="@(UiSource)" />
   </ItemGroup>
 

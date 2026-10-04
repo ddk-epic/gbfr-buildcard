@@ -21,6 +21,7 @@ TextureData:
   - layouts/pause/pause_common/noatlastextures/ps_cmn_awake_mask03
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff03_02
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff03_03
+  - layouts/pause/pause_common/noatlastextures/ps_cmn_mask_chara02
   Eng: []
   Jpn: []
   Deu: []

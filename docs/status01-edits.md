@@ -187,3 +187,15 @@ Scripts: `tools/scripts/scale_portrait.py`, then `tools/scripts/scale_badges.py`
 | 7 `loc_name01` | `Scale` 0.7; `Pivot` 0.5, 0.5, centred in the first column; `Position` -1360.089, -181.672 |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and `Pivot`.
+
+## 2026-10-04 · Portrait masked
+
+Script: `tools/scripts/mask_portrait.py`
+
+| Objects | Change |
+|---|---|
+| 3 `loc_chr` (portrait) | `Mask` added, sprite `layouts/pause/pause_common/noatlastextures/ps_cmn_mask_chara02` (the gear screen's portrait mask, from `pause_chara01`); `Rotation` 0, 0, 1, 0 (180°), so the fade runs out to the right; `SizeDelta` 1407.644, 1758.93, `Pivot` 0.715, 0.487: the rect starts at the card's left and top edges, and the opaque part ends at sharecard x 518 |
+| 4 `chr_img01`, 5 `chr_img01_mask` | `Rotation` 0, 0, 1, 0, cancelling `loc_chr`'s; pivots kept on `loc_chr`'s pivot |
+| `status01.list` | `ps_cmn_mask_chara02` appended (`tools/scripts/sync_list.py`) |
+
+`AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match. The art is cut at the card's left and top edges and fades out over its bottom edge.

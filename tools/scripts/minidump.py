@@ -1,5 +1,5 @@
-# Prints a crash dump's exception (code, address as module+offset, registers) and the game-module
-# return addresses on the faulting thread's stack. Usage: python minidump.py <file.dmp>
+# Usage: python minidump.py <file.dmp>
+# Prints a crash dump's exception, registers and the game return addresses on the faulting thread's stack.
 import struct, sys
 d = open(sys.argv[1], 'rb').read()
 sig, ver, nstreams, dir_rva = struct.unpack_from('<4sIII', d, 0)

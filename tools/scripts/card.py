@@ -1,10 +1,9 @@
-# Builds the YAML of card objects (Image and Text rects), appends them to status01 in containers under loc_buildcard,
-# and adds refs to them to CharaInfo.Powers. Used by the card section scripts.
+# Builds card objects in status01. Used by the card section scripts.
 import re
 from prefab import f
 
 S = 3424 / 2880
-PARENT = 426  # loc_buildcard: centred in loc_base01, same coordinates
+PARENT = 426  # loc_buildcard
 
 FONT = "fonts/fot_skipstd_b_sdf"
 INK = (0.19607843, 0.37254903, 0.4901961)
@@ -37,7 +36,7 @@ def text(value, size, color, alpha, alignment, line_spacing=0, eng_line_spacing=
             f"      Alignment: {alignment}", "      Enable: true", *language_setter(eng_line_spacing)]
 
 def language_setter(eng_line_spacing=None):
-    # sets the font of each language on its Text (PFDinTextPro for English), and the English line spacing if given
+    # the font of each language, and the English line spacing if given
     enable_ls = "true" if eng_line_spacing is not None else "false"
     return ["  - ComponentName: LanguageSetter", "    Component:", "      MultiData: false",
             "      LanguageData: data/language/ld_skipstd_b_sdf_material", "      Overwrites:", "      - Language: Eng",
@@ -57,8 +56,7 @@ class Group:
         self.texts.append((rect(name, comps, pivot), x, y, w, h, pivot))
 
 def append(p, name, group):
-    # Appends a container as loc_buildcard's last child, with the group's images, then its texts. Returns the ids of
-    # the container, the images and the texts.
+    # Appends the group in a container under loc_buildcard. Returns the ids of the container, the images and the texts.
     container = max(p.starts) + 1
     objects = group.images + group.texts
     ids = list(range(container + 1, container + 1 + len(objects)))
@@ -79,8 +77,7 @@ def append(p, name, group):
     return container, ids[:len(group.images)], ids[len(group.images):]
 
 def add_powers(p, ids, component="Text"):
-    # CharaInfo.Powers on the root (object 0): appends refs to the objects' components after the list's last entry, or
-    # to the objects themselves when component is empty
+    # appends refs to the objects' components, or to the objects when component is empty, to CharaInfo.Powers
     i = p.lines.index("      Powers:", *p.range(0)) + 1
     while p.lines[i].startswith("      - ") or p.lines[i].startswith("        "):
         i += 1
@@ -89,8 +86,8 @@ def add_powers(p, ids, component="Text"):
                     for line in (f"      - ComponentName: {name}", f"        Index: {index}", f"        ObjectRefId: {id_}")]
 
 def copy_objects(source, objects, ids, edit=None):
-    # the objects' lines from another prefab with Ids, Children and refs remapped through ids; children that are not
-    # copied are dropped, refs to objects that are not copied raise. edit(old id, lines) may change an object's lines.
+    # the objects' lines from another prefab, with Ids, Children and refs remapped through ids; edit(old id, lines) may
+    # change an object's lines
     lines = []
     for old in objects:
         start, end = source.range(old)

@@ -1,6 +1,5 @@
 # Usage: python relayout_skills.py <status01.prfb.yaml> <out.prfb.yaml>
-# Stacks the skills block's four cards in one column, drops the title and its tab, then fits the block to the
-# green section's height with the frame filling its width. The cards keep their size: their sprite isn't sliced.
+# Stacks the skills block's four cards in one column in the green section.
 import sys
 from prefab import Prefab
 

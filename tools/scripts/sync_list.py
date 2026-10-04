@@ -1,10 +1,5 @@
 # Usage: python sync_list.py <prefab.prfb.yaml> <prefab.list.yaml> <out.list.yaml> [<source.list.yaml>...]
-# Adds the assets a prefab references and its list (the assets the game loads with the prefab) lacks: textures and
-# atlases (TexturePath), materials (MaterialPath), animations (AnimationPath), image data (ImageDataPath and
-# ImageDataPaths) and language data (LanguageData). Placeholder textures (*_dummy) and per-language atlases
-# (atlas/<language>/...) are left out, as in the game's lists. Source lists are the lists of prefabs that objects were
-# copied from: their entries are added too, per-language ones included, except animations. New entries go at the end
-# of their section.
+# Adds the assets the prefab references, and the source lists' entries except animations, to the prefab's list.
 import re, sys
 
 SECTIONS = ["TextureData", "AtlasData", "Materials", "Animations", "ImageData", "LanguageData"]

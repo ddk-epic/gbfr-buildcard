@@ -8,26 +8,21 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Loads the art of the weapon on the card through ui::icon::LoadWeaponParty, the loader of the party menu's weapon art.
-// Each frame the game asks each icon loader whether its menu is open (vfunc 4), lets an open one collect the weapons it
-// wants (vfunc 5), then loads the wanted art it lacks and releases the art no longer wanted. The hooks report
-// LoadWeaponParty open while the Character Details page is, which LoadSkillBoardCategoryStatus's vfunc 4 reports, and
-// add the card's weapon to what it collects.
+// Adds the card's weapon to the art ui::icon::LoadWeaponParty loads, and reports the loader open while the Character
+// Details page is open.
 public unsafe class WeaponArtHooks
 {
-    // loader: wanted count, then [weapon key, alternate art] entries of 8 bytes
+    // loader entries: [weapon key, alternate art]
     private const int WantedCount = 0x40;
     private const int Wanted = 0x48;
     private const int WantedMax = 6;
 
-    // chara: the weapon, [unknown, weapon key, mirage weapon key, flags]; flag 0x20 selects the weapon's alternate art
     private const int WeaponKey = 0x54;
     private const int MirageKey = 0x58;
     private const int WeaponFlags = 0x5C;
     private const byte AlternateArt = 0x20;
     private const uint NoKey = 0x887AE0B0;
 
-    // the game settings object: mirage weapons shown, alternate weapon art shown
     private const int ShowMirage = 0x1113;
     private const int ShowAlternateArt = 0x1114;
 
@@ -49,7 +44,7 @@ public unsafe class WeaponArtHooks
         _logger = logger;
     }
 
-    // LoadWeaponParty's vfunc 5 reads the settings object through a mov rcx, [rip + disp32] at +0x26.
+    // Reads the settings object's address from the mov rcx, [rip + disp32] at LoadWeaponParty vfunc 5 + 0x26.
     public void Init()
     {
         nint exeBase = Process.GetCurrentProcess().MainModule!.BaseAddress;
@@ -72,8 +67,7 @@ public unsafe class WeaponArtHooks
         _collectHook = _hooks.CreateHook<Collect>(CollectImpl, (long)collect).Activate();
     }
 
-    // Sets the weapon the card shows: the mirage weapon when one is set and mirages are shown, with the alternate art
-    // when the weapon has it selected and alternate art is shown.
+    // Sets the weapon whose art is loaded, following the mirage and alternate art settings.
     public void Show(nint chara)
     {
         if (_settings == null || *_settings == 0)
@@ -84,14 +78,13 @@ public unsafe class WeaponArtHooks
         _alternate = (*(byte*)(chara + WeaponFlags) & AlternateArt) != 0 && *(byte*)(settings + ShowAlternateArt) != 0;
     }
 
-    // Open while the party menu is, or while the Character Details page is and a card weapon is set.
+    // Open while the party menu is open, or while the Character Details page is open and a card weapon is set.
     private byte IsOpenImpl(nint loader)
     {
         return _isOpenHook!.OriginalFunction(loader) != 0 || CardShown() ? (byte)1 : (byte)0;
     }
 
-    // The party's weapons while the party menu is open, then the card's weapon while the Character Details page is
-    // open, unless it is already wanted.
+    // Collects the party's weapons while the party menu is open, then adds the card's weapon.
     private void CollectImpl(nint loader)
     {
         if (_isOpenHook!.OriginalFunction(loader) != 0)

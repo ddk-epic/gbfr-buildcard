@@ -7,35 +7,32 @@ using Reloaded.Mod.Interfaces;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Writes the master traits board, the Over Mastery lines and the summons onto the card's objects after the game fills
-// the page: texts through TextHooks, Over Mastery rows through their LimitBonusInfo, summon slots (with their trait and
-// equip bonus rows) through their SummonInfo. The objects are found through their refs in CharaInfo.Powers. Also sets
-// the weapon whose art WeaponArtHooks loads.
+// Writes the card's texts, Over Mastery rows and summon slots after the game fills the page, and sets the weapon whose
+// art WeaponArtHooks loads.
 public unsafe class CardWriter
 {
     private const short SummaryTextId = 462;      // bc_text01
-    private const short MasterTraitTextsId = 557;  // bc_mt_heading, see tools/scripts/add_master_traits.py
-    private const short OverMasteryTextId = 769;  // bc_om_heading, see tools/scripts/add_over_mastery.py
+    private const short MasterTraitTextsId = 557;  // bc_mt_heading
+    private const short OverMasteryTextId = 769;  // bc_om_heading
     private const short OverMasteryRowsId = 770;  // bc_om_0
-    private const int OverMasteryRowObjects = 32;  // objects per Over Mastery row
-    private const short SummonSlotsId = 899;  // bc_smn_0, see tools/scripts/add_summons.py
-    private const int SummonObjects = 56;  // objects per summon slot, with its trait and equip bonus rows
+    private const int OverMasteryRowObjects = 32;
+    private const short SummonSlotsId = 899;  // bc_smn_0
+    private const int SummonObjects = 56;
     private const int Powers = 0x3D0;
     private const int MaxRefs = 1024;
     private const int WrapLength = 19;
 
-    // chara: 0x38-byte entries from 0x170, masteries followed by the master trait cells; both counts vary
+    // chara: masteries, then the master trait cells
     private const int Entries = 0x170;
     private const int EntriesEnd = 0x58B8;
     private const int EntrySize = 0x38;
 
-    // chara: Over Mastery lines of 0x10 bytes, [limit_bonus_param key, 1 << (level - 1), unknown, float value]
+    // Over Mastery line: [limit_bonus_param key, 1 << (level - 1), unknown, float value]
     private const int OverMastery = 0x58B8;
     private const int OverMasteryLineSize = 0x10;
     private const int OverMasteryLines = 4;
 
-    // chara: equipped summons of 0x1C bytes, [summon key, summon id, trait key, equip bonus key, trait level, equip
-    // bonus level, unknown]
+    // summon: [summon key, summon id, trait key, equip bonus key, trait level, equip bonus level, unknown]
     private const int Summons = 0x5DD8;
     private const int SummonSize = 0x1C;
     private const int SummonCount = 4;
@@ -84,7 +81,7 @@ public unsafe class CardWriter
             _setSummonInfo = (delegate* unmanaged<nint, uint, void>)(nint)address);
     }
 
-    // Logs exceptions instead of letting them reach the game's frames.
+    // Catches and logs exceptions.
     public void OnFilled(nint charaInfo, nint chara)
     {
         try
@@ -157,8 +154,7 @@ public unsafe class CardWriter
         }
     }
 
-    // Sets each row's LimitBonusInfo to its Over Mastery line, which fills the icon, name and value. Rows of lines
-    // with a value of 0 are hidden, as on the game's Over Mastery page.
+    // Sets each row's LimitBonusInfo to its Over Mastery line and hides rows whose line has no value.
     private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
     {
         Set(refs, OverMasteryTextId, "OVER MASTERY");
@@ -184,8 +180,7 @@ public unsafe class CardWriter
             _setOverMasteryLine(limitBonusInfo, line);
     }
 
-    // Sets each slot's SummonInfo to the equipped summon's id; the game fills the slot's trait and equip bonus rows
-    // from the summon.
+    // Sets each slot's SummonInfo to the equipped summon's id.
     private void WriteSummons(Dictionary<short, nint> refs, nint chara)
     {
         for (int i = 0; i < SummonCount; i++)
@@ -203,8 +198,8 @@ public unsafe class CardWriter
             _setSummonInfo(summonInfo, summonId);
     }
 
-    // An object's components are a begin/end vector of 0x20-byte entries at +0x28, with the component at +0x18.
-    // Returns the first component with the given vtable, or 0.
+    // Returns the object's first component with the given vtable, or 0. Components: 0x20-byte entries from +0x28,
+    // component at +0x18.
     private static nint FindComponent(nint obj, nint vtable)
     {
         for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
@@ -236,8 +231,7 @@ public unsafe class CardWriter
             _text.Set(*(nint*)(r + 0x10), cell is { } c ? Wrap(c.Label) : "", cell?.TextHash ?? TextHooks.NoHash);
     }
 
-    // Breaks a label of 19 characters or more into two lines at the space nearest its middle, counting a button
-    // icon (<d>) as two.
+    // Breaks a label of 19 or more characters into two lines at the space nearest its middle; <d> counts as two.
     private static string Wrap(string label)
     {
         if (label.Replace("<d>", "xx").Length < WrapLength)
@@ -263,8 +257,8 @@ public unsafe class CardWriter
             _setActive(*(nint*)(r + 8), active ? (byte)1 : (byte)0);
     }
 
-    // CharaInfo.Powers is a begin/end vector of 0x20-byte refs: vtable, object at +8, component at +0x10, component
-    // name hash at +0x18, YAML ObjectRefId at +0x1E. Returns the refs with ids in [firstId, lastId].
+    // Returns the refs in CharaInfo.Powers with ids in [firstId, lastId]. Refs: 0x20 bytes, object at +8, component at
+    // +0x10, component name hash at +0x18, ObjectRefId at +0x1E.
     private static Dictionary<short, nint> FindRefs(nint charaInfo, short firstId, short lastId)
     {
         var found = new Dictionary<short, nint>();
@@ -282,9 +276,7 @@ public unsafe class CardWriter
         return found;
     }
 
-    // master_traits.tsv, from tools/scripts/gen_master_traits.py: skillboard_effect key, style, rank, position
-    // (0 for perks), label (the style's title on rank 1 perks), and for labels with button icons the hash of their
-    // text tags
+    // master_traits.tsv: skillboard_effect key, style, rank, position, label, text tag hash
     private static Dictionary<uint, Cell> LoadCells()
     {
         var cells = new Dictionary<uint, Cell>();

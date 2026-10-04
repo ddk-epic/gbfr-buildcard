@@ -4,7 +4,7 @@ import re, sys
 
 SRC, DST = sys.argv[1], sys.argv[2]
 S = 3424 / 2880
-PARENT_X = 640  # loc_status02's centre in loc_base01 coordinates; the blocks anchor to it
+PARENT_X = 640  # loc_status02's centre in loc_base01 coordinates
 
 def section(x, y, w, h):  # sharecard px -> (left, top, right, bottom) in loc_base01 coordinates
     return ((x - 1440) * S, (720 - y) * S, (x + w - 1440) * S, (720 - y - h) * S)

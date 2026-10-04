@@ -9,8 +9,8 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Hooks the game's UI Text setters, and sets text through them. With logging enabled, writes every change to a Text
-// component's text to a log file, with the game code that set it.
+// Hooks the game's UI Text setters and sets text through them; with logging enabled, logs every text change and its
+// caller.
 // Signatures and parameters from Nenkai's gbfr.qol.detailedpercentages (MIT).
 public unsafe class TextHooks
 {
@@ -64,7 +64,7 @@ public unsafe class TextHooks
             Write("text", text, Encoding.UTF8.GetString((byte*)str->Ptr, (int)str->Length), $" hash={hash:X8} unk={unk}");
     }
 
-    // hash: the custom XXHash32 of a text id, whose tags (text_*_tag.msg) draw icons on the value's <d> placeholders
+    // hash: the custom XXHash32 of a text id
     public void Set(nint text, string value, uint hash = NoHash)
     {
         int length = Encoding.UTF8.GetBytes(value, new Span<byte>((void*)_buffer, BufferSize));

@@ -1,7 +1,5 @@
 # Usage: python add_over_mastery.py <status01.prfb.yaml> <lb_ovtli02.prfb.yaml> <out.prfb.yaml>
-# Lays out sharecard's Over Mastery section in the magenta section: the heading, then four copies of lb_ovtli02's first
-# Over Mastery row (object 14, a LimitBonusInfo), each compacted to one line: icon, then name and value in INK, without
-# the level stars and the separator. CharaInfo.Powers references the heading's Text, then the row objects.
+# Lays out the Over Mastery section in the magenta section from copies of lb_ovtli02's first Over Mastery row.
 import sys
 from prefab import Prefab, f
 from card import INK, LEFT, S, Group, add_powers, append, card, copy_objects, text
@@ -14,7 +12,7 @@ ROW_OBJECTS = 32
 LINE, ICON_OBJ, TEXTS, PLUS, STARS = 17, 18, 19, 22, 25  # line01, icon01, loc_text01, icon_plus01, loc_star01
 COLORED_TEXTS = [20, 23, 24]  # text01, num01, percent01
 ICON_X_ROW = -482  # icon01's left edge in the row
-TEXT_X_ROW = -384  # loc_text01's left edge in the row, 10 right of the icon
+TEXT_X_ROW = -384  # loc_text01's left edge in the row
 ROW_ICON = 88
 
 # sharecard pixels, relative to the magenta section's top-left corner
@@ -28,7 +26,7 @@ ICON_X = 12
 SCALE = ICON * S / ROW_ICON
 
 def edit(old, block):
-    # names the row, hides the separator and the stars, colours the texts and the plus glyph in INK
+    # names the row, hides the separator and the stars, colours the texts
     if old == ROW:
         block[1] = f"  Name: {name}"
     if old in (LINE, STARS):
@@ -60,7 +58,7 @@ lines_h = LINES * LINE_H + (LINES - 1) * LINE_GAP
 top = HEADING_H + (SECTION_H - PAD_BOTTOM - HEADING_H - lines_h) / 2
 for i, row in enumerate(rows):
     y = top + i * (LINE_H + LINE_GAP) + LINE_H / 2
-    x = ICON_X - ICON_X_ROW * SCALE / S  # the row's centre, so that the icon's left edge is at ICON_X
+    x = ICON_X - ICON_X_ROW * SCALE / S  # the row's centre
     p.set(row, "Scale", (SCALE, SCALE, 1))
     p.place(row, pos=card(SECTION_X + x, SECTION_Y + y))
     p.place(row - ROW + ICON_OBJ, pos=(ICON_X_ROW, 0))

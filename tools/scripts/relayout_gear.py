@@ -1,6 +1,5 @@
 # Usage: python relayout_gear.py <status01.prfb.yaml> <out.prfb.yaml>
-# Splits the gear block's weapon row into a name line and a stats line, stacks the 12 sigil rows in one column
-# below it, drops the title and its tab, then fits the narrower block to the top of the cyan section.
+# Stacks the gear block's weapon row and sigil rows in one column at the top of the cyan section.
 import sys
 from prefab import Prefab
 
@@ -11,12 +10,12 @@ PARENT_X = 640  # loc_status02's pivot in loc_base01 coordinates
 LEFT, RIGHT = (600 - 1440) * S, (1356 - 1440) * S
 TOP = (720 - 16) * S
 
-LINE_H = 96  # a weapon line
-EQUIP_W = 1060  # loc_equip01: icon, name and level
+LINE_H = 96
+EQUIP_W = 1060  # loc_equip01
 SIGILS = [143, 154, 165, 176, 187, 198, 209, 220, 231, 242, 253, 264]  # slots 1 to 12
 SIGIL_W, SIGIL_H = 988, 68
-SIGIL_X = 24  # the rows' left edge from the block's left, which lines their icons up with the weapon's
-INSET = 12  # loc_status01's background inset from the frame, as at stock
+SIGIL_X = 24  # the rows' left edge from the block's left
+INSET = 12  # loc_status01's background inset from the frame
 PAD = 16
 
 W = EQUIP_W + 2 * INSET
@@ -40,10 +39,10 @@ p.place(116, pos=(-W / 2, 0))  # loc_equip01
 for stat in [128, 131, 134, 139]:  # loc_hp, loc_atk, loc_crt, loc_brk: anchored to the row's right edge
     p.place(stat, pos=(W / 2 + p.vec(stat, "AnchorPoint")[0], -LINE_H))
 
-# loc_status01, the sigils' background: its width follows the frame
+# loc_status01, the sigils' background
 p.place(142, pos=(0, -H / 2 + INSET), size=(-2 * INSET, BG_H))
 for i, sigil in enumerate(SIGILS):
     p.place(sigil, pos=(SIGIL_X + SIGIL_W / 2 - W / 2, BG_H - 13 - SIGIL_H / 2 - i * SIGIL_H))
-p.set(255, "Active", "true")  # slot 11's separator, which ended the left column at stock
+p.set(255, "Active", "true")  # slot 11's separator
 
 p.save(sys.argv[2])

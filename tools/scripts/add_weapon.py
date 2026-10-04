@@ -1,8 +1,5 @@
 # Usage: python add_weapon.py <status01.prfb.yaml> <equip01_info_weapon01.prfb.yaml> <out.prfb.yaml>
-# Copies the equip screen's weapon panel (equip01_info_weapon01: name, series, art, gauge, level, stats, weapon traits
-# and the wrightstone's traits) into the cyan section, keeping only the WeaponInfo on its root, and points
-# CharaInfo.Weapon at it, so that the page fill sets the whole panel. The gear block's own weapon row and the sigils
-# are hidden.
+# Copies the equip screen's weapon panel into the cyan section and points CharaInfo.Weapon at it.
 import sys
 from prefab import Prefab
 from card import PARENT, S, card, copy_objects, keep_components
@@ -10,11 +7,11 @@ from card import PARENT, S, card, copy_objects, keep_components
 p = Prefab(sys.argv[1])
 source = Prefab(sys.argv[2])
 
-PANEL_OBJECTS = 421  # equip01_info_weapon01's objects, Ids 0 to 420
-ROOT = 1  # root, inactive until the panel's in animation
+PANEL_OBJECTS = 421
+ROOT = 1  # root
 PANEL_W, PANEL_H = 1200, 1716  # loc_info01
-GEAR_BLOCK = 109  # loc_chr_status02: weapon row and sigils
-WEAPON_ROW = 114  # chr_status02_p01, the gear block's WeaponInfo
+GEAR_BLOCK = 109  # loc_chr_status02
+WEAPON_ROW = 114  # chr_status02_p01
 
 # sharecard pixels, the cyan section
 SECTION_X, SECTION_Y, SECTION_W, SECTION_H = 600, 16, 756, 1388

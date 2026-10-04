@@ -4,8 +4,7 @@ using System.Reflection;
 
 using GBFRDataTools.Files.UI.Serialization;
 
-// Adds our UI component classes to GBFRDataTools' type table, then runs its CLI unchanged.
-// Ours replace same-named ones of his. Both are private/internal in GBFRDataTools, hence reflection.
+// Adds our UI component classes to GBFRDataTools' type table, replacing same-named ones, then runs its CLI.
 
 var allUiTypes = (Dictionary<string, Type>)typeof(UIComponentSerializationCache)
     .GetField("_allUiTypes", BindingFlags.NonPublic | BindingFlags.Static)!

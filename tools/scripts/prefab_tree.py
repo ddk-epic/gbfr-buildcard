@@ -1,4 +1,5 @@
-# Prints a prefab YAML's object tree (id, name, components, rect). Usage: python prefab_tree.py <file.prfb.yaml> [maxdepth]
+# Usage: python prefab_tree.py <file.prfb.yaml> [maxdepth]
+# Prints a prefab YAML's object tree.
 import sys,re
 objs={}; order=[]; cur=None; sect=None
 for line in open(sys.argv[1],encoding='utf-8'):

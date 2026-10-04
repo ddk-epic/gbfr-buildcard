@@ -1,9 +1,5 @@
 # Usage: python add_master_traits.py <status01.prfb.yaml> <out.prfb.yaml>
-# Lays out sharecard's master traits board in the blue section: three style columns, each with its title and four
-# rank sections of cells in a two-column grid, and moves bc_text01 to the heading's right for the perk summary.
-# Images come first, then the texts, referenced from CharaInfo.Powers in the order CardWriter writes them: the
-# heading, then per style the title, the style name, per rank its label and count, then per rank and cell slot a
-# picked and an unpicked text.
+# Lays out the master traits board in the blue section and adds refs to its texts to CharaInfo.Powers.
 import sys
 from prefab import Prefab
 from card import CENTER, INK, LEFT, RIGHT, S, Group, add_powers, append, card, image, language_setter, text
@@ -16,7 +12,7 @@ STYLES = [  # name, colour
     ("Essence", (0.29411766, 0.7019608, 0.9098039)),
     ("Crux", (0.9098039, 0.37254903, 0.41568628)),
 ]
-SLOTS = [4, 8, 8, 10]  # cells per rank, the standard grid
+SLOTS = [4, 8, 8, 10]  # cells per rank
 RANKS = ["1", "2", "3", "EX"]
 
 # sharecard pixels, relative to the blue section's top-left corner
@@ -74,7 +70,7 @@ for s, (style, color) in enumerate(STYLES):
 
 container, _, text_ids = append(p, "bc_mtraits", group)
 
-# bc_text01: the perk summary, right-aligned at the heading's right
+# bc_text01: the perk summary
 p.replace(SUMMARY, "FontSize: 48", "FontSize: 22")
 start, end = p.range(SUMMARY)
 i = max(j for j in range(start, end) if p.lines[j] == "      Enable: true") + 1

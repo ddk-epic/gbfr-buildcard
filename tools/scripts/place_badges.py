@@ -66,7 +66,7 @@ BASE01_PIVOT = (0, 0, 0.5, 0.5)
 # top of the scaled status block (73)
 STATUS_TOP = get_field(73, "Position")[1] + get_field(73, "SizeDelta")[1] * get_field(73, "Scale")[1] / 2
 
-# loc_name01: left-aligned above the status block, growing right with the name
+# loc_name01: above the status block
 NAME_H = 72
 name_y = STATUS_TOP + GAP + NAME_H / 2
 place(7, LEFT, name_y, BASE01_PIVOT, BASE01, pivot=(0, 0.5))
@@ -75,7 +75,7 @@ place(7, LEFT, name_y, BASE01_PIVOT, BASE01, pivot=(0, 0.5))
 pwr_y = name_y + NAME_H / 2 + GAP + 45
 place(17, LEFT + INSET + 120, pwr_y, STATUS01_PIVOT, STATUS01_SIZE)
 
-# level01 and loc_ml_level01 keep their stock pairing, moved down so the "Lvl" label (877 at stock) clears the top
+# level01 and loc_ml_level01, moved down together
 dy = TOP - INSET - 877
 place(21, STATUS01[0] + 192, 748 + dy, STATUS01_PIVOT, STATUS01_SIZE)
 place(45, STATUS01[0] + 396, 784 + dy, STATUS01_PIVOT, STATUS01_SIZE)

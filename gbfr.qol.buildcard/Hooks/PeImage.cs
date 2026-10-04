@@ -18,9 +18,7 @@ public static unsafe class PeImage
         return null;
     }
 
-    // Returns the vtable for an RTTI type name such as ".?AVSummonInfo@component@ui@@", or 0. The type descriptor
-    // holding the name is in .data at name - 0x10. The complete object locator is in .rdata: signature 1, offset 0,
-    // type descriptor at [3] and its own address at [5], as image offsets. The vtable follows a pointer to the locator.
+    // Returns the vtable for an RTTI type name such as ".?AVSummonInfo@component@ui@@", or 0.
     public static nint FindVtable(nint image, string typeName)
     {
         if (FindSection(image, ".data") is not var (dataStart, dataEnd) || FindSection(image, ".rdata") is not var (rdataStart, rdataEnd))

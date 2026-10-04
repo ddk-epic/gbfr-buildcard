@@ -4,7 +4,7 @@ using GBFRDataTools.Files.UI.Types;
 namespace gbfr.uitools.Components.Infos;
 
 // ui::component::PresetInfo
-// _C418D291 int inferred: always 4-byte aligned, value 1.
+// _C418D291: type unconfirmed.
 public class PresetInfo : Component
 {
     public UIObjectRef _056507F5 { get; set; }

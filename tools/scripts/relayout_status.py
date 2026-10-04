@@ -1,6 +1,5 @@
 # Usage: python relayout_status.py <status01.prfb.yaml> <out.prfb.yaml>
-# Stacks the status block's four stat rows in one column beside the character icon, drops the title and its tab,
-# then fits the narrower block to the bottom of the yellow section.
+# Stacks the status block's four stat rows in one column at the bottom of the yellow section.
 import sys
 from prefab import Prefab
 
@@ -12,7 +11,7 @@ LEFT, RIGHT = (16 - 1440) * S, (576 - 1440) * S
 BOTTOM = (720 - 1118) * S
 
 ROW_W, ROW_H = 736, 64
-ROWS_X = 280  # rows' left edge from the block's left; the icon column is left of it
+ROWS_X = 280  # the rows' left edge from the block's left
 PAD = 40
 
 W = 1000
@@ -32,8 +31,7 @@ p.place(78, pos=(0, -H / 2), size=(W, H))  # loc_status01
 p.place(79, pos=(112 - W / 2, H / 2))  # loc_chr_icon01
 p.set(86, "Active", "false")  # line01: the divider between the two columns
 
-# Each row is pivoted on the stock grid's centre: hp and atk on their right edge, crt and brk on their left,
-# whose content sits 40 further right to clear the divider.
+# rows pivoted on the stock grid's centre: hp and atk on their right edge, crt and brk on their left
 p.place(87, pos=(ROWS_X + ROW_W - W / 2, H / 2 + ROW_H))  # loc_hp: bottom edge
 p.place(92, pos=(ROWS_X + ROW_W - W / 2, H / 2 + ROW_H))  # loc_atk: top edge
 p.place(97, pos=(ROWS_X - 40 - W / 2, H / 2 - ROW_H))  # loc_crt: bottom edge

@@ -1,14 +1,12 @@
 # Usage: python add_card_text.py <status01.prfb.yaml> <out.prfb.yaml>
-# Adds a Text object at the top of the blue section for the mod to write to, and a ref to it at the end of
-# CharaInfo.Powers, which is how the mod finds its Text component at runtime. The game writes PWR into every Powers
-# text while filling the page; the mod overwrites it right after.
+# Adds a Text object at the top of the blue section and a ref to it to CharaInfo.Powers.
 import sys
 from prefab import Prefab
 
 p = Prefab(sys.argv[1])
 S = 3424 / 2880
 ID = max(p.starts) + 1
-PARENT = 426  # loc_buildcard: centred in loc_base01, same coordinates
+PARENT = 426  # loc_buildcard
 
 LEFT, TOP = (1380 - 1440) * S, (720 - 16) * S
 W, H = 1700, 64
@@ -47,7 +45,7 @@ OBJECT = f"""- Id: {ID}
   OffsetMax: 0, 0
   SizeDelta: {W}, {H}"""
 
-# the object goes last, as loc_buildcard's last child, which keeps Ids depth-first
+# loc_buildcard's last child
 start, end = p.range(PARENT)
 last_child = max(i for i in range(start, end) if p.lines[i].startswith("  - "))
 p.lines.insert(last_child + 1, f"  - {ID}")
@@ -56,7 +54,7 @@ p.lines[end:end] = OBJECT.split("\n")
 p.reindex()
 p.place(ID, pos=(LEFT + INSET, TOP - INSET))
 
-# CharaInfo.Powers on the root (object 0): append the ref after the list's last entry
+# CharaInfo.Powers on the root (object 0)
 i = p.lines.index("      Powers:", *p.range(0)) + 1
 while p.lines[i].startswith("      - ") or p.lines[i].startswith("        "):
     i += 1

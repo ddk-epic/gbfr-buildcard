@@ -1,8 +1,6 @@
 # Usage: python add_summons.py <status01.prfb.yaml> <summon_list01.prfb.yaml> <summon_info01.prfb.yaml> <out.prfb.yaml>
-# Copies summon_list01's first summon slot (object 90: frame, icon, names, element badge and SummonInfo) four times
-# into a 2x2 grid in the orange section. Under each slot it copies summon_info01's trait row (object 20, a SkillInfo)
-# and equip bonus row (object 43, a LimitBonusInfo) as children of the slot, and points the slot's SummonInfo at them,
-# so that setting the summon also fills both rows. CharaInfo.Powers references the slot objects.
+# Lays out four copies of summon_list01's first summon slot in the orange section, each with summon_info01's trait and
+# equip bonus rows.
 import sys
 from prefab import Prefab
 from card import PARENT, S, add_powers, card, copy_objects, keep_components
@@ -16,7 +14,7 @@ KEEP = [90, 91, 92, 93, 94, 103, 104, 105, 106, 108, 109, 110, 111, 112, 113, 11
 SLOT_COMPONENTS = ["SummonInfo"]
 TRAIT_ROW = 20  # list_skill_p05_01
 BONUS_ROW = 43  # list_skill_p05_02
-ROW_OBJECTS = 20  # objects per row subtree
+ROW_OBJECTS = 20
 ROW_W, ROW_H = 1136, 140  # base01
 LINE_H = 72  # loc_list01
 LINE_GAP = 6
@@ -79,7 +77,7 @@ new = [f"- Id: {container}", "  Name: bc_smn", "  Children:", *[f"  - {s[0]}" fo
 p.lines[end:end] = new
 p.reindex()
 
-# slots at the top of the section's quarters, centred horizontally; rows centred below the frame in slot coordinates
+# slots at the top of the section's quarters, rows below each frame
 for i, (slot_id, trait, bonus) in enumerate(slots):
     x = SECTION_X + SECTION_W * (1 + 2 * (i % 2)) / 4
     top = SECTION_Y + SECTION_H / 2 * (i // 2) + PAD_TOP

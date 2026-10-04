@@ -1,12 +1,6 @@
 # Usage: python gen_master_traits.py <gbfr-extract dir> <gbfr-sharecard dir> <mod dir>
-# Writes the master trait cells to <mod dir>/Data/master_traits.tsv: skillboard_effect key, style, rank, position,
-# label, text hash. Cells come from the archive's skillboard_layout, labels and style titles from sharecard. Position
-# is 1-based among a rank's non-perk cells in board order (Unk30); perks get 0, and the rank 1 perk's label is the
-# style's title.
-#
-# Replaces sharecard's [LMB]/[RMB] with <d>, and adds a tag entry TXT_BC_MT_<key> for each such label to the
-# archive's English text_skillboard_tag.msg, written under <mod dir>/GBFR/data: icon 4 (LMB) or 3 (RMB) at each <d>,
-# its position counting every <d> before it as 6 characters. The text hash is the custom XXHash32 of the entry's id.
+# Writes the master trait cells to <mod dir>/Data/master_traits.tsv and their button icon tags to the mod's
+# text_skillboard_tag.msg.
 import json, os, re, sqlite3, struct, sys
 import msgpack
 
@@ -47,7 +41,7 @@ def xxhash32_custom(text):
     return h ^ (h >> 16)
 
 def pack(value):
-    # msgpack with every map and array in its 32-bit form, like the game's .msg files
+    # msgpack with 32-bit maps and arrays
     if isinstance(value, dict):
         return b"\xdf" + struct.pack(">I", len(value)) + b"".join(pack(k) + pack(v) for k, v in value.items())
     if isinstance(value, list):

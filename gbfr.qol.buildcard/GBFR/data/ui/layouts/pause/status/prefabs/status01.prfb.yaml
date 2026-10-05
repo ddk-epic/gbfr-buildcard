@@ -22090,6 +22090,7 @@ Objects:
   - 1701
   - 2302
   - 2538
+  - 2539
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -107169,3 +107170,397 @@ Objects:
 
 
 
+- Id: 2539
+  Name: bc_frame
+  Children:
+  - 2540
+  - 2541
+  - 2542
+  - 2543
+  - 2544
+  - 2545
+  - 2546
+  - 2547
+  - 2548
+  - 2549
+  - 2550
+  - 2551
+  - 2552
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -856
+  OffsetMax: 1712, 856
+  SizeDelta: 3424, 1712
+- Id: 2540
+  Name: bc_frame_top
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1712, 856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -1712, 856
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, 844
+  OffsetMax: 1712, 856
+  SizeDelta: 3424, 12
+- Id: 2541
+  Name: bc_frame_bottom
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1712, -844, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -1712, -844
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -856
+  OffsetMax: 1712, -844
+  SizeDelta: 3424, 12
+- Id: 2542
+  Name: bc_frame_left
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1712, 856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -1712, 856
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -856
+  OffsetMax: -1700, 856
+  SizeDelta: 12, 1712
+- Id: 2543
+  Name: bc_frame_right
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1700, 856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 1700, 856
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 1700, -856
+  OffsetMax: 1712, 856
+  SizeDelta: 12, 1712
+- Id: 2544
+  Name: bc_frame_top_left_h
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1712, 856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -1712, 856
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, 840
+  OffsetMax: -1682, 856
+  SizeDelta: 30, 16
+- Id: 2545
+  Name: bc_frame_top_left_v
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1712, 856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -1712, 856
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, 826
+  OffsetMax: -1696, 856
+  SizeDelta: 16, 30
+- Id: 2546
+  Name: bc_frame_top_right_h
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1682, 856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 1682, 856
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 1682, 840
+  OffsetMax: 1712, 856
+  SizeDelta: 30, 16
+- Id: 2547
+  Name: bc_frame_top_right_v
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1696, 856, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 1696, 856
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 1696, 826
+  OffsetMax: 1712, 856
+  SizeDelta: 16, 30
+- Id: 2548
+  Name: bc_frame_bottom_left_h
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1712, -840, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -1712, -840
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -856
+  OffsetMax: -1682, -840
+  SizeDelta: 30, 16
+- Id: 2549
+  Name: bc_frame_bottom_left_v
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1712, -826, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -1712, -826
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -856
+  OffsetMax: -1696, -826
+  SizeDelta: 16, 30
+- Id: 2550
+  Name: bc_frame_bottom_right_h
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1682, -840, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 1682, -840
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 1682, -856
+  OffsetMax: 1712, -840
+  SizeDelta: 30, 16
+- Id: 2551
+  Name: bc_frame_bottom_right_v
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.961, 0.984, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1696, -826, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 1696, -826
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 1696, -856
+  OffsetMax: 1712, -826
+  SizeDelta: 16, 30
+- Id: 2552
+  Name: bc_frame_line
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.678, 0.78, 0.875, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_frame02
+      Type: 1
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1708, 852, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: -1708, 852
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1708, -852
+  OffsetMax: 1708, 852
+  SizeDelta: 3416, 1704

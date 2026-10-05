@@ -403,3 +403,12 @@ Script: `tools/scripts/add_frame.py`. The white panel's frame line and corner or
 | 2540-2543 `bc_frame_top`, `_bottom`, `_left`, `_right` (new) | sprite-less Images in `ps_cmn_base53`'s panel colour (245, 251, 255): the band from the card's edge to the line, 12 wide |
 | 2544-2551 `bc_frame_<corner>_h`, `_v` (new) | the same colour, 30x16 and 16x30 from each corner: the band under the corner ornaments, short of their holes |
 | 2552 `bc_frame_line` (new) | `ps_cmn_frame02` (sliced), `ps_cmn_base53`'s line colour (173, 199, 223); the card inset by 4, so the line lies 10 inside the card's edge as in `ps_cmn_base53` |
+
+## 2026-10-06 · Summons panel
+
+Script: `tools/scripts/panel_summons.py`.
+
+| Objects | Change |
+|---|---|
+| 1497 `bc_smn_base` (new) | first child of 1496 `bc_smn`; the skills panel's `ps_cmn_base54` (sliced) at the skills panel's `Scale` 0.666, over the summon cells' area |
+| everything after it | Ids renumbered, 1 higher; `CardWriter`'s Id constants follow |

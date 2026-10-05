@@ -1,14 +1,15 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
+using System.Text;
 
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Mod.Interfaces;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Writes the card's texts, Over Mastery rows and summon slots after the game fills the page, and sets the weapon whose
-// art WeaponArtHooks loads.
+// Writes the card's texts, Over Mastery rows and summon slots after the game fills the page, wraps long skill names, and
+// sets the weapon whose art WeaponArtHooks loads.
 public unsafe class CardWriter
 {
     private const short SummaryTextId = 462;      // bc_text01
@@ -18,9 +19,18 @@ public unsafe class CardWriter
     private const int OverMasteryRowObjects = 32;
     private const short SummonSlotsId = 899;  // bc_smn_0
     private const int SummonObjects = 56;
+    private const short SkillNamesId = 1735;  // text01 of the first skill card
+    private const int SkillCardObjects = 58;
+    private const int SkillCount = 4;
     private const int Powers = 0x3D0;
     private const int MaxRefs = 1024;
     private const int WrapLength = 19;
+    private const int SkillNameWrapLength = 15;
+
+    // Text component: MSVC std::string at +0x40 (inline up to 15 bytes, else a pointer), text id hash at +0x188
+    private const int TextString = 0x40;
+    private const int TextHash = 0x188;
+    private const int MaxTextLength = 0x400;
 
     // chara: masteries, then the master trait cells
     private const int Entries = 0x170;
@@ -54,6 +64,7 @@ public unsafe class CardWriter
     private readonly nint _exeBase = Process.GetCurrentProcess().MainModule!.BaseAddress;
     private readonly nint _limitBonusInfoVtable;
     private readonly nint _summonInfoVtable;
+    private readonly nint _textVtable;
     private bool _loggedComponents;
 
     public CardWriter(TextHooks text, WeaponArtHooks weaponArt, ILogger logger)
@@ -67,6 +78,9 @@ public unsafe class CardWriter
         _summonInfoVtable = PeImage.FindVtable(_exeBase, ".?AVSummonInfo@component@ui@@");
         if (_summonInfoVtable == 0)
             _logger.WriteLine("[gbfr.qol.buildcard] SummonInfo vtable not found", Color.Red);
+        _textVtable = PeImage.FindVtable(_exeBase, ".?AVText@component@ui@@");
+        if (_textVtable == 0)
+            _logger.WriteLine("[gbfr.qol.buildcard] Text vtable not found", Color.Red);
     }
 
     // SetObjectActive(object, active), SetOverMasteryLine(LimitBonusInfo component, Over Mastery line),
@@ -81,7 +95,6 @@ public unsafe class CardWriter
             _setSummonInfo = (delegate* unmanaged<nint, uint, void>)(nint)address);
     }
 
-    // Catches and logs exceptions.
     public void OnFilled(nint charaInfo, nint chara)
     {
         try
@@ -103,6 +116,7 @@ public unsafe class CardWriter
         WriteMasterTraits(refs, chara);
         WriteOverMastery(refs, chara);
         WriteSummons(refs, chara);
+        WrapSkillNames(charaInfo);
         _weaponArt.Show(chara);
     }
 
@@ -154,7 +168,6 @@ public unsafe class CardWriter
         }
     }
 
-    // Sets each row's LimitBonusInfo to its Over Mastery line and hides rows whose line has no value.
     private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
     {
         Set(refs, OverMasteryTextId, "OVER MASTERY");
@@ -180,7 +193,6 @@ public unsafe class CardWriter
             _setOverMasteryLine(limitBonusInfo, line);
     }
 
-    // Sets each slot's SummonInfo to the equipped summon's id.
     private void WriteSummons(Dictionary<short, nint> refs, nint chara)
     {
         for (int i = 0; i < SummonCount; i++)
@@ -198,8 +210,7 @@ public unsafe class CardWriter
             _setSummonInfo(summonInfo, summonId);
     }
 
-    // Returns the object's first component with the given vtable, or 0. Components: 0x20-byte entries from +0x28,
-    // component at +0x18.
+    // Components: 0x20-byte entries from +0x28, component at +0x18.
     private static nint FindComponent(nint obj, nint vtable)
     {
         for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
@@ -225,16 +236,46 @@ public unsafe class CardWriter
         _logger.WriteLine($"[gbfr.qol.buildcard] No {name} on a card object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
     }
 
+    private void WrapSkillNames(nint charaInfo)
+    {
+        var refs = FindRefs(charaInfo, SkillNamesId, (short)(SkillNamesId + (SkillCount - 1) * SkillCardObjects));
+        if (refs.Count != SkillCount || _textVtable == 0)
+            return;
+        for (int i = 0; i < SkillCount; i++)
+        {
+            nint obj = *(nint*)(refs[(short)(SkillNamesId + i * SkillCardObjects)] + 8);
+            nint text = FindComponent(obj, _textVtable);
+            if (text == 0)
+            {
+                LogComponentsOnce(obj, "Text", _textVtable);
+                continue;
+            }
+            string name = ReadString(text + TextString);
+            string wrapped = Wrap(name, SkillNameWrapLength);
+            if (wrapped != name)
+                _text.Set(text, wrapped, *(uint*)(text + TextHash));
+        }
+    }
+
+    private static string ReadString(nint str)
+    {
+        long size = *(long*)(str + 0x10);
+        if (size <= 0 || size > MaxTextLength)
+            return "";
+        nint data = *(long*)(str + 0x18) > 15 ? *(nint*)str : str;
+        return Encoding.UTF8.GetString((byte*)data, (int)size);
+    }
+
     private void SetCell(Dictionary<short, nint> refs, int id, Cell? cell)
     {
         if (refs.TryGetValue((short)id, out nint r))
-            _text.Set(*(nint*)(r + 0x10), cell is { } c ? Wrap(c.Label) : "", cell?.TextHash ?? TextHooks.NoHash);
+            _text.Set(*(nint*)(r + 0x10), cell is { } c ? Wrap(c.Label, WrapLength) : "", cell?.TextHash ?? TextHooks.NoHash);
     }
 
-    // Breaks a label of 19 or more characters into two lines at the space nearest its middle; <d> counts as two.
-    private static string Wrap(string label)
+    // Breaks a one-line label of length or more characters at the space nearest its middle; <d> counts as two.
+    private static string Wrap(string label, int length)
     {
-        if (label.Replace("<d>", "xx").Length < WrapLength)
+        if (label.Contains('\n') || label.Replace("<d>", "xx").Length < length)
             return label;
         int best = -1;
         for (int i = label.IndexOf(' '); i != -1; i = label.IndexOf(' ', i + 1))
@@ -257,8 +298,7 @@ public unsafe class CardWriter
             _setActive(*(nint*)(r + 8), active ? (byte)1 : (byte)0);
     }
 
-    // Returns the refs in CharaInfo.Powers with ids in [firstId, lastId]. Refs: 0x20 bytes, object at +8, component at
-    // +0x10, component name hash at +0x18, ObjectRefId at +0x1E.
+    // Refs: 0x20 bytes, object at +8, component at +0x10, component name hash at +0x18, ObjectRefId at +0x1E.
     private static Dictionary<short, nint> FindRefs(nint charaInfo, short firstId, short lastId)
     {
         var found = new Dictionary<short, nint>();

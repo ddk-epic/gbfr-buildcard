@@ -839,19 +839,31 @@ Objects:
       - ComponentName: ''
         Index: -1
         ObjectRefId: 1067
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1735
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1793
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1851
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1909
       Ability:
       - ComponentName: AbilityInfo
         Index: 0
-        ObjectRefId: 281
+        ObjectRefId: 1728
       - ComponentName: AbilityInfo
         Index: 0
-        ObjectRefId: 303
+        ObjectRefId: 1786
       - ComponentName: AbilityInfo
         Index: 0
-        ObjectRefId: 325
+        ObjectRefId: 1844
       - ComponentName: AbilityInfo
         Index: 0
-        ObjectRefId: 347
+        ObjectRefId: 1902
       Gem:
       - ComponentName: GemInfo
         Index: 0
@@ -14382,7 +14394,7 @@ Objects:
     Component:
       Alpha: 1
       Enable: true
-  Active: true
+  Active: false
   Position: -2000.089, -657.456, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.523, 0.523, 1
@@ -21376,6 +21388,7 @@ Objects:
   - 768
   - 898
   - 1123
+  - 1724
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -75160,3 +75173,8516 @@ Objects:
   OffsetMin: -472.5, -40
   OffsetMax: -31, 40
   SizeDelta: 441.5, 80
+- Id: 1724
+  Name: bc_skills
+  Children:
+  - 1725
+  - 1726
+  - 1728
+  - 1786
+  - 1844
+  - 1902
+  Active: true
+  Position: -1360.089, -657.456, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.666, 0.666, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -1360.089, -657.456
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1860.089, -891.384
+  OffsetMax: -860.089, -423.527
+  SizeDelta: 1000, 467.857
+- Id: 1725
+  Name: bc_skills_base
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base54
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -500, -233.929
+  OffsetMax: 500, 233.929
+  SizeDelta: 1000, 467.857
+- Id: 1726
+  Name: bc_skills_ttl
+  Children:
+  - 1727
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.23529412, 0.37254903, 0.49019608, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base00_01
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 169.126, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1.059, 1.059, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, -64.803
+  AnchorMin: 0.5, 1
+  AnchorMax: 0.5, 1
+  OffsetMin: -238, -84.803
+  OffsetMax: 238, -64.803
+  SizeDelta: 476, 20
+- Id: 1727
+  Name: ttl01_text01
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_ds01
+      FontSize: 40
+      Color: 1, 1, 1, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: true
+      ColorMode: 2
+      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
+      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
+      ColorBL: 0.8627451, 0.9607843, 1, 1
+      ColorBR: 0.8627451, 0.9607843, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 514
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_ds01
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_ABILITY
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 0, -20, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0
+  AnchorMax: 0.5, 0
+  OffsetMin: 0, 0
+  OffsetMax: 0, 50
+  SizeDelta: 0, 50
+- Id: 1728
+  Name: ability_set01_btn04
+  Children:
+  - 1729
+  Components:
+  - ComponentName: AbilityInfo
+    Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1731
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1735
+      Buttons:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1743
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1742
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1740
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1741
+      Elements:
+      - ComponentName: ElementInfo
+        Index: 0
+        ObjectRefId: 1736
+      - ComponentName: ElementInfo
+        Index: 0
+        ObjectRefId: 1732
+      F7B5F034:
+      - ComponentName: UpdateIconControl
+        Index: 0
+        ObjectRefId: 1749
+      - ComponentName: UpdateIconControl
+        Index: 0
+        ObjectRefId: 1769
+      Icon:
+        ComponentName: AbilityIconSetter
+        Index: 0
+        ObjectRefId: 1733
+      Enable: true
+  Active: true
+  Position: -241.071, 40.088, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -241.071, 40.088
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, 40.088
+  OffsetMax: -241.071, 40.088
+  SizeDelta: 0, 0
+- Id: 1729
+  Name: root
+  Children:
+  - 1730
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1730
+  Name: loc_base01
+  Children:
+  - 1731
+  - 1739
+  - 1744
+  - 1766
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_ability_base02_sub
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 482.143, 160.654
+- Id: 1731
+  Name: base01_set01
+  Children:
+  - 1732
+  - 1734
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_ability_base01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 482.143, 160.654
+- Id: 1732
+  Name: loc_icon_ability
+  Children:
+  - 1733
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_ability/noatlastextures/cmn_icablt_frame_dummy
+        SpriteName: B7BDE462
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ElementInfo
+    Component:
+      Images:
+      - ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1732
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/elementframe
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1732
+      Enable: true
+  Active: true
+  Position: -156.25, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.825, 0.825, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 84.821, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -7.179, -92
+  OffsetMax: 176.821, 92
+  SizeDelta: 184, 184
+- Id: 1733
+  Name: abirity01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_ability/noatlastextures/cmn_icablt_icon_plability01_dummy
+        SpriteName: 93D7AF8E
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: AbilityIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1733
+      Resetting: false
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -92, 0
+  AnchorMin: 1, 0.5
+  AnchorMax: 1, 0.5
+  OffsetMin: -174, -82
+  OffsetMax: -10, 82
+  SizeDelta: 164, 164
+- Id: 1734
+  Name: bc_skill_text
+  Children:
+  - 1735
+  - 1736
+  Components:
+  - ComponentName: VerticalLayoutGroup
+    Component:
+      Padding: 0, 0, 0, 6
+      Spacing: 32
+      ChildAlignment: 3
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  Active: true
+  Position: 77.786, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 77.786, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -85.5, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 326.571, 160.654
+- Id: 1735
+  Name: text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 23, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 0
+      VerticalFit: 2
+      Enable: true
+  Active: true
+  Position: -163.286, 33, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -47.327
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -72.327
+  OffsetMax: 326.571, -22.327
+  SizeDelta: 326.571, 50
+- Id: 1736
+  Name: loc_elem01
+  Children:
+  - 1737
+  - 1738
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.078431375, 0.33333334, 0.49019608, 0.2509804
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base_lv01
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ElementInfo
+    Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1736
+      Images:
+      - ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1737
+      Texts:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1738
+      Enable: true
+  - ComponentName: HorizontalLayoutGroup
+    Component:
+      Padding: 23, 0, 33, 0
+      Spacing: 11
+      ChildAlignment: 8
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: -163.286, -38, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -118.327
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -132.327
+  OffsetMax: 155.01, -104.327
+  SizeDelta: 155.01, 28
+- Id: 1737
+  Name: elem01_icon01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_symbol25
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/elementicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1737
+      Enable: true
+  Active: true
+  Position: 51, 14, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 51, 0
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 23, -28
+  OffsetMax: 79, 28
+  SizeDelta: 56, 56
+- Id: 1738
+  Name: elem01_text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_ol14
+      - data/language/ld_skipstd_b_sdf_ol15
+      - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol16
+      - data/language/ld_skipstd_b_sdf_ol13
+      - data/language/ld_skipstd_b_sdf_ol08
+      - data/language/ld_skipstd_b_sdf_ol17
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol13
+      FontSize: 32
+      Color: 1, 1, 1, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: true
+      ColorMode: 2
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 0.98039216, 0.5686275, 1
+      ColorBR: 1, 0.98039216, 0.5686275, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 516
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 90, 36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 90, 22
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 90, -28
+  OffsetMax: 122.009995, 22
+  SizeDelta: 32.01, 50
+- Id: 1739
+  Name: loc_icon_pos
+  Children:
+  - 1740
+  - 1741
+  - 1742
+  - 1743
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: false
+  Position: -530, -26, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -530, -26
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -580, -76
+  OffsetMax: -480, 24
+  SizeDelta: 100, 100
+- Id: 1740
+  Name: pos_btn01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 36, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 4, -32
+  OffsetMax: 68, 32
+  SizeDelta: 64, 64
+- Id: 1741
+  Name: pos_btn02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, -36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, -36
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -68
+  OffsetMax: 32, -4
+  SizeDelta: 64, 64
+- Id: 1742
+  Name: pos_btn03
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 36
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, 4
+  OffsetMax: 32, 68
+  SizeDelta: 64, 64
+- Id: 1743
+  Name: pos_btn04
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: -36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -36, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -68, -32
+  OffsetMax: -4, 32
+  SizeDelta: 64, 64
+- Id: 1744
+  Name: loc_guide_button
+  Children:
+  - 1745
+  - 1747
+  - 1749
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.13725491, 0.19607843, 0.43137255, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon11
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: -143.071, 64, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 98, 64
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 86, 52
+  OffsetMax: 110, 76
+  SizeDelta: 24, 24
+- Id: 1745
+  Name: button_system01_01
+  Children:
+  - 1746
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: -40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -40, 0
+  OffsetMax: -40, 0
+  SizeDelta: 0, 0
+- Id: 1746
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 13
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1746
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 13
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1745
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1747
+  Name: button_system01_02
+  Children:
+  - 1748
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: 40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 40, 0
+  OffsetMax: 40, 0
+  SizeDelta: 0, 0
+- Id: 1748
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 47
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1748
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 47
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1747
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1749
+  Name: icon_list01_crossfade
+  Children:
+  - 1750
+  Components:
+  - ComponentName: UpdateIconControl
+    Component:
+      Icons:
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1752
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1759
+      Enable: true
+  Active: false
+  Position: 106, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 106, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 106, 0
+  OffsetMax: 106, 0
+  SizeDelta: 0, 0
+- Id: 1750
+  Name: root
+  Children:
+  - 1751
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1751
+  Name: loc_base
+  Children:
+  - 1752
+  - 1759
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1752
+  Name: icon_list01_01
+  Children:
+  - 1753
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1752
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1755
+      ImageSetter:
+        ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1755
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1753
+  Name: root
+  Children:
+  - 1754
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1754
+  Name: loc_base
+  Children:
+  - 1755
+  - 1756
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1755
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/updateicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1755
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1756
+  Name: loc_new_effect
+  Children:
+  - 1757
+  - 1758
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1757
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1758
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1759
+  Name: icon_list01_02
+  Children:
+  - 1760
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1759
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1762
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1760
+  Name: root
+  Children:
+  - 1761
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1761
+  Name: loc_base
+  Children:
+  - 1762
+  - 1763
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1762
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1763
+  Name: loc_new_effect
+  Children:
+  - 1764
+  - 1765
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1764
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1765
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1766
+  Name: loc_guide_button_key
+  Children:
+  - 1767
+  - 1769
+  Active: false
+  Position: -143.071, 64, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 98, 64
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 98, 64
+  OffsetMax: 98, 64
+  SizeDelta: 0, 0
+- Id: 1767
+  Name: button_system01_key
+  Children:
+  - 1768
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: -40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -40, 0
+  OffsetMax: -40, 0
+  SizeDelta: 0, 0
+- Id: 1768
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 47
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1768
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 47
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1767
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1769
+  Name: icon_list01_crossfade_key
+  Children:
+  - 1770
+  Components:
+  - ComponentName: UpdateIconControl
+    Component:
+      Icons:
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1772
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1779
+      Enable: true
+  Active: false
+  Position: 26, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 26, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 26, 0
+  OffsetMax: 26, 0
+  SizeDelta: 0, 0
+- Id: 1770
+  Name: root
+  Children:
+  - 1771
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1771
+  Name: loc_base
+  Children:
+  - 1772
+  - 1779
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1772
+  Name: icon_list01_01
+  Children:
+  - 1773
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1772
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1775
+      ImageSetter:
+        ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1775
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1773
+  Name: root
+  Children:
+  - 1774
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1774
+  Name: loc_base
+  Children:
+  - 1775
+  - 1776
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1775
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/updateicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1775
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1776
+  Name: loc_new_effect
+  Children:
+  - 1777
+  - 1778
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1777
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1778
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1779
+  Name: icon_list01_02
+  Children:
+  - 1780
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1779
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1782
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1780
+  Name: root
+  Children:
+  - 1781
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1781
+  Name: loc_base
+  Children:
+  - 1782
+  - 1783
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1782
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1783
+  Name: loc_new_effect
+  Children:
+  - 1784
+  - 1785
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1784
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1785
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1786
+  Name: ability_set01_btn03
+  Children:
+  - 1787
+  Components:
+  - ComponentName: AbilityInfo
+    Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1789
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1793
+      Buttons:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1801
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1800
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1798
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1799
+      Elements:
+      - ComponentName: ElementInfo
+        Index: 0
+        ObjectRefId: 1794
+      - ComponentName: ElementInfo
+        Index: 0
+        ObjectRefId: 1790
+      F7B5F034:
+      - ComponentName: UpdateIconControl
+        Index: 0
+        ObjectRefId: 1807
+      - ComponentName: UpdateIconControl
+        Index: 0
+        ObjectRefId: 1827
+      Icon:
+        ComponentName: AbilityIconSetter
+        Index: 0
+        ObjectRefId: 1791
+      Enable: true
+  Active: true
+  Position: 241.071, 40.088, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 241.071, 40.088
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 241.071, 40.088
+  OffsetMax: 241.071, 40.088
+  SizeDelta: 0, 0
+- Id: 1787
+  Name: root
+  Children:
+  - 1788
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1788
+  Name: loc_base01
+  Children:
+  - 1789
+  - 1797
+  - 1802
+  - 1824
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_ability_base02_sub
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 482.143, 160.654
+- Id: 1789
+  Name: base01_set01
+  Children:
+  - 1790
+  - 1792
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_ability_base01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 482.143, 160.654
+- Id: 1790
+  Name: loc_icon_ability
+  Children:
+  - 1791
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_ability/noatlastextures/cmn_icablt_frame_dummy
+        SpriteName: B7BDE462
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ElementInfo
+    Component:
+      Images:
+      - ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1790
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/elementframe
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1790
+      Enable: true
+  Active: true
+  Position: -156.25, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.825, 0.825, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 84.821, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -7.179, -92
+  OffsetMax: 176.821, 92
+  SizeDelta: 184, 184
+- Id: 1791
+  Name: abirity01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_ability/noatlastextures/cmn_icablt_icon_plability01_dummy
+        SpriteName: 93D7AF8E
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: AbilityIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1791
+      Resetting: false
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -92, 0
+  AnchorMin: 1, 0.5
+  AnchorMax: 1, 0.5
+  OffsetMin: -174, -82
+  OffsetMax: -10, 82
+  SizeDelta: 164, 164
+- Id: 1792
+  Name: bc_skill_text
+  Children:
+  - 1793
+  - 1794
+  Components:
+  - ComponentName: VerticalLayoutGroup
+    Component:
+      Padding: 0, 0, 0, 6
+      Spacing: 32
+      ChildAlignment: 3
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  Active: true
+  Position: 77.786, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 77.786, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -85.5, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 326.571, 160.654
+- Id: 1793
+  Name: text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 23, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 0
+      VerticalFit: 2
+      Enable: true
+  Active: true
+  Position: -163.286, 33, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -47.327
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -72.327
+  OffsetMax: 326.571, -22.327
+  SizeDelta: 326.571, 50
+- Id: 1794
+  Name: loc_elem01
+  Children:
+  - 1795
+  - 1796
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.078431375, 0.33333334, 0.49019608, 0.2509804
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base_lv01
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ElementInfo
+    Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1794
+      Images:
+      - ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1795
+      Texts:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1796
+      Enable: true
+  - ComponentName: HorizontalLayoutGroup
+    Component:
+      Padding: 23, 0, 33, 0
+      Spacing: 11
+      ChildAlignment: 8
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: -163.286, -38, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -118.327
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -132.327
+  OffsetMax: 155.01, -104.327
+  SizeDelta: 155.01, 28
+- Id: 1795
+  Name: elem01_icon01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_symbol25
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/elementicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1795
+      Enable: true
+  Active: true
+  Position: 51, 14, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 51, 0
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 23, -28
+  OffsetMax: 79, 28
+  SizeDelta: 56, 56
+- Id: 1796
+  Name: elem01_text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_ol14
+      - data/language/ld_skipstd_b_sdf_ol15
+      - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol16
+      - data/language/ld_skipstd_b_sdf_ol13
+      - data/language/ld_skipstd_b_sdf_ol08
+      - data/language/ld_skipstd_b_sdf_ol17
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol13
+      FontSize: 32
+      Color: 1, 1, 1, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: true
+      ColorMode: 2
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 0.98039216, 0.5686275, 1
+      ColorBR: 1, 0.98039216, 0.5686275, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 516
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 90, 36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 90, 22
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 90, -28
+  OffsetMax: 122.009995, 22
+  SizeDelta: 32.01, 50
+- Id: 1797
+  Name: loc_icon_pos
+  Children:
+  - 1798
+  - 1799
+  - 1800
+  - 1801
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: false
+  Position: -530, -26, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -530, -26
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -580, -76
+  OffsetMax: -480, 24
+  SizeDelta: 100, 100
+- Id: 1798
+  Name: pos_btn01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 36, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 4, -32
+  OffsetMax: 68, 32
+  SizeDelta: 64, 64
+- Id: 1799
+  Name: pos_btn02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, -36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, -36
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -68
+  OffsetMax: 32, -4
+  SizeDelta: 64, 64
+- Id: 1800
+  Name: pos_btn03
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 36
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, 4
+  OffsetMax: 32, 68
+  SizeDelta: 64, 64
+- Id: 1801
+  Name: pos_btn04
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: -36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -36, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -68, -32
+  OffsetMax: -4, 32
+  SizeDelta: 64, 64
+- Id: 1802
+  Name: loc_guide_button
+  Children:
+  - 1803
+  - 1805
+  - 1807
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.13725491, 0.19607843, 0.43137255, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon11
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: -143.071, 64, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 98, 64
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 86, 52
+  OffsetMax: 110, 76
+  SizeDelta: 24, 24
+- Id: 1803
+  Name: button_system01_01
+  Children:
+  - 1804
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: -40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -40, 0
+  OffsetMax: -40, 0
+  SizeDelta: 0, 0
+- Id: 1804
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 13
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1804
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 13
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1803
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1805
+  Name: button_system01_02
+  Children:
+  - 1806
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: 40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 40, 0
+  OffsetMax: 40, 0
+  SizeDelta: 0, 0
+- Id: 1806
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 48
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1806
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 48
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1805
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1807
+  Name: icon_list01_crossfade
+  Children:
+  - 1808
+  Components:
+  - ComponentName: UpdateIconControl
+    Component:
+      Icons:
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1810
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1817
+      Enable: true
+  Active: false
+  Position: 106, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 106, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 106, 0
+  OffsetMax: 106, 0
+  SizeDelta: 0, 0
+- Id: 1808
+  Name: root
+  Children:
+  - 1809
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1809
+  Name: loc_base
+  Children:
+  - 1810
+  - 1817
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1810
+  Name: icon_list01_01
+  Children:
+  - 1811
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1810
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1813
+      ImageSetter:
+        ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1813
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1811
+  Name: root
+  Children:
+  - 1812
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1812
+  Name: loc_base
+  Children:
+  - 1813
+  - 1814
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1813
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/updateicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1813
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1814
+  Name: loc_new_effect
+  Children:
+  - 1815
+  - 1816
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1815
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1816
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1817
+  Name: icon_list01_02
+  Children:
+  - 1818
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1817
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1820
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1818
+  Name: root
+  Children:
+  - 1819
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1819
+  Name: loc_base
+  Children:
+  - 1820
+  - 1821
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1820
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1821
+  Name: loc_new_effect
+  Children:
+  - 1822
+  - 1823
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1822
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1823
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1824
+  Name: loc_guide_button_key
+  Children:
+  - 1825
+  - 1827
+  Active: false
+  Position: -143.071, 64, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 98, 64
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 98, 64
+  OffsetMax: 98, 64
+  SizeDelta: 0, 0
+- Id: 1825
+  Name: button_system01_key
+  Children:
+  - 1826
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: -40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -40, 0
+  OffsetMax: -40, 0
+  SizeDelta: 0, 0
+- Id: 1826
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 48
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1826
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 48
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1825
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1827
+  Name: icon_list01_crossfade_key
+  Children:
+  - 1828
+  Components:
+  - ComponentName: UpdateIconControl
+    Component:
+      Icons:
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1830
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1837
+      Enable: true
+  Active: false
+  Position: 26, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 26, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 26, 0
+  OffsetMax: 26, 0
+  SizeDelta: 0, 0
+- Id: 1828
+  Name: root
+  Children:
+  - 1829
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1829
+  Name: loc_base
+  Children:
+  - 1830
+  - 1837
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1830
+  Name: icon_list01_01
+  Children:
+  - 1831
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1830
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1833
+      ImageSetter:
+        ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1833
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1831
+  Name: root
+  Children:
+  - 1832
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1832
+  Name: loc_base
+  Children:
+  - 1833
+  - 1834
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1833
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/updateicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1833
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1834
+  Name: loc_new_effect
+  Children:
+  - 1835
+  - 1836
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1835
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1836
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1837
+  Name: icon_list01_02
+  Children:
+  - 1838
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1837
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1840
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1838
+  Name: root
+  Children:
+  - 1839
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1839
+  Name: loc_base
+  Children:
+  - 1840
+  - 1841
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1840
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1841
+  Name: loc_new_effect
+  Children:
+  - 1842
+  - 1843
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1842
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1843
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1844
+  Name: ability_set01_btn01
+  Children:
+  - 1845
+  Components:
+  - ComponentName: AbilityInfo
+    Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1847
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1851
+      Buttons:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1859
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1858
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1856
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1857
+      Elements:
+      - ComponentName: ElementInfo
+        Index: 0
+        ObjectRefId: 1852
+      - ComponentName: ElementInfo
+        Index: 0
+        ObjectRefId: 1848
+      F7B5F034:
+      - ComponentName: UpdateIconControl
+        Index: 0
+        ObjectRefId: 1865
+      - ComponentName: UpdateIconControl
+        Index: 0
+        ObjectRefId: 1885
+      Icon:
+        ComponentName: AbilityIconSetter
+        Index: 0
+        ObjectRefId: 1849
+      Enable: true
+  Active: true
+  Position: -241.071, -120.566, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -241.071, -120.566
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -120.566
+  OffsetMax: -241.071, -120.566
+  SizeDelta: 0, 0
+- Id: 1845
+  Name: root
+  Children:
+  - 1846
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1846
+  Name: loc_base01
+  Children:
+  - 1847
+  - 1855
+  - 1860
+  - 1882
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_ability_base02_sub
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 482.143, 160.654
+- Id: 1847
+  Name: base01_set01
+  Children:
+  - 1848
+  - 1850
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_ability_base01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 482.143, 160.654
+- Id: 1848
+  Name: loc_icon_ability
+  Children:
+  - 1849
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_ability/noatlastextures/cmn_icablt_frame_dummy
+        SpriteName: B7BDE462
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ElementInfo
+    Component:
+      Images:
+      - ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1848
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/elementframe
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1848
+      Enable: true
+  Active: true
+  Position: -156.25, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.825, 0.825, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 84.821, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -7.179, -92
+  OffsetMax: 176.821, 92
+  SizeDelta: 184, 184
+- Id: 1849
+  Name: abirity01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_ability/noatlastextures/cmn_icablt_icon_plability01_dummy
+        SpriteName: 93D7AF8E
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: AbilityIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1849
+      Resetting: false
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -92, 0
+  AnchorMin: 1, 0.5
+  AnchorMax: 1, 0.5
+  OffsetMin: -174, -82
+  OffsetMax: -10, 82
+  SizeDelta: 164, 164
+- Id: 1850
+  Name: bc_skill_text
+  Children:
+  - 1851
+  - 1852
+  Components:
+  - ComponentName: VerticalLayoutGroup
+    Component:
+      Padding: 0, 0, 0, 6
+      Spacing: 32
+      ChildAlignment: 3
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  Active: true
+  Position: 77.786, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 77.786, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -85.5, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 326.571, 160.654
+- Id: 1851
+  Name: text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 23, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 0
+      VerticalFit: 2
+      Enable: true
+  Active: true
+  Position: -163.286, 33, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -47.327
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -72.327
+  OffsetMax: 326.571, -22.327
+  SizeDelta: 326.571, 50
+- Id: 1852
+  Name: loc_elem01
+  Children:
+  - 1853
+  - 1854
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.078431375, 0.33333334, 0.49019608, 0.2509804
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base_lv01
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ElementInfo
+    Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1852
+      Images:
+      - ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1853
+      Texts:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1854
+      Enable: true
+  - ComponentName: HorizontalLayoutGroup
+    Component:
+      Padding: 23, 0, 33, 0
+      Spacing: 11
+      ChildAlignment: 8
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: -163.286, -38, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -118.327
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -132.327
+  OffsetMax: 155.01, -104.327
+  SizeDelta: 155.01, 28
+- Id: 1853
+  Name: elem01_icon01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_symbol25
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/elementicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1853
+      Enable: true
+  Active: true
+  Position: 51, 14, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 51, 0
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 23, -28
+  OffsetMax: 79, 28
+  SizeDelta: 56, 56
+- Id: 1854
+  Name: elem01_text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_ol14
+      - data/language/ld_skipstd_b_sdf_ol15
+      - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol16
+      - data/language/ld_skipstd_b_sdf_ol13
+      - data/language/ld_skipstd_b_sdf_ol08
+      - data/language/ld_skipstd_b_sdf_ol17
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol13
+      FontSize: 32
+      Color: 1, 1, 1, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: true
+      ColorMode: 2
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 0.98039216, 0.5686275, 1
+      ColorBR: 1, 0.98039216, 0.5686275, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 516
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 90, 36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 90, 22
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 90, -28
+  OffsetMax: 122.009995, 22
+  SizeDelta: 32.01, 50
+- Id: 1855
+  Name: loc_icon_pos
+  Children:
+  - 1856
+  - 1857
+  - 1858
+  - 1859
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: false
+  Position: -530, -26, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -530, -26
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -580, -76
+  OffsetMax: -480, 24
+  SizeDelta: 100, 100
+- Id: 1856
+  Name: pos_btn01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 36, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 4, -32
+  OffsetMax: 68, 32
+  SizeDelta: 64, 64
+- Id: 1857
+  Name: pos_btn02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, -36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, -36
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -68
+  OffsetMax: 32, -4
+  SizeDelta: 64, 64
+- Id: 1858
+  Name: pos_btn03
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 36
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, 4
+  OffsetMax: 32, 68
+  SizeDelta: 64, 64
+- Id: 1859
+  Name: pos_btn04
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: -36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -36, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -68, -32
+  OffsetMax: -4, 32
+  SizeDelta: 64, 64
+- Id: 1860
+  Name: loc_guide_button
+  Children:
+  - 1861
+  - 1863
+  - 1865
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.13725491, 0.19607843, 0.43137255, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon11
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: -143.071, 64, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 98, 64
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 86, 52
+  OffsetMax: 110, 76
+  SizeDelta: 24, 24
+- Id: 1861
+  Name: button_system01_01
+  Children:
+  - 1862
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: -40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -40, 0
+  OffsetMax: -40, 0
+  SizeDelta: 0, 0
+- Id: 1862
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 13
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1862
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 13
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1861
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1863
+  Name: button_system01_02
+  Children:
+  - 1864
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: 40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 40, 0
+  OffsetMax: 40, 0
+  SizeDelta: 0, 0
+- Id: 1864
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 49
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1864
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 49
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1863
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1865
+  Name: icon_list01_crossfade
+  Children:
+  - 1866
+  Components:
+  - ComponentName: UpdateIconControl
+    Component:
+      Icons:
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1868
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1875
+      Enable: true
+  Active: false
+  Position: 106, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 106, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 106, 0
+  OffsetMax: 106, 0
+  SizeDelta: 0, 0
+- Id: 1866
+  Name: root
+  Children:
+  - 1867
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1867
+  Name: loc_base
+  Children:
+  - 1868
+  - 1875
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1868
+  Name: icon_list01_01
+  Children:
+  - 1869
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1868
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1871
+      ImageSetter:
+        ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1871
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1869
+  Name: root
+  Children:
+  - 1870
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1870
+  Name: loc_base
+  Children:
+  - 1871
+  - 1872
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1871
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/updateicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1871
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1872
+  Name: loc_new_effect
+  Children:
+  - 1873
+  - 1874
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1873
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1874
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1875
+  Name: icon_list01_02
+  Children:
+  - 1876
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1875
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1878
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1876
+  Name: root
+  Children:
+  - 1877
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1877
+  Name: loc_base
+  Children:
+  - 1878
+  - 1879
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1878
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1879
+  Name: loc_new_effect
+  Children:
+  - 1880
+  - 1881
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1880
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1881
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1882
+  Name: loc_guide_button_key
+  Children:
+  - 1883
+  - 1885
+  Active: false
+  Position: -143.071, 64, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 98, 64
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 98, 64
+  OffsetMax: 98, 64
+  SizeDelta: 0, 0
+- Id: 1883
+  Name: button_system01_key
+  Children:
+  - 1884
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: -40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -40, 0
+  OffsetMax: -40, 0
+  SizeDelta: 0, 0
+- Id: 1884
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 49
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1884
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 49
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1883
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1885
+  Name: icon_list01_crossfade_key
+  Children:
+  - 1886
+  Components:
+  - ComponentName: UpdateIconControl
+    Component:
+      Icons:
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1888
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1895
+      Enable: true
+  Active: false
+  Position: 26, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 26, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 26, 0
+  OffsetMax: 26, 0
+  SizeDelta: 0, 0
+- Id: 1886
+  Name: root
+  Children:
+  - 1887
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1887
+  Name: loc_base
+  Children:
+  - 1888
+  - 1895
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1888
+  Name: icon_list01_01
+  Children:
+  - 1889
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1888
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1891
+      ImageSetter:
+        ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1891
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1889
+  Name: root
+  Children:
+  - 1890
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1890
+  Name: loc_base
+  Children:
+  - 1891
+  - 1892
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1891
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/updateicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1891
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1892
+  Name: loc_new_effect
+  Children:
+  - 1893
+  - 1894
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1893
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1894
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1895
+  Name: icon_list01_02
+  Children:
+  - 1896
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1895
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1898
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1896
+  Name: root
+  Children:
+  - 1897
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1897
+  Name: loc_base
+  Children:
+  - 1898
+  - 1899
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1898
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1899
+  Name: loc_new_effect
+  Children:
+  - 1900
+  - 1901
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1900
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1901
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1902
+  Name: ability_set01_btn02
+  Children:
+  - 1903
+  Components:
+  - ComponentName: AbilityInfo
+    Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1905
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1909
+      Buttons:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1917
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1916
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1914
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1915
+      Elements:
+      - ComponentName: ElementInfo
+        Index: 0
+        ObjectRefId: 1910
+      - ComponentName: ElementInfo
+        Index: 0
+        ObjectRefId: 1906
+      F7B5F034:
+      - ComponentName: UpdateIconControl
+        Index: 0
+        ObjectRefId: 1923
+      - ComponentName: UpdateIconControl
+        Index: 0
+        ObjectRefId: 1943
+      Icon:
+        ComponentName: AbilityIconSetter
+        Index: 0
+        ObjectRefId: 1907
+      Enable: true
+  Active: true
+  Position: 241.071, -120.566, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 241.071, -120.566
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 241.071, -120.566
+  OffsetMax: 241.071, -120.566
+  SizeDelta: 0, 0
+- Id: 1903
+  Name: root
+  Children:
+  - 1904
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1904
+  Name: loc_base01
+  Children:
+  - 1905
+  - 1913
+  - 1918
+  - 1940
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_ability_base02_sub
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 482.143, 160.654
+- Id: 1905
+  Name: base01_set01
+  Children:
+  - 1906
+  - 1908
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 0
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_ability_base01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -241.071, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 482.143, 160.654
+- Id: 1906
+  Name: loc_icon_ability
+  Children:
+  - 1907
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_ability/noatlastextures/cmn_icablt_frame_dummy
+        SpriteName: B7BDE462
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ElementInfo
+    Component:
+      Images:
+      - ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1906
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/elementframe
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1906
+      Enable: true
+  Active: true
+  Position: -156.25, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.825, 0.825, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 84.821, 0
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: -7.179, -92
+  OffsetMax: 176.821, 92
+  SizeDelta: 184, 184
+- Id: 1907
+  Name: abirity01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_ability/noatlastextures/cmn_icablt_icon_plability01_dummy
+        SpriteName: 93D7AF8E
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: AbilityIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1907
+      Resetting: false
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -92, 0
+  AnchorMin: 1, 0.5
+  AnchorMax: 1, 0.5
+  OffsetMin: -174, -82
+  OffsetMax: -10, 82
+  SizeDelta: 164, 164
+- Id: 1908
+  Name: bc_skill_text
+  Children:
+  - 1909
+  - 1910
+  Components:
+  - ComponentName: VerticalLayoutGroup
+    Component:
+      Padding: 0, 0, 0, 6
+      Spacing: 32
+      ChildAlignment: 3
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  Active: true
+  Position: 77.786, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 77.786, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -85.5, -80.327
+  OffsetMax: 241.071, 80.327
+  SizeDelta: 326.571, 160.654
+- Id: 1909
+  Name: text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_glow_w01
+      FontSize: 40
+      Color: 0.19607843, 0.37254903, 0.49019608, 1
+      Margin: 23, 0, 0, 0
+      IsGradient: false
+      ColorMode: 3
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 1, 1, 1
+      ColorBR: 1, 1, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 513
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 0
+      VerticalFit: 2
+      Enable: true
+  Active: true
+  Position: -163.286, 33, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -47.327
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -72.327
+  OffsetMax: 326.571, -22.327
+  SizeDelta: 326.571, 50
+- Id: 1910
+  Name: loc_elem01
+  Children:
+  - 1911
+  - 1912
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.078431375, 0.33333334, 0.49019608, 0.2509804
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base_lv01
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ElementInfo
+    Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 1910
+      Images:
+      - ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1911
+      Texts:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1912
+      Enable: true
+  - ComponentName: HorizontalLayoutGroup
+    Component:
+      Padding: 23, 0, 33, 0
+      Spacing: 11
+      ChildAlignment: 8
+      ChildControlWidth: false
+      ChildControlHeight: false
+      ChildScaleWidth: false
+      ChildScaleHeight: false
+      ChildForceExpandWidth: false
+      ChildForceExpandHeight: false
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: -163.286, -38, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, -118.327
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 0, -132.327
+  OffsetMax: 155.01, -104.327
+  SizeDelta: 155.01, 28
+- Id: 1911
+  Name: elem01_icon01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_symbol25
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/elementicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1911
+      Enable: true
+  Active: true
+  Position: 51, 14, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 51, 0
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 23, -28
+  OffsetMax: 79, 28
+  SizeDelta: 56, 56
+- Id: 1912
+  Name: elem01_text01
+  Components:
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: true
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_ol14
+      - data/language/ld_skipstd_b_sdf_ol15
+      - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol16
+      - data/language/ld_skipstd_b_sdf_ol13
+      - data/language/ld_skipstd_b_sdf_ol08
+      - data/language/ld_skipstd_b_sdf_ol17
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol13
+      FontSize: 32
+      Color: 1, 1, 1, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: true
+      ColorMode: 2
+      ColorTL: 1, 1, 1, 1
+      ColorTR: 1, 1, 1, 1
+      ColorBL: 1, 0.98039216, 0.5686275, 1
+      ColorBR: 1, 0.98039216, 0.5686275, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 516
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 90, 36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 90, 22
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 90, -28
+  OffsetMax: 122.009995, 22
+  SizeDelta: 32.01, 50
+- Id: 1913
+  Name: loc_icon_pos
+  Children:
+  - 1914
+  - 1915
+  - 1916
+  - 1917
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: false
+  Position: -530, -26, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -530, -26
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -580, -76
+  OffsetMax: -480, 24
+  SizeDelta: 100, 100
+- Id: 1914
+  Name: pos_btn01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 36, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 4, -32
+  OffsetMax: 68, 32
+  SizeDelta: 64, 64
+- Id: 1915
+  Name: pos_btn02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, -36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, -36
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -68
+  OffsetMax: 32, -4
+  SizeDelta: 64, 64
+- Id: 1916
+  Name: pos_btn03
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 36, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 36
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, 4
+  OffsetMax: 32, 68
+  SizeDelta: 64, 64
+- Id: 1917
+  Name: pos_btn04
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon10
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: -36, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -36, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -68, -32
+  OffsetMax: -4, 32
+  SizeDelta: 64, 64
+- Id: 1918
+  Name: loc_guide_button
+  Children:
+  - 1919
+  - 1921
+  - 1923
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.13725491, 0.19607843, 0.43137255, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_icon11
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: -143.071, 64, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 98, 64
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 86, 52
+  OffsetMax: 110, 76
+  SizeDelta: 24, 24
+- Id: 1919
+  Name: button_system01_01
+  Children:
+  - 1920
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: -40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -40, 0
+  OffsetMax: -40, 0
+  SizeDelta: 0, 0
+- Id: 1920
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 13
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1920
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 13
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1919
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1921
+  Name: button_system01_02
+  Children:
+  - 1922
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: 40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 40, 0
+  OffsetMax: 40, 0
+  SizeDelta: 0, 0
+- Id: 1922
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 50
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1922
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 50
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1921
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1923
+  Name: icon_list01_crossfade
+  Children:
+  - 1924
+  Components:
+  - ComponentName: UpdateIconControl
+    Component:
+      Icons:
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1926
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1933
+      Enable: true
+  Active: false
+  Position: 106, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 106, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 106, 0
+  OffsetMax: 106, 0
+  SizeDelta: 0, 0
+- Id: 1924
+  Name: root
+  Children:
+  - 1925
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1925
+  Name: loc_base
+  Children:
+  - 1926
+  - 1933
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1926
+  Name: icon_list01_01
+  Children:
+  - 1927
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1926
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1929
+      ImageSetter:
+        ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1929
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1927
+  Name: root
+  Children:
+  - 1928
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1928
+  Name: loc_base
+  Children:
+  - 1929
+  - 1930
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1929
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/updateicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1929
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1930
+  Name: loc_new_effect
+  Children:
+  - 1931
+  - 1932
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1931
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1932
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1933
+  Name: icon_list01_02
+  Children:
+  - 1934
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1933
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1936
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1934
+  Name: root
+  Children:
+  - 1935
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1935
+  Name: loc_base
+  Children:
+  - 1936
+  - 1937
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1936
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1937
+  Name: loc_new_effect
+  Children:
+  - 1938
+  - 1939
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1938
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1939
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1940
+  Name: loc_guide_button_key
+  Children:
+  - 1941
+  - 1943
+  Active: false
+  Position: -143.071, 64, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 98, 64
+  AnchorMin: 0, 0.5
+  AnchorMax: 0, 0.5
+  OffsetMin: 98, 64
+  OffsetMax: 98, 64
+  SizeDelta: 0, 0
+- Id: 1941
+  Name: button_system01_key
+  Children:
+  - 1942
+  Components:
+  - ComponentName: ItemButton
+    Component:
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - -1
+        - -1
+        - -1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_push
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_keep
+      - Name: status
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/button_system/animations/button_system01_deactive
+      Enable: true
+  Active: true
+  Position: -40, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.25, 0.25, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -40, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -40, 0
+  OffsetMax: -40, 0
+  SizeDelta: 0, 0
+- Id: 1942
+  Name: button01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/button_system/noatlastextures/cmn_btn_dummy
+        SpriteName: 123DA87A
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageButtonSetter
+    Component:
+      ButtonType: 50
+      ImageDataPath: data/image/button
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1942
+      Enable: true
+  - ComponentName: Shortcut
+    Component:
+      Logic: 0
+      ButtonType: 50
+      Push: false
+      Always: false
+      Repeat: false
+      Inverse: false
+      ItemButton:
+        ComponentName: ItemButton
+        Index: 0
+        ObjectRefId: 1941
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -128, -128
+  OffsetMax: 128, 128
+  SizeDelta: 256, 256
+- Id: 1943
+  Name: icon_list01_crossfade_key
+  Children:
+  - 1944
+  Components:
+  - ComponentName: UpdateIconControl
+    Component:
+      Icons:
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1946
+      - ComponentName: UpdateIcon
+        Index: 0
+        ObjectRefId: 1953
+      Enable: true
+  Active: false
+  Position: 26, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 26, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 26, 0
+  OffsetMax: 26, 0
+  SizeDelta: 0, 0
+- Id: 1944
+  Name: root
+  Children:
+  - 1945
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1945
+  Name: loc_base
+  Children:
+  - 1946
+  - 1953
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1946
+  Name: icon_list01_01
+  Children:
+  - 1947
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1946
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1949
+      ImageSetter:
+        ComponentName: ImageSetter
+        Index: 0
+        ObjectRefId: 1949
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1947
+  Name: root
+  Children:
+  - 1948
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1948
+  Name: loc_base
+  Children:
+  - 1949
+  - 1950
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1949
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: ImageSetter
+    Component:
+      ButtonType: 0
+      ImageDataPath: data/image/updateicon
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1949
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1950
+  Name: loc_new_effect
+  Children:
+  - 1951
+  - 1952
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1951
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1952
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1953
+  Name: icon_list01_02
+  Children:
+  - 1954
+  Components:
+  - ComponentName: UpdateIcon
+    Component:
+      Animator:
+        ComponentName: Animator
+        Index: 0
+        ObjectRefId: 1953
+      Icon:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 1956
+      Size: -1082130432
+      Enable: true
+  - ComponentName: AnimationHandle
+    Component:
+      Offset: 0
+      Handles:
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in01
+        Skip: false
+      - LayerName: 00_base
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out01
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_in02
+        Skip: false
+      - LayerName: 00_change
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_out02
+        Skip: false
+      - LayerName: 01_loop
+        Clips:
+        - layouts/common/icon_main/animations/icon_list01_loop01
+        Skip: false
+      Enable: true
+  - ComponentName: Animator
+    Component:
+      Base:
+        Layer: 00_base
+        Indexes:
+        - 0
+        - 1
+        - -1
+      Change:
+        Layer: 00_change
+        Indexes:
+        - 0
+        - 1
+      Layers:
+      - Name: 00_base
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in01
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out01
+      - Name: 00_change
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_in02
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_out02
+      - Name: 01_loop
+        States:
+        - WriteDefault: true
+          AnimationPath: layouts/common/icon_main/animations/icon_list01_loop01
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1954
+  Name: root
+  Children:
+  - 1955
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 1955
+  Name: loc_base
+  Children:
+  - 1956
+  - 1957
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1956
+  Name: icon_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1957
+  Name: loc_new_effect
+  Children:
+  - 1958
+  - 1959
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96
+- Id: 1958
+  Name: effect01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.31132078, 0.3137255, 0.27313992, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -32, -32
+  OffsetMax: 32, 32
+  SizeDelta: 64, 64
+- Id: 1959
+  Name: effect02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.30980393, 0.3137255, 0.27450982, 1
+      Sprite:
+        TexturePath: atlas/common_icon_main
+        SpriteName: cmn_main_new_eff01
+      Type: 0
+      MaterialPath: material/uiaddalphaa
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -48, -48
+  OffsetMax: 48, 48
+  SizeDelta: 96, 96

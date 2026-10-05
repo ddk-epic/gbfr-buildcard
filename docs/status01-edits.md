@@ -262,3 +262,25 @@ Spacing follows sharecard's `StatusPanel` (border 1, padding 20/17.5, columns 9f
 | 17 `power01` | the diamond's lowest point 28.4 above the name band; `Position` 97.727, -173.814 |
 
 `AnchorPoint` and `OffsetMin`/`OffsetMax` changed to match each new `Position` and size.
+
+## 2026-10-05 · Skills in a 2x2 grid under a title bar on a status-style panel
+
+Script: `tools/scripts/grid_skills.py` (with `pause/ability/prefabs/ability_info01_02.prfb.yaml`)
+
+The Skills screen's cards, reduced to skill icon, name and element tag, laid out like sharecard's compact `SkillsSection` grid: icon on the left, name over element tag beside it. A `VerticalLayoutGroup` centres the name and tag vertically, so a name on more lines stays centred with its tag.
+
+| Objects | Change |
+|---|---|
+| 275 `loc_chr_status03` (old skills block) | `Active: false` |
+| 1724 `bc_skills` (new, last child of 426) | 1000x467.857 at scale 0.666 (the status block's), filling the green section; `Position` -1360.089, -657.456 |
+| 1725 `bc_skills_base` (new) | the status block's frame Image (`ps_cmn_base54`, sliced), 1000x467.857 |
+| 1726 `bc_skills_ttl`, 1727 `ttl01_text01` (new, copies of the Sigils title 1540-1541) | `TextSetter` `TXT_PAU_ABILITY` (the stock skills title); `Scale` 1.059 (the gear column's 0.705 in the container); inside the panel: text top 18.5 sharecard px (the panel's top padding) below its top, bar top 46 title units above the cells, as in the gear column; `Position` 0, 169.126 |
+| 1728, 1786, 1844, 1902 (`ability_set01_btn04/03/01/02`, copies of `ability_info01_02` objects 4-231) | cells 482.143x160.69 in slot order, row by row, below the title, inside a 10/18.5 sharecard px padding; `Position` ±241.071, 40.088 and -120.566; only `AbilityInfo` kept (`DeviceObjSetter`, `Animator` removed) |
+| `loc_base01`, `base01_set01` of each card | resized to the cell; Image `Color` alpha 0 |
+| `loc_icon_pos`, `loc_guide_button` of each card | `Active: false` (slot diamond, key badges) |
+| `loc_icon_ability` of each card | anchored left, `Scale` 0.825 (sharecard's 85 px icon), centre 81 from the cell's left edge |
+| `bc_skill_text` (new, one per card, after the icon under `base01_set01`) | `VerticalLayoutGroup`: `ChildAlignment` 3 (middle-left), `Spacing` 32, `Padding` bottom 6 (centres the visible stack, cap top to element icon bottom); 326.571x160.69, from the element bar's left edge (155.6) to the cell's right edge |
+| `text01` (name) of each card | moved into `bc_skill_text`; 326.571x50, anchors 0, 1, pivot 0, 0.5; `Margin` left 23 (the name starts above the element icon); `ContentSizeFitter` `VerticalFit` 2 (height from its lines); centre y 33 in the cell |
+| `loc_elem01` (element tag) of each card | moved into `bc_skill_text` after the name; anchors 0, 1, pivot 0, 0.5; bar centre y -38 in the cell |
+| 0 `status01`, `CharaInfo.Ability` | refs 281/303/325/347 -> 1728/1786/1844/1902 |
+| 0 `status01`, `CharaInfo.Powers` | plain object refs to the names 1735/1793/1851/1909 appended; `CardWriter` wraps long names through them |

@@ -354,3 +354,17 @@ Script: `tools/scripts/add_master_traits_heading.py`, then `tools/scripts/sync_l
 | everything after the board | Ids renumbered; `CardWriter`'s Id constants follow |
 
 The header's scale (0.425) is the rank labels' `FontSize` (17) over the game's rank title's (40), so the title keeps the game's 96:40 ratio to them. `CardWriter` writes each style title as "<style>: <title>", as on the style pages, and the style names, no longer writes the heading, and shows a style's first n stars lit (`icon_add`, with its `icon`, active) for its n picked perks.
+
+## 2026-10-05 · Captain master traits board
+
+Script: `tools/scripts/add_captain_master_traits.py`. Gran's and Djeeta's EX rank has 14 cells per style instead of 10 (two more rows).
+
+| Objects | Change |
+|---|---|
+| 535 `bc_mt_cells` (new) | the board's geometry, no components; holds the rank panels, title bars, cells and their texts (moved from 462 `bc_mtraits`): images of all styles, then texts of all styles |
+| 944 `bc_mt_cells_captain` (new) | `Active: false`; copies of `bc_mt_cells`' objects plus EX cells 10-13 per style (base, frame, on, off, copied from the cells two before). From rank 1's panel top down, the cells, panel paddings, gaps and row gaps are shrunk by 0.8937 to fit 7 EX rows where 5 fit; the title bars and rank labels keep their height and follow their rank. Rank 1's panel top and the EX panel's bottom stay where they are |
+| 531 `bc_mt_heading`, 532-534 `bc_mt_<s>_title` | now before the grids |
+| 0 `status01`, `CharaInfo.Powers` | Text refs to `bc_mt_cells_captain`'s 228 texts and plain refs to both grids appended |
+| everything after the board | Ids renumbered; `CardWriter`'s Id constants follow |
+
+`CardWriter` shows `bc_mt_cells_captain` and hides `bc_mt_cells` when the character has an EX cell past position 10, and writes the shown grid's texts; the style titles are written separately.

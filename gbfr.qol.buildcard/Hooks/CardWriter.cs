@@ -17,12 +17,16 @@ public unsafe class CardWriter
     private const int PerkObjects = 12;
     private const int StarObjects = 3;
     private const int PerkStars = 3;
-    private const short MasterTraitTextsId = 736;  // bc_mt_0_title
-    private const short OverMasteryRowsId = 945;  // bc_om_0
+    private const short StyleTitlesId = 532;  // bc_mt_0_title
+    private const short CellsId = 535;  // bc_mt_cells
+    private const short CaptainCellsId = 944;  // bc_mt_cells_captain
+    private const short CellTextsId = 740;  // bc_mt_0_0_label of bc_mt_cells
+    private const short CaptainCellTextsId = 1173;  // bc_mt_0_0_label of bc_mt_cells_captain
+    private const short OverMasteryRowsId = 1403;  // bc_om_0
     private const int OverMasteryRowObjects = 32;
-    private const short SummonSlotsId = 1074;  // bc_smn_0
+    private const short SummonSlotsId = 1532;  // bc_smn_0
     private const int SummonObjects = 56;
-    private const short SkillNamesId = 1910;  // text01 of the first skill card
+    private const short SkillNamesId = 2368;  // text01 of the first skill card
     private const int SkillCardObjects = 58;
     private const int SkillCount = 4;
     private const int Powers = 0x3D0;
@@ -51,11 +55,11 @@ public unsafe class CardWriter
     private const int SummonCount = 4;
 
     private static readonly int[] Slots = [4, 8, 8, 10];
+    private static readonly int[] CaptainSlots = [4, 8, 8, 14];
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
     private static readonly string[] RankNames = ["1", "2", "3", "EX"];
-    private static readonly int TextsPerStyle = 1 + 2 * Slots.Length + 2 * Slots.Sum();
-    private static readonly int MasterTraitTextCount = StyleNames.Length * TextsPerStyle;
+    private static readonly int MasterTraitRefCount = StyleNames.Length * (1 + PerkStars + 1 + CellTexts(Slots) + CellTexts(CaptainSlots)) + 2;
 
     private readonly TextHooks _text;
     private readonly WeaponArtHooks _weaponArt;
@@ -113,7 +117,7 @@ public unsafe class CardWriter
     private void Write(nint charaInfo, nint chara)
     {
         var refs = FindRefs(charaInfo, PerkNamesId, (short)(SummonSlotsId + (SummonCount - 1) * SummonObjects));
-        if (refs.Count != StyleNames.Length * (1 + PerkStars) + MasterTraitTextCount + OverMasteryLines + SummonCount)
+        if (refs.Count != MasterTraitRefCount + OverMasteryLines + SummonCount)
             return;
 
         WriteMasterTraits(refs, chara);
@@ -128,7 +132,8 @@ public unsafe class CardWriter
         var titles = new string[StyleNames.Length];
         var perks = new int[StyleNames.Length];
         var spent = new int[Slots.Length];
-        var labels = new (Cell Cell, bool Picked)?[StyleNames.Length, Slots.Length, Slots.Max()];
+        var labels = new (Cell Cell, bool Picked)?[StyleNames.Length, CaptainSlots.Length, CaptainSlots.Max()];
+        bool captain = false;
         for (int offset = Entries; offset < EntriesEnd; offset += EntrySize)
         {
             if (!_cells.TryGetValue(*(uint*)(chara + offset), out Cell cell))
@@ -140,12 +145,14 @@ public unsafe class CardWriter
                     titles[cell.Style] = cell.Label;
                 perks[cell.Style] += picked ? 1 : 0;
             }
-            else if (cell.Position <= Slots[cell.Rank])
+            else if (cell.Position <= CaptainSlots[cell.Rank])
             {
                 labels[cell.Style, cell.Rank, cell.Position - 1] = (cell, picked);
                 spent[cell.Rank] += picked ? 1 : 0;
+                captain |= cell.Position > Slots[cell.Rank];
             }
         }
+        var slots = captain ? CaptainSlots : Slots;
 
         for (int s = 0; s < StyleNames.Length; s++)
         {
@@ -153,18 +160,21 @@ public unsafe class CardWriter
             for (int k = 0; k < PerkStars; k++)
                 SetActive(refs, PerkStarsId + s * PerkObjects + k * StarObjects, k < perks[s]);
         }
-        int id = MasterTraitTextsId;
+        for (int s = 0; s < StyleNames.Length; s++)
+            Set(refs, StyleTitlesId + s, titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
+        SetActive(refs, CellsId, !captain);
+        SetActive(refs, CaptainCellsId, captain);
+        int id = captain ? CaptainCellTextsId : CellTextsId;
         for (int s = 0; s < StyleNames.Length; s++)
         {
-            Set(refs, id++, titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
-            for (int r = 0; r < Slots.Length; r++)
+            for (int r = 0; r < slots.Length; r++)
             {
                 Set(refs, id++, $"STYLE RANK {RankNames[r]}");
                 Set(refs, id++, $"{spent[r]}/{Budgets[r]}");
             }
-            for (int r = 0; r < Slots.Length; r++)
+            for (int r = 0; r < slots.Length; r++)
             {
-                for (int c = 0; c < Slots[r]; c++)
+                for (int c = 0; c < slots[r]; c++)
                 {
                     var slot = labels[s, r, c];
                     SetCell(refs, id++, slot is { Picked: true } ? slot.Value.Cell : null);
@@ -173,6 +183,9 @@ public unsafe class CardWriter
             }
         }
     }
+
+    // a style's rank labels and counts, and each cell's picked and unpicked texts
+    private static int CellTexts(int[] slots) => 2 * slots.Length + 2 * slots.Sum();
 
     private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
     {

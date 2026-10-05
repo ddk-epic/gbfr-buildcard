@@ -26,7 +26,7 @@ public unsafe class CardWriter
     private const int OverMasteryRowObjects = 32;
     private const short SummonSlotsId = 1501;  // bc_smn_0
     private const int SummonObjects = 51;
-    private const short SkillNamesId = 2317;  // text01 of the first skill card
+    private const short SkillNamesId = 2320;  // text01 of the first skill card
     private const int SkillCardObjects = 58;
     private const int SkillCount = 4;
     private const int Powers = 0x3D0;

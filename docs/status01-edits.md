@@ -433,3 +433,16 @@ Script: `tools/scripts/gold_gear_levels.py`. The game draws a `SkillInfo` level 
 | Objects | Change |
 |---|---|
 | `lv01_text01`, `lv01_num01` of the weapon and wrightstone trait rows; `text01_02`, `text01_03` of the sigil rows (40 texts) | gradient (255, 240, 225) to (255, 175, 115); outline material `ol07`, also first in `ContainerData` |
+
+## 2026-10-06 · Weapon series line
+
+Script: `tools/scripts/add_weapon_type.py`, with `equip01_info_weapon01`.
+
+| Objects | Change |
+|---|---|
+| 1814 `line02` | `Image` disabled; the name stays on it |
+| 1815 `loc_name01_text` | 8 higher |
+| 1821 `type_text01` (new) | `equip01_info_weapon01` object 123, last child of 1814; `Scale` 0.749 (font size 19, the master traits cell texts'), 37 below the name's original centre |
+| 1822, 1823 `main_image01_01`, `_02` (new) | its ornaments, `cmn_win_pop_frame03` |
+| 1705 `bc_weapon` | `WeaponInfo.TypeText` points at 1821 |
+| everything after 1820 | Ids renumbered, 3 higher; `CardWriter`'s Id constants follow |

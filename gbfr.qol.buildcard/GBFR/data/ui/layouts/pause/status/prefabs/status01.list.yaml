@@ -27,6 +27,7 @@ TextureData:
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base03
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base04
   - layouts/pause/status/noatlastextures/bc_white
+  - layouts/pause/status/noatlastextures/bc_outline
   - layouts/pause/background02/textures/common/ps_bg02_dissolve01
   - layouts/pause/background04/noatlastextures/ps_bg04_image01
   - layouts/pause/background04/noatlastextures/ps_bg04_image02

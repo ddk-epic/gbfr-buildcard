@@ -8,7 +8,7 @@ The main page of the in-game **Character Details** panel (pause menu > character
 | Repo source | `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs/status01.prfb.yaml` |
 | Edit log | [status01-edits.md](status01-edits.md) |
 | Placed by | view `pause_status01.view.viewb`, full screen, centred |
-| Objects | 426 stock (Ids 0-425) + 2134 added (Ids 426-2559), see the edit log |
+| Objects | 426 stock (Ids 0-425) + 2518 added (Ids 426-2943), see the edit log |
 | Size | 20,689 lines stock |
 
 The other pages and parts of the panel are separate prefabs: `chr_status_bg01` (white panel, blue portrait area, frame lines), `status_guide01` (Q/E arrows), `var00_chr_skill_info01` (skill details), `chr_skill_info01/02` (trait details, command list), `chr_sboard_info01` (master traits).
@@ -207,10 +207,10 @@ Ids, names and components; `(inactive)` marks `Active: false` in the stock file.
       │                                                       update icons 384-400 (inactive)
       └─ 426 loc_buildcard      added: the build card, 3424x1712
          ├─ 427 bc_mtraits      master traits
-         ├─ 1369 bc_om          Over Mastery
-         ├─ 1499 bc_smn         summons
-         ├─ 1705 bc_weapon      weapon
-         ├─ 2309 bc_skills      skills
-         ├─ 2545 bc_om_ttl_text Over Mastery title
-         └─ 2546 bc_frame       the ornate frame over the card
+         ├─ 1753 bc_om          Over Mastery
+         ├─ 1883 bc_smn         summons
+         ├─ 2089 bc_weapon      weapon
+         ├─ 2693 bc_skills      skills
+         ├─ 2929 bc_om_ttl_text Over Mastery title
+         └─ 2930 bc_frame       the ornate frame over the card
 ```

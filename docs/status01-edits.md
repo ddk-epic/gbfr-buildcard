@@ -446,3 +446,15 @@ Script: `tools/scripts/add_weapon_type.py`, with `equip01_info_weapon01`.
 | 1822, 1823 `main_image01_01`, `_02` (new) | its ornaments, `cmn_win_pop_frame03` |
 | 1705 `bc_weapon` | `WeaponInfo.TypeText` points at 1821 |
 | everything after 1820 | Ids renumbered, 3 higher; `CardWriter`'s Id constants follow |
+
+## 2026-10-06 · Master traits cell styles
+
+Script: `tools/scripts/outline_master_traits_cells.py`, with the texture `bc_outline` (`tools/scripts/gen_outline.py 20 2 8`: a 2 wide white outline with corners of radius 8, sliced with border 8; registered in `status01.list`).
+
+| Objects | Change |
+|---|---|
+| `bc_mt_<s>_<r>_<c>_frame` (192) | removed |
+| `bc_mt_<s>_<r>_<c>_base` (192) | the unpicked style: (36, 30, 43), the cell colour at half saturation, alpha 0.5 |
+| `bc_mt_<s>_<r>_<c>_picked` (new, 192) | inactive containers with the grid's rect, after the cell bases and before the texts, in style, rank, cell order (618 in `bc_mt_cells`, 1219 in `bc_mt_cells_captain`); in `CharaInfo.Powers`, shown by `CardWriter` on picked cells |
+| `_picked_base`, `_picked_outline` (new, under each) | the cell colour (39, 27, 53) at alpha 0.4 (0.7 over the unpicked base); `bc_outline` (no centre fill) in (107, 132, 155) at the cell's size, `Scale` 1 |
+| everything after the first grid's cells | Ids renumbered; `CardWriter`'s Id constants follow |

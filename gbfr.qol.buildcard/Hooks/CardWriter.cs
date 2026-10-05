@@ -19,14 +19,17 @@ public unsafe class CardWriter
     private const int PerkStars = 3;
     private const short StyleTitlesId = 500;  // bc_mt_0_title
     private const short CellsId = 503;  // bc_mt_cells
-    private const short CaptainCellsId = 912;  // bc_mt_cells_captain
-    private const short CellTextsId = 708;  // bc_mt_0_0_label of bc_mt_cells
-    private const short CaptainCellTextsId = 1141;  // bc_mt_0_0_label of bc_mt_cells_captain
-    private const short OverMasteryRowsId = 1371;  // bc_om_0
+    private const short CaptainCellsId = 1092;  // bc_mt_cells_captain
+    private const short CellTextsId = 888;  // bc_mt_0_0_label of bc_mt_cells
+    private const short CaptainCellTextsId = 1525;  // bc_mt_0_0_label of bc_mt_cells_captain
+    private const short CellPickedId = 618;  // bc_mt_0_0_0_picked of bc_mt_cells
+    private const short CaptainCellPickedId = 1219;  // bc_mt_0_0_0_picked of bc_mt_cells_captain
+    private const int PickedObjects = 3;
+    private const short OverMasteryRowsId = 1755;  // bc_om_0
     private const int OverMasteryRowObjects = 32;
-    private const short SummonSlotsId = 1501;  // bc_smn_0
+    private const short SummonSlotsId = 1885;  // bc_smn_0
     private const int SummonObjects = 51;
-    private const short SkillNamesId = 2320;  // text01 of the first skill card
+    private const short SkillNamesId = 2704;  // text01 of the first skill card
     private const int SkillCardObjects = 58;
     private const int SkillCount = 4;
     private const int Powers = 0x3D0;
@@ -59,7 +62,7 @@ public unsafe class CardWriter
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
     private static readonly string[] RankNames = ["1", "2", "3", "EX"];
-    private static readonly int MasterTraitRefCount = StyleNames.Length * (1 + PerkStars + 1 + CellTexts(Slots) + CellTexts(CaptainSlots)) + 2;
+    private static readonly int MasterTraitRefCount = StyleNames.Length * (1 + PerkStars + 1 + CellTexts(Slots) + CellTexts(CaptainSlots) + Slots.Sum() + CaptainSlots.Sum()) + 2;
 
     private readonly TextHooks _text;
     private readonly WeaponArtHooks _weaponArt;
@@ -165,6 +168,7 @@ public unsafe class CardWriter
         SetActive(refs, CellsId, !captain);
         SetActive(refs, CaptainCellsId, captain);
         int id = captain ? CaptainCellTextsId : CellTextsId;
+        int pickedId = captain ? CaptainCellPickedId : CellPickedId;
         for (int s = 0; s < StyleNames.Length; s++)
         {
             for (int r = 0; r < slots.Length; r++)
@@ -179,6 +183,8 @@ public unsafe class CardWriter
                     var slot = labels[s, r, c];
                     SetCell(refs, id++, slot is { Picked: true } ? slot.Value.Cell : null);
                     SetCell(refs, id++, slot is { Picked: false } ? slot.Value.Cell : null);
+                    SetActive(refs, pickedId, slot is { Picked: true });
+                    pickedId += PickedObjects;
                 }
             }
         }

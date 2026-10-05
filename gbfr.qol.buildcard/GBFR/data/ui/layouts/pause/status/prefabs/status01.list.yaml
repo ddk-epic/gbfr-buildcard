@@ -124,6 +124,7 @@ Materials:
 - fonts/fot_newcinemaastd_d_sdf_ttl04
 - fonts/fot_tsukuoldminpro_r_sdf_ol07
 - fonts/fot_skipstd_b_sdf_skill_down01
+- fonts/fot_skipstd_b_sdf_ol09
 Animations:
 - layouts/pause/status/animations/status01_in01
 - layouts/pause/status/animations/status01_out01

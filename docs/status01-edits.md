@@ -368,3 +368,18 @@ Script: `tools/scripts/add_captain_master_traits.py`. Gran's and Djeeta's EX ran
 | everything after the board | Ids renumbered; `CardWriter`'s Id constants follow |
 
 `CardWriter` shows `bc_mt_cells_captain` and hides `bc_mt_cells` when the character has an EX cell past position 10, and writes the shown grid's texts; the style titles are written separately.
+
+## 2026-10-05 · Summon cells in sharecard's style
+
+Script: `tools/scripts/restyle_summons.py`, from `summon_list01`. Per slot `bc_smn_<i>` (Ids 1532, 1583, 1634, 1685; 51 objects each, 56 before):
+
+| Objects | Change |
+|---|---|
+| `base01`, `summon_icon01`, `loc_text02`, `loc_elem01` | removed; `SummonInfo` loses `Sets` and `Elements`, and `Names` keeps only `text01_01` |
+| `bc_smn_band` (new) | `Mask` with `ps_cmn_list02_mask` (fades out to the right) over the band; holds `band`, a copy of `summon_list01`'s `place01_set01` (`ps_cmn_ability_base06_01`), `Scale` -1, 1, 1 so the patterned end is on the left |
+| `text01_01` (summon name) | on the band; `online_text01`'s style: `fot_skipstd_b_sdf_ol09`, off-white; `FontSize` 52.031 (the status panel labels' size at the slot's scale) |
+| `bc_smn_art` (new) | `Mask` with `ps_cmn_mask_list_w01` (fades at both sides), its opaque part over the cell's last third; holds a copy of `summon_list01`'s `icon01` (`SummonIconSetter` `Type` 0), 120% of the third wide, centred on it and 18 sharecard px below the cell's centre; `SummonInfo._57A2478C` points at it |
+| `list_skill_p05_01` (trait row) | `Scale` 1.301: the status panel labels' size; `line01` inactive; `loc_skill_lv01` moved into `loc_text` (`Spacing` 8) inside `bc_smn_level` (new, `HorizontalLayoutGroup` lower-left, 56 high) so the level follows the name with its top on the row's centre; level `Padding` 28, 0, 40, 4 and `loc_lv01` `Spacing` 8 as in the gear trait rows |
+| `list_skill_p05_02` (equip bonus row) | `line01` inactive; the level's right edge at the art's left edge |
+| everything after the summons | Ids renumbered; `CardWriter`'s Id constants follow |
+| `status01.list` | `fonts/fot_skipstd_b_sdf_ol09` appended (`tools/scripts/sync_list.py`) |

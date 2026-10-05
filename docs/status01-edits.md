@@ -337,3 +337,20 @@ Script: `tools/scripts/add_master_traits_bg.py`, then `tools/scripts/sync_list.p
 
 `background04`'s `Animator` (on its root, not copied) rotates the rings in the menu; the copies show its unanimated values.
 
+## 2026-10-05 · Master Traits menu heading, style perks, style page titles
+
+Script: `tools/scripts/add_master_traits_heading.py`, then `tools/scripts/sync_list.py`. `gbfr.uitools` reads `var00_frame_header02` with `AnimationType` added to `ControllerFrameHeader`.
+
+| Objects | Change |
+|---|---|
+| 462 `bc_text01` (the perk summary) | removed, with its ref; everything after it Ids -1 |
+| 493 `line01` (new) | copy of `var00_frame_header02`'s 4: `ps_frame_line02`, the ornament and its line (sliced), without the header's fading mask so the line crosses the board; after `bc_mt_bg`; top-left at the blue section's, the section's width, `Scale` 0.425 |
+| 494 `bc_mt_perks` (new) | `HorizontalLayoutGroup` (middle-right) and `ContentSizeFitter`; `Scale` 0.2009, the names at 22.5, halfway between the style titles' (26) and the cells' (19) text size, and the stars in the style page's star to title ratio; right edge on Crux's rank panels' right edge, bottom halfway between where centring it at the header's title height puts it and the line |
+| `bc_mt_perk_<s>` (new) | per style, a layout group with `bc_mt_perk_<s>_name` (`title_text01`'s components without `TextSetter`, `FontSize` 112, Text ref added) and `bc_mt_perk_<s>_stars` (copy of `skillboard_window01`'s 2578 `loc_level02` without its inactive glows: three `base`, `icon_add`, `icon`; `Scale` 1); spacings 6 and 24 card units over the row's scale. The engine ignores `ChildScaleWidth`/`ChildScaleHeight`, so only the row is scaled |
+| 735 `bc_mt_heading` | `title_text01`'s components: `TextSetter` `TXT_PAU_TTL_SKL_BD` ("Master Traits"), `skill_down01` material, `FontSize` 40.8; 108.8 right of and 54.4 below the line's top-left corner, as in the header at 0.425 |
+| `bc_mt_<s>_title` | `info01_text01`'s style: `ds01` material, its white to pale blue gradient; centred between the line and rank 1's panel |
+| `bc_mt_<s>_style` | removed, with their refs |
+| 0 `status01`, `CharaInfo.Powers` | the heading's, the style labels' and the summary's Text refs removed; plain refs to the 9 `icon_add` objects appended |
+| everything after the board | Ids renumbered; `CardWriter`'s Id constants follow |
+
+The header's scale (0.425) is the rank labels' `FontSize` (17) over the game's rank title's (40), so the title keeps the game's 96:40 ratio to them. `CardWriter` writes each style title as "<style>: <title>", as on the style pages, and the style names, no longer writes the heading, and shows a style's first n stars lit (`icon_add`, with its `icon`, active) for its n picked perks.

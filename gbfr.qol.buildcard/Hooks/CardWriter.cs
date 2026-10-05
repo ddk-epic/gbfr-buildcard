@@ -12,13 +12,17 @@ namespace gbfr.qol.buildcard.Hooks;
 // sets the weapon whose art WeaponArtHooks loads.
 public unsafe class CardWriter
 {
-    private const short SummaryTextId = 462;      // bc_text01
-    private const short MasterTraitTextsId = 698;  // bc_mt_heading
-    private const short OverMasteryRowsId = 911;  // bc_om_0
+    private const short PerkNamesId = 496;  // bc_mt_perk_0_name
+    private const short PerkStarsId = 499;  // icon01_add of bc_mt_perk_0_stars
+    private const int PerkObjects = 12;
+    private const int StarObjects = 3;
+    private const int PerkStars = 3;
+    private const short MasterTraitTextsId = 736;  // bc_mt_0_title
+    private const short OverMasteryRowsId = 945;  // bc_om_0
     private const int OverMasteryRowObjects = 32;
-    private const short SummonSlotsId = 1040;  // bc_smn_0
+    private const short SummonSlotsId = 1074;  // bc_smn_0
     private const int SummonObjects = 56;
-    private const short SkillNamesId = 1876;  // text01 of the first skill card
+    private const short SkillNamesId = 1910;  // text01 of the first skill card
     private const int SkillCardObjects = 58;
     private const int SkillCount = 4;
     private const int Powers = 0x3D0;
@@ -50,8 +54,8 @@ public unsafe class CardWriter
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
     private static readonly string[] RankNames = ["1", "2", "3", "EX"];
-    private static readonly int TextsPerStyle = 2 + 2 * Slots.Length + 2 * Slots.Sum();
-    private static readonly int MasterTraitTextCount = 1 + StyleNames.Length * TextsPerStyle;
+    private static readonly int TextsPerStyle = 1 + 2 * Slots.Length + 2 * Slots.Sum();
+    private static readonly int MasterTraitTextCount = StyleNames.Length * TextsPerStyle;
 
     private readonly TextHooks _text;
     private readonly WeaponArtHooks _weaponArt;
@@ -108,8 +112,8 @@ public unsafe class CardWriter
 
     private void Write(nint charaInfo, nint chara)
     {
-        var refs = FindRefs(charaInfo, SummaryTextId, (short)(SummonSlotsId + (SummonCount - 1) * SummonObjects));
-        if (refs.Count != 1 + MasterTraitTextCount + OverMasteryLines + SummonCount)
+        var refs = FindRefs(charaInfo, PerkNamesId, (short)(SummonSlotsId + (SummonCount - 1) * SummonObjects));
+        if (refs.Count != StyleNames.Length * (1 + PerkStars) + MasterTraitTextCount + OverMasteryLines + SummonCount)
             return;
 
         WriteMasterTraits(refs, chara);
@@ -143,13 +147,16 @@ public unsafe class CardWriter
             }
         }
 
-        Set(refs, SummaryTextId, string.Join("  ·  ", StyleNames.Select((name, s) => $"{name} {new string('★', perks[s])}".TrimEnd())));
-        int id = MasterTraitTextsId;
-        Set(refs, id++, "MASTER TRAITS");
         for (int s = 0; s < StyleNames.Length; s++)
         {
-            Set(refs, id++, titles[s] ?? "");
-            Set(refs, id++, StyleNames[s].ToUpperInvariant());
+            Set(refs, PerkNamesId + s * PerkObjects, StyleNames[s]);
+            for (int k = 0; k < PerkStars; k++)
+                SetActive(refs, PerkStarsId + s * PerkObjects + k * StarObjects, k < perks[s]);
+        }
+        int id = MasterTraitTextsId;
+        for (int s = 0; s < StyleNames.Length; s++)
+        {
+            Set(refs, id++, titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
             for (int r = 0; r < Slots.Length; r++)
             {
                 Set(refs, id++, $"STYLE RANK {RankNames[r]}");

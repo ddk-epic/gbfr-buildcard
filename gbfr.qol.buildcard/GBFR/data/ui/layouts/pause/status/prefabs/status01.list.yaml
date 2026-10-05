@@ -64,6 +64,7 @@ AtlasData:
   - atlas/shop_awake
   - atlas/pause_skillboard
   - atlas/pause_background04
+  - atlas/pause_frame
   Eng:
   - atlas/eng/common_icon_main
   - atlas/eng/pause_pause_common
@@ -122,6 +123,7 @@ Materials:
 - fonts/fot_newcinemaastd_d_sdf_ttl03
 - fonts/fot_newcinemaastd_d_sdf_ttl04
 - fonts/fot_tsukuoldminpro_r_sdf_ol07
+- fonts/fot_skipstd_b_sdf_skill_down01
 Animations:
 - layouts/pause/status/animations/status01_in01
 - layouts/pause/status/animations/status01_out01
@@ -272,4 +274,5 @@ LanguageData:
 - data/language/ld_tsukuoldminpro_r_sdf_ol07
 - data/language/ld_tsukuoldminpro_r_sdf_ol09
 - data/language/ld_tsukuoldminpro_r_sdf_ol08
+- data/language/ld_skipstd_b_sdf_skill_down01
 _9029CEE4: []

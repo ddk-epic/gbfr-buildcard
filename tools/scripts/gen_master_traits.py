@@ -2,7 +2,7 @@
 # Writes the master trait cells to <mod dir>/Data/master_traits.tsv and their button icon tags to the mod's
 # text_skillboard_tag.msg.
 import json, os, re, sqlite3, struct, sys
-import msgpack
+import msg
 
 EXTRACT, SHARECARD, MOD = sys.argv[1:]
 STYLES = ["SB_DEF", "SB_ATK", "SB_LIMIT"]
@@ -39,14 +39,6 @@ def xxhash32_custom(text):
     h ^= h >> 13
     h = h * p3 & m
     return h ^ (h >> 16)
-
-def pack(value):
-    # msgpack with 32-bit maps and arrays
-    if isinstance(value, dict):
-        return b"\xdf" + struct.pack(">I", len(value)) + b"".join(pack(k) + pack(v) for k, v in value.items())
-    if isinstance(value, list):
-        return b"\xdd" + struct.pack(">I", len(value)) + b"".join(pack(v) for v in value)
-    return msgpack.packb(value)
 
 def element(**fields):
     return {"Element": fields}
@@ -95,8 +87,8 @@ with open(os.path.join(MOD, "Data", "master_traits.tsv"), "w", encoding="utf-8",
     for row in out:
         f.write("\t".join(str(v) for v in row) + "\n")
 
-tag_file = msgpack.unpackb(open(os.path.join(EXTRACT, TAG_FILE), "rb").read(), strict_map_key=False)
+tag_file = msg.load(os.path.join(EXTRACT, TAG_FILE))
 tag_file["Tag"]["tags_"] += tags
 os.makedirs(os.path.join(MOD, "GBFR", "data", os.path.dirname(TAG_FILE)), exist_ok=True)
-open(os.path.join(MOD, "GBFR", "data", TAG_FILE), "wb").write(pack(tag_file))
+open(os.path.join(MOD, "GBFR", "data", TAG_FILE), "wb").write(msg.pack(tag_file))
 print(f"{len(out)} cells, {len(tags)} with button icons, {len(missing)} without a label: {', '.join(missing)}")

@@ -283,3 +283,13 @@ The Skills screen's cards, reduced to skill icon, name and element tag, laid out
 | `loc_elem01` (element tag) of each card | moved into `bc_skill_text` after the name; anchors 0, 1, pivot 0, 0.5; bar centre y -38 in the cell |
 | 0 `status01`, `CharaInfo.Ability` | refs 281/303/325/347 -> 1728/1786/1844/1902 |
 | 0 `status01`, `CharaInfo.Powers` | plain object refs to the names 1735/1793/1851/1909 appended; `CardWriter` wraps long names through them |
+
+## 2026-10-05 · Singular Weapon title
+
+Script: `tools/scripts/patch_texts.py`
+
+| Objects | Change |
+|---|---|
+| 1127 `ttl01_text01` (Weapon title) | `TXT_PAU_ITEM_WEAPON` reads "Weapons" except for the sub-id `equip01_info01` ("Weapon"), the gear screen's prefab; the mod's English `text_ui.msg` adds a `status01` row with that text |
+
+The sub-id is assumed to be the name of the prefab the text is in; not yet confirmed in game.

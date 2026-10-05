@@ -412,3 +412,16 @@ Script: `tools/scripts/panel_summons.py`.
 |---|---|
 | 1497 `bc_smn_base` (new) | first child of 1496 `bc_smn`; the skills panel's `ps_cmn_base54` (sliced) at the skills panel's `Scale` 0.666, over the summon cells' area |
 | everything after it | Ids renumbered, 1 higher; `CardWriter`'s Id constants follow |
+
+## 2026-10-06 · Smaller master traits heading ornament
+
+Script: `tools/scripts/shrink_heading_ornament.py`.
+
+| Objects | Change |
+|---|---|
+| 458 `bc_mt_ornament_clip` (new) | `Mask` with `bc_white`, from the ornament's left edge to its tip (`ps_frame_line02` column 276) |
+| 459 `line01` | moved into 458; `Scale` 0.361 (0.85 of 0.425), `SizeDelta` 336, 400 (the sprite's minimum width); its top on the master traits background's top edge |
+| 460 `bc_mt_line_clip` (new) | `Mask` with `bc_white`, from the ornament's tip to the line's original right end, centred on the ornament's line |
+| 461 `bc_mt_line` (new) | a copy of `line01` at the original `Scale` 0.425, its column 276 on the ornament's tip: the line at full thickness |
+| `bc_mt_perks`, `bc_mt_heading` | 12.224 higher, with the line |
+| everything after `line01` | Ids renumbered, 3 higher; `CardWriter`'s Id constants follow |

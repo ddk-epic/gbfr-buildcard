@@ -812,9 +812,6 @@ Objects:
       - ComponentName: Text
         Index: 0
         ObjectRefId: 767
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 769
       - ComponentName: ''
         Index: -1
         ObjectRefId: 770
@@ -21389,6 +21386,7 @@ Objects:
   - 898
   - 1123
   - 1724
+  - 1960
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -35628,66 +35626,66 @@ Objects:
   - 802
   - 834
   - 866
-  Active: true
-  Position: 0, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: 0, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -1712, -856
-  OffsetMax: 1712, 856
-  SizeDelta: 3424, 1712
-- Id: 769
-  Name: bc_om_heading
   Components:
-  - ComponentName: Text
+  - ComponentName: Image
     Component:
-      Text: 'OVER MASTERY'
-      FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
-      FontSize: 30
-      Color: 0.196, 0.373, 0.49, 1
-      Margin: 0, 0, 0, 0
-      IsGradient: false
-      ColorMode: 3
-      ColorTL: 1, 1, 1, 1
-      ColorTR: 1, 1, 1, 1
-      ColorBL: 1, 1, 1, 1
-      ColorBR: 1, 1, 1, 1
-      CharacterSpacing: 0
-      LineSpacing: 0
-      Alignment: 513
-      Enable: true
-  - ComponentName: LanguageSetter
-    Component:
-      MultiData: false
-      LanguageData: data/language/ld_skipstd_b_sdf_material
-      Overwrites:
-      - Language: Eng
-        EnableFS: false
-        FontSize: 0
-        EnableCS: false
-        CharacterSpaching: 0
-        EnableLS: false
-        LineSpaching: 0
-        EnableMG: false
-        Margine: 0, 0, 0, 0
-        EnableAL: false
-        Alignment: 0
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base54
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
       Enable: true
   Active: true
-  Position: -61.822, -506.467, 0
+  Position: 220.735, -657.456, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0, 1
-  AnchorPoint: -61.822, -506.467
+  Scale: 0.666, 0.666, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 220.735, -657.456
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -61.822, -554.023
-  OffsetMax: 508.845, -506.467
-  SizeDelta: 570.667, 47.556
+  OffsetMin: -217.806, -891.306
+  OffsetMax: 659.276, -423.605
+  SizeDelta: 877.082, 467.701
+- Id: 769
+  Name: bc_om_ttl
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 0.23529412, 0.37254903, 0.49019608, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base00_01
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 0, 169.048, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1.059, 1.059, 1
+  Pivot: 0.5, 1
+  AnchorPoint: 0, -64.802
+  AnchorMin: 0.5, 1
+  AnchorMax: 0.5, 1
+  OffsetMin: -238, -84.802
+  OffsetMax: 238, -64.802
+  SizeDelta: 476, 20
 - Id: 770
   Name: bc_om_0
   Children:
@@ -35744,15 +35742,15 @@ Objects:
         ObjectRefId: 780
       Enable: true
   Active: true
-  Position: 216.432, -611.089, 0
+  Position: 39.622, 77.572, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.567, 0.567, 1
+  Scale: 0.936, 0.936, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 216.432, -611.089
+  AnchorPoint: 39.622, 77.572
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -283.568, -734.089
-  OffsetMax: 716.432, -488.089
+  OffsetMin: -460.378, -45.428
+  OffsetMax: 539.622, 200.572
   SizeDelta: 1000, 246
 - Id: 771
   Name: root
@@ -36835,15 +36833,15 @@ Objects:
         ObjectRefId: 812
       Enable: true
   Active: true
-  Position: 216.432, -658.644, 0
+  Position: 39.622, -0.973, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.567, 0.567, 1
+  Scale: 0.936, 0.936, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 216.432, -658.644
+  AnchorPoint: 39.622, -0.973
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -283.568, -781.644
-  OffsetMax: 716.432, -535.644
+  OffsetMin: -460.378, -123.973
+  OffsetMax: 539.622, 122.027
   SizeDelta: 1000, 246
 - Id: 803
   Name: root
@@ -37926,15 +37924,15 @@ Objects:
         ObjectRefId: 844
       Enable: true
   Active: true
-  Position: 216.432, -706.2, 0
+  Position: 39.622, -79.519, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.567, 0.567, 1
+  Scale: 0.936, 0.936, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 216.432, -706.2
+  AnchorPoint: 39.622, -79.519
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -283.568, -829.2
-  OffsetMax: 716.432, -583.2
+  OffsetMin: -460.378, -202.519
+  OffsetMax: 539.622, 43.481
   SizeDelta: 1000, 246
 - Id: 835
   Name: root
@@ -39017,15 +39015,15 @@ Objects:
         ObjectRefId: 876
       Enable: true
   Active: true
-  Position: 216.432, -753.756, 0
+  Position: 39.622, -158.064, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.567, 0.567, 1
+  Scale: 0.936, 0.936, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 216.432, -753.756
+  AnchorPoint: 39.622, -158.064
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -283.568, -876.756
-  OffsetMax: 716.432, -630.756
+  OffsetMin: -460.378, -281.064
+  OffsetMax: 539.622, -35.064
   SizeDelta: 1000, 246
 - Id: 867
   Name: root
@@ -83686,3 +83684,64 @@ Objects:
   OffsetMin: -48, -48
   OffsetMax: 48, 48
   SizeDelta: 96, 96
+- Id: 1960
+  Name: bc_om_ttl_text
+  Components:
+  - ComponentName: Text
+    Component:
+      Text: ''
+      FontPath: fonts/fot_skipstd_b_sdf
+      MaterialPath: fonts/fot_skipstd_b_sdf_ds01
+      FontSize: 40
+      Color: 1, 1, 1, 1
+      Margin: 0, 0, 0, 0
+      IsGradient: true
+      ColorMode: 2
+      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
+      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
+      ColorBL: 0.8627451, 0.9607843, 1, 1
+      ColorBR: 0.8627451, 0.9607843, 1, 1
+      CharacterSpacing: 0
+      LineSpacing: 0
+      Alignment: 514
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      MultiData: false
+      LanguageData: data/language/ld_skipstd_b_sdf_ds01
+      ContainerData:
+      - data/language/ld_skipstd_b_sdf_material
+      - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Kor
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: false
+        LineSpaching: 0
+        EnableMG: true
+        Margine: 0, 0, 0, 4
+        EnableAL: false
+        Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_LB_TAB_LIMIT_OVER
+      Enable: true
+  - ComponentName: ContentSizeFitter
+    Component:
+      HorizontalFit: 2
+      VerticalFit: 0
+      Enable: true
+  Active: true
+  Position: 220.735, -558.975, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 0.705, 0.705, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 220.735, -558.975
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: 220.735, -558.975
+  OffsetMax: 220.735, -508.975
+  SizeDelta: 0, 50

@@ -293,3 +293,15 @@ Script: `tools/scripts/patch_texts.py`
 | 1127 `ttl01_text01` (Weapon title) | `TXT_PAU_ITEM_WEAPON` reads "Weapons" except for the sub-id `equip01_info01` ("Weapon"), the gear screen's prefab; the mod's English `text_ui.msg` adds a `status01` row with that text |
 
 The sub-id is assumed to be the name of the prefab the text is in; not yet confirmed in game.
+
+## 2026-10-05 · Over Mastery on a panel under a title bar
+
+Script: `tools/scripts/panel_over_mastery.py`
+
+| Objects | Change |
+|---|---|
+| 768 `bc_om` | the magenta section, 877.082x467.701 at `Scale` 0.666 (the skills container's); `Image` copied from 1725 `bc_skills_base` |
+| 769 `bc_om_heading` -> `bc_om_ttl` | Text replaced by 1726 `bc_skills_ttl`'s `Image` and rect; `Position` 0, 169.048 |
+| 1960 `bc_om_ttl_text` (new) | copy of 1727 `ttl01_text01`, `TextSetter` `TXT_PAU_LB_TAB_LIMIT_OVER` ("Over Mastery"); last child of 426 `loc_buildcard`, over the bar; `Scale` 0.705 |
+| 770, 802, 834, 866 `bc_om_<i>` | `Scale` x1.1 of the old size (0.9365 in the panel); centred between the bar's gap and the bottom padding, icons 15 sharecard px from the panel's left edge |
+| 0 `status01`, `CharaInfo.Powers` | the Text ref to 769 removed; `CardWriter` no longer writes the heading |

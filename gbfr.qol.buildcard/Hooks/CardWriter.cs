@@ -14,7 +14,6 @@ public unsafe class CardWriter
 {
     private const short SummaryTextId = 462;      // bc_text01
     private const short MasterTraitTextsId = 557;  // bc_mt_heading
-    private const short OverMasteryTextId = 769;  // bc_om_heading
     private const short OverMasteryRowsId = 770;  // bc_om_0
     private const int OverMasteryRowObjects = 32;
     private const short SummonSlotsId = 899;  // bc_smn_0
@@ -110,7 +109,7 @@ public unsafe class CardWriter
     private void Write(nint charaInfo, nint chara)
     {
         var refs = FindRefs(charaInfo, SummaryTextId, (short)(SummonSlotsId + (SummonCount - 1) * SummonObjects));
-        if (refs.Count != 1 + MasterTraitTextCount + 1 + OverMasteryLines + SummonCount)
+        if (refs.Count != 1 + MasterTraitTextCount + OverMasteryLines + SummonCount)
             return;
 
         WriteMasterTraits(refs, chara);
@@ -170,7 +169,6 @@ public unsafe class CardWriter
 
     private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
     {
-        Set(refs, OverMasteryTextId, "OVER MASTERY");
         for (int i = 0; i < OverMasteryLines; i++)
         {
             nint line = chara + OverMastery + i * OverMasteryLineSize;

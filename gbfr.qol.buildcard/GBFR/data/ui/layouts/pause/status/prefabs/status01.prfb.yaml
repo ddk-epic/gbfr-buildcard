@@ -59916,7 +59916,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -59965,7 +59965,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -59988,7 +59988,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -59999,7 +59999,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60010,7 +60010,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60021,7 +60021,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60039,9 +60039,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1408
   Name: loc_lv02
   Children:
@@ -60656,7 +60656,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -60705,7 +60705,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -60728,7 +60728,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -60739,7 +60739,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60750,7 +60750,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60761,7 +60761,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -60779,9 +60779,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1425
   Name: loc_lv02
   Children:
@@ -61396,7 +61396,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -61445,7 +61445,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -61468,7 +61468,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -61479,7 +61479,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -61490,7 +61490,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -61501,7 +61501,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -61519,9 +61519,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1442
   Name: loc_lv02
   Children:
@@ -62136,7 +62136,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -62185,7 +62185,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -62208,7 +62208,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -62219,7 +62219,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62230,7 +62230,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62241,7 +62241,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62259,9 +62259,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1459
   Name: loc_lv02
   Children:
@@ -62876,7 +62876,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -62925,7 +62925,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -62948,7 +62948,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -62959,7 +62959,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62970,7 +62970,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62981,7 +62981,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -62999,9 +62999,9 @@ Objects:
   AnchorPoint: 123.37, -25
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 70.57, -50
+  OffsetMin: 75.37, -50
   OffsetMax: 123.37, 0
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1476
   Name: loc_lv02
   Children:
@@ -63846,7 +63846,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -63895,7 +63895,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -63918,7 +63918,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -63929,7 +63929,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -63940,7 +63940,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -63951,7 +63951,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -63969,9 +63969,9 @@ Objects:
   AnchorPoint: 131.37, -25
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 78.57, -50
+  OffsetMin: 83.37, -50
   OffsetMax: 131.37, 0
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1499
   Name: loc_lv02
   Children:
@@ -64583,7 +64583,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -64632,7 +64632,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -64655,7 +64655,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -64666,7 +64666,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -64677,7 +64677,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -64688,7 +64688,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -64706,9 +64706,9 @@ Objects:
   AnchorPoint: 131.37, -25
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 78.57, -50
+  OffsetMin: 83.37, -50
   OffsetMax: 131.37, 0
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1516
   Name: loc_lv02
   Children:
@@ -65320,7 +65320,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -65369,7 +65369,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -65392,7 +65392,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -65403,7 +65403,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -65414,7 +65414,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -65425,7 +65425,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -65443,9 +65443,9 @@ Objects:
   AnchorPoint: 131.37, -25
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 78.57, -50
+  OffsetMin: 83.37, -50
   OffsetMax: 131.37, 0
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1533
   Name: loc_lv02
   Children:
@@ -66162,7 +66162,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -66218,7 +66218,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66256,7 +66256,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -66279,7 +66279,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66290,7 +66290,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66301,7 +66301,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66312,7 +66312,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66323,7 +66323,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66334,7 +66334,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -66345,7 +66345,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66356,7 +66356,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66367,7 +66367,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -66385,9 +66385,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1554
   Name: loc_icon_skill
   Children:
@@ -66939,7 +66939,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -66995,7 +66995,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67033,7 +67033,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -67056,7 +67056,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67067,7 +67067,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67078,7 +67078,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67089,7 +67089,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67100,7 +67100,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67111,7 +67111,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67122,7 +67122,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67133,7 +67133,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67144,7 +67144,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67162,9 +67162,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1569
   Name: loc_icon_skill
   Children:
@@ -67716,7 +67716,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -67772,7 +67772,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67810,7 +67810,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -67833,7 +67833,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67844,7 +67844,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67855,7 +67855,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67866,7 +67866,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67877,7 +67877,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67888,7 +67888,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -67899,7 +67899,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67910,7 +67910,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67921,7 +67921,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -67939,9 +67939,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1584
   Name: loc_icon_skill
   Children:
@@ -68493,7 +68493,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -68549,7 +68549,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68587,7 +68587,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -68610,7 +68610,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68621,7 +68621,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68632,7 +68632,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68643,7 +68643,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68654,7 +68654,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68665,7 +68665,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -68676,7 +68676,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68687,7 +68687,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68698,7 +68698,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -68716,9 +68716,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1599
   Name: loc_icon_skill
   Children:
@@ -69270,7 +69270,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -69326,7 +69326,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69364,7 +69364,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -69387,7 +69387,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69398,7 +69398,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69409,7 +69409,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69420,7 +69420,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69431,7 +69431,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69442,7 +69442,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -69453,7 +69453,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69464,7 +69464,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69475,7 +69475,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -69493,9 +69493,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1614
   Name: loc_icon_skill
   Children:
@@ -70047,7 +70047,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -70103,7 +70103,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70141,7 +70141,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -70164,7 +70164,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70175,7 +70175,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70186,7 +70186,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70197,7 +70197,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70208,7 +70208,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70219,7 +70219,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70230,7 +70230,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70241,7 +70241,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70252,7 +70252,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70270,9 +70270,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1629
   Name: loc_icon_skill
   Children:
@@ -70824,7 +70824,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -70880,7 +70880,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -70918,7 +70918,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -70941,7 +70941,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70952,7 +70952,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70963,7 +70963,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70974,7 +70974,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70985,7 +70985,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -70996,7 +70996,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71007,7 +71007,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71018,7 +71018,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71029,7 +71029,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71047,9 +71047,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1644
   Name: loc_icon_skill
   Children:
@@ -71601,7 +71601,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -71657,7 +71657,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71695,7 +71695,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -71718,7 +71718,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71729,7 +71729,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71740,7 +71740,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71751,7 +71751,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71762,7 +71762,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71773,7 +71773,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -71784,7 +71784,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71795,7 +71795,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71806,7 +71806,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -71824,9 +71824,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1659
   Name: loc_icon_skill
   Children:
@@ -72378,7 +72378,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -72434,7 +72434,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72472,7 +72472,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -72495,7 +72495,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72506,7 +72506,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72517,7 +72517,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72528,7 +72528,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72539,7 +72539,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72550,7 +72550,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -72561,7 +72561,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72572,7 +72572,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72583,7 +72583,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -72601,9 +72601,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1674
   Name: loc_icon_skill
   Children:
@@ -73155,7 +73155,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -73211,7 +73211,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73249,7 +73249,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -73272,7 +73272,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73283,7 +73283,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73294,7 +73294,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73305,7 +73305,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73316,7 +73316,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73327,7 +73327,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -73338,7 +73338,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73349,7 +73349,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73360,7 +73360,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -73378,9 +73378,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1689
   Name: loc_icon_skill
   Children:
@@ -73932,7 +73932,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -73988,7 +73988,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -74026,7 +74026,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -74049,7 +74049,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74060,7 +74060,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74071,7 +74071,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74082,7 +74082,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74093,7 +74093,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74104,7 +74104,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74115,7 +74115,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -74126,7 +74126,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -74137,7 +74137,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -74155,9 +74155,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1704
   Name: loc_icon_skill
   Children:
@@ -74709,7 +74709,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol06
-      FontSize: 40
+      FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
@@ -74765,7 +74765,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 40
+        FontSize: 32
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -74803,7 +74803,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
       MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
-      FontSize: 52.8
+      FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
@@ -74826,7 +74826,7 @@ Objects:
       Overwrites:
       - Language: Eng
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74837,7 +74837,7 @@ Objects:
         Alignment: 0
       - Language: Fra
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74848,7 +74848,7 @@ Objects:
         Alignment: 0
       - Language: Ita
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74859,7 +74859,7 @@ Objects:
         Alignment: 0
       - Language: Deu
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74870,7 +74870,7 @@ Objects:
         Alignment: 0
       - Language: Esp
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74881,7 +74881,7 @@ Objects:
         Alignment: 0
       - Language: Por
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: false
         CharacterSpaching: 0
         EnableLS: false
@@ -74892,7 +74892,7 @@ Objects:
         Alignment: 0
       - Language: Chs
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -74903,7 +74903,7 @@ Objects:
         Alignment: 0
       - Language: Cht
         EnableFS: true
-        FontSize: 48
+        FontSize: 44
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -74914,7 +74914,7 @@ Objects:
         Alignment: 0
       - Language: Kor
         EnableFS: true
-        FontSize: 44
+        FontSize: 40
         EnableCS: true
         CharacterSpaching: 0
         EnableLS: false
@@ -74932,9 +74932,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -52.8, -25
+  OffsetMin: -48, -25
   OffsetMax: 0, 25
-  SizeDelta: 52.8, 50
+  SizeDelta: 48, 50
 - Id: 1719
   Name: loc_icon_skill
   Children:

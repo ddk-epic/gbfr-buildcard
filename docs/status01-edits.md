@@ -231,7 +231,6 @@ Scripts: `tools/scripts/rework_sigils.py`, then `tools/scripts/match_trait_rows.
 | +11 `icon_skill01`, +12 `icon_skill02` | 72x72; in front of the trait names; `SkillInfo.Names` set to +13 and +14 |
 | +4 `icon01`, +5 `text01_01` (sigil icon and name) | `Active: false`; +4 removed from `GemInfo.Sets` |
 | +6 `loc_text01_02` (level) | at the row's right edge, 8 in; `Padding` bottom 4 |
-| +8, +9 of each weapon, wrightstone and sigil row (level label and number) | label: every `FontSize` x1.25 (32 -> 40); number: every `FontSize` x1.1 (English 40 -> 44), width 48 -> 52.8 |
 | 1398, 1415, ..., 1523 (weapon and wrightstone rows) | 1266 wide, left insets kept; +6 `loc_skill_lv01` at the right edge, 8 in, `Padding` right 56 -> 40, bottom 4; +7 `loc_lv01` `Spacing` 24 -> 8 |
 | 1484 `loc_title01` (imbued traits title) | 1266 wide |
 | 1231 `line01`, 1232 `line02` | 1266 wide |

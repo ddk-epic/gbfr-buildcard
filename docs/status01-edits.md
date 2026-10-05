@@ -425,3 +425,11 @@ Script: `tools/scripts/shrink_heading_ornament.py`.
 | 461 `bc_mt_line` (new) | a copy of `line01` at the original `Scale` 0.425, its column 276 on the ornament's tip: the line at full thickness |
 | `bc_mt_perks`, `bc_mt_heading` | 12.224 higher, with the line |
 | everything after `line01` | Ids renumbered, 3 higher; `CardWriter`'s Id constants follow |
+
+## 2026-10-06 · Gold gear levels
+
+Script: `tools/scripts/gold_gear_levels.py`. The game draws a `SkillInfo` level in gold only when it is a bonus level (the summon rows); this sets the same style in the prefab, which the gear fill keeps.
+
+| Objects | Change |
+|---|---|
+| `lv01_text01`, `lv01_num01` of the weapon and wrightstone trait rows; `text01_02`, `text01_03` of the sigil rows (40 texts) | gradient (255, 240, 225) to (255, 175, 115); outline material `ol07`, also first in `ContainerData` |

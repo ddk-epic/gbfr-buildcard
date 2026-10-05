@@ -83449,16 +83449,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: 0
       LineSpacing: 0
       Alignment: 516
@@ -83467,8 +83467,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol09
       Enable: true
   - ComponentName: TextSetter
@@ -83498,16 +83498,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -83516,8 +83516,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol09
       Overwrites:
       - Language: Eng
@@ -84189,16 +84189,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: 0
       LineSpacing: 0
       Alignment: 516
@@ -84207,8 +84207,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol09
       Enable: true
   - ComponentName: TextSetter
@@ -84238,16 +84238,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -84256,8 +84256,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol09
       Overwrites:
       - Language: Eng
@@ -84929,16 +84929,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: 0
       LineSpacing: 0
       Alignment: 516
@@ -84947,8 +84947,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol09
       Enable: true
   - ComponentName: TextSetter
@@ -84978,16 +84978,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -84996,8 +84996,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol09
       Overwrites:
       - Language: Eng
@@ -85669,16 +85669,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: 0
       LineSpacing: 0
       Alignment: 516
@@ -85687,8 +85687,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol09
       Enable: true
   - ComponentName: TextSetter
@@ -85718,16 +85718,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -85736,8 +85736,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol09
       Overwrites:
       - Language: Eng
@@ -86409,16 +86409,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: 0
       LineSpacing: 0
       Alignment: 516
@@ -86427,8 +86427,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol09
       Enable: true
   - ComponentName: TextSetter
@@ -86458,16 +86458,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -86476,8 +86476,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol09
       Overwrites:
       - Language: Eng
@@ -87379,16 +87379,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: 0
       LineSpacing: 0
       Alignment: 516
@@ -87397,8 +87397,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol09
       Enable: true
   - ComponentName: TextSetter
@@ -87428,16 +87428,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -87446,8 +87446,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol09
       Overwrites:
       - Language: Eng
@@ -88116,16 +88116,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: 0
       LineSpacing: 0
       Alignment: 516
@@ -88134,8 +88134,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol09
       Enable: true
   - ComponentName: TextSetter
@@ -88165,16 +88165,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -88183,8 +88183,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol09
       Overwrites:
       - Language: Eng
@@ -88853,16 +88853,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: 0
       LineSpacing: 0
       Alignment: 516
@@ -88871,8 +88871,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol09
       Enable: true
   - ComponentName: TextSetter
@@ -88902,16 +88902,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -88920,8 +88920,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol09
       Overwrites:
       - Language: Eng
@@ -89695,16 +89695,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -89713,8 +89713,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -89789,16 +89789,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -89807,8 +89807,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -90472,16 +90472,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -90490,8 +90490,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -90566,16 +90566,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -90584,8 +90584,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -91249,16 +91249,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -91267,8 +91267,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -91343,16 +91343,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -91361,8 +91361,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -92026,16 +92026,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -92044,8 +92044,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -92120,16 +92120,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -92138,8 +92138,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -92803,16 +92803,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -92821,8 +92821,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -92897,16 +92897,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -92915,8 +92915,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -93580,16 +93580,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -93598,8 +93598,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -93674,16 +93674,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -93692,8 +93692,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -94357,16 +94357,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -94375,8 +94375,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -94451,16 +94451,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -94469,8 +94469,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -95134,16 +95134,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -95152,8 +95152,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -95228,16 +95228,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -95246,8 +95246,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -95911,16 +95911,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -95929,8 +95929,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -96005,16 +96005,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -96023,8 +96023,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -96688,16 +96688,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -96706,8 +96706,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -96782,16 +96782,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -96800,8 +96800,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -97465,16 +97465,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -97483,8 +97483,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -97559,16 +97559,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -97577,8 +97577,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng
@@ -98242,16 +98242,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
-      MaterialPath: fonts/fot_skipstd_b_sdf_ol06
+      MaterialPath: fonts/fot_skipstd_b_sdf_ol07
       FontSize: 32
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 0
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -98260,8 +98260,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol07
+      - data/language/ld_skipstd_b_sdf_ol06
       - data/language/ld_skipstd_b_sdf_ol08
       Overwrites:
       - Language: Ita
@@ -98336,16 +98336,16 @@ Objects:
     Component:
       Text: ''
       FontPath: fonts/fot_tsukuoldminpro_r_sdf
-      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol06
+      MaterialPath: fonts/fot_tsukuoldminpro_r_sdf_ol07
       FontSize: 48
       Color: 1, 1, 1, 1
       Margin: 0, 0, 0, 8
       IsGradient: true
       ColorMode: 2
-      ColorTL: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorTR: 0.98039216, 0.98039216, 0.9411765, 1
-      ColorBL: 0.8627451, 0.9607843, 1, 1
-      ColorBR: 0.8627451, 0.9607843, 1, 1
+      ColorTL: 1, 0.9411765, 0.88235295, 1
+      ColorTR: 1, 0.9411765, 0.88235295, 1
+      ColorBL: 1, 0.6862745, 0.4509804, 1
+      ColorBR: 1, 0.6862745, 0.4509804, 1
       CharacterSpacing: -2
       LineSpacing: 0
       Alignment: 516
@@ -98354,8 +98354,8 @@ Objects:
     Component:
       MultiData: true
       ContainerData:
-      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol07
+      - data/language/ld_tsukuoldminpro_r_sdf_ol06
       - data/language/ld_tsukuoldminpro_r_sdf_ol08
       Overwrites:
       - Language: Eng

@@ -26,6 +26,21 @@ TextureData:
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base02
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base03
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base04
+  - layouts/pause/status/noatlastextures/bc_white
+  - layouts/pause/background02/textures/common/ps_bg02_dissolve01
+  - layouts/pause/background04/noatlastextures/ps_bg04_image01
+  - layouts/pause/background04/noatlastextures/ps_bg04_image02
+  - layouts/pause/background04/noatlastextures/ps_bg04_image03
+  - layouts/pause/background04/noatlastextures/ps_bg04_image04
+  - layouts/pause/background04/noatlastextures/ps_bg04_image05
+  - layouts/pause/background04/noatlastextures/ps_bg04_image06
+  - layouts/pause/background04/noatlastextures/ps_bg04_eff02
+  - layouts/pause/background04/noatlastextures/ps_bg04_dissolve01
+  - layouts/pause/background04/noatlastextures/ps_bg04_dissolve02
+  - layouts/pause/background04/noatlastextures/ps_bg04_eff01
+  - layouts/pause/background04/noatlastextures/ps_bg04_image07
+  - layouts/pause/background04/noatlastextures/ps_bg04_mask01
+  - layouts/pause/background04/noatlastextures/ps_bg04_image08
   Eng: []
   Jpn: []
   Deu: []
@@ -48,6 +63,7 @@ AtlasData:
   - atlas/common_number
   - atlas/shop_awake
   - atlas/pause_skillboard
+  - atlas/pause_background04
   Eng:
   - atlas/eng/common_icon_main
   - atlas/eng/pause_pause_common

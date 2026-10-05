@@ -324,3 +324,16 @@ Script: `tools/scripts/restyle_master_traits.py`, then `tools/scripts/sync_list.
 
 All new images are `Type` 1 (sliced) with `FillCenter: true`, as in the game; without it the sliced centres are left empty. Images are scaled to the cell's height over the game's (0.217), the title bars to 31 sharecard px over 74 units, so the sliced borders keep the game's proportions.
 
+## 2026-10-05 · Master Traits menu background behind the board
+
+Script: `tools/scripts/add_master_traits_bg.py`, then `tools/scripts/sync_list.py`. `gen_white.py` draws `bc_white` (8x8 opaque white), shipped in `ui/layouts/...` and `ui/fhd/...` like `bc_backdrop_mask`.
+
+| Objects | Change |
+|---|---|
+| 464 `bc_mt_bg` (new) | first child of 463 `bc_mtraits`; `Mask` with `bc_white`, the blue section (1484x1102 sharecard px) at `Scale` 0.6066 |
+| 465-493 (new) | copies of `background04`'s 2 `loc_bg` and its subtree without 26 `loc_chara01` (the character): base gradient, glows, rings, smoke, `ps_bg04_*` textures with `uiadd` materials; the 3840x2160 scene covers the section, centred |
+| everything after `bc_mt_bg` | Ids +30; `CardWriter`'s Id constants follow |
+| `status01.list` | `bc_white`, the `background04` textures, `ps_bg02_dissolve01`, `atlas/pause_background04` |
+
+`background04`'s `Animator` (on its root, not copied) rotates the rings in the menu; the copies show its unanimated values.
+

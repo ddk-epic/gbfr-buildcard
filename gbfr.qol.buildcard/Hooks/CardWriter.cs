@@ -13,12 +13,12 @@ namespace gbfr.qol.buildcard.Hooks;
 public unsafe class CardWriter
 {
     private const short SummaryTextId = 462;      // bc_text01
-    private const short MasterTraitTextsId = 668;  // bc_mt_heading
-    private const short OverMasteryRowsId = 881;  // bc_om_0
+    private const short MasterTraitTextsId = 698;  // bc_mt_heading
+    private const short OverMasteryRowsId = 911;  // bc_om_0
     private const int OverMasteryRowObjects = 32;
-    private const short SummonSlotsId = 1010;  // bc_smn_0
+    private const short SummonSlotsId = 1040;  // bc_smn_0
     private const int SummonObjects = 56;
-    private const short SkillNamesId = 1846;  // text01 of the first skill card
+    private const short SkillNamesId = 1876;  // text01 of the first skill card
     private const int SkillCardObjects = 58;
     private const int SkillCount = 4;
     private const int Powers = 0x3D0;

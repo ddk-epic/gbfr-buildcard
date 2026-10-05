@@ -8,7 +8,7 @@ The main page of the in-game **Character Details** panel (pause menu > character
 | Repo source | `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs/status01.prfb.yaml` |
 | Edit log | [status01-edits.md](status01-edits.md) |
 | Placed by | view `pause_status01.view.viewb`, full screen, centred |
-| Objects | 426 stock (Ids 0-425) + 2148 added (Ids 426-2573), see the edit log |
+| Objects | 426 stock (Ids 0-425) + 2113 added (Ids 426-2538), see the edit log |
 | Size | 20,689 lines stock |
 
 The other pages and parts of the panel are separate prefabs: `chr_status_bg01` (white panel, blue portrait area, frame lines), `status_guide01` (Q/E arrows), `var00_chr_skill_info01` (skill details), `chr_skill_info01/02` (trait details, command list), `chr_sboard_info01` (master traits).
@@ -205,12 +205,11 @@ Ids, names and components; `(inactive)` marks `Active: false` in the stock file.
       │                       ├─ 378 loc_base00 (inactive)   text 379
       │                       └─ 380 loc_base01              name 382, description 383,
       │                                                       update icons 384-400 (inactive)
-      └─ 426 loc_buildcard      added: build card scaffold, 3424x1712
-         ├─ 427 bc_card         red      ┐
-         ├─ 432 bc_portrait     yellow   │ each: a locator with 4 sprite-less
-         ├─ 437 bc_skills       green    │ Images as edges (_top, _bottom,
-         ├─ 442 bc_gear         cyan     │ _left, _right), 6 px
-         ├─ 447 bc_mtraits      blue     │
-         ├─ 452 bc_om           magenta  │
-         └─ 457 bc_summons      orange   ┘
+      └─ 426 loc_buildcard      added: the build card, 3424x1712
+         ├─ 427 bc_mtraits      master traits
+         ├─ 1366 bc_om          Over Mastery
+         ├─ 1496 bc_smn         summons
+         ├─ 1701 bc_weapon      weapon
+         ├─ 2302 bc_skills      skills
+         └─ 2538 bc_om_ttl_text Over Mastery title
 ```

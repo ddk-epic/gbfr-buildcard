@@ -383,3 +383,12 @@ Script: `tools/scripts/restyle_summons.py`, from `summon_list01`. Per slot `bc_s
 | `list_skill_p05_02` (equip bonus row) | `line01` inactive; the level's right edge at the art's left edge |
 | everything after the summons | Ids renumbered; `CardWriter`'s Id constants follow |
 | `status01.list` | `fonts/fot_skipstd_b_sdf_ol09` appended (`tools/scripts/sync_list.py`) |
+
+## 2026-10-05 · Scaffold removed
+
+`tools/scripts/scaffold.py` removed.
+
+| Objects | Change |
+|---|---|
+| 427-461 (`bc_card`, `bc_portrait`, `bc_skills`, `bc_gear`, `bc_mtraits`, `bc_om`, `bc_summons` and their edge Images) | removed: the section outlines |
+| everything after them | Ids renumbered, 35 lower; `CardWriter`'s Id constants follow |

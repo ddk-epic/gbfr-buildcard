@@ -12,21 +12,21 @@ namespace gbfr.qol.buildcard.Hooks;
 // sets the weapon whose art WeaponArtHooks loads.
 public unsafe class CardWriter
 {
-    private const short PerkNamesId = 496;  // bc_mt_perk_0_name
-    private const short PerkStarsId = 499;  // icon01_add of bc_mt_perk_0_stars
+    private const short PerkNamesId = 461;  // bc_mt_perk_0_name
+    private const short PerkStarsId = 464;  // icon01_add of bc_mt_perk_0_stars
     private const int PerkObjects = 12;
     private const int StarObjects = 3;
     private const int PerkStars = 3;
-    private const short StyleTitlesId = 532;  // bc_mt_0_title
-    private const short CellsId = 535;  // bc_mt_cells
-    private const short CaptainCellsId = 944;  // bc_mt_cells_captain
-    private const short CellTextsId = 740;  // bc_mt_0_0_label of bc_mt_cells
-    private const short CaptainCellTextsId = 1173;  // bc_mt_0_0_label of bc_mt_cells_captain
-    private const short OverMasteryRowsId = 1403;  // bc_om_0
+    private const short StyleTitlesId = 497;  // bc_mt_0_title
+    private const short CellsId = 500;  // bc_mt_cells
+    private const short CaptainCellsId = 909;  // bc_mt_cells_captain
+    private const short CellTextsId = 705;  // bc_mt_0_0_label of bc_mt_cells
+    private const short CaptainCellTextsId = 1138;  // bc_mt_0_0_label of bc_mt_cells_captain
+    private const short OverMasteryRowsId = 1368;  // bc_om_0
     private const int OverMasteryRowObjects = 32;
-    private const short SummonSlotsId = 1532;  // bc_smn_0
+    private const short SummonSlotsId = 1497;  // bc_smn_0
     private const int SummonObjects = 51;
-    private const short SkillNamesId = 2348;  // text01 of the first skill card
+    private const short SkillNamesId = 2313;  // text01 of the first skill card
     private const int SkillCardObjects = 58;
     private const int SkillCount = 4;
     private const int Powers = 0x3D0;

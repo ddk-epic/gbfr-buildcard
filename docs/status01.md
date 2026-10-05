@@ -8,7 +8,7 @@ The main page of the in-game **Character Details** panel (pause menu > character
 | Repo source | `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs/status01.prfb.yaml` |
 | Edit log | [status01-edits.md](status01-edits.md) |
 | Placed by | view `pause_status01.view.viewb`, full screen, centred |
-| Objects | 426 stock (Ids 0-425) + 1535 added (Ids 426-1960), see the edit log |
+| Objects | 426 stock (Ids 0-425) + 1646 added (Ids 426-2071), see the edit log |
 | Size | 20,689 lines stock |
 
 The other pages and parts of the panel are separate prefabs: `chr_status_bg01` (white panel, blue portrait area, frame lines), `status_guide01` (Q/E arrows), `var00_chr_skill_info01` (skill details), `chr_skill_info01/02` (trait details, command list), `chr_sboard_info01` (master traits).

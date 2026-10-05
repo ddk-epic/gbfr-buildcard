@@ -10,4 +10,6 @@ public class SkillBoardCategoryInfo : Component
     public UIObjectRef _E4D93974 { get; set; }
     public UIObjectRef IconSetter { get; set; }
     public UIObjectRef Level { get; set; }
+    public UIObjectRef Gauge { get; set; }
+    public List<UIObjectRef> _45895A6F { get; set; }
 }

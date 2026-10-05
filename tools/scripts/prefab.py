@@ -1,4 +1,5 @@
 # Reads and edits a prefab YAML's objects and rects in place. Used by the layout scripts.
+import re
 
 def f(v):
     v = round(v, 3)
@@ -115,3 +116,38 @@ class Prefab:
             y = ay + (amin[1] + (amax[1] - amin[1]) * piv[1] - ppiv[1]) * ph
             self.set(child, "Position", (x, y, 0))
             self.repin(child)
+
+
+def renumber(p, blocks, children):
+    # rewrites the prefab from blocks (Id -> lines) and children (Id -> child Ids) with Ids in depth-first order;
+    # returns the old -> new Id map
+    order = []
+    stack = [0]
+    while stack:
+        i = stack.pop()
+        order.append(i)
+        stack.extend(reversed(children[i]))
+    assert sorted(order) == sorted(blocks)
+    ids = {old: new for new, old in enumerate(order)}
+    lines = []
+    for old in order:
+        lines.append(f"- Id: {ids[old]}")
+        in_children = False
+        for line in blocks[old][1:]:
+            if line == "  Children:":
+                lines.append(line)
+                lines.extend(f"  - {ids[c]}" for c in children[old])
+                in_children = True
+                continue
+            if in_children and line.startswith("  - "):
+                continue
+            in_children = False
+            m = re.match(r"(\s+ObjectRefId: )(-?\d+)$", line)
+            if m and int(m[2]) != -1:
+                line = f"{m[1]}{ids[int(m[2])]}"
+            lines.append(line)
+    start = p.starts[0]
+    end = len(p.lines) - (p.lines[-1] == "")  # before the trailing newline
+    p.lines[start:end] = lines
+    p.reindex()
+    return ids

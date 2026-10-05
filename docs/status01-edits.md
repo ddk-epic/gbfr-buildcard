@@ -305,3 +305,22 @@ Script: `tools/scripts/panel_over_mastery.py`
 | 1960 `bc_om_ttl_text` (new) | copy of 1727 `ttl01_text01`, `TextSetter` `TXT_PAU_LB_TAB_LIMIT_OVER` ("Over Mastery"); last child of 426 `loc_buildcard`, over the bar; `Scale` 0.705 |
 | 770, 802, 834, 866 `bc_om_<i>` | `Scale` x1.1 of the old size (0.9365 in the panel); centred between the bar's gap and the bottom padding, icons 15 sharecard px from the panel's left edge |
 | 0 `status01`, `CharaInfo.Powers` | the Text ref to 769 removed; `CardWriter` no longer writes the heading |
+
+## 2026-10-05 · Master traits in the game's Master Traits list style
+
+Script: `tools/scripts/restyle_master_traits.py`, then `tools/scripts/sync_list.py`. Styles from `skillboard_window01`'s rank lists (`loc_base`, `loc_ttl`, `skillboard_list01_*`); `gbfr.uitools` reads that prefab through new classes for `ControllerSkillBoardWindow`, `MenuSkillBoardWindowList`, `ItemSkillBoardSquare` and the other skillboard components.
+
+| Objects | Change |
+|---|---|
+| `bc_mt_<s>_border` -> `bc_mt_<s>_0_base` | rank 1's panel |
+| `bc_mt_<s>_<r>_base` (new for ranks 2 to EX) | `ps_sboard_list02`, sliced, `loc_base`'s colour (navy, alpha 0.502); 10 sharecard px inside the column, 5 above the rank label to 6 below the last cell |
+| `bc_mt_<s>_<r>_ttl` (new) | `ps_sboard_ttl_base01` to `04` (rank 1 to EX), sliced, 31 sharecard px high, centred on the rank label, 3 inside the panel |
+| `bc_mt_<s>_<r>_<c>_fill` -> `_base` | `ps_sboard_list02`, sliced, `base01`'s colour (purple, alpha 0.6) |
+| `bc_mt_<s>_<r>_<c>_frame` (new) | `ps_sboard_list01`, the cell less 6 game units each side |
+| `_label`, `_count` | `ttl_text01`'s colour (white, alpha 0.698) |
+| `_on`, `_off` | `text01`'s and `text02`'s colours; `fot_skipstd_b_sdf_ds01` material, `ld_skipstd_b_sdf_ds01` language data; left edge 7 sharecard px further in, past the frame's corner; English `LineSpaching` 8 → 4, the line gap about the cell's top and bottom padding |
+| everything after `bc_mtraits` | Ids +111 (renumbered depth-first); `CardWriter`'s Id constants follow |
+| `status01.list` | `atlas/pause_skillboard` and the four title bar textures |
+
+All new images are `Type` 1 (sliced) with `FillCenter: true`, as in the game; without it the sliced centres are left empty. Images are scaled to the cell's height over the game's (0.217), the title bars to 31 sharecard px over 74 units, so the sliced borders keep the game's proportions.
+

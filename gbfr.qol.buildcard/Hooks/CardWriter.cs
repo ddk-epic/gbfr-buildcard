@@ -8,30 +8,9 @@ using Reloaded.Mod.Interfaces;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Writes the card's texts, Over Mastery rows and summon slots after the game fills the page, wraps long skill names, and
-// sets the weapon whose art WeaponArtHooks loads.
+// Writes the card's objects, found in CharaInfo.Powers by their CardIds, and sets the weapon WeaponArtHooks loads.
 public unsafe class CardWriter
 {
-    private const short PerkNamesId = 464;  // bc_mt_perk_0_name
-    private const short PerkStarsId = 467;  // icon01_add of bc_mt_perk_0_stars
-    private const int PerkObjects = 12;
-    private const int StarObjects = 3;
-    private const int PerkStars = 3;
-    private const short StyleTitlesId = 500;  // bc_mt_0_title
-    private const short CellsId = 503;  // bc_mt_cells
-    private const short CaptainCellsId = 1092;  // bc_mt_cells_captain
-    private const short CellTextsId = 888;  // bc_mt_0_0_label of bc_mt_cells
-    private const short CaptainCellTextsId = 1525;  // bc_mt_0_0_label of bc_mt_cells_captain
-    private const short CellPickedId = 618;  // bc_mt_0_0_0_picked of bc_mt_cells
-    private const short CaptainCellPickedId = 1219;  // bc_mt_0_0_0_picked of bc_mt_cells_captain
-    private const int PickedObjects = 3;
-    private const short OverMasteryRowsId = 1755;  // bc_om_0
-    private const int OverMasteryRowObjects = 32;
-    private const short SummonSlotsId = 1885;  // bc_smn_0
-    private const int SummonObjects = 51;
-    private const short SkillNamesId = 2704;  // text01 of the first skill card
-    private const int SkillCardObjects = 58;
-    private const int SkillCount = 4;
     private const int Powers = 0x3D0;
     private const int MaxRefs = 1024;
     private const int WrapLength = 19;
@@ -61,7 +40,6 @@ public unsafe class CardWriter
     private static readonly int[] CaptainSlots = [4, 8, 8, 14];
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
-    private static readonly int MasterTraitRefCount = StyleNames.Length * (1 + PerkStars + 1 + CellTexts(Slots) + CellTexts(CaptainSlots) + Slots.Sum() + CaptainSlots.Sum()) + 2;
 
     private readonly TextHooks _text;
     private readonly WeaponArtHooks _weaponArt;
@@ -75,6 +53,7 @@ public unsafe class CardWriter
     private readonly nint _summonInfoVtable;
     private readonly nint _textVtable;
     private bool _loggedComponents;
+    private bool _loggedMissing;
 
     public CardWriter(TextHooks text, WeaponArtHooks weaponArt, ILogger logger)
     {
@@ -118,14 +97,23 @@ public unsafe class CardWriter
 
     private void Write(nint charaInfo, nint chara)
     {
-        var refs = FindRefs(charaInfo, PerkNamesId, (short)(SummonSlotsId + (SummonCount - 1) * SummonObjects));
-        if (refs.Count != MasterTraitRefCount + OverMasteryLines + SummonCount)
+        var refs = FindRefs(charaInfo);
+        int missing = CardIds.All.Count(id => !refs.ContainsKey(id));
+        if (missing > 0)
+        {
+            // a few missing: the card's CharaInfo, out of step with the build
+            if (missing < CardIds.All.Length / 2 && !_loggedMissing)
+            {
+                _loggedMissing = true;
+                _logger.WriteLine($"[gbfr.qol.buildcard] {missing} card objects missing from CharaInfo.Powers, card not written", Color.Red);
+            }
             return;
+        }
 
         WriteMasterTraits(refs, chara);
         WriteOverMastery(refs, chara);
         WriteSummons(refs, chara);
-        WrapSkillNames(charaInfo);
+        WrapSkillNames(refs);
         _weaponArt.Show(chara);
     }
 
@@ -155,50 +143,41 @@ public unsafe class CardWriter
             }
         }
         var slots = captain ? CaptainSlots : Slots;
+        int board = captain ? 1 : 0;
 
         for (int s = 0; s < StyleNames.Length; s++)
         {
-            Set(refs, PerkNamesId + s * PerkObjects, StyleNames[s]);
-            for (int k = 0; k < PerkStars; k++)
-                SetActive(refs, PerkStarsId + s * PerkObjects + k * StarObjects, k < perks[s]);
+            Set(refs, CardIds.PerkNames[s], StyleNames[s]);
+            for (int k = 0; k < CardIds.PerkStars[s].Length; k++)
+                SetActive(refs, CardIds.PerkStars[s][k], k < perks[s]);
         }
         for (int s = 0; s < StyleNames.Length; s++)
-            Set(refs, StyleTitlesId + s, titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
-        SetActive(refs, CellsId, !captain);
-        SetActive(refs, CaptainCellsId, captain);
-        int id = captain ? CaptainCellTextsId : CellTextsId;
-        int pickedId = captain ? CaptainCellPickedId : CellPickedId;
+            Set(refs, CardIds.StyleTitles[s], titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
+        SetActive(refs, CardIds.Cells, !captain);
+        SetActive(refs, CardIds.CaptainCells, captain);
         for (int s = 0; s < StyleNames.Length; s++)
         {
             for (int r = 0; r < slots.Length; r++)
-            {
-                // skips the label
-                id++;
-                Set(refs, id++, $"{spent[r]}/{Budgets[r]}");
-            }
+                Set(refs, CardIds.RankCounts[board][s][r], $"{spent[r]}/{Budgets[r]}");
             for (int r = 0; r < slots.Length; r++)
             {
                 for (int c = 0; c < slots[r]; c++)
                 {
                     var slot = labels[s, r, c];
-                    SetCell(refs, id++, slot is { Picked: true } ? slot.Value.Cell : null);
-                    SetCell(refs, id++, slot is { Picked: false } ? slot.Value.Cell : null);
-                    SetActive(refs, pickedId, slot is { Picked: true });
-                    pickedId += PickedObjects;
+                    SetCell(refs, CardIds.CellOn[board][s][r][c], slot is { Picked: true } ? slot.Value.Cell : null);
+                    SetCell(refs, CardIds.CellOff[board][s][r][c], slot is { Picked: false } ? slot.Value.Cell : null);
+                    SetActive(refs, CardIds.CellPicked[board][s][r][c], slot is { Picked: true });
                 }
             }
         }
     }
-
-    // a style's rank counts, and each cell's picked and unpicked texts
-    private static int CellTexts(int[] slots) => slots.Length + 2 * slots.Sum();
 
     private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
     {
         for (int i = 0; i < OverMasteryLines; i++)
         {
             nint line = chara + OverMastery + i * OverMasteryLineSize;
-            int id = OverMasteryRowsId + i * OverMasteryRowObjects;
+            int id = CardIds.OverMasteryRows[i];
             bool shown = *(float*)(line + 0xC) != 0;
             if (shown)
                 SetOverMasteryLine(refs, id, line);
@@ -220,7 +199,7 @@ public unsafe class CardWriter
     private void WriteSummons(Dictionary<short, nint> refs, nint chara)
     {
         for (int i = 0; i < SummonCount; i++)
-            SetSummonInfo(refs, SummonSlotsId + i * SummonObjects, *(uint*)(chara + Summons + i * SummonSize + 4));
+            SetSummonInfo(refs, CardIds.SummonSlots[i], *(uint*)(chara + Summons + i * SummonSize + 4));
     }
 
     private void SetSummonInfo(Dictionary<short, nint> refs, int id, uint summonId)
@@ -260,14 +239,13 @@ public unsafe class CardWriter
         _logger.WriteLine($"[gbfr.qol.buildcard] No {name} on a card object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
     }
 
-    private void WrapSkillNames(nint charaInfo)
+    private void WrapSkillNames(Dictionary<short, nint> refs)
     {
-        var refs = FindRefs(charaInfo, SkillNamesId, (short)(SkillNamesId + (SkillCount - 1) * SkillCardObjects));
-        if (refs.Count != SkillCount || _textVtable == 0)
+        if (_textVtable == 0)
             return;
-        for (int i = 0; i < SkillCount; i++)
+        foreach (short id in CardIds.SkillNames)
         {
-            nint obj = *(nint*)(refs[(short)(SkillNamesId + i * SkillCardObjects)] + 8);
+            nint obj = *(nint*)(refs[id] + 8);
             nint text = FindComponent(obj, _textVtable);
             if (text == 0)
             {
@@ -323,7 +301,7 @@ public unsafe class CardWriter
     }
 
     // Refs: 0x20 bytes, object at +8, component at +0x10, component name hash at +0x18, ObjectRefId at +0x1E.
-    private static Dictionary<short, nint> FindRefs(nint charaInfo, short firstId, short lastId)
+    private static Dictionary<short, nint> FindRefs(nint charaInfo)
     {
         var found = new Dictionary<short, nint>();
         nint begin = *(nint*)(charaInfo + Powers), end = *(nint*)(charaInfo + Powers + 8);
@@ -332,11 +310,7 @@ public unsafe class CardWriter
             return found;
 
         for (nint r = begin; r < end; r += 0x20)
-        {
-            short id = *(short*)(r + 0x1E);
-            if (id >= firstId && id <= lastId)
-                found[id] = r;
-        }
+            found[*(short*)(r + 0x1E)] = r;
         return found;
     }
 

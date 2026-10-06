@@ -5,8 +5,8 @@ The main page of the in-game **Character Details** panel (pause menu > character
 | | |
 |---|---|
 | Game path | `data/ui/layouts/pause/status/prefabs/status01.prfb` |
-| Repo source | `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs/status01.prfb.yaml` |
-| Edit log | [status01-edits.md](status01-edits.md) |
+| Repo source | `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs/status01.prfb.yaml`, written by `tools/build/build.py` ([build.md](build.md)) |
+| Edit log | [status01-edits.md](status01-edits.md), frozen at 5f5f456 |
 | Placed by | view `pause_status01.view.viewb`, full screen, centred |
 | Objects | 426 stock (Ids 0-425) + 2518 added (Ids 426-2943), see the edit log |
 | Size | 20,689 lines stock |

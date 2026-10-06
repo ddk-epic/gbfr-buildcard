@@ -1,5 +1,7 @@
 # `status01` edit log
 
+**Frozen.** This log ends at commit 5f5f456; the prefab is now written by `tools/build/build.py`, whose steps replace these entries (see [build.md](build.md)).
+
 Append-only: new entries go at the bottom, existing entries are never changed. A later edit that undoes or changes an earlier one gets its own entry. Object Ids refer to the file as it was at that entry. Structure: [status01.md](status01.md).
 
 ## 2026-10-03 · Stock import

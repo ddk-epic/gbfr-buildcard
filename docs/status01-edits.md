@@ -458,3 +458,14 @@ Script: `tools/scripts/outline_master_traits_cells.py`, with the texture `bc_out
 | `bc_mt_<s>_<r>_<c>_picked` (new, 192) | inactive containers with the grid's rect, after the cell bases and before the texts, in style, rank, cell order (618 in `bc_mt_cells`, 1219 in `bc_mt_cells_captain`); in `CharaInfo.Powers`, shown by `CardWriter` on picked cells |
 | `_picked_base`, `_picked_outline` (new, under each) | the cell colour (39, 27, 53) at alpha 0.4 (0.7 over the unpicked base); `bc_outline` (no centre fill) in (107, 132, 155) at the cell's size, `Scale` 1 |
 | everything after the first grid's cells | Ids renumbered; `CardWriter`'s Id constants follow |
+
+## 2026-10-06 · Style rank labels from the game's texts
+
+Script: `tools/scripts/add_rank_text_ids.py`.
+
+| Objects | Change |
+|---|---|
+| `bc_mt_<s>_<r>_label` (24) | `TextSetter` with `TXT_PAU_SKL_BD_ST_RANK_1` to `_4` by rank ("Style Rank 1", "2", "3", "EX"), resolved at runtime in the player's language; `CardWriter` no longer writes them |
+| 0 `status01`, `CharaInfo.Powers` | the labels' Text refs removed, since the game fills every `Powers` text with PWR |
+
+A `TextSetter` holds only the text id, so the game resolves it in the player's language without any table edits. The Weapon title is the exception: its singular text is a sub-id variant of another prefab, which a `TextSetter` can't name, so `patch_texts.py` adds a `status01` row to the English `text_ui.msg` (see "Singular Weapon title").

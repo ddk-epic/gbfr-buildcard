@@ -181,25 +181,13 @@ Objects:
         ObjectRefId: 500
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 888
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 889
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 890
       - ComponentName: Text
         Index: 0
         ObjectRefId: 891
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 892
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 893
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 894
       - ComponentName: Text
         Index: 0
         ObjectRefId: 895
@@ -388,25 +376,13 @@ Objects:
         ObjectRefId: 501
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 956
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 957
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 958
       - ComponentName: Text
         Index: 0
         ObjectRefId: 959
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 960
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 961
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 962
       - ComponentName: Text
         Index: 0
         ObjectRefId: 963
@@ -595,25 +571,13 @@ Objects:
         ObjectRefId: 502
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1024
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 1025
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 1026
       - ComponentName: Text
         Index: 0
         ObjectRefId: 1027
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1028
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 1029
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 1030
       - ComponentName: Text
         Index: 0
         ObjectRefId: 1031
@@ -871,25 +835,13 @@ Objects:
         ObjectRefId: 497
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1525
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 1526
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 1527
       - ComponentName: Text
         Index: 0
         ObjectRefId: 1528
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1529
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 1530
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 1531
       - ComponentName: Text
         Index: 0
         ObjectRefId: 1532
@@ -1099,25 +1051,13 @@ Objects:
         ObjectRefId: 1600
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1601
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 1602
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 1603
       - ComponentName: Text
         Index: 0
         ObjectRefId: 1604
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1605
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 1606
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 1607
       - ComponentName: Text
         Index: 0
         ObjectRefId: 1608
@@ -1327,25 +1267,13 @@ Objects:
         ObjectRefId: 1676
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1677
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 1678
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 1679
       - ComponentName: Text
         Index: 0
         ObjectRefId: 1680
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 1681
-      - ComponentName: Text
-        Index: 0
         ObjectRefId: 1682
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 1683
       - ComponentName: Text
         Index: 0
         ObjectRefId: 1684
@@ -36304,6 +36232,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_1
+      Enable: true
   Active: true
   Position: -49.933, 668.156, 0
   Rotation: 0, 0, 0, 1
@@ -36401,6 +36333,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_2
       Enable: true
   Active: true
   Position: -49.933, 485.463, 0
@@ -36500,6 +36436,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_3
+      Enable: true
   Active: true
   Position: -49.933, 183.881, 0
   Rotation: 0, 0, 0, 1
@@ -36597,6 +36537,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_4
       Enable: true
   Active: true
   Position: -49.933, -117.7, 0
@@ -39636,6 +39580,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_1
+      Enable: true
   Active: true
   Position: 540.152, 668.156, 0
   Rotation: 0, 0, 0, 1
@@ -39733,6 +39681,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_2
       Enable: true
   Active: true
   Position: 540.152, 485.463, 0
@@ -39832,6 +39784,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_3
+      Enable: true
   Active: true
   Position: 540.152, 183.881, 0
   Rotation: 0, 0, 0, 1
@@ -39929,6 +39885,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_4
       Enable: true
   Active: true
   Position: 540.152, -117.7, 0
@@ -42968,6 +42928,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_1
+      Enable: true
   Active: true
   Position: 1130.237, 668.156, 0
   Rotation: 0, 0, 0, 1
@@ -43065,6 +43029,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_2
       Enable: true
   Active: true
   Position: 1130.237, 485.463, 0
@@ -43164,6 +43132,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_3
+      Enable: true
   Active: true
   Position: 1130.237, 183.881, 0
   Rotation: 0, 0, 0, 1
@@ -43261,6 +43233,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_4
       Enable: true
   Active: true
   Position: 1130.237, -117.7, 0
@@ -58632,6 +58608,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_1
+      Enable: true
   Active: true
   Position: -49.933, 668.787, 0
   Rotation: 0, 0, 0, 1
@@ -58729,6 +58709,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_2
       Enable: true
   Active: true
   Position: -49.933, 501.972, 0
@@ -58828,6 +58812,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_3
+      Enable: true
   Active: true
   Position: -49.933, 228.899, 0
   Rotation: 0, 0, 0, 1
@@ -58925,6 +58913,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_4
       Enable: true
   Active: true
   Position: -49.933, -44.17, 0
@@ -62356,6 +62348,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_1
+      Enable: true
   Active: true
   Position: 540.152, 668.787, 0
   Rotation: 0, 0, 0, 1
@@ -62453,6 +62449,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_2
       Enable: true
   Active: true
   Position: 540.152, 501.972, 0
@@ -62552,6 +62552,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_3
+      Enable: true
   Active: true
   Position: 540.152, 228.899, 0
   Rotation: 0, 0, 0, 1
@@ -62649,6 +62653,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_4
       Enable: true
   Active: true
   Position: 540.152, -44.17, 0
@@ -66080,6 +66088,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_1
+      Enable: true
   Active: true
   Position: 1130.237, 668.787, 0
   Rotation: 0, 0, 0, 1
@@ -66177,6 +66189,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_2
       Enable: true
   Active: true
   Position: 1130.237, 501.972, 0
@@ -66276,6 +66292,10 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_3
+      Enable: true
   Active: true
   Position: 1130.237, 228.899, 0
   Rotation: 0, 0, 0, 1
@@ -66373,6 +66393,10 @@ Objects:
         Margine: 0, 0, 0, 0
         EnableAL: false
         Alignment: 0
+      Enable: true
+  - ComponentName: TextSetter
+    Component:
+      TextID: TXT_PAU_SKL_BD_ST_RANK_4
       Enable: true
   Active: true
   Position: 1130.237, -44.17, 0

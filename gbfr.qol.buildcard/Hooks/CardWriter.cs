@@ -61,7 +61,6 @@ public unsafe class CardWriter
     private static readonly int[] CaptainSlots = [4, 8, 8, 14];
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
-    private static readonly string[] RankNames = ["1", "2", "3", "EX"];
     private static readonly int MasterTraitRefCount = StyleNames.Length * (1 + PerkStars + 1 + CellTexts(Slots) + CellTexts(CaptainSlots) + Slots.Sum() + CaptainSlots.Sum()) + 2;
 
     private readonly TextHooks _text;
@@ -173,7 +172,8 @@ public unsafe class CardWriter
         {
             for (int r = 0; r < slots.Length; r++)
             {
-                Set(refs, id++, $"STYLE RANK {RankNames[r]}");
+                // skips the label
+                id++;
                 Set(refs, id++, $"{spent[r]}/{Budgets[r]}");
             }
             for (int r = 0; r < slots.Length; r++)
@@ -190,8 +190,8 @@ public unsafe class CardWriter
         }
     }
 
-    // a style's rank labels and counts, and each cell's picked and unpicked texts
-    private static int CellTexts(int[] slots) => 2 * slots.Length + 2 * slots.Sum();
+    // a style's rank counts, and each cell's picked and unpicked texts
+    private static int CellTexts(int[] slots) => slots.Length + 2 * slots.Sum();
 
     private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
     {

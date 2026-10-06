@@ -5,7 +5,7 @@ namespace gbfr.qol.buildcard.Hooks;
 // Reads the loaded exe's sections and MSVC RTTI.
 public static unsafe class PeImage
 {
-    public static (nint Start, nint End)? FindSection(nint image, string name)
+    private static (nint Start, nint End)? FindSection(nint image, string name)
     {
         byte* nt = (byte*)image + *(int*)(image + 0x3C);
         int sections = *(ushort*)(nt + 6);

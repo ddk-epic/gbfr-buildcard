@@ -41,7 +41,7 @@ public unsafe class CardWriter
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
 
-    private readonly TextHooks _text;
+    private readonly GameText _text;
     private readonly WeaponArtHooks _weaponArt;
     private readonly ILogger _logger;
     private readonly Dictionary<uint, Cell> _cells = LoadCells();
@@ -55,7 +55,7 @@ public unsafe class CardWriter
     private bool _loggedComponents;
     private bool _loggedMissing;
 
-    public CardWriter(TextHooks text, WeaponArtHooks weaponArt, ILogger logger)
+    public CardWriter(GameText text, WeaponArtHooks weaponArt, ILogger logger)
     {
         _text = text;
         _weaponArt = weaponArt;
@@ -271,7 +271,7 @@ public unsafe class CardWriter
     private void SetCell(Dictionary<short, nint> refs, int id, Cell? cell)
     {
         if (refs.TryGetValue((short)id, out nint r))
-            _text.Set(*(nint*)(r + 0x10), cell is { } c ? Wrap(c.Label, WrapLength) : "", cell?.TextHash ?? TextHooks.NoHash);
+            _text.Set(*(nint*)(r + 0x10), cell is { } c ? Wrap(c.Label, WrapLength) : "", cell?.TextHash ?? GameText.NoHash);
     }
 
     // Breaks a one-line label of length or more characters at the space nearest its middle; <d> counts as two.
@@ -323,7 +323,7 @@ public unsafe class CardWriter
         while (reader.ReadLine() is { } line)
         {
             string[] fields = line.Split('\t');
-            uint hash = fields[5].Length > 0 ? Convert.ToUInt32(fields[5], 16) : TextHooks.NoHash;
+            uint hash = fields[5].Length > 0 ? Convert.ToUInt32(fields[5], 16) : GameText.NoHash;
             cells[Convert.ToUInt32(fields[0], 16)] = new Cell(int.Parse(fields[1]), int.Parse(fields[2]), int.Parse(fields[3]), fields[4], hash);
         }
         return cells;

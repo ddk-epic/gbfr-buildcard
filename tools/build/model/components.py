@@ -1,5 +1,5 @@
 # Builds new objects and their components as Nodes.
-from model.prefab import Node, f
+from model.prefab import Node, Ref, f
 
 
 def rect(name, components=(), pivot=(0.5, 0.5), active=True):
@@ -11,6 +11,20 @@ def rect(name, components=(), pivot=(0.5, 0.5), active=True):
               f"  Pivot: {f(pivot[0])}, {f(pivot[1])}", "  AnchorPoint: 0, 0", "  AnchorMin: 0.5, 0.5",
               "  AnchorMax: 0.5, 0.5", "  OffsetMin: 0, 0", "  OffsetMax: 0, 0", "  SizeDelta: 0, 0"]
     return Node(lines)
+
+
+def components(node):
+    # the object's component lines
+    lines = node.lines
+    if "  Components:" not in lines:
+        return []
+    start = lines.index("  Components:") + 1
+    end = start
+    while end < len(lines) and (isinstance(lines[end], Ref) or lines[end].startswith(("  - ", "    "))):
+        end += 1
+    if any(isinstance(line, Ref) for line in lines[start:end]):
+        raise ValueError(f"{node.path}: components with references")
+    return lines[start:end]
 
 
 def image(color, alpha, sprite=None, sliced=False):

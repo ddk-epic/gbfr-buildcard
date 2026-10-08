@@ -6,9 +6,8 @@ building the mod needs neither Python nor the game's files; the build steps are 
 edited by hand.
 
 ```
-python tools/build/build.py                  # writes the outputs
-python tools/build/build.py --check          # writes nothing; exits 1, with a diff, if an output is stale
-python tools/build/build.py --stock <dir>    # once a step needs stock prefabs, see below
+python tools/build/build.py --stock <dir>            # writes the outputs; <dir> holds the stock prefabs, see below
+python tools/build/build.py --stock <dir> --check    # writes nothing; exits 1, with a diff, if an output is stale
 python -m unittest discover -s tests -t .    # from tools/build
 ```
 
@@ -66,7 +65,8 @@ the moment. They are ported one section at a time:
 | Prefab | Section | Status |
 |---|---|---|
 | `status01` | frame | `steps/status01/frame.py` |
-| `status01` | Over Mastery, summons, skills, status, portrait, gear, master traits | legacy |
+| `status01` | Over Mastery | `steps/status01/over_mastery.py` |
+| `status01` | summons, skills, status, portrait, gear, master traits | legacy |
 | `chr_status_bg01` | panel, backdrop | legacy |
 
 Until a section is ported, `legacy.py` carries it: each prefab starts as it was at the commit in `FROZEN`, and the

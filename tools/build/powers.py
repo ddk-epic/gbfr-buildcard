@@ -27,6 +27,15 @@ def nodes(prefab):
     return {entry[-1].node for entry in entries(prefab)[1]}
 
 
+def add(prefab, node, component=""):
+    # appends a reference to the node's component, or to the node when component is empty
+    start, found = entries(prefab)
+    end = start + sum(len(entry) for entry in found)
+    name, index = (component, 0) if component else ("''", -1)
+    prefab.root.lines[end:end] = [f"      - ComponentName: {name}", f"        Index: {index}",
+                                  Ref("        ObjectRefId: ", node)]
+
+
 def order(prefab, stock):
     start, found = entries(prefab)
     stock_paths = [entry[-1].node.path for entry in entries(stock)[1]]

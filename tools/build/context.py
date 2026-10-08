@@ -2,6 +2,7 @@
 import os
 import subprocess
 
+import powers
 from model.prefab import Prefab
 
 REPO = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../.."))
@@ -46,9 +47,13 @@ class Context:
             path = os.path.join(self.stock_dir, f"{name}.prfb.yaml")
             if not os.path.exists(path):
                 raise SystemExit(f"{path} not found: convert the game's {name}.prfb with gbfr.uitools b-convert")
-            with open(path, encoding="utf-8", newline="") as file:
+            with open(path, encoding="utf-8") as file:
                 self._stock[name] = file.read()
         return Prefab.parse(self._stock[name])
+
+    def powers(self, node, component=""):
+        # adds the node to status01's CharaInfo.Powers
+        powers.add(self.prefab("status01"), node, component)
 
     def export(self, key, node):
         if key in self.exports:

@@ -5,6 +5,19 @@ from model.components import rect
 S = 3424 / 2880
 CARD_W, CARD_H = 2880, 1440  # sharecard pixels
 
+# sections: left, top, width, height in sharecard pixels
+SKILLS = (16, 1142, 560, 262)
+OVER_MASTERY = (1380, 1142, 491.33, 262)
+
+# panels, in sharecard pixels
+PAD_X, PAD_Y = 10, 18.5  # border and padding
+ICON_PAD = 5  # pl-1 of sharecard's compact skill cell
+
+# the status-style panels' scale: the skills block's 1000 units across its section
+PANEL_SCALE = SKILLS[2] * S / 1000
+TITLE_SCALE = 0.705  # bc_weapon's
+TITLE_TEXT = 30  # a title text's top above its bar's top, in title units
+
 # loc_buildcard's children in order, each added by its section's step
 CARD_ORDER = ["bc_mtraits", "bc_om", "bc_smn", "bc_weapon", "bc_skills", "bc_om_ttl_text", "bc_frame"]
 
@@ -26,6 +39,11 @@ def section(card, name):
     return node
 
 
+def card(x, y):
+    # sharecard pixels on the card to loc_buildcard units
+    return (x - CARD_W / 2) * S, (CARD_H / 2 - y) * S
+
+
 def place(node, x, y, w, h):
     # places node by its pivot at sharecard pixels on the card, sized in sharecard pixels
-    node.place(pos=((x - CARD_W / 2) * S, (CARD_H / 2 - y) * S), size=(w * S, h * S))
+    node.place(pos=card(x, y), size=(w * S, h * S))

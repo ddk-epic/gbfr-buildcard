@@ -9,6 +9,8 @@ FROZEN = "5f5f45671a159215941f4632267213071ae516c9"
 PORTED = {
     "status01": [
         "root/loc_base01/loc_buildcard/bc_frame",
+        "root/loc_base01/loc_buildcard/bc_om",
+        "root/loc_base01/loc_buildcard/bc_om_ttl_text",
     ],
     "chr_status_bg01": [],
 }
@@ -58,10 +60,6 @@ def export_master_traits(ctx, card):
     ctx.export("CellOff", cells("off"))
 
 
-def export_over_mastery(ctx, card):
-    ctx.export("OverMasteryRows", [card.find(f"bc_om/bc_om_{i}") for i in range(4)])
-
-
 def export_summons(ctx, card):
     ctx.export("SummonSlots", [card.find(f"bc_smn/bc_smn_{i}") for i in range(4)])
 
@@ -72,7 +70,7 @@ def export_skills(ctx, card):
     ctx.export("SkillNames", [c.find("bc_skill_text/text01") for c in cards])
 
 
-EXPORTS = [export_master_traits, export_over_mastery, export_summons, export_skills]
+EXPORTS = [export_master_traits, export_summons, export_skills]
 
 
 def reset(prefab, stock, paths):

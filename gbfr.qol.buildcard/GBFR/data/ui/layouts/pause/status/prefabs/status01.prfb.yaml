@@ -69824,9 +69824,9 @@ Objects:
   AnchorPoint: 220.735, -657.456
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -217.806, -891.306
-  OffsetMax: 659.276, -423.605
-  SizeDelta: 877.082, 467.701
+  OffsetMin: -217.952, -891.384
+  OffsetMax: 659.423, -423.527
+  SizeDelta: 877.375, 467.857
 - Id: 1754
   Name: bc_om_ttl
   Components:
@@ -69848,15 +69848,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, 169.048, 0
+  Position: 0, 169.126, 0
   Rotation: 0, 0, 0, 1
   Scale: 1.059, 1.059, 1
   Pivot: 0.5, 1
-  AnchorPoint: 0, -64.802
+  AnchorPoint: 0, -64.803
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -238, -84.802
-  OffsetMax: 238, -64.802
+  OffsetMin: -238, -84.803
+  OffsetMax: 238, -64.803
   SizeDelta: 476, 20
 - Id: 1755
   Name: bc_om_0
@@ -69914,15 +69914,15 @@ Objects:
         ObjectRefId: 1765
       Enable: true
   Active: true
-  Position: 39.622, 77.572, 0
+  Position: 39.973, 77.618, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.936, 0.936, 1
+  Scale: 0.937, 0.937, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 39.622, 77.572
+  AnchorPoint: 39.973, 77.618
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -460.378, -45.428
-  OffsetMax: 539.622, 200.572
+  OffsetMin: -460.027, -45.382
+  OffsetMax: 539.973, 200.618
   SizeDelta: 1000, 246
 - Id: 1756
   Name: root
@@ -71005,15 +71005,15 @@ Objects:
         ObjectRefId: 1797
       Enable: true
   Active: true
-  Position: 39.622, -0.973, 0
+  Position: 39.973, -0.953, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.936, 0.936, 1
+  Scale: 0.937, 0.937, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 39.622, -0.973
+  AnchorPoint: 39.973, -0.953
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -460.378, -123.973
-  OffsetMax: 539.622, 122.027
+  OffsetMin: -460.027, -123.953
+  OffsetMax: 539.973, 122.047
   SizeDelta: 1000, 246
 - Id: 1788
   Name: root
@@ -72096,15 +72096,15 @@ Objects:
         ObjectRefId: 1829
       Enable: true
   Active: true
-  Position: 39.622, -79.519, 0
+  Position: 39.973, -79.524, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.936, 0.936, 1
+  Scale: 0.937, 0.937, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 39.622, -79.519
+  AnchorPoint: 39.973, -79.524
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -460.378, -202.519
-  OffsetMax: 539.622, 43.481
+  OffsetMin: -460.027, -202.524
+  OffsetMax: 539.973, 43.476
   SizeDelta: 1000, 246
 - Id: 1820
   Name: root
@@ -73187,15 +73187,15 @@ Objects:
         ObjectRefId: 1861
       Enable: true
   Active: true
-  Position: 39.622, -158.064, 0
+  Position: 39.973, -158.096, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.936, 0.936, 1
+  Scale: 0.937, 0.937, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 39.622, -158.064
+  AnchorPoint: 39.973, -158.096
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -460.378, -281.064
-  OffsetMax: 539.622, -35.064
+  OffsetMin: -460.027, -281.096
+  OffsetMax: 539.973, -35.096
   SizeDelta: 1000, 246
 - Id: 1852
   Name: root
@@ -117022,21 +117022,16 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 220.735, -558.975, 0
+  Position: 220.735, -558.956, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.705, 0.705, 1
   Pivot: 0.5, 0
-  AnchorPoint: 220.735, -558.975
+  AnchorPoint: 220.735, -558.956
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 220.735, -558.975
-  OffsetMax: 220.735, -508.975
+  OffsetMin: 220.735, -558.956
+  OffsetMax: 220.735, -508.956
   SizeDelta: 0, 50
-
-
-
-
-
 - Id: 2930
   Name: bc_frame
   Children:

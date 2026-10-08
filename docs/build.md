@@ -38,7 +38,7 @@ A step is a module with `apply(ctx)`, listed in `STEPS`. `ctx` (`context.py`) ha
 | | |
 |---|---|
 | `ctx.prefab("status01")` | the prefab being built |
-| `ctx.stock(name)`, `ctx.source(name)` | a fresh copy of a stock prefab, from `--stock` |
+| `ctx.stock(name)` | a fresh copy of a stock prefab, from `--stock` |
 | `ctx.export("SummonSlots", [node, ...])` | the nodes' Ids in `CardIds.g.cs`, as a constant or nested arrays |
 
 Objects are `Node`s (`model/prefab.py`):

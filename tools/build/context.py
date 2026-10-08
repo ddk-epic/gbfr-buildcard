@@ -36,8 +36,6 @@ class Context:
                 self._stock[name] = file.read()
         return Prefab.parse(self._stock[name])
 
-    source = stock  # another prefab to copy objects from
-
     def export(self, key, node):
         if key in self.exports:
             raise KeyError(f"{key} exported twice")

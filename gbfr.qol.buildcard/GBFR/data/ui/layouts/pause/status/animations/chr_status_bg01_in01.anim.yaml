@@ -1,0 +1,212 @@
+Curves:
+- Attribute: sizeDelta_
+  ObjectRef: root/loc_bg/loc_line/line01_01
+  ComponentName: ''
+  KeyType: 2
+  Elements:
+  - Keys: []
+  - Keys:
+    - Time: 0
+      Value: 0
+      InSlope: 0
+      OutSlope: 1839.9999
+      CurveType: 3
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+    - Time: 0.3
+      Value: 552
+      InSlope: 1839.9999
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+- Attribute: sizeDelta_
+  ObjectRef: root/loc_bg/loc_line/line01_02
+  ComponentName: ''
+  KeyType: 2
+  Elements:
+  - Keys:
+    - Time: 0
+      Value: 0
+      InSlope: 0
+      OutSlope: 5333.333
+      CurveType: 3
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+    - Time: 0.3
+      Value: 1600
+      InSlope: 5333.333
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+- Attribute: sizeDelta_
+  ObjectRef: root/loc_bg/loc_line/line02_01
+  ComponentName: ''
+  KeyType: 2
+  Elements:
+  - Keys: []
+  - Keys:
+    - Time: 0
+      Value: 0
+      InSlope: 0
+      OutSlope: 1333.3333
+      CurveType: 3
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+    - Time: 0.3
+      Value: 400
+      InSlope: 1333.3333
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+- Attribute: sizeDelta_
+  ObjectRef: root/loc_bg/loc_line/line02_02
+  ComponentName: ''
+  KeyType: 2
+  Elements:
+  - Keys:
+    - Time: 0
+      Value: 0
+      InSlope: 0
+      OutSlope: 5333.333
+      CurveType: 3
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+    - Time: 0.3
+      Value: 1600
+      InSlope: 5333.333
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+- Attribute: cutoff_
+  ObjectRef: root/loc_bg/bg01/bg02
+  ComponentName: Dissolve
+  KeyType: 1
+  Elements:
+  - Keys:
+    - Time: 0
+      Value: 1
+      InSlope: -4.053954
+      OutSlope: -3.3333333
+      CurveType: 3
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+    - Time: 0.3
+      Value: 0
+      InSlope: -3.3333333
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+- Attribute: trailWidth_
+  ObjectRef: root/loc_bg/bg01/bg02
+  ComponentName: Dissolve
+  KeyType: 1
+  Elements:
+  - Keys:
+    - Time: 0.1
+      Value: 0
+      InSlope: 10
+      OutSlope: 0.8
+      CurveType: 3
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+    - Time: 0.35
+      Value: 0.2
+      InSlope: 0.8
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+- Attribute: alpha_
+  ObjectRef: root/loc_bg
+  ComponentName: CanvasGroup
+  KeyType: 1
+  Elements:
+  - Keys:
+    - Time: 0
+      Value: 0
+      InSlope: 0
+      OutSlope: 4
+      CurveType: 3
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+    - Time: 0.25
+      Value: 1
+      InSlope: 4
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+- Attribute: rate_
+  ObjectRef: root
+  ComponentName: Gauss
+  KeyType: 1
+  Elements:
+  - Keys:
+    - Time: 0
+      Value: 0
+      InSlope: 0
+      OutSlope: 2.857143
+      CurveType: 3
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+    - Time: 0.35
+      Value: 1
+      InSlope: 2.857143
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+- Attribute: active_
+  ObjectRef: root
+  ComponentName: ''
+  KeyType: 9
+  Elements:
+  - Keys:
+    - Time: 0
+      Value: 1
+      InSlope: 0
+      OutSlope: 0
+      CurveType: 1
+      InConstant: false
+      OutConstant: false
+      Id: 0
+      Event: 0
+Loop: false
+Time: 0.35

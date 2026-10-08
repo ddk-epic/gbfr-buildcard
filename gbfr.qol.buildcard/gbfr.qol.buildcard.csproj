@@ -65,6 +65,7 @@
     <UiSource Include="GBFR\**\*.prfb.yaml" Binary="%(Filename)" />
     <UiSource Include="GBFR\**\*.list.yaml" Binary="%(Filename).listb" />
     <UiSource Include="GBFR\**\*.tex.yaml" Binary="%(Filename).texb" />
+    <UiSource Include="GBFR\**\*.anim.yaml" Binary="%(Filename).animb" />
     <None Remove="@(UiSource)" />
   </ItemGroup>
 

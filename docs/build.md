@@ -5,6 +5,10 @@
 building the mod needs neither Python nor the game's files; the build steps are the source, and the outputs are never
 edited by hand.
 
+The animations in `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/animations/` are not build outputs: each is the
+stock animation converted to YAML and edited by hand. `chr_status_bg01_in01` and `chr_status_bg01_out01` lack bg01's
+`scale_` curve, the white panel's stretch.
+
 ```
 python tools/build/build.py --stock <dir>            # writes the outputs; <dir> holds the stock files, see below
 python tools/build/build.py --stock <dir> --check    # writes nothing; exits 1, with a diff, if an output is stale

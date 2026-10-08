@@ -2,8 +2,7 @@ import subprocess
 import unittest
 
 import legacy
-from build import REPO
-from context import TARGETS, Context
+from context import REPO, TARGETS, Context
 from diff import diff
 from model.prefab import Prefab
 

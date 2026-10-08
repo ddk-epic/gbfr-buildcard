@@ -1,9 +1,15 @@
-# Usage: python diff.py <old.prfb.yaml> <new.prfb.yaml> [path]
-# Compares two prefabs by object path instead of Id, optionally within one subtree.
+# Usage: python diff.py (<old.prfb.yaml> <new.prfb.yaml> | --rev <commit>) [path] [--tolerance <t>]
+# Compares two prefabs, or each prefab a commit changed with its parent's, by object path instead of Id.
+import argparse
 import difflib
+import re
+import subprocess
 import sys
 
+from context import REPO, TARGETS
 from model.prefab import Prefab, Ref
+
+NUMBER = re.compile(r"(-?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?)")
 
 
 def rendered(node, paths):
@@ -12,7 +18,32 @@ def rendered(node, paths):
     return lines + [f"  child {paths[c].rsplit('/', 1)[-1]}" for c in node.children]
 
 
-def diff(old, new, under=""):
+def close(a, b, tolerance):
+    # the lines differ only in numbers, each by at most tolerance
+    a, b = NUMBER.split(a), NUMBER.split(b)
+    if len(a) != len(b):
+        return False
+    for i, (x, y) in enumerate(zip(a, b)):
+        if i % 2 == 0:
+            if x != y:
+                return False
+        elif x != y and abs(float(x) - float(y)) > tolerance:
+            return False
+    return True
+
+
+def tolerate(a, b, tolerance):
+    # b with each line close to the line it replaces in a set to that line
+    b = list(b)
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+        if op == "replace" and i2 - i1 == j2 - j1:
+            for i, j in zip(range(i1, i2), range(j1, j2)):
+                if close(a[i], b[j], tolerance):
+                    b[j] = a[i]
+    return b
+
+
+def diff(old, new, under="", tolerance=0):
     # report lines, empty when the prefabs match
     old_paths, new_paths = old.paths(), new.paths()
     old_by, new_by = {p: n for n, p in old_paths.items()}, {p: n for n, p in new_paths.items()}
@@ -35,6 +66,8 @@ def diff(old, new, under=""):
         if not inside(path) or path not in new_by:
             continue
         a, b = rendered(node, old_paths), rendered(new_by[path], new_paths)
+        if tolerance and a != b:
+            b = tolerate(a, b, tolerance)
         if a != b:
             out.append(f"~ {path or '(root)'}")
             out.extend(f"    {line}" for line in difflib.unified_diff(a, b, n=0, lineterm="")
@@ -42,9 +75,43 @@ def diff(old, new, under=""):
     return out
 
 
+def git_show(rev, path):
+    # the file at a revision, or None where it does not exist
+    result = subprocess.run(["git", "show", f"{rev}:{path}"], cwd=REPO, capture_output=True, encoding="utf-8")
+    return result.stdout if result.returncode == 0 else None
+
+
+def revision(rev, under="", tolerance=0):
+    # per prefab the commit changed, the report against its parent
+    reports = {}
+    for name, path in TARGETS.items():
+        old, new = git_show(f"{rev}^", path), git_show(rev, path)
+        if old != new and old is not None and new is not None:
+            reports[name] = diff(Prefab.parse(old), Prefab.parse(new), under, tolerance)
+    return reports
+
+
 def main():
-    under = sys.argv[3] if len(sys.argv) > 3 else ""
-    out = diff(Prefab.load(sys.argv[1]), Prefab.load(sys.argv[2]), under)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("files", nargs="*")
+    parser.add_argument("--rev")
+    parser.add_argument("--tolerance", type=float, default=0)
+    args = parser.parse_args()
+
+    if args.rev:
+        if len(args.files) > 1:
+            parser.error("--rev takes at most a path")
+        reports = revision(args.rev, args.files[0] if args.files else "", args.tolerance)
+        if not reports:
+            print("no prefab changed")
+        for name, out in reports.items():
+            print(f"{name}:")
+            print("\n".join(f"  {line}" for line in out) if out else "  no differences")
+        sys.exit(1 if any(reports.values()) else 0)
+    if len(args.files) not in (2, 3):
+        parser.error("pass two prefabs and an optional path, or --rev")
+    under = args.files[2] if len(args.files) > 2 else ""
+    out = diff(Prefab.load(args.files[0]), Prefab.load(args.files[1]), under, args.tolerance)
     print("\n".join(out) if out else "no differences")
     sys.exit(1 if out else 0)
 

@@ -1,4 +1,4 @@
-# Usage: python build.py [--stock <dir>] [--check]
+# Usage: python build.py [--stock <dir>] [--check [--tolerance <t>]]
 # Builds the mod's prefabs and Generated/CardIds.g.cs from the steps below.
 import argparse
 import os
@@ -6,11 +6,9 @@ import sys
 
 import codegen
 import legacy
-from context import TARGETS, Context
+from context import REPO, TARGETS, Context
 from diff import diff
 from model.prefab import Prefab
-
-REPO = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../.."))
 
 # the build steps in order, each with apply(ctx)
 STEPS = [legacy]
@@ -27,6 +25,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stock")
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--tolerance", type=float, default=0)
     args = parser.parse_args()
 
     ctx = build(args.stock)
@@ -46,7 +45,9 @@ def main():
             stale = True
             print(f"{name}: differs from a fresh build")
             if name in TARGETS and committed is not None:
-                for line in diff(Prefab.parse(committed), ctx.prefab(name)) or ["(same objects, different text)"]:
+                report = diff(Prefab.parse(committed), ctx.prefab(name), tolerance=args.tolerance)
+                for line in report or ["(no differences beyond the tolerance)" if args.tolerance else
+                                       "(same objects, different text)"]:
                     print(f"  {line}")
         else:
             os.makedirs(os.path.dirname(full), exist_ok=True)

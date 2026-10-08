@@ -3,6 +3,7 @@ import os
 
 from model.prefab import Prefab
 
+REPO = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../.."))
 PREFABS = "gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs"
 
 # the prefabs the build writes, by name

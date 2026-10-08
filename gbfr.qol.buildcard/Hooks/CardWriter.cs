@@ -21,10 +21,16 @@ public unsafe class CardWriter
     private const int TextHash = 0x188;
     private const int MaxTextLength = 0x400;
 
-    // chara: masteries, then the master trait cells
-    private const int Entries = 0x170;
+    // chara: 400 entries, masteries [limit_bonus key, taken bit per LimitBonusParamIndex], then the master trait cells
+    private const int Entries = 0x138;
     private const int EntriesEnd = 0x58B8;
     private const int EntrySize = 0x38;
+    private const int CharaKey = 0x5EA8;
+
+    // masteries.tsv sections
+    private const int Offense = 0, OffenseExtension = 1, Defense = 2, DefenseExtension = 3, Collection = 4, Transcendence = 5;
+    private const int Sections = 6;
+    private const int ExtensionPercent = 2;
 
     // Over Mastery line: [limit_bonus_param key, 1 << (level - 1), unknown, float value]
     private const int OverMastery = 0x58B8;
@@ -45,6 +51,8 @@ public unsafe class CardWriter
     private readonly WeaponArtHooks _weaponArt;
     private readonly ILogger _logger;
     private readonly Dictionary<uint, Cell> _cells = LoadCells();
+    private readonly Dictionary<(uint Chara, uint Key), string> _masteries = LoadMasteries();
+    private readonly Dictionary<uint, int[]> _masteryTotals = new();
     private delegate* unmanaged<nint, byte, void> _setActive;
     private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
     private delegate* unmanaged<nint, uint, void> _setSummonInfo;
@@ -60,6 +68,14 @@ public unsafe class CardWriter
         _text = text;
         _weaponArt = weaponArt;
         _logger = logger;
+        foreach (var ((chara, _), ladder) in _masteries)
+        {
+            if (!_masteryTotals.TryGetValue(chara, out int[]? totals))
+                _masteryTotals[chara] = totals = new int[Sections];
+            foreach (char section in ladder)
+                if (section != '-')
+                    totals[section - '0']++;
+        }
         _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
         if (_limitBonusInfoVtable == 0)
             _logger.WriteLine("[gbfr.qol.buildcard] LimitBonusInfo vtable not found", Color.Red);
@@ -111,6 +127,7 @@ public unsafe class CardWriter
         }
 
         WriteMasterTraits(refs, chara);
+        WriteMasteries(refs, chara);
         WriteOverMastery(refs, chara);
         WriteSummons(refs, chara);
         WrapSkillNames(refs);
@@ -170,6 +187,33 @@ public unsafe class CardWriter
                 }
             }
         }
+    }
+
+    private void WriteMasteries(Dictionary<short, nint> refs, nint chara)
+    {
+        uint charaKey = *(uint*)(chara + CharaKey);
+        if (!_masteryTotals.TryGetValue(charaKey, out int[]? totals))
+        {
+            Set(refs, CardIds.MasteryTexts[0], "");
+            Set(refs, CardIds.MasteryTexts[1], "");
+            return;
+        }
+        var taken = new int[Sections];
+        for (int offset = Entries; offset < EntriesEnd; offset += EntrySize)
+        {
+            if (!_masteries.TryGetValue((charaKey, *(uint*)(chara + offset)), out string? ladder))
+                continue;
+            int bits = *(int*)(chara + offset + 4);
+            for (int i = 0; i < ladder.Length; i++)
+                if (ladder[i] != '-' && (bits & (1 << i)) != 0)
+                    taken[ladder[i] - '0']++;
+        }
+
+        int Percent(int section) => totals[section] == 0 ? 0 : taken[section] * 100 / totals[section];
+        int offense = Percent(Offense) + ExtensionPercent * taken[OffenseExtension];
+        int defense = Percent(Defense) + ExtensionPercent * taken[DefenseExtension];
+        Set(refs, CardIds.MasteryTexts[0], $"Masteries: {offense}% / {defense}%");
+        Set(refs, CardIds.MasteryTexts[1], $"Collection: {Percent(Collection)}% / {Percent(Transcendence)}%");
     }
 
     private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
@@ -327,6 +371,20 @@ public unsafe class CardWriter
             cells[Convert.ToUInt32(fields[0], 16)] = new Cell(int.Parse(fields[1]), int.Parse(fields[2]), int.Parse(fields[3]), fields[4], hash);
         }
         return cells;
+    }
+
+    // masteries.tsv: chara key, limit_bonus key, each LimitBonusParamIndex's section or -
+    private static Dictionary<(uint, uint), string> LoadMasteries()
+    {
+        var masteries = new Dictionary<(uint, uint), string>();
+        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("masteries.tsv")!;
+        using var reader = new StreamReader(stream);
+        while (reader.ReadLine() is { } line)
+        {
+            string[] fields = line.Split('\t');
+            masteries[(Convert.ToUInt32(fields[0], 16), Convert.ToUInt32(fields[1], 16))] = fields[2];
+        }
+        return masteries;
     }
 
     private readonly record struct Cell(int Style, int Rank, int Position, string Label, uint TextHash);

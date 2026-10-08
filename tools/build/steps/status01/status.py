@@ -1,8 +1,10 @@
-# Lays out the status section: the stat rows in a 2x2 grid spaced as sharecard's StatusPanel, and the badges above it.
+# Lays out the status section: the stat rows in a 2x2 grid spaced as sharecard's StatusPanel, the masteries panel
+# under it, and the badges above it.
 import re
 
+from model.components import LEFT, components, rect, set_line
 from model.prefab import f
-from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, STATUS, card, move, rounded_panel
+from steps.layout import GAP, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, STATUS, card, move, rounded_panel
 
 # sharecard's StatusPanel, in sharecard pixels
 BORDER = 1
@@ -15,12 +17,19 @@ ROW_GAP = 22.5  # gap-y-4.5
 LABEL_PX, VALUE_PX = 25, 28  # text-xl, text-[28px]
 UNIT_SCALE, UNIT_GAP, UNIT_RAISE = 0.65, 2.5, 1  # text-[65%], pl-0.5, bottom-px
 
+# sharecard's MasteriesPanel on the card, in sharecard pixels
+MASTERIES_PAD_TOP, MASTERIES_PAD_BOTTOM = 6.25, 7.5  # pt-1.25, pb-1.5
+MASTERIES_PAD_LEFT, MASTERIES_PAD_RIGHT = 25, 20  # pl-5, pr-4
+MASTERIES_PX = 20  # text-base
+STACK_GAP = GAP / 4  # between the status and masteries panels
+
 GAME_CAP = 0.85  # cap height per font size
 SINK = 0.45  # baseline below a middle-aligned text's centre, per font size
 
 LABEL_SIZE = 40
 NUMBER_SIZE = LABEL_SIZE * VALUE_PX / LABEL_PX
 PERCENT_SIZE = NUMBER_SIZE * UNIT_SCALE
+MASTERIES_SIZE = LABEL_SIZE * MASTERIES_PX / LABEL_PX
 
 # block units
 W = 1000
@@ -55,7 +64,39 @@ def font_sizes(node, size, overrides):
             node.lines[i] = f"{m[1]}{overrides}"
 
 
-def status_block(block):
+def masteries_block(status, label):
+    # the masteries and collection texts in a panel at the section's bottom, its top corners square
+    left, top, width, height = STATUS
+    scale = PANEL_SCALE
+    u = scale / SCREEN_CARD_RATIO
+    h = (2 * BORDER + MASTERIES_PAD_TOP + MASTERIES_PAD_BOTTOM) / u + MASTERIES_SIZE * GAME_CAP
+
+    parent = status.parent
+    block = parent.add(rect("bc_masteries"), parent.children.index(status) + 1)
+    x, y = card(left + width / 2, top + height)
+    block.place(size=(W, h))
+    move(block, x, y + h * scale / 2)
+    block.set("Scale", (scale, scale, 1))
+    rounded_panel(block, "bc_masteries_panel", scale, corners="bottom")
+
+    # two columns from the left padding, on the bottom padding's baseline
+    content = W - (2 * BORDER + MASTERIES_PAD_LEFT + MASTERIES_PAD_RIGHT) / u
+    text_left = -W / 2 + (BORDER + MASTERIES_PAD_LEFT) / u
+    baseline = -h / 2 + (BORDER + MASTERIES_PAD_BOTTOM) / u
+    lines = components(label)
+    start = lines.index("  - ComponentName: TextSetter")
+    end = lines.index("  - ComponentName: LanguageSetter")
+    texts = []
+    for i, name in enumerate(("bc_masteries_text", "bc_collection_text")):
+        text = block.add(rect(name, lines[:start] + lines[end:], (0, 0.5)))
+        set_line(text, "Alignment", LEFT)
+        font_sizes(text, MASTERIES_SIZE, round(MASTERIES_SIZE))
+        text.place(pos=(text_left + i * content / 2, baseline + SINK * MASTERIES_SIZE), size=(content / 2, MASTERIES_SIZE))
+        texts.append(text)
+    return y + h * scale + STACK_GAP * SCREEN_CARD_RATIO, texts
+
+
+def status_block(block, bottom):
     left, top, width, height = STATUS
     scale = PANEL_SCALE
     u = scale / SCREEN_CARD_RATIO  # sharecard pixels per block unit
@@ -76,7 +117,7 @@ def status_block(block):
     top_baseline = bottom_baseline + value_cap + ROW_GAP / u
     top_centre, bottom_centre = top_baseline + SINK * LABEL_SIZE, bottom_baseline + SINK * LABEL_SIZE
 
-    x, y = card(left + width / 2, top + height)
+    x, y = card(left + width / 2, 0)[0], bottom
     block.place(size=(W, h))
     move(block, x, y + h * scale / 2)
     block.set("Scale", (scale, scale, 1))
@@ -89,7 +130,7 @@ def status_block(block):
     root.place(pos=(0, h / 2))
     base.place(pos=(0, -h / 2), size=(W, h))
     base.replace("Color: 1, 1, 1, 1", "Color: 1, 1, 1, 0")
-    rounded_panel(base, "bc_status_panel", scale)
+    rounded_panel(base, "bc_status_panel", scale, corners="top")
     base.child("status_ttl_text01").set("Active", False)
     grid.place(pos=(0, -h / 2), size=(W, h))
 
@@ -160,5 +201,10 @@ def badges(base, status_top):
 
 def apply(ctx):
     base = ctx.prefab("status01").at("root/loc_base01")
-    status_top = status_block(base.child("loc_status02").child("loc_chr_status01"))
+    status = base.child("loc_status02").child("loc_chr_status01")
+    bottom, texts = masteries_block(status, status.find("loc_crt/crt_text01"))
+    status_top = status_block(status, bottom)
     badges(base, status_top)
+    for text in texts:
+        ctx.powers(text, "Text")
+    ctx.export("MasteryTexts", texts)

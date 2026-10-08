@@ -1,7 +1,5 @@
 # First build step: starts each prefab from its frozen copy and resets the ported paths to stock.
-import subprocess
-
-from context import TARGETS
+from context import TARGETS, git_show
 from model.prefab import Prefab, Ref, copy
 
 # the commit the frozen prefabs are read from
@@ -14,15 +12,13 @@ PORTED = {
 }
 
 
-def frozen(ctx, name):
-    text = subprocess.run(["git", "show", f"{FROZEN}:{TARGETS[name]}"], cwd=ctx.repo, check=True,
-                          capture_output=True, encoding="utf-8").stdout
-    return Prefab.parse(text)
+def frozen(name):
+    return Prefab.parse(git_show(FROZEN, TARGETS[name]))
 
 
 def apply(ctx):
     for name in TARGETS:
-        prefab = frozen(ctx, name)
+        prefab = frozen(name)
         if PORTED[name]:
             reset(prefab, ctx.stock(name), PORTED[name])
         ctx.prefabs[name] = prefab

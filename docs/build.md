@@ -22,14 +22,16 @@ python -m unittest discover -s tests -t .    # from tools/build
 
 ### Stock prefabs
 
-`--stock` is a folder of the game's prefabs converted to YAML, one file per prefab, named `<name>.prfb.yaml`:
+Stock `status01` is read from commit 662eedd, which added it. The other stock prefabs come from `--stock`, a folder of
+the game's prefabs converted to YAML, one file per prefab, named `<name>.prfb.yaml`:
 
 ```
-gbfr.uitools.exe b-convert -i <extracted>/ui/layouts/pause/status/prefabs/status01.prfb -o <stock>/status01.prfb.yaml
+gbfr.uitools.exe b-convert -i <extracted>/ui/layouts/pause/status/prefabs/summon_list01.prfb -o <stock>/summon_list01.prfb.yaml
 ```
 
-A step loads `status01` from it to reset ported paths, and other prefabs (`summon_list01`, `equip01_info01`, ...) to
-copy objects from. The build reads it only when a step asks, and says which file is missing.
+Legacy loads `status01` and `chr_status_bg01` to reset ported paths, and steps load other prefabs (`summon_list01`,
+`equip01_info01`, ...) to copy objects from. The build reads `--stock` only when a step asks, and says
+which file is missing.
 
 ## Steps
 
@@ -38,7 +40,7 @@ A step is a module with `apply(ctx)`, listed in `STEPS`. `ctx` (`context.py`) ha
 | | |
 |---|---|
 | `ctx.prefab("status01")` | the prefab being built |
-| `ctx.stock(name)` | a fresh copy of a stock prefab, from `--stock` |
+| `ctx.stock(name)` | a fresh copy of a stock prefab |
 | `ctx.export("SummonSlots", [node, ...])` | the nodes' Ids in `CardIds.g.cs`, as a constant or nested arrays |
 
 Objects are `Node`s (`model/prefab.py`):

@@ -3,10 +3,9 @@
 import argparse
 import difflib
 import re
-import subprocess
 import sys
 
-from context import REPO, TARGETS
+from context import TARGETS, git_show
 from model.prefab import Prefab, Ref
 
 NUMBER = re.compile(r"(-?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?)")
@@ -73,12 +72,6 @@ def diff(old, new, under="", tolerance=0):
             out.extend(f"    {line}" for line in difflib.unified_diff(a, b, n=0, lineterm="")
                        if not line.startswith(("---", "+++", "@@")))
     return out
-
-
-def git_show(rev, path):
-    # the file at a revision, or None where it does not exist
-    result = subprocess.run(["git", "show", f"{rev}:{path}"], cwd=REPO, capture_output=True, encoding="utf-8")
-    return result.stdout if result.returncode == 0 else None
 
 
 def revision(rev, under="", tolerance=0):

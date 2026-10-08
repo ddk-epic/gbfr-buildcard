@@ -1,31 +1,23 @@
-import subprocess
 import unittest
 
 import legacy
-from context import REPO, TARGETS, Context
+from context import REPO, Context
 from diff import diff
-from model.prefab import Prefab
 
-STOCK_COMMIT = "662eedd"  # Add stock `status01` prefab
 CARD = "root/loc_base01/loc_buildcard"
 STATUS = "root/loc_base01/loc_status02/loc_chr_status01"
-
-
-def git_show(rev, path):
-    return subprocess.run(["git", "show", f"{rev}:{path}"], cwd=REPO, check=True, capture_output=True,
-                          encoding="utf-8").stdout
 
 
 class Reset(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.stock_text = git_show(STOCK_COMMIT, TARGETS["status01"])
+        cls.ctx = Context(REPO)
 
     def stock(self):
-        return Prefab.parse(self.stock_text)
+        return self.ctx.stock("status01")
 
     def frozen(self):
-        return legacy.frozen(Context(REPO), "status01")
+        return legacy.frozen("status01")
 
     def test_added_subtree_is_removed_with_its_powers(self):
         prefab = self.frozen()

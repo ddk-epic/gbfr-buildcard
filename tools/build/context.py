@@ -1,5 +1,6 @@
 # The prefabs, stock prefabs and exports a build step works with.
 import os
+import subprocess
 
 from model.prefab import Prefab
 
@@ -11,6 +12,17 @@ TARGETS = {
     "status01": f"{PREFABS}/status01.prfb.yaml",
     "chr_status_bg01": f"{PREFABS}/chr_status_bg01.prfb.yaml",
 }
+
+# the stock prefabs in the repo's history, by the commit that added them
+COMMITTED = {
+    "status01": "662eedd",
+}
+
+
+def git_show(rev, path):
+    # the file at a revision, or None where it does not exist
+    result = subprocess.run(["git", "show", f"{rev}:{path}"], cwd=REPO, capture_output=True, encoding="utf-8")
+    return result.stdout if result.returncode == 0 else None
 
 
 class Context:
@@ -25,10 +37,12 @@ class Context:
         return self.prefabs[name]
 
     def stock(self, name):
-        # a fresh copy of the game's prefab, from <stock dir>/<name>.prfb.yaml
-        if self.stock_dir is None:
-            raise SystemExit(f"{name}: this build needs stock prefabs, pass --stock <dir>")
+        # a fresh copy of the game's prefab, from its commit or <stock dir>/<name>.prfb.yaml
+        if name in COMMITTED and name not in self._stock:
+            self._stock[name] = git_show(COMMITTED[name], TARGETS[name])
         if name not in self._stock:
+            if self.stock_dir is None:
+                raise SystemExit(f"{name}: this build needs stock prefabs, pass --stock <dir>")
             path = os.path.join(self.stock_dir, f"{name}.prfb.yaml")
             if not os.path.exists(path):
                 raise SystemExit(f"{path} not found: convert the game's {name}.prfb with gbfr.uitools b-convert")

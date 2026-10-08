@@ -62,7 +62,7 @@ Objects are `Node`s (`model/prefab.py`):
 | `node.place(pos, size, pivot)`, `node.repin()`, `node.size()` | rect math, keeping the redundant rect fields consistent (see [status01.md](status01.md#file-format)) |
 | `node.path`, `prefab.at(path)`, `prefab.paths()` | the unique path from the root's names, as `diff.py` reports them |
 
-A step reads shared measurements (section rects in sharecard pixels, title scales) from constants, not from what an
+A step reads shared measurements (section rects in card pixels, title scales) from constants, not from what an
 earlier step left in the tree, so steps depend on each other only through the objects they build.
 
 ## Sections

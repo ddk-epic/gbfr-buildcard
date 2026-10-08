@@ -1,12 +1,15 @@
-# Usage: python gen_outline.py <size> <width> <radius> <out.png>
-# Draws a white square outline with rounded corners and a transparent centre, for sliced borders.
+# Usage: python gen_outline.py <size> <width> <radius> <out.png> [all|top]
+# Draws a white square outline with rounded corners, all or the top two, and a transparent centre, for sliced borders.
 import struct, sys, zlib
 
 N, W, R = int(sys.argv[1]), int(sys.argv[2]), float(sys.argv[3])
+CORNERS = sys.argv[5] if len(sys.argv) > 5 else "all"
 SAMPLES = 8  # per pixel side
 
 def in_square(x, y, inset, radius):
     # the point lies in the square inset by inset, with corners of radius
+    if CORNERS == "top" and y > N / 2:
+        radius = 0
     lo, hi = inset + radius, N - inset - radius
     cx, cy = min(max(x, lo), hi), min(max(y, lo), hi)
     if radius == 0:

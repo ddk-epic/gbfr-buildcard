@@ -37,6 +37,8 @@ TITLE_TEXT = 30  # a title text's top above its bar's top, in title units
 # rounded corners of radius 8 card units, at scale 1
 OUTLINE = "layouts/pause/status/noatlastextures/bc_outline"
 ROUNDED = "layouts/pause/status/noatlastextures/bc_rounded"
+OUTLINE_TOP = "layouts/pause/status/noatlastextures/bc_outline_top"
+ROUNDED_TOP = "layouts/pause/status/noatlastextures/bc_rounded_top"
 MT_CLIP = "layouts/pause/status/noatlastextures/bc_mt_clip"
 PANEL_FILL = (1, 1, 1), 0.9
 PANEL_STROKE = (133 / 255, 163 / 255, 181 / 255), 223 / 255  # ps_cmn_base54's
@@ -82,15 +84,18 @@ def sprite(path):
     return path, path.rsplit("/", 1)[1]
 
 
-def rounded_panel(parent, name, scale):
-    # a rounded panel over the parent's rect, drawn at scale 1 under the parent's scale
+def rounded_panel(parent, name, scale, corners="all"):
+    # a panel over the parent's rect at scale 1, with all, the top or the bottom corners rounded
     pw, ph = parent.size()
     ppiv = parent.vec("Pivot")
     w, h = pw * scale, ph * scale
-    panel = parent.add(rect(name, image(*PANEL_FILL, sprite(ROUNDED), sliced=True, fill_center=True)), 0)
+    fill, stroke = (ROUNDED, OUTLINE) if corners == "all" else (ROUNDED_TOP, OUTLINE_TOP)
+    panel = parent.add(rect(name, image(*PANEL_FILL, sprite(fill), sliced=True, fill_center=True)), 0)
     panel.set("Scale", (1 / scale, 1 / scale, 1))
+    if corners == "bottom":
+        panel.set("Rotation", (0, 0, 1, 0))
     panel.place(pos=((0.5 - ppiv[0]) * pw, (0.5 - ppiv[1]) * ph), size=(w, h))
-    outline = panel.add(rect(f"{name}_outline", image(*PANEL_STROKE, sprite(OUTLINE), sliced=True)))
+    outline = panel.add(rect(f"{name}_outline", image(*PANEL_STROKE, sprite(stroke), sliced=True)))
     outline.place(pos=(0, 0), size=(w, h))
     return panel
 

@@ -46,11 +46,11 @@ PANEL_STROKE = (133 / 255, 163 / 255, 181 / 255), 223 / 255  # ps_cmn_base54's
 # the gear column's stack, in bc_weapon units from its root's pivot
 WEAPON_TOP = 314  # the weapon title text's top
 SKILLS_TOP = -305  # under the stat row
-PENDULUM_GAP = 396  # loc_skill02's top below loc_skill01's
-PENDULUM_H = 280  # loc_skill02's title and three rows
-STACK_GAP = 10
+PENDULUM_GAP = 386  # loc_skill02's top below loc_skill01's
+PENDULUM_H = 274  # loc_skill02's title and three rows
+STACK_GAP = 50
 GENE_GAP = 46  # loc_gene01's top below the title bar's top
-GENE_H = 960
+GENE_H = 936
 PENDULUM_TOP = SKILLS_TOP - PENDULUM_GAP
 SIGILS_TITLE_TOP = PENDULUM_TOP - PENDULUM_H - STACK_GAP - TITLE_TEXT
 GENE_TOP = SIGILS_TITLE_TOP - GENE_GAP

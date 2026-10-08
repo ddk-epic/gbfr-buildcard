@@ -8,7 +8,7 @@ TRAIT_FIELDS = ["Skills", "PendulumSkillObj", "PendulumSkills", "PendulumNames"]
 SIGIL_ROWS = 12
 
 # sigil rows, in loc_gene units
-ROW_H = 80
+ROW_H = 78
 EDGE = 8  # the columns' and the level's inset from the row's edges
 LEVEL_INK = 148  # stock "Lv 15" width with right padding
 ICON_W = 72
@@ -136,9 +136,11 @@ def rework_sigil_row(row, row_w):
     icon.set("Active", False)
     name.set("Active", False)
 
+    # the content 1 above the centre, where it was before the top was cut
     row.place(size=(row_w, ROW_H))
-    level.place(pos=(row_w / 2 - EDGE, level.vec("Position")[1]))
-    skills.place(pos=(skills_right, 0))
+    row.repin()
+    level.place(pos=(row_w / 2 - EDGE, level.vec("Position")[1] + 1))
+    skills.place(pos=(skills_right, 1))
     for n in range(2):
         skills.child(f"icon_skill0{n + 1}").place(pos=(columns[n] + ICON_X - skills_right, 0), size=(ICON_W, ICON_W))
         skills.child(f"bc_trait0{n + 1}").place(pos=(columns[n] + NAME_X - skills_right, 0),
@@ -157,15 +159,26 @@ def match_trait_rows(traits, sigil_rows, width):
         raise_level(row.find("loc_skill_lv01"))
     for row in sigil_rows:
         raise_level(row.find("loc_text01_02"))
+    for loc in traits:
+        rows = [row for row in loc.children if row.name.startswith("list_skill_p01_")]
+        loc_w, loc_h = loc.vec("SizeDelta")
+        loc.place(size=(loc_w, loc_h - 2 * len(rows)))
+        # each row without its top 2, stacked from the first row's top
+        h = rows[0].vec("SizeDelta")[1] - 2
+        top = rows[0].vec("Position")[1] + (h + 2) / 2
+        for i, row in enumerate(rows):
+            row.place(pos=(0, top - h / 2 - h * i), size=(width, h))
+            row.repin()
     for row in weapon_rows:
-        row.place(size=(width, row.vec("SizeDelta")[1]))
-        row.repin()
         # the name closer to its icon
+        icon = row.find("icon01")
+        x, y = icon.vec("Position")[:2]
+        icon.place(pos=(x, y + 1)) # the content 1 above the centre
         name = row.find("text01")
         x, y = name.vec("Position")[:2]
-        name.place(pos=(x - 10, y))
+        name.place(pos=(x - 10, y + 1))
         level = row.find("loc_skill_lv01")
-        level.place(pos=(width / 2 - EDGE, level.vec("Position")[1]))
+        level.place(pos=(width / 2 - EDGE, level.vec("Position")[1] + 1))
         # the bar's right padding shortened by as much as the gap
         pair = level.child("loc_lv01")
         left, top, right, bottom = get_line(level, "Padding").split(", ")
@@ -257,8 +270,10 @@ def apply(ctx):
     gene = sigils[1]
     sigil_rows = [gene.find(f"equip01_p01_{i + 1:02}") for i in range(SIGIL_ROWS)]
     row_w = width * SCREEN_CARD_RATIO / scale - 8
-    for row in sigil_rows:
+    gene_h = gene.vec("SizeDelta")[1]
+    for i, row in enumerate(sigil_rows):
         rework_sigil_row(row, row_w)
+        row.place(pos=(0, gene_h / 2 - ROW_H / 2 - ROW_H * i))
     match_trait_rows(traits, sigil_rows, row_w)
     info = panel.child("root").child("loc_info01")
     widen_weapon_section(info, row_w)

@@ -32,7 +32,7 @@ def generate(prefab, exports):
              "",
              "internal static class CardIds",
              "{"]
-    for key, value in exports.items():
+    for key, value in sorted(exports.items()):
         for node in nodes(value):
             if node not in ids:
                 raise KeyError(f"{key}: {node.name} is not in status01")

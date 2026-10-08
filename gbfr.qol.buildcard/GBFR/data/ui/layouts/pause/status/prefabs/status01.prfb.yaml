@@ -15607,16 +15607,16 @@ Objects:
       Alpha: 1
       Enable: true
   Active: false
-  Position: -2000.089, -657.456, 0
+  Position: 0, -186, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.523, 0.523, 1
+  Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -2000.089, -657.456
+  AnchorPoint: 0, -186
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2637.035, -955.456
-  OffsetMax: -1363.142, -359.456
-  SizeDelta: 1273.893, 596
+  OffsetMin: -1016, -362
+  OffsetMax: 1016, -10
+  SizeDelta: 2032, 352
 - Id: 276
   Name: chr_status03
   Children:
@@ -15629,15 +15629,15 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -636.947, -298
-  OffsetMax: 636.947, 298
-  SizeDelta: 1273.893, 596
+  OffsetMin: -1016, -176
+  OffsetMax: 1016, 176
+  SizeDelta: 2032, 352
 - Id: 277
   Name: root
   Children:
   - 278
   Active: true
-  Position: 0, 298, 0
+  Position: 0, 176, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 1
@@ -15658,7 +15658,7 @@ Objects:
       Color: 1, 1, 1, 1
       Sprite:
         TexturePath: atlas/pause_pause_common
-        SpriteName: ps_cmn_base54
+        SpriteName: ps_cmn_base52
       Type: 1
       FillCenter: true
       FillMethod: 0
@@ -15671,16 +15671,16 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, -298, 0
+  Position: 0, -176, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -636.947, -298
-  OffsetMax: 636.947, 298
-  SizeDelta: 1273.893, 596
+  OffsetMin: -1016, -176
+  OffsetMax: 1016, 176
+  SizeDelta: 2032, 352
 - Id: 279
   Name: ttl01_text01
   Components:
@@ -15797,7 +15797,7 @@ Objects:
       HorizontalFit: 2
       VerticalFit: 0
       Enable: true
-  Active: false
+  Active: true
   Position: 0, 156, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -15821,16 +15821,16 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: 0, 0, 0
+  Position: 0, -20, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 0
+  AnchorPoint: 0, -20
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -502, -294
-  OffsetMax: 502, 294
-  SizeDelta: 1004, 588
+  OffsetMin: -1012, -164
+  OffsetMax: 1012, 124
+  SizeDelta: 2024, 288
 - Id: 281
   Name: chr_status03_p01_btn04
   Children:
@@ -15875,15 +15875,15 @@ Objects:
       KeyType: 1
       Enable: true
   Active: true
-  Position: 0, 222, 0
+  Position: -504, 74, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 222
+  AnchorPoint: -504, 74
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -502, 150
-  OffsetMax: 502, 294
+  OffsetMin: -1006, 2
+  OffsetMax: -2, 146
   SizeDelta: 1004, 144
 - Id: 282
   Name: root
@@ -16843,15 +16843,15 @@ Objects:
       KeyType: 1
       Enable: true
   Active: true
-  Position: 0, 74, 0
+  Position: 504, 74, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 74
+  AnchorPoint: 504, 74
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -502, 2
-  OffsetMax: 502, 146
+  OffsetMin: 2, 2
+  OffsetMax: 1006, 146
   SizeDelta: 1004, 144
 - Id: 304
   Name: root
@@ -17811,15 +17811,15 @@ Objects:
       KeyType: 1
       Enable: true
   Active: true
-  Position: 0, -74, 0
+  Position: 504, -74, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, -74
+  AnchorPoint: 504, -74
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -502, -146
-  OffsetMax: 502, -2
+  OffsetMin: 2, -146
+  OffsetMax: 1006, -2
   SizeDelta: 1004, 144
 - Id: 326
   Name: root
@@ -18779,15 +18779,15 @@ Objects:
       KeyType: 1
       Enable: true
   Active: true
-  Position: 0, -222, 0
+  Position: -504, -74, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, -222
+  AnchorPoint: -504, -74
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -502, -294
-  OffsetMax: 502, -150
+  OffsetMin: -1006, -146
+  OffsetMax: -2, -2
   SizeDelta: 1004, 144
 - Id: 348
   Name: root

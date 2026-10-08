@@ -12,6 +12,9 @@ PORTED = {
         "root/loc_base01/loc_buildcard/bc_om",
         "root/loc_base01/loc_buildcard/bc_om_ttl_text",
         "root/loc_base01/loc_buildcard/bc_smn",
+        "root/loc_base01/loc_buildcard/bc_skills",
+        "root/loc_base01/loc_status02/loc_chr_status03",
+        "root/loc_base01/loc_status02/loc_chr_status04",
     ],
     "chr_status_bg01": [],
 }
@@ -61,13 +64,7 @@ def export_master_traits(ctx, card):
     ctx.export("CellOff", cells("off"))
 
 
-def export_skills(ctx, card):
-    # bc_skills' ability cards, in slot order
-    cards = [c for c in card.child("bc_skills").children if c.name.startswith("ability_set01_btn")]
-    ctx.export("SkillNames", [c.find("bc_skill_text/text01") for c in cards])
-
-
-EXPORTS = [export_master_traits, export_skills]
+EXPORTS = [export_master_traits]
 
 
 def reset(prefab, stock, paths):

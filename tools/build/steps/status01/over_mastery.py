@@ -1,12 +1,11 @@
 # Lays out the Over Mastery section: lb_ovtli02's rows on a status-style panel under a title bar.
 from model.components import rect, set_line
 from model.prefab import copy, f
-from steps.layout import (CARD_ORDER, ICON_PAD, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, TITLE_SCALE, TITLE_TEXT,
+from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, TITLE_BAR_H, TITLE_SCALE,
                           card, insert, rounded_panel)
 
 INK = (0.19607843, 0.37254903, 0.4901961)
 TITLE_TEXT_ID = "TXT_PAU_LB_TAB_LIMIT_OVER"
-TITLE_GAP = 46  # the bar's top above the rows, in title units
 BAR_TEXT = 20  # the title text's pivot below the bar's, in title units
 ROWS = 4
 ROW_ICON = 88  # icon01's size, in row units
@@ -38,7 +37,8 @@ def apply(ctx):
     u = scale / SCREEN_CARD_RATIO  # sharecard pixels per panel unit
     title_k = TITLE_SCALE / scale
     w, h = width / u, height / u
-    bar_y = h / 2 - PAD_Y / u - TITLE_TEXT * title_k
+    # the outer padding and a bar height above the bar
+    bar_y = h / 2 - (INSET - FRAME) / u - TITLE_BAR_H * title_k
     cx, cy = card(left + width / 2, top + height / 2)
 
     panel = insert(card_node, rect("bc_om"), CARD_ORDER)
@@ -65,7 +65,7 @@ def apply(ctx):
     # rows centred between the bar's gap and the bottom padding, at the skills icons' left inset
     row_scale = ICON * SCREEN_CARD_RATIO / ROW_ICON * ROW_SCALE / scale
     line_h, line_gap = LINE_H * ROW_SCALE / u, LINE_GAP * ROW_SCALE / u
-    content_top = bar_y - TITLE_GAP * title_k
+    content_top = bar_y - 2 * TITLE_BAR_H * title_k
     content_bottom = -h / 2 + PAD_Y / u
     rows_h = ROWS * line_h + (ROWS - 1) * line_gap
     rows_top = (content_top + content_bottom) / 2 + rows_h / 2

@@ -1,7 +1,7 @@
 # Stacks the gear screen's Weapon and Sigils sections and the equip screen's trait rows in the gear column.
 from model.components import get_line, set_line, set_refs, single
 from model.prefab import Ref, copy, f
-from steps.layout import (CARD_ORDER, GEAR, GENE_TOP, PENDULUM_TOP, SCREEN_CARD_RATIO, SIGILS_TITLE_TOP, SKILLS_TOP, TITLE_SCALE,
+from steps.layout import (CARD_ORDER, GEAR, GENE_TOP, PENDULUM_TOP, SCREEN_CARD_RATIO, SIGILS_TITLE_TOP, SKILLS_TOP, TITLE_BAR_H, TITLE_SCALE,
                           WEAPON_TOP, card, insert)
 
 TRAIT_FIELDS = ["Skills", "PendulumSkillObj", "PendulumSkills", "PendulumNames"]
@@ -248,6 +248,10 @@ def weapon_type(panel, info, info_weapon01, scale):
     type_text.set("Scale", (k, k, 1))
     type_text.place(pos=(0, name_y - TYPE_GAP))
     name.place(pos=(name_x, name_y + NAME_RISE))
+    # the heading's bar 2 bar heights above the name's top
+    name_top = line.vec("Position")[1] + name_y + NAME_RISE + name.vec("SizeDelta")[1] / 2
+    bar = info.child("ttl01")
+    bar.place(pos=(bar.vec("Position")[0], name_top + 2 * TITLE_BAR_H))
 
 
 def apply(ctx):

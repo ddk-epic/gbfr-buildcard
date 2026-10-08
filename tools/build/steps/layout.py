@@ -6,7 +6,8 @@ SCREEN_CARD_RATIO = 3526.72 / 2880
 CARD_W, CARD_H = 2880, 1440  # sharecard pixels
 
 # sharecard's grid inside the card's frame, in sharecard pixels
-INSET = 3 * 12 / SCREEN_CARD_RATIO  # bc_frame's border and twice its width
+FRAME = 12 / SCREEN_CARD_RATIO  # bc_frame's border
+INSET = 3 * FRAME  # bc_frame's border and twice its width
 BOX_W, BOX_H = CARD_W - 2 * INSET, CARD_H - 2 * INSET
 GAP = 24
 SHARES = (20, 27, 53)  # status, gear, master traits
@@ -20,7 +21,7 @@ THIRD = (COL_W[2] - 2 * GAP) / 3  # over mastery's width; summons spans two and 
 
 # sections: left, top, width, height in sharecard pixels
 STATUS = (COL_X[0], INSET, COL_W[0], ROW_UPPER)
-GEAR = (COL_X[1], INSET, COL_W[1], BOX_H)
+GEAR = (COL_X[1], FRAME, COL_W[1], BOX_H + INSET - FRAME)  # from the frame's border
 MASTER_TRAITS = (COL_X[2], INSET, COL_W[2], ROW_UPPER)
 SKILLS = (COL_X[0], BAND_Y, COL_W[0], BAND_H)
 OVER_MASTERY = (COL_X[2], BAND_Y, THIRD, BAND_H)
@@ -32,7 +33,8 @@ ICON_PAD = 5  # pl-1 of sharecard's compact skill cell
 
 # the status-style panels' scale: the skills block's 1000 units across its section
 PANEL_SCALE = SKILLS[2] * SCREEN_CARD_RATIO / 1000
-TITLE_TEXT = 30  # a title text's top above its bar's top, in title units
+# a heading's box is four bar heights, its centre on the bar's top
+TITLE_BAR_H = 20  # title units
 
 # rounded corners of radius 8 card units, at scale 1
 OUTLINE = "layouts/pause/status/noatlastextures/bc_outline"
@@ -44,16 +46,15 @@ PANEL_FILL = (1, 1, 1), 0.9
 PANEL_STROKE = (133 / 255, 163 / 255, 181 / 255), 223 / 255  # ps_cmn_base54's
 
 # the gear column's stack, in bc_weapon units from its root's pivot
-WEAPON_TOP = 314  # the weapon title text's top
+WEAPON_TOP = 328  # the outer padding and a bar height above the weapon bar's top
 SKILLS_TOP = -305  # under the stat row
 PENDULUM_GAP = 386  # loc_skill02's top below loc_skill01's
 PENDULUM_H = 274  # loc_skill02's title and three rows
-STACK_GAP = 50
-GENE_GAP = 46  # loc_gene01's top below the title bar's top
+STACK_GAP = 65
 GENE_H = 936
 PENDULUM_TOP = SKILLS_TOP - PENDULUM_GAP
-SIGILS_TITLE_TOP = PENDULUM_TOP - PENDULUM_H - STACK_GAP - TITLE_TEXT
-GENE_TOP = SIGILS_TITLE_TOP - GENE_GAP
+SIGILS_TITLE_TOP = PENDULUM_TOP - PENDULUM_H - STACK_GAP - 2 * TITLE_BAR_H
+GENE_TOP = SIGILS_TITLE_TOP - 2 * TITLE_BAR_H
 
 # bc_weapon's scale, the stack across the gear section's height, and every title's
 TITLE_SCALE = GEAR[3] * SCREEN_CARD_RATIO / (WEAPON_TOP - GENE_TOP + GENE_H)

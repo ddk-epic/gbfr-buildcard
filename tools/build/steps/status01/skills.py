@@ -1,12 +1,11 @@
 # Lays out the skills section: the Skills screen's cards, reduced to icon, name and element tag, in a 2x2 grid.
 from model.components import rect, set_line, set_refs
 from model.prefab import copy
-from steps.layout import (CARD_ORDER, ICON_PAD, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, TITLE_SCALE, TITLE_TEXT, card,
+from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, TITLE_BAR_H, TITLE_SCALE, card,
                           insert, rounded_panel)
 
 CARDS = ["ability_set01_btn04", "ability_set01_btn03", "ability_set01_btn01", "ability_set01_btn02"]  # slots 1 to 4
 TITLE_TEXT_ID = "TXT_PAU_ABILITY"
-TITLE_GAP = 46  # the bar's top above the cells, as loc_gene01 below the Sigils title
 ICON_PX = 85  # sharecard pixels
 ICON_GAP = 10  # sharecard pixels
 HIDDEN = ["loc_icon_pos", "loc_guide_button", "loc_guide_button_key"]
@@ -82,9 +81,11 @@ def apply(ctx):
     u = scale / SCREEN_CARD_RATIO  # sharecard pixels per block unit
     title_k = TITLE_SCALE / scale
     h = height / u
-    heading_h = (TITLE_TEXT + TITLE_GAP) * title_k
-    cell_w, cell_h = (W - 2 * PAD_X / u) / 2, (h - 2 * PAD_Y / u - heading_h) / 2
-    cells_y = -heading_h / 2
+    # the outer padding and a bar height above the bar, two bar heights below its top
+    bar_top = h / 2 - (INSET - FRAME) / u - TITLE_BAR_H * title_k
+    heading_h = h / 2 - bar_top + 2 * TITLE_BAR_H * title_k
+    cell_w, cell_h = (W - 2 * PAD_X / u) / 2, (h - PAD_Y / u - heading_h) / 2
+    cells_y = (PAD_Y / u - heading_h) / 2
     icon_scale = ICON_PX / u / ICON_SIZE
     icon_x = (ICON_PAD + ICON_PX / 2) / u  # from the cell's left edge
     name_x = (ICON_PAD + ICON_PX + ICON_GAP) / u
@@ -104,7 +105,7 @@ def apply(ctx):
     panel.place(pos=(0, 0), size=(W, h))
     rounded_panel(panel, "bc_skills_panel", scale)
     bar.set("Scale", (title_k, title_k, 1))
-    bar.place(pos=(0, h / 2 - PAD_Y / u - TITLE_TEXT * title_k))
+    bar.place(pos=(0, bar_top))
 
     for slot, node in enumerate(cards):
         x = cell_w / 2 * (1 if slot % 2 else -1)

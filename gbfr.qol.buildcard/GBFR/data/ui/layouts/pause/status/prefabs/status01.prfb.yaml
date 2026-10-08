@@ -70269,15 +70269,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, 164.794, 0
+  Position: 0, 173.448, 0
   Rotation: 0, 0, 0, 1
   Scale: 1.064, 1.064, 1
   Pivot: 0.5, 1
-  AnchorPoint: 0, -65.268
+  AnchorPoint: 0, -56.613
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -238, -85.268
-  OffsetMax: 238, -65.268
+  OffsetMin: -238, -76.613
+  OffsetMax: 238, -56.613
   SizeDelta: 476, 20
 - Id: 1762
   Name: bc_om_0
@@ -70335,15 +70335,15 @@ Objects:
         ObjectRefId: 1772
       Enable: true
   Active: true
-  Position: 56.043, 78.573, 0
+  Position: 56.043, 86.089, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.947, 0.947, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 56.043, 78.573
+  AnchorPoint: 56.043, 86.089
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -443.957, -44.427
-  OffsetMax: 556.043, 201.573
+  OffsetMin: -443.957, -36.911
+  OffsetMax: 556.043, 209.089
   SizeDelta: 1000, 246
 - Id: 1763
   Name: root
@@ -71426,15 +71426,15 @@ Objects:
         ObjectRefId: 1804
       Enable: true
   Active: true
-  Position: 56.043, -0.758, 0
+  Position: 56.043, 6.759, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.947, 0.947, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 56.043, -0.758
+  AnchorPoint: 56.043, 6.759
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -443.957, -123.758
-  OffsetMax: 556.043, 122.242
+  OffsetMin: -443.957, -116.241
+  OffsetMax: 556.043, 129.759
   SizeDelta: 1000, 246
 - Id: 1795
   Name: root
@@ -72517,15 +72517,15 @@ Objects:
         ObjectRefId: 1836
       Enable: true
   Active: true
-  Position: 56.043, -80.088, 0
+  Position: 56.043, -72.572, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.947, 0.947, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 56.043, -80.088
+  AnchorPoint: 56.043, -72.572
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -443.957, -203.088
-  OffsetMax: 556.043, 42.912
+  OffsetMin: -443.957, -195.572
+  OffsetMax: 556.043, 50.428
   SizeDelta: 1000, 246
 - Id: 1827
   Name: root
@@ -73608,15 +73608,15 @@ Objects:
         ObjectRefId: 1868
       Enable: true
   Active: true
-  Position: 56.043, -159.419, 0
+  Position: 56.043, -151.902, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.947, 0.947, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 56.043, -159.419
+  AnchorPoint: 56.043, -151.902
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -443.957, -282.419
-  OffsetMax: 556.043, -36.419
+  OffsetMin: -443.957, -274.902
+  OffsetMax: 556.043, -28.902
   SizeDelta: 1000, 246
 - Id: 1859
   Name: root
@@ -83161,15 +83161,15 @@ Objects:
         ObjectRefId: 2371
       Enable: true
   Active: true
-  Position: -560.33, 618.817, 0
+  Position: -560.33, 632.68, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.722, 0.722, 1
+  Scale: 0.723, 0.723, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -560.33, 618.817
+  AnchorPoint: -560.33, 632.68
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1224.33, 298.817
-  OffsetMax: 103.67, 938.817
+  OffsetMin: -1224.33, 312.68
+  OffsetMax: 103.67, 952.68
   SizeDelta: 1328, 640
 - Id: 2099
   Name: root
@@ -83254,15 +83254,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, 42, 0
+  Position: 0, 33, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 1
-  AnchorPoint: 0, 42
+  AnchorPoint: 0, 33
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -238, 22
-  OffsetMax: 238, 42
+  OffsetMin: -238, 13
+  OffsetMax: 238, 33
   SizeDelta: 476, 20
 - Id: 2102
   Name: ttl01_text01
@@ -87111,9 +87111,9 @@ Objects:
   AnchorPoint: 0, 96
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
-  OffsetMin: -630.54, 96
-  OffsetMax: 630.54, 98
-  SizeDelta: 1261.081, 2
+  OffsetMin: -630.482, 96
+  OffsetMax: 630.482, 98
+  SizeDelta: 1260.964, 2
 - Id: 2207
   Name: line02
   Children:
@@ -87142,9 +87142,9 @@ Objects:
   AnchorPoint: 0, -64
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -66
-  OffsetMax: 630.54, -64
-  SizeDelta: 1261.081, 2
+  OffsetMin: -630.482, -66
+  OffsetMax: 630.482, -64
+  SizeDelta: 1260.964, 2
 - Id: 2208
   Name: loc_name01_text
   Children:
@@ -87515,15 +87515,15 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: -62.54, -240, 0
+  Position: -62.482, -240, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -62.54, 40
+  AnchorPoint: -62.482, 40
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -62.54, 40
-  OffsetMax: -62.54, 40
+  OffsetMin: -62.482, 40
+  OffsetMax: -62.482, 40
   SizeDelta: 0, 0
 - Id: 2218
   Name: level02
@@ -89311,15 +89311,15 @@ Objects:
         ObjectRefId: 2287
       Enable: true
   Active: true
-  Position: 62.54, -280, 0
+  Position: 62.482, -280, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 62.54, 0
+  AnchorPoint: 62.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 62.54, 0
-  OffsetMax: 62.54, 0
+  OffsetMin: 62.482, 0
+  OffsetMax: 62.482, 0
   SizeDelta: 0, 0
 - Id: 2265
   Name: icon_limit01
@@ -92460,9 +92460,9 @@ Objects:
   AnchorPoint: 16, 20
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
-  OffsetMin: -558.54, 20
-  OffsetMax: 590.54, 76
-  SizeDelta: 1149.081, 56
+  OffsetMin: -558.482, 20
+  OffsetMax: 590.482, 76
+  SizeDelta: 1148.964, 56
 - Id: 2355
   Name: loc_hp01
   Children:
@@ -92487,7 +92487,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -574.54, 0, 0
+  Position: -574.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0
@@ -92495,8 +92495,8 @@ Objects:
   AnchorMin: 0, 0
   AnchorMax: 0, 0
   OffsetMin: 0, 0
-  OffsetMax: 287.27, 28
-  SizeDelta: 287.27, 28
+  OffsetMax: 287.241, 28
+  SizeDelta: 287.241, 28
 - Id: 2356
   Name: hp01_icon01
   Components:
@@ -92581,7 +92581,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 243.27, 31, 0
+  Position: 243.241, 31, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -92622,9 +92622,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
-  OffsetMin: -287.27, 0
+  OffsetMin: -287.241, 0
   OffsetMax: 0, 28
-  SizeDelta: 287.27, 28
+  SizeDelta: 287.241, 28
 - Id: 2359
   Name: atk01_icon01
   Components:
@@ -92646,7 +92646,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -252.27, 31, 0
+  Position: -252.241, 31, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -92752,8 +92752,8 @@ Objects:
   AnchorMin: 0.5, 0
   AnchorMax: 0.5, 0
   OffsetMin: 0, 0
-  OffsetMax: 287.27, 28
-  SizeDelta: 287.27, 28
+  OffsetMax: 287.241, 28
+  SizeDelta: 287.241, 28
 - Id: 2362
   Name: crt01_icon01
   Components:
@@ -92831,7 +92831,7 @@ Objects:
       TextID: TXT_PAU_PAR
       Enable: true
   Active: true
-  Position: 253.27, 27, 0
+  Position: 253.241, 27, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -92894,7 +92894,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 209.27, 31, 0
+  Position: 209.241, 31, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -92928,16 +92928,16 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 574.54, 0, 0
+  Position: 574.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0
   AnchorPoint: 0, 0
   AnchorMin: 1, 0
   AnchorMax: 1, 0
-  OffsetMin: -287.27, 0
+  OffsetMin: -287.241, 0
   OffsetMax: 0, 28
-  SizeDelta: 287.27, 28
+  SizeDelta: 287.241, 28
 - Id: 2366
   Name: brk01_icon01
   Components:
@@ -92959,7 +92959,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -252.27, 31, 0
+  Position: -252.241, 31, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -93056,15 +93056,15 @@ Objects:
       VerticalFit: 2
       Enable: true
   Active: true
-  Position: 630.54, -68, 0
+  Position: 630.482, -68, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
-  AnchorPoint: -33.46, -68
+  AnchorPoint: -33.518, -68
   AnchorMin: 1, 1
   AnchorMax: 1, 1
-  OffsetMin: -425.46, -68
-  OffsetMax: -33.46, -68
+  OffsetMin: -425.518, -68
+  OffsetMax: -33.518, -68
   SizeDelta: 392, 0
 - Id: 2369
   Name: tag_skin01
@@ -93395,9 +93395,9 @@ Objects:
   AnchorPoint: 0, -45
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -80
-  OffsetMax: 630.54, -10
-  SizeDelta: 1261.081, 70
+  OffsetMin: -630.482, -80
+  OffsetMax: 630.482, -10
+  SizeDelta: 1260.964, 70
 - Id: 2377
   Name: root
   Children:
@@ -93510,7 +93510,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -542.54, 1, 0
+  Position: -542.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -93562,7 +93562,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -496.54, 1, 0
+  Position: -496.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -93617,7 +93617,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -93981,7 +93981,7 @@ Objects:
         ObjectRefId: 2390
       Enable: true
   Active: true
-  Position: 602.54, 0, 0
+  Position: 602.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -94014,7 +94014,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -606.54, 0, 0
+  Position: -606.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -94135,9 +94135,9 @@ Objects:
   AnchorPoint: 0, -115
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -150
-  OffsetMax: 630.54, -80
-  SizeDelta: 1261.081, 70
+  OffsetMin: -630.482, -150
+  OffsetMax: 630.482, -80
+  SizeDelta: 1260.964, 70
 - Id: 2394
   Name: root
   Children:
@@ -94250,7 +94250,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -542.54, 1, 0
+  Position: -542.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -94302,7 +94302,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -496.54, 1, 0
+  Position: -496.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -94357,7 +94357,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -94721,7 +94721,7 @@ Objects:
         ObjectRefId: 2407
       Enable: true
   Active: true
-  Position: 602.54, 0, 0
+  Position: 602.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -94754,7 +94754,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -606.54, 0, 0
+  Position: -606.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -94875,9 +94875,9 @@ Objects:
   AnchorPoint: 0, -185
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -220
-  OffsetMax: 630.54, -150
-  SizeDelta: 1261.081, 70
+  OffsetMin: -630.482, -220
+  OffsetMax: 630.482, -150
+  SizeDelta: 1260.964, 70
 - Id: 2411
   Name: root
   Children:
@@ -94990,7 +94990,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -542.54, 1, 0
+  Position: -542.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -95042,7 +95042,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -496.54, 1, 0
+  Position: -496.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -95097,7 +95097,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -95461,7 +95461,7 @@ Objects:
         ObjectRefId: 2424
       Enable: true
   Active: true
-  Position: 602.54, 0, 0
+  Position: 602.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -95494,7 +95494,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -606.54, 0, 0
+  Position: -606.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -95615,9 +95615,9 @@ Objects:
   AnchorPoint: 0, -255
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -290
-  OffsetMax: 630.54, -220
-  SizeDelta: 1261.081, 70
+  OffsetMin: -630.482, -290
+  OffsetMax: 630.482, -220
+  SizeDelta: 1260.964, 70
 - Id: 2428
   Name: root
   Children:
@@ -95730,7 +95730,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -542.54, 1, 0
+  Position: -542.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -95782,7 +95782,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -496.54, 1, 0
+  Position: -496.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -95837,7 +95837,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -96201,7 +96201,7 @@ Objects:
         ObjectRefId: 2441
       Enable: true
   Active: true
-  Position: 602.54, 0, 0
+  Position: 602.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -96234,7 +96234,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -606.54, 0, 0
+  Position: -606.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -96355,9 +96355,9 @@ Objects:
   AnchorPoint: 0, -325
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -360
-  OffsetMax: 630.54, -290
-  SizeDelta: 1261.081, 70
+  OffsetMin: -630.482, -360
+  OffsetMax: 630.482, -290
+  SizeDelta: 1260.964, 70
 - Id: 2445
   Name: root
   Children:
@@ -96470,7 +96470,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -542.54, 1, 0
+  Position: -542.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -96522,7 +96522,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -496.54, 1, 0
+  Position: -496.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -96577,7 +96577,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -96941,7 +96941,7 @@ Objects:
         ObjectRefId: 2458
       Enable: true
   Active: true
-  Position: 602.54, 0, 0
+  Position: 602.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -96974,7 +96974,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: false
-  Position: -606.54, 0, 0
+  Position: -606.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -97065,9 +97065,9 @@ Objects:
   AnchorPoint: 0, -54
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -62
-  OffsetMax: 630.54, -46
-  SizeDelta: 1261.081, 16
+  OffsetMin: -630.482, -62
+  OffsetMax: 630.482, -46
+  SizeDelta: 1260.964, 16
 - Id: 2463
   Name: loc_ttl02_icon01
   Children:
@@ -97091,7 +97091,7 @@ Objects:
       E3ED5266: 0
       Enable: false
   Active: true
-  Position: -571.54, 22, 0
+  Position: -571.482, 22, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -97178,7 +97178,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 586.54, 24, 0
+  Position: 586.482, 24, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -97238,7 +97238,7 @@ Objects:
       TextID: TXT_BLS_BLESS_PLUS_SKILL
       Enable: true
   Active: true
-  Position: -544.54, 24, 0
+  Position: -544.482, 24, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -97325,9 +97325,9 @@ Objects:
   AnchorPoint: 0, -99
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -134
-  OffsetMax: 630.54, -64
-  SizeDelta: 1261.081, 70
+  OffsetMin: -630.482, -134
+  OffsetMax: 630.482, -64
+  SizeDelta: 1260.964, 70
 - Id: 2468
   Name: root
   Children:
@@ -97440,7 +97440,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -542.54, 1, 0
+  Position: -542.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -97492,7 +97492,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -496.54, 1, 0
+  Position: -496.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -97547,7 +97547,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -97911,7 +97911,7 @@ Objects:
         ObjectRefId: 2481
       Enable: true
   Active: true
-  Position: 602.54, 0, 0
+  Position: 602.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -97944,7 +97944,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: false
-  Position: -606.54, 0, 0
+  Position: -606.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -98062,9 +98062,9 @@ Objects:
   AnchorPoint: 0, -169
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -204
-  OffsetMax: 630.54, -134
-  SizeDelta: 1261.081, 70
+  OffsetMin: -630.482, -204
+  OffsetMax: 630.482, -134
+  SizeDelta: 1260.964, 70
 - Id: 2485
   Name: root
   Children:
@@ -98177,7 +98177,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -542.54, 1, 0
+  Position: -542.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -98229,7 +98229,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -496.54, 1, 0
+  Position: -496.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -98284,7 +98284,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -98648,7 +98648,7 @@ Objects:
         ObjectRefId: 2498
       Enable: true
   Active: true
-  Position: 602.54, 0, 0
+  Position: 602.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -98681,7 +98681,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: false
-  Position: -606.54, 0, 0
+  Position: -606.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -98799,9 +98799,9 @@ Objects:
   AnchorPoint: 0, -239
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -630.54, -274
-  OffsetMax: 630.54, -204
-  SizeDelta: 1261.081, 70
+  OffsetMin: -630.482, -274
+  OffsetMax: 630.482, -204
+  SizeDelta: 1260.964, 70
 - Id: 2502
   Name: root
   Children:
@@ -98914,7 +98914,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: true
-  Position: -542.54, 1, 0
+  Position: -542.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -98966,7 +98966,7 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -496.54, 1, 0
+  Position: -496.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -99021,7 +99021,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -99385,7 +99385,7 @@ Objects:
         ObjectRefId: 2515
       Enable: true
   Active: true
-  Position: 602.54, 0, 0
+  Position: 602.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -99418,7 +99418,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: false
-  Position: -606.54, 0, 0
+  Position: -606.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -99482,15 +99482,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, -1045, 0
+  Position: 0, -1070, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 1
-  AnchorPoint: 0, -1365
+  AnchorPoint: 0, -1390
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -238, -1385
-  OffsetMax: 238, -1365
+  OffsetMin: -238, -1410
+  OffsetMax: 238, -1390
   SizeDelta: 476, 20
 - Id: 2519
   Name: ttl01_text01
@@ -99558,15 +99558,15 @@ Objects:
   Children:
   - 2521
   Active: true
-  Position: 0, -1091, 0
+  Position: 0, -1110, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 1
-  AnchorPoint: 0, -1411
+  AnchorPoint: 0, -1430
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -624, -2371
-  OffsetMax: 624, -1411
+  OffsetMin: -624, -2390
+  OffsetMax: 624, -1430
   SizeDelta: 1248, 960
 - Id: 2521
   Name: loc_list_control01
@@ -99641,9 +99641,9 @@ Objects:
   AnchorPoint: 0, 441
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, 402
-  OffsetMax: 630.54, 480
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, 402
+  OffsetMax: 630.482, 480
+  SizeDelta: 1260.964, 78
 - Id: 2523
   Name: root
   Children:
@@ -99752,7 +99752,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -99808,7 +99808,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -99862,7 +99862,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -100148,7 +100148,7 @@ Objects:
   - 2535
   - 2536
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -100206,15 +100206,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2534
   Name: icon_skill02
@@ -100264,15 +100264,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2535
   Name: bc_trait01
@@ -100315,16 +100315,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2536
   Name: bc_trait02
   Components:
@@ -100366,16 +100366,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2537
   Name: equip01_p01_02
   Children:
@@ -100418,9 +100418,9 @@ Objects:
   AnchorPoint: 0, 363
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, 324
-  OffsetMax: 630.54, 402
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, 324
+  OffsetMax: 630.482, 402
+  SizeDelta: 1260.964, 78
 - Id: 2538
   Name: root
   Children:
@@ -100529,7 +100529,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -100585,7 +100585,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -100639,7 +100639,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -100925,7 +100925,7 @@ Objects:
   - 2550
   - 2551
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -100983,15 +100983,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2549
   Name: icon_skill02
@@ -101041,15 +101041,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2550
   Name: bc_trait01
@@ -101092,16 +101092,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2551
   Name: bc_trait02
   Components:
@@ -101143,16 +101143,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2552
   Name: equip01_p01_03
   Children:
@@ -101195,9 +101195,9 @@ Objects:
   AnchorPoint: 0, 285
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, 246
-  OffsetMax: 630.54, 324
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, 246
+  OffsetMax: 630.482, 324
+  SizeDelta: 1260.964, 78
 - Id: 2553
   Name: root
   Children:
@@ -101306,7 +101306,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -101362,7 +101362,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -101416,7 +101416,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -101702,7 +101702,7 @@ Objects:
   - 2565
   - 2566
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -101760,15 +101760,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2564
   Name: icon_skill02
@@ -101818,15 +101818,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2565
   Name: bc_trait01
@@ -101869,16 +101869,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2566
   Name: bc_trait02
   Components:
@@ -101920,16 +101920,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2567
   Name: equip01_p01_04
   Children:
@@ -101972,9 +101972,9 @@ Objects:
   AnchorPoint: 0, 207
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, 168
-  OffsetMax: 630.54, 246
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, 168
+  OffsetMax: 630.482, 246
+  SizeDelta: 1260.964, 78
 - Id: 2568
   Name: root
   Children:
@@ -102083,7 +102083,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -102139,7 +102139,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -102193,7 +102193,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -102479,7 +102479,7 @@ Objects:
   - 2580
   - 2581
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -102537,15 +102537,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2579
   Name: icon_skill02
@@ -102595,15 +102595,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2580
   Name: bc_trait01
@@ -102646,16 +102646,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2581
   Name: bc_trait02
   Components:
@@ -102697,16 +102697,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2582
   Name: equip01_p01_05
   Children:
@@ -102749,9 +102749,9 @@ Objects:
   AnchorPoint: 0, 129
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, 90
-  OffsetMax: 630.54, 168
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, 90
+  OffsetMax: 630.482, 168
+  SizeDelta: 1260.964, 78
 - Id: 2583
   Name: root
   Children:
@@ -102860,7 +102860,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -102916,7 +102916,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -102970,7 +102970,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -103256,7 +103256,7 @@ Objects:
   - 2595
   - 2596
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -103314,15 +103314,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2594
   Name: icon_skill02
@@ -103372,15 +103372,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2595
   Name: bc_trait01
@@ -103423,16 +103423,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2596
   Name: bc_trait02
   Components:
@@ -103474,16 +103474,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2597
   Name: equip01_p01_06
   Children:
@@ -103526,9 +103526,9 @@ Objects:
   AnchorPoint: 0, 51
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, 12
-  OffsetMax: 630.54, 90
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, 12
+  OffsetMax: 630.482, 90
+  SizeDelta: 1260.964, 78
 - Id: 2598
   Name: root
   Children:
@@ -103637,7 +103637,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -103693,7 +103693,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -103747,7 +103747,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -104033,7 +104033,7 @@ Objects:
   - 2610
   - 2611
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -104091,15 +104091,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2609
   Name: icon_skill02
@@ -104149,15 +104149,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2610
   Name: bc_trait01
@@ -104200,16 +104200,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2611
   Name: bc_trait02
   Components:
@@ -104251,16 +104251,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2612
   Name: equip01_p01_07
   Children:
@@ -104303,9 +104303,9 @@ Objects:
   AnchorPoint: 0, -27
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, -66
-  OffsetMax: 630.54, 12
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, -66
+  OffsetMax: 630.482, 12
+  SizeDelta: 1260.964, 78
 - Id: 2613
   Name: root
   Children:
@@ -104414,7 +104414,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -104470,7 +104470,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -104524,7 +104524,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -104810,7 +104810,7 @@ Objects:
   - 2625
   - 2626
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -104868,15 +104868,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2624
   Name: icon_skill02
@@ -104926,15 +104926,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2625
   Name: bc_trait01
@@ -104977,16 +104977,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2626
   Name: bc_trait02
   Components:
@@ -105028,16 +105028,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2627
   Name: equip01_p01_08
   Children:
@@ -105080,9 +105080,9 @@ Objects:
   AnchorPoint: 0, -105
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, -144
-  OffsetMax: 630.54, -66
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, -144
+  OffsetMax: 630.482, -66
+  SizeDelta: 1260.964, 78
 - Id: 2628
   Name: root
   Children:
@@ -105191,7 +105191,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -105247,7 +105247,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -105301,7 +105301,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -105587,7 +105587,7 @@ Objects:
   - 2640
   - 2641
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -105645,15 +105645,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2639
   Name: icon_skill02
@@ -105703,15 +105703,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2640
   Name: bc_trait01
@@ -105754,16 +105754,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2641
   Name: bc_trait02
   Components:
@@ -105805,16 +105805,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2642
   Name: equip01_p01_09
   Children:
@@ -105857,9 +105857,9 @@ Objects:
   AnchorPoint: 0, -183
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, -222
-  OffsetMax: 630.54, -144
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, -222
+  OffsetMax: 630.482, -144
+  SizeDelta: 1260.964, 78
 - Id: 2643
   Name: root
   Children:
@@ -105968,7 +105968,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -106024,7 +106024,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -106078,7 +106078,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -106364,7 +106364,7 @@ Objects:
   - 2655
   - 2656
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -106422,15 +106422,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2654
   Name: icon_skill02
@@ -106480,15 +106480,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2655
   Name: bc_trait01
@@ -106531,16 +106531,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2656
   Name: bc_trait02
   Components:
@@ -106582,16 +106582,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2657
   Name: equip01_p01_10
   Children:
@@ -106634,9 +106634,9 @@ Objects:
   AnchorPoint: 0, -261
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, -300
-  OffsetMax: 630.54, -222
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, -300
+  OffsetMax: 630.482, -222
+  SizeDelta: 1260.964, 78
 - Id: 2658
   Name: root
   Children:
@@ -106745,7 +106745,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -106801,7 +106801,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -106855,7 +106855,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -107141,7 +107141,7 @@ Objects:
   - 2670
   - 2671
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -107199,15 +107199,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2669
   Name: icon_skill02
@@ -107257,15 +107257,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2670
   Name: bc_trait01
@@ -107308,16 +107308,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2671
   Name: bc_trait02
   Components:
@@ -107359,16 +107359,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2672
   Name: equip01_p01_11
   Children:
@@ -107411,9 +107411,9 @@ Objects:
   AnchorPoint: 0, -339
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, -378
-  OffsetMax: 630.54, -300
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, -378
+  OffsetMax: 630.482, -300
+  SizeDelta: 1260.964, 78
 - Id: 2673
   Name: root
   Children:
@@ -107522,7 +107522,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -107578,7 +107578,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -107632,7 +107632,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -107918,7 +107918,7 @@ Objects:
   - 2685
   - 2686
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -107976,15 +107976,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2684
   Name: icon_skill02
@@ -108034,15 +108034,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2685
   Name: bc_trait01
@@ -108085,16 +108085,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2686
   Name: bc_trait02
   Components:
@@ -108136,16 +108136,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2687
   Name: equip01_p01_12
   Children:
@@ -108188,9 +108188,9 @@ Objects:
   AnchorPoint: 0, -417
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -630.54, -456
-  OffsetMax: 630.54, -378
-  SizeDelta: 1261.081, 78
+  OffsetMin: -630.482, -456
+  OffsetMax: 630.482, -378
+  SizeDelta: 1260.964, 78
 - Id: 2688
   Name: root
   Children:
@@ -108299,7 +108299,7 @@ Objects:
       Resetting: true
       Enable: true
   Active: false
-  Position: -550.54, 0, 0
+  Position: -550.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
@@ -108355,7 +108355,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: false
-  Position: -498.54, 0, 0
+  Position: -498.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -108409,7 +108409,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 622.54, 1, 0
+  Position: 622.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 1
@@ -108695,7 +108695,7 @@ Objects:
   - 2700
   - 2701
   Active: true
-  Position: 590.54, 1, 0
+  Position: 590.482, 1, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
@@ -108753,15 +108753,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -1173.081, 0, 0
+  Position: -1172.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -1117.081, 0
+  AnchorPoint: -1116.964, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1153.081, -36
-  OffsetMax: -1081.081, 36
+  OffsetMin: -1152.964, -36
+  OffsetMax: -1080.964, 36
   SizeDelta: 72, 72
 - Id: 2699
   Name: icon_skill02
@@ -108811,15 +108811,15 @@ Objects:
       GeenContainerNo: 1
       Enable: true
   Active: true
-  Position: -626.54, 0, 0
+  Position: -626.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -570.54, 0
+  AnchorPoint: -570.482, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -606.54, -36
-  OffsetMax: -534.54, 36
+  OffsetMin: -606.482, -36
+  OffsetMax: -534.482, 36
   SizeDelta: 72, 72
 - Id: 2700
   Name: bc_trait01
@@ -108862,16 +108862,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.081, 0, 0
+  Position: -1126.964, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.081, 0
+  AnchorPoint: -1014.964, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.081, -39
-  OffsetMax: -558.541, 39
-  SizeDelta: 456.54, 78
+  OffsetMin: -1014.964, -39
+  OffsetMax: -558.482, 39
+  SizeDelta: 456.482, 78
 - Id: 2701
   Name: bc_trait02
   Components:
@@ -108913,16 +108913,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.54, 0, 0
+  Position: -580.482, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.54, 0
+  AnchorPoint: -468.482, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.54, -39
+  OffsetMin: -468.482, -39
   OffsetMax: -12, 39
-  SizeDelta: 456.54, 78
+  SizeDelta: 456.482, 78
 - Id: 2702
   Name: bc_skills
   Children:
@@ -109045,15 +109045,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 0, 164.794, 0
+  Position: 0, 173.448, 0
   Rotation: 0, 0, 0, 1
   Scale: 1.064, 1.064, 1
   Pivot: 0.5, 1
-  AnchorPoint: 0, -65.268
+  AnchorPoint: 0, -56.613
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -238, -85.268
-  OffsetMax: 238, -65.268
+  OffsetMin: -238, -76.613
+  OffsetMax: 238, -56.613
   SizeDelta: 476, 20
 - Id: 2707
   Name: ttl01_text01
@@ -109164,15 +109164,15 @@ Objects:
         ObjectRefId: 2713
       Enable: true
   Active: true
-  Position: -240.985, 37.719, 0
+  Position: -240.985, 48.994, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -240.985, 37.719
+  AnchorPoint: -240.985, 48.994
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, 37.719
-  OffsetMax: -240.985, 37.719
+  OffsetMin: -240.985, 48.994
+  OffsetMax: -240.985, 48.994
   SizeDelta: 0, 0
 - Id: 2709
   Name: root
@@ -109222,9 +109222,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 481.97, 156.284
+  OffsetMin: -240.985, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 481.97, 163.8
 - Id: 2711
   Name: base01_set01
   Children:
@@ -109256,9 +109256,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 481.97, 156.284
+  OffsetMin: -240.985, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 481.97, 163.8
 - Id: 2712
   Name: loc_icon_ability
   Children:
@@ -109374,9 +109374,9 @@ Objects:
   AnchorPoint: 78.648, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -83.688, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 324.673, 156.284
+  OffsetMin: -83.688, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 324.673, 163.8
 - Id: 2715
   Name: text01
   Components:
@@ -109415,11 +109415,11 @@ Objects:
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, -45.142
+  AnchorPoint: 0, -48.9
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 0, -70.142
-  OffsetMax: 324.673, -20.142
+  OffsetMin: 0, -73.9
+  OffsetMax: 324.673, -23.9
   SizeDelta: 324.673, 50
 - Id: 2716
   Name: loc_elem01
@@ -109481,11 +109481,11 @@ Objects:
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, -116.142
+  AnchorPoint: 0, -119.9
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 0, -130.142
-  OffsetMax: 155.01, -102.142
+  OffsetMin: 0, -133.9
+  OffsetMax: 155.01, -105.9
   SizeDelta: 155.01, 28
 - Id: 2717
   Name: elem01_icon01
@@ -111256,15 +111256,15 @@ Objects:
         ObjectRefId: 2771
       Enable: true
   Active: true
-  Position: 240.985, 37.719, 0
+  Position: 240.985, 48.994, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 240.985, 37.719
+  AnchorPoint: 240.985, 48.994
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 240.985, 37.719
-  OffsetMax: 240.985, 37.719
+  OffsetMin: 240.985, 48.994
+  OffsetMax: 240.985, 48.994
   SizeDelta: 0, 0
 - Id: 2767
   Name: root
@@ -111314,9 +111314,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 481.97, 156.284
+  OffsetMin: -240.985, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 481.97, 163.8
 - Id: 2769
   Name: base01_set01
   Children:
@@ -111348,9 +111348,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 481.97, 156.284
+  OffsetMin: -240.985, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 481.97, 163.8
 - Id: 2770
   Name: loc_icon_ability
   Children:
@@ -111466,9 +111466,9 @@ Objects:
   AnchorPoint: 78.648, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -83.688, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 324.673, 156.284
+  OffsetMin: -83.688, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 324.673, 163.8
 - Id: 2773
   Name: text01
   Components:
@@ -111507,11 +111507,11 @@ Objects:
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, -45.142
+  AnchorPoint: 0, -48.9
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 0, -70.142
-  OffsetMax: 324.673, -20.142
+  OffsetMin: 0, -73.9
+  OffsetMax: 324.673, -23.9
   SizeDelta: 324.673, 50
 - Id: 2774
   Name: loc_elem01
@@ -111573,11 +111573,11 @@ Objects:
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, -116.142
+  AnchorPoint: 0, -119.9
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 0, -130.142
-  OffsetMax: 155.01, -102.142
+  OffsetMin: 0, -133.9
+  OffsetMax: 155.01, -105.9
   SizeDelta: 155.01, 28
 - Id: 2775
   Name: elem01_icon01
@@ -113348,15 +113348,15 @@ Objects:
         ObjectRefId: 2829
       Enable: true
   Active: true
-  Position: -240.985, -118.565, 0
+  Position: -240.985, -114.807, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -240.985, -118.565
+  AnchorPoint: -240.985, -114.807
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -118.565
-  OffsetMax: -240.985, -118.565
+  OffsetMin: -240.985, -114.807
+  OffsetMax: -240.985, -114.807
   SizeDelta: 0, 0
 - Id: 2825
   Name: root
@@ -113406,9 +113406,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 481.97, 156.284
+  OffsetMin: -240.985, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 481.97, 163.8
 - Id: 2827
   Name: base01_set01
   Children:
@@ -113440,9 +113440,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 481.97, 156.284
+  OffsetMin: -240.985, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 481.97, 163.8
 - Id: 2828
   Name: loc_icon_ability
   Children:
@@ -113558,9 +113558,9 @@ Objects:
   AnchorPoint: 78.648, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -83.688, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 324.673, 156.284
+  OffsetMin: -83.688, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 324.673, 163.8
 - Id: 2831
   Name: text01
   Components:
@@ -113599,11 +113599,11 @@ Objects:
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, -45.142
+  AnchorPoint: 0, -48.9
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 0, -70.142
-  OffsetMax: 324.673, -20.142
+  OffsetMin: 0, -73.9
+  OffsetMax: 324.673, -23.9
   SizeDelta: 324.673, 50
 - Id: 2832
   Name: loc_elem01
@@ -113665,11 +113665,11 @@ Objects:
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, -116.142
+  AnchorPoint: 0, -119.9
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 0, -130.142
-  OffsetMax: 155.01, -102.142
+  OffsetMin: 0, -133.9
+  OffsetMax: 155.01, -105.9
   SizeDelta: 155.01, 28
 - Id: 2833
   Name: elem01_icon01
@@ -115440,15 +115440,15 @@ Objects:
         ObjectRefId: 2887
       Enable: true
   Active: true
-  Position: 240.985, -118.565, 0
+  Position: 240.985, -114.807, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 240.985, -118.565
+  AnchorPoint: 240.985, -114.807
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 240.985, -118.565
-  OffsetMax: 240.985, -118.565
+  OffsetMin: 240.985, -114.807
+  OffsetMax: 240.985, -114.807
   SizeDelta: 0, 0
 - Id: 2883
   Name: root
@@ -115498,9 +115498,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 481.97, 156.284
+  OffsetMin: -240.985, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 481.97, 163.8
 - Id: 2885
   Name: base01_set01
   Children:
@@ -115532,9 +115532,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -240.985, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 481.97, 156.284
+  OffsetMin: -240.985, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 481.97, 163.8
 - Id: 2886
   Name: loc_icon_ability
   Children:
@@ -115650,9 +115650,9 @@ Objects:
   AnchorPoint: 78.648, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -83.688, -78.142
-  OffsetMax: 240.985, 78.142
-  SizeDelta: 324.673, 156.284
+  OffsetMin: -83.688, -81.9
+  OffsetMax: 240.985, 81.9
+  SizeDelta: 324.673, 163.8
 - Id: 2889
   Name: text01
   Components:
@@ -115691,11 +115691,11 @@ Objects:
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, -45.142
+  AnchorPoint: 0, -48.9
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 0, -70.142
-  OffsetMax: 324.673, -20.142
+  OffsetMin: 0, -73.9
+  OffsetMax: 324.673, -23.9
   SizeDelta: 324.673, 50
 - Id: 2890
   Name: loc_elem01
@@ -115757,11 +115757,11 @@ Objects:
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, -116.142
+  AnchorPoint: 0, -119.9
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 0, -130.142
-  OffsetMax: 155.01, -102.142
+  OffsetMin: 0, -133.9
+  OffsetMax: 155.01, -105.9
   SizeDelta: 155.01, 28
 - Id: 2891
   Name: elem01_icon01
@@ -117535,15 +117535,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: 217.689, -591.949, 0
+  Position: 217.689, -586.072, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.722, 0.722, 1
+  Scale: 0.723, 0.723, 1
   Pivot: 0.5, 0
-  AnchorPoint: 217.689, -591.949
+  AnchorPoint: 217.689, -586.072
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 217.689, -591.949
-  OffsetMax: 217.689, -541.949
+  OffsetMin: 217.689, -586.072
+  OffsetMax: 217.689, -536.072
   SizeDelta: 0, 50
 - Id: 2941
   Name: bc_frame

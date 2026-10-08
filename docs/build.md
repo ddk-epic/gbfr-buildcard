@@ -78,3 +78,4 @@ earlier step left in the tree, so steps depend on each other only through the ob
 | `status01` | gear | `steps/status01/gear.py` |
 | `status01` | master traits | `steps/status01/master_traits.py` |
 | `chr_status_bg01` | panel, backdrop | `steps/chr_status_bg01/backdrop.py` |
+| `chr_status_bg01` | decoration lines | `steps/chr_status_bg01/lines.py` |

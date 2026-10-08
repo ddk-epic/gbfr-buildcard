@@ -185,9 +185,9 @@ Objects:
   AnchorPoint: 0, 72.5
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1736, -809
-  OffsetMax: 1736, 954
-  SizeDelta: 3472, 1763
+  OffsetMin: -1787.36, -834.68
+  OffsetMax: 1787.36, 979.68
+  SizeDelta: 3574.72, 1814.36
 - Id: 4
   Name: bg02
   Components:
@@ -226,16 +226,16 @@ Objects:
       RenderType: 0
       Enable: true
   Active: true
-  Position: -1728.644, 863.169, 0
+  Position: -1780.504, 889.019, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 1
-  AnchorPoint: 7.356, -18.331
+  AnchorPoint: 6.856, -18.161
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 7.356, -1741.669
-  OffsetMax: 1116.986, -18.331
-  SizeDelta: 1109.63, 1723.338
+  OffsetMin: 6.856, -1793.199
+  OffsetMax: 1149.775, -18.161
+  SizeDelta: 1142.919, 1775.038
 - Id: 5
   Name: loc_line
   Children:
@@ -272,15 +272,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -1715, -1080, 0
+  Position: -1766.36, -1080, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0
-  AnchorPoint: 205, 0
+  AnchorPoint: 153.64, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: 203, 0
-  OffsetMax: 207, 552
+  OffsetMin: 151.64, 0
+  OffsetMax: 155.64, 552
   SizeDelta: 4, 552
 - Id: 7
   Name: line01_02
@@ -300,15 +300,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -1920, -867, 0
+  Position: -1920, -892.68, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 0, 213
+  AnchorPoint: 0, 187.32
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: 0, 211
-  OffsetMax: 1600, 215
+  OffsetMin: 0, 185.32
+  OffsetMax: 1600, 189.32
   SizeDelta: 1600, 4
 - Id: 8
   Name: line02_01
@@ -328,15 +328,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 1713, 1080, 0
+  Position: 1764.36, 1080, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 1
-  AnchorPoint: -207, 0
+  AnchorPoint: -155.64, 0
   AnchorMin: 1, 1
   AnchorMax: 1, 1
-  OffsetMin: -209, -400
-  OffsetMax: -205, 0
+  OffsetMin: -157.64, -400
+  OffsetMax: -153.64, 0
   SizeDelta: 4, 400
 - Id: 9
   Name: line02_02
@@ -356,13 +356,13 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 1920, 1017, 0
+  Position: 1920, 1042.68, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 1, 0.5
-  AnchorPoint: 0, -63
+  AnchorPoint: 0, -37.32
   AnchorMin: 1, 1
   AnchorMax: 1, 1
-  OffsetMin: -1600, -65
-  OffsetMax: 0, -61
+  OffsetMin: -1600, -39.32
+  OffsetMax: 0, -35.32
   SizeDelta: 1600, 4

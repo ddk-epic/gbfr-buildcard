@@ -2,20 +2,20 @@
 # Draws sharecard's parchment cut as the alpha of a mask over the white panel.
 import math, struct, sys, zlib
 
-S = 3424 / 2880  # card scale
+S = 3526.72 / 2880  # loc_buildcard units per sharecard pixel
+CARD_W, CARD_H = 2880, 1440
 
 W, H = int(sys.argv[1]), int(sys.argv[2])
 
-# bg01, 4K units
-PANEL_W, PANEL_H = 3472, 1763
+# bg01, 4K units: the card and ps_cmn_base53's transparent margins
 CARD_LEFT, CARD_TOP = 24, 24
+PANEL_W, PANEL_H = CARD_W * S + 48, CARD_H * S + 51
 
 # sharecard's ParchmentBackdrop, art pixels
 ART_W, ART_H = 1392, 1813
 EDGE_TOP_X, EDGE_BOT_X = 1390, 622
 SPIKE_TOP_Y, SPIKE_APEX_OFF, SPIKE_INNER_OFF, SPIKE_OUTER_OFF = 453, 8, 26, 78
 ANGLE, PIVOT_Y, MASK_W = 14, 2900, 1106
-CARD_H = 1440
 
 SUBROWS = 4
 

@@ -2,16 +2,29 @@
 from model.components import rect
 
 # loc_buildcard units per sharecard pixel
-S = 3424 / 2880
+S = 3526.72 / 2880
 CARD_W, CARD_H = 2880, 1440  # sharecard pixels
 
+# sharecard's grid inside the card's frame, in sharecard pixels
+INSET = 3 * 12 / S  # bc_frame's border and twice its width
+BOX_W, BOX_H = CARD_W - 2 * INSET, CARD_H - 2 * INSET
+GAP = 24
+SHARES = (20, 27, 53)  # status, gear, master traits
+ROW_UPPER = 1102
+
+COL_W = [(BOX_W - 2 * GAP) * share / sum(SHARES) for share in SHARES]
+COL_X = [INSET, INSET + COL_W[0] + GAP, INSET + COL_W[0] + COL_W[1] + 2 * GAP]
+BAND_Y = INSET + ROW_UPPER + GAP
+BAND_H = INSET + BOX_H - BAND_Y
+THIRD = (COL_W[2] - 2 * GAP) / 3  # over mastery's width; summons spans two and a gap
+
 # sections: left, top, width, height in sharecard pixels
-STATUS = (16, 16, 560, 1102)
-GEAR = (600, 16, 756, 1388)
-MASTER_TRAITS = (1380, 16, 1484, 1102)
-SKILLS = (16, 1142, 560, 262)
-OVER_MASTERY = (1380, 1142, 491.33, 262)
-SUMMONS = (1876.33, 1142, 987.67, 262)
+STATUS = (COL_X[0], INSET, COL_W[0], ROW_UPPER)
+GEAR = (COL_X[1], INSET, COL_W[1], BOX_H)
+MASTER_TRAITS = (COL_X[2], INSET, COL_W[2], ROW_UPPER)
+SKILLS = (COL_X[0], BAND_Y, COL_W[0], BAND_H)
+OVER_MASTERY = (COL_X[2], BAND_Y, THIRD, BAND_H)
+SUMMONS = (COL_X[2] + THIRD + GAP, BAND_Y, 2 * THIRD + GAP, BAND_H)
 
 # panels, in sharecard pixels
 PAD_X, PAD_Y = 10, 18.5  # border and padding

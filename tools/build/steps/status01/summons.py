@@ -111,6 +111,10 @@ def slot(sources, name, scale):
         row.set("Scale", (k, k, 1))
         row.place(pos=(x, top - y))
         row.find("line01").set("Active", False)
+        # the name closer to its icon
+        row_text = row.find("loc_text")
+        tx, ty = row_text.vec("Position")[:2]
+        row_text.place(pos=(tx - 10, ty))
         # the level's padding and spacing as in the gear trait rows
         row_level = row.find("loc_skill_lv01")
         row_level.replace("Padding: 28, 0, 34, 0", "Padding: 28, 0, 40, 4")

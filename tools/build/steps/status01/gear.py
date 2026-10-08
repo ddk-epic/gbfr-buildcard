@@ -10,10 +10,11 @@ SIGIL_ROWS = 12
 # sigil rows, in loc_gene units
 ROW_H = 80
 EDGE = 8  # the columns' and the level's inset from the row's edges
-LEVEL_W = 175
+LEVEL_INK = 148  # stock "Lv 15" width with right padding
 ICON_W = 72
 ICON_X = 40  # the icon's centre from the column's left edge
-NAME_X = 96  # the name's left edge from the column's left edge
+NAME_X = 86  # the name's left edge from the column's left edge
+NAME_GAP = 8  # the name's right edge to the next icon or the level
 SKILLS_INSET = 40  # loc_icon_skill's pivot, its right edge, from the row's right edge
 FONT_SIZE = 40
 
@@ -109,8 +110,11 @@ def rework_sigil_row(row, row_w):
     # both traits' icons and names, then the level, like sharecard's sigil rows
     gene = row.child("root").child("loc_gene")
     icon, name, level, skills = (gene.child(n) for n in ("icon01", "text01_01", "loc_text01_02", "loc_icon_skill"))
-    column_w = (row_w - 2 * EDGE - LEVEL_W) / 2
+    # the columns split the row from icon 1's left to the level's text
+    icon_left = ICON_X - ICON_W / 2
+    column_w = (row_w - 2 * EDGE - LEVEL_INK - icon_left) / 2
     columns = [-row_w / 2 + EDGE, -row_w / 2 + EDGE + column_w]
+    name_w = column_w + icon_left - NAME_X - NAME_GAP
     skills_right = row_w / 2 - SKILLS_INSET
 
     for n in range(2):
@@ -138,7 +142,7 @@ def rework_sigil_row(row, row_w):
     for n in range(2):
         skills.child(f"icon_skill0{n + 1}").place(pos=(columns[n] + ICON_X - skills_right, 0), size=(ICON_W, ICON_W))
         skills.child(f"bc_trait0{n + 1}").place(pos=(columns[n] + NAME_X - skills_right, 0),
-                                                 size=(column_w - NAME_X, ROW_H))
+                                                 size=(name_w, ROW_H))
 
 
 def raise_level(level):
@@ -156,6 +160,10 @@ def match_trait_rows(traits, sigil_rows, width):
     for row in weapon_rows:
         row.place(size=(width, row.vec("SizeDelta")[1]))
         row.repin()
+        # the name closer to its icon
+        name = row.find("text01")
+        x, y = name.vec("Position")[:2]
+        name.place(pos=(x - 10, y))
         level = row.find("loc_skill_lv01")
         level.place(pos=(width / 2 - EDGE, level.vec("Position")[1]))
         # the bar's right padding shortened by as much as the gap

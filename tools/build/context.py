@@ -14,12 +14,6 @@ TARGETS = {
     "chr_status_bg01": f"{PREFABS}/chr_status_bg01.prfb.yaml",
 }
 
-# the stock prefabs in the repo's history, by the commit that added them
-COMMITTED = {
-    "status01": "662eedd",
-}
-
-
 def git_show(rev, path):
     # the file at a revision, or None where it does not exist
     result = subprocess.run(["git", "show", f"{rev}:{path}"], cwd=REPO, capture_output=True, encoding="utf-8")
@@ -40,9 +34,7 @@ class Context:
         return self.prefabs[name]
 
     def stock(self, name):
-        # a fresh copy of the game's prefab, from its commit or <stock dir>/<name>.prfb.yaml
-        if name in COMMITTED and name not in self._stock:
-            self._stock[name] = git_show(COMMITTED[name], TARGETS[name])
+        # a fresh copy of the game's prefab
         if name not in self._stock:
             self._stock[name] = self.stock_file(f"{name}.prfb")
         return Prefab.parse(self._stock[name])

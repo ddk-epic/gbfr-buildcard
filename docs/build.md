@@ -26,8 +26,8 @@ python -m unittest discover -s tests -t .    # from tools/build
 
 ### Stock files
 
-Stock `status01` is read from commit 662eedd, which added it. The other stock prefabs and every stock asset list come
-from `--stock`, a folder of the game's files converted to YAML, named `<name>.prfb.yaml` and `<name>.list.yaml`:
+The stock prefabs and asset lists come from `--stock`, a folder of the game's files converted to YAML, named
+`<name>.prfb.yaml` and `<name>.list.yaml`:
 
 ```
 gbfr.uitools.exe b-convert -i <extracted>/ui/layouts/pause/summon/prefabs/summon_list01.prfb -o <stock>/summon_list01.prfb.yaml
@@ -74,6 +74,3 @@ earlier step left in the tree, so steps depend on each other only through the ob
 | `status01` | gear | `steps/status01/gear.py` |
 | `status01` | master traits | `steps/status01/master_traits.py` |
 | `chr_status_bg01` | panel, backdrop | `steps/chr_status_bg01/backdrop.py` |
-
-The edit logs ([status01-edits.md](status01-edits.md), [chr_status_bg01-edits.md](chr_status_bg01-edits.md)) end at
-5f5f456; the steps and their history replace them.

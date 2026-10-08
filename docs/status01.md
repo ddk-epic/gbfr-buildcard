@@ -6,9 +6,8 @@ The main page of the in-game **Character Details** panel (pause menu > character
 |---|---|
 | Game path | `data/ui/layouts/pause/status/prefabs/status01.prfb` |
 | Repo source | `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs/status01.prfb.yaml`, written by `tools/build/build.py` ([build.md](build.md)) |
-| Edit log | [status01-edits.md](status01-edits.md), frozen at 5f5f456 |
 | Placed by | view `pause_status01.view.viewb`, full screen, centred |
-| Objects | 426 stock (Ids 0-425) + 2518 added (Ids 426-2943), see the edit log |
+| Objects | 426 stock (Ids 0-425) + 2518 added (Ids 426-2943) |
 | Size | 20,689 lines stock |
 
 The other pages and parts of the panel are separate prefabs: `chr_status_bg01` (white panel, blue portrait area, frame lines), `status_guide01` (Q/E arrows), `var00_chr_skill_info01` (skill details), `chr_skill_info01/02` (trait details, command list), `chr_sboard_info01` (master traits).
@@ -41,7 +40,7 @@ Objects:
   SizeDelta: 184, 184
 ```
 
-- **Ids** are the object's index in the list and are in depth-first order: a parent comes before its children, and a subtree occupies a contiguous Id range. New objects go after the last object of the subtree they join. Moving an object to another parent would break the order; move it by changing its rect instead.
+- **Ids** are the object's index in the list and are in depth-first order: a parent comes before its children, and a subtree occupies a contiguous Id range. The build assigns them when it writes the prefab.
 - **Coordinates** are 4K (3840x2160), y up. The rect fields are redundant and must stay consistent:
   - `AnchorMin`/`AnchorMax`: anchor rectangle as fractions of the parent's size (equal = a point).
   - `AnchorPoint`: the pivot's position relative to the anchor point.

@@ -2,7 +2,7 @@
 import re
 
 from model.prefab import f
-from steps.layout import PANEL_SCALE, S, SKILLS, STATUS, card, move
+from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, STATUS, card, move
 
 # sharecard's StatusPanel, in sharecard pixels
 BORDER = 1
@@ -57,7 +57,7 @@ def font_sizes(node, size, overrides):
 def status_block(block):
     left, top, width, height = STATUS
     scale = PANEL_SCALE
-    u = scale / S  # sharecard pixels per block unit
+    u = scale / SCREEN_CARD_RATIO  # sharecard pixels per block unit
 
     value_cap = NUMBER_SIZE * GAME_CAP
     h = (2 * (BORDER + PAD_Y) + ROW_GAP) / u + 2 * value_cap
@@ -140,7 +140,7 @@ def badges(base, status_top):
     def half_height(node):
         return node.vec("SizeDelta")[1] * BADGE_SCALE / 2
 
-    gap = (SKILLS[1] - (STATUS[1] + STATUS[3])) * S
+    gap = (SKILLS[1] - (STATUS[1] + STATUS[3])) * SCREEN_CARD_RATIO
     overhang = half_height(element) - half_height(name)
     name_centre = status_top + gap + overhang + half_height(name)
     power_centre = name_centre + half_height(name) + gap + half_height(power) - DIAMOND_PAD * BADGE_SCALE

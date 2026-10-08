@@ -1,6 +1,6 @@
 # Places the portrait on sharecard's spot, masked by the gear screen's portrait mask fading out over the left column.
 from model.components import mask
-from steps.layout import CARD_H, CARD_W, S, card
+from steps.layout import CARD_H, CARD_W, SCREEN_CARD_RATIO, card
 
 IMAGES = ["chr_img01", "chr_img01_mask"]
 ART_H = 2932  # chr_img01
@@ -26,14 +26,14 @@ def apply(ctx):
 
     x, y = card(-BLEED + (SEAM + 2 * BLEED) / 2 + OFFSET_X, CARD_H / 2)
     portrait.place(pos=(x, y))
-    scale = ART_SCALE * CARD_H * S / ART_H
+    scale = ART_SCALE * CARD_H * SCREEN_CARD_RATIO / ART_H
     for image in images:
         image.set("Scale", (scale, scale, 1))
 
     # turned, the opaque columns start at the card's left edge and the transparent rows lie below the card
-    left, top = -CARD_W * S / 2, CARD_H * S / 2
+    left, top = -CARD_W * SCREEN_CARD_RATIO / 2, CARD_H * SCREEN_CARD_RATIO / 2
     w = (card(FADE_START, 0)[0] - left) * TEX_SIZE / OPAQUE_W
-    h = CARD_H * S * TEX_SIZE / (TEX_SIZE - PAD_TOP)
+    h = CARD_H * SCREEN_CARD_RATIO * TEX_SIZE / (TEX_SIZE - PAD_TOP)
     portrait.place(size=(w, h), pivot=(1 - (x - left) / w, (top - y) / h))
     portrait.set("Rotation", TURNED)
     for image in images:

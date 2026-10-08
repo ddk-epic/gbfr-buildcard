@@ -1,7 +1,7 @@
 # Lays out the Over Mastery section: lb_ovtli02's rows on a status-style panel under a title bar.
 from model.components import components, rect, set_line
 from model.prefab import copy, f
-from steps.layout import (CARD_ORDER, ICON_PAD, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, S, TITLE_SCALE, TITLE_TEXT,
+from steps.layout import (CARD_ORDER, ICON_PAD, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, TITLE_SCALE, TITLE_TEXT,
                           card, insert)
 
 INK = (0.19607843, 0.37254903, 0.4901961)
@@ -36,7 +36,7 @@ def apply(ctx):
 
     left, top, width, height = OVER_MASTERY
     scale = PANEL_SCALE
-    u = scale / S  # sharecard pixels per panel unit
+    u = scale / SCREEN_CARD_RATIO  # sharecard pixels per panel unit
     title_k = TITLE_SCALE / scale
     w, h = width / u, height / u
     bar_y = h / 2 - PAD_Y / u - TITLE_TEXT * title_k
@@ -65,7 +65,7 @@ def apply(ctx):
     text.place(pos=(cx, cy + scale * (bar_y - BAR_TEXT * title_k)))
 
     # rows centred between the bar's gap and the bottom padding, at the skills icons' left inset
-    row_scale = ICON * S / ROW_ICON * ROW_SCALE / scale
+    row_scale = ICON * SCREEN_CARD_RATIO / ROW_ICON * ROW_SCALE / scale
     line_h, line_gap = LINE_H * ROW_SCALE / u, LINE_GAP * ROW_SCALE / u
     content_top = bar_y - TITLE_GAP * title_k
     content_bottom = -h / 2 + PAD_Y / u

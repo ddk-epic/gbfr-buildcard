@@ -1,7 +1,7 @@
 # Lays out the summons section as sharecard's summon cells on a status-style panel.
 from model.components import components, mask, rect, set_line, single
 from model.prefab import Ref, copy, f
-from steps.layout import PANEL_SCALE, S, SUMMONS, card, section
+from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SUMMONS, card, section
 
 SLOTS = 4
 COLUMN_GAP = 10  # sharecard pixels
@@ -84,9 +84,9 @@ def slot(sources, name, scale):
     set_line(row_text, "Spacing", LEVEL_GAP)
     wrap.place(size=(0, LEVEL_H))
 
-    left, top = -CELL_W / 2, 70 + PAD_TOP * S / scale
-    cell_h = 131 * S / scale
-    portrait_y = 18 * S / scale  # below the cell's centre
+    left, top = -CELL_W / 2, 70 + PAD_TOP * SCREEN_CARD_RATIO / scale
+    cell_h = 131 * SCREEN_CARD_RATIO / scale
+    portrait_y = 18 * SCREEN_CARD_RATIO / scale  # below the cell's centre
 
     # the band fade's ramp across the band
     band_fade_w = BAND_W / (1 - BAND_FADE_PADDING)
@@ -129,15 +129,15 @@ def apply(ctx):
     frame = ctx.stock("status01").find("loc_chr_status03/status_base01")
 
     left, top, width, height = SUMMONS
-    scale = (width - COLUMN_GAP) / 2 * S / CELL_W
-    slot_h = SLOT_H * scale / S  # sharecard pixels
+    scale = (width - COLUMN_GAP) / 2 * SCREEN_CARD_RATIO / CELL_W
+    slot_h = SLOT_H * scale / SCREEN_CARD_RATIO  # sharecard pixels
 
     summons = section(ctx.prefab("status01").find("loc_buildcard"), "bc_smn")
     panel_components = [line.replace("SpriteName: ps_cmn_base52", "SpriteName: ps_cmn_base54")
                         for line in components(frame)]
     panel = summons.add(rect("bc_smn_base", panel_components))
     panel.set("Scale", (PANEL_SCALE, PANEL_SCALE, 1))
-    panel.place(pos=card(left + width / 2, top + height / 2), size=(width * S / PANEL_SCALE, height * S / PANEL_SCALE))
+    panel.place(pos=card(left + width / 2, top + height / 2), size=(width * SCREEN_CARD_RATIO / PANEL_SCALE, height * SCREEN_CARD_RATIO / PANEL_SCALE))
 
     # slots at the top of the section's quarters
     slots = []

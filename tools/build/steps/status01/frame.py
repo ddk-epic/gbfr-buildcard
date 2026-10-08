@@ -1,6 +1,6 @@
 # Adds an ornate frame around the card.
 from model.components import image, rect
-from steps.layout import CARD_H, CARD_W, S, place, section
+from steps.layout import CARD_H, CARD_W, SCREEN_CARD_RATIO, place, section
 
 SPRITE = ("atlas/pause_pause_common", "ps_cmn_frame02")
 LINE_COLOR = (173 / 255, 199 / 255, 223 / 255)  # ps_cmn_base53's line
@@ -12,8 +12,8 @@ CORNER_LEN, CORNER_W = 30, 16  # game units
 
 def apply(ctx):
     frame = section(ctx.prefab("status01").find("loc_buildcard"), "bc_frame")
-    band, inset = BAND / S, INSET / S
-    length, width = CORNER_LEN / S, CORNER_W / S
+    band, inset = BAND / SCREEN_CARD_RATIO, INSET / SCREEN_CARD_RATIO
+    length, width = CORNER_LEN / SCREEN_CARD_RATIO, CORNER_W / SCREEN_CARD_RATIO
 
     def add(name, components, x, y, w, h):
         place(frame.add(rect(name, components, pivot=(0, 1))), x, y, w, h)

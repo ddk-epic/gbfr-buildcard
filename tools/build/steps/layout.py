@@ -2,11 +2,11 @@
 from model.components import rect
 
 # loc_buildcard units per sharecard pixel
-S = 3526.72 / 2880
+SCREEN_CARD_RATIO = 3526.72 / 2880
 CARD_W, CARD_H = 2880, 1440  # sharecard pixels
 
 # sharecard's grid inside the card's frame, in sharecard pixels
-INSET = 3 * 12 / S  # bc_frame's border and twice its width
+INSET = 3 * 12 / SCREEN_CARD_RATIO  # bc_frame's border and twice its width
 BOX_W, BOX_H = CARD_W - 2 * INSET, CARD_H - 2 * INSET
 GAP = 24
 SHARES = (20, 27, 53)  # status, gear, master traits
@@ -31,7 +31,7 @@ PAD_X, PAD_Y = 10, 18.5  # border and padding
 ICON_PAD = 5  # pl-1 of sharecard's compact skill cell
 
 # the status-style panels' scale: the skills block's 1000 units across its section
-PANEL_SCALE = SKILLS[2] * S / 1000
+PANEL_SCALE = SKILLS[2] * SCREEN_CARD_RATIO / 1000
 TITLE_TEXT = 30  # a title text's top above its bar's top, in title units
 
 # the gear column's stack, in bc_weapon units from its root's pivot
@@ -47,7 +47,7 @@ SIGILS_TITLE_TOP = PENDULUM_TOP - PENDULUM_H - STACK_GAP - TITLE_TEXT
 GENE_TOP = SIGILS_TITLE_TOP - GENE_GAP
 
 # bc_weapon's scale, the stack across the gear section's height, and every title's
-TITLE_SCALE = GEAR[3] * S / (WEAPON_TOP - GENE_TOP + GENE_H)
+TITLE_SCALE = GEAR[3] * SCREEN_CARD_RATIO / (WEAPON_TOP - GENE_TOP + GENE_H)
 
 # loc_buildcard's children in order, each added by its section's step
 CARD_ORDER = ["bc_mtraits", "bc_om", "bc_smn", "bc_weapon", "bc_skills", "bc_om_ttl_text", "bc_frame"]
@@ -66,13 +66,13 @@ def insert(parent, node, order):
 def section(card, name):
     # a container over the whole card at the section's slot under loc_buildcard
     node = insert(card, rect(name), CARD_ORDER)
-    node.place(pos=(0, 0), size=(CARD_W * S, CARD_H * S))
+    node.place(pos=(0, 0), size=(CARD_W * SCREEN_CARD_RATIO, CARD_H * SCREEN_CARD_RATIO))
     return node
 
 
 def card(x, y):
     # sharecard pixels on the card to loc_buildcard units
-    return (x - CARD_W / 2) * S, (CARD_H / 2 - y) * S
+    return (x - CARD_W / 2) * SCREEN_CARD_RATIO, (CARD_H / 2 - y) * SCREEN_CARD_RATIO
 
 
 def move(node, x, y):
@@ -87,4 +87,4 @@ def move(node, x, y):
 
 def place(node, x, y, w, h):
     # places node by its pivot at sharecard pixels on the card, sized in sharecard pixels
-    node.place(pos=card(x, y), size=(w * S, h * S))
+    node.place(pos=card(x, y), size=(w * SCREEN_CARD_RATIO, h * SCREEN_CARD_RATIO))

@@ -1,6 +1,6 @@
 # Fits the white panel over the card and stretches the blue portrait backdrop over sharecard's parchment, clipped to it.
 from model.components import mask
-from steps.layout import CARD_H, CARD_W, S
+from steps.layout import CARD_H, CARD_W, SCREEN_CARD_RATIO
 
 CARD_Y = 74  # status01's loc_base01
 MASK = "layouts/pause/status/noatlastextures/bc_backdrop_mask"
@@ -20,13 +20,13 @@ def apply(ctx):
     panel = ctx.prefab("chr_status_bg01").at("root/loc_bg/bg01")
     backdrop = panel.child("bg02")
 
-    pw, ph = CARD_W * S + MARGIN_LEFT + MARGIN_RIGHT, CARD_H * S + MARGIN_TOP + MARGIN_BOTTOM
+    pw, ph = CARD_W * SCREEN_CARD_RATIO + MARGIN_LEFT + MARGIN_RIGHT, CARD_H * SCREEN_CARD_RATIO + MARGIN_TOP + MARGIN_BOTTOM
     panel.place(pos=((MARGIN_RIGHT - MARGIN_LEFT) / 2, CARD_Y + (MARGIN_TOP - MARGIN_BOTTOM) / 2), size=(pw, ph))
 
-    kx = (ART_RIGHT - ART_LEFT) * S / (TEX_W - PAD_LEFT - PAD_RIGHT)
-    ky = (ART_BOTTOM - ART_TOP) * S / (TEX_H - PAD_TOP - PAD_BOTTOM)
-    x = MARGIN_LEFT + ART_LEFT * S - PAD_LEFT * kx
-    y = MARGIN_TOP + ART_TOP * S - PAD_TOP * ky
+    kx = (ART_RIGHT - ART_LEFT) * SCREEN_CARD_RATIO / (TEX_W - PAD_LEFT - PAD_RIGHT)
+    ky = (ART_BOTTOM - ART_TOP) * SCREEN_CARD_RATIO / (TEX_H - PAD_TOP - PAD_BOTTOM)
+    x = MARGIN_LEFT + ART_LEFT * SCREEN_CARD_RATIO - PAD_LEFT * kx
+    y = MARGIN_TOP + ART_TOP * SCREEN_CARD_RATIO - PAD_TOP * ky
     backdrop.place(pos=(x - pw / 2, ph / 2 - y), size=(TEX_W * kx, TEX_H * ky))
 
     i = panel.lines.index("  Active: true")

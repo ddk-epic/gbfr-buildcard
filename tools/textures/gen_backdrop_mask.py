@@ -2,14 +2,14 @@
 # Draws sharecard's parchment cut as the alpha of a mask over the white panel.
 import math, struct, sys, zlib
 
-S = 3526.72 / 2880  # loc_buildcard units per sharecard pixel
+SCREEN_CARD_RATIO = 3526.72 / 2880  # loc_buildcard units per sharecard pixel
 CARD_W, CARD_H = 2880, 1440
 
 W, H = int(sys.argv[1]), int(sys.argv[2])
 
 # bg01, 4K units: the card and ps_cmn_base53's transparent margins
 CARD_LEFT, CARD_TOP = 24, 24
-PANEL_W, PANEL_H = CARD_W * S + 48, CARD_H * S + 51
+PANEL_W, PANEL_H = CARD_W * SCREEN_CARD_RATIO + 48, CARD_H * SCREEN_CARD_RATIO + 51
 
 # sharecard's ParchmentBackdrop, art pixels
 ART_W, ART_H = 1392, 1813
@@ -48,13 +48,13 @@ def spans(y):
 
 def to_u(x):
     # card pixels to texels
-    return (x * S + CARD_LEFT) * W / PANEL_W
+    return (x * SCREEN_CARD_RATIO + CARD_LEFT) * W / PANEL_W
 
 coverage = [[0.0] * W for _ in range(H)]
 for v in range(H):
     row = coverage[v]
     for sub in range(SUBROWS):
-        y = ((v + (sub + 0.5) / SUBROWS) * PANEL_H / H - CARD_TOP) / S
+        y = ((v + (sub + 0.5) / SUBROWS) * PANEL_H / H - CARD_TOP) / SCREEN_CARD_RATIO
         for a, b in spans(y):
             a, b = max(0.0, to_u(a)), min(float(W), to_u(b))
             for u in range(int(a), min(W, math.ceil(b))):

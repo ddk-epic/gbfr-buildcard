@@ -1,7 +1,7 @@
 # Lays out the skills section: the Skills screen's cards, reduced to icon, name and element tag, in a 2x2 grid.
 from model.components import components, rect, set_line, set_refs
 from model.prefab import copy
-from steps.layout import (CARD_ORDER, ICON_PAD, PAD_X, PAD_Y, PANEL_SCALE, S, SKILLS, TITLE_SCALE, TITLE_TEXT, card,
+from steps.layout import (CARD_ORDER, ICON_PAD, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, TITLE_SCALE, TITLE_TEXT, card,
                           insert)
 
 CARDS = ["ability_set01_btn04", "ability_set01_btn03", "ability_set01_btn01", "ability_set01_btn02"]  # slots 1 to 4
@@ -80,7 +80,7 @@ def apply(ctx):
 
     left, top, width, height = SKILLS
     scale = PANEL_SCALE
-    u = scale / S  # sharecard pixels per block unit
+    u = scale / SCREEN_CARD_RATIO  # sharecard pixels per block unit
     title_k = TITLE_SCALE / scale
     h = height / u
     heading_h = (TITLE_TEXT + TITLE_GAP) * title_k

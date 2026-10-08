@@ -2,7 +2,7 @@
 from model.components import (CENTER, LEFT, RIGHT, components, get_line, image, mask, rect, set_line, single,
                               text)
 from model.prefab import copy, f
-from steps.layout import CARD_H, CARD_W, MASTER_TRAITS, S, card, section
+from steps.layout import CARD_H, CARD_W, MASTER_TRAITS, SCREEN_CARD_RATIO, card, section
 
 STYLES = 3
 SLOTS, CAPTAIN_SLOTS = [4, 8, 8, 10], [4, 8, 8, 14]
@@ -78,7 +78,7 @@ STARS = ("root/loc_base01/loc_info03/skillboard_info03/root/loc_item01/loc_info0
 LEFT_X, TOP_Y, WIDTH, HEIGHT = MASTER_TRAITS
 COLUMN_W = (WIDTH - 2 * COLUMN_GAP) / 3
 CELL_W = (COLUMN_W - 2 * PAD_X - CELL_GAP) / 2
-CELL_K = CELL_H * S / GAME_CELL_H  # the cell images' scale
+CELL_K = CELL_H * SCREEN_CARD_RATIO / GAME_CELL_H  # the cell images' scale
 
 
 def column_x(s):
@@ -101,16 +101,16 @@ def stock_ranks():
         rows = []
         for row in range(SLOTS[r] // COLUMNS):
             row_top = card(0, rank_top + RANK_LABEL_H + row * (CELL_H + CELL_GAP))[1]
-            rows.append((row_top, row_top - CELL_H * S))
-        ranks.append(dict(top=card(0, rank_top - PANEL_TOP)[1], bottom=rows[-1][1] - PANEL_BOTTOM * S,
+            rows.append((row_top, row_top - CELL_H * SCREEN_CARD_RATIO))
+        ranks.append(dict(top=card(0, rank_top - PANEL_TOP)[1], bottom=rows[-1][1] - PANEL_BOTTOM * SCREEN_CARD_RATIO,
                           label=card(0, rank_top + 28 / 2)[1], rows=rows))
     return ranks
 
 
 def captain_ranks(stock):
     # the stock layout with two more EX rows, everything but the rank labels shrunk by one factor
-    label_h, pad_top, gap = 28 * S, PANEL_TOP * S, (RANK_LABEL_H - 28) * S
-    cell, row_gap, pad_bottom = CELL_H * S, CELL_GAP * S, PANEL_BOTTOM * S
+    label_h, pad_top, gap = 28 * SCREEN_CARD_RATIO, PANEL_TOP * SCREEN_CARD_RATIO, (RANK_LABEL_H - 28) * SCREEN_CARD_RATIO
+    cell, row_gap, pad_bottom = CELL_H * SCREEN_CARD_RATIO, CELL_GAP * SCREEN_CARD_RATIO, PANEL_BOTTOM * SCREEN_CARD_RATIO
     top, bottom = stock[0]["top"], stock[-1]["bottom"]
     fixed = len(SLOTS) * label_h
     extra = sum((CAPTAIN_SLOTS[r] - SLOTS[r]) // COLUMNS * (cell + row_gap) for r in range(len(SLOTS)))
@@ -151,7 +151,7 @@ def set_text(node, color, cell=False):
 def grid(board, name, slots, ranks, active):
     # the rank panels, title bars, cells and their texts of every style
     container = board.add(rect(name, active=active))
-    container.place(pos=(0, 0), size=(CARD_W * S, CARD_H * S))
+    container.place(pos=(0, 0), size=(CARD_W * SCREEN_CARD_RATIO, CARD_H * SCREEN_CARD_RATIO))
     images, groups, texts, placements = [], [], [], []
     for s in range(STYLES):
         x0 = column_x(s)
@@ -163,9 +163,9 @@ def grid(board, name, slots, ranks, active):
                                      CELL_K)
             panels.append(panel)
             placements.append(at)
-            bar_h = BAR_H * S
+            bar_h = BAR_H * SCREEN_CARD_RATIO
             bar, at = sliced_image(f"bc_mt_{s}_{r}_ttl", ((1, 1, 1), 1), TITLE_BARS[r], ((left + right) / 2, rank["label"]),
-                                   (right - left - 2 * BAR_INSET * S, bar_h), bar_h / TITLE_H)
+                                   (right - left - 2 * BAR_INSET * SCREEN_CARD_RATIO, bar_h), bar_h / TITLE_H)
             bars.append(bar)
             placements.append(at)
 
@@ -178,11 +178,11 @@ def grid(board, name, slots, ranks, active):
                                 "      Enable: true"]
             count = rect(f"bc_mt_{s}_{r}_count", text("", COUNT_SIZE, INK, 1, RIGHT), (1, 1))
             set_text(count, TITLE_TEXT_COLOR)
-            label_top = rank["label"] + 28 * S / 2
+            label_top = rank["label"] + 28 * SCREEN_CARD_RATIO / 2
             placements.append(lambda n=label, x=card(x0 + PAD_X + 2, 0)[0], y=label_top:
-                              n.place(pos=(x, y), size=(300 * S, 28 * S)))
+                              n.place(pos=(x, y), size=(300 * SCREEN_CARD_RATIO, 28 * SCREEN_CARD_RATIO)))
             placements.append(lambda n=count, x=card(x0 + COLUMN_W - PAD_X, 0)[0], y=label_top:
-                              n.place(pos=(x, y), size=(200 * S, 28 * S)))
+                              n.place(pos=(x, y), size=(200 * SCREEN_CARD_RATIO, 28 * SCREEN_CARD_RATIO)))
             rank_texts += [label, count]
 
         cell_texts = []
@@ -192,7 +192,7 @@ def grid(board, name, slots, ranks, active):
                 row_top, row_bottom = rank["rows"][c // COLUMNS]
                 base, at = sliced_image(f"bc_mt_{s}_{r}_{c}_base", CELL_COLOR, BASE,
                                         (card(cell_x + CELL_W / 2, 0)[0], (row_top + row_bottom) / 2),
-                                        (CELL_W * S, row_top - row_bottom), CELL_K)
+                                        (CELL_W * SCREEN_CARD_RATIO, row_top - row_bottom), CELL_K)
                 cells.append(((s, r, c), base))
                 placements.append(at)
                 for state, alpha, color in (("on", 1, ON_COLOR), ("off", 0.4, OFF_COLOR)):
@@ -200,7 +200,7 @@ def grid(board, name, slots, ranks, active):
                                 text("", CELL_SIZE, INK, alpha, LEFT, CELL_LINE_SPACING, CELL_LINE_SPACING_ENG), (0, 1))
                     set_text(node, color, cell=True)
                     x = card(cell_x + CELL_PAD + TEXT_SHIFT, 0)[0]
-                    w = (CELL_W - 2 * CELL_PAD - TEXT_SHIFT) * S
+                    w = (CELL_W - 2 * CELL_PAD - TEXT_SHIFT) * SCREEN_CARD_RATIO
                     placements.append(lambda n=node, x=x, y=row_top, w=w, h=row_top - row_bottom:
                                       n.place(pos=(x, y), size=(w, h)))
                     cell_texts.append(node)
@@ -298,9 +298,9 @@ def apply(ctx):
     clip = board.add(rect("bc_mt_bg", mask((WHITE, WHITE.rsplit("/", 1)[1]))))
     scene = clip.add(copy(scene_source))
     scene.find("loc_chara01").remove()
-    k = max(WIDTH * S / SCENE_W, HEIGHT * S / SCENE_H)
+    k = max(WIDTH * SCREEN_CARD_RATIO / SCENE_W, HEIGHT * SCREEN_CARD_RATIO / SCENE_H)
     clip.set("Scale", (k, k, 1))
-    clip.place(pos=card(LEFT_X + WIDTH / 2, TOP_Y + HEIGHT / 2), size=(WIDTH * S / k, HEIGHT * S / k))
+    clip.place(pos=card(LEFT_X + WIDTH / 2, TOP_Y + HEIGHT / 2), size=(WIDTH * SCREEN_CARD_RATIO / k, HEIGHT * SCREEN_CARD_RATIO / k))
 
     # the header's line from the section's left edge, its ornament clipped off
     left, top = card(LEFT_X, TOP_Y)
@@ -332,7 +332,7 @@ def apply(ctx):
     heading = board.add(rect("bc_mt_heading", heading_components, (0, 0.5)))
     set_line(heading, "FontSize", f(TITLE_SIZE * SCALE))
     set_line(heading, "TextID", TITLE_TEXT_ID)
-    heading.place(pos=(left + HEADER_PAD * SCALE, top - TITLE_Y * SCALE + dy), size=(WIDTH * S / 2, TITLE_SIZE * SCALE))
+    heading.place(pos=(left + HEADER_PAD * SCALE, top - TITLE_Y * SCALE + dy), size=(WIDTH * SCREEN_CARD_RATIO / 2, TITLE_SIZE * SCALE))
 
     # the style titles in info01_text01's style, between the line and the rank panels
     titles = []
@@ -345,7 +345,7 @@ def apply(ctx):
         set_line(title, "ColorMode", 2)
         for key, value in STYLE_TITLE_GRADIENT:
             set_line(title, key, value)
-        title.place(pos=(card(column_x(s), 0)[0], (old_line_y + panel_top) / 2 + 32 * S / 2), size=(COLUMN_W * S, 32 * S))
+        title.place(pos=(card(column_x(s), 0)[0], (old_line_y + panel_top) / 2 + 32 * SCREEN_CARD_RATIO / 2), size=(COLUMN_W * SCREEN_CARD_RATIO, 32 * SCREEN_CARD_RATIO))
         titles.append(title)
 
     cells, picked = grid(board, "bc_mt_cells", SLOTS, stock, True)

@@ -33,13 +33,14 @@ PERCENT_CJK_SIZE, CJK_NUMBER_SIZE = 36, 56
 BADGE_SCALE = 0.7
 
 # sharecard pixels
-LEVEL_AT = (100.5, 100)
-MASTER_LEVEL_AT = (218.8, 80)
-POWER_X = 80.8
+MASTER_LEVEL_DX = 118.3  # loc_ml_level01's centre right of level01's
+POWER_OVERHANG = 50  # power01's right edge past the column's
 COLUMN_X = 296
 
-POWER_DIGITS_X = -2  # the PWR digits' centre from power01's pivot
-DIAMOND_PAD = 184 / 182  # transparent bottom row of the diamond sprite, in rect units
+# badge rect units, from each badge's pivot
+LEVEL_R = 148  # ps_cmn_icon_base03's radius
+MASTER_LEVEL_TOP = 174 * 0.7  # masterlevel02's lv_base01 top, at masterlevel02's scale
+POWER_TOP, POWER_RIGHT = 184, 92  # pwr_icon01's top, ps_cmn_icon_base02's right edge
 
 
 def font_sizes(node, size, overrides):
@@ -131,7 +132,7 @@ def status_block(block):
 
 
 def badges(base, status_top):
-    # level badges at sharecard's spots; the name band and the PWR diamond stacked above the status block
+    # level badges at the portrait column's top left, the PWR diamond at its top right, the name band above the status
     badge_root = base.child("loc_status01")
     level, master_level = badge_root.child("level01"), badge_root.child("loc_ml_level01")
     power, name = badge_root.child("power01"), base.child("loc_name01")
@@ -143,13 +144,15 @@ def badges(base, status_top):
     gap = (SKILLS[1] - (STATUS[1] + STATUS[3])) * SCREEN_CARD_RATIO
     overhang = half_height(element) - half_height(name)
     name_centre = status_top + gap + overhang + half_height(name)
-    power_centre = name_centre + half_height(name) + gap + half_height(power) - DIAMOND_PAD * BADGE_SCALE
 
     for node in (level, master_level, power, name):
         node.set("Scale", (BADGE_SCALE, BADGE_SCALE, 1))
-    move(level, *card(*LEVEL_AT))
-    move(master_level, *card(*MASTER_LEVEL_AT))
-    move(power, card(POWER_X - POWER_DIGITS_X * BADGE_SCALE, 0)[0], power_centre)
+    left, top = card(STATUS[0], STATUS[1])
+    right = card(STATUS[0] + STATUS[2] + POWER_OVERHANG, 0)[0]
+    level_x = left + LEVEL_R * BADGE_SCALE
+    move(level, level_x, top - LEVEL_R * BADGE_SCALE)
+    move(master_level, level_x + MASTER_LEVEL_DX * SCREEN_CARD_RATIO, top - MASTER_LEVEL_TOP * BADGE_SCALE)
+    move(power, right - POWER_RIGHT * BADGE_SCALE, top - POWER_TOP * BADGE_SCALE)
     name.place(pivot=(0.5, 0.5))
     move(name, card(COLUMN_X, 0)[0], name_centre)
 

@@ -2893,15 +2893,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 49.298, -199.321, 0
+  Position: 660.656, 716.88, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 49.298, -1141.321
+  AnchorPoint: 660.656, -225.12
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: -42.702, -1233.321
-  OffsetMax: 141.298, -1049.321
+  OffsetMin: 568.656, -317.12
+  OffsetMax: 752.656, -133.12
   SizeDelta: 184, 184
 - Id: 18
   Name: pwr_icon01
@@ -3113,15 +3113,15 @@ Objects:
       HideExp: false
       Enable: true
   Active: true
-  Position: 71.708, 759.224, 0
+  Position: 88.24, 742.08, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 71.708, -182.776
+  AnchorPoint: 88.24, -199.92
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: -88.292, -290.776
-  OffsetMax: 231.708, -74.776
+  OffsetMin: -71.76, -307.92
+  OffsetMax: 248.24, -91.92
   SizeDelta: 320, 216
 - Id: 22
   Name: root
@@ -4063,15 +4063,15 @@ Objects:
   - 46
   - 71
   Active: false
-  Position: 216.573, 783.716, 0
+  Position: 233.105, 760.42, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -451.427, 783.716
+  AnchorPoint: -434.895, 760.42
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -551.427, 683.716
-  OffsetMax: -351.427, 883.716
+  OffsetMin: -534.895, 660.42
+  OffsetMax: -334.895, 860.42
   SizeDelta: 200, 200
 - Id: 46
   Name: masterlevel02

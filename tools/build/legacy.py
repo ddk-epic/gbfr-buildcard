@@ -23,6 +23,7 @@ PORTED = {
         "root/loc_base01/loc_chr",
         "root/loc_base01/loc_buildcard/bc_weapon",
         "root/loc_base01/loc_status02/loc_chr_status02",
+        "root/loc_base01/loc_buildcard/bc_mtraits",
     ],
     "chr_status_bg01": [],
 }
@@ -38,41 +39,6 @@ def apply(ctx):
         if PORTED[name]:
             reset(prefab, ctx.stock(name), PORTED[name])
         ctx.prefabs[name] = prefab
-    card = ctx.prefab("status01").find("loc_buildcard")
-    for export in EXPORTS:
-        export(ctx, card)
-
-
-# exports of the sections not ported yet
-
-STYLES = 3
-SLOTS = [4, 8, 8, 10]
-CAPTAIN_SLOTS = [4, 8, 8, 14]
-
-
-def export_master_traits(ctx, card):
-    mt = card.child("bc_mtraits")
-    perks = mt.child("bc_mt_perks")
-    ctx.export("PerkNames", [perks.find(f"bc_mt_perk_{s}_name") for s in range(STYLES)])
-    ctx.export("PerkStars", [[perks.find(f"bc_mt_perk_{s}_stars/base0{k + 1}/icon0{k + 1}_add") for k in range(3)]
-                             for s in range(STYLES)])
-    ctx.export("StyleTitles", [mt.child(f"bc_mt_{s}_title") for s in range(STYLES)])
-    boards = [mt.child("bc_mt_cells"), mt.child("bc_mt_cells_captain")]
-    ctx.export("Cells", boards[0])
-    ctx.export("CaptainCells", boards[1])
-
-    # [board][style][rank][cell]; board 1 is the captain's
-    def cells(suffix):
-        return [[[[board.find(f"bc_mt_{s}_{r}_{c}_{suffix}") for c in range(slots[r])] for r in range(len(slots))]
-                 for s in range(STYLES)] for board, slots in zip(boards, [SLOTS, CAPTAIN_SLOTS])]
-    ctx.export("RankCounts", [[[board.find(f"bc_mt_{s}_{r}_count") for r in range(len(SLOTS))] for s in range(STYLES)]
-                              for board in boards])
-    ctx.export("CellPicked", cells("picked"))
-    ctx.export("CellOn", cells("on"))
-    ctx.export("CellOff", cells("off"))
-
-
-EXPORTS = [export_master_traits]
 
 
 def reset(prefab, stock, paths):

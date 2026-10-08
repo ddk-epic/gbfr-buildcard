@@ -71,10 +71,35 @@ def components(node):
     return lines[start:end]
 
 
-def image(color, alpha, sprite=None, sliced=False):
+def image(color, alpha, sprite=None, sliced=False, fill_center=False):
     # sprite: (texture path, sprite name)
     sprite_lines = ["      Sprite:", f"        TexturePath: {sprite[0]}", f"        SpriteName: {sprite[1]}"] if sprite else []
     return ["  - ComponentName: Image", "    Component:", f"      Color: {', '.join(f(c) for c in color)}, {f(alpha)}",
-            *sprite_lines, f"      Type: {int(sliced)}", "      FillCenter: false", "      FillMethod: 0",
+            *sprite_lines, f"      Type: {int(sliced)}", f"      FillCenter: {str(fill_center).lower()}", "      FillMethod: 0",
             "      FillOrigin: 0", "      FillAmount: 0", "      UvRect: 0, 0, 0, 0", "      RawImage: false",
             "      Clockwise: false", "      PreserveAspect: false", "      E3ED5266: 0", "      Enable: true"]
+
+
+FONT = "fonts/fot_skipstd_b_sdf"
+LEFT, CENTER, RIGHT = 513, 514, 516  # Text.Alignment
+
+
+def text(value, size, color, alpha, alignment, line_spacing=0, eng_line_spacing=None):
+    # a Text in the game's body font, with its LanguageSetter
+    return ["  - ComponentName: Text", "    Component:", f"      Text: '{value}'", f"      FontPath: {FONT}",
+            f"      MaterialPath: {FONT}/fot_skipstd_b_sdf_material", f"      FontSize: {f(size)}",
+            f"      Color: {', '.join(f(c) for c in color)}, {f(alpha)}", "      Margin: 0, 0, 0, 0",
+            "      IsGradient: false", "      ColorMode: 3", "      ColorTL: 1, 1, 1, 1", "      ColorTR: 1, 1, 1, 1",
+            "      ColorBL: 1, 1, 1, 1", "      ColorBR: 1, 1, 1, 1", "      CharacterSpacing: 0",
+            f"      LineSpacing: {line_spacing}", f"      Alignment: {alignment}", "      Enable: true",
+            *language_setter(eng_line_spacing)]
+
+
+def language_setter(eng_line_spacing=None):
+    # the font of each language, and the English line spacing if given
+    enable_ls = "true" if eng_line_spacing is not None else "false"
+    return ["  - ComponentName: LanguageSetter", "    Component:", "      MultiData: false",
+            "      LanguageData: data/language/ld_skipstd_b_sdf_material", "      Overwrites:", "      - Language: Eng",
+            "        EnableFS: false", "        FontSize: 0", "        EnableCS: false", "        CharacterSpaching: 0",
+            f"        EnableLS: {enable_ls}", f"        LineSpaching: {eng_line_spacing or 0}", "        EnableMG: false",
+            "        Margine: 0, 0, 0, 0", "        EnableAL: false", "        Alignment: 0", "      Enable: true"]

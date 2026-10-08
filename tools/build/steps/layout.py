@@ -8,6 +8,7 @@ CARD_W, CARD_H = 2880, 1440  # sharecard pixels
 # sections: left, top, width, height in sharecard pixels
 STATUS = (16, 16, 560, 1102)
 GEAR = (600, 16, 756, 1388)
+MASTER_TRAITS = (1380, 16, 1484, 1102)
 SKILLS = (16, 1142, 560, 262)
 OVER_MASTERY = (1380, 1142, 491.33, 262)
 SUMMONS = (1876.33, 1142, 987.67, 262)

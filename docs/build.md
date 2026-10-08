@@ -71,7 +71,7 @@ the moment. They are ported one section at a time:
 | `status01` | status | `steps/status01/status.py` |
 | `status01` | portrait | `steps/status01/portrait.py` |
 | `status01` | gear | `steps/status01/gear.py` |
-| `status01` | master traits | legacy |
+| `status01` | master traits | `steps/status01/master_traits.py` |
 | `chr_status_bg01` | panel, backdrop | legacy |
 
 Until a section is ported, `legacy.py` carries it: each prefab starts as it was at the commit in `FROZEN`, and the
@@ -85,8 +85,7 @@ To port a section:
    by name and exporting what `CardWriter` sets. Add it to `STEPS`.
 2. Add the section's paths to `PORTED`: its subtree under `loc_buildcard`, and the stock objects it changes
    (`python tools/build/diff.py <stock>/status01.prfb.yaml <committed status01>` lists all 70).
-3. Remove its `export_*` from `legacy.py`'s `EXPORTS`.
-4. `python tools/build/build.py --stock <dir> --check`: a port that keeps the section as it was shows no differences.
+3. `python tools/build/build.py --stock <dir> --check`: a port that keeps the section as it was shows no differences.
    Then build, delete the old scripts it replaces, and commit with the check's output.
 
 When `PORTED` holds everything, `legacy.py` and `tools/scripts/` go.

@@ -258,7 +258,7 @@ class Prefab:
                 node.add(nodes[child])
             for i, line in enumerate(node.lines):
                 m = REF.match(line)
-                if m and int(m[2]) != -1:
+                if m and int(m[2]) >= 0:
                     node.lines[i] = Ref(m[1], nodes[int(m[2])])
 
         roots = [n for n in nodes.values() if n.parent is None]

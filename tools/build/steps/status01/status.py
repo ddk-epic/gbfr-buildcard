@@ -4,7 +4,7 @@ import re
 
 from model.components import LEFT, components, rect, set_line
 from model.prefab import f
-from steps.layout import GAP, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, STATUS, card, move, rounded_panel
+from steps.layout import FRAME, GAP, INSET, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, STATUS, card, move, rounded_panel
 
 # sharecard's StatusPanel, in sharecard pixels
 BORDER = 1
@@ -42,7 +42,9 @@ PERCENT_CJK_SIZE, CJK_NUMBER_SIZE = 36, 56
 BADGE_SCALE = 0.7
 
 # sharecard pixels
-MASTER_LEVEL_DX = 118.3  # loc_ml_level01's centre right of level01's
+MASTER_LEVEL_DX = 117.3  # loc_ml_level01's centre right of level01's
+MASTER_LEVEL_RAISE = 6.4  # loc_ml_level01's top above level01's
+BADGE_INSET = (FRAME + INSET) / 2
 POWER_OVERHANG = 50  # power01's right edge past the column's
 COLUMN_X = 296
 
@@ -189,11 +191,11 @@ def badges(base, status_top):
 
     for node in (level, master_level, power, name):
         node.set("Scale", (BADGE_SCALE, BADGE_SCALE, 1))
-    left, top = card(STATUS[0], STATUS[1])
+    left, top = card(BADGE_INSET, BADGE_INSET)
     right = card(STATUS[0] + STATUS[2] + POWER_OVERHANG, 0)[0]
     level_x = left + LEVEL_R * BADGE_SCALE
     move(level, level_x, top - LEVEL_R * BADGE_SCALE)
-    move(master_level, level_x + MASTER_LEVEL_DX * SCREEN_CARD_RATIO, top - MASTER_LEVEL_TOP * BADGE_SCALE)
+    move(master_level, level_x + MASTER_LEVEL_DX * SCREEN_CARD_RATIO, top + MASTER_LEVEL_RAISE * SCREEN_CARD_RATIO - MASTER_LEVEL_TOP * BADGE_SCALE)
     move(power, right - POWER_RIGHT * BADGE_SCALE, top - POWER_TOP * BADGE_SCALE)
     name.place(pivot=(0.5, 0.5))
     move(name, card(COLUMN_X, 0)[0], name_centre)

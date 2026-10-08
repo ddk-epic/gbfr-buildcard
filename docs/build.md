@@ -66,7 +66,8 @@ the moment. They are ported one section at a time:
 |---|---|---|
 | `status01` | frame | `steps/status01/frame.py` |
 | `status01` | Over Mastery | `steps/status01/over_mastery.py` |
-| `status01` | summons, skills, status, portrait, gear, master traits | legacy |
+| `status01` | summons | `steps/status01/summons.py` |
+| `status01` | skills, status, portrait, gear, master traits | legacy |
 | `chr_status_bg01` | panel, backdrop | legacy |
 
 Until a section is ported, `legacy.py` carries it: each prefab starts as it was at the commit in `FROZEN`, and the

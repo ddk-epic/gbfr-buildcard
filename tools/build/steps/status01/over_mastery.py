@@ -1,5 +1,5 @@
 # Lays out the Over Mastery section: lb_ovtli02's rows on a status-style panel under a title bar.
-from model.components import components, rect
+from model.components import components, rect, set_line
 from model.prefab import copy, f
 from steps.layout import (CARD_ORDER, ICON_PAD, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, S, TITLE_SCALE, TITLE_TEXT,
                           card, insert)
@@ -15,15 +15,6 @@ ICON = 42  # sharecard pixels, before ROW_SCALE
 LINE_H, LINE_GAP = 36, 4  # sharecard pixels, before ROW_SCALE
 ICON_X_ROW = -482  # icon01's left edge in the row
 TEXT_X_ROW = -384  # loc_text01's left edge in the row
-
-
-def set_line(node, key, value):
-    # sets the first nested line with the key
-    for i, line in enumerate(node.lines):
-        if isinstance(line, str) and line.lstrip().startswith(f"{key}: "):
-            node.lines[i] = f"{line[:len(line) - len(line.lstrip())]}{key}: {value}"
-            return
-    raise KeyError(f"{node.path}: {key}")
 
 
 def row(source, name):

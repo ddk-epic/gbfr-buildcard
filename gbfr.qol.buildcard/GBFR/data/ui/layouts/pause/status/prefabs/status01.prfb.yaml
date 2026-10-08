@@ -74269,9 +74269,9 @@ Objects:
   AnchorPoint: 1105.863, -657.456
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 224.309, -891.306
-  OffsetMax: 1987.417, -423.605
-  SizeDelta: 1763.108, 467.701
+  OffsetMin: 224.015, -891.384
+  OffsetMax: 1987.711, -423.527
+  SizeDelta: 1763.696, 467.857
 - Id: 1885
   Name: bc_smn_0
   Children:
@@ -74372,16 +74372,16 @@ Objects:
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 328.033, -72.918, 0
+  Position: 328.033, -72.919, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 328.033, -72.918
+  AnchorPoint: 328.033, -72.919
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 88.065, -225.131
-  OffsetMax: 568, 79.295
-  SizeDelta: 479.935, 304.426
+  OffsetMin: 88.065, -225.134
+  OffsetMax: 568, 79.296
+  SizeDelta: 479.935, 304.43
 - Id: 1890
   Name: icon01
   Components:
@@ -74439,15 +74439,15 @@ Objects:
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 31.071, 32.295, 0
+  Position: 31.071, 32.296, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 31.071, 32.295
+  AnchorPoint: 31.071, 32.296
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -535, 2.295
-  OffsetMax: 597.141, 62.295
+  OffsetMin: -535, 2.296
+  OffsetMax: 597.141, 62.296
   SizeDelta: 1132.141, 60
 - Id: 1892
   Name: band
@@ -74508,7 +74508,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol09
-      FontSize: 52.031
+      FontSize: 52.055
       Color: 0.98039216, 0.98039216, 0.9411765, 1
       Margin: 0, 0, 0, 0
       IsGradient: false
@@ -74530,15 +74530,15 @@ Objects:
       - data/language/ld_skipstd_b_sdf_glow_w01
       Enable: true
   Active: true
-  Position: -511, 32.295, 0
+  Position: -511, 32.296, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 45, 32.295
+  AnchorPoint: 45, 32.296
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: 45, 12.295
-  OffsetMax: 785, 52.295
+  OffsetMin: 45, 12.296
+  OffsetMax: 785, 52.296
   SizeDelta: 740, 40
 - Id: 1895
   Name: list_skill_p05_01
@@ -74631,15 +74631,15 @@ Objects:
         ObjectRefId: 1909
       Enable: true
   Active: true
-  Position: 86.773, -64.705, 0
+  Position: 87.06, -64.704, 0
   Rotation: 0, 0, 0, 1
   Scale: 1.301, 1.301, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 86.773, -64.705
+  AnchorPoint: 87.06, -64.704
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: 86.773, -64.705
-  OffsetMax: 86.773, -64.705
+  OffsetMin: 87.06, -64.704
+  OffsetMax: 87.06, -64.704
   SizeDelta: 0, 0
 - Id: 1896
   Name: root
@@ -75550,15 +75550,15 @@ Objects:
         ObjectRefId: 1930
       Enable: true
   Active: true
-  Position: -57, -150.705, 0
+  Position: -57, -150.704, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -57, -150.705
+  AnchorPoint: -57, -150.704
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -57, -150.705
-  OffsetMax: -57, -150.705
+  OffsetMin: -57, -150.704
+  OffsetMax: -57, -150.704
   SizeDelta: 0, 0
 - Id: 1917
   Name: root
@@ -76445,16 +76445,16 @@ Objects:
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 328.033, -72.918, 0
+  Position: 328.033, -72.919, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 328.033, -72.918
+  AnchorPoint: 328.033, -72.919
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 88.065, -225.131
-  OffsetMax: 568, 79.295
-  SizeDelta: 479.935, 304.426
+  OffsetMin: 88.065, -225.134
+  OffsetMax: 568, 79.296
+  SizeDelta: 479.935, 304.43
 - Id: 1941
   Name: icon01
   Components:
@@ -76512,15 +76512,15 @@ Objects:
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 31.071, 32.295, 0
+  Position: 31.071, 32.296, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 31.071, 32.295
+  AnchorPoint: 31.071, 32.296
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -535, 2.295
-  OffsetMax: 597.141, 62.295
+  OffsetMin: -535, 2.296
+  OffsetMax: 597.141, 62.296
   SizeDelta: 1132.141, 60
 - Id: 1943
   Name: band
@@ -76581,7 +76581,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol09
-      FontSize: 52.031
+      FontSize: 52.055
       Color: 0.98039216, 0.98039216, 0.9411765, 1
       Margin: 0, 0, 0, 0
       IsGradient: false
@@ -76603,15 +76603,15 @@ Objects:
       - data/language/ld_skipstd_b_sdf_glow_w01
       Enable: true
   Active: true
-  Position: -511, 32.295, 0
+  Position: -511, 32.296, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 45, 32.295
+  AnchorPoint: 45, 32.296
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: 45, 12.295
-  OffsetMax: 785, 52.295
+  OffsetMin: 45, 12.296
+  OffsetMax: 785, 52.296
   SizeDelta: 740, 40
 - Id: 1946
   Name: list_skill_p05_01
@@ -76704,15 +76704,15 @@ Objects:
         ObjectRefId: 1960
       Enable: true
   Active: true
-  Position: 86.773, -64.705, 0
+  Position: 87.06, -64.704, 0
   Rotation: 0, 0, 0, 1
   Scale: 1.301, 1.301, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 86.773, -64.705
+  AnchorPoint: 87.06, -64.704
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: 86.773, -64.705
-  OffsetMax: 86.773, -64.705
+  OffsetMin: 87.06, -64.704
+  OffsetMax: 87.06, -64.704
   SizeDelta: 0, 0
 - Id: 1947
   Name: root
@@ -77623,15 +77623,15 @@ Objects:
         ObjectRefId: 1981
       Enable: true
   Active: true
-  Position: -57, -150.705, 0
+  Position: -57, -150.704, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -57, -150.705
+  AnchorPoint: -57, -150.704
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -57, -150.705
-  OffsetMax: -57, -150.705
+  OffsetMin: -57, -150.704
+  OffsetMax: -57, -150.704
   SizeDelta: 0, 0
 - Id: 1968
   Name: root
@@ -78518,16 +78518,16 @@ Objects:
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 328.033, -72.918, 0
+  Position: 328.033, -72.919, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 328.033, -72.918
+  AnchorPoint: 328.033, -72.919
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 88.065, -225.131
-  OffsetMax: 568, 79.295
-  SizeDelta: 479.935, 304.426
+  OffsetMin: 88.065, -225.134
+  OffsetMax: 568, 79.296
+  SizeDelta: 479.935, 304.43
 - Id: 1992
   Name: icon01
   Components:
@@ -78585,15 +78585,15 @@ Objects:
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 31.071, 32.295, 0
+  Position: 31.071, 32.296, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 31.071, 32.295
+  AnchorPoint: 31.071, 32.296
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -535, 2.295
-  OffsetMax: 597.141, 62.295
+  OffsetMin: -535, 2.296
+  OffsetMax: 597.141, 62.296
   SizeDelta: 1132.141, 60
 - Id: 1994
   Name: band
@@ -78654,7 +78654,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol09
-      FontSize: 52.031
+      FontSize: 52.055
       Color: 0.98039216, 0.98039216, 0.9411765, 1
       Margin: 0, 0, 0, 0
       IsGradient: false
@@ -78676,15 +78676,15 @@ Objects:
       - data/language/ld_skipstd_b_sdf_glow_w01
       Enable: true
   Active: true
-  Position: -511, 32.295, 0
+  Position: -511, 32.296, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 45, 32.295
+  AnchorPoint: 45, 32.296
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: 45, 12.295
-  OffsetMax: 785, 52.295
+  OffsetMin: 45, 12.296
+  OffsetMax: 785, 52.296
   SizeDelta: 740, 40
 - Id: 1997
   Name: list_skill_p05_01
@@ -78777,15 +78777,15 @@ Objects:
         ObjectRefId: 2011
       Enable: true
   Active: true
-  Position: 86.773, -64.705, 0
+  Position: 87.06, -64.704, 0
   Rotation: 0, 0, 0, 1
   Scale: 1.301, 1.301, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 86.773, -64.705
+  AnchorPoint: 87.06, -64.704
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: 86.773, -64.705
-  OffsetMax: 86.773, -64.705
+  OffsetMin: 87.06, -64.704
+  OffsetMax: 87.06, -64.704
   SizeDelta: 0, 0
 - Id: 1998
   Name: root
@@ -79696,15 +79696,15 @@ Objects:
         ObjectRefId: 2032
       Enable: true
   Active: true
-  Position: -57, -150.705, 0
+  Position: -57, -150.704, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -57, -150.705
+  AnchorPoint: -57, -150.704
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -57, -150.705
-  OffsetMax: -57, -150.705
+  OffsetMin: -57, -150.704
+  OffsetMax: -57, -150.704
   SizeDelta: 0, 0
 - Id: 2019
   Name: root
@@ -80591,16 +80591,16 @@ Objects:
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 328.033, -72.918, 0
+  Position: 328.033, -72.919, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 328.033, -72.918
+  AnchorPoint: 328.033, -72.919
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 88.065, -225.131
-  OffsetMax: 568, 79.295
-  SizeDelta: 479.935, 304.426
+  OffsetMin: 88.065, -225.134
+  OffsetMax: 568, 79.296
+  SizeDelta: 479.935, 304.43
 - Id: 2043
   Name: icon01
   Components:
@@ -80658,15 +80658,15 @@ Objects:
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 31.071, 32.295, 0
+  Position: 31.071, 32.296, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 31.071, 32.295
+  AnchorPoint: 31.071, 32.296
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -535, 2.295
-  OffsetMax: 597.141, 62.295
+  OffsetMin: -535, 2.296
+  OffsetMax: 597.141, 62.296
   SizeDelta: 1132.141, 60
 - Id: 2045
   Name: band
@@ -80727,7 +80727,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf_ol09
-      FontSize: 52.031
+      FontSize: 52.055
       Color: 0.98039216, 0.98039216, 0.9411765, 1
       Margin: 0, 0, 0, 0
       IsGradient: false
@@ -80749,15 +80749,15 @@ Objects:
       - data/language/ld_skipstd_b_sdf_glow_w01
       Enable: true
   Active: true
-  Position: -511, 32.295, 0
+  Position: -511, 32.296, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: 45, 32.295
+  AnchorPoint: 45, 32.296
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: 45, 12.295
-  OffsetMax: 785, 52.295
+  OffsetMin: 45, 12.296
+  OffsetMax: 785, 52.296
   SizeDelta: 740, 40
 - Id: 2048
   Name: list_skill_p05_01
@@ -80850,15 +80850,15 @@ Objects:
         ObjectRefId: 2062
       Enable: true
   Active: true
-  Position: 86.773, -64.705, 0
+  Position: 87.06, -64.704, 0
   Rotation: 0, 0, 0, 1
   Scale: 1.301, 1.301, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 86.773, -64.705
+  AnchorPoint: 87.06, -64.704
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: 86.773, -64.705
-  OffsetMax: 86.773, -64.705
+  OffsetMin: 87.06, -64.704
+  OffsetMax: 87.06, -64.704
   SizeDelta: 0, 0
 - Id: 2049
   Name: root
@@ -81769,15 +81769,15 @@ Objects:
         ObjectRefId: 2083
       Enable: true
   Active: true
-  Position: -57, -150.705, 0
+  Position: -57, -150.704, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -57, -150.705
+  AnchorPoint: -57, -150.704
   AnchorMin: 0.5, 1
   AnchorMax: 0.5, 1
-  OffsetMin: -57, -150.705
-  OffsetMax: -57, -150.705
+  OffsetMin: -57, -150.704
+  OffsetMax: -57, -150.704
   SizeDelta: 0, 0
 - Id: 2070
   Name: root

@@ -8,6 +8,7 @@ CARD_W, CARD_H = 2880, 1440  # sharecard pixels
 # sections: left, top, width, height in sharecard pixels
 SKILLS = (16, 1142, 560, 262)
 OVER_MASTERY = (1380, 1142, 491.33, 262)
+SUMMONS = (1876.33, 1142, 987.67, 262)
 
 # panels, in sharecard pixels
 PAD_X, PAD_Y = 10, 18.5  # border and padding

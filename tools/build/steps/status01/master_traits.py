@@ -53,12 +53,12 @@ WHITE = "layouts/pause/status/noatlastextures/bc_white"
 # var00_frame_header02, in header units
 TITLE_TEXT_ID = "TXT_PAU_TTL_SKL_BD"
 HEADER_H = 400
-TITLE_X, TITLE_Y = 256, 128  # title_text01's left edge and centre from the header's top-left corner
+TITLE_Y = 128  # title_text01's centre below the header's top
+HEADER_PAD = 80  # title_text01's top below the header's top
 LINE_Y = 190  # line01's line below its top
 LINE_CENTRE = 191  # line01's line centre below its top
 TIP = 276  # ps_frame_line02's first column of plain line
-ORNAMENT_W = 336  # ps_frame_line02's minimum width
-ORNAMENT_FACTOR = 0.85
+LINE_FACTOR = 0.8
 TITLE_SIZE, RANK_TITLE_SIZE = 96, 40  # title_text01, skillboard_window01's ttl_text01
 STAR_SIZE, STAR_PAGE_SCALE, PAGE_TITLE_SIZE = 144, 0.5, 56  # a star, loc_level02's scale on the style page, its title
 STYLE_TITLE_COLOR = "0.98039216, 0.98039216, 0.9411765, 1"  # info01_text01
@@ -302,46 +302,37 @@ def apply(ctx):
     clip.set("Scale", (k, k, 1))
     clip.place(pos=card(LEFT_X + WIDTH / 2, TOP_Y + HEIGHT / 2), size=(WIDTH * S / k, HEIGHT * S / k))
 
-    # the header's ornament shrunk up to its tip, its line continued at full size from there
+    # the header's line from the section's left edge, its ornament clipped off
     left, top = card(LEFT_X, TOP_Y)
     right = card(LEFT_X + WIDTH, 0)[0]
-    ornament_k = SCALE * ORNAMENT_FACTOR
-    line_y = top - LINE_CENTRE * ornament_k
-    cut = left + TIP * ornament_k
-    ornament_clip = board.add(rect("bc_mt_ornament_clip", mask((WHITE, WHITE.rsplit("/", 1)[1]))))
+    line_y = top - LINE_CENTRE * SCALE * LINE_FACTOR
     line_clip = board.add(rect("bc_mt_line_clip", mask((WHITE, WHITE.rsplit("/", 1)[1]))))
-    clip_x, clip_y = (left + cut) / 2, top - HEADER_H * ornament_k / 2
-    ornament_clip.place(pos=(clip_x, clip_y), size=(cut - left, HEADER_H * ornament_k))
-    ornament = ornament_clip.add(copy(header_line))
-    ornament.set("Scale", (ornament_k, ornament_k, 1))
-    ornament.place(pos=(left - clip_x, top - clip_y), size=(ORNAMENT_W, HEADER_H))
-    clip_x = (cut + right) / 2
-    line_clip.place(pos=(clip_x, line_y), size=(right - cut, HEADER_H * SCALE))
+    clip_x = (left + right) / 2
+    line_clip.place(pos=(clip_x, line_y), size=(right - left, HEADER_H * SCALE))
     line = line_clip.add(copy(header_line))
     line.name = "bc_mt_line"
     line.set("Scale", (SCALE, SCALE, 1))
-    line_left = cut - TIP * SCALE
+    line_left = left - TIP * SCALE
     line.place(pos=(line_left - clip_x, LINE_CENTRE * SCALE), size=((right - line_left) / SCALE, HEADER_H))
     dy = line_y - (top - LINE_CENTRE * SCALE)
 
     stock = stock_ranks()
     panel_top = stock[0]["top"]
-    panel_right = card(column_x(STYLES - 1) + COLUMN_W - PANEL_X, 0)[0]
     old_line_y = top - LINE_Y * SCALE
 
-    # the style names and stars right-aligned with the last style's panels, between the title's height and the line
+    # the style names and stars padded from the right, between the title's height and the line
     perk_row, perk_names, star_icons = perks(header_title, stars)
     board.add(perk_row)
     perk_row.set("Scale", (ROW_SCALE, ROW_SCALE, 1))
     bottom = top - TITLE_Y * SCALE - STAR_SIZE * ROW_SCALE / 2
-    perk_row.place(pos=(panel_right, (bottom + old_line_y) / 2 + dy), size=(0, STAR_SIZE), pivot=(1, 0))
+    perk_row.place(pos=(right - HEADER_PAD * SCALE, (bottom + old_line_y) / 2 + dy), size=(0, STAR_SIZE), pivot=(1, 0))
 
     # the "Master Traits" title
     heading_components = components(header_title)
     heading = board.add(rect("bc_mt_heading", heading_components, (0, 0.5)))
     set_line(heading, "FontSize", f(TITLE_SIZE * SCALE))
     set_line(heading, "TextID", TITLE_TEXT_ID)
-    heading.place(pos=(left + TITLE_X * SCALE, top - TITLE_Y * SCALE + dy), size=(WIDTH * S / 2, TITLE_SIZE * SCALE))
+    heading.place(pos=(left + HEADER_PAD * SCALE, top - TITLE_Y * SCALE + dy), size=(WIDTH * S / 2, TITLE_SIZE * SCALE))
 
     # the style titles in info01_text01's style, between the line and the rank panels
     titles = []

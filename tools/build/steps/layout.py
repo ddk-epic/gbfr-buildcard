@@ -1,5 +1,5 @@
 # Measurements and orders shared by the steps.
-from model.components import rect
+from model.components import image, mask, rect
 
 # loc_buildcard units per sharecard pixel
 SCREEN_CARD_RATIO = 3526.72 / 2880
@@ -33,6 +33,13 @@ ICON_PAD = 5  # pl-1 of sharecard's compact skill cell
 # the status-style panels' scale: the skills block's 1000 units across its section
 PANEL_SCALE = SKILLS[2] * SCREEN_CARD_RATIO / 1000
 TITLE_TEXT = 30  # a title text's top above its bar's top, in title units
+
+# rounded corners of radius 8 card units, at scale 1
+OUTLINE = "layouts/pause/status/noatlastextures/bc_outline"
+ROUNDED = "layouts/pause/status/noatlastextures/bc_rounded"
+MT_CLIP = "layouts/pause/status/noatlastextures/bc_mt_clip"
+PANEL_FILL = (1, 1, 1), 0.9
+PANEL_STROKE = (133 / 255, 163 / 255, 181 / 255), 223 / 255  # ps_cmn_base54's
 
 # the gear column's stack, in bc_weapon units from its root's pivot
 WEAPON_TOP = 314  # the weapon title text's top
@@ -68,6 +75,29 @@ def section(card, name):
     node = insert(card, rect(name), CARD_ORDER)
     node.place(pos=(0, 0), size=(CARD_W * SCREEN_CARD_RATIO, CARD_H * SCREEN_CARD_RATIO))
     return node
+
+
+def sprite(path):
+    # a texture path and its sprite name
+    return path, path.rsplit("/", 1)[1]
+
+
+def rounded_panel(parent, name, scale):
+    # a rounded panel over the parent's rect, drawn at scale 1 under the parent's scale
+    pw, ph = parent.size()
+    ppiv = parent.vec("Pivot")
+    w, h = pw * scale, ph * scale
+    panel = parent.add(rect(name, image(*PANEL_FILL, sprite(ROUNDED), sliced=True, fill_center=True)), 0)
+    panel.set("Scale", (1 / scale, 1 / scale, 1))
+    panel.place(pos=((0.5 - ppiv[0]) * pw, (0.5 - ppiv[1]) * ph), size=(w, h))
+    outline = panel.add(rect(f"{name}_outline", image(*PANEL_STROKE, sprite(OUTLINE), sliced=True)))
+    outline.place(pos=(0, 0), size=(w, h))
+    return panel
+
+
+def mt_clip(name):
+    # a mask over the master traits section with rounded corners
+    return rect(name, mask(sprite(MT_CLIP)))
 
 
 def card(x, y):

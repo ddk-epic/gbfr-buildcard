@@ -2,7 +2,7 @@
 import re
 
 from model.prefab import f
-from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, STATUS, card, move
+from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, STATUS, card, move, rounded_panel
 
 # sharecard's StatusPanel, in sharecard pixels
 BORDER = 1
@@ -88,7 +88,8 @@ def status_block(block):
     chr_status.place(pos=(0, 0), size=(W, h))
     root.place(pos=(0, h / 2))
     base.place(pos=(0, -h / 2), size=(W, h))
-    base.replace("SpriteName: ps_cmn_base52", "SpriteName: ps_cmn_base54")
+    base.replace("Color: 1, 1, 1, 1", "Color: 1, 1, 1, 0")
+    rounded_panel(base, "bc_status_panel", scale)
     base.child("status_ttl_text01").set("Active", False)
     grid.place(pos=(0, -h / 2), size=(W, h))
 

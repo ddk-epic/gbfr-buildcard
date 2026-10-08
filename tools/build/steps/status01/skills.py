@@ -1,8 +1,8 @@
 # Lays out the skills section: the Skills screen's cards, reduced to icon, name and element tag, in a 2x2 grid.
-from model.components import components, rect, set_line, set_refs
+from model.components import rect, set_line, set_refs
 from model.prefab import copy
 from steps.layout import (CARD_ORDER, ICON_PAD, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, TITLE_SCALE, TITLE_TEXT, card,
-                          insert)
+                          insert, rounded_panel)
 
 CARDS = ["ability_set01_btn04", "ability_set01_btn03", "ability_set01_btn01", "ability_set01_btn02"]  # slots 1 to 4
 TITLE_TEXT_ID = "TXT_PAU_ABILITY"
@@ -76,7 +76,6 @@ def apply(ctx):
     prefab = ctx.prefab("status01")
     ability_info = ctx.stock("ability_info01_02")
     title = ctx.stock("equip01_info02").find("loc_info02/ttl01")
-    frame = ctx.stock("status01").find("loc_chr_status03/status_base01")
 
     left, top, width, height = SKILLS
     scale = PANEL_SCALE
@@ -94,9 +93,7 @@ def apply(ctx):
     content_h = NAME_H + SPACING + BAR_H
 
     skills = insert(prefab.find("loc_buildcard"), rect("bc_skills"), CARD_ORDER)
-    panel_components = [line.replace("SpriteName: ps_cmn_base52", "SpriteName: ps_cmn_base54")
-                        for line in components(frame)]
-    panel = skills.add(rect("bc_skills_base", panel_components))
+    panel = skills.add(rect("bc_skills_base"))
     bar = skills.add(copy(title))
     bar.name = "bc_skills_ttl"
     set_line(bar.children[0], "TextID", TITLE_TEXT_ID)
@@ -105,6 +102,7 @@ def apply(ctx):
     skills.place(pos=card(left + width / 2, top + height / 2), size=(W, h))
     skills.set("Scale", (scale, scale, 1))
     panel.place(pos=(0, 0), size=(W, h))
+    rounded_panel(panel, "bc_skills_panel", scale)
     bar.set("Scale", (title_k, title_k, 1))
     bar.place(pos=(0, h / 2 - PAD_Y / u - TITLE_TEXT * title_k))
 

@@ -1,7 +1,7 @@
 # Lays out the summons section as sharecard's summon cells on a status-style panel.
-from model.components import components, mask, rect, set_line, single
+from model.components import mask, rect, set_line, single
 from model.prefab import Ref, copy, f
-from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SUMMONS, card, section
+from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SUMMONS, card, rounded_panel, section
 
 SLOTS = 4
 COLUMN_GAP = 10  # sharecard pixels
@@ -126,18 +126,15 @@ def apply(ctx):
     source_slot = summon_list.find("loc_list_control01/summon_list_button01_01_btn01")
     sources = (source_slot, summon_list.find("summon_list_button01_02_btn01/place01_set01"), source_slot.find("summon_icon01/icon_base01/icon01"),
                summon_info01.find("loc_info02/list_skill_p05_01"), summon_info01.find("loc_info02/list_skill_p05_02"))
-    frame = ctx.stock("status01").find("loc_chr_status03/status_base01")
 
     left, top, width, height = SUMMONS
     scale = (width - COLUMN_GAP) / 2 * SCREEN_CARD_RATIO / CELL_W
     slot_h = SLOT_H * scale / SCREEN_CARD_RATIO  # sharecard pixels
 
     summons = section(ctx.prefab("status01").find("loc_buildcard"), "bc_smn")
-    panel_components = [line.replace("SpriteName: ps_cmn_base52", "SpriteName: ps_cmn_base54")
-                        for line in components(frame)]
-    panel = summons.add(rect("bc_smn_base", panel_components))
-    panel.set("Scale", (PANEL_SCALE, PANEL_SCALE, 1))
-    panel.place(pos=card(left + width / 2, top + height / 2), size=(width * SCREEN_CARD_RATIO / PANEL_SCALE, height * SCREEN_CARD_RATIO / PANEL_SCALE))
+    panel = summons.add(rect("bc_smn_base"))
+    panel.place(pos=card(left + width / 2, top + height / 2), size=(width * SCREEN_CARD_RATIO, height * SCREEN_CARD_RATIO))
+    rounded_panel(panel, "bc_smn_panel", 1)
 
     # slots at the top of the section's quarters
     slots = []

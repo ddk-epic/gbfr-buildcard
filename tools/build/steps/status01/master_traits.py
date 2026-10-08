@@ -2,7 +2,7 @@
 from model.components import (CENTER, LEFT, RIGHT, components, get_line, image, mask, rect, set_line, single,
                               text)
 from model.prefab import copy, f
-from steps.layout import CARD_H, CARD_W, MASTER_TRAITS, SCREEN_CARD_RATIO, card, section
+from steps.layout import CARD_H, CARD_W, MASTER_TRAITS, OUTLINE, SCREEN_CARD_RATIO, card, mt_clip, section
 
 STYLES = 3
 SLOTS, CAPTAIN_SLOTS = [4, 8, 8, 10], [4, 8, 8, 14]
@@ -40,7 +40,6 @@ BAR_INSET, BAR_H = 3, 31  # sharecard pixels, the title bar's inset in the panel
 TEXT_SHIFT = 7  # sharecard pixels, the cell texts' left edge past the frame's corner
 
 # the picked cell style
-OUTLINE = "layouts/pause/status/noatlastextures/bc_outline"
 PICKED = (107 / 255, 132 / 255, 155 / 255)  # a quarter of the way from ps_sboard_list01's colour to white
 UNPICKED = (36 / 255, 30 / 255, 43 / 255)  # the cell colour at half saturation
 UNPICKED_ALPHA = 0.5
@@ -295,7 +294,7 @@ def apply(ctx):
     board = section(prefab.find("loc_buildcard"), "bc_mtraits")
 
     # the Master Traits menu's background, without the character, covering the section and clipped to it
-    clip = board.add(rect("bc_mt_bg", mask((WHITE, WHITE.rsplit("/", 1)[1]))))
+    clip = board.add(mt_clip("bc_mt_bg"))
     scene = clip.add(copy(scene_source))
     scene.find("loc_chara01").remove()
     k = max(WIDTH * SCREEN_CARD_RATIO / SCENE_W, HEIGHT * SCREEN_CARD_RATIO / SCENE_H)

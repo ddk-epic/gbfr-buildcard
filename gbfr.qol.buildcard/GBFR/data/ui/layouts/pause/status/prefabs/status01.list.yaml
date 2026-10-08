@@ -7,7 +7,9 @@ TextureData:
   - layouts/pause/pause_common/noatlastextures/ps_cmn_line04
   - layouts/pause/pause_common/noatlastextures/ps_cmn_btn_eff_005
   - layouts/pause/pause_common/noatlastextures/ps_cmn_mask_chara02
-  - layouts/pause/status/noatlastextures/bc_white
+  - layouts/pause/status/noatlastextures/bc_rounded
+  - layouts/pause/status/noatlastextures/bc_outline
+  - layouts/pause/status/noatlastextures/bc_mt_clip
   - layouts/pause/background02/textures/common/ps_bg02_dissolve01
   - layouts/pause/background04/noatlastextures/ps_bg04_image01
   - layouts/pause/background04/noatlastextures/ps_bg04_image02
@@ -22,11 +24,11 @@ TextureData:
   - layouts/pause/background04/noatlastextures/ps_bg04_image07
   - layouts/pause/background04/noatlastextures/ps_bg04_mask01
   - layouts/pause/background04/noatlastextures/ps_bg04_image08
+  - layouts/pause/status/noatlastextures/bc_white
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base01
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base02
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base03
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base04
-  - layouts/pause/status/noatlastextures/bc_outline
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_wave_eff04_add
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff01_add
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff01_mask

@@ -1,8 +1,8 @@
 # Lays out the Over Mastery section: lb_ovtli02's rows on a status-style panel under a title bar.
-from model.components import components, rect, set_line
+from model.components import rect, set_line
 from model.prefab import copy, f
 from steps.layout import (CARD_ORDER, ICON_PAD, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, TITLE_SCALE, TITLE_TEXT,
-                          card, insert)
+                          card, insert, rounded_panel)
 
 INK = (0.19607843, 0.37254903, 0.4901961)
 TITLE_TEXT_ID = "TXT_PAU_LB_TAB_LIMIT_OVER"
@@ -32,7 +32,6 @@ def apply(ctx):
     card_node = ctx.prefab("status01").find("loc_buildcard")
     source_row = ctx.stock("lb_ovtli02").find("var00_lb_ovtli01_p01_01")
     title = ctx.stock("equip01_info02").find("loc_info02/ttl01")
-    frame = ctx.stock("status01").find("loc_chr_status03/status_base01")
 
     left, top, width, height = OVER_MASTERY
     scale = PANEL_SCALE
@@ -42,11 +41,10 @@ def apply(ctx):
     bar_y = h / 2 - PAD_Y / u - TITLE_TEXT * title_k
     cx, cy = card(left + width / 2, top + height / 2)
 
-    panel_components = [line.replace("SpriteName: ps_cmn_base52", "SpriteName: ps_cmn_base54")
-                        for line in components(frame)]
-    panel = insert(card_node, rect("bc_om", panel_components), CARD_ORDER)
+    panel = insert(card_node, rect("bc_om"), CARD_ORDER)
     panel.set("Scale", (scale, scale, 1))
     panel.place(pos=(cx, cy), size=(w, h))
+    rounded_panel(panel, "bc_om_panel", scale)
 
     bar = copy(title)
     bar.children[0].remove()

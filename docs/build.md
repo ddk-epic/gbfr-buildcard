@@ -69,7 +69,8 @@ the moment. They are ported one section at a time:
 | `status01` | summons | `steps/status01/summons.py` |
 | `status01` | skills | `steps/status01/skills.py` |
 | `status01` | status | `steps/status01/status.py` |
-| `status01` | portrait, gear, master traits | legacy |
+| `status01` | portrait | `steps/status01/portrait.py` |
+| `status01` | gear, master traits | legacy |
 | `chr_status_bg01` | panel, backdrop | legacy |
 
 Until a section is ported, `legacy.py` carries it: each prefab starts as it was at the commit in `FROZEN`, and the

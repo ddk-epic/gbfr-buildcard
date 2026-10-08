@@ -20,6 +20,7 @@ PORTED = {
         "root/loc_base01/loc_status01/power01",
         "root/loc_base01/loc_status01/level01",
         "root/loc_base01/loc_status01/loc_ml_level01",
+        "root/loc_base01/loc_chr",
     ],
     "chr_status_bg01": [],
 }

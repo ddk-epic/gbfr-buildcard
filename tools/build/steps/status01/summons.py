@@ -4,8 +4,8 @@ from model.prefab import Ref, copy, f
 from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SUMMONS, card, rounded_panel, section
 
 SLOTS = 4
-COLUMN_GAP = 10  # sharecard pixels
-PAD_TOP = 4  # sharecard pixels
+COLUMN_GAP = 10
+PAD = 12
 KEEP = ["loc_text01"]  # loc_item01's children kept
 ICON_W, ICON_H = 320, 440  # cmn_icsmn sprites
 FADE = ("atlas/pause_pause_common", "ps_cmn_mask_list_w01")
@@ -21,10 +21,10 @@ LOWER_LEFT = 6  # ChildAlignment
 
 # slot units
 CELL_W, SLOT_H = 1136, 140  # base01
-BAND_X, BAND_Y, BAND_W, BAND_H = 33, 17, 735, 60  # from the cell's top-left corner
+BAND_W, BAND_H = 735, 60
 NAME_X = 24  # from the band's left edge
 ROW_ICON_LEFT = -478  # the row icon's left edge in its row
-TRAIT_Y, BONUS_Y = 144, 230  # row centres below the cell's top
+TRAIT_Y, BONUS_Y = 127, 213  # row centres below the band's top
 ART_W = CELL_W / 3
 PORTRAIT_W = 1.2  # of the art's width
 
@@ -84,20 +84,23 @@ def slot(sources, name, scale):
     set_line(row_text, "Spacing", LEVEL_GAP)
     wrap.place(size=(0, LEVEL_H))
 
-    left, top = -CELL_W / 2, 70 + PAD_TOP * SCREEN_CARD_RATIO / scale
+    left, top = -CELL_W / 2, SLOT_H / 2
+    # the band's top-left corner, PAD inside the section's quarter
+    band_left = left + (PAD - COLUMN_GAP / 4) * SCREEN_CARD_RATIO / scale
+    band_top = top - PAD * SCREEN_CARD_RATIO / scale
     cell_h = 131 * SCREEN_CARD_RATIO / scale
     portrait_y = 18 * SCREEN_CARD_RATIO / scale  # below the cell's centre
 
     # the band fade's ramp across the band
     band_fade_w = BAND_W / (1 - BAND_FADE_PADDING)
-    band_fade.place(pos=(left + BAND_X + band_fade_w / 2, top - BAND_Y - BAND_H / 2), size=(band_fade_w, BAND_H))
+    band_fade.place(pos=(band_left + band_fade_w / 2, band_top - BAND_H / 2), size=(band_fade_w, BAND_H))
     band.place(pos=(BAND_W / 2 - band_fade_w / 2, 0), size=(BAND_W, BAND_H))
     set_line(text, "MaterialPath", NAME_MATERIAL)
     set_line(text, "FontSize", f(STATUS_SIZE * PANEL_SCALE / scale))
     set_line(text, "Color", NAME_COLOR)
     i = text.lines.index("      MultiData: true")
     text.lines[i:i + 1] = ["      MultiData: false", f"      LanguageData: {NAME_LANGUAGE}"]
-    text.place(pos=(left + BAND_X + NAME_X, top - BAND_Y - BAND_H / 2))
+    text.place(pos=(band_left + NAME_X, band_top - BAND_H / 2))
 
     # the fade's opaque part over the last third, the icon centred on it
     fade_w = ART_W / (1 - FADE_PADDING)
@@ -107,9 +110,9 @@ def slot(sources, name, scale):
 
     for row, y, k in ((trait, TRAIT_Y, PANEL_SCALE / scale), (bonus, BONUS_Y, 1)):
         # the trait row at the status panel labels' size; the rows' icons at the band's left edge
-        x = left + BAND_X - ROW_ICON_LEFT * k
+        x = band_left - ROW_ICON_LEFT * k
         row.set("Scale", (k, k, 1))
-        row.place(pos=(x, top - y))
+        row.place(pos=(x, band_top - y))
         row.find("line01").set("Active", False)
         # the name closer to its icon
         row_text = row.find("loc_text")
@@ -145,7 +148,7 @@ def apply(ctx):
     for i in range(SLOTS):
         node = summons.add(slot(sources, f"bc_smn_{i}", scale))
         x = left + width * (1 + 2 * (i % 2)) / 4
-        y = top + height / 2 * (i // 2) + PAD_TOP
+        y = top + height / 2 * (i // 2)
         node.set("Scale", (scale, scale, 1))
         node.place(pos=card(x, y + slot_h / 2))
         ctx.powers(node)

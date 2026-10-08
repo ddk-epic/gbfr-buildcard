@@ -6,8 +6,8 @@ from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, PAD_X, PAD_Y, PANE
 
 CARDS = ["ability_set01_btn04", "ability_set01_btn03", "ability_set01_btn01", "ability_set01_btn02"]  # slots 1 to 4
 TITLE_TEXT_ID = "TXT_PAU_ABILITY"
-ICON_PX = 85  # sharecard pixels
-ICON_GAP = 10  # sharecard pixels
+ICON_PX = 88
+ICON_GAP = 10
 HIDDEN = ["loc_icon_pos", "loc_guide_button", "loc_guide_button_key"]
 
 # block units

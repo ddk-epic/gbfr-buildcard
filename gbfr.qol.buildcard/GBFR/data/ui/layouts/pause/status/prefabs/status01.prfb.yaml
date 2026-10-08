@@ -109298,15 +109298,15 @@ Objects:
         ObjectRefId: 2712
       Enable: true
   Active: true
-  Position: -155.344, 0, 0
+  Position: -152.64, 0, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.833, 0.833, 1
+  Scale: 0.862, 0.862, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 85.641, 0
+  AnchorPoint: 88.345, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -6.359, -92
-  OffsetMax: 177.641, 92
+  OffsetMin: -3.655, -92
+  OffsetMax: 180.345, 92
   SizeDelta: 184, 184
 - Id: 2713
   Name: abirity01
@@ -109367,16 +109367,16 @@ Objects:
       ChildForceExpandHeight: false
       Enable: true
   Active: true
-  Position: 78.648, 0, 0
+  Position: 81.353, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 78.648, 0
+  AnchorPoint: 81.353, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -83.688, -81.9
+  OffsetMin: -78.279, -81.9
   OffsetMax: 240.985, 81.9
-  SizeDelta: 324.673, 163.8
+  SizeDelta: 319.264, 163.8
 - Id: 2715
   Name: text01
   Components:
@@ -109411,7 +109411,7 @@ Objects:
       VerticalFit: 2
       Enable: true
   Active: true
-  Position: -162.337, 33, 0
+  Position: -159.632, 33, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -109419,8 +109419,8 @@ Objects:
   AnchorMin: 0, 1
   AnchorMax: 0, 1
   OffsetMin: 0, -73.9
-  OffsetMax: 324.673, -23.9
-  SizeDelta: 324.673, 50
+  OffsetMax: 319.264, -23.9
+  SizeDelta: 319.264, 50
 - Id: 2716
   Name: loc_elem01
   Children:
@@ -109477,7 +109477,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -162.337, -38, 0
+  Position: -159.632, -38, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -111390,15 +111390,15 @@ Objects:
         ObjectRefId: 2770
       Enable: true
   Active: true
-  Position: -155.344, 0, 0
+  Position: -152.64, 0, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.833, 0.833, 1
+  Scale: 0.862, 0.862, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 85.641, 0
+  AnchorPoint: 88.345, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -6.359, -92
-  OffsetMax: 177.641, 92
+  OffsetMin: -3.655, -92
+  OffsetMax: 180.345, 92
   SizeDelta: 184, 184
 - Id: 2771
   Name: abirity01
@@ -111459,16 +111459,16 @@ Objects:
       ChildForceExpandHeight: false
       Enable: true
   Active: true
-  Position: 78.648, 0, 0
+  Position: 81.353, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 78.648, 0
+  AnchorPoint: 81.353, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -83.688, -81.9
+  OffsetMin: -78.279, -81.9
   OffsetMax: 240.985, 81.9
-  SizeDelta: 324.673, 163.8
+  SizeDelta: 319.264, 163.8
 - Id: 2773
   Name: text01
   Components:
@@ -111503,7 +111503,7 @@ Objects:
       VerticalFit: 2
       Enable: true
   Active: true
-  Position: -162.337, 33, 0
+  Position: -159.632, 33, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -111511,8 +111511,8 @@ Objects:
   AnchorMin: 0, 1
   AnchorMax: 0, 1
   OffsetMin: 0, -73.9
-  OffsetMax: 324.673, -23.9
-  SizeDelta: 324.673, 50
+  OffsetMax: 319.264, -23.9
+  SizeDelta: 319.264, 50
 - Id: 2774
   Name: loc_elem01
   Children:
@@ -111569,7 +111569,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -162.337, -38, 0
+  Position: -159.632, -38, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -113482,15 +113482,15 @@ Objects:
         ObjectRefId: 2828
       Enable: true
   Active: true
-  Position: -155.344, 0, 0
+  Position: -152.64, 0, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.833, 0.833, 1
+  Scale: 0.862, 0.862, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 85.641, 0
+  AnchorPoint: 88.345, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -6.359, -92
-  OffsetMax: 177.641, 92
+  OffsetMin: -3.655, -92
+  OffsetMax: 180.345, 92
   SizeDelta: 184, 184
 - Id: 2829
   Name: abirity01
@@ -113551,16 +113551,16 @@ Objects:
       ChildForceExpandHeight: false
       Enable: true
   Active: true
-  Position: 78.648, 0, 0
+  Position: 81.353, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 78.648, 0
+  AnchorPoint: 81.353, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -83.688, -81.9
+  OffsetMin: -78.279, -81.9
   OffsetMax: 240.985, 81.9
-  SizeDelta: 324.673, 163.8
+  SizeDelta: 319.264, 163.8
 - Id: 2831
   Name: text01
   Components:
@@ -113595,7 +113595,7 @@ Objects:
       VerticalFit: 2
       Enable: true
   Active: true
-  Position: -162.337, 33, 0
+  Position: -159.632, 33, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -113603,8 +113603,8 @@ Objects:
   AnchorMin: 0, 1
   AnchorMax: 0, 1
   OffsetMin: 0, -73.9
-  OffsetMax: 324.673, -23.9
-  SizeDelta: 324.673, 50
+  OffsetMax: 319.264, -23.9
+  SizeDelta: 319.264, 50
 - Id: 2832
   Name: loc_elem01
   Children:
@@ -113661,7 +113661,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -162.337, -38, 0
+  Position: -159.632, -38, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -115574,15 +115574,15 @@ Objects:
         ObjectRefId: 2886
       Enable: true
   Active: true
-  Position: -155.344, 0, 0
+  Position: -152.64, 0, 0
   Rotation: 0, 0, 0, 1
-  Scale: 0.833, 0.833, 1
+  Scale: 0.862, 0.862, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 85.641, 0
+  AnchorPoint: 88.345, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -6.359, -92
-  OffsetMax: 177.641, 92
+  OffsetMin: -3.655, -92
+  OffsetMax: 180.345, 92
   SizeDelta: 184, 184
 - Id: 2887
   Name: abirity01
@@ -115643,16 +115643,16 @@ Objects:
       ChildForceExpandHeight: false
       Enable: true
   Active: true
-  Position: 78.648, 0, 0
+  Position: 81.353, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 78.648, 0
+  AnchorPoint: 81.353, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -83.688, -81.9
+  OffsetMin: -78.279, -81.9
   OffsetMax: 240.985, 81.9
-  SizeDelta: 324.673, 163.8
+  SizeDelta: 319.264, 163.8
 - Id: 2889
   Name: text01
   Components:
@@ -115687,7 +115687,7 @@ Objects:
       VerticalFit: 2
       Enable: true
   Active: true
-  Position: -162.337, 33, 0
+  Position: -159.632, 33, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
@@ -115695,8 +115695,8 @@ Objects:
   AnchorMin: 0, 1
   AnchorMax: 0, 1
   OffsetMin: 0, -73.9
-  OffsetMax: 324.673, -23.9
-  SizeDelta: 324.673, 50
+  OffsetMax: 319.264, -23.9
+  SizeDelta: 319.264, 50
 - Id: 2890
   Name: loc_elem01
   Children:
@@ -115753,7 +115753,7 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -162.337, -38, 0
+  Position: -159.632, -38, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5

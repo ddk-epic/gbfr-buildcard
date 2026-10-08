@@ -72,7 +72,7 @@ the moment. They are ported one section at a time:
 | `status01` | portrait | `steps/status01/portrait.py` |
 | `status01` | gear | `steps/status01/gear.py` |
 | `status01` | master traits | `steps/status01/master_traits.py` |
-| `chr_status_bg01` | panel, backdrop | legacy |
+| `chr_status_bg01` | panel, backdrop | `steps/chr_status_bg01/backdrop.py` |
 
 Until a section is ported, `legacy.py` carries it: each prefab starts as it was at the commit in `FROZEN`, and the
 paths in `PORTED` are reset to stock (a subtree stock has) or removed (one the mod added). References into a reset

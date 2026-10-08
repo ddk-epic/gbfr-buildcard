@@ -25,7 +25,9 @@ PORTED = {
         "root/loc_base01/loc_status02/loc_chr_status02",
         "root/loc_base01/loc_buildcard/bc_mtraits",
     ],
-    "chr_status_bg01": [],
+    "chr_status_bg01": [
+        "root/loc_bg/bg01",
+    ],
 }
 
 

@@ -1,7 +1,8 @@
 # Usage: python gen_backdrop_mask.py <width> <height> <out.png>
 # Draws sharecard's parchment cut as the alpha of a mask over the white panel.
 import math, struct, sys, zlib
-from card import S
+
+S = 3424 / 2880  # card scale
 
 W, H = int(sys.argv[1]), int(sys.argv[2])
 

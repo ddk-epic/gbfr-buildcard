@@ -7,6 +7,7 @@ CARD_W, CARD_H = 2880, 1440  # sharecard pixels
 
 # sections: left, top, width, height in sharecard pixels
 STATUS = (16, 16, 560, 1102)
+GEAR = (600, 16, 756, 1388)
 SKILLS = (16, 1142, 560, 262)
 OVER_MASTERY = (1380, 1142, 491.33, 262)
 SUMMONS = (1876.33, 1142, 987.67, 262)
@@ -17,8 +18,22 @@ ICON_PAD = 5  # pl-1 of sharecard's compact skill cell
 
 # the status-style panels' scale: the skills block's 1000 units across its section
 PANEL_SCALE = SKILLS[2] * S / 1000
-TITLE_SCALE = 0.705  # bc_weapon's
 TITLE_TEXT = 30  # a title text's top above its bar's top, in title units
+
+# the gear column's stack, in bc_weapon units from its root's pivot
+WEAPON_TOP = 314  # the weapon title text's top
+SKILLS_TOP = -305  # under the stat row
+PENDULUM_GAP = 396  # loc_skill02's top below loc_skill01's
+PENDULUM_H = 280  # loc_skill02's title and three rows
+STACK_GAP = 10
+GENE_GAP = 46  # loc_gene01's top below the title bar's top
+GENE_H = 960
+PENDULUM_TOP = SKILLS_TOP - PENDULUM_GAP
+SIGILS_TITLE_TOP = PENDULUM_TOP - PENDULUM_H - STACK_GAP - TITLE_TEXT
+GENE_TOP = SIGILS_TITLE_TOP - GENE_GAP
+
+# bc_weapon's scale, the stack across the gear section's height, and every title's
+TITLE_SCALE = GEAR[3] * S / (WEAPON_TOP - GENE_TOP + GENE_H)
 
 # loc_buildcard's children in order, each added by its section's step
 CARD_ORDER = ["bc_mtraits", "bc_om", "bc_smn", "bc_weapon", "bc_skills", "bc_om_ttl_text", "bc_frame"]

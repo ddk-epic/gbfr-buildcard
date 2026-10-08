@@ -23,6 +23,14 @@ def single(node):
     return copied
 
 
+def get_line(node, key):
+    # the value of the first nested line with the key
+    for line in node.lines:
+        if isinstance(line, str) and line.lstrip().startswith(f"{key}: "):
+            return line.split(": ", 1)[1]
+    raise KeyError(f"{node.path}: {key}")
+
+
 def set_line(node, key, value):
     # sets the first nested line with the key
     for i, line in enumerate(node.lines):
@@ -37,6 +45,16 @@ def mask(sprite):
     return ["  - ComponentName: Mask", "    Component:", "      Sprite:", f"        TexturePath: {sprite[0]}",
             f"        SpriteName: {sprite[1]}", "      Offset: 0, 0", "      ChannelWeights: 0, 0, 0, 1",
             "      InvertMask: false", "      InvertOutsides: false", "      Enable: true"]
+
+
+def set_refs(node, field, targets):
+    # points the references of the node's field at the targets, in order
+    i = node.lines.index(f"      {field}:") + 1
+    for target in targets:
+        while not isinstance(node.lines[i], Ref):
+            i += 1
+        node.lines[i] = Ref(node.lines[i].prefix, target)
+        i += 1
 
 
 def components(node):

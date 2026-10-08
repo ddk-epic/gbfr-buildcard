@@ -1,6 +1,6 @@
 # Lays out the skills section: the Skills screen's cards, reduced to icon, name and element tag, in a 2x2 grid.
-from model.components import components, rect, set_line
-from model.prefab import Ref, copy
+from model.components import components, rect, set_line, set_refs
+from model.prefab import copy
 from steps.layout import (CARD_ORDER, ICON_PAD, PAD_X, PAD_Y, PANEL_SCALE, S, SKILLS, TITLE_SCALE, TITLE_TEXT, card,
                           insert)
 
@@ -72,17 +72,6 @@ def skill_card(source):
     return node
 
 
-def set_abilities(prefab, cards):
-    # points CharaInfo.Ability's entries at the cards, in order
-    lines = prefab.root.lines
-    i = lines.index("      Ability:") + 1
-    for node in cards:
-        while not isinstance(lines[i], Ref):
-            i += 1
-        lines[i] = Ref(lines[i].prefix, node)
-        i += 1
-
-
 def apply(ctx):
     prefab = ctx.prefab("status01")
     ability_info = ctx.stock("ability_info01_02")
@@ -152,5 +141,5 @@ def apply(ctx):
 
     for block in ("loc_chr_status03", "loc_chr_status04"):
         prefab.find(f"loc_status02/{block}").set("Active", False)
-    set_abilities(prefab, cards)
+    set_refs(prefab.root, "Ability", cards)
     ctx.export("SkillNames", [node.find("bc_skill_text/text01") for node in cards])

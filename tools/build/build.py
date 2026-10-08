@@ -7,12 +7,13 @@ import sys
 import codegen
 import legacy
 import powers
+from steps.status01 import frame
 from context import REPO, TARGETS, Context
 from diff import diff
 from model.prefab import Prefab
 
 # the build steps in order, each with apply(ctx)
-STEPS = [legacy, powers]
+STEPS = [legacy, frame, powers]
 
 
 def build(stock=None):

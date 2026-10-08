@@ -7,7 +7,9 @@ FROZEN = "5f5f45671a159215941f4632267213071ae516c9"
 
 # per prefab, the paths reset to stock, or removed where stock has none
 PORTED = {
-    "status01": [],
+    "status01": [
+        "root/loc_base01/loc_buildcard/bc_frame",
+    ],
     "chr_status_bg01": [],
 }
 

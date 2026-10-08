@@ -65,6 +65,7 @@ the moment. They are ported one section at a time:
 
 | Prefab | Section | Status |
 |---|---|---|
+| `status01` | frame | `steps/status01/frame.py` |
 | `status01` | Over Mastery, summons, skills, status, portrait, gear, master traits | legacy |
 | `chr_status_bg01` | panel, backdrop | legacy |
 

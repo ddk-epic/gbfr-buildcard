@@ -1,8 +1,9 @@
 # Usage: python gen_master_traits.py <gbfr-extract dir> <gbfr-sharecard dir> <mod dir>
 # Writes the master trait cells to <mod dir>/Data/master_traits.tsv and their button icon tags to the mod's
 # text_skillboard_tag.msg.
-import json, os, re, sqlite3, struct, sys
+import json, os, re, sqlite3, sys
 import msg
+from hashing import xxhash32_custom
 
 EXTRACT, SHARECARD, MOD = sys.argv[1:]
 STYLES = ["SB_DEF", "SB_ATK", "SB_LIMIT"]
@@ -11,34 +12,6 @@ RANKS = ["68DE92AC", "A96D9EBC", "4A5DDC7B", "3B99904D"]
 RANK_IDS = ["r1", "r2", "r3", "ex"]
 BUTTON_ICONS = {"LMB": 4, "RMB": 3}
 TAG_FILE = "system/table/text/en/text_skillboard_tag.msg"
-
-def xxhash32_custom(text):
-    # GBFRDataTools.Hashing.XXHash32Custom
-    m = 0xFFFFFFFF
-    p1, p2, p3, p4, p5 = 0x9E3779B1, 0x85EBCA77, 0xC2B2AE3D, 0x27D4EB2F, 0x165667B1
-    rotl = lambda x, r: ((x << r) | (x >> (32 - r))) & m
-    b, p, h = text.encode("ascii"), 0, 0x178A54A4
-    if len(b) >= 16:
-        v = [0x2557311B, 0x871FB76A, 0x0133ECF3, 0x62FC7342]
-        while True:
-            for k in range(4):
-                v[k] = rotl((v[k] + struct.unpack_from("<I", b, p + 4 * k)[0] * p2) & m, 13) * p1 & m
-            p += 16
-            if len(b) - p <= 16:
-                break
-        h = (rotl(v[0], 1) + rotl(v[1], 7) + rotl(v[2], 12) + rotl(v[3], 18)) & m
-    h = (h + len(b)) & m
-    while len(b) - p >= 4:
-        h = rotl((h + struct.unpack_from("<I", b, p)[0] * p3) & m, 17) * p4 & m
-        p += 4
-    while p < len(b):
-        h = rotl((h + b[p] * p5) & m, 11) * p1 & m
-        p += 1
-    h ^= h >> 15
-    h = h * p2 & m
-    h ^= h >> 13
-    h = h * p3 & m
-    return h ^ (h >> 16)
 
 def element(**fields):
     return {"Element": fields}

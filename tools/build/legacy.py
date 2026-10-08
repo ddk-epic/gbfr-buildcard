@@ -15,6 +15,11 @@ PORTED = {
         "root/loc_base01/loc_buildcard/bc_skills",
         "root/loc_base01/loc_status02/loc_chr_status03",
         "root/loc_base01/loc_status02/loc_chr_status04",
+        "root/loc_base01/loc_status02/loc_chr_status01",
+        "root/loc_base01/loc_name01",
+        "root/loc_base01/loc_status01/power01",
+        "root/loc_base01/loc_status01/level01",
+        "root/loc_base01/loc_status01/loc_ml_level01",
     ],
     "chr_status_bg01": [],
 }

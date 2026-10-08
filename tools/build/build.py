@@ -7,13 +7,13 @@ import sys
 import codegen
 import legacy
 import powers
-from steps.status01 import frame, over_mastery, skills, summons
+from steps.status01 import frame, over_mastery, skills, status, summons
 from context import REPO, TARGETS, Context
 from diff import diff
 from model.prefab import Prefab
 
 # the build steps in order, each with apply(ctx)
-STEPS = [legacy, frame, over_mastery, summons, skills, powers]
+STEPS = [legacy, frame, over_mastery, summons, skills, status, powers]
 
 
 def build(stock=None):

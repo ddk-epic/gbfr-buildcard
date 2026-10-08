@@ -6,6 +6,7 @@ S = 3424 / 2880
 CARD_W, CARD_H = 2880, 1440  # sharecard pixels
 
 # sections: left, top, width, height in sharecard pixels
+STATUS = (16, 16, 560, 1102)
 SKILLS = (16, 1142, 560, 262)
 OVER_MASTERY = (1380, 1142, 491.33, 262)
 SUMMONS = (1876.33, 1142, 987.67, 262)
@@ -43,6 +44,16 @@ def section(card, name):
 def card(x, y):
     # sharecard pixels on the card to loc_buildcard units
     return (x - CARD_W / 2) * S, (CARD_H / 2 - y) * S
+
+
+def move(node, x, y):
+    # moves the node's pivot to loc_base01 units, the card's
+    ax, ay, parent = 0, 0, node
+    while parent.path != "root/loc_base01":
+        px, py = parent.vec("Position")[:2]
+        ax, ay, parent = ax + px, ay + py, parent.parent
+    px, py = node.vec("Position")[:2]
+    node.place(pos=(px + x - ax, py + y - ay))
 
 
 def place(node, x, y, w, h):

@@ -2512,15 +2512,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -1360.089, -291.11, 0
+  Position: -1360.089, -291, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 351.911, 650.89
+  AnchorPoint: 351.911, 651
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -290.094, 614.89
-  OffsetMax: 993.916, 686.89
+  OffsetMin: -290.094, 615
+  OffsetMax: 993.916, 687
   SizeDelta: 1284.01, 72
 - Id: 8
   Name: loc_name01_icon
@@ -2893,15 +2893,15 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 97.727, -173.814, 0
+  Position: 97.727, -173.574, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 97.727, -1115.814
+  AnchorPoint: 97.727, -1115.574
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: 5.727, -1207.814
-  OffsetMax: 189.727, -1023.814
+  OffsetMin: 5.727, -1207.574
+  OffsetMax: 189.727, -1023.574
   SizeDelta: 184, 184
 - Id: 18
   Name: pwr_icon01
@@ -5281,7 +5281,7 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: false
-  Position: -388, 168, 0
+  Position: -904, 118, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5

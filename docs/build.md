@@ -15,7 +15,8 @@ python -m unittest discover -s tests -t .    # from tools/build
 ## How it builds
 
 1. Each prefab starts from its frozen copy (`legacy.py`, see [Porting](#porting)), then each step in `build.py`'s
-   `STEPS` changes it, in order.
+   `STEPS` changes it, in order. The last, `powers.py`, orders `CharaInfo.Powers`: stock's entries in stock order,
+   then the mod's in tree order.
 2. The prefabs are written with Ids in depth-first order, assigned only now: steps never see or use Ids.
 3. `codegen.py` writes the exported objects' Ids to `CardIds.g.cs`, and fails if one isn't in `CharaInfo.Powers`,
    where `CardWriter` looks for it.

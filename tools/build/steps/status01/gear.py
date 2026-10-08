@@ -233,6 +233,8 @@ def apply(ctx):
     prefab = ctx.prefab("status01")
     info01, info_weapon01, info02 = (ctx.stock(name) for name in
                                      ("equip01_info01", "equip01_info_weapon01", "equip01_info02"))
+    for name in ("equip01_info_weapon01", "equip01_info01", "equip01_info02"):
+        ctx.merge_list("status01", name)
     panel, traits, sigils = weapon_panel(info01, info_weapon01, info02)
     insert(prefab.find("loc_buildcard"), panel, CARD_ORDER)
 

@@ -1,11 +1,13 @@
 # Usage: python build.py [--stock <dir>] [--check [--tolerance <t>]]
-# Builds the mod's prefabs and Generated/CardIds.g.cs from the steps below.
+# Builds the mod's prefabs, their asset lists and Generated/CardIds.g.cs from the steps below.
 import argparse
+import difflib
 import os
 import sys
 
 import codegen
 import legacy
+import lists
 import powers
 from steps.chr_status_bg01 import backdrop
 from steps.status01 import frame, gear, master_traits, over_mastery, portrait, skills, status, summons
@@ -14,7 +16,7 @@ from diff import diff
 from model.prefab import Prefab
 
 # the build steps in order, each with apply(ctx)
-STEPS = [legacy, frame, over_mastery, summons, skills, status, portrait, gear, master_traits, backdrop, powers]
+STEPS = [legacy, frame, over_mastery, summons, skills, status, portrait, gear, master_traits, backdrop, powers, lists]
 
 
 def build(stock=None):
@@ -34,6 +36,7 @@ def main():
     ctx = build(args.stock)
     stale = False
     outputs = [(name, path, ctx.prefab(name).text()) for name, path in TARGETS.items()]
+    outputs += [(f"{name}.list", path.replace(".prfb.", ".list."), ctx.lists[name]) for name, path in TARGETS.items()]
     outputs.append(("CardIds", codegen.OUTPUT, codegen.generate(ctx.prefab("status01"), ctx.exports)))
     for name, path, text in outputs:
         full = os.path.join(REPO, path)
@@ -52,6 +55,10 @@ def main():
                 for line in report or ["(no differences beyond the tolerance)" if args.tolerance else
                                        "(same objects, different text)"]:
                     print(f"  {line}")
+            elif committed is not None:
+                for line in difflib.unified_diff(committed.splitlines(), text.splitlines(), n=0, lineterm=""):
+                    if not line.startswith(("---", "+++", "@@")):
+                        print(f"  {line}")
         else:
             os.makedirs(os.path.dirname(full), exist_ok=True)
             with open(full, "w", encoding="utf-8", newline="") as file:

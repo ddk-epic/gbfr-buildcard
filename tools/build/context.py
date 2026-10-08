@@ -32,6 +32,8 @@ class Context:
         self.stock_dir = stock
         self.prefabs = {}  # name: the Prefab being built
         self.exports = {}  # key: node, or nested lists of nodes
+        self.lists = {}  # name: the asset list's text
+        self.merged = {}  # name: the stock lists merged into its asset list
         self._stock = {}
 
     def prefab(self, name):
@@ -42,14 +44,26 @@ class Context:
         if name in COMMITTED and name not in self._stock:
             self._stock[name] = git_show(COMMITTED[name], TARGETS[name])
         if name not in self._stock:
-            if self.stock_dir is None:
-                raise SystemExit(f"{name}: this build needs stock prefabs, pass --stock <dir>")
-            path = os.path.join(self.stock_dir, f"{name}.prfb.yaml")
-            if not os.path.exists(path):
-                raise SystemExit(f"{path} not found: convert the game's {name}.prfb with gbfr.uitools b-convert")
-            with open(path, encoding="utf-8") as file:
-                self._stock[name] = file.read()
+            self._stock[name] = self.stock_file(f"{name}.prfb")
         return Prefab.parse(self._stock[name])
+
+    def stock_list(self, name):
+        # the game's asset list of the prefab
+        return self.stock_file(f"{name}.list")
+
+    def stock_file(self, name):
+        # <stock dir>/<name>.yaml
+        if self.stock_dir is None:
+            raise SystemExit(f"{name}: this build needs stock files, pass --stock <dir>")
+        path = os.path.join(self.stock_dir, f"{name}.yaml")
+        if not os.path.exists(path):
+            raise SystemExit(f"{path} not found: convert the game's {name}b with gbfr.uitools b-convert")
+        with open(path, encoding="utf-8") as file:
+            return file.read()
+
+    def merge_list(self, name, source):
+        # merges the source prefab's asset list, except animations, into the prefab's
+        self.merged.setdefault(name, []).append(source)
 
     def powers(self, node, component=""):
         # adds the node to status01's CharaInfo.Powers

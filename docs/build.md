@@ -1,12 +1,12 @@
 # Prefab build
 
-`tools/build/build.py` writes the mod's edited prefabs, `status01` and `chr_status_bg01`, and
+`tools/build/build.py` writes the mod's edited prefabs, `status01` and `chr_status_bg01`, their asset lists, and
 `gbfr.qol.buildcard/Generated/CardIds.g.cs`, the Ids of the objects `CardWriter` sets. The outputs are committed, so
 building the mod needs neither Python nor the game's files; the build steps are the source, and the outputs are never
 edited by hand.
 
 ```
-python tools/build/build.py --stock <dir>            # writes the outputs; <dir> holds the stock prefabs, see below
+python tools/build/build.py --stock <dir>            # writes the outputs; <dir> holds the stock files, see below
 python tools/build/build.py --stock <dir> --check    # writes nothing; exits 1, with a diff, if an output is stale
 python -m unittest discover -s tests -t .    # from tools/build
 ```
@@ -19,14 +19,19 @@ python -m unittest discover -s tests -t .    # from tools/build
 2. The prefabs are written with Ids in depth-first order, assigned only now: steps never see or use Ids.
 3. `codegen.py` writes the exported objects' Ids to `CardIds.g.cs`, and fails if one isn't in `CharaInfo.Powers`,
    where `CardWriter` looks for it.
+4. `lists.py` writes each prefab's asset list, the textures, atlases, materials, animations, image data and language
+   data the game loads before building it: stock's list, then the assets the prefab names, then the stock lists a
+   step merged with `ctx.merge_list`, except their animations. An asset missing from the list isn't loaded; a missing
+   image data crashes the game.
 
-### Stock prefabs
+### Stock files
 
-Stock `status01` is read from commit 662eedd, which added it. The other stock prefabs come from `--stock`, a folder of
-the game's prefabs converted to YAML, one file per prefab, named `<name>.prfb.yaml`:
+Stock `status01` is read from commit 662eedd, which added it. The other stock prefabs and every stock asset list come
+from `--stock`, a folder of the game's files converted to YAML, named `<name>.prfb.yaml` and `<name>.list.yaml`:
 
 ```
-gbfr.uitools.exe b-convert -i <extracted>/ui/layouts/pause/status/prefabs/summon_list01.prfb -o <stock>/summon_list01.prfb.yaml
+gbfr.uitools.exe b-convert -i <extracted>/ui/layouts/pause/summon/prefabs/summon_list01.prfb -o <stock>/summon_list01.prfb.yaml
+gbfr.uitools.exe b-convert -i <extracted>/ui/layouts/pause/status/prefabs/status01.list.listb -o <stock>/status01.list.yaml
 ```
 
 Legacy loads `status01` and `chr_status_bg01` to reset ported paths, and steps load other prefabs (`summon_list01`,
@@ -42,6 +47,7 @@ A step is a module with `apply(ctx)`, listed in `STEPS`. `ctx` (`context.py`) ha
 | `ctx.prefab("status01")` | the prefab being built |
 | `ctx.stock(name)` | a fresh copy of a stock prefab |
 | `ctx.export("SummonSlots", [node, ...])` | the nodes' Ids in `CardIds.g.cs`, as a constant or nested arrays |
+| `ctx.merge_list("status01", "equip01_info02")` | merges a stock list into the prefab's asset list, for assets the game loads through code |
 
 Objects are `Node`s (`model/prefab.py`):
 

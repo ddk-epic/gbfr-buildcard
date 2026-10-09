@@ -11,14 +11,12 @@ public static unsafe partial class GameMemory
 
     public static bool IsReadable(nint address, nint size) => new Region().Covers(address, size);
 
-    // Whether the MSVC vector at vector (begin, end, capacity) holds whole elements of elementSize, all readable
+    // Whether the MSVC vector at vector (begin, end, capacity) holds whole elements of elementSize
     public static bool IsVector(nint vector, int elementSize)
     {
-        if (!IsReadable(vector, 3 * sizeof(nint)))
-            return false;
         nint* v = (nint*)vector;
-        return v[0] <= v[1] && v[1] <= v[2] && (v[1] - v[0]) % elementSize == 0 && (v[2] - v[0]) % elementSize == 0
-            && (v[0] == v[1] || IsReadable(v[0], v[1] - v[0]));
+        return (v[0] != 0 || v[2] == 0) && v[0] <= v[1] && v[1] <= v[2]
+            && (v[1] - v[0]) % elementSize == 0 && (v[2] - v[0]) % elementSize == 0;
     }
 
     // The base of the allocation holding address, a module's base for an address in it; 0 when unmapped

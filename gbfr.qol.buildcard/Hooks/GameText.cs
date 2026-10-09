@@ -28,7 +28,7 @@ public unsafe class GameText
         scanManager.AddScan("TextComponentSetText", signatureGroup, address =>
         {
             _setText = (delegate* unmanaged<nint, GameString*, uint, int, void>)(nint)address;
-            _tables = TablesFrom((byte*)address + TablesLoad);
+            _tables = PeImage.RipGlobal((byte*)address + TablesLoad, [0x48, 0x8B, 0x15]);
         });
         scanManager.AddScan("TextLookup", signatureGroup, address =>
             _lookup = (delegate* unmanaged<nint, TextView*, uint, uint, void>)(nint)address);
@@ -57,13 +57,6 @@ public unsafe class GameText
     {
         var view = Lookup(hash);
         return view.Ptr == 0 || view.Length <= 0 ? "" : Encoding.UTF8.GetString((byte*)view.Ptr, (int)view.Length);
-    }
-
-    private static nint* TablesFrom(byte* load)
-    {
-        if (load[0] != 0x48 || load[1] != 0x8B || load[2] != 0x15)
-            return null;
-        return (nint*)(load + 7 + *(int*)(load + 3));
     }
 
     public struct GameString

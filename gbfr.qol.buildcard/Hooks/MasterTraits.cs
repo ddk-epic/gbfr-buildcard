@@ -44,7 +44,7 @@ public unsafe class MasterTraits
         scanManager.AddScan("SetSkillBoardDescription", signatureGroup, address =>
         {
             _setDescription = (delegate* unmanaged<nint, uint, int, void>)(nint)address;
-            _tables = TablesFrom((byte*)address + TablesLoad);
+            _tables = PeImage.RipGlobal((byte*)address + TablesLoad, [0x4C, 0x8B, 0x3D]);
         });
     }
 
@@ -94,13 +94,6 @@ public unsafe class MasterTraits
                 return *(nint*)(node + 0x18);
         }
         return 0;
-    }
-
-    private static nint* TablesFrom(byte* load)
-    {
-        if (load[0] != 0x4C || load[1] != 0x8B || load[2] != 0x3D)
-            return null;
-        return (nint*)(load + 7 + *(int*)(load + 3));
     }
 }
 

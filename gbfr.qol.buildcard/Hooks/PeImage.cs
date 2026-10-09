@@ -2,7 +2,7 @@ using System.Text;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Reads the loaded exe's sections and MSVC RTTI.
+// Reads the loaded exe's sections, MSVC RTTI and RIP-relative globals.
 public static unsafe class PeImage
 {
     private static (nint Start, nint End)? FindSection(nint image, string name)
@@ -45,5 +45,13 @@ public static unsafe class PeImage
             }
         }
         return 0;
+    }
+
+    // Returns the global read by the mov reg, [rip + disp32] at load whose opcode bytes are mov, or null.
+    public static nint* RipGlobal(byte* load, ReadOnlySpan<byte> mov)
+    {
+        if (!new ReadOnlySpan<byte>(load, mov.Length).SequenceEqual(mov))
+            return null;
+        return (nint*)(load + mov.Length + 4 + *(int*)(load + mov.Length));
     }
 }

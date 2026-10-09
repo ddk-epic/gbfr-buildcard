@@ -2321,8 +2321,8 @@ Objects:
   - ComponentName: Mask
     Component:
       Sprite:
-        TexturePath: layouts/pause/pause_common/noatlastextures/ps_cmn_mask_chara02
-        SpriteName: ps_cmn_mask_chara02
+        TexturePath: layouts/pause/status/noatlastextures/bc_portrait_mask
+        SpriteName: bc_portrait_mask
       Offset: 0, 0
       ChannelWeights: 0, 0, 0, 1
       InvertMask: false
@@ -2332,13 +2332,13 @@ Objects:
   Position: -1349.46, 0, 0
   Rotation: 0, 0, 1, 0
   Scale: 1, 1, 1
-  Pivot: 0.715, 0.487
+  Pivot: 0.662, 0.487
   AnchorPoint: 362.54, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -674.12, -882.297
-  OffsetMax: 775.754, 929.401
-  SizeDelta: 1449.874, 1811.698
+  OffsetMin: -448.116, -882.297
+  OffsetMax: 776.44, 929.401
+  SizeDelta: 1224.556, 1811.698
 - Id: 4
   Name: chr_img01
   Components:
@@ -2392,11 +2392,11 @@ Objects:
   Rotation: 0, 0, 1, 0
   Scale: 0.812, 0.812, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 311.723, -23.552
+  AnchorPoint: 198.378, -23.552
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1131.277, -1489.552
-  OffsetMax: 1754.723, 1442.448
+  OffsetMin: -1244.622, -1489.552
+  OffsetMax: 1641.378, 1442.448
   SizeDelta: 2886, 2932
 - Id: 5
   Name: chr_img01_mask
@@ -2425,11 +2425,11 @@ Objects:
   Rotation: 0, 0, 1, 0
   Scale: 0.812, 0.812, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 1036.66, -929.401
+  AnchorPoint: 810.656, -929.401
   AnchorMin: 0, 1
   AnchorMax: 0, 1
-  OffsetMin: -406.34, -2395.401
-  OffsetMax: 2479.66, 536.599
+  OffsetMin: -632.344, -2395.401
+  OffsetMax: 2253.656, 536.599
   SizeDelta: 2886, 2932
 - Id: 6
   Name: chr_img01_col

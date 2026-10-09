@@ -1,0 +1,10 @@
+Wrap: true
+Filter: true
+Size: 640, 640
+Sprites:
+- Name: bc_portrait_mask
+  Rect: 0, 0, 640, 640
+  Border: 0, 0, 0, 0
+  Padding: 0, 0, 0, 17.07611
+  Uv: 0, 0, 1, 0.9734375
+  MinSize: 0, 0

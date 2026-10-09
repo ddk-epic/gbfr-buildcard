@@ -6,7 +6,7 @@ TextureData:
   - layouts/common/masterlevel/noatlastextures/cmn_ml_mask02
   - layouts/pause/pause_common/noatlastextures/ps_cmn_line04
   - layouts/pause/pause_common/noatlastextures/ps_cmn_btn_eff_005
-  - layouts/pause/pause_common/noatlastextures/ps_cmn_mask_chara02
+  - layouts/pause/status/noatlastextures/bc_portrait_mask
   - layouts/pause/status/noatlastextures/bc_rounded_top
   - layouts/pause/status/noatlastextures/bc_outline_top
   - layouts/pause/status/noatlastextures/bc_mt_clip

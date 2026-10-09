@@ -12,15 +12,15 @@ public unsafe class GameText
     private const int BufferSize = 0x400;
     public const uint EmptyIdHash = 0x887AE0B0;
 
-    // TextComponentSetText's mov rdx, [rip + disp32] loading the text manager
-    private const int ManagerLoad = 0x26;
+    // TextComponentSetText's mov rdx, [rip + disp32] loading the text tables
+    private const int TablesLoad = 0x26;
 
     private readonly nint _buffer = Marshal.AllocHGlobal(BufferSize);
-    private nint* _manager;
+    private nint* _tables;
 
     // TextComponentSetText(text, string, text id hash, unknown)
     private delegate* unmanaged<nint, GameString*, uint, int, void> _setText;
-    // TextLookup(text manager, string out, text id hash, sub-id hash)
+    // TextLookup(text tables, string out, text id hash, sub-id hash)
     private delegate* unmanaged<nint, TextView*, uint, uint, void> _lookup;
 
     public void Init(IScanManager scanManager, string signatureGroup)
@@ -28,7 +28,7 @@ public unsafe class GameText
         scanManager.AddScan("TextComponentSetText", signatureGroup, address =>
         {
             _setText = (delegate* unmanaged<nint, GameString*, uint, int, void>)(nint)address;
-            _manager = ManagerFrom((byte*)address + ManagerLoad);
+            _tables = TablesFrom((byte*)address + TablesLoad);
         });
         scanManager.AddScan("TextLookup", signatureGroup, address =>
             _lookup = (delegate* unmanaged<nint, TextView*, uint, uint, void>)(nint)address);
@@ -48,8 +48,8 @@ public unsafe class GameText
     public TextView Lookup(uint hash, uint subId = EmptyIdHash)
     {
         var view = new TextView();
-        if (_lookup != null && _manager != null && *_manager != 0)
-            _lookup(*_manager, &view, hash, subId);
+        if (_lookup != null && _tables != null && *_tables != 0)
+            _lookup(*_tables, &view, hash, subId);
         return view;
     }
 
@@ -59,7 +59,7 @@ public unsafe class GameText
         return view.Ptr == 0 || view.Length <= 0 ? "" : Encoding.UTF8.GetString((byte*)view.Ptr, (int)view.Length);
     }
 
-    private static nint* ManagerFrom(byte* load)
+    private static nint* TablesFrom(byte* load)
     {
         if (load[0] != 0x48 || load[1] != 0x8B || load[2] != 0x15)
             return null;

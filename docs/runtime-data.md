@@ -30,7 +30,7 @@ Each 0x38-byte entry starts with a key and a 32-bit value; the value's meaning d
 
 | Key | Value | Source of the key's meaning |
 |---|---|---|
-| A master trait cell (`skillboard_effect` key) | 1 when the cell is picked | The skill board manager's layout for the character key: the cell's slot, below |
+| A master trait cell (`skillboard_effect` key) | 1 when the cell is picked | The skill board tables' layout for the character key: the cell's slot, below |
 | A mastery node (`limit_bonus` key) | One bit per `LimitBonusParamIndex`, set when that step is taken | `Data/masteries.tsv`, per character key: the section of each bit (offense, offense extension, defense, defense extension, collection, transcendence) |
 
 The master traits board is the 4/8/8/10-slot board, or the 4/8/8/14-slot captain's board when a picked or unpicked
@@ -101,16 +101,16 @@ PWR value or, on its other branch, the text id `0x4EDE20AA`.
 
 The wrap and icon size fields apply to the strings set after them.
 
-### Text manager
+### Text tables
 
 The loaded language's texts, a global pointer loaded by the `mov rdx, [rip + disp32]` at `TextComponentSetText+0x26`.
 `TextLookup` reads a text from it as a pointer and a 64-bit length; the text is null-terminated. The ellipsis that ends a
 cut line is `TXT_HUD_COMMUNICATION_OVER` (`0x6895D7BB`).
 
-## Skill board manager
+## Skill board tables
 
 The game's skill board data, a global pointer loaded by the `mov r15, [rip + disp32]` at
-`SetSkillBoardDescription+0x43`. Its tables are MSVC `unordered_map`s: a pointer to the sentinel node of a list holding
+`SetSkillBoardDescription+0x43`. Its maps are MSVC `unordered_map`s: a pointer to the sentinel node of a list holding
 every node, the list size, a bucket vector and a mask. A node is the next node, the previous node, the key at `+0x10`
 and the value at `+0x18`.
 
@@ -143,7 +143,7 @@ no symbols; the names are the signatures' keys.
 |---|---|---|
 | `FillCharacterStatus(charaInfo, chara, index)` | hooked | Fills a `CharaInfo` from a character; the mod writes the card after it. |
 | `TextComponentSetText(text, string, text id hash, -1)` | called | Sets a `Text` component's string and its text id hash. |
-| `TextLookup(text manager, text out, text id hash, sub-id hash)` | called | Reads a text id's text in the loaded language. |
+| `TextLookup(text tables, text out, text id hash, sub-id hash)` | called | Reads a text id's text in the loaded language. |
 | `TextJoinLines(text)` | called | Joins a `Text` component's lines from its lines' begin onward into the first of them. |
 | `TextFitLine(text, width, line, with ellipsis)` | called | Returns how many of a line's glyphs fit in the width, leaving room for the ellipsis. |
 | `TextBuildGlyphs(text, string, glyphs)` | called | Builds a null-terminated string's glyphs in the `Text` component's font into a glyph vector. |

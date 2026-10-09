@@ -7,10 +7,10 @@ namespace gbfr.qol.buildcard.Hooks;
 // Reads a chara's master trait cells from the game and fills their descriptions with the game's setter.
 public unsafe class MasterTraits
 {
-    // SetSkillBoardDescription's mov r15, [rip + disp32] loading the skill board manager
-    private const int ManagerLoad = 0x43;
+    // SetSkillBoardDescription's mov r15, [rip + disp32] loading the skill board tables
+    private const int TablesLoad = 0x43;
 
-    // manager: MSVC unordered_maps, each a node list sentinel pointer; nodes are [next, prev, key, value]
+    // tables: MSVC unordered_maps, each a node list sentinel pointer; nodes are [next, prev, key, value]
     private const int LayoutNodes = 0x6D0;  // chara key | slot << 32 | LayoutType << 48 to layout id
     private const int LayoutRecordNodes = 0x320;  // layout id to layout record
     private const int EffectNodes = 0x8;  // skillboard_effect key to effect row
@@ -27,7 +27,7 @@ public unsafe class MasterTraits
     private readonly nint _component = (nint)NativeMemory.AllocZeroed(ComponentSize);
     private readonly nint _entry = (nint)NativeMemory.AllocZeroed(EntrySize);
     private readonly Dictionary<uint, List<MasterTraitCell>> _cells = [];
-    private nint* _manager;
+    private nint* _tables;
 
     // SetSkillBoardDescription(cell component, chara key, slot)
     private delegate* unmanaged<nint, uint, int, void> _setDescription;
@@ -44,7 +44,7 @@ public unsafe class MasterTraits
         scanManager.AddScan("SetSkillBoardDescription", signatureGroup, address =>
         {
             _setDescription = (delegate* unmanaged<nint, uint, int, void>)(nint)address;
-            _manager = ManagerFrom((byte*)address + ManagerLoad);
+            _tables = TablesFrom((byte*)address + TablesLoad);
         });
     }
 
@@ -53,21 +53,21 @@ public unsafe class MasterTraits
     {
         if (_cells.TryGetValue(charaKey, out var cells))
             return cells;
-        if (_manager == null || *_manager == 0)
+        if (_tables == null || *_tables == 0)
             return [];
-        nint manager = *_manager;
+        nint tables = *_tables;
         cells = [];
-        nint head = *(nint*)(manager + LayoutNodes);
+        nint head = *(nint*)(tables + LayoutNodes);
         for (nint node = *(nint*)head; node != head; node = *(nint*)node)
         {
             ulong key = *(ulong*)(node + 0x10);
             if ((uint)key != charaKey || key >> 48 != LayoutType)
                 continue;
-            nint record = Find(manager + LayoutRecordNodes, *(uint*)(node + 0x18));
+            nint record = Find(tables + LayoutRecordNodes, *(uint*)(node + 0x18));
             if (record == 0)
                 continue;
             uint effect = *(uint*)(record + LayoutEffect);
-            nint row = Find(manager + EffectNodes, effect);
+            nint row = Find(tables + EffectNodes, effect);
             cells.Add(new MasterTraitCell((int)(key >> 32 & 0xFFFF), effect, row == 0 ? GameText.EmptyIdHash : *(uint*)(row + EffectTitle)));
         }
         _cells[charaKey] = cells;
@@ -96,7 +96,7 @@ public unsafe class MasterTraits
         return 0;
     }
 
-    private static nint* ManagerFrom(byte* load)
+    private static nint* TablesFrom(byte* load)
     {
         if (load[0] != 0x4C || load[1] != 0x8B || load[2] != 0x3D)
             return null;

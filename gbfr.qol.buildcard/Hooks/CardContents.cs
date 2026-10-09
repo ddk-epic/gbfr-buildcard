@@ -46,7 +46,12 @@ public class CardContents
 
     private static void ComposeMasterTraits(List<CardWrite> writes, CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits)
     {
-        var cells = masterTraits.Where(cell => cell.Style < Styles).ToDictionary(cell => cell.EffectKey);
+        var cells = new Dictionary<uint, MasterTraitCell>();
+        foreach (var cell in masterTraits)
+        {
+            if (cell.Style < Styles)
+                cells.TryAdd(cell.EffectKey, cell);
+        }
         var titles = new uint?[Styles];
         var perks = new int[Styles];
         var spent = new int[Slots.Length];

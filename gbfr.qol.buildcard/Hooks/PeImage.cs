@@ -50,7 +50,7 @@ public static unsafe class PeImage
     // Returns the .data global read by the mov reg, [rip + disp32] at load whose opcode bytes are mov, or null.
     public static nint* RipGlobal(byte* load, ReadOnlySpan<byte> mov)
     {
-        if (!GameMemory.IsReadable((nint)load, mov.Length + 4) || !new ReadOnlySpan<byte>(load, mov.Length).SequenceEqual(mov))
+        if (!new ReadOnlySpan<byte>(load, mov.Length).SequenceEqual(mov))
             return null;
         nint global = (nint)(load + mov.Length + 4 + *(int*)(load + mov.Length));
         nint image = GameMemory.AllocationBase((nint)load);

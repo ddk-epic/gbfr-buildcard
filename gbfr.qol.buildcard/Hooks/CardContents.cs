@@ -64,7 +64,7 @@ public class CardContents
             bool picked = entry.Bits == 1;
             if (cell.IsPerk)
             {
-                if (cell.Rank == 0)
+                if (cell.Rank == 0 && cell.TitleTextId != GameText.EmptyIdHash)
                     titles[cell.Style] = cell.TitleTextId;
                 perks[cell.Style] += picked ? 1 : 0;
             }

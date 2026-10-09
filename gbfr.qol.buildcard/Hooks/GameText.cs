@@ -14,11 +14,9 @@ public unsafe class GameText
 
     // TextComponentSetText's mov rdx, [rip + disp32] loading the text tables
     private const int TablesLoad = 0x26;
-    private const int TablesSize = 0x38;  // through the bucket mask TextLookup reads at +0x30
 
     private readonly nint _buffer = Marshal.AllocHGlobal(BufferSize);
     private nint* _tables;
-    private nint _readableTables;
 
     // TextComponentSetText(text, string, text id hash, unknown)
     private delegate* unmanaged<nint, GameString*, uint, int, void> _setText;
@@ -52,12 +50,6 @@ public unsafe class GameText
         var view = new TextView();
         if (_lookup == null || _tables == null || *_tables == 0)
             return view;
-        if (*_tables != _readableTables)
-        {
-            if (!GameMemory.IsReadable(*_tables, TablesSize))
-                return view;
-            _readableTables = *_tables;
-        }
         _lookup(*_tables, &view, hash, subId);
         if (view.Ptr == 0 || view.Length < 0 || view.Length > BufferSize || ((byte*)view.Ptr)[view.Length] != 0)
             return new TextView();

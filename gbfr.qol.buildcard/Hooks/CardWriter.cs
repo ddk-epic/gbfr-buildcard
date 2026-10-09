@@ -17,6 +17,7 @@ public unsafe class CardWriter
     private const int MaxTextLength = 0x400;
 
     private readonly GameText _text;
+    private readonly MasterTraits _masterTraits;
     private readonly WeaponArtHooks _weaponArt;
     private readonly ILogger _logger;
     private readonly CardContents _contents = new();
@@ -33,9 +34,10 @@ public unsafe class CardWriter
     private bool _loggedComponents;
     private bool _loggedCount;
 
-    public CardWriter(GameText text, WeaponArtHooks weaponArt, ILogger logger)
+    public CardWriter(GameText text, MasterTraits masterTraits, WeaponArtHooks weaponArt, ILogger logger)
     {
         _text = text;
+        _masterTraits = masterTraits;
         _weaponArt = weaponArt;
         _logger = logger;
         _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
@@ -85,14 +87,20 @@ public unsafe class CardWriter
         }
 
         var build = CharaBuild.Decode(chara, message => LogOnce(ref _loggedBuild, $"Chara build: {message}", Color.Yellow));
-        foreach (var write in _contents.Compose(build))
+        foreach (var write in _contents.Compose(build, _masterTraits.ReadCells(build.CharaKey)))
         {
             if (!objects.TryGetValue(write.Id, out nint obj))
                 continue;
             switch (write)
             {
                 case TextWrite text:
-                    SetText(obj, text.Value, text.Hash);
+                    SetText(obj, text.Value);
+                    break;
+                case LocalizedTextWrite localized:
+                    SetLocalizedText(obj, localized.TextId);
+                    break;
+                case MasterTraitDescriptionWrite description:
+                    SetMasterTraitDescription(obj, description);
                     break;
                 case ActiveWrite active:
                     SetActive(obj, active.Active);
@@ -109,10 +117,24 @@ public unsafe class CardWriter
         _weaponArt.Show(chara);
     }
 
-    private void SetText(nint obj, string value, uint hash)
+    private void SetText(nint obj, string value)
     {
         if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
-            _text.Set(text, value, hash);
+            _text.Set(text, value);
+    }
+
+    // Sets the text id's text in the loaded language
+    private void SetLocalizedText(nint obj, uint textId)
+    {
+        if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
+            _text.Set(text, _text.Find(textId), textId);
+    }
+
+    // Sets the cell's description as the Master Traits menu shows it
+    private void SetMasterTraitDescription(nint obj, MasterTraitDescriptionWrite write)
+    {
+        if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
+            _masterTraits.FillDescription(text, write.CharaKey, write.Slot);
     }
 
     private void SetActive(nint obj, bool active)

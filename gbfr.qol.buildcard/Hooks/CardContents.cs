@@ -5,7 +5,6 @@ namespace gbfr.qol.buildcard.Hooks;
 // Turns a chara's build into the card's writes, by CardIds.
 public class CardContents
 {
-    private const int WrapLength = 19;
     private const int SkillNameWrapLength = 15;
 
     // masteries.tsv sections
@@ -20,7 +19,6 @@ public class CardContents
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
 
-    private readonly Dictionary<uint, Cell> _cells = LoadCells();
     private readonly Dictionary<(uint Chara, uint Key), string> _masteries = LoadMasteries();
     private readonly Dictionary<uint, int[]> _masteryTotals = new();
 
@@ -36,43 +34,44 @@ public class CardContents
         }
     }
 
-    public List<CardWrite> Compose(CharaBuild build)
+    public List<CardWrite> Compose(CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits)
     {
         var writes = new List<CardWrite>();
-        ComposeMasterTraits(writes, build);
+        ComposeMasterTraits(writes, build, masterTraits);
         ComposeMasteries(writes, build);
         ComposeOverMastery(writes, build);
         ComposeSummons(writes, build);
         return writes;
     }
 
-    private void ComposeMasterTraits(List<CardWrite> writes, CharaBuild build)
+    private static void ComposeMasterTraits(List<CardWrite> writes, CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits)
     {
-        var titles = new string[Styles];
+        var cells = masterTraits.Where(cell => cell.Style < Styles).ToDictionary(cell => cell.EffectKey);
+        var titles = new uint?[Styles];
         var perks = new int[Styles];
         var spent = new int[Slots.Length];
-        var labels = new (Cell Cell, bool Picked)?[Styles, CaptainSlots.Length, CaptainSlots.Max()];
+        var placed = new (MasterTraitCell Cell, bool Picked)?[Styles, CaptainSlots.Length, CaptainSlots.Max()];
         bool captain = false;
         foreach (var entry in build.Entries)
         {
-            if (!_cells.TryGetValue(entry.Key, out Cell cell))
+            if (!cells.TryGetValue(entry.Key, out MasterTraitCell cell))
                 continue;
             bool picked = entry.Bits == 1;
-            if (cell.Position == 0)
+            if (cell.IsPerk)
             {
                 if (cell.Rank == 0)
-                    titles[cell.Style] = cell.Label;
+                    titles[cell.Style] = cell.TitleTextId;
                 perks[cell.Style] += picked ? 1 : 0;
             }
             else if (cell.Position <= CaptainSlots[cell.Rank])
             {
-                labels[cell.Style, cell.Rank, cell.Position - 1] = (cell, picked);
+                placed[cell.Style, cell.Rank, cell.Position - 1] = (cell, picked);
                 spent[cell.Rank] += picked ? 1 : 0;
                 captain |= cell.Position > Slots[cell.Rank];
             }
         }
         var slots = captain ? CaptainSlots : Slots;
-        int board = captain ? 1 : 0;
+        int layout = captain ? 1 : 0;
 
         for (int s = 0; s < Styles; s++)
         {
@@ -81,28 +80,28 @@ public class CardContents
                 writes.Add(new ActiveWrite(CardIds.PerkStars[s][k], k < perks[s]));
         }
         for (int s = 0; s < Styles; s++)
-            writes.Add(new TextWrite(CardIds.StyleTitles[s], titles[s] is { } title ? $"{StyleNames[s]}: {title}" : ""));
+            writes.Add(titles[s] is { } title ? new LocalizedTextWrite(CardIds.StyleTitles[s], title) : new TextWrite(CardIds.StyleTitles[s], ""));
         writes.Add(new ActiveWrite(CardIds.Cells, !captain));
         writes.Add(new ActiveWrite(CardIds.CaptainCells, captain));
         for (int s = 0; s < Styles; s++)
         {
             for (int r = 0; r < slots.Length; r++)
-                writes.Add(new TextWrite(CardIds.RankCounts[board][s][r], $"{spent[r]}/{Budgets[r]}"));
+                writes.Add(new TextWrite(CardIds.RankCounts[layout][s][r], $"{spent[r]}/{Budgets[r]}"));
             for (int r = 0; r < slots.Length; r++)
             {
                 for (int c = 0; c < slots[r]; c++)
                 {
-                    var slot = labels[s, r, c];
-                    writes.Add(CellWrite(CardIds.CellOn[board][s][r][c], slot is { Picked: true } ? slot.Value.Cell : null));
-                    writes.Add(CellWrite(CardIds.CellOff[board][s][r][c], slot is { Picked: false } ? slot.Value.Cell : null));
-                    writes.Add(new ActiveWrite(CardIds.CellPicked[board][s][r][c], slot is { Picked: true }));
+                    var slot = placed[s, r, c];
+                    writes.Add(CellWrite(CardIds.CellOn[layout][s][r][c], build.CharaKey, slot is { Picked: true } ? slot.Value.Cell : null));
+                    writes.Add(CellWrite(CardIds.CellOff[layout][s][r][c], build.CharaKey, slot is { Picked: false } ? slot.Value.Cell : null));
+                    writes.Add(new ActiveWrite(CardIds.CellPicked[layout][s][r][c], slot is { Picked: true }));
                 }
             }
         }
     }
 
-    private static TextWrite CellWrite(int id, Cell? cell) =>
-        cell is { } c ? new TextWrite(id, Wrap(c.Label, WrapLength), c.TextHash) : new TextWrite(id, "");
+    private static CardWrite CellWrite(int id, uint charaKey, MasterTraitCell? cell) =>
+        cell is { } c ? new MasterTraitDescriptionWrite(id, charaKey, c.Slot) : new TextWrite(id, "");
 
     private void ComposeMasteries(List<CardWrite> writes, CharaBuild build)
     {
@@ -162,21 +161,6 @@ public class CardContents
         return best == -1 ? label : $"{label[..best]}\n{label[(best + 1)..]}";
     }
 
-    // master_traits.tsv: skillboard_effect key, style, rank, position, label, text tag hash
-    private static Dictionary<uint, Cell> LoadCells()
-    {
-        var cells = new Dictionary<uint, Cell>();
-        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("master_traits.tsv")!;
-        using var reader = new StreamReader(stream);
-        while (reader.ReadLine() is { } line)
-        {
-            string[] fields = line.Split('\t');
-            uint hash = fields[5].Length > 0 ? Convert.ToUInt32(fields[5], 16) : GameText.NoHash;
-            cells[Convert.ToUInt32(fields[0], 16)] = new Cell(int.Parse(fields[1]), int.Parse(fields[2]), int.Parse(fields[3]), fields[4], hash);
-        }
-        return cells;
-    }
-
     // masteries.tsv: chara key, limit_bonus key, each LimitBonusParamIndex's section or -
     private static Dictionary<(uint, uint), string> LoadMasteries()
     {
@@ -190,13 +174,13 @@ public class CardContents
         }
         return masteries;
     }
-
-    private readonly record struct Cell(int Style, int Rank, int Position, string Label, uint TextHash);
 }
 
 // A write to a card object, found by its CardIds Id.
 public abstract record CardWrite(int Id);
-public sealed record TextWrite(int Id, string Value, uint Hash = GameText.NoHash) : CardWrite(Id);
+public sealed record TextWrite(int Id, string Value) : CardWrite(Id);
+public sealed record LocalizedTextWrite(int Id, uint TextId) : CardWrite(Id);
+public sealed record MasterTraitDescriptionWrite(int Id, uint CharaKey, int Slot) : CardWrite(Id);
 public sealed record ActiveWrite(int Id, bool Active) : CardWrite(Id);
 public sealed record SummonWrite(int Id, uint SummonId) : CardWrite(Id);
 public sealed record OverMasteryWrite(int Id, int Line, OverMasteryLine Value) : CardWrite(Id);

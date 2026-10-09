@@ -28,6 +28,7 @@ public class Mod : ModBase
     private readonly IModConfig _modConfig;
 
     private GameText? _gameText;
+    private MasterTraits? _masterTraits;
     private CharaStatusHooks? _charaStatusHooks;
     private WeaponArtHooks? _weaponArtHooks;
     private CardWriter? _cardWriter;
@@ -76,13 +77,16 @@ public class Mod : ModBase
         _gameText = new GameText();
         _gameText.Init(scanManager, "granblue_fantasy_relink_er");
 
+        _masterTraits = new MasterTraits();
+        _masterTraits.Init(scanManager, "granblue_fantasy_relink_er");
+
         _charaStatusHooks = new CharaStatusHooks(_hooks);
         _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
 
         _weaponArtHooks = new WeaponArtHooks(_hooks, _logger);
         _weaponArtHooks.Init();
 
-        _cardWriter = new CardWriter(_gameText, _weaponArtHooks, _logger);
+        _cardWriter = new CardWriter(_gameText, _masterTraits, _weaponArtHooks, _logger);
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.Filled += _cardWriter.OnFilled;
     }

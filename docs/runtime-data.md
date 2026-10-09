@@ -30,12 +30,12 @@ Each 0x38-byte entry starts with a key and a 32-bit value; the value's meaning d
 
 | Key | Value | Source of the key's meaning |
 |---|---|---|
-| A master trait cell (`skillboard_effect` key) | 1 when the cell is picked | `Data/master_traits.tsv`: style, rank, position on the board, label, text id hash |
+| A master trait cell (`skillboard_effect` key) | 1 when the cell is picked | The skill board manager's layout for the character key: the cell's slot, below |
 | A mastery node (`limit_bonus` key) | One bit per `LimitBonusParamIndex`, set when that step is taken | `Data/masteries.tsv`, per character key: the section of each bit (offense, offense extension, defense, defense extension, collection, transcendence) |
 
 The master traits board is the 4/8/8/10-slot board, or the 4/8/8/14-slot captain's board when a picked or unpicked
-cell's position is past the normal board's slots. A cell at position 0 is a style's perk: rank 0's label is the
-style's title, and the picked perks are counted as stars.
+cell's position is past the normal board's slots. A perk's picks are counted as its style's stars, and the rank 1
+perk's title is the style's title. A cell's text is what `SetSkillBoardDescription` sets for its slot.
 
 ### Over Mastery line
 
@@ -93,6 +93,38 @@ PWR value or, on its other branch, the text id `0x4EDE20AA`.
 | `+0x040` | The shown string, an MSVC `std::string`: the characters inline when the capacity at `+0x58` is at most 15, else a pointer to them; the length at `+0x50`. |
 | `+0x188` | The text id hash the string came from. |
 
+### Text manager
+
+The loaded language's texts, a global pointer loaded by the `mov rdx, [rip + disp32]` at `TextComponentSetText+0x26`.
+`TextLookup` reads a text from it as a pointer and a 64-bit length; the text is null-terminated.
+
+## Skill board manager
+
+The game's skill board data, a global pointer loaded by the `mov r15, [rip + disp32]` at
+`SetSkillBoardDescription+0x43`. Its tables are MSVC `unordered_map`s: a pointer to the sentinel node of a list holding
+every node, the list size, a bucket vector and a mask. A node is the next node, the previous node, the key at `+0x10`
+and the value at `+0x18`.
+
+| Map (sentinel pointer at) | Key | Value |
+|---|---|---|
+| `+0x6D0` | 64-bit: character key, slot `<< 32`, layout type 4 `<< 48` | Layout id |
+| `+0x320` | Layout id | Layout record; its `+0x48` is the cell's `skillboard_effect` key |
+| `+0x008` | `skillboard_effect` key | Effect row; its `+0x44` is the title's text id hash (`Unk18`), `+0x48` the description's (`Unk19`) |
+
+A cell's slot is the `skillboard_layout` row's `Unk30`: the style × 100, plus the rank 1–3 perk's 0–2, a rank 1–3
+cell's 10–39 (rank × 10 plus its 0-based position), or an EX cell's 50 plus its 0-based position (50–63).
+
+### Master trait cell component
+
+`SetSkillBoardDescription` sets the description on every `Text` of the cell component passed to it.
+
+| Offset | Data |
+|---|---|
+| `+0x018`, `+0x030`, `+0x048` | Icon object lists: begin, end and capacity of 0x20-byte entries. |
+| `+0x060` | `Text` list: begin, end and capacity of 0x20-byte entries, the `Text` component at `+0x10`. |
+| `+0x078` | 1 byte; set for a perk, whose text is the effect row's `+0x4C` (`Unk20`). |
+| `+0x07C`, `+0x080` | The character key and slot last set. |
+
 ## Game functions
 
 Functions in the game's exe, found by the byte signatures in `Signatures/granblue_fantasy_relink_er.ini`. The exe has
@@ -102,6 +134,8 @@ no symbols; the names are the signatures' keys.
 |---|---|---|
 | `FillCharacterStatus(charaInfo, chara, index)` | hooked | Fills a `CharaInfo` from a character; the mod writes the card after it. |
 | `TextComponentSetText(text, string, text id hash, -1)` | called | Sets a `Text` component's string and its text id hash. |
+| `TextLookup(text manager, text out, text id hash, sub-id hash)` | called | Reads a text id's text in the loaded language. |
+| `SetSkillBoardDescription(cell component, character key, slot)` | called | Sets a master trait cell's description in the loaded language, its `{n}` filled from the effect's action parts. |
 | `SetObjectActive(object, active)` | called | Shows or hides an object and its subtree. |
 | `SetOverMasteryLine(LimitBonusInfo, line)` | called | Fills an Over Mastery row from a `chara` Over Mastery line. |
 | `SetSummonInfo(SummonInfo, summon id)` | called | Fills a summon slot, its trait and equip bonus rows included. |

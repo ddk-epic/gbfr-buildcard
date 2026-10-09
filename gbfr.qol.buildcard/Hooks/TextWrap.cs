@@ -22,7 +22,7 @@ public unsafe class TextWrap
     private const int EllipsisGlyphs = 16;
 
     private readonly GameText _text;
-    private readonly Dictionary<nint, byte> _iconSizes = [];
+    private byte? _iconSize;  // the cell texts' original icon size
     // glyph vector the ellipsis is built into
     private readonly nint* _ellipsis = (nint*)NativeMemory.Alloc(3, (nuint)sizeof(nint));
     // the ellipsis glyphs, 16-byte aligned
@@ -58,12 +58,11 @@ public unsafe class TextWrap
         *(byte*)(text + WrapOn) = 1;
     }
 
-    // Scales the icons of the text's next strings from the text's original icon size
+    // Scales the icons of the text's next strings from the first scaled text's original icon size
     public void ScaleIcons(nint text, float scale)
     {
-        if (!_iconSizes.TryGetValue(text, out byte size))
-            _iconSizes[text] = size = *(byte*)(text + IconSize);
-        *(byte*)(text + IconSize) = (byte)MathF.Round(size * scale);
+        _iconSize ??= *(byte*)(text + IconSize);
+        *(byte*)(text + IconSize) = (byte)MathF.Round(_iconSize.Value * scale);
     }
 
     // Caps the text at two lines, the second ending in the game's ellipsis

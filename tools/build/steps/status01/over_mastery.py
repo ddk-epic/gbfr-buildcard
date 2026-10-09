@@ -1,5 +1,5 @@
 # Lays out the Over Mastery section: lb_ovtli02's rows on a panel under a title bar.
-from model.components import rect, set_line
+from model.components import rect
 from model.prefab import copy, f
 from steps.layout import CARD_ORDER, HEADING_MARGIN, ICON_PAD, OVER_MASTERY, insert
 from steps.panel import Heading, panel
@@ -21,8 +21,8 @@ def row(source, name):
     node.name = name
     for hidden in ("line01", "loc_star01"):
         node.find(hidden).set("Active", False)
-    for colored in ("text01", "icon_plus01", "num01", "percent01"):
-        set_line(node.find(colored), "Color", f"{', '.join(f(c) for c in INK)}, 1")
+    for colored, component in (("text01", "Text"), ("icon_plus01", "Image"), ("num01", "Text"), ("percent01", "Text")):
+        node.find(colored).component(component).set("Color", f"{', '.join(f(c) for c in INK)}, 1")
     return node
 
 

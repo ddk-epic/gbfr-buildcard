@@ -38,5 +38,4 @@ def apply(ctx):
         image.set("Rotation", TURNED)
         image.place()
 
-    i = portrait.lines.index("  Active: true")
-    portrait.lines[i:i] = mask((MASK, MASK.rsplit("/", 1)[1]))
+    portrait.add_component(mask((MASK, MASK.rsplit("/", 1)[1])))

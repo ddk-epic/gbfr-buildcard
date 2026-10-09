@@ -9,12 +9,120 @@ def f(v):
     return str(int(v)) if v == int(v) else str(v)
 
 
+def value(v):
+    # a field value as the YAML writes it
+    if isinstance(v, (list, tuple)):
+        return ", ".join(f(x) for x in v)
+    if isinstance(v, bool):
+        return str(v).lower()
+    return str(v)
+
+
+HEADER = "  - ComponentName: "
+
+
+def is_top(line):
+    # an object-level key, as Name or Active
+    return isinstance(line, str) and line.startswith("  ") and line[2] not in " -"
+
+
+def is_field(line):
+    # a component-level key
+    return isinstance(line, str) and line.startswith("      ") and line[6] not in " -"
+
+
+def key_of(line):
+    # the key of a line at any depth, or None
+    if not isinstance(line, str):
+        return None
+    stripped = line.lstrip()
+    return stripped.split(": ", 1)[0].rstrip(":") if ":" in stripped and not stripped.startswith("- ") else None
+
+
 class Ref:
     # an ObjectRefId line
     __slots__ = ("prefix", "node")
 
     def __init__(self, prefix, node):
         self.prefix, self.node = prefix, node
+
+
+class Component:
+    # one of a node's components
+    def __init__(self, node, name):
+        self.node, self.name = node, name
+
+    def _span(self):
+        # its fields' lines, after the ComponentName and Component lines
+        _, start, end = next(span for span in self.node._spans() if span[0] == self.name)
+        return start + 2, end
+
+    def _keyed(self, key):
+        start, end = self._span()
+        found = [i for i in range(start, end) if key_of(self.node.lines[i]) == key]
+        if not found:
+            raise KeyError(f"{self.node.path}.{self.name}: {key}")
+        return found
+
+    def get(self, key):
+        # the first line with the key, at any depth
+        return self.node.lines[self._keyed(key)[0]].split(": ", 1)[1]
+
+    def set(self, key, v):
+        self.update(key, lambda _: value(v), first=True)
+
+    def update(self, key, fn, first=False):
+        # every line with the key, or the first, set to fn of its value
+        for i in self._keyed(key)[:1 if first else None]:
+            line = self.node.lines[i]
+            self.node.lines[i] = f"{line[:len(line) - len(line.lstrip())]}{key}: {fn(line.split(': ', 1)[1])}"
+
+    def _field(self, name):
+        # the field's line and the end of its lines
+        start, end = self._span()
+        lines = self.node.lines
+        i = next((i for i in range(start, end) if is_field(lines[i]) and key_of(lines[i]) == name), None)
+        if i is None:
+            raise KeyError(f"{self.node.path}.{self.name}: {name}")
+        j = i + 1
+        while j < end and not is_field(lines[j]):
+            j += 1
+        return i, j
+
+    def field(self, name):
+        i, j = self._field(name)
+        return self.node.lines[i:j]
+
+    def insert(self, lines, before=None, after=None):
+        # fields, before or after the named field
+        i = self._field(before)[0] if before else self._field(after)[1]
+        self.node.lines[i:i] = lines
+
+    def items(self, name):
+        # a list field's values
+        return [line[len("      - "):] for line in self.field(name)[1:]]
+
+    def set_items(self, name, items):
+        i, j = self._field(name)
+        self.node.lines[i + 1:j] = [f"      - {item}" for item in items]
+
+    def set_refs(self, name, targets):
+        # points the field's references at the targets, in order
+        i, j = self._field(name)
+        refs = [k for k in range(i, j) if isinstance(self.node.lines[k], Ref)]
+        if len(refs) < len(targets):
+            raise KeyError(f"{self.node.path}.{self.name}.{name}: {len(refs)} references for {len(targets)} targets")
+        for k, target in zip(refs, targets):
+            self.node.lines[k] = Ref(self.node.lines[k].prefix, target)
+
+    def drop_ref(self, target):
+        # removes the list entry referencing the target
+        start, end = self._span()
+        k = next((k for k in range(start, end) if isinstance(self.node.lines[k], Ref) and self.node.lines[k].node is target),
+                 None)
+        if k is None:
+            raise KeyError(f"{self.node.path}.{self.name}: no reference to {target.path}")
+        del self.node.lines[k - 2:k + 1]
 
 
 class Node:
@@ -110,20 +218,65 @@ class Node:
     def vec(self, key):
         return [float(v) for v in self.get(key).split(", ")]
 
-    def set(self, key, value):
-        if isinstance(value, (list, tuple)):
-            value = ", ".join(f(v) for v in value)
-        elif isinstance(value, bool):
-            value = str(value).lower()
-        self.lines[self._line(key)] = f"  {key}: {value}"
+    def set(self, key, v):
+        self.lines[self._line(key)] = f"  {key}: {value(v)}"
 
-    def replace(self, old, new):
-        # replaces a nested line, matched without its indentation
-        for i, line in enumerate(self.lines):
-            if isinstance(line, str) and line.strip() == old:
-                self.lines[i] = line[: len(line) - len(line.lstrip())] + new
-                return
-        raise KeyError(f"{self.path}: {old}")
+    # --- components
+
+    def _block(self):
+        # the Components block's line range, empty after Name when there is none
+        if "  Components:" not in self.lines:
+            return 1, 1
+        start = self.lines.index("  Components:") + 1
+        end = start
+        while end < len(self.lines) and not is_top(self.lines[end]):
+            end += 1
+        return start, end
+
+    def _spans(self):
+        # (name, start, end) of each component
+        start, end = self._block()
+        heads = [i for i in range(start, end) if isinstance(self.lines[i], str) and self.lines[i].startswith(HEADER)]
+        return [(self.lines[i][len(HEADER):], i, j) for i, j in zip(heads, heads[1:] + [end])]
+
+    def components(self):
+        return [name for name, _, _ in self._spans()]
+
+    def component(self, name):
+        found = self.components().count(name)
+        if found != 1:
+            raise KeyError(f"{self.path}: {found} {name} components")
+        return Component(self, name)
+
+    def component_lines(self):
+        # every component's lines; raises on components with references
+        start, end = self._block()
+        lines = self.lines[start:end]
+        if any(isinstance(line, Ref) for line in lines):
+            raise ValueError(f"{self.path}: components with references")
+        return lines
+
+    def set_components(self, lines):
+        start, end = self._block()
+        if "  Components:" not in self.lines:
+            if lines:
+                self.lines[1:1] = ["  Components:", *lines]
+        else:
+            self.lines[start:end] = lines
+
+    def add_component(self, lines):
+        start, end = self._block()
+        self.set_components(self.lines[start:end] + list(lines))
+
+    def drop_component(self, name):
+        self.component(name)
+        _, start, end = next(span for span in self._spans() if span[0] == name)
+        del self.lines[start:end]
+
+    def keep_components(self, *names):
+        # drops every component not named
+        self.set_components([line for name, start, end in self._spans() if name in names
+                             for line in self.lines[start:end]])
 
     # --- rects
 

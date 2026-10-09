@@ -1,5 +1,5 @@
 # Lays out the skills section: the Skills screen's cards, reduced to icon, name and element tag, in a 2x2 grid.
-from model.components import rect, set_line, set_refs
+from model.components import rect
 from model.prefab import copy
 from steps.layout import CARD_ORDER, HEADING_MARGIN, ICON_PAD, PANEL_SCALE, SKILLS, insert
 from steps.panel import Heading, panel
@@ -41,29 +41,20 @@ def text_group():
 def skill_card(source):
     # the card with its frames transparent, its buttons hidden and its name and element tag in a text group
     node = copy(source)
-    start = node.lines.index("  Components:") + 1
-    end = node.lines.index("  Active: true")
-    kept, keep = [], False
-    for line in node.lines[start:end]:
-        if isinstance(line, str) and line.startswith("  - ComponentName: "):
-            keep = line == "  - ComponentName: AbilityInfo"
-        if keep:
-            kept.append(line)
-    node.lines[start:end] = kept
+    node.keep_components("AbilityInfo")
 
     base = node.find("loc_base01")
     frames = base.child("base01_set01")
     for frame in (base, frames):
-        frame.replace("Color: 1, 1, 1, 1", "Color: 1, 1, 1, 0")
+        frame.component("Image").set("Color", "1, 1, 1, 0")
     for name in HIDDEN:
         base.child(name).set("Active", False)
 
     name = base.child("text01")
     element = frames.child("loc_elem01")
-    set_line(name, "Margin", f"{ELEMENT_PAD}, 0, 0, 0")
-    name.lines[name.lines.index("  Active: true"):name.lines.index("  Active: true")] = [
-        "  - ComponentName: ContentSizeFitter", "    Component:", "      HorizontalFit: 0", "      VerticalFit: 2",
-        "      Enable: true"]
+    name.component("Text").set("Margin", f"{ELEMENT_PAD}, 0, 0, 0")
+    name.add_component(["  - ComponentName: ContentSizeFitter", "    Component:", "      HorizontalFit: 0",
+                        "      VerticalFit: 2", "      Enable: true"])
     group = frames.add(text_group(), frames.children.index(element))
     group.add(name)
     group.add(element)
@@ -122,5 +113,5 @@ def apply(ctx):
 
     for block in ("loc_chr_status03", "loc_chr_status04"):
         prefab.find(f"loc_status02/{block}").set("Active", False)
-    set_refs(prefab.root, "Ability", cards)
+    prefab.root.component("CharaInfo").set_refs("Ability", cards)
     ctx.export("SkillNames", [node.find("bc_skill_text/text01") for node in cards])

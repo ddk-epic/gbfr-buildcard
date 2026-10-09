@@ -2,6 +2,10 @@
 from model.prefab import Node, Ref, f
 
 
+RECT = ["Position", "Rotation", "Scale", "Pivot", "AnchorPoint", "AnchorMin", "AnchorMax", "OffsetMin", "OffsetMax",
+        "SizeDelta"]
+
+
 def rect(name, components=(), pivot=(0.5, 0.5), active=True):
     # an object with a centred zero rect
     lines = [f"  Name: {name}"]
@@ -23,21 +27,10 @@ def single(node):
     return copied
 
 
-def get_line(node, key):
-    # the value of the first nested line with the key
-    for line in node.lines:
-        if isinstance(line, str) and line.lstrip().startswith(f"{key}: "):
-            return line.split(": ", 1)[1]
-    raise KeyError(f"{node.path}: {key}")
-
-
-def set_line(node, key, value):
-    # sets the first nested line with the key
-    for i, line in enumerate(node.lines):
-        if isinstance(line, str) and line.lstrip().startswith(f"{key}: "):
-            node.lines[i] = f"{line[:len(line) - len(line.lstrip())]}{key}: {value}"
-            return
-    raise KeyError(f"{node.path}: {key}")
+def ref_field(name, component, target, listed=False):
+    # a field referencing the target's component, as a list of one when listed
+    head = "      - " if listed else "        "
+    return [f"      {name}:", f"{head}ComponentName: {component}", "        Index: 0", Ref("        ObjectRefId: ", target)]
 
 
 def mask(sprite):
@@ -45,30 +38,6 @@ def mask(sprite):
     return ["  - ComponentName: Mask", "    Component:", "      Sprite:", f"        TexturePath: {sprite[0]}",
             f"        SpriteName: {sprite[1]}", "      Offset: 0, 0", "      ChannelWeights: 0, 0, 0, 1",
             "      InvertMask: false", "      InvertOutsides: false", "      Enable: true"]
-
-
-def set_refs(node, field, targets):
-    # points the references of the node's field at the targets, in order
-    i = node.lines.index(f"      {field}:") + 1
-    for target in targets:
-        while not isinstance(node.lines[i], Ref):
-            i += 1
-        node.lines[i] = Ref(node.lines[i].prefix, target)
-        i += 1
-
-
-def components(node):
-    # the object's component lines
-    lines = node.lines
-    if "  Components:" not in lines:
-        return []
-    start = lines.index("  Components:") + 1
-    end = start
-    while end < len(lines) and (isinstance(lines[end], Ref) or lines[end].startswith(("  - ", "    "))):
-        end += 1
-    if any(isinstance(line, Ref) for line in lines[start:end]):
-        raise ValueError(f"{node.path}: components with references")
-    return lines[start:end]
 
 
 def image(color, alpha, sprite=None, sliced=False, fill_center=False):

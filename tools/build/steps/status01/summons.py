@@ -1,6 +1,6 @@
 # Lays out the summons section as sharecard's summon cells on a panel.
-from model.components import mask, rect, set_line, single
-from model.prefab import Ref, copy, f
+from model.components import mask, rect, ref_field, single
+from model.prefab import copy, f
 from steps.layout import CARD_ORDER, PANEL_SCALE, SUMMONS, insert
 from steps.panel import panel
 
@@ -38,13 +38,11 @@ LAYOUT = ["  - ComponentName: HorizontalLayoutGroup", "    Component:", "      P
 
 def summon_info(trait, icon, name, bonus):
     # SummonInfo's fields in the order the tool writes them
-    def ref(node):
-        return Ref("        ObjectRefId: ", node)
     return ["  - ComponentName: SummonInfo", "    Component:",
-            "      _5D33A08E:", "        ComponentName: SkillInfo", "        Index: 0", ref(trait),
-            "      _57A2478C:", "      - ComponentName: SummonIconSetter", "        Index: 0", ref(icon),
-            "      Names:", "      - ComponentName: Text", "        Index: 0", ref(name),
-            "      F58112CE:", "        ComponentName: LimitBonusInfo", "        Index: 0", ref(bonus),
+            *ref_field("_5D33A08E", "SkillInfo", trait),
+            *ref_field("_57A2478C", "SummonIconSetter", icon, listed=True),
+            *ref_field("Names", "Text", name, listed=True),
+            *ref_field("F58112CE", "LimitBonusInfo", bonus),
             "      Enable: true"]
 
 
@@ -72,9 +70,7 @@ def slot(sources, name, scale):
     item.add(band_fade, 1)
 
     text = item.find("loc_text01/text01_01")
-    start = node.lines.index("  Components:") + 1
-    end = node.lines.index("  Active: true")
-    node.lines[start:end] = summon_info(trait, icon, text, bonus)
+    node.set_components(summon_info(trait, icon, text, bonus))
 
     # the trait level after the trait name, its top on the row's centre
     level = trait.find("loc_skill_lv01")
@@ -82,7 +78,7 @@ def slot(sources, name, scale):
     wrap.add(level)
     row_text = trait.find("loc_text")
     row_text.add(wrap)
-    set_line(row_text, "Spacing", LEVEL_GAP)
+    row_text.component("HorizontalLayoutGroup").set("Spacing", LEVEL_GAP)
     wrap.place(size=(0, LEVEL_H))
 
     left, top = -CELL_W / 2, SLOT_H / 2
@@ -96,11 +92,13 @@ def slot(sources, name, scale):
     band_fade_w = BAND_W / (1 - BAND_FADE_PADDING)
     band_fade.place(pos=(band_left + band_fade_w / 2, band_top - BAND_H / 2), size=(band_fade_w, BAND_H))
     band.place(pos=(BAND_W / 2 - band_fade_w / 2, 0), size=(BAND_W, BAND_H))
-    set_line(text, "MaterialPath", NAME_MATERIAL)
-    set_line(text, "FontSize", f(STATUS_SIZE * PANEL_SCALE / scale))
-    set_line(text, "Color", NAME_COLOR)
-    i = text.lines.index("      MultiData: true")
-    text.lines[i:i + 1] = ["      MultiData: false", f"      LanguageData: {NAME_LANGUAGE}"]
+    name = text.component("Text")
+    name.set("MaterialPath", NAME_MATERIAL)
+    name.set("FontSize", f(STATUS_SIZE * PANEL_SCALE / scale))
+    name.set("Color", NAME_COLOR)
+    language = text.component("LanguageSetter")
+    language.set("MultiData", False)
+    language.insert([f"      LanguageData: {NAME_LANGUAGE}"], after="MultiData")
     text.place(pos=(band_left + NAME_X, band_top - BAND_H / 2))
 
     # the fade's opaque part over the last third, the icon centred on it
@@ -121,8 +119,8 @@ def slot(sources, name, scale):
         row_text.place(pos=(tx - 10, ty))
         # the level's padding and spacing as in the gear trait rows
         row_level = row.find("loc_skill_lv01")
-        row_level.replace("Padding: 28, 0, 34, 0", "Padding: 28, 0, 40, 4")
-        row_level.find("loc_lv01").replace("Spacing: 24", "Spacing: 8")
+        row_level.component("HorizontalLayoutGroup").set("Padding", "28, 0, 40, 4")
+        row_level.find("loc_lv01").component("HorizontalLayoutGroup").set("Spacing", 8)
         if row is bonus:
             row_level.place(pos=((-left - ART_W - x) / k, row_level.vec("Position")[1]))
     return node

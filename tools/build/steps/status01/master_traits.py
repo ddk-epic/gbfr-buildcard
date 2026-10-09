@@ -1,6 +1,5 @@
 # Lays out the master traits board like the game's Master Traits menu, with a hidden captain board of 14 EX cells.
-from model.components import (CENTER, LEFT, RIGHT, components, get_line, image, mask, rect, set_line, single,
-                              text)
+from model.components import CENTER, LEFT, RECT, RIGHT, image, mask, rect, single, text
 from model.prefab import copy, f
 from steps.layout import CARD_H, CARD_W, MASTER_TRAITS, OUTLINE, card, mt_clip, section
 
@@ -143,11 +142,12 @@ def sliced_image(name, color, sprite, centre, size, scale):
 
 
 def set_text(node, color, cell=False):
-    set_line(node, "Color", f"{', '.join(f(c) for c in color[0])}, {f(color[1])}")
+    node.component("Text").set("Color", f"{', '.join(f(c) for c in color[0])}, {f(color[1])}")
     if cell:
-        set_line(node, "MaterialPath", CELL_MATERIAL)
-        set_line(node, "LanguageData", CELL_LANGUAGE)
-        set_line(node, "LineSpaching", CELL_LINE_SPACING_ENG)
+        node.component("Text").set("MaterialPath", CELL_MATERIAL)
+        language = node.component("LanguageSetter")
+        language.set("LanguageData", CELL_LANGUAGE)
+        language.set("LineSpaching", CELL_LINE_SPACING_ENG)
 
 
 def grid(board, name, slots, ranks, active):
@@ -174,9 +174,8 @@ def grid(board, name, slots, ranks, active):
         for r, rank in enumerate(ranks):
             label = rect(f"bc_mt_{s}_{r}_label", text(f"STYLE RANK {RANKS[r]}", LABEL_SIZE, INK, 0.8, LEFT), (0, 1))
             set_text(label, TITLE_TEXT_COLOR)
-            i = label.lines.index("  Active: true")
-            label.lines[i:i] = ["  - ComponentName: TextSetter", "    Component:", f"      TextID: {RANK_TEXT_IDS[r]}",
-                                "      Enable: true"]
+            label.add_component(["  - ComponentName: TextSetter", "    Component:", f"      TextID: {RANK_TEXT_IDS[r]}",
+                                 "      Enable: true"])
             count = rect(f"bc_mt_{s}_{r}_count", text("", COUNT_SIZE, INK, 1, RIGHT), (1, 1))
             set_text(count, TITLE_TEXT_COLOR)
             label_top = rank["label"] + LABEL_H / 2
@@ -224,19 +223,20 @@ def picked_cell(container, key, base):
     # a hidden copy of the cell's base under a picked outline, which CardWriter shows on picked cells
     s, r, c = key
     group = rect(f"bc_mt_{s}_{r}_{c}_picked", active=False)
-    group.lines[group.lines.index("  Active: false") + 1:] = \
-        container.lines[container.lines.index(next(l for l in container.lines if l.startswith("  Active: "))) + 1:]
+    for key in RECT:
+        group.set(key, container.get(key))
     fill = single(base)
     fill.name = f"bc_mt_{s}_{r}_{c}_picked_base"
-    color = get_line(base, "Color")
-    set_line(fill, "Color", f"{color[:color.rindex(',')]}, {f(1 - (1 - PICKED_ALPHA) / (1 - UNPICKED_ALPHA))}")
+    color = base.component("Image").get("Color")
+    fill.component("Image").set("Color", f"{color[:color.rindex(',')]}, {f(1 - (1 - PICKED_ALPHA) / (1 - UNPICKED_ALPHA))}")
     outline = single(base)
     outline.name = f"bc_mt_{s}_{r}_{c}_picked_outline"
-    set_line(outline, "Color", f"{', '.join(f(v) for v in PICKED)}, 1")
-    set_line(outline, "TexturePath", OUTLINE)
-    set_line(outline, "SpriteName", OUTLINE.rsplit("/", 1)[1])
-    set_line(outline, "FillCenter", "false")
-    set_line(base, "Color", f"{', '.join(f(v) for v in UNPICKED)}, {f(UNPICKED_ALPHA)}")
+    outline_image = outline.component("Image")
+    outline_image.set("Color", f"{', '.join(f(v) for v in PICKED)}, 1")
+    outline_image.set("TexturePath", OUTLINE)
+    outline_image.set("SpriteName", OUTLINE.rsplit("/", 1)[1])
+    outline_image.set("FillCenter", False)
+    base.component("Image").set("Color", f"{', '.join(f(v) for v in UNPICKED)}, {f(UNPICKED_ALPHA)}")
     group.add(fill)
     group.add(outline)
     w, h = base.vec("SizeDelta")
@@ -245,12 +245,13 @@ def picked_cell(container, key, base):
     return group
 
 
-def layout_group(stars, spacing, alignment):
-    # loc_level02's HorizontalLayoutGroup and ContentSizeFitter
-    node = rect("", components(stars))
-    set_line(node, "Spacing", f(spacing / ROW_SCALE))
-    set_line(node, "ChildAlignment", alignment)
-    return components(node)
+def layout_group(name, stars, spacing, alignment, pivot):
+    # an object with loc_level02's HorizontalLayoutGroup and ContentSizeFitter
+    node = rect(name, stars.component_lines(), pivot)
+    layout = node.component("HorizontalLayoutGroup")
+    layout.set("Spacing", f(spacing / ROW_SCALE))
+    layout.set("ChildAlignment", alignment)
+    return node
 
 
 def top_left(node):
@@ -263,17 +264,16 @@ def top_left(node):
 
 def perks(header_title, stars):
     # each style's name and stars in a row
-    row = rect("bc_mt_perks", layout_group(stars, PERKS_GAP, MIDDLE_RIGHT), (1, 0.5))
+    row = layout_group("bc_mt_perks", stars, PERKS_GAP, MIDDLE_RIGHT, (1, 0.5))
     names = []
-    title_components = components(header_title)
     for s in range(STYLES):
-        group = row.add(top_left(rect(f"bc_mt_perk_{s}", layout_group(stars, PERK_GAP, MIDDLE_LEFT), (0, 0.5))))
-        name_components = (title_components[:title_components.index("  - ComponentName: TextSetter")]
-                           + title_components[title_components.index("  - ComponentName: ContentSizeFitter"):])
-        name = group.add(top_left(rect(f"bc_mt_perk_{s}_name", name_components, (0, 0.5))))
-        set_line(name, "Text", "''")
-        set_line(name, "FontSize", f(PERK_NAME_SIZE))
-        set_line(name, "Alignment", LEFT)
+        group = row.add(top_left(layout_group(f"bc_mt_perk_{s}", stars, PERK_GAP, MIDDLE_LEFT, (0, 0.5))))
+        name = group.add(top_left(rect(f"bc_mt_perk_{s}_name", header_title.component_lines(), (0, 0.5))))
+        name.drop_component("TextSetter")
+        name_text = name.component("Text")
+        name_text.set("Text", "''")
+        name_text.set("FontSize", f(PERK_NAME_SIZE))
+        name_text.set("Alignment", LEFT)
         names.append(name)
         star_row = group.add(copy(stars))
         for glow in [n for n in star_row.walk() if n.name.startswith("glow0")]:
@@ -328,23 +328,23 @@ def apply(ctx):
     perk_row.place(pos=(right - HEADER_PAD * SCALE, (bottom + old_line_y) / 2 + dy), size=(0, STAR_SIZE), pivot=(1, 0))
 
     # the "Master Traits" title
-    heading_components = components(header_title)
-    heading = board.add(rect("bc_mt_heading", heading_components, (0, 0.5)))
-    set_line(heading, "FontSize", f(TITLE_SIZE * SCALE))
-    set_line(heading, "TextID", TITLE_TEXT_ID)
+    heading = board.add(rect("bc_mt_heading", header_title.component_lines(), (0, 0.5)))
+    heading.component("Text").set("FontSize", f(TITLE_SIZE * SCALE))
+    heading.component("TextSetter").set("TextID", TITLE_TEXT_ID)
     heading.place(pos=(left + HEADER_PAD * SCALE, top - TITLE_Y * SCALE + dy), size=(WIDTH / 2, TITLE_SIZE * SCALE))
 
     # the style titles in info01_text01's style, between the line and the rank panels
     titles = []
     for s in range(STYLES):
         title = board.add(rect(f"bc_mt_{s}_title", text("", STYLE_TITLE_SIZE, INK, 1, CENTER), (0, 1)))
-        set_line(title, "MaterialPath", CELL_MATERIAL)
-        set_line(title, "LanguageData", CELL_LANGUAGE)
-        set_line(title, "Color", STYLE_TITLE_COLOR)
-        set_line(title, "IsGradient", "true")
-        set_line(title, "ColorMode", 2)
+        title_text = title.component("Text")
+        title_text.set("MaterialPath", CELL_MATERIAL)
+        title.component("LanguageSetter").set("LanguageData", CELL_LANGUAGE)
+        title_text.set("Color", STYLE_TITLE_COLOR)
+        title_text.set("IsGradient", True)
+        title_text.set("ColorMode", 2)
         for key, value in STYLE_TITLE_GRADIENT:
-            set_line(title, key, value)
+            title_text.set(key, value)
         title.place(pos=(card(column_x(s), 0)[0], (old_line_y + panel_top) / 2 + STYLE_TITLE_H / 2), size=(COLUMN_W, STYLE_TITLE_H))
         titles.append(title)
 

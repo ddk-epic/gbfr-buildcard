@@ -1,7 +1,7 @@
 # Draws a section's rounded panel over its area and stacks its heading at the top of the padding.
 from collections import namedtuple
 
-from model.components import image, rect, set_line
+from model.components import image, rect
 from model.prefab import copy
 from steps.layout import OUTLINE, PAD, TITLE_BAR_H, TITLE_SCALE, card, move, sprite
 
@@ -50,7 +50,7 @@ def panel(node, area, corners="all", heading=None, padding=PAD):
     if heading:
         bar = node.add(copy(heading.source))
         bar.name = f"{node.name}_ttl"
-        set_line(bar.children[0], "TextID", heading.text_id)
+        bar.children[0].component("TextSetter").set("TextID", heading.text_id)
         bar.set("Scale", (TITLE_SCALE, TITLE_SCALE, 1))
         bar.place(pos=(0, heading_y(h, heading, padding)))
     return content_box(w, h, heading, padding)

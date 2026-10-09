@@ -29,5 +29,4 @@ def apply(ctx):
     y = MARGIN_TOP + ART_TOP - PAD_TOP * ky
     backdrop.place(pos=(x - pw / 2, ph / 2 - y), size=(TEX_W * kx, TEX_H * ky))
 
-    i = panel.lines.index("  Active: true")
-    panel.lines[i:i] = mask((MASK, MASK.rsplit("/", 1)[1]))
+    panel.add_component(mask((MASK, MASK.rsplit("/", 1)[1])))

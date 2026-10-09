@@ -1,7 +1,5 @@
 # Lays out the status section: the stat rows in a 2x2 grid, the masteries panel under it, and the badges above it.
-import re
-
-from model.components import LEFT, components, rect, set_line
+from model.components import LEFT, rect
 from model.prefab import f
 from steps.layout import FRAME, GAP, INSET, PANEL_SCALE, SKILLS, STATUS, card, move
 from steps.panel import panel
@@ -54,14 +52,8 @@ POWER_TOP, POWER_RIGHT = 184, 92  # pwr_icon01's top, ps_cmn_icon_base02's right
 
 def font_sizes(node, size, overrides):
     # sets the Text's FontSize and every enabled override's
-    for i, line in enumerate(node.lines):
-        m = isinstance(line, str) and re.match(r"(\s+FontSize: )(\d+(\.\d+)?)$", line)
-        if not m:
-            continue
-        if line.startswith("      FontSize: "):
-            node.lines[i] = f"{m[1]}{f(size)}"
-        elif float(m[2]):
-            node.lines[i] = f"{m[1]}{overrides}"
+    node.component("Text").set("FontSize", f(size))
+    node.component("LanguageSetter").update("FontSize", lambda old: overrides if float(old) else old)
 
 
 def masteries_block(status, label):
@@ -79,13 +71,11 @@ def masteries_block(status, label):
 
     # two columns over the content box, on its bottom's baseline
     column = (box.right - box.left) / 2
-    lines = components(label)
-    start = lines.index("  - ComponentName: TextSetter")
-    end = lines.index("  - ComponentName: LanguageSetter")
     texts = []
     for i, name in enumerate(("bc_masteries_text", "bc_collection_text")):
-        text = block.add(rect(name, lines[:start] + lines[end:], (0, 0.5)))
-        set_line(text, "Alignment", LEFT)
+        text = block.add(rect(name, label.component_lines(), (0, 0.5)))
+        text.drop_component("TextSetter")
+        text.component("Text").set("Alignment", LEFT)
         font_sizes(text, MASTERIES_SIZE, round(MASTERIES_SIZE))
         text.set("Scale", (scale, scale, 1))
         text.place(pos=(box.left + i * column, box.bottom + SINK * MASTERIES_SIZE * scale),
@@ -129,7 +119,7 @@ def status_block(block, bottom):
     chr_status.place(pos=(0, 0), size=(W, h))
     root.place(pos=(0, h / 2))
     base.place(pos=(0, -h / 2), size=(W, h))
-    base.replace("Color: 1, 1, 1, 1", "Color: 1, 1, 1, 0")
+    base.component("Image").set("Color", "1, 1, 1, 0")
     base.child("status_ttl_text01").set("Active", False)
     grid.place(pos=(0, -h / 2), size=(W, h))
 
@@ -151,9 +141,7 @@ def status_block(block, bottom):
     numbers = {name: row.find(f"{name}_num01") for name, row in rows.items()}
     for number in numbers.values():
         font_sizes(number, NUMBER_SIZE, round(NUMBER_SIZE))
-        for i, line in enumerate(number.lines):
-            if isinstance(line, str) and line.startswith("      Margin: "):
-                number.lines[i] = "      Margin: 0, 0, 0, 0"
+        number.component("Text").set("Margin", "0, 0, 0, 0")
 
     # numbers raised onto the labels' baseline
     raised = SINK * (NUMBER_SIZE - LABEL_SIZE)

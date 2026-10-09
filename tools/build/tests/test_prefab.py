@@ -1,5 +1,5 @@
 # Usage: python -m unittest discover -s tests -t .   (from tools/build)
-# Tests the prefab model's parsing, paths and tree edits.
+# Tests the prefab model's parsing, paths, tree edits and component edits.
 import os
 import unittest
 
@@ -95,6 +95,107 @@ class Tree(unittest.TestCase):
             copy(b)
         replacement = Node(["  Name: other"])
         self.assertIs(copy(b, refs={p.find("text01"): replacement}).refs()[0].node, replacement)
+
+
+TEXT = """Objects:
+- Id: 0
+  Name: root
+  Children:
+  - 1
+  Components:
+  - ComponentName: Info
+    Component:
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 1
+      Level: 3
+      Enable: true
+  Active: true
+- Id: 1
+  Name: label
+  Components:
+  - ComponentName: Text
+    Component:
+      Color: 1, 1, 1, 1
+      FontSize: 40
+      Enable: true
+  - ComponentName: LanguageSetter
+    Component:
+      ContainerData:
+      - data/language/a
+      - data/language/b
+      Overwrites:
+      - Language: Eng
+        FontSize: 0
+      - Language: Jpn
+        FontSize: 36
+      Enable: true
+  Active: true
+  SizeDelta: 0, 0
+"""
+
+
+class Components(unittest.TestCase):
+    def setUp(self):
+        self.p = Prefab.parse(TEXT)
+        self.label = self.p.find("label")
+
+    def test_names_and_lookup(self):
+        self.assertEqual(self.label.components(), ["Text", "LanguageSetter"])
+        self.assertEqual(self.label.component("Text").get("FontSize"), "40")
+        with self.assertRaises(KeyError):
+            self.label.component("Image")
+
+    def test_set_is_scoped_to_the_component(self):
+        self.label.component("LanguageSetter").set("FontSize", 20)
+        self.assertEqual(self.label.component("Text").get("FontSize"), "40")
+        self.assertIn("      - Language: Eng\n        FontSize: 20", self.p.text())
+
+    def test_update_every_line(self):
+        self.label.component("LanguageSetter").update("FontSize", lambda old: "30" if float(old) else old)
+        self.assertIn("FontSize: 0\n      - Language: Jpn\n        FontSize: 30", self.p.text())
+
+    def test_items(self):
+        language = self.label.component("LanguageSetter")
+        self.assertEqual(language.items("ContainerData"), ["data/language/a", "data/language/b"])
+        language.set_items("ContainerData", ["data/language/b"])
+        self.assertIn("ContainerData:\n      - data/language/b\n      Overwrites:", self.p.text())
+
+    def test_add_drop_keep(self):
+        self.label.add_component(["  - ComponentName: Mask", "    Component:", "      Enable: true"])
+        self.assertEqual(self.label.components(), ["Text", "LanguageSetter", "Mask"])
+        self.label.drop_component("LanguageSetter")
+        self.assertEqual(self.label.components(), ["Text", "Mask"])
+        self.label.keep_components("Mask")
+        self.assertEqual(self.label.components(), ["Mask"])
+        self.assertIn("      Enable: true\n  Active: true", self.p.text())
+
+    def test_add_to_an_object_without_components(self):
+        node = Node(["  Name: new", "  Active: true"])
+        node.add_component(["  - ComponentName: Mask", "    Component:", "      Enable: true"])
+        self.assertEqual(node.lines[:3], ["  Name: new", "  Components:", "  - ComponentName: Mask"])
+
+    def test_fields(self):
+        info = self.p.root.component("Info")
+        self.assertEqual(len(info.field("Names")), 4)
+        info.insert(["      Plus: 1"], after="Names")
+        info.insert(["      Minus: 1"], before="Names")
+        self.assertIn("      Minus: 1\n      Names:", self.p.text())
+        self.assertIn("ObjectRefId: 1\n      Plus: 1\n      Level: 3", self.p.text())
+
+    def test_refs(self):
+        info = self.p.root.component("Info")
+        other = self.p.root.add(Node(["  Name: other", "  Active: true"]))
+        info.set_refs("Names", [other])
+        self.assertIs(self.p.root.refs()[0].node, other)
+        info.drop_ref(other)
+        self.assertEqual(info.field("Names"), ["      Names:"])
+
+    def test_component_lines_refuse_references(self):
+        self.assertEqual(self.label.component_lines()[0], "  - ComponentName: Text")
+        with self.assertRaises(ValueError):
+            self.p.root.component_lines()
 
 
 if __name__ == "__main__":

@@ -57,7 +57,12 @@ Objects are `Node`s (`model/prefab.py`):
 | `node.find("bc_mt_cells_captain/bc_mt_0_0_label")` | each name must match exactly one descendant, at any depth, or it raises: names repeat (766 in `status01`), so scope the search by an ancestor |
 | `node.child(name)`, `node.children`, `node.parent` | |
 | `node.add(child, index)`, `node.remove()`, `copy(node, refs)` | references are nodes, so adding, removing and moving objects needs no renumbering; `copy` remaps references inside the copied subtree, `refs` maps any outside it |
-| `node.get(key)`, `node.vec(key)`, `node.set(key, value)`, `node.replace(old, new)` | top-level fields, and any nested line |
+| `node.get(key)`, `node.vec(key)`, `node.set(key, value)` | top-level fields |
+| `node.components()`, `node.component(name)` | the components' names; one component, which must be the only one of its name |
+| `node.add_component(lines)`, `node.drop_component(name)`, `node.keep_components(*names)`, `node.set_components(lines)`, `node.component_lines()` | component lines come from `model/components.py`'s builders or another object's `component_lines()`, which refuses components with references |
+| `component.get(key)`, `component.set(key, value)`, `component.update(key, fn)` | the first line with the key at any depth in the component; `update` sets every one |
+| `component.field(name)`, `component.insert(lines, before=, after=)`, `component.items(name)`, `component.set_items(name, items)` | the component's fields, in the class's order |
+| `component.set_refs(name, targets)`, `component.drop_ref(target)` | a field's references; `ref_field` builds a new one |
 | `node.place(pos, size, pivot)`, `node.repin()`, `node.size()` | rect math, keeping the redundant rect fields consistent (see [status01.md](status01.md#file-format)) |
 | `node.path`, `prefab.at(path)`, `prefab.paths()` | the unique path from the root's names, as `diff.py` reports them |
 

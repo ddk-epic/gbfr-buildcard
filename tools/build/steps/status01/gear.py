@@ -1,5 +1,5 @@
 # Stacks the gear screen's Weapon and Sigils sections and the equip screen's trait rows in the gear column.
-from model.components import get_line, set_line, set_refs, single
+from model.components import ref_field, single
 from model.prefab import Ref, copy, f
 from steps.layout import (CARD_ORDER, GEAR, GENE_TOP, PENDULUM_TOP, SIGILS_TITLE_TOP, SKILLS_TOP, TITLE_BAR_H, TITLE_SCALE,
                           WEAPON_TOP, card, insert)
@@ -35,40 +35,9 @@ TYPE_GAP = 37  # the name's original centre to the series line's centre
 NAME_RISE = 8
 
 
-def field(node, name, mapping):
+def field(component, name, mapping):
     # a component field's lines, with references mapped
-    lines = node.lines
-    i = lines.index(f"      {name}:")
-    end = i + 1
-    while isinstance(lines[end], Ref) or lines[end].startswith(("       ", "      - ")):
-        end += 1
-    return [Ref(line.prefix, mapping[line.node]) if isinstance(line, Ref) else line for line in lines[i:end]]
-
-
-def insert_after(node, line, new):
-    i = node.lines.index(line) + 1
-    node.lines[i:i] = new
-
-
-def drop_component(node, name):
-    start = node.lines.index(f"  - ComponentName: {name}")
-    end = start + 1
-    while isinstance(node.lines[end], Ref) or node.lines[end].startswith("    "):
-        end += 1
-    del node.lines[start:end]
-
-
-def keep_component(node, name):
-    # removes every component but the named one
-    start = node.lines.index("  Components:") + 1
-    end = node.lines.index("  Active: true") if "  Active: true" in node.lines else node.lines.index("  Active: false")
-    kept, keep = [], False
-    for line in node.lines[start:end]:
-        if isinstance(line, str) and line.startswith("  - ComponentName: "):
-            keep = line == f"  - ComponentName: {name}"
-        if keep:
-            kept.append(line)
-    node.lines[start:end] = kept
+    return [Ref(line.prefix, mapping[line.node]) if isinstance(line, Ref) else line for line in component.field(name)]
 
 
 def copied(source, mapping, refs=None):
@@ -82,7 +51,7 @@ def weapon_panel(info01, info_weapon01, info02):
     # the Weapon section with the trait rows and the Sigils section under its root
     mapping = {}
     panel = copied(info01.root, mapping)
-    keep_component(panel, "WeaponInfo")
+    panel.keep_components("WeaponInfo")
     panel.name = "bc_weapon"
     root = panel.child("root")
     root.set("Active", True)
@@ -99,10 +68,10 @@ def weapon_panel(info01, info_weapon01, info02):
         root.add(node, 1 + i)
 
     # WeaponInfo's trait fields, in the class's order
-    fields = {name: field(trait_source, name, mapping) for name in TRAIT_FIELDS}
-    star = panel.lines.index("      Star:") + 4
-    panel.lines[star:star] = fields["Skills"] + fields["PendulumSkillObj"]
-    insert_after(panel, "      SkillListPendulumEntry: false", fields["PendulumSkills"] + fields["PendulumNames"])
+    fields = {name: field(trait_source.component("WeaponInfo"), name, mapping) for name in TRAIT_FIELDS}
+    info = panel.component("WeaponInfo")
+    info.insert(fields["Skills"] + fields["PendulumSkillObj"], after="Star")
+    info.insert(fields["PendulumSkills"] + fields["PendulumNames"], after="SkillListPendulumEntry")
     return panel, traits, sigils
 
 
@@ -120,19 +89,16 @@ def rework_sigil_row(row, row_w):
     for n in range(2):
         trait = single(name)
         trait.name = f"bc_trait0{n + 1}"
-        drop_component(trait, "ContentSizeFitter")
-        trait.replace("FontSize: 40", f"FontSize: {FONT_SIZE}")
-        trait.replace("CharacterSpacing: -1", "CharacterSpacing: 0")
+        trait.drop_component("ContentSizeFitter")
+        trait.component("Text").set("FontSize", FONT_SIZE)
+        trait.component("Text").set("CharacterSpacing", 0)
         skills.add(trait)
         # the trait's SkillInfo fills the name
         skill_icon = skills.child(f"icon_skill0{n + 1}")
-        i = skill_icon.lines.index("      Icons:") + 4
-        skill_icon.lines[i:i] = ["      Names:", "      - ComponentName: Text", "        Index: 0",
-                                 Ref("        ObjectRefId: ", trait)]
+        skill_icon.component("SkillInfo").insert(ref_field("Names", "Text", trait, listed=True), after="Icons")
 
     # the sigil icon, out of GemInfo's Sets, and the sigil name
-    i = next(i for i, line in enumerate(row.lines) if isinstance(line, Ref) and line.node is icon)
-    del row.lines[i - 2:i + 1]
+    row.component("GemInfo").drop_ref(icon)
     icon.set("Active", False)
     name.set("Active", False)
 
@@ -148,8 +114,9 @@ def rework_sigil_row(row, row_w):
 
 
 def raise_level(level):
-    left, top, right, _ = get_line(level, "Padding").split(", ")
-    set_line(level, "Padding", f"{left}, {top}, {right}, {RAISE}")
+    layout = level.component("HorizontalLayoutGroup")
+    left, top, right, _ = layout.get("Padding").split(", ")
+    layout.set("Padding", f"{left}, {top}, {right}, {RAISE}")
 
 
 def match_trait_rows(traits, sigil_rows, width):
@@ -181,10 +148,11 @@ def match_trait_rows(traits, sigil_rows, width):
         level.place(pos=(width / 2 - EDGE, level.vec("Position")[1] + 1))
         # the bar's right padding shortened by as much as the gap
         pair = level.child("loc_lv01")
-        left, top, right, bottom = get_line(level, "Padding").split(", ")
-        gap = float(get_line(pair, "Spacing"))
-        set_line(level, "Padding", f"{left}, {top}, {f(float(right) - (gap - LEVEL_GAP))}, {bottom}")
-        set_line(pair, "Spacing", LEVEL_GAP)
+        layout, pair_layout = level.component("HorizontalLayoutGroup"), pair.component("HorizontalLayoutGroup")
+        left, top, right, bottom = layout.get("Padding").split(", ")
+        gap = float(pair_layout.get("Spacing"))
+        layout.set("Padding", f"{left}, {top}, {f(float(right) - (gap - LEVEL_GAP))}, {bottom}")
+        pair_layout.set("Spacing", LEVEL_GAP)
     title = traits[1].child("loc_title01")
     title.place(size=(width, title.vec("SizeDelta")[1]))
     title.repin()
@@ -216,21 +184,14 @@ def widen_weapon_section(info, width):
 def gold_levels(panel):
     # the trait levels in the summon rows' gold
     for text in (node for node in panel.walk() if node.name in LEVELS):
-        lines = text.lines
-        for i, line in enumerate(lines):
-            if not isinstance(line, str):
-                continue
-            key = line.strip().split(":")[0]
-            indent = line[:len(line) - len(line.lstrip())]
-            if key in ("ColorTL", "ColorTR"):
-                lines[i] = f"{indent}{key}: {GOLD_TOP}"
-            elif key in ("ColorBL", "ColorBR"):
-                lines[i] = f"{indent}{key}: {GOLD_BOTTOM}"
-            elif key == "MaterialPath":
-                lines[i] = line.replace(OUTLINE_FROM, OUTLINE_TO)
+        component = text.component("Text")
+        for key, color in (("ColorTL", GOLD_TOP), ("ColorTR", GOLD_TOP), ("ColorBL", GOLD_BOTTOM), ("ColorBR", GOLD_BOTTOM)):
+            component.set(key, color)
+        component.update("MaterialPath", lambda path: path.replace(OUTLINE_FROM, OUTLINE_TO))
         # the first language container is the default outline
-        first = next(i for i, line in enumerate(lines) if isinstance(line, str) and line.strip() == "ContainerData:") + 1
-        lines[first], lines[first + 1] = lines[first + 1], lines[first]
+        language = text.component("LanguageSetter")
+        first, second, *rest = language.items("ContainerData")
+        language.set_items("ContainerData", [second, first, *rest])
 
 
 def weapon_type(panel, info, info_weapon01, scale):
@@ -238,11 +199,8 @@ def weapon_type(panel, info, info_weapon01, scale):
     line = info.child("line02")
     name = line.child("loc_name01_text")
     type_text = line.add(copy(info_weapon01.find("ttl01/type_text01")))
-    image = line.lines.index("  - ComponentName: Image")
-    line.lines[line.lines.index("      Enable: true", image)] = "      Enable: false"
-    i = panel.lines.index("      WeaponImageObj:")
-    panel.lines[i:i] = ["      TypeText:", "        ComponentName: Text", "        Index: 0",
-                        Ref("        ObjectRefId: ", type_text)]
+    line.component("Image").set("Enable", False)
+    panel.component("WeaponInfo").insert(ref_field("TypeText", "Text", type_text), before="WeaponImageObj")
     name_x, name_y = name.vec("Position")[:2]
     k = CELL_FONT / (TYPE_FONT * scale)
     type_text.set("Scale", (k, k, 1))
@@ -285,5 +243,6 @@ def apply(ctx):
     weapon_type(panel, info, info_weapon01, scale)
 
     prefab.find("loc_status02/loc_chr_status02").set("Active", False)
-    set_refs(prefab.root, "Weapon", [panel])
-    set_refs(prefab.root, "Gem", sigil_rows)
+    chara_info = prefab.root.component("CharaInfo")
+    chara_info.set_refs("Weapon", [panel])
+    chara_info.set_refs("Gem", sigil_rows)

@@ -1,7 +1,8 @@
-# Lays out the summons section as sharecard's summon cells on a status-style panel.
+# Lays out the summons section as sharecard's summon cells on a panel.
 from model.components import mask, rect, set_line, single
 from model.prefab import Ref, copy, f
-from steps.layout import PANEL_SCALE, SUMMONS, card, rounded_panel, section
+from steps.layout import CARD_ORDER, PANEL_SCALE, SUMMONS, insert
+from steps.panel import panel
 
 SLOTS = 4
 COLUMN_GAP = 12  # card units
@@ -134,23 +135,19 @@ def apply(ctx):
     sources = (source_slot, summon_list.find("summon_list_button01_02_btn01/place01_set01"), source_slot.find("summon_icon01/icon_base01/icon01"),
                summon_info01.find("loc_info02/list_skill_p05_01"), summon_info01.find("loc_info02/list_skill_p05_02"))
 
-    left, top, width, height = SUMMONS
+    width, height = SUMMONS[2:]
     scale = (width - COLUMN_GAP) / 2 / CELL_W
     slot_h = SLOT_H * scale  # card units
 
-    summons = section(ctx.prefab("status01").find("loc_buildcard"), "bc_smn")
-    panel = summons.add(rect("bc_smn_base"))
-    panel.place(pos=card(left + width / 2, top + height / 2), size=(width, height))
-    rounded_panel(panel, "bc_smn_panel", 1)
+    summons = insert(ctx.prefab("status01").find("loc_buildcard"), rect("bc_smn"), CARD_ORDER)
+    panel(summons, SUMMONS)
 
     # slots at the top of the section's quarters
     slots = []
     for i in range(SLOTS):
         node = summons.add(slot(sources, f"bc_smn_{i}", scale))
-        x = left + width * (1 + 2 * (i % 2)) / 4
-        y = top + height / 2 * (i // 2)
         node.set("Scale", (scale, scale, 1))
-        node.place(pos=card(x, y + slot_h / 2))
+        node.place(pos=(width * (2 * (i % 2) - 1) / 4, height / 2 * (1 - i // 2) - slot_h / 2))
         ctx.powers(node)
         slots.append(node)
     ctx.export("SummonSlots", slots)

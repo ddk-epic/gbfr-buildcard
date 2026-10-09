@@ -3,7 +3,8 @@ import re
 
 from model.components import LEFT, components, rect, set_line
 from model.prefab import f
-from steps.layout import FRAME, GAP, INSET, PANEL_SCALE, SKILLS, STATUS, card, move, rounded_panel
+from steps.layout import FRAME, GAP, INSET, PANEL_SCALE, SKILLS, STATUS, card, move
+from steps.panel import panel
 
 # the status panel, in card units
 BORDER = 1
@@ -67,20 +68,17 @@ def masteries_block(status, label):
     # the masteries and collection texts in a panel at the section's bottom, its top corners square
     left, top, width, height = STATUS
     scale = PANEL_SCALE
-    h = (2 * BORDER + MASTERIES_PAD_TOP + MASTERIES_PAD_BOTTOM) / scale + MASTERIES_SIZE * GAME_CAP
+    h = 2 * BORDER + MASTERIES_PAD_TOP + MASTERIES_PAD_BOTTOM + MASTERIES_SIZE * GAME_CAP * scale
+    bottom = top + height - h
 
     parent = status.parent
     block = parent.add(rect("bc_masteries"), parent.children.index(status) + 1)
-    x, y = card(left + width / 2, top + height)
-    block.place(size=(W, h))
-    move(block, x, y + h * scale / 2)
-    block.set("Scale", (scale, scale, 1))
-    rounded_panel(block, "bc_masteries_panel", scale, corners="bottom")
+    box = panel(block, (left, bottom, width, h), corners="bottom",
+                padding=(BORDER + MASTERIES_PAD_LEFT, BORDER + MASTERIES_PAD_TOP, BORDER + MASTERIES_PAD_RIGHT,
+                         BORDER + MASTERIES_PAD_BOTTOM))
 
-    # two columns from the left padding, on the bottom padding's baseline
-    content = W - (2 * BORDER + MASTERIES_PAD_LEFT + MASTERIES_PAD_RIGHT) / scale
-    text_left = -W / 2 + (BORDER + MASTERIES_PAD_LEFT) / scale
-    baseline = -h / 2 + (BORDER + MASTERIES_PAD_BOTTOM) / scale
+    # two columns over the content box, on its bottom's baseline
+    column = (box.right - box.left) / 2
     lines = components(label)
     start = lines.index("  - ComponentName: TextSetter")
     end = lines.index("  - ComponentName: LanguageSetter")
@@ -89,13 +87,16 @@ def masteries_block(status, label):
         text = block.add(rect(name, lines[:start] + lines[end:], (0, 0.5)))
         set_line(text, "Alignment", LEFT)
         font_sizes(text, MASTERIES_SIZE, round(MASTERIES_SIZE))
-        text.place(pos=(text_left + i * content / 2, baseline + SINK * MASTERIES_SIZE), size=(content / 2, MASTERIES_SIZE))
+        text.set("Scale", (scale, scale, 1))
+        text.place(pos=(box.left + i * column, box.bottom + SINK * MASTERIES_SIZE * scale),
+                   size=(column / scale, MASTERIES_SIZE))
         texts.append(text)
-    return y + h * scale + STACK_GAP, texts
+    return bottom - STACK_GAP, texts
 
 
 def status_block(block, bottom):
-    left, top, width, height = STATUS
+    # the stock block on a panel above bottom, its bottom corners square
+    left, _, width, _ = STATUS
     scale = PANEL_SCALE
 
     value_cap = NUMBER_SIZE * GAME_CAP
@@ -114,9 +115,11 @@ def status_block(block, bottom):
     top_baseline = bottom_baseline + value_cap + ROW_GAP / scale
     top_centre, bottom_centre = top_baseline + SINK * LABEL_SIZE, bottom_baseline + SINK * LABEL_SIZE
 
-    x, y = card(left + width / 2, 0)[0], bottom
+    top = bottom - h * scale
+    parent = block.parent
+    panel(parent.add(rect("bc_status"), parent.children.index(block)), (left, top, width, h * scale), corners="top")
     block.place(size=(W, h))
-    move(block, x, y + h * scale / 2)
+    move(block, *card(left + width / 2, top + h * scale / 2))
     block.set("Scale", (scale, scale, 1))
 
     chr_status = block.child("chr_status01")
@@ -127,7 +130,6 @@ def status_block(block, bottom):
     root.place(pos=(0, h / 2))
     base.place(pos=(0, -h / 2), size=(W, h))
     base.replace("Color: 1, 1, 1, 1", "Color: 1, 1, 1, 0")
-    rounded_panel(base, "bc_status_panel", scale, corners="top")
     base.child("status_ttl_text01").set("Active", False)
     grid.place(pos=(0, -h / 2), size=(W, h))
 
@@ -167,7 +169,7 @@ def status_block(block, bottom):
     font_sizes(percent, PERCENT_SIZE, round(PERCENT_CJK_SIZE * NUMBER_SIZE / CJK_NUMBER_SIZE))
     percent.place(pos=(UNIT_GAP / scale + percent_w, UNIT_RAISE / scale - SINK * (NUMBER_SIZE - PERCENT_SIZE)),
                   size=(percent_w, PERCENT_RECT[1] * k))
-    return y + h * scale
+    return card(0, top)[1]
 
 
 def badges(base, status_top):

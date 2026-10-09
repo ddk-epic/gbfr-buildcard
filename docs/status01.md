@@ -7,7 +7,7 @@ The main page of the in-game **Character Details** panel (pause menu > character
 | Game path | `data/ui/layouts/pause/status/prefabs/status01.prfb` |
 | Repo source | `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs/status01.prfb.yaml`, written by `tools/build/build.py` ([build.md](build.md)) |
 | Placed by | view `pause_status01.view.viewb`, full screen, centred |
-| Objects | 426 stock (Ids 0-425) + 2518 added (Ids 426-2943) |
+| Objects | 426 stock + 2528 added (Ids 0-2953) |
 | Size | 20,689 lines stock |
 
 The other pages and parts of the panel are separate prefabs: `chr_status_bg01` (white panel, blue portrait area, frame lines), `status_guide01` (Q/E arrows), `var00_chr_skill_info01` (skill details), `chr_skill_info01/02` (trait details, command list), `chr_sboard_info01` (master traits).
@@ -204,12 +204,11 @@ Ids, names and components; `(inactive)` marks `Active: false` in the stock file.
       │                       ├─ 378 loc_base00 (inactive)   text 379
       │                       └─ 380 loc_base01              name 382, description 383,
       │                                                       update icons 384-400 (inactive)
-      └─ 426 loc_buildcard      added: the build card, 3424x1712
-         ├─ 427 bc_mtraits      master traits
-         ├─ 1753 bc_om          Over Mastery
-         ├─ 1883 bc_smn         summons
-         ├─ 2089 bc_weapon      weapon
-         ├─ 2693 bc_skills      skills
-         ├─ 2929 bc_om_ttl_text Over Mastery title
-         └─ 2930 bc_frame       the ornate frame over the card
+      └─ 434 loc_buildcard      added: the build card, 3528x1764
+         ├─ 435 bc_mtraits      master traits
+         ├─ 1759 bc_om          Over Mastery
+         ├─ 1892 bc_smn         summons
+         ├─ 2099 bc_weapon      weapon
+         ├─ 2703 bc_skills      skills
+         └─ 2940 bc_frame       the ornate frame over the card
 ```

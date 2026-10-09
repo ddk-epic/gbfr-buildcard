@@ -1,12 +1,11 @@
-# Lays out the Over Mastery section: lb_ovtli02's rows on a status-style panel under a title bar.
+# Lays out the Over Mastery section: lb_ovtli02's rows on a panel under a title bar.
 from model.components import rect, set_line
 from model.prefab import copy, f
-from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, TITLE_BAR_H, TITLE_SCALE,
-                          card, insert, rounded_panel)
+from steps.layout import CARD_ORDER, HEADING_MARGIN, ICON_PAD, OVER_MASTERY, insert
+from steps.panel import Heading, panel
 
 INK = (0.19607843, 0.37254903, 0.4901961)
 TITLE_TEXT_ID = "TXT_PAU_LB_TAB_LIMIT_OVER"
-BAR_TEXT = 20  # the title text's pivot below the bar's, in title units
 ROWS = 4
 ROW_ICON = 88  # icon01's size, in row units
 ROW_SCALE = 1.1
@@ -32,46 +31,18 @@ def apply(ctx):
     source_row = ctx.stock("lb_ovtli02").find("var00_lb_ovtli01_p01_01")
     title = ctx.stock("equip01_info02").find("loc_info02/ttl01")
 
-    left, top, width, height = OVER_MASTERY
-    scale = PANEL_SCALE
-    title_k = TITLE_SCALE / scale
-    w, h = width / scale, height / scale
-    # the outer padding and a bar height above the bar
-    bar_y = h / 2 - (INSET - FRAME) / scale - TITLE_BAR_H * title_k
-    cx, cy = card(left + width / 2, top + height / 2)
+    om = insert(card_node, rect("bc_om"), CARD_ORDER)
+    box = panel(om, OVER_MASTERY, heading=Heading(title, TITLE_TEXT_ID, HEADING_MARGIN))
 
-    panel = insert(card_node, rect("bc_om"), CARD_ORDER)
-    panel.set("Scale", (scale, scale, 1))
-    panel.place(pos=(cx, cy), size=(w, h))
-    rounded_panel(panel, "bc_om_panel", scale)
-
-    bar = copy(title)
-    bar.children[0].remove()
-    bar.name = "bc_om_ttl"
-    panel.add(bar)
-    bar.set("Scale", (title_k, title_k, 1))
-    bar.place(pos=(0, bar_y))
-
-    text = copy(title.children[0])
-    text.name = "bc_om_ttl_text"
-    set_line(text, "TextID", TITLE_TEXT_ID)
-    text.set("AnchorMin", "0.5, 0.5")
-    text.set("AnchorMax", "0.5, 0.5")
-    insert(card_node, text, CARD_ORDER)
-    text.set("Scale", (scale * title_k, scale * title_k, 1))
-    text.place(pos=(cx, cy + scale * (bar_y - BAR_TEXT * title_k)))
-
-    # rows centred between the bar's gap and the bottom padding, at the skills icons' left inset
-    row_scale = ICON / ROW_ICON * ROW_SCALE / scale
-    line_h, line_gap = LINE_H * ROW_SCALE / scale, LINE_GAP * ROW_SCALE / scale
-    content_top = bar_y - 2 * TITLE_BAR_H * title_k
-    content_bottom = -h / 2 + PAD_Y / scale
+    # rows centred in the content box, at the skills icons' left inset
+    row_scale = ICON / ROW_ICON * ROW_SCALE
+    line_h, line_gap = LINE_H * ROW_SCALE, LINE_GAP * ROW_SCALE
     rows_h = ROWS * line_h + (ROWS - 1) * line_gap
-    rows_top = (content_top + content_bottom) / 2 + rows_h / 2
-    x = -w / 2 + (PAD_X + ICON_PAD) / scale - ICON_X_ROW * row_scale
+    rows_top = (box.top + box.bottom) / 2 + rows_h / 2
+    x = box.left + ICON_PAD - ICON_X_ROW * row_scale
     rows = []
     for i in range(ROWS):
-        node = panel.add(row(source_row, f"bc_om_{i}"))
+        node = om.add(row(source_row, f"bc_om_{i}"))
         node.find("icon01").place(pos=(ICON_X_ROW, 0))
         node.find("loc_text01").place(pos=(TEXT_X_ROW, 0))
         node.set("Scale", (row_scale, row_scale, 1))

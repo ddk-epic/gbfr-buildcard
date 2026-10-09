@@ -1,5 +1,5 @@
 # Measurements and orders shared by the steps.
-from model.components import image, mask, rect
+from model.components import mask, rect
 
 # loc_buildcard's size, in card units
 CARD_W, CARD_H = 3528, 1764
@@ -27,22 +27,16 @@ OVER_MASTERY = (COL_X[2], BAND_Y, THIRD, BAND_H)
 SUMMONS = (COL_X[2] + THIRD + GAP, BAND_Y, 2 * THIRD + GAP, BAND_H)
 
 # panels, in card units
-PAD_X, PAD_Y = 12, 23  # border and padding
+PAD = 12  # on every side
 ICON_PAD = 6  # a skill icon's inset in its cell
 
 # the status-style panels' scale: the skills block's 1000 units across its section
 PANEL_SCALE = SKILLS[2] / 1000
-# a heading's box is four bar heights, its centre on the bar's top
 TITLE_BAR_H = 20  # title units
 
 # rounded corners of radius 8 card units, at scale 1
 OUTLINE = "layouts/pause/status/noatlastextures/bc_outline"
-ROUNDED = "layouts/pause/status/noatlastextures/bc_rounded"
-OUTLINE_TOP = "layouts/pause/status/noatlastextures/bc_outline_top"
-ROUNDED_TOP = "layouts/pause/status/noatlastextures/bc_rounded_top"
 MT_CLIP = "layouts/pause/status/noatlastextures/bc_mt_clip"
-PANEL_FILL = (1, 1, 1), 0.9
-PANEL_STROKE = (133 / 255, 163 / 255, 181 / 255), 223 / 255  # ps_cmn_base54's
 
 # the gear column's stack, in bc_weapon units from its root's pivot
 WEAPON_TOP = 328  # the outer padding and a bar height above the weapon bar's top
@@ -58,8 +52,11 @@ GENE_TOP = SIGILS_TITLE_TOP - 2 * TITLE_BAR_H
 # bc_weapon's scale, the stack across the gear section's height, and every title's
 TITLE_SCALE = GEAR[3] / (WEAPON_TOP - GENE_TOP + GENE_H)
 
+# puts the section headings' bar top the frame's gap below the panel's top
+HEADING_MARGIN = INSET - FRAME - TITLE_BAR_H * TITLE_SCALE - PAD
+
 # loc_buildcard's children in order, each added by its section's step
-CARD_ORDER = ["bc_mtraits", "bc_om", "bc_smn", "bc_weapon", "bc_skills", "bc_om_ttl_text", "bc_frame"]
+CARD_ORDER = ["bc_mtraits", "bc_om", "bc_smn", "bc_weapon", "bc_skills", "bc_frame"]
 
 
 def insert(parent, node, order):
@@ -82,22 +79,6 @@ def section(card, name):
 def sprite(path):
     # a texture path and its sprite name
     return path, path.rsplit("/", 1)[1]
-
-
-def rounded_panel(parent, name, scale, corners="all"):
-    # a panel over the parent's rect at scale 1, with all, the top or the bottom corners rounded
-    pw, ph = parent.size()
-    ppiv = parent.vec("Pivot")
-    w, h = pw * scale, ph * scale
-    fill, stroke = (ROUNDED, OUTLINE) if corners == "all" else (ROUNDED_TOP, OUTLINE_TOP)
-    panel = parent.add(rect(name, image(*PANEL_FILL, sprite(fill), sliced=True, fill_center=True)), 0)
-    panel.set("Scale", (1 / scale, 1 / scale, 1))
-    if corners == "bottom":
-        panel.set("Rotation", (0, 0, 1, 0))
-    panel.place(pos=((0.5 - ppiv[0]) * pw, (0.5 - ppiv[1]) * ph), size=(w, h))
-    outline = panel.add(rect(f"{name}_outline", image(*PANEL_STROKE, sprite(stroke), sliced=True)))
-    outline.place(pos=(0, 0), size=(w, h))
-    return panel
 
 
 def mt_clip(name):

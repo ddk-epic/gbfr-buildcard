@@ -1,8 +1,8 @@
 # Lays out the skills section: the Skills screen's cards, reduced to icon, name and element tag, in a 2x2 grid.
 from model.components import rect, set_line, set_refs
 from model.prefab import copy
-from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, PAD_X, PAD_Y, PANEL_SCALE, SKILLS, TITLE_BAR_H, TITLE_SCALE, card,
-                          insert, rounded_panel)
+from steps.layout import CARD_ORDER, HEADING_MARGIN, ICON_PAD, PANEL_SCALE, SKILLS, insert
+from steps.panel import Heading, panel
 
 CARDS = ["ability_set01_btn04", "ability_set01_btn03", "ability_set01_btn01", "ability_set01_btn02"]  # slots 1 to 4
 TITLE_TEXT_ID = "TXT_PAU_ABILITY"
@@ -11,7 +11,6 @@ ICON_GAP = 12  # card units
 HIDDEN = ["loc_icon_pos", "loc_guide_button", "loc_guide_button_key"]
 
 # block units
-W = 1000
 ICON_SIZE = 184  # loc_icon_ability
 NAME_SIZE = 40
 CAP, SINK = 0.85, 0.45  # cap height, and a middle-aligned text's baseline below its centre, per font size
@@ -76,15 +75,15 @@ def apply(ctx):
     ability_info = ctx.stock("ability_info01_02")
     title = ctx.stock("equip01_info02").find("loc_info02/ttl01")
 
-    left, top, width, height = SKILLS
+    skills = insert(prefab.find("loc_buildcard"), rect("bc_skills"), CARD_ORDER)
+    box = panel(skills, SKILLS, heading=Heading(title, TITLE_TEXT_ID, HEADING_MARGIN))
+    cards = [skills.add(skill_card(ability_info.find(f"loc_list_control01/{name}"))) for name in CARDS]
+
+    # a 2x2 grid over the content box, each card in block units
     scale = PANEL_SCALE
-    title_k = TITLE_SCALE / scale
-    h = height / scale
-    # the outer padding and a bar height above the bar, two bar heights below its top
-    bar_top = h / 2 - (INSET - FRAME) / scale - TITLE_BAR_H * title_k
-    heading_h = h / 2 - bar_top + 2 * TITLE_BAR_H * title_k
-    cell_w, cell_h = (W - 2 * PAD_X / scale) / 2, (h - PAD_Y / scale - heading_h) / 2
-    cells_y = (PAD_Y / scale - heading_h) / 2
+    cell_x, cell_y = (box.right - box.left) / 4, (box.top - box.bottom) / 4
+    cells_y = (box.top + box.bottom) / 2
+    cell_w, cell_h = 2 * cell_x / scale, 2 * cell_y / scale
     icon_scale = ICON_W / scale / ICON_SIZE
     icon_x = (ICON_PAD + ICON_W / 2) / scale  # from the cell's left edge
     name_x = (ICON_PAD + ICON_W + ICON_GAP) / scale
@@ -92,24 +91,9 @@ def apply(ctx):
     text_w = cell_w - name_x + ELEMENT_PAD
     content_h = NAME_H + SPACING + BAR_H
 
-    skills = insert(prefab.find("loc_buildcard"), rect("bc_skills"), CARD_ORDER)
-    panel = skills.add(rect("bc_skills_base"))
-    bar = skills.add(copy(title))
-    bar.name = "bc_skills_ttl"
-    set_line(bar.children[0], "TextID", TITLE_TEXT_ID)
-    cards = [skills.add(skill_card(ability_info.find(f"loc_list_control01/{name}"))) for name in CARDS]
-
-    skills.place(pos=card(left + width / 2, top + height / 2), size=(W, h))
-    skills.set("Scale", (scale, scale, 1))
-    panel.place(pos=(0, 0), size=(W, h))
-    rounded_panel(panel, "bc_skills_panel", scale)
-    bar.set("Scale", (title_k, title_k, 1))
-    bar.place(pos=(0, bar_top))
-
     for slot, node in enumerate(cards):
-        x = cell_w / 2 * (1 if slot % 2 else -1)
-        y = cells_y + cell_h / 2 * (-1 if slot // 2 else 1)
-        node.place(pos=(x, y))
+        node.set("Scale", (scale, scale, 1))
+        node.place(pos=(cell_x * (1 if slot % 2 else -1), cells_y + cell_y * (-1 if slot // 2 else 1)))
 
         base = node.find("loc_base01")
         frames = base.child("base01_set01")

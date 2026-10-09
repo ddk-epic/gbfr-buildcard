@@ -18,7 +18,7 @@ public unsafe class MasterTraits
     private const int LayoutEffect = 0x48;  // in a layout record
     private const int EffectTitle = 0x44;  // in an effect row
 
-    // fake Master Traits cell component: Text list at +0x60 (0x20-byte entries, Text at +0x10), perk flag at +0x78
+    // fake Master Traits cell component
     private const int ComponentSize = 0x88;
     private const int ComponentTexts = 0x60;
     private const int EntrySize = 0x20;
@@ -68,7 +68,7 @@ public unsafe class MasterTraits
                 continue;
             uint effect = *(uint*)(record + LayoutEffect);
             nint row = Find(manager + EffectNodes, effect);
-            cells.Add(new MasterTraitCell((int)(key >> 32 & 0xFFFF), effect, row == 0 ? GameText.NoHash : *(uint*)(row + EffectTitle)));
+            cells.Add(new MasterTraitCell((int)(key >> 32 & 0xFFFF), effect, row == 0 ? GameText.EmptyIdHash : *(uint*)(row + EffectTitle)));
         }
         _cells[charaKey] = cells;
         return cells;
@@ -104,7 +104,7 @@ public unsafe class MasterTraits
     }
 }
 
-// A master trait cell: its layout slot, skillboard_effect key and title text id hash.
+// A master trait cell read from the game.
 public readonly record struct MasterTraitCell(int Slot, uint EffectKey, uint TitleTextId)
 {
     private const int ExSlots = 50;

@@ -10,7 +10,7 @@ namespace gbfr.qol.buildcard.Hooks;
 public unsafe class GameText
 {
     private const int BufferSize = 0x400;
-    public const uint NoHash = 0x887AE0B0;  // hash of an empty text id
+    public const uint EmptyIdHash = 0x887AE0B0;
 
     // TextComponentSetText's mov rdx, [rip + disp32] loading the text manager
     private const int ManagerLoad = 0x26;
@@ -35,7 +35,7 @@ public unsafe class GameText
     }
 
     // hash: the custom XXHash32 of a text id
-    public void Set(nint text, string value, uint hash = NoHash)
+    public void Set(nint text, string value, uint hash = EmptyIdHash)
     {
         if (_setText == null)
             return;
@@ -45,7 +45,7 @@ public unsafe class GameText
     }
 
     // The text of a text id in the loaded language, null-terminated; Ptr 0 when unavailable
-    public TextView Lookup(uint hash, uint subId = NoHash)
+    public TextView Lookup(uint hash, uint subId = EmptyIdHash)
     {
         var view = new TextView();
         if (_lookup != null && _manager != null && *_manager != 0)

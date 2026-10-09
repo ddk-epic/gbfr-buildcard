@@ -1,15 +1,8 @@
-using System.Reflection;
-
 namespace gbfr.qol.buildcard.Hooks;
 
 // Turns a chara's build into the card's writes, by CardIds.
 public class CardContents
 {
-    // masteries.tsv sections
-    private const int Offense = 0, OffenseExtension = 1, Defense = 2, DefenseExtension = 3, Collection = 4, Transcendence = 5;
-    private const int Sections = 6;
-    private const int ExtensionPercent = 2;
-
     // slots per rank of the normal and the captain's board, from the cells' Ids
     private static readonly int[] Slots = CardIds.CellOn[0][0].Select(rank => rank.Length).ToArray();
     private static readonly int[] CaptainSlots = CardIds.CellOn[1][0].Select(rank => rank.Length).ToArray();
@@ -17,26 +10,11 @@ public class CardContents
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
 
-    private readonly Dictionary<(uint Chara, uint Key), string> _masteries = LoadMasteries();
-    private readonly Dictionary<uint, int[]> _masteryTotals = new();
-
-    public CardContents()
-    {
-        foreach (var ((chara, _), ladder) in _masteries)
-        {
-            if (!_masteryTotals.TryGetValue(chara, out int[]? totals))
-                _masteryTotals[chara] = totals = new int[Sections];
-            foreach (char section in ladder)
-                if (section != '-')
-                    totals[section - '0']++;
-        }
-    }
-
-    public List<CardWrite> Compose(CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits)
+    public List<CardWrite> Compose(CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits, int[]? masteries)
     {
         var writes = new List<CardWrite>();
         ComposeMasterTraits(writes, build, masterTraits);
-        ComposeMasteries(writes, build);
+        ComposeMasteries(writes, masteries);
         ComposeOverMastery(writes, build);
         ComposeSummons(writes, build);
         return writes;
@@ -106,29 +84,12 @@ public class CardContents
     private static CardWrite CellWrite(int id, uint charaKey, MasterTraitCell? cell) =>
         cell is { } c ? new MasterTraitDescriptionWrite(id, charaKey, c.Slot) : new TextWrite(id, "");
 
-    private void ComposeMasteries(List<CardWrite> writes, CharaBuild build)
+    private static void ComposeMasteries(List<CardWrite> writes, int[]? masteries)
     {
-        if (!_masteryTotals.TryGetValue(build.CharaKey, out int[]? totals))
-        {
-            writes.Add(new TextWrite(CardIds.MasteryTexts[0], ""));
-            writes.Add(new TextWrite(CardIds.MasteryTexts[1], ""));
-            return;
-        }
-        var taken = new int[Sections];
-        foreach (var entry in build.Entries)
-        {
-            if (!_masteries.TryGetValue((build.CharaKey, entry.Key), out string? ladder))
-                continue;
-            for (int i = 0; i < ladder.Length; i++)
-                if (ladder[i] != '-' && (entry.Bits & (1 << i)) != 0)
-                    taken[ladder[i] - '0']++;
-        }
-
-        int Percent(int section) => totals[section] == 0 ? 0 : taken[section] * 100 / totals[section];
-        int offense = Percent(Offense) + ExtensionPercent * taken[OffenseExtension];
-        int defense = Percent(Defense) + ExtensionPercent * taken[DefenseExtension];
-        writes.Add(new TextWrite(CardIds.MasteryTexts[0], $"Masteries: {offense}% / {defense}%"));
-        writes.Add(new TextWrite(CardIds.MasteryTexts[1], $"Collection: {Percent(Collection)}% / {Percent(Transcendence)}%"));
+        writes.Add(new TextWrite(CardIds.MasteryTexts[0], masteries == null ? ""
+            : $"Masteries: {masteries[Masteries.Offense]}% / {masteries[Masteries.Defense]}%"));
+        writes.Add(new TextWrite(CardIds.MasteryTexts[1], masteries == null ? ""
+            : $"Collection: {masteries[Masteries.Collection]}% / {masteries[Masteries.Transcendence]}%"));
     }
 
     private static void ComposeOverMastery(List<CardWrite> writes, CharaBuild build)
@@ -146,20 +107,6 @@ public class CardContents
     {
         for (int i = 0; i < CharaBuild.SummonCount; i++)
             writes.Add(new SummonWrite(CardIds.SummonSlots[i], build.Summons[i] ?? 0));
-    }
-
-    // masteries.tsv: chara key, limit_bonus key, each LimitBonusParamIndex's section or -
-    private static Dictionary<(uint, uint), string> LoadMasteries()
-    {
-        var masteries = new Dictionary<(uint, uint), string>();
-        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("masteries.tsv")!;
-        using var reader = new StreamReader(stream);
-        while (reader.ReadLine() is { } line)
-        {
-            string[] fields = line.Split('\t');
-            masteries[(Convert.ToUInt32(fields[0], 16), Convert.ToUInt32(fields[1], 16))] = fields[2];
-        }
-        return masteries;
     }
 }
 

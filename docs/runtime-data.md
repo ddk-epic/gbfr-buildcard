@@ -31,11 +31,12 @@ Each 0x38-byte entry starts with a key and a 32-bit value; the value's meaning d
 | Key | Value | Source of the key's meaning |
 |---|---|---|
 | A master trait cell (`skillboard_effect` key) | 1 when the cell is picked | The skill board tables' layout for the character key: the cell's slot, below |
-| A mastery node (`limit_bonus` key) | One bit per `LimitBonusParamIndex`, set when that step is taken | `Data/masteries.tsv`, per character key: the section of each bit (offense, offense extension, defense, defense extension, collection, transcendence) |
+| A mastery node (`limit_bonus` key) | One bit per `LimitBonusParamIndex`, set when that step is taken | The `ap_tree` tables' rows of the character key |
 
 The master traits board is the 4/8/8/10-slot board, or the 4/8/8/14-slot captain's board when a picked or unpicked
 cell's position is past the normal board's slots. A perk's picks are counted as its style's stars, and the rank 1
-perk's title is the style's title. A cell's text is what `SetSkillBoardDescription` sets for its slot.
+perk's title is the style's title. A cell's text is what `SetSkillBoardDescription` sets for its slot. The masteries'
+percentages are what `MasteryPercent` returns for the character key.
 
 ### Over Mastery line
 
@@ -152,6 +153,8 @@ no symbols; the names are the signatures' keys.
 | `SetObjectActive(object, active)` | called | Shows or hides an object and its subtree. |
 | `SetOverMasteryLine(LimitBonusInfo, line)` | called | Fills an Over Mastery row from a `chara` Over Mastery line. |
 | `SetSummonInfo(SummonInfo, summon id)` | called | Fills a summon slot, its trait and equip bonus rows included. |
+| `MasteryPercent(mastery manager, category, character key)` | called | Returns a mastery category's percentage as the Masteries screen shows it: 0 offense, 1 defense, 2 collection, 3 transcendence; the extension nodes add to the first two past 100. |
+| `SetMasteryPercents(screen)` | read | Fills the Masteries screen's percentages; the `mov rcx, [rip + disp32]` at `+0x30` loads the mastery manager's global pointer. |
 
 ## Weapon art
 

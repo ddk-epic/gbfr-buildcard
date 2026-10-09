@@ -20,6 +20,7 @@ public unsafe class CardWriter
     private readonly GameText _text;
     private readonly TextWrap _wrap;
     private readonly MasterTraits _masterTraits;
+    private readonly Masteries _masteries;
     private readonly WeaponArtHooks _weaponArt;
     private readonly ILogger _logger;
     private readonly CardContents _contents = new();
@@ -36,11 +37,12 @@ public unsafe class CardWriter
     private bool _loggedComponents;
     private bool _loggedCount;
 
-    public CardWriter(GameText text, TextWrap wrap, MasterTraits masterTraits, WeaponArtHooks weaponArt, ILogger logger)
+    public CardWriter(GameText text, TextWrap wrap, MasterTraits masterTraits, Masteries masteries, WeaponArtHooks weaponArt, ILogger logger)
     {
         _text = text;
         _wrap = wrap;
         _masterTraits = masterTraits;
+        _masteries = masteries;
         _weaponArt = weaponArt;
         _logger = logger;
         _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
@@ -90,7 +92,7 @@ public unsafe class CardWriter
         }
 
         var build = CharaBuild.Decode(chara, message => LogOnce(ref _loggedBuild, $"Chara build: {message}", Color.Yellow));
-        foreach (var write in _contents.Compose(build, _masterTraits.ReadCells(build.CharaKey)))
+        foreach (var write in _contents.Compose(build, _masterTraits.ReadCells(build.CharaKey), _masteries.ReadPercents(build.CharaKey)))
         {
             if (!objects.TryGetValue(write.Id, out nint obj))
                 continue;

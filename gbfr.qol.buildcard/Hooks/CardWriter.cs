@@ -17,6 +17,7 @@ public unsafe class CardWriter
     private const int MaxTextLength = 0x400;
 
     private readonly GameText _text;
+    private readonly TextWrap _wrap;
     private readonly MasterTraits _masterTraits;
     private readonly WeaponArtHooks _weaponArt;
     private readonly ILogger _logger;
@@ -34,9 +35,10 @@ public unsafe class CardWriter
     private bool _loggedComponents;
     private bool _loggedCount;
 
-    public CardWriter(GameText text, MasterTraits masterTraits, WeaponArtHooks weaponArt, ILogger logger)
+    public CardWriter(GameText text, TextWrap wrap, MasterTraits masterTraits, WeaponArtHooks weaponArt, ILogger logger)
     {
         _text = text;
+        _wrap = wrap;
         _masterTraits = masterTraits;
         _weaponArt = weaponArt;
         _logger = logger;
@@ -130,11 +132,14 @@ public unsafe class CardWriter
             _text.Set(text, _text.Find(textId), textId);
     }
 
-    // Sets the cell's description as the Master Traits menu shows it
+    // Sets the cell's description as the Master Traits menu shows it, wrapped to the cell
     private void SetMasterTraitDescription(nint obj, MasterTraitDescriptionWrite write)
     {
-        if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
-            _masterTraits.FillDescription(text, write.CharaKey, write.Slot);
+        if (FindComponent(obj, _textVtable, "Text") is not (var text and not 0))
+            return;
+        _wrap.Limit(text, CardIds.CellTextWidth);
+        _masterTraits.FillDescription(text, write.CharaKey, write.Slot);
+        _wrap.Cap(text);
     }
 
     private void SetActive(nint obj, bool active)

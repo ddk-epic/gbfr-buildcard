@@ -91,12 +91,20 @@ PWR value or, on its other branch, the text id `0x4EDE20AA`.
 | Offset | Data |
 |---|---|
 | `+0x040` | The shown string, an MSVC `std::string`: the characters inline when the capacity at `+0x58` is at most 15, else a pointer to them; the length at `+0x50`. |
+| `+0x0A0`, `+0x0A8` | Lines: begin and end of 0x18-byte glyph vectors (begin, end, capacity), one per shown line; a glyph is 0x50 bytes. |
 | `+0x188` | The text id hash the string came from. |
+| `+0x18C` | The text's sub-id hash. |
+| `+0x1D0` | Wrap width, an int32. |
+| `+0x1D4` | Wrap mode; 1 joins the lines and wraps them again to the width. |
+| `+0x1D8` | Wrap switch, 1 byte. |
+
+The wrap fields apply to the strings set after them.
 
 ### Text manager
 
 The loaded language's texts, a global pointer loaded by the `mov rdx, [rip + disp32]` at `TextComponentSetText+0x26`.
-`TextLookup` reads a text from it as a pointer and a 64-bit length; the text is null-terminated.
+`TextLookup` reads a text from it as a pointer and a 64-bit length; the text is null-terminated. The ellipsis that ends a
+cut line is `TXT_HUD_COMMUNICATION_OVER` (`0x6895D7BB`).
 
 ## Skill board manager
 
@@ -135,6 +143,10 @@ no symbols; the names are the signatures' keys.
 | `FillCharacterStatus(charaInfo, chara, index)` | hooked | Fills a `CharaInfo` from a character; the mod writes the card after it. |
 | `TextComponentSetText(text, string, text id hash, -1)` | called | Sets a `Text` component's string and its text id hash. |
 | `TextLookup(text manager, text out, text id hash, sub-id hash)` | called | Reads a text id's text in the loaded language. |
+| `TextJoinLines(text)` | called | Joins a `Text` component's lines from its lines' begin onward into the first of them. |
+| `TextFitLine(text, width, line, with ellipsis)` | called | Returns how many of a line's glyphs fit in the width, leaving room for the ellipsis. |
+| `TextBuildGlyphs(text, string, glyphs)` | called | Builds a null-terminated string's glyphs in the `Text` component's font into a glyph vector. |
+| `TextInsertGlyphs(line, at, glyphs, count)` | called | Inserts glyphs into a line's glyph vector. |
 | `SetSkillBoardDescription(cell component, character key, slot)` | called | Sets a master trait cell's description in the loaded language, its `{n}` filled from the effect's action parts. |
 | `SetObjectActive(object, active)` | called | Shows or hides an object and its subtree. |
 | `SetOverMasteryLine(LimitBonusInfo, line)` | called | Fills an Over Mastery row from a `chara` Over Mastery line. |

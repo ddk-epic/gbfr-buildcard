@@ -30,6 +30,9 @@ def generate(prefab, exports):
              "internal static class CardIds",
              "{"]
     for key, value in sorted(exports.items()):
+        if isinstance(value, int):
+            lines.append(f"    public const int {key} = {value};")
+            continue
         for node in nodes(value):
             if node not in ids:
                 raise KeyError(f"{key}: {node.name} is not in status01")

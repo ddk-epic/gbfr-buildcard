@@ -79,6 +79,7 @@ STARS = ("root/loc_base01/loc_info03/skillboard_info03/root/loc_item01/loc_info0
 LEFT_X, TOP_Y, WIDTH, HEIGHT = MASTER_TRAITS
 COLUMN_W = (WIDTH - 2 * COLUMN_GAP) / 3
 CELL_W = (COLUMN_W - 2 * PAD_X - CELL_GAP) / 2
+CELL_TEXT_W = CELL_W - 2 * CELL_PAD - TEXT_SHIFT
 CELL_K = CELL_H / GAME_CELL_H  # the cell images' scale
 
 
@@ -200,8 +201,7 @@ def grid(board, name, slots, ranks, active):
                                 text("", CELL_SIZE, INK, alpha, LEFT, CELL_LINE_SPACING, CELL_LINE_SPACING_ENG), (0, 1))
                     set_text(node, color, cell=True)
                     x = card(cell_x + CELL_PAD + TEXT_SHIFT, 0)[0]
-                    w = CELL_W - 2 * CELL_PAD - TEXT_SHIFT
-                    placements.append(lambda n=node, x=x, y=row_top, w=w, h=row_top - row_bottom:
+                    placements.append(lambda n=node, x=x, y=row_top, w=CELL_TEXT_W, h=row_top - row_bottom:
                                       n.place(pos=(x, y), size=(w, h)))
                     cell_texts.append(node)
         images += panels + bars + [base for _, base in cells]
@@ -367,3 +367,4 @@ def apply(ctx):
     ctx.export("CellPicked", cell_nodes("picked"))
     ctx.export("CellOn", cell_nodes("on"))
     ctx.export("CellOff", cell_nodes("off"))
+    ctx.export("CellTextWidth", int(CELL_TEXT_W))

@@ -15,7 +15,7 @@ ICON_SIZE = 184  # loc_icon_ability
 NAME_SIZE = 40
 CAP, SINK = 0.85, 0.45  # cap height, and a middle-aligned text's baseline below its centre, per font size
 NAME_H = 50  # one line
-ELEMENT_PAD = 23  # loc_elem01's left padding before the element icon
+SKILL_NAME_INSET = 23  # loc_elem01's left edge to its element icon
 ELEMENT_RAISE = 14  # the element icon's and text's centre above the bar's
 ELEMENT_H = 50  # the element icon's visible height
 NAME_GAP = 14  # the name's baseline to the element icon's top
@@ -52,7 +52,7 @@ def skill_card(source):
 
     name = base.child("text01")
     element = frames.child("loc_elem01")
-    name.component("Text").set("Margin", f"{ELEMENT_PAD}, 0, 0, 0")
+    name.component("Text").set("Margin", f"{SKILL_NAME_INSET}, 0, 0, 0")
     name.add_component(["  - ComponentName: ContentSizeFitter", "    Component:", "      HorizontalFit: 0",
                         "      VerticalFit: 2", "      Enable: true"])
     group = frames.add(text_group(), frames.children.index(element))
@@ -79,7 +79,7 @@ def apply(ctx):
     icon_x = (ICON_PAD + ICON_W / 2) / scale  # from the cell's left edge
     name_x = (ICON_PAD + ICON_W + ICON_GAP) / scale
     # the text group, from the element bar's left edge to the cell's right edge
-    text_w = cell_w - name_x + ELEMENT_PAD
+    text_w = cell_w - name_x + SKILL_NAME_INSET
     content_h = NAME_H + SPACING + BAR_H
 
     for slot, node in enumerate(cards):
@@ -101,7 +101,7 @@ def apply(ctx):
 
         # children at the group's one-line positions, anchored top-left like the game's layout group children
         group = frames.child("bc_skill_text")
-        group.place(pos=(name_x - ELEMENT_PAD + text_w / 2 - cell_w / 2, 0), size=(text_w, cell_h))
+        group.place(pos=(name_x - SKILL_NAME_INSET + text_w / 2 - cell_w / 2, 0), size=(text_w, cell_h))
         group_top = content_h / 2 + PADDING_BOTTOM / 2
         name, element = group.children
         for child, y, size in ((name, group_top - NAME_H / 2, (text_w, NAME_H)),
@@ -115,3 +115,4 @@ def apply(ctx):
         prefab.find(f"loc_status02/{block}").set("Active", False)
     prefab.root.component("CharaInfo").set_refs("Ability", cards)
     ctx.export("SkillNames", [node.find("bc_skill_text/text01") for node in cards])
+    ctx.export("SkillNameWidth", int(text_w - SKILL_NAME_INSET))

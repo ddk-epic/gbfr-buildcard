@@ -164,6 +164,7 @@ public unsafe class CardWriter
         _setOverMasteryLine(limitBonusInfo, (nint)(_overMasteryLines + index));
     }
 
+    // Sets the skill names again, wrapped to their width
     private void WrapSkillNames(Dictionary<int, nint> objects)
     {
         foreach (short id in CardIds.SkillNames)
@@ -171,10 +172,9 @@ public unsafe class CardWriter
             nint text = FindComponent(objects[id], _textVtable, "Text");
             if (text == 0)
                 continue;
-            string name = ReadString(text + TextString);
-            string wrapped = CardContents.WrapSkillName(name);
-            if (wrapped != name)
-                _text.Set(text, wrapped, *(uint*)(text + TextHash));
+            _wrap.Limit(text, CardIds.SkillNameWidth);
+            _text.Set(text, ReadString(text + TextString), *(uint*)(text + TextHash));
+            _wrap.Cap(text);
         }
     }
 

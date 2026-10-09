@@ -5,8 +5,6 @@ namespace gbfr.qol.buildcard.Hooks;
 // Turns a chara's build into the card's writes, by CardIds.
 public class CardContents
 {
-    private const int SkillNameWrapLength = 15;
-
     // masteries.tsv sections
     private const int Offense = 0, OffenseExtension = 1, Defense = 2, DefenseExtension = 3, Collection = 4, Transcendence = 5;
     private const int Sections = 6;
@@ -148,22 +146,6 @@ public class CardContents
     {
         for (int i = 0; i < CharaBuild.SummonCount; i++)
             writes.Add(new SummonWrite(CardIds.SummonSlots[i], build.Summons[i] ?? 0));
-    }
-
-    public static string WrapSkillName(string name) => Wrap(name, SkillNameWrapLength);
-
-    // Breaks a one-line label of length or more characters at the space nearest its middle; <d> counts as two.
-    private static string Wrap(string label, int length)
-    {
-        if (label.Contains('\n') || label.Replace("<d>", "xx").Length < length)
-            return label;
-        int best = -1;
-        for (int i = label.IndexOf(' '); i != -1; i = label.IndexOf(' ', i + 1))
-        {
-            if (best == -1 || Math.Abs(i - label.Length / 2) < Math.Abs(best - label.Length / 2))
-                best = i;
-        }
-        return best == -1 ? label : $"{label[..best]}\n{label[(best + 1)..]}";
     }
 
     // masteries.tsv: chara key, limit_bonus key, each LimitBonusParamIndex's section or -

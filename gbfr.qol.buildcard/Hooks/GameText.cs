@@ -18,6 +18,7 @@ public unsafe class GameText
 
     private readonly nint _buffer = Marshal.AllocHGlobal(BufferSize);
     private nint* _tables;
+    private nint _readableTables;
 
     // TextComponentSetText(text, string, text id hash, unknown)
     private delegate* unmanaged<nint, GameString*, uint, int, void> _setText;
@@ -45,15 +46,20 @@ public unsafe class GameText
         _setText(text, &str, hash, -1);
     }
 
-    // The text of a text id in the loaded language, null-terminated and readable; Ptr 0 when unavailable
+    // The text of a text id in the loaded language, null-terminated; Ptr 0 when unavailable
     public TextView Lookup(uint hash, uint subId = EmptyIdHash)
     {
         var view = new TextView();
-        if (_lookup == null || _tables == null || !GameMemory.IsReadable(*_tables, TablesSize))
+        if (_lookup == null || _tables == null || *_tables == 0)
             return view;
+        if (*_tables != _readableTables)
+        {
+            if (!GameMemory.IsReadable(*_tables, TablesSize))
+                return view;
+            _readableTables = *_tables;
+        }
         _lookup(*_tables, &view, hash, subId);
-        if (view.Length < 0 || view.Length > BufferSize || !GameMemory.IsReadable(view.Ptr, (nint)view.Length + 1)
-            || ((byte*)view.Ptr)[view.Length] != 0)
+        if (view.Ptr == 0 || view.Length < 0 || view.Length > BufferSize || ((byte*)view.Ptr)[view.Length] != 0)
             return new TextView();
         return view;
     }

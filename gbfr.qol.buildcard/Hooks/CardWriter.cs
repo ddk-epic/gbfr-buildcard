@@ -40,8 +40,10 @@ public unsafe class CardWriter
     private const int SummonSize = 0x1C;
     private const int SummonCount = 4;
 
-    private static readonly int[] Slots = [4, 8, 8, 10];
-    private static readonly int[] CaptainSlots = [4, 8, 8, 14];
+    // slots per rank of the normal and the captain's board, from the cells' Ids
+    private static readonly int[] Slots = CardIds.CellOn[0][0].Select(rank => rank.Length).ToArray();
+    private static readonly int[] CaptainSlots = CardIds.CellOn[1][0].Select(rank => rank.Length).ToArray();
+    private static readonly int Styles = CardIds.CellOn[0].Length;
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
 
@@ -134,10 +136,10 @@ public unsafe class CardWriter
 
     private void WriteMasterTraits(Dictionary<int, nint> objects, nint chara)
     {
-        var titles = new string[StyleNames.Length];
-        var perks = new int[StyleNames.Length];
+        var titles = new string[Styles];
+        var perks = new int[Styles];
         var spent = new int[Slots.Length];
-        var labels = new (Cell Cell, bool Picked)?[StyleNames.Length, CaptainSlots.Length, CaptainSlots.Max()];
+        var labels = new (Cell Cell, bool Picked)?[Styles, CaptainSlots.Length, CaptainSlots.Max()];
         bool captain = false;
         for (int offset = Entries; offset < EntriesEnd; offset += EntrySize)
         {
@@ -160,17 +162,17 @@ public unsafe class CardWriter
         var slots = captain ? CaptainSlots : Slots;
         int board = captain ? 1 : 0;
 
-        for (int s = 0; s < StyleNames.Length; s++)
+        for (int s = 0; s < Styles; s++)
         {
             Set(objects, CardIds.PerkNames[s], StyleNames[s]);
             for (int k = 0; k < CardIds.PerkStars[s].Length; k++)
                 SetActive(objects, CardIds.PerkStars[s][k], k < perks[s]);
         }
-        for (int s = 0; s < StyleNames.Length; s++)
+        for (int s = 0; s < Styles; s++)
             Set(objects, CardIds.StyleTitles[s], titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
         SetActive(objects, CardIds.Cells, !captain);
         SetActive(objects, CardIds.CaptainCells, captain);
-        for (int s = 0; s < StyleNames.Length; s++)
+        for (int s = 0; s < Styles; s++)
         {
             for (int r = 0; r < slots.Length; r++)
                 Set(objects, CardIds.RankCounts[board][s][r], $"{spent[r]}/{Budgets[r]}");

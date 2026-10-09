@@ -1,7 +1,7 @@
 # Lays out the Over Mastery section: lb_ovtli02's rows on a status-style panel under a title bar.
 from model.components import rect, set_line
 from model.prefab import copy, f
-from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, TITLE_BAR_H, TITLE_SCALE,
+from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, OVER_MASTERY, PAD_X, PAD_Y, PANEL_SCALE, TITLE_BAR_H, TITLE_SCALE,
                           card, insert, rounded_panel)
 
 INK = (0.19607843, 0.37254903, 0.4901961)
@@ -10,8 +10,8 @@ BAR_TEXT = 20  # the title text's pivot below the bar's, in title units
 ROWS = 4
 ROW_ICON = 88  # icon01's size, in row units
 ROW_SCALE = 1.1
-ICON = 42  # sharecard pixels, before ROW_SCALE
-LINE_H, LINE_GAP = 36, 4  # sharecard pixels, before ROW_SCALE
+ICON = 51  # card units, before ROW_SCALE
+LINE_H, LINE_GAP = 44, 5  # card units, before ROW_SCALE
 ICON_X_ROW = -482  # icon01's left edge in the row
 TEXT_X_ROW = -384  # loc_text01's left edge in the row
 
@@ -34,11 +34,10 @@ def apply(ctx):
 
     left, top, width, height = OVER_MASTERY
     scale = PANEL_SCALE
-    u = scale / SCREEN_CARD_RATIO  # sharecard pixels per panel unit
     title_k = TITLE_SCALE / scale
-    w, h = width / u, height / u
+    w, h = width / scale, height / scale
     # the outer padding and a bar height above the bar
-    bar_y = h / 2 - (INSET - FRAME) / u - TITLE_BAR_H * title_k
+    bar_y = h / 2 - (INSET - FRAME) / scale - TITLE_BAR_H * title_k
     cx, cy = card(left + width / 2, top + height / 2)
 
     panel = insert(card_node, rect("bc_om"), CARD_ORDER)
@@ -63,13 +62,13 @@ def apply(ctx):
     text.place(pos=(cx, cy + scale * (bar_y - BAR_TEXT * title_k)))
 
     # rows centred between the bar's gap and the bottom padding, at the skills icons' left inset
-    row_scale = ICON * SCREEN_CARD_RATIO / ROW_ICON * ROW_SCALE / scale
-    line_h, line_gap = LINE_H * ROW_SCALE / u, LINE_GAP * ROW_SCALE / u
+    row_scale = ICON / ROW_ICON * ROW_SCALE / scale
+    line_h, line_gap = LINE_H * ROW_SCALE / scale, LINE_GAP * ROW_SCALE / scale
     content_top = bar_y - 2 * TITLE_BAR_H * title_k
-    content_bottom = -h / 2 + PAD_Y / u
+    content_bottom = -h / 2 + PAD_Y / scale
     rows_h = ROWS * line_h + (ROWS - 1) * line_gap
     rows_top = (content_top + content_bottom) / 2 + rows_h / 2
-    x = -w / 2 + (PAD_X + ICON_PAD) / u - ICON_X_ROW * row_scale
+    x = -w / 2 + (PAD_X + ICON_PAD) / scale - ICON_X_ROW * row_scale
     rows = []
     for i in range(ROWS):
         node = panel.add(row(source_row, f"bc_om_{i}"))

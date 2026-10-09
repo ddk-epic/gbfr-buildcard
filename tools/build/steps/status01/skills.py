@@ -1,13 +1,13 @@
 # Lays out the skills section: the Skills screen's cards, reduced to icon, name and element tag, in a 2x2 grid.
 from model.components import rect, set_line, set_refs
 from model.prefab import copy
-from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, PAD_X, PAD_Y, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, TITLE_BAR_H, TITLE_SCALE, card,
+from steps.layout import (CARD_ORDER, FRAME, ICON_PAD, INSET, PAD_X, PAD_Y, PANEL_SCALE, SKILLS, TITLE_BAR_H, TITLE_SCALE, card,
                           insert, rounded_panel)
 
 CARDS = ["ability_set01_btn04", "ability_set01_btn03", "ability_set01_btn01", "ability_set01_btn02"]  # slots 1 to 4
 TITLE_TEXT_ID = "TXT_PAU_ABILITY"
-ICON_PX = 88
-ICON_GAP = 10
+ICON_W = 108  # card units
+ICON_GAP = 12  # card units
 HIDDEN = ["loc_icon_pos", "loc_guide_button", "loc_guide_button_key"]
 
 # block units
@@ -78,17 +78,16 @@ def apply(ctx):
 
     left, top, width, height = SKILLS
     scale = PANEL_SCALE
-    u = scale / SCREEN_CARD_RATIO  # sharecard pixels per block unit
     title_k = TITLE_SCALE / scale
-    h = height / u
+    h = height / scale
     # the outer padding and a bar height above the bar, two bar heights below its top
-    bar_top = h / 2 - (INSET - FRAME) / u - TITLE_BAR_H * title_k
+    bar_top = h / 2 - (INSET - FRAME) / scale - TITLE_BAR_H * title_k
     heading_h = h / 2 - bar_top + 2 * TITLE_BAR_H * title_k
-    cell_w, cell_h = (W - 2 * PAD_X / u) / 2, (h - PAD_Y / u - heading_h) / 2
-    cells_y = (PAD_Y / u - heading_h) / 2
-    icon_scale = ICON_PX / u / ICON_SIZE
-    icon_x = (ICON_PAD + ICON_PX / 2) / u  # from the cell's left edge
-    name_x = (ICON_PAD + ICON_PX + ICON_GAP) / u
+    cell_w, cell_h = (W - 2 * PAD_X / scale) / 2, (h - PAD_Y / scale - heading_h) / 2
+    cells_y = (PAD_Y / scale - heading_h) / 2
+    icon_scale = ICON_W / scale / ICON_SIZE
+    icon_x = (ICON_PAD + ICON_W / 2) / scale  # from the cell's left edge
+    name_x = (ICON_PAD + ICON_W + ICON_GAP) / scale
     # the text group, from the element bar's left edge to the cell's right edge
     text_w = cell_w - name_x + ELEMENT_PAD
     content_h = NAME_H + SPACING + BAR_H

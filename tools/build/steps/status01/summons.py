@@ -1,11 +1,11 @@
 # Lays out the summons section as sharecard's summon cells on a status-style panel.
 from model.components import mask, rect, set_line, single
 from model.prefab import Ref, copy, f
-from steps.layout import PANEL_SCALE, SCREEN_CARD_RATIO, SUMMONS, card, rounded_panel, section
+from steps.layout import PANEL_SCALE, SUMMONS, card, rounded_panel, section
 
 SLOTS = 4
-COLUMN_GAP = 10
-PAD = 12
+COLUMN_GAP = 12  # card units
+PAD = 15  # card units
 KEEP = ["loc_text01"]  # loc_item01's children kept
 ICON_W, ICON_H = 320, 440  # cmn_icsmn sprites
 FADE = ("atlas/pause_pause_common", "ps_cmn_mask_list_w01")
@@ -86,10 +86,10 @@ def slot(sources, name, scale):
 
     left, top = -CELL_W / 2, SLOT_H / 2
     # the band's top-left corner, PAD inside the section's quarter
-    band_left = left + (PAD - COLUMN_GAP / 4) * SCREEN_CARD_RATIO / scale
-    band_top = top - PAD * SCREEN_CARD_RATIO / scale
-    cell_h = 131 * SCREEN_CARD_RATIO / scale
-    portrait_y = 18 * SCREEN_CARD_RATIO / scale  # below the cell's centre
+    band_left = left + (PAD - COLUMN_GAP / 4) / scale
+    band_top = top - PAD / scale
+    cell_h = 160 / scale
+    portrait_y = 22 / scale  # below the cell's centre
 
     # the band fade's ramp across the band
     band_fade_w = BAND_W / (1 - BAND_FADE_PADDING)
@@ -135,12 +135,12 @@ def apply(ctx):
                summon_info01.find("loc_info02/list_skill_p05_01"), summon_info01.find("loc_info02/list_skill_p05_02"))
 
     left, top, width, height = SUMMONS
-    scale = (width - COLUMN_GAP) / 2 * SCREEN_CARD_RATIO / CELL_W
-    slot_h = SLOT_H * scale / SCREEN_CARD_RATIO  # sharecard pixels
+    scale = (width - COLUMN_GAP) / 2 / CELL_W
+    slot_h = SLOT_H * scale  # card units
 
     summons = section(ctx.prefab("status01").find("loc_buildcard"), "bc_smn")
     panel = summons.add(rect("bc_smn_base"))
-    panel.place(pos=card(left + width / 2, top + height / 2), size=(width * SCREEN_CARD_RATIO, height * SCREEN_CARD_RATIO))
+    panel.place(pos=card(left + width / 2, top + height / 2), size=(width, height))
     rounded_panel(panel, "bc_smn_panel", 1)
 
     # slots at the top of the section's quarters

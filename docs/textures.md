@@ -11,8 +11,8 @@ with a hand-written `.tex.yaml` next to it; the mod build converts the `.tex.yam
 | `bc_rounded` | `tools/textures/gen_outline.py 20 10 8 <out.png>` | 20x20 | opaque white square with corners of radius 8, sliced with border 8; the panels' fill under `bc_outline` |
 | `bc_outline_top` | `tools/textures/gen_outline.py 20 2 8 <out.png> top` | 20x20 | `bc_outline` with only the top corners rounded; turned 180° for the bottom ones |
 | `bc_rounded_top` | `tools/textures/gen_outline.py 20 10 8 <out.png> top` | 20x20 | `bc_rounded` with only the top corners rounded; turned 180° for the bottom ones |
-| `bc_mt_clip` | `tools/textures/gen_rounded.py 1024 1024 1799.85 1349.46 8 <out.png>` | 1024x1024 | opaque white over the master traits section's rect in card units, corners of radius 8; that section's mask |
-| `bc_portrait_mask` | `tools/textures/gen_portrait_mask.py <ps_cmn_mask_chara02.dds> 1000 540 590 670 0.75 0.3 8 580 <out.png>` | 640x640 | opaque on the right; over sharecard pixels from that edge, an ease to 0.75 over 540-590, an S-curve to 0.3 over 590-670, then a tail to 0 at 1000, joined without kinks; the fade leans 8° about card row 580, further right above it; its rows fade like `ps_cmn_mask_chara02`'s, its source decoded with `texconv -m 1 -f R8G8B8A8_UNORM -ft dds`. The portrait's mask, 1000 sharecard pixels wide |
+| `bc_mt_clip` | `tools/textures/gen_rounded.py 1024 1024 1800.94 1347.03 8 <out.png>` | 1024x1024 | opaque white over the master traits section's rect in card units, corners of radius 8; that section's mask |
+| `bc_portrait_mask` | `tools/textures/gen_portrait_mask.py <ps_cmn_mask_chara02.dds> 1225 661 722 820 0.75 0.3 8 710 <out.png>` | 640x640 | opaque on the right; over card units from that edge, an ease to 0.75 over 661-722, an S-curve to 0.3 over 722-820, then a tail to 0 at 1225, joined without kinks; the fade leans 8° about card row 710, further right above it; its rows fade like `ps_cmn_mask_chara02`'s, its source decoded with `texconv -m 1 -f R8G8B8A8_UNORM -ft dds`. The portrait's mask, 1225 card units wide |
 
 ## Building a texture
 

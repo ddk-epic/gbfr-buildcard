@@ -1,5 +1,5 @@
 # Usage: python gen_portrait_mask.py <ps_cmn_mask_chara02.dds> <width> <ease start> <curve start> <curve end> <shoulder> <floor> <angle> <pivot> <out.png>
-# Draws the portrait's mask in sharecard pixels from its opaque right edge: an ease to the shoulder, an S-curve to the
+# Draws the portrait's mask in card units from its opaque right edge: an ease to the shoulder, an S-curve to the
 # floor and a tail to 0, leaning by the angle about the pivot row, over the rows of the decoded ps_cmn_mask_chara02.
 import math, struct, sys, zlib
 
@@ -8,14 +8,14 @@ H, W = struct.unpack_from("<II", src, 12)
 OFF = 128 + (20 if src[84:88] == b"DX10" else 0)
 WIDTH, EASE, START, END, SHOULDER, FLOOR, ANGLE, PIVOT = map(float, sys.argv[2:10])
 TAN = math.tan(math.radians(ANGLE))
-CARD_H = 1440
+CARD_H = 1764  # card units
 PAD_ROWS = 17.076  # ps_cmn_mask_chara02's transparent rows
 EASE_SLOPE = -2 * (1 - SHOULDER) / (START - EASE)  # the ease's slope at its end
 TAIL_SLOPE = -2 * FLOOR / (WIDTH - END)  # the tail's slope at its start
 
 
 def fade(p):
-    # alpha at p pixels from the opaque edge
+    # alpha at p card units from the opaque edge
     if p <= EASE:
         return 1
     if p < START:

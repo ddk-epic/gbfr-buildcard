@@ -1,7 +1,7 @@
 # Stacks the gear screen's Weapon and Sigils sections and the equip screen's trait rows in the gear column.
 from model.components import get_line, set_line, set_refs, single
 from model.prefab import Ref, copy, f
-from steps.layout import (CARD_ORDER, GEAR, GENE_TOP, PENDULUM_TOP, SCREEN_CARD_RATIO, SIGILS_TITLE_TOP, SKILLS_TOP, TITLE_BAR_H, TITLE_SCALE,
+from steps.layout import (CARD_ORDER, GEAR, GENE_TOP, PENDULUM_TOP, SIGILS_TITLE_TOP, SKILLS_TOP, TITLE_BAR_H, TITLE_SCALE,
                           WEAPON_TOP, card, insert)
 
 TRAIT_FIELDS = ["Skills", "PendulumSkillObj", "PendulumSkills", "PendulumNames"]
@@ -273,7 +273,7 @@ def apply(ctx):
 
     gene = sigils[1]
     sigil_rows = [gene.find(f"equip01_p01_{i + 1:02}") for i in range(SIGIL_ROWS)]
-    row_w = width * SCREEN_CARD_RATIO / scale - 8
+    row_w = width / scale - 8
     gene_h = gene.vec("SizeDelta")[1]
     for i, row in enumerate(sigil_rows):
         rework_sigil_row(row, row_w)

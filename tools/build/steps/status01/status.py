@@ -1,35 +1,32 @@
-# Lays out the status section: the stat rows in a 2x2 grid spaced as sharecard's StatusPanel, the masteries panel
-# under it, and the badges above it.
+# Lays out the status section: the stat rows in a 2x2 grid, the masteries panel under it, and the badges above it.
 import re
 
 from model.components import LEFT, components, rect, set_line
 from model.prefab import f
-from steps.layout import FRAME, GAP, INSET, PANEL_SCALE, SCREEN_CARD_RATIO, SKILLS, STATUS, card, move, rounded_panel
+from steps.layout import FRAME, GAP, INSET, PANEL_SCALE, SKILLS, STATUS, card, move, rounded_panel
 
-# sharecard's StatusPanel, in sharecard pixels
+# the status panel, in card units
 BORDER = 1
-PAD_X, PAD_Y = 20, 17.5  # pl-4 pr-4, py-3.5
-COLUMN_GAP = 25  # gap-x-5
-LEFT_FR, RIGHT_FR = 9, 11  # grid-cols-[9fr_11fr]
-RIGHT_PAD = 20  # pr-4 of the right column
-ICON_BOX = 35  # w-7
-ROW_GAP = 22.5  # gap-y-4.5
-LABEL_PX, VALUE_PX = 25, 28  # text-xl, text-[28px]
-UNIT_SCALE, UNIT_GAP, UNIT_RAISE = 0.65, 2.5, 1  # text-[65%], pl-0.5, bottom-px
+PAD_X, PAD_Y = 24, 21
+COLUMN_GAP = 31
+LEFT_FR, RIGHT_FR = 9, 11  # the columns' shares
+RIGHT_PAD = 24  # the right column's right padding
+ICON_BOX = 43
+ROW_GAP = 28
+UNIT_SCALE, UNIT_GAP, UNIT_RAISE = 0.65, 3, 1  # the percent sign's
 
-# sharecard's MasteriesPanel on the card, in sharecard pixels
-MASTERIES_PAD_TOP, MASTERIES_PAD_BOTTOM = 6.25, 7.5  # pt-1.25, pb-1.5
-MASTERIES_PAD_LEFT, MASTERIES_PAD_RIGHT = 25, 20  # pl-5, pr-4
-MASTERIES_PX = 20  # text-base
+# the masteries panel, in card units
+MASTERIES_PAD_TOP, MASTERIES_PAD_BOTTOM = 8, 9
+MASTERIES_PAD_LEFT, MASTERIES_PAD_RIGHT = 31, 24
 STACK_GAP = GAP / 4  # between the status and masteries panels
 
 GAME_CAP = 0.85  # cap height per font size
 SINK = 0.45  # baseline below a middle-aligned text's centre, per font size
 
 LABEL_SIZE = 40
-NUMBER_SIZE = LABEL_SIZE * VALUE_PX / LABEL_PX
+NUMBER_SIZE = 44.8
 PERCENT_SIZE = NUMBER_SIZE * UNIT_SCALE
-MASTERIES_SIZE = LABEL_SIZE * MASTERIES_PX / LABEL_PX
+MASTERIES_SIZE = 32
 
 # block units
 W = 1000
@@ -41,12 +38,12 @@ PERCENT_CJK_SIZE, CJK_NUMBER_SIZE = 36, 56
 
 BADGE_SCALE = 0.7
 
-# sharecard pixels
-MASTER_LEVEL_DX = 117.3  # loc_ml_level01's centre right of level01's
-MASTER_LEVEL_RAISE = 6.4  # loc_ml_level01's top above level01's
+# card units
+MASTER_LEVEL_DX = 144  # loc_ml_level01's centre right of level01's
+MASTER_LEVEL_RAISE = 8  # loc_ml_level01's top above level01's
 BADGE_INSET = (FRAME + INSET) / 2
-POWER_OVERHANG = 50  # power01's right edge past the column's
-COLUMN_X = 296
+POWER_OVERHANG = 61  # power01's right edge past the column's
+COLUMN_X = 362
 
 # badge rect units, from each badge's pivot
 LEVEL_R = 148  # ps_cmn_icon_base03's radius
@@ -70,8 +67,7 @@ def masteries_block(status, label):
     # the masteries and collection texts in a panel at the section's bottom, its top corners square
     left, top, width, height = STATUS
     scale = PANEL_SCALE
-    u = scale / SCREEN_CARD_RATIO
-    h = (2 * BORDER + MASTERIES_PAD_TOP + MASTERIES_PAD_BOTTOM) / u + MASTERIES_SIZE * GAME_CAP
+    h = (2 * BORDER + MASTERIES_PAD_TOP + MASTERIES_PAD_BOTTOM) / scale + MASTERIES_SIZE * GAME_CAP
 
     parent = status.parent
     block = parent.add(rect("bc_masteries"), parent.children.index(status) + 1)
@@ -82,9 +78,9 @@ def masteries_block(status, label):
     rounded_panel(block, "bc_masteries_panel", scale, corners="bottom")
 
     # two columns from the left padding, on the bottom padding's baseline
-    content = W - (2 * BORDER + MASTERIES_PAD_LEFT + MASTERIES_PAD_RIGHT) / u
-    text_left = -W / 2 + (BORDER + MASTERIES_PAD_LEFT) / u
-    baseline = -h / 2 + (BORDER + MASTERIES_PAD_BOTTOM) / u
+    content = W - (2 * BORDER + MASTERIES_PAD_LEFT + MASTERIES_PAD_RIGHT) / scale
+    text_left = -W / 2 + (BORDER + MASTERIES_PAD_LEFT) / scale
+    baseline = -h / 2 + (BORDER + MASTERIES_PAD_BOTTOM) / scale
     lines = components(label)
     start = lines.index("  - ComponentName: TextSetter")
     end = lines.index("  - ComponentName: LanguageSetter")
@@ -95,28 +91,27 @@ def masteries_block(status, label):
         font_sizes(text, MASTERIES_SIZE, round(MASTERIES_SIZE))
         text.place(pos=(text_left + i * content / 2, baseline + SINK * MASTERIES_SIZE), size=(content / 2, MASTERIES_SIZE))
         texts.append(text)
-    return y + h * scale + STACK_GAP * SCREEN_CARD_RATIO, texts
+    return y + h * scale + STACK_GAP, texts
 
 
 def status_block(block, bottom):
     left, top, width, height = STATUS
     scale = PANEL_SCALE
-    u = scale / SCREEN_CARD_RATIO  # sharecard pixels per block unit
 
     value_cap = NUMBER_SIZE * GAME_CAP
-    h = (2 * (BORDER + PAD_Y) + ROW_GAP) / u + 2 * value_cap
+    h = (2 * (BORDER + PAD_Y) + ROW_GAP) / scale + 2 * value_cap
 
     # x from the block's left edge
-    content = W - 2 * (BORDER + PAD_X) / u
-    column = (content - COLUMN_GAP / u) / (LEFT_FR + RIGHT_FR)
-    left_icon = (BORDER + PAD_X + ICON_BOX / 2) / u
-    left_num = (BORDER + PAD_X) / u + LEFT_FR * column
-    right_icon = left_num + (COLUMN_GAP + ICON_BOX / 2) / u
-    right_num = W - (BORDER + PAD_X + RIGHT_PAD) / u
+    content = W - 2 * (BORDER + PAD_X) / scale
+    column = (content - COLUMN_GAP / scale) / (LEFT_FR + RIGHT_FR)
+    left_icon = (BORDER + PAD_X + ICON_BOX / 2) / scale
+    left_num = (BORDER + PAD_X) / scale + LEFT_FR * column
+    right_icon = left_num + (COLUMN_GAP + ICON_BOX / 2) / scale
+    right_num = W - (BORDER + PAD_X + RIGHT_PAD) / scale
 
     # y from the block's bottom edge
-    bottom_baseline = (BORDER + PAD_Y) / u
-    top_baseline = bottom_baseline + value_cap + ROW_GAP / u
+    bottom_baseline = (BORDER + PAD_Y) / scale
+    top_baseline = bottom_baseline + value_cap + ROW_GAP / scale
     top_centre, bottom_centre = top_baseline + SINK * LABEL_SIZE, bottom_baseline + SINK * LABEL_SIZE
 
     x, y = card(left + width / 2, 0)[0], bottom
@@ -170,7 +165,7 @@ def status_block(block, bottom):
     k = PERCENT_SIZE / 32
     percent_w = PERCENT_RECT[0] * k
     font_sizes(percent, PERCENT_SIZE, round(PERCENT_CJK_SIZE * NUMBER_SIZE / CJK_NUMBER_SIZE))
-    percent.place(pos=(UNIT_GAP / u + percent_w, UNIT_RAISE / u - SINK * (NUMBER_SIZE - PERCENT_SIZE)),
+    percent.place(pos=(UNIT_GAP / scale + percent_w, UNIT_RAISE / scale - SINK * (NUMBER_SIZE - PERCENT_SIZE)),
                   size=(percent_w, PERCENT_RECT[1] * k))
     return y + h * scale
 
@@ -185,7 +180,7 @@ def badges(base, status_top):
     def half_height(node):
         return node.vec("SizeDelta")[1] * BADGE_SCALE / 2
 
-    gap = (SKILLS[1] - (STATUS[1] + STATUS[3])) * SCREEN_CARD_RATIO
+    gap = SKILLS[1] - (STATUS[1] + STATUS[3])
     overhang = half_height(element) - half_height(name)
     name_centre = status_top + gap + overhang + half_height(name)
 
@@ -195,7 +190,7 @@ def badges(base, status_top):
     right = card(STATUS[0] + STATUS[2] + POWER_OVERHANG, 0)[0]
     level_x = left + LEVEL_R * BADGE_SCALE
     move(level, level_x, top - LEVEL_R * BADGE_SCALE)
-    move(master_level, level_x + MASTER_LEVEL_DX * SCREEN_CARD_RATIO, top + MASTER_LEVEL_RAISE * SCREEN_CARD_RATIO - MASTER_LEVEL_TOP * BADGE_SCALE)
+    move(master_level, level_x + MASTER_LEVEL_DX, top + MASTER_LEVEL_RAISE - MASTER_LEVEL_TOP * BADGE_SCALE)
     move(power, right - POWER_RIGHT * BADGE_SCALE, top - POWER_TOP * BADGE_SCALE)
     name.place(pivot=(0.5, 0.5))
     move(name, card(COLUMN_X, 0)[0], name_centre)

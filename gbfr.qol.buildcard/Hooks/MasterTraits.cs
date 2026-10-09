@@ -12,8 +12,6 @@ public unsafe class MasterTraits
 
     // tables: MSVC unordered_maps, each a node list sentinel pointer and size; nodes are [next, prev, key, value]
     private const int LayoutNodes = 0x6D0;  // chara key | slot << 32 | LayoutType << 48 to layout id
-    private const int TablesSize = LayoutNodes + 0x10;
-    private const int NodeSize = 0x20;
     private const long MaxMapSize = 0x100000;
     private const int LayoutRecordNodes = 0x320;  // layout id to layout record
     private const int EffectNodes = 0x8;  // skillboard_effect key to effect row
@@ -56,13 +54,12 @@ public unsafe class MasterTraits
     {
         if (_cells.TryGetValue(charaKey, out var cells))
             return cells;
-        if (_tables == null || !GameMemory.IsReadable(*_tables, TablesSize))
+        if (_tables == null || *_tables == 0)
             return [];
         nint tables = *_tables;
-        var region = new GameMemory.Region();
-        if (ReadMap(tables + LayoutNodes, ref region) is not { } layouts
-            || ReadMap(tables + LayoutRecordNodes, ref region) is not { } records
-            || ReadMap(tables + EffectNodes, ref region) is not { } effects)
+        if (ReadMap(tables + LayoutNodes) is not { } layouts
+            || ReadMap(tables + LayoutRecordNodes) is not { } records
+            || ReadMap(tables + EffectNodes) is not { } effects)
             return [];
         var recordsById = ByUintKey(records);
         var effectsByKey = ByUintKey(effects);
@@ -72,10 +69,10 @@ public unsafe class MasterTraits
         {
             if ((uint)key != charaKey || key >> 48 != LayoutType)
                 continue;
-            if (!recordsById.TryGetValue((uint)value, out nint record) || !region.Covers(record, LayoutEffect + sizeof(uint)))
+            if (!recordsById.TryGetValue((uint)value, out nint record) || record == 0)
                 continue;
             uint effect = *(uint*)(record + LayoutEffect);
-            uint title = effectsByKey.TryGetValue(effect, out nint row) && region.Covers(row, EffectTitle + sizeof(uint))
+            uint title = effectsByKey.TryGetValue(effect, out nint row) && row != 0
                 ? *(uint*)(row + EffectTitle) : GameText.EmptyIdHash;
             cells.Add(new MasterTraitCell((int)(key >> 32 & 0xFFFF), effect, title));
         }
@@ -94,17 +91,17 @@ public unsafe class MasterTraits
     }
 
     // Every node's key and value in the map at map, in list order; null when the list is broken
-    private static List<(ulong Key, nint Value)>? ReadMap(nint map, ref GameMemory.Region region)
+    private static List<(ulong Key, nint Value)>? ReadMap(nint map)
     {
         nint head = *(nint*)map;
         long size = *(long*)(map + 8);
-        if (size < 0 || size > MaxMapSize || !region.Covers(head, NodeSize))
+        if (size < 0 || size > MaxMapSize || head == 0)
             return null;
         var entries = new List<(ulong, nint)>((int)size);
         nint prev = head;
         for (nint node = *(nint*)head; node != head; prev = node, node = *(nint*)node)
         {
-            if (entries.Count == size || !region.Covers(node, NodeSize) || *(nint*)(node + 8) != prev)
+            if (entries.Count == size || node == 0 || *(nint*)(node + 8) != prev)
                 return null;
             entries.Add((*(ulong*)(node + 0x10), *(nint*)(node + 0x18)));
         }

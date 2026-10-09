@@ -148,6 +148,5 @@ def apply(ctx):
         node = summons.add(slot(sources, f"bc_smn_{i}", scale))
         node.set("Scale", (scale, scale, 1))
         node.place(pos=(width * (2 * (i % 2) - 1) / 4, height / 2 * (1 - i // 2) - slot_h / 2))
-        ctx.powers(node)
         slots.append(node)
     ctx.export("SummonSlots", slots)

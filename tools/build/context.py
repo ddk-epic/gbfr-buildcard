@@ -2,7 +2,6 @@
 import os
 import subprocess
 
-import powers
 from model.prefab import Prefab
 
 REPO = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../.."))
@@ -56,10 +55,6 @@ class Context:
     def merge_list(self, name, source):
         # merges the source prefab's asset list, except animations, into the prefab's
         self.merged.setdefault(name, []).append(source)
-
-    def powers(self, node, component=""):
-        # adds the node to status01's CharaInfo.Powers
-        powers.add(self.prefab("status01"), node, component)
 
     def export(self, key, node):
         if key in self.exports:

@@ -217,7 +217,7 @@ def grid(board, name, slots, ranks, active):
     last = len(images)
     for i, node in enumerate(picked):
         container.add(node, last + i)
-    return container, picked
+    return container
 
 
 def picked_cell(container, key, base):
@@ -264,7 +264,7 @@ def top_left(node):
 def perks(header_title, stars):
     # each style's name and stars in a row
     row = rect("bc_mt_perks", layout_group(stars, PERKS_GAP, MIDDLE_RIGHT), (1, 0.5))
-    names, icons = [], []
+    names = []
     title_components = components(header_title)
     for s in range(STYLES):
         group = row.add(top_left(rect(f"bc_mt_perk_{s}", layout_group(stars, PERK_GAP, MIDDLE_LEFT), (0, 0.5))))
@@ -282,8 +282,7 @@ def perks(header_title, stars):
         star_row.set("Scale", (1, 1, 1))
         star_row.set("AnchorMin", "0, 1")
         star_row.set("AnchorMax", "0, 1")
-        icons += [n for n in star_row.walk() if n.name.startswith("icon0") and n.name.endswith("_add")]
-    return row, names, icons
+    return row, names
 
 
 def apply(ctx):
@@ -322,7 +321,7 @@ def apply(ctx):
     old_line_y = top - LINE_Y * SCALE
 
     # the style names and stars padded from the right, between the title's height and the line
-    perk_row, perk_names, star_icons = perks(header_title, stars)
+    perk_row, perk_names = perks(header_title, stars)
     board.add(perk_row)
     perk_row.set("Scale", (ROW_SCALE, ROW_SCALE, 1))
     bottom = top - TITLE_Y * SCALE - STAR_SIZE * ROW_SCALE / 2
@@ -349,20 +348,8 @@ def apply(ctx):
         title.place(pos=(card(column_x(s), 0)[0], (old_line_y + panel_top) / 2 + STYLE_TITLE_H / 2), size=(COLUMN_W, STYLE_TITLE_H))
         titles.append(title)
 
-    cells, picked = grid(board, "bc_mt_cells", SLOTS, stock, True)
-    captain, captain_picked = grid(board, "bc_mt_cells_captain", CAPTAIN_SLOTS, captain_ranks(stock), False)
-
-    for node in titles + perk_names:
-        ctx.powers(node, "Text")
-    for node in star_icons + picked + captain_picked + [cells, captain]:
-        ctx.powers(node)
-    for container, slots in ((cells, SLOTS), (captain, CAPTAIN_SLOTS)):
-        for s in range(STYLES):
-            for r in range(len(slots)):
-                ctx.powers(container.child(f"bc_mt_{s}_{r}_count"), "Text")
-                for c in range(slots[r]):
-                    for state in ("on", "off"):
-                        ctx.powers(container.child(f"bc_mt_{s}_{r}_{c}_{state}"), "Text")
+    cells = grid(board, "bc_mt_cells", SLOTS, stock, True)
+    captain = grid(board, "bc_mt_cells_captain", CAPTAIN_SLOTS, captain_ranks(stock), False)
 
     perk_rows = [perk_row.child(f"bc_mt_perk_{s}") for s in range(STYLES)]
     ctx.export("PerkNames", perk_names)

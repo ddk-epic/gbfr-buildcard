@@ -47,6 +47,5 @@ def apply(ctx):
         node.find("loc_text01").place(pos=(TEXT_X_ROW, 0))
         node.set("Scale", (row_scale, row_scale, 1))
         node.place(pos=(x, rows_top - i * (line_h + line_gap) - line_h / 2))
-        ctx.powers(node)
         rows.append(node)
     ctx.export("OverMasteryRows", rows)

@@ -8,11 +8,9 @@ using Reloaded.Mod.Interfaces;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Writes the card's objects, found in CharaInfo.Powers by their CardIds, and sets the weapon WeaponArtHooks loads.
+// Writes the card's objects, found in status01's tree by their CardIds, and sets the weapon WeaponArtHooks loads.
 public unsafe class CardWriter
 {
-    private const int Powers = 0x3D0;
-    private const int MaxRefs = 1024;
     private const int WrapLength = 19;
     private const int SkillNameWrapLength = 15;
 
@@ -61,7 +59,7 @@ public unsafe class CardWriter
     private readonly nint _summonInfoVtable;
     private readonly nint _textVtable;
     private bool _loggedComponents;
-    private bool _loggedMissing;
+    private bool _loggedCount;
 
     public CardWriter(GameText text, WeaponArtHooks weaponArt, ILogger logger)
     {
@@ -113,28 +111,28 @@ public unsafe class CardWriter
 
     private void Write(nint charaInfo, nint chara)
     {
-        var refs = FindRefs(charaInfo);
-        int missing = CardIds.All.Count(id => !refs.ContainsKey(id));
-        if (missing > 0)
+        var objects = ObjectTree.Find(charaInfo);
+        if (objects == null)
+            return;
+        if (objects.Count != CardIds.ObjectCount)
         {
-            // a few missing: the card's CharaInfo, out of step with the build
-            if (missing < CardIds.All.Length / 2 && !_loggedMissing)
+            if (!_loggedCount)
             {
-                _loggedMissing = true;
-                _logger.WriteLine($"[gbfr.qol.buildcard] {missing} card objects missing from CharaInfo.Powers, card not written", Color.Red);
+                _loggedCount = true;
+                _logger.WriteLine($"[gbfr.qol.buildcard] status01 has {objects.Count} objects, the build {CardIds.ObjectCount}: card not written", Color.Red);
             }
             return;
         }
 
-        WriteMasterTraits(refs, chara);
-        WriteMasteries(refs, chara);
-        WriteOverMastery(refs, chara);
-        WriteSummons(refs, chara);
-        WrapSkillNames(refs);
+        WriteMasterTraits(objects, chara);
+        WriteMasteries(objects, chara);
+        WriteOverMastery(objects, chara);
+        WriteSummons(objects, chara);
+        WrapSkillNames(objects);
         _weaponArt.Show(chara);
     }
 
-    private void WriteMasterTraits(Dictionary<short, nint> refs, nint chara)
+    private void WriteMasterTraits(Dictionary<int, nint> objects, nint chara)
     {
         var titles = new string[StyleNames.Length];
         var perks = new int[StyleNames.Length];
@@ -164,38 +162,38 @@ public unsafe class CardWriter
 
         for (int s = 0; s < StyleNames.Length; s++)
         {
-            Set(refs, CardIds.PerkNames[s], StyleNames[s]);
+            Set(objects, CardIds.PerkNames[s], StyleNames[s]);
             for (int k = 0; k < CardIds.PerkStars[s].Length; k++)
-                SetActive(refs, CardIds.PerkStars[s][k], k < perks[s]);
+                SetActive(objects, CardIds.PerkStars[s][k], k < perks[s]);
         }
         for (int s = 0; s < StyleNames.Length; s++)
-            Set(refs, CardIds.StyleTitles[s], titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
-        SetActive(refs, CardIds.Cells, !captain);
-        SetActive(refs, CardIds.CaptainCells, captain);
+            Set(objects, CardIds.StyleTitles[s], titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
+        SetActive(objects, CardIds.Cells, !captain);
+        SetActive(objects, CardIds.CaptainCells, captain);
         for (int s = 0; s < StyleNames.Length; s++)
         {
             for (int r = 0; r < slots.Length; r++)
-                Set(refs, CardIds.RankCounts[board][s][r], $"{spent[r]}/{Budgets[r]}");
+                Set(objects, CardIds.RankCounts[board][s][r], $"{spent[r]}/{Budgets[r]}");
             for (int r = 0; r < slots.Length; r++)
             {
                 for (int c = 0; c < slots[r]; c++)
                 {
                     var slot = labels[s, r, c];
-                    SetCell(refs, CardIds.CellOn[board][s][r][c], slot is { Picked: true } ? slot.Value.Cell : null);
-                    SetCell(refs, CardIds.CellOff[board][s][r][c], slot is { Picked: false } ? slot.Value.Cell : null);
-                    SetActive(refs, CardIds.CellPicked[board][s][r][c], slot is { Picked: true });
+                    SetCell(objects, CardIds.CellOn[board][s][r][c], slot is { Picked: true } ? slot.Value.Cell : null);
+                    SetCell(objects, CardIds.CellOff[board][s][r][c], slot is { Picked: false } ? slot.Value.Cell : null);
+                    SetActive(objects, CardIds.CellPicked[board][s][r][c], slot is { Picked: true });
                 }
             }
         }
     }
 
-    private void WriteMasteries(Dictionary<short, nint> refs, nint chara)
+    private void WriteMasteries(Dictionary<int, nint> objects, nint chara)
     {
         uint charaKey = *(uint*)(chara + CharaKey);
         if (!_masteryTotals.TryGetValue(charaKey, out int[]? totals))
         {
-            Set(refs, CardIds.MasteryTexts[0], "");
-            Set(refs, CardIds.MasteryTexts[1], "");
+            Set(objects, CardIds.MasteryTexts[0], "");
+            Set(objects, CardIds.MasteryTexts[1], "");
             return;
         }
         var taken = new int[Sections];
@@ -212,11 +210,11 @@ public unsafe class CardWriter
         int Percent(int section) => totals[section] == 0 ? 0 : taken[section] * 100 / totals[section];
         int offense = Percent(Offense) + ExtensionPercent * taken[OffenseExtension];
         int defense = Percent(Defense) + ExtensionPercent * taken[DefenseExtension];
-        Set(refs, CardIds.MasteryTexts[0], $"Masteries: {offense}% / {defense}%");
-        Set(refs, CardIds.MasteryTexts[1], $"Collection: {Percent(Collection)}% / {Percent(Transcendence)}%");
+        Set(objects, CardIds.MasteryTexts[0], $"Masteries: {offense}% / {defense}%");
+        Set(objects, CardIds.MasteryTexts[1], $"Collection: {Percent(Collection)}% / {Percent(Transcendence)}%");
     }
 
-    private void WriteOverMastery(Dictionary<short, nint> refs, nint chara)
+    private void WriteOverMastery(Dictionary<int, nint> objects, nint chara)
     {
         for (int i = 0; i < OverMasteryLines; i++)
         {
@@ -224,35 +222,35 @@ public unsafe class CardWriter
             int id = CardIds.OverMasteryRows[i];
             bool shown = *(float*)(line + 0xC) != 0;
             if (shown)
-                SetOverMasteryLine(refs, id, line);
-            SetActive(refs, id, shown);
+                SetOverMasteryLine(objects, id, line);
+            SetActive(objects, id, shown);
         }
     }
 
-    private void SetOverMasteryLine(Dictionary<short, nint> refs, int id, nint line)
+    private void SetOverMasteryLine(Dictionary<int, nint> objects, int id, nint line)
     {
-        if (_setOverMasteryLine == null || _limitBonusInfoVtable == 0 || !refs.TryGetValue((short)id, out nint r))
+        if (_setOverMasteryLine == null || _limitBonusInfoVtable == 0 || !objects.TryGetValue(id, out nint obj))
             return;
-        nint limitBonusInfo = FindComponent(*(nint*)(r + 8), _limitBonusInfoVtable);
+        nint limitBonusInfo = FindComponent(obj, _limitBonusInfoVtable);
         if (limitBonusInfo == 0)
-            LogComponentsOnce(*(nint*)(r + 8), "LimitBonusInfo", _limitBonusInfoVtable);
+            LogComponentsOnce(obj, "LimitBonusInfo", _limitBonusInfoVtable);
         else
             _setOverMasteryLine(limitBonusInfo, line);
     }
 
-    private void WriteSummons(Dictionary<short, nint> refs, nint chara)
+    private void WriteSummons(Dictionary<int, nint> objects, nint chara)
     {
         for (int i = 0; i < SummonCount; i++)
-            SetSummonInfo(refs, CardIds.SummonSlots[i], *(uint*)(chara + Summons + i * SummonSize + 4));
+            SetSummonInfo(objects, CardIds.SummonSlots[i], *(uint*)(chara + Summons + i * SummonSize + 4));
     }
 
-    private void SetSummonInfo(Dictionary<short, nint> refs, int id, uint summonId)
+    private void SetSummonInfo(Dictionary<int, nint> objects, int id, uint summonId)
     {
-        if (_setSummonInfo == null || _summonInfoVtable == 0 || !refs.TryGetValue((short)id, out nint r))
+        if (_setSummonInfo == null || _summonInfoVtable == 0 || !objects.TryGetValue(id, out nint obj))
             return;
-        nint summonInfo = FindComponent(*(nint*)(r + 8), _summonInfoVtable);
+        nint summonInfo = FindComponent(obj, _summonInfoVtable);
         if (summonInfo == 0)
-            LogComponentsOnce(*(nint*)(r + 8), "SummonInfo", _summonInfoVtable);
+            LogComponentsOnce(obj, "SummonInfo", _summonInfoVtable);
         else
             _setSummonInfo(summonInfo, summonId);
     }
@@ -283,13 +281,13 @@ public unsafe class CardWriter
         _logger.WriteLine($"[gbfr.qol.buildcard] No {name} on a card object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
     }
 
-    private void WrapSkillNames(Dictionary<short, nint> refs)
+    private void WrapSkillNames(Dictionary<int, nint> objects)
     {
         if (_textVtable == 0)
             return;
         foreach (short id in CardIds.SkillNames)
         {
-            nint obj = *(nint*)(refs[id] + 8);
+            nint obj = objects[id];
             nint text = FindComponent(obj, _textVtable);
             if (text == 0)
             {
@@ -312,10 +310,10 @@ public unsafe class CardWriter
         return Encoding.UTF8.GetString((byte*)data, (int)size);
     }
 
-    private void SetCell(Dictionary<short, nint> refs, int id, Cell? cell)
+    private void SetCell(Dictionary<int, nint> objects, int id, Cell? cell)
     {
-        if (refs.TryGetValue((short)id, out nint r))
-            _text.Set(*(nint*)(r + 0x10), cell is { } c ? Wrap(c.Label, WrapLength) : "", cell?.TextHash ?? GameText.NoHash);
+        if (FindText(objects, id) is var text and not 0)
+            _text.Set(text, cell is { } c ? Wrap(c.Label, WrapLength) : "", cell?.TextHash ?? GameText.NoHash);
     }
 
     // Breaks a one-line label of length or more characters at the space nearest its middle; <d> counts as two.
@@ -332,31 +330,28 @@ public unsafe class CardWriter
         return best == -1 ? label : $"{label[..best]}\n{label[(best + 1)..]}";
     }
 
-    private void Set(Dictionary<short, nint> refs, int id, string value)
+    private void Set(Dictionary<int, nint> objects, int id, string value)
     {
-        if (refs.TryGetValue((short)id, out nint r))
-            _text.Set(*(nint*)(r + 0x10), value);
+        if (FindText(objects, id) is var text and not 0)
+            _text.Set(text, value);
     }
 
-    private void SetActive(Dictionary<short, nint> refs, int id, bool active)
+    private nint FindText(Dictionary<int, nint> objects, int id)
     {
-        if (_setActive != null && refs.TryGetValue((short)id, out nint r))
-            _setActive(*(nint*)(r + 8), active ? (byte)1 : (byte)0);
+        if (_textVtable == 0 || !objects.TryGetValue(id, out nint obj))
+            return 0;
+        nint text = FindComponent(obj, _textVtable);
+        if (text == 0)
+            LogComponentsOnce(obj, "Text", _textVtable);
+        return text;
     }
 
-    // Refs: 0x20 bytes, object at +8, component at +0x10, component name hash at +0x18, ObjectRefId at +0x1E.
-    private static Dictionary<short, nint> FindRefs(nint charaInfo)
+    private void SetActive(Dictionary<int, nint> objects, int id, bool active)
     {
-        var found = new Dictionary<short, nint>();
-        nint begin = *(nint*)(charaInfo + Powers), end = *(nint*)(charaInfo + Powers + 8);
-        long bytes = end - begin;
-        if (begin == 0 || bytes <= 0 || bytes % 0x20 != 0 || bytes > MaxRefs * 0x20)
-            return found;
-
-        for (nint r = begin; r < end; r += 0x20)
-            found[*(short*)(r + 0x1E)] = r;
-        return found;
+        if (_setActive != null && objects.TryGetValue(id, out nint obj))
+            _setActive(obj, active ? (byte)1 : (byte)0);
     }
+
 
     // master_traits.tsv: skillboard_effect key, style, rank, position, label, text tag hash
     private static Dictionary<uint, Cell> LoadCells()

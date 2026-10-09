@@ -204,6 +204,4 @@ def apply(ctx):
     bottom, texts = masteries_block(status, status.find("loc_crt/crt_text01"))
     status_top = status_block(status, bottom)
     badges(base, status_top)
-    for text in texts:
-        ctx.powers(text, "Text")
     ctx.export("MasteryTexts", texts)

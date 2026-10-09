@@ -119,7 +119,6 @@ def apply(ctx):
             child.set("AnchorMax", (0, 1))
             child.place(pos=(-text_w / 2, y), size=size, pivot=(0, 0.5))
             child.repin()
-        ctx.powers(name)
 
     for block in ("loc_chr_status03", "loc_chr_status04"):
         prefab.find(f"loc_status02/{block}").set("Active", False)

@@ -97,8 +97,9 @@ PWR value or, on its other branch, the text id `0x4EDE20AA`.
 | `+0x1D0` | Wrap width, an int32. |
 | `+0x1D4` | Wrap mode; 1 joins the lines and wraps them again to the width. |
 | `+0x1D8` | Wrap switch, 1 byte. |
+| `+0x1DF` | Icon size in percent of the font size, 1 byte; sizes the icons with ids 300–368, 1300–1699, 1720–1798 and 2000–3379. |
 
-The wrap fields apply to the strings set after them.
+The wrap and icon size fields apply to the strings set after them.
 
 ### Text manager
 

@@ -15,6 +15,7 @@ public unsafe class CardWriter
     private const int TextString = 0x40;
     private const int TextHash = 0x188;
     private const int MaxTextLength = 0x400;
+    private const float IconScale = 0.7f;  // times the game's icon size
 
     private readonly GameText _text;
     private readonly TextWrap _wrap;
@@ -138,6 +139,7 @@ public unsafe class CardWriter
         if (FindComponent(obj, _textVtable, "Text") is not (var text and not 0))
             return;
         _wrap.Limit(text, CardIds.CellTextWidth);
+        _wrap.ScaleIcons(text, IconScale);
         _masterTraits.FillDescription(text, write.CharaKey, write.Slot);
         _wrap.Cap(text);
     }

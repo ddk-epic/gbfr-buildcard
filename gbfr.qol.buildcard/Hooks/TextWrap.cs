@@ -13,6 +13,7 @@ public unsafe class TextWrap
     private const int WrapWidth = 0x1D0;
     private const int WrapMode = 0x1D4;
     private const int WrapOn = 0x1D8;
+    private const int IconSize = 0x1DF;  // percent of the font size
     private const int LineSize = 0x18;
     private const int GlyphSize = 0x50;
     private const int Reflow = 1;  // wrap mode
@@ -21,6 +22,7 @@ public unsafe class TextWrap
     private const int EllipsisGlyphs = 16;
 
     private readonly GameText _text;
+    private readonly Dictionary<nint, byte> _iconSizes = [];
     // glyph vector the ellipsis is built into
     private readonly nint* _ellipsis = (nint*)NativeMemory.Alloc(3, (nuint)sizeof(nint));
     // the ellipsis glyphs, 16-byte aligned
@@ -54,6 +56,14 @@ public unsafe class TextWrap
         *(int*)(text + WrapWidth) = width;
         *(int*)(text + WrapMode) = Reflow;
         *(byte*)(text + WrapOn) = 1;
+    }
+
+    // Scales the icons of the text's next strings from the text's original icon size
+    public void ScaleIcons(nint text, float scale)
+    {
+        if (!_iconSizes.TryGetValue(text, out byte size))
+            _iconSizes[text] = size = *(byte*)(text + IconSize);
+        *(byte*)(text + IconSize) = (byte)MathF.Round(size * scale);
     }
 
     // Caps the text at two lines, the second ending in the game's ellipsis

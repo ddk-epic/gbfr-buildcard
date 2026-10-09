@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using System.Drawing;
-using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 
 using NenTools.Reloaded.ScanManager.Interfaces;
@@ -8,51 +8,18 @@ using Reloaded.Mod.Interfaces;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Writes the card's objects, found in status01's tree by their CardIds, and sets the weapon WeaponArtHooks loads.
+// Applies CardContents' writes to the card's objects and sets the weapon WeaponArtHooks loads.
 public unsafe class CardWriter
 {
-    private const int WrapLength = 19;
-    private const int SkillNameWrapLength = 15;
-
     // Text component: MSVC std::string at +0x40 (inline up to 15 bytes, else a pointer), text id hash at +0x188
     private const int TextString = 0x40;
     private const int TextHash = 0x188;
     private const int MaxTextLength = 0x400;
 
-    // chara: 400 entries, masteries [limit_bonus key, taken bit per LimitBonusParamIndex], then the master trait cells
-    private const int Entries = 0x138;
-    private const int EntriesEnd = 0x58B8;
-    private const int EntrySize = 0x38;
-    private const int CharaKey = 0x5EA8;
-
-    // masteries.tsv sections
-    private const int Offense = 0, OffenseExtension = 1, Defense = 2, DefenseExtension = 3, Collection = 4, Transcendence = 5;
-    private const int Sections = 6;
-    private const int ExtensionPercent = 2;
-
-    // Over Mastery line: [limit_bonus_param key, 1 << (level - 1), unknown, float value]
-    private const int OverMastery = 0x58B8;
-    private const int OverMasteryLineSize = 0x10;
-    private const int OverMasteryLines = 4;
-
-    // summon: [summon key, summon id, trait key, equip bonus key, trait level, equip bonus level, unknown]
-    private const int Summons = 0x5DD8;
-    private const int SummonSize = 0x1C;
-    private const int SummonCount = 4;
-
-    // slots per rank of the normal and the captain's board, from the cells' Ids
-    private static readonly int[] Slots = CardIds.CellOn[0][0].Select(rank => rank.Length).ToArray();
-    private static readonly int[] CaptainSlots = CardIds.CellOn[1][0].Select(rank => rank.Length).ToArray();
-    private static readonly int Styles = CardIds.CellOn[0].Length;
-    private static readonly int[] Budgets = [10, 10, 10, 20];
-    private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
-
     private readonly GameText _text;
     private readonly WeaponArtHooks _weaponArt;
     private readonly ILogger _logger;
-    private readonly Dictionary<uint, Cell> _cells = LoadCells();
-    private readonly Dictionary<(uint Chara, uint Key), string> _masteries = LoadMasteries();
-    private readonly Dictionary<uint, int[]> _masteryTotals = new();
+    private readonly CardContents _contents = new();
     private delegate* unmanaged<nint, byte, void> _setActive;
     private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
     private delegate* unmanaged<nint, uint, void> _setSummonInfo;
@@ -60,6 +27,9 @@ public unsafe class CardWriter
     private readonly nint _limitBonusInfoVtable;
     private readonly nint _summonInfoVtable;
     private readonly nint _textVtable;
+    // Over Mastery lines passed to SetOverMasteryLine, one per row
+    private readonly OverMasteryLine* _overMasteryLines = (OverMasteryLine*)Marshal.AllocHGlobal(sizeof(OverMasteryLine) * CharaBuild.OverMasteryLines);
+    private bool _loggedBuild;
     private bool _loggedComponents;
     private bool _loggedCount;
 
@@ -68,14 +38,6 @@ public unsafe class CardWriter
         _text = text;
         _weaponArt = weaponArt;
         _logger = logger;
-        foreach (var ((chara, _), ladder) in _masteries)
-        {
-            if (!_masteryTotals.TryGetValue(chara, out int[]? totals))
-                _masteryTotals[chara] = totals = new int[Sections];
-            foreach (char section in ladder)
-                if (section != '-')
-                    totals[section - '0']++;
-        }
         _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
         if (_limitBonusInfoVtable == 0)
             _logger.WriteLine("[gbfr.qol.buildcard] LimitBonusInfo vtable not found", Color.Red);
@@ -118,186 +80,70 @@ public unsafe class CardWriter
             return;
         if (objects.Count != CardIds.ObjectCount)
         {
-            if (!_loggedCount)
-            {
-                _loggedCount = true;
-                _logger.WriteLine($"[gbfr.qol.buildcard] status01 has {objects.Count} objects, the build {CardIds.ObjectCount}: card not written", Color.Red);
-            }
+            LogOnce(ref _loggedCount, $"status01 has {objects.Count} objects, the build {CardIds.ObjectCount}: card not written", Color.Red);
             return;
         }
 
-        WriteMasterTraits(objects, chara);
-        WriteMasteries(objects, chara);
-        WriteOverMastery(objects, chara);
-        WriteSummons(objects, chara);
+        var build = CharaBuild.Decode(chara, message => LogOnce(ref _loggedBuild, $"Chara build: {message}", Color.Yellow));
+        foreach (var write in _contents.Compose(build))
+        {
+            if (!objects.TryGetValue(write.Id, out nint obj))
+                continue;
+            switch (write)
+            {
+                case TextWrite text:
+                    SetText(obj, text.Value, text.Hash);
+                    break;
+                case ActiveWrite active:
+                    SetActive(obj, active.Active);
+                    break;
+                case SummonWrite summon:
+                    SetSummonInfo(obj, summon.SummonId);
+                    break;
+                case OverMasteryWrite overMastery:
+                    SetOverMasteryLine(obj, overMastery.Line, overMastery.Value);
+                    break;
+            }
+        }
         WrapSkillNames(objects);
         _weaponArt.Show(chara);
     }
 
-    private void WriteMasterTraits(Dictionary<int, nint> objects, nint chara)
+    private void SetText(nint obj, string value, uint hash)
     {
-        var titles = new string[Styles];
-        var perks = new int[Styles];
-        var spent = new int[Slots.Length];
-        var labels = new (Cell Cell, bool Picked)?[Styles, CaptainSlots.Length, CaptainSlots.Max()];
-        bool captain = false;
-        for (int offset = Entries; offset < EntriesEnd; offset += EntrySize)
-        {
-            if (!_cells.TryGetValue(*(uint*)(chara + offset), out Cell cell))
-                continue;
-            bool picked = *(int*)(chara + offset + 4) == 1;
-            if (cell.Position == 0)
-            {
-                if (cell.Rank == 0)
-                    titles[cell.Style] = cell.Label;
-                perks[cell.Style] += picked ? 1 : 0;
-            }
-            else if (cell.Position <= CaptainSlots[cell.Rank])
-            {
-                labels[cell.Style, cell.Rank, cell.Position - 1] = (cell, picked);
-                spent[cell.Rank] += picked ? 1 : 0;
-                captain |= cell.Position > Slots[cell.Rank];
-            }
-        }
-        var slots = captain ? CaptainSlots : Slots;
-        int board = captain ? 1 : 0;
-
-        for (int s = 0; s < Styles; s++)
-        {
-            Set(objects, CardIds.PerkNames[s], StyleNames[s]);
-            for (int k = 0; k < CardIds.PerkStars[s].Length; k++)
-                SetActive(objects, CardIds.PerkStars[s][k], k < perks[s]);
-        }
-        for (int s = 0; s < Styles; s++)
-            Set(objects, CardIds.StyleTitles[s], titles[s] is { } title ? $"{StyleNames[s]}: {title}" : "");
-        SetActive(objects, CardIds.Cells, !captain);
-        SetActive(objects, CardIds.CaptainCells, captain);
-        for (int s = 0; s < Styles; s++)
-        {
-            for (int r = 0; r < slots.Length; r++)
-                Set(objects, CardIds.RankCounts[board][s][r], $"{spent[r]}/{Budgets[r]}");
-            for (int r = 0; r < slots.Length; r++)
-            {
-                for (int c = 0; c < slots[r]; c++)
-                {
-                    var slot = labels[s, r, c];
-                    SetCell(objects, CardIds.CellOn[board][s][r][c], slot is { Picked: true } ? slot.Value.Cell : null);
-                    SetCell(objects, CardIds.CellOff[board][s][r][c], slot is { Picked: false } ? slot.Value.Cell : null);
-                    SetActive(objects, CardIds.CellPicked[board][s][r][c], slot is { Picked: true });
-                }
-            }
-        }
+        if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
+            _text.Set(text, value, hash);
     }
 
-    private void WriteMasteries(Dictionary<int, nint> objects, nint chara)
+    private void SetActive(nint obj, bool active)
     {
-        uint charaKey = *(uint*)(chara + CharaKey);
-        if (!_masteryTotals.TryGetValue(charaKey, out int[]? totals))
-        {
-            Set(objects, CardIds.MasteryTexts[0], "");
-            Set(objects, CardIds.MasteryTexts[1], "");
-            return;
-        }
-        var taken = new int[Sections];
-        for (int offset = Entries; offset < EntriesEnd; offset += EntrySize)
-        {
-            if (!_masteries.TryGetValue((charaKey, *(uint*)(chara + offset)), out string? ladder))
-                continue;
-            int bits = *(int*)(chara + offset + 4);
-            for (int i = 0; i < ladder.Length; i++)
-                if (ladder[i] != '-' && (bits & (1 << i)) != 0)
-                    taken[ladder[i] - '0']++;
-        }
-
-        int Percent(int section) => totals[section] == 0 ? 0 : taken[section] * 100 / totals[section];
-        int offense = Percent(Offense) + ExtensionPercent * taken[OffenseExtension];
-        int defense = Percent(Defense) + ExtensionPercent * taken[DefenseExtension];
-        Set(objects, CardIds.MasteryTexts[0], $"Masteries: {offense}% / {defense}%");
-        Set(objects, CardIds.MasteryTexts[1], $"Collection: {Percent(Collection)}% / {Percent(Transcendence)}%");
+        if (_setActive != null)
+            _setActive(obj, active ? (byte)1 : (byte)0);
     }
 
-    private void WriteOverMastery(Dictionary<int, nint> objects, nint chara)
+    private void SetSummonInfo(nint obj, uint summonId)
     {
-        for (int i = 0; i < OverMasteryLines; i++)
-        {
-            nint line = chara + OverMastery + i * OverMasteryLineSize;
-            int id = CardIds.OverMasteryRows[i];
-            bool shown = *(float*)(line + 0xC) != 0;
-            if (shown)
-                SetOverMasteryLine(objects, id, line);
-            SetActive(objects, id, shown);
-        }
-    }
-
-    private void SetOverMasteryLine(Dictionary<int, nint> objects, int id, nint line)
-    {
-        if (_setOverMasteryLine == null || _limitBonusInfoVtable == 0 || !objects.TryGetValue(id, out nint obj))
-            return;
-        nint limitBonusInfo = FindComponent(obj, _limitBonusInfoVtable);
-        if (limitBonusInfo == 0)
-            LogComponentsOnce(obj, "LimitBonusInfo", _limitBonusInfoVtable);
-        else
-            _setOverMasteryLine(limitBonusInfo, line);
-    }
-
-    private void WriteSummons(Dictionary<int, nint> objects, nint chara)
-    {
-        for (int i = 0; i < SummonCount; i++)
-            SetSummonInfo(objects, CardIds.SummonSlots[i], *(uint*)(chara + Summons + i * SummonSize + 4));
-    }
-
-    private void SetSummonInfo(Dictionary<int, nint> objects, int id, uint summonId)
-    {
-        if (_setSummonInfo == null || _summonInfoVtable == 0 || !objects.TryGetValue(id, out nint obj))
-            return;
-        nint summonInfo = FindComponent(obj, _summonInfoVtable);
-        if (summonInfo == 0)
-            LogComponentsOnce(obj, "SummonInfo", _summonInfoVtable);
-        else
+        if (_setSummonInfo != null && FindComponent(obj, _summonInfoVtable, "SummonInfo") is var summonInfo and not 0)
             _setSummonInfo(summonInfo, summonId);
     }
 
-    // Components: 0x20-byte entries from +0x28, component at +0x18.
-    private static nint FindComponent(nint obj, nint vtable)
+    private void SetOverMasteryLine(nint obj, int index, OverMasteryLine line)
     {
-        for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
-        {
-            nint component = *(nint*)(entry + 0x18);
-            if (component != 0 && *(nint*)component == vtable)
-                return component;
-        }
-        return 0;
-    }
-
-    private void LogComponentsOnce(nint obj, string name, nint vtable)
-    {
-        if (_loggedComponents)
+        if (_setOverMasteryLine == null || FindComponent(obj, _limitBonusInfoVtable, "LimitBonusInfo") is not (var limitBonusInfo and not 0))
             return;
-        _loggedComponents = true;
-        var vtables = new List<string>();
-        for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
-        {
-            nint component = *(nint*)(entry + 0x18);
-            vtables.Add(component == 0 ? "null" : $"exe+{*(nint*)component - _exeBase:X}");
-        }
-        _logger.WriteLine($"[gbfr.qol.buildcard] No {name} on a card object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
+        _overMasteryLines[index] = line;
+        _setOverMasteryLine(limitBonusInfo, (nint)(_overMasteryLines + index));
     }
 
     private void WrapSkillNames(Dictionary<int, nint> objects)
     {
-        if (_textVtable == 0)
-            return;
         foreach (short id in CardIds.SkillNames)
         {
-            nint obj = objects[id];
-            nint text = FindComponent(obj, _textVtable);
+            nint text = FindComponent(objects[id], _textVtable, "Text");
             if (text == 0)
-            {
-                LogComponentsOnce(obj, "Text", _textVtable);
                 continue;
-            }
             string name = ReadString(text + TextString);
-            string wrapped = Wrap(name, SkillNameWrapLength);
+            string wrapped = CardContents.WrapSkillName(name);
             if (wrapped != name)
                 _text.Set(text, wrapped, *(uint*)(text + TextHash));
         }
@@ -312,77 +158,39 @@ public unsafe class CardWriter
         return Encoding.UTF8.GetString((byte*)data, (int)size);
     }
 
-    private void SetCell(Dictionary<int, nint> objects, int id, Cell? cell)
+    // Components: 0x20-byte entries from +0x28, component at +0x18.
+    private nint FindComponent(nint obj, nint vtable, string name)
     {
-        if (FindText(objects, id) is var text and not 0)
-            _text.Set(text, cell is { } c ? Wrap(c.Label, WrapLength) : "", cell?.TextHash ?? GameText.NoHash);
-    }
-
-    // Breaks a one-line label of length or more characters at the space nearest its middle; <d> counts as two.
-    private static string Wrap(string label, int length)
-    {
-        if (label.Contains('\n') || label.Replace("<d>", "xx").Length < length)
-            return label;
-        int best = -1;
-        for (int i = label.IndexOf(' '); i != -1; i = label.IndexOf(' ', i + 1))
-        {
-            if (best == -1 || Math.Abs(i - label.Length / 2) < Math.Abs(best - label.Length / 2))
-                best = i;
-        }
-        return best == -1 ? label : $"{label[..best]}\n{label[(best + 1)..]}";
-    }
-
-    private void Set(Dictionary<int, nint> objects, int id, string value)
-    {
-        if (FindText(objects, id) is var text and not 0)
-            _text.Set(text, value);
-    }
-
-    private nint FindText(Dictionary<int, nint> objects, int id)
-    {
-        if (_textVtable == 0 || !objects.TryGetValue(id, out nint obj))
+        if (vtable == 0)
             return 0;
-        nint text = FindComponent(obj, _textVtable);
-        if (text == 0)
-            LogComponentsOnce(obj, "Text", _textVtable);
-        return text;
-    }
-
-    private void SetActive(Dictionary<int, nint> objects, int id, bool active)
-    {
-        if (_setActive != null && objects.TryGetValue(id, out nint obj))
-            _setActive(obj, active ? (byte)1 : (byte)0);
-    }
-
-
-    // master_traits.tsv: skillboard_effect key, style, rank, position, label, text tag hash
-    private static Dictionary<uint, Cell> LoadCells()
-    {
-        var cells = new Dictionary<uint, Cell>();
-        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("master_traits.tsv")!;
-        using var reader = new StreamReader(stream);
-        while (reader.ReadLine() is { } line)
+        for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
         {
-            string[] fields = line.Split('\t');
-            uint hash = fields[5].Length > 0 ? Convert.ToUInt32(fields[5], 16) : GameText.NoHash;
-            cells[Convert.ToUInt32(fields[0], 16)] = new Cell(int.Parse(fields[1]), int.Parse(fields[2]), int.Parse(fields[3]), fields[4], hash);
+            nint component = *(nint*)(entry + 0x18);
+            if (component != 0 && *(nint*)component == vtable)
+                return component;
         }
-        return cells;
+        LogComponentsOnce(obj, name, vtable);
+        return 0;
     }
 
-    // masteries.tsv: chara key, limit_bonus key, each LimitBonusParamIndex's section or -
-    private static Dictionary<(uint, uint), string> LoadMasteries()
+    private void LogComponentsOnce(nint obj, string name, nint vtable)
     {
-        var masteries = new Dictionary<(uint, uint), string>();
-        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("masteries.tsv")!;
-        using var reader = new StreamReader(stream);
-        while (reader.ReadLine() is { } line)
+        if (_loggedComponents)
+            return;
+        var vtables = new List<string>();
+        for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
         {
-            string[] fields = line.Split('\t');
-            masteries[(Convert.ToUInt32(fields[0], 16), Convert.ToUInt32(fields[1], 16))] = fields[2];
+            nint component = *(nint*)(entry + 0x18);
+            vtables.Add(component == 0 ? "null" : $"exe+{*(nint*)component - _exeBase:X}");
         }
-        return masteries;
+        LogOnce(ref _loggedComponents, $"No {name} on a card object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
     }
 
-    private readonly record struct Cell(int Style, int Rank, int Position, string Label, uint TextHash);
+    private void LogOnce(ref bool logged, string message, Color color)
+    {
+        if (logged)
+            return;
+        logged = true;
+        _logger.WriteLine($"[gbfr.qol.buildcard] {message}", color);
+    }
 }

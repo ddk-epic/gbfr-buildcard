@@ -14,6 +14,7 @@ public unsafe class GameText
 
     // TextComponentSetText's mov rdx, [rip + disp32] loading the text tables
     private const int TablesLoad = 0x26;
+    private const int TablesSize = 0x38;  // through the bucket mask TextLookup reads at +0x30
 
     private readonly nint _buffer = Marshal.AllocHGlobal(BufferSize);
     private nint* _tables;
@@ -44,19 +45,23 @@ public unsafe class GameText
         _setText(text, &str, hash, -1);
     }
 
-    // The text of a text id in the loaded language, null-terminated; Ptr 0 when unavailable
+    // The text of a text id in the loaded language, null-terminated and readable; Ptr 0 when unavailable
     public TextView Lookup(uint hash, uint subId = EmptyIdHash)
     {
         var view = new TextView();
-        if (_lookup != null && _tables != null && *_tables != 0)
-            _lookup(*_tables, &view, hash, subId);
+        if (_lookup == null || _tables == null || !GameMemory.IsReadable(*_tables, TablesSize))
+            return view;
+        _lookup(*_tables, &view, hash, subId);
+        if (view.Length < 0 || view.Length > BufferSize || !GameMemory.IsReadable(view.Ptr, (nint)view.Length + 1)
+            || ((byte*)view.Ptr)[view.Length] != 0)
+            return new TextView();
         return view;
     }
 
     public string Find(uint hash)
     {
         var view = Lookup(hash);
-        return view.Ptr == 0 || view.Length <= 0 ? "" : Encoding.UTF8.GetString((byte*)view.Ptr, (int)view.Length);
+        return view.Ptr == 0 ? "" : Encoding.UTF8.GetString((byte*)view.Ptr, (int)view.Length);
     }
 
     public struct GameString

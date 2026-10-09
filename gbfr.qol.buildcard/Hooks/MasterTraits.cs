@@ -10,8 +10,11 @@ public unsafe class MasterTraits
     // SetSkillBoardDescription's mov r15, [rip + disp32] loading the skill board tables
     private const int TablesLoad = 0x43;
 
-    // tables: MSVC unordered_maps, each a node list sentinel pointer; nodes are [next, prev, key, value]
+    // tables: MSVC unordered_maps, each a node list sentinel pointer and size; nodes are [next, prev, key, value]
     private const int LayoutNodes = 0x6D0;  // chara key | slot << 32 | LayoutType << 48 to layout id
+    private const int TablesSize = LayoutNodes + 0x10;
+    private const int NodeSize = 0x20;
+    private const long MaxMapSize = 0x100000;
     private const int LayoutRecordNodes = 0x320;  // layout id to layout record
     private const int EffectNodes = 0x8;  // skillboard_effect key to effect row
     private const ulong LayoutType = 4;
@@ -53,22 +56,28 @@ public unsafe class MasterTraits
     {
         if (_cells.TryGetValue(charaKey, out var cells))
             return cells;
-        if (_tables == null || *_tables == 0)
+        if (_tables == null || !GameMemory.IsReadable(*_tables, TablesSize))
             return [];
         nint tables = *_tables;
+        var region = new GameMemory.Region();
+        if (ReadMap(tables + LayoutNodes, ref region) is not { } layouts
+            || ReadMap(tables + LayoutRecordNodes, ref region) is not { } records
+            || ReadMap(tables + EffectNodes, ref region) is not { } effects)
+            return [];
+        var recordsById = ByUintKey(records);
+        var effectsByKey = ByUintKey(effects);
+
         cells = [];
-        nint head = *(nint*)(tables + LayoutNodes);
-        for (nint node = *(nint*)head; node != head; node = *(nint*)node)
+        foreach (var (key, value) in layouts)
         {
-            ulong key = *(ulong*)(node + 0x10);
             if ((uint)key != charaKey || key >> 48 != LayoutType)
                 continue;
-            nint record = Find(tables + LayoutRecordNodes, *(uint*)(node + 0x18));
-            if (record == 0)
+            if (!recordsById.TryGetValue((uint)value, out nint record) || !region.Covers(record, LayoutEffect + sizeof(uint)))
                 continue;
             uint effect = *(uint*)(record + LayoutEffect);
-            nint row = Find(tables + EffectNodes, effect);
-            cells.Add(new MasterTraitCell((int)(key >> 32 & 0xFFFF), effect, row == 0 ? GameText.EmptyIdHash : *(uint*)(row + EffectTitle)));
+            uint title = effectsByKey.TryGetValue(effect, out nint row) && region.Covers(row, EffectTitle + sizeof(uint))
+                ? *(uint*)(row + EffectTitle) : GameText.EmptyIdHash;
+            cells.Add(new MasterTraitCell((int)(key >> 32 & 0xFFFF), effect, title));
         }
         _cells[charaKey] = cells;
         return cells;
@@ -84,16 +93,31 @@ public unsafe class MasterTraits
         *(nint*)(_entry + EntryText) = 0;
     }
 
-    // The value of a uint key in the map whose node list sentinel is at list
-    private static nint Find(nint list, uint key)
+    // Every node's key and value in the map at map, in list order; null when the list is broken
+    private static List<(ulong Key, nint Value)>? ReadMap(nint map, ref GameMemory.Region region)
     {
-        nint head = *(nint*)list;
-        for (nint node = *(nint*)head; node != head; node = *(nint*)node)
+        nint head = *(nint*)map;
+        long size = *(long*)(map + 8);
+        if (size < 0 || size > MaxMapSize || !region.Covers(head, NodeSize))
+            return null;
+        var entries = new List<(ulong, nint)>((int)size);
+        nint prev = head;
+        for (nint node = *(nint*)head; node != head; prev = node, node = *(nint*)node)
         {
-            if (*(uint*)(node + 0x10) == key)
-                return *(nint*)(node + 0x18);
+            if (entries.Count == size || !region.Covers(node, NodeSize) || *(nint*)(node + 8) != prev)
+                return null;
+            entries.Add((*(ulong*)(node + 0x10), *(nint*)(node + 0x18)));
         }
-        return 0;
+        return entries.Count == size ? entries : null;
+    }
+
+    // A uint-keyed map's entries by key
+    private static Dictionary<uint, nint> ByUintKey(List<(ulong Key, nint Value)> entries)
+    {
+        var map = new Dictionary<uint, nint>(entries.Count);
+        foreach (var (key, value) in entries)
+            map.TryAdd((uint)key, value);
+        return map;
     }
 }
 

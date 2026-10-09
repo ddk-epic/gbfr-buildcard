@@ -71,7 +71,7 @@ public unsafe class TextWrap
         if (_joinLines == null || _fitLine == null || _buildGlyphs == null || _insertGlyphs == null)
             return;
         nint* lines = (nint*)(text + Lines);
-        if ((lines[1] - lines[0]) / LineSize <= MaxLines)
+        if (!GameMemory.IsVector(text + Lines, LineSize) || (lines[1] - lines[0]) / LineSize <= MaxLines)
             return;
         var ellipsis = _text.Lookup(EllipsisHash, *(uint*)(text + SubId));
         if (ellipsis.Ptr == 0 || ellipsis.Length > EllipsisGlyphs)
@@ -83,6 +83,8 @@ public unsafe class TextWrap
         lines[0] = first;
 
         nint* last = (nint*)(first + (MaxLines - 1) * LineSize);
+        if (!GameMemory.IsVector((nint)last, GlyphSize))
+            return;
         int cut = _fitLine(text, *(int*)(text + WrapWidth), last, 1);
         if (cut <= 0 || cut >= (last[1] - last[0]) / GlyphSize)
             return;

@@ -6,8 +6,7 @@ using gbfr.qol.buildcard.Hooks;
 
 namespace gbfr.qol.buildcard.Export;
 
-// Saves the card as a 2880x1440 PNG on the footer's Save Card, with the page button prompts hidden, from the card's
-// rect on the screen.
+// Saves the card as a 2880x1440 PNG on Save Card.
 public class CardExport
 {
     // the UI canvas, fitted into the backbuffer
@@ -30,6 +29,7 @@ public class CardExport
 
     private readonly SaveCardButton _button;
     private readonly StatusGuide _guide;
+    private readonly CardRedraw _redraw;
     private readonly Func<bool> _cardShown;
     private readonly ILogger _logger;
     private readonly string _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
@@ -40,10 +40,11 @@ public class CardExport
     private long _hiddenAt;
     private long _hiddenSince;
 
-    public CardExport(SaveCardButton button, StatusGuide guide, Func<bool> cardShown, ILogger logger)
+    public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, Func<bool> cardShown, ILogger logger)
     {
         _button = button;
         _guide = guide;
+        _redraw = redraw;
         _cardShown = cardShown;
         _logger = logger;
     }
@@ -72,16 +73,27 @@ public class CardExport
         }
     }
 
-    // On the render thread: captures the card from the backbuffer once the frames without the page button prompts are
-    // presented.
+    // On the render thread: redraws or captures the card once the frames without the prompts are presented.
     public void OnPresenting(nint swapChain)
     {
         long presents = Interlocked.Increment(ref _presents);
-        if (_state != Hidden || presents - _hiddenAt <= HiddenFrames)
+        _redraw.Init(swapChain);
+        if (_state != Hidden)
             return;
+        long frame = presents - _hiddenAt;
+        if (frame < HiddenFrames)
+            return;
+        if (frame == HiddenFrames)
+        {
+            _redraw.Begin(swapChain, CardRectF, TargetWidth, TargetHeight);
+            return;
+        }
         try
         {
-            byte[] rgb = BackbufferReadback.Read(swapChain, CardRect, out int width, out int height);
+            int width = TargetWidth, height = TargetHeight;
+            byte[]? rgb = _redraw.End();
+            _logger.WriteLine($"[gbfr.qol.buildcard] Redraw {_redraw.Stats}");
+            rgb ??= BackbufferReadback.Read(swapChain, CardRect, out width, out height);
             _saving = 1;
             Task.Run(() => Save(rgb, width, height));
         }

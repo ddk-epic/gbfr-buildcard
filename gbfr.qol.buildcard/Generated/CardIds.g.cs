@@ -21,7 +21,6 @@ internal static class CardIds
     public static readonly short[][][] RankCounts = [[[895, 897, 899, 901], [963, 965, 967, 969], [1031, 1033, 1035, 1037]], [[1532, 1534, 1536, 1538], [1608, 1610, 1612, 1614], [1684, 1686, 1688, 1690]]];
     public const int SaveCardButton = 12;
     public const int SaveCardLabel = 1480930329;
-    public const int SaveCardTextId = 1737985709;
     public const int SkillNameWidth = 296;
     public static readonly short[] SkillNames = [2715, 2773, 2831, 2889];
     public static readonly short[] StyleTitles = [506, 507, 508];

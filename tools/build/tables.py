@@ -11,7 +11,7 @@ from hashing import xxhash32_custom  # noqa: E402
 OUTPUT = "gbfr.qol.buildcard/GBFR/data/ui/table/guide_button.msg"
 
 LABEL = "SaveCard"
-TEXT_ID = "TXT_BC_SAVE_CARD"
+TEXT_ID = "TXT_PAU_PHT_SHOOT"
 BUTTON = ("L3", 13)  # the guide table's button: name, index; 1 on the keyboard in menus
 
 
@@ -42,6 +42,5 @@ def apply(ctx):
     table["GuideList"]["datas_"].append(row())
     ctx.binaries["guide_button"] = (OUTPUT, pack(table))
     ctx.export("SaveCardLabel", xxhash32_custom(LABEL))
-    ctx.export("SaveCardTextId", xxhash32_custom(TEXT_ID))
     # the Shortcut enum counts from one below the guide table's
     ctx.export("SaveCardButton", BUTTON[1] - 1)

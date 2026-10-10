@@ -17,12 +17,34 @@ saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 
 | Part | Source |
 |---|---|
-| Footer entry | The row `SaveCard` in `ui/table/guide_button.msg`, written by `tools/build/tables.py` ([build](build.md)): button `L3` (index 13), text id `TXT_BC_SAVE_CARD`, color `Guide`. |
+| Footer entry | The row `SaveCard` in `ui/table/guide_button.msg`, written by `tools/build/tables.py` ([build](build.md)): button `L3` (index 13), text id `TXT_PAU_PHT_SHOOT`, color `Guide`. |
 | Footer list | `SetCharacterDetailsFooter` builds the Character Details footer from a static list loaded by the `mov rbx, [rip + disp32]` at `SetCharacterDetailsFooter+0x36`: a 64-bit count, then 32-bit label hashes, room for 10. The stock list is Close, CommandList and SkillConfirm. `SaveCardButton` appends `CardIds.SaveCardLabel` once before the original runs. |
-| Text | `GameText.Add` gives `CardIds.SaveCardTextId` the text "Save Card"; the hooked `TextLookup` returns it for every language. |
+| Text | "Take Photo", the stock text of `TXT_PAU_PHT_SHOOT`, the photo mode shutter's prompt, in the loaded language. |
 | Button | 1 on the keyboard, L3 on a controller. |
 
 A footer button's shortcut enum is its `guide_button.msg` index minus 1; Save Card's is `CardIds.SaveCardButton` (12).
+
+## Guide table
+
+The game loads `guide_button.msg` into an MSVC `unordered_map<uint, GuideData>` on the UI manager (the global at
+`0x147C24720`), keyed by the label's hash. The function that sets a footer entry from its label returns without setting it when the
+label is missing. There is no lookup function to hook: the map is read inline in each of its users, among them that
+function, the one that refreshes an entry's color and the one that sorts the entries by button. No stock row has button `L3` with
+text `TXT_PAU_PHT_SHOOT`, so the mod ships the table with the `SaveCard` row added.
+
+| Offset | Field |
+|---|---|
+| `+0x1018` | Max load factor, a float. |
+| `+0x1020` | List head node. |
+| `+0x1028` | Node count. |
+| `+0x1030` | Buckets: each the bucket's first and last node. |
+| `+0x1048` | Bucket mask; a label's bucket is its hash and the mask. |
+| `+0x1050` | Bucket count. |
+
+A node is 0x140 bytes: next and previous node, the label hash at `+0x10` and a 0x128-byte `GuideData` at `+0x18`.
+`GuideData` holds `label_` (`+0x08`) and `textID_` (`+0x98`) as null-terminated char arrays, and each enum field
+(`button_` `+0x30`, `button2_` `+0x60`, `color_` `+0xC8`, `config_` `+0xF8`) as its index at `+0x08` and its name as a
+string at `+0x10`. Loading the table frees the map's nodes with the game's allocator and rebuilds it.
 
 ## Input
 

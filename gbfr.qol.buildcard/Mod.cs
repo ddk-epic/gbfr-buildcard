@@ -80,7 +80,7 @@ public class Mod : ModBase
         string modFolder = _modLoader.GetDirectoryForModId(_modConfig.ModId);
         scanManager.InitializeScans(Path.Combine(modFolder, "Signatures"), _modConfig.ModId);
 
-        _gameText = new GameText(_hooks);
+        _gameText = new GameText();
         _gameText.Init(scanManager, "granblue_fantasy_relink_er");
 
         _textWrap = new TextWrap(_gameText);
@@ -102,7 +102,6 @@ public class Mod : ModBase
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.Filled += _cardWriter.OnFilled;
 
-        _gameText.Add(CardIds.SaveCardTextId, "Save Card");
         _saveCardButton = new SaveCardButton(_hooks);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
         _statusGuide = new StatusGuide(_hooks, _logger, _cardWriter.SetActive);

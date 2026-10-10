@@ -36,6 +36,7 @@ object itself), the component name hash at `+0x18`, and the file's `ObjectRefId`
 | `+0x0A0`, `+0x0A8` | Lines: begin and end of 0x18-byte glyph vectors (begin, end, capacity), one per shown line; a glyph is 0x50 bytes. |
 | `+0x188` | The text id hash the string came from. |
 | `+0x18C` | The text's sub-id hash. |
+| `+0x198` | Line breaking: the reflow wrap breaks lines only when it is 1 to 6. |
 | `+0x1D0` | Wrap width, an int32. |
 | `+0x1D4` | Wrap mode; 1 joins the lines and wraps them again to the width. |
 | `+0x1D8` | Wrap switch, 1 byte. |
@@ -52,8 +53,9 @@ prefab.
 
 ## Text wrapping
 
-`TextWrap` wraps a text to a width with the `Text` component's own wrap fields. A text of more than two lines is then
-cut to two: the lines from the second onward are joined into the second, its glyphs past what fits the width with the
+`TextWrap` wraps a text to a width with the `Text` component's own wrap fields. The reflow wrap breaks a line after its
+last space that fits, or where it stops fitting when no space does, and only when `+0x198` is 1 to 6. `TextWrap` then splits each line still wider than the width where it stops fitting. A text of more than
+two lines is then cut to two: the lines from the second onward are joined into the second, its glyphs past what fits the width with the
 ellipsis are dropped, and the ellipsis's glyphs are inserted at its end. The ellipsis is `TXT_HUD_COMMUNICATION_OVER`
 (`0x6895D7BB`) in the text's sub-id. `TextWrap` also scales a text's icons by a factor of the icon size the game first
 set.
@@ -70,6 +72,7 @@ no symbols; the names are the signatures' keys.
 | `TextLookup(text tables, text out, text id hash, sub-id hash)` | called | Reads a text id's text in the loaded language. | |
 | `TextJoinLines(text)` | called | Joins a `Text` component's lines from its lines' begin onward into the first of them. | |
 | `TextFitLine(text, width, line, with ellipsis)` | called | Returns how many of a line's glyphs fit in the width, leaving room for the ellipsis. | |
+| `TextSplitLine(text, line index, at, last glyph)` | called | Moves a line's glyphs from `at` to the last glyph to the start of the next line, adding the line when there is none. | |
 | `TextBuildGlyphs(text, string, glyphs)` | called | Builds a null-terminated string's glyphs in the `Text` component's font into a glyph vector. | |
 | `TextInsertGlyphs(line, at, glyphs, count)` | called | Inserts glyphs into a line's glyph vector. | |
 | `SetObjectActive(object, active)` | called | Shows or hides an object and its subtree. | |

@@ -30,6 +30,7 @@ public unsafe class TextWrap
 
     private delegate* unmanaged<nint, void> _joinLines;
     private delegate* unmanaged<nint, float, nint*, byte, int> _fitLine;  // (text, width, line, with ellipsis)
+    private delegate* unmanaged<nint, int, int, int, void> _splitLine;  // (text, line index, at, last glyph)
     private delegate* unmanaged<nint, nint, nint*, nint> _buildGlyphs;  // (text, string, glyphs)
     private delegate* unmanaged<nint*, nint, nint, ulong, void> _insertGlyphs;  // (line, at, glyphs, count)
 
@@ -44,6 +45,8 @@ public unsafe class TextWrap
             _joinLines = (delegate* unmanaged<nint, void>)(nint)address);
         scanManager.AddScan("TextFitLine", signatureGroup, address =>
             _fitLine = (delegate* unmanaged<nint, float, nint*, byte, int>)(nint)address);
+        scanManager.AddScan("TextSplitLine", signatureGroup, address =>
+            _splitLine = (delegate* unmanaged<nint, int, int, int, void>)(nint)address);
         scanManager.AddScan("TextBuildGlyphs", signatureGroup, address =>
             _buildGlyphs = (delegate* unmanaged<nint, nint, nint*, nint>)(nint)address);
         scanManager.AddScan("TextInsertGlyphs", signatureGroup, address =>
@@ -68,8 +71,9 @@ public unsafe class TextWrap
     // Caps the text at two lines, the second ending in the game's ellipsis
     public void Cap(nint text)
     {
-        if (_joinLines == null || _fitLine == null || _buildGlyphs == null || _insertGlyphs == null)
+        if (_joinLines == null || _fitLine == null || _splitLine == null || _buildGlyphs == null || _insertGlyphs == null)
             return;
+        Split(text);
         nint* lines = (nint*)(text + Lines);
         if (!GameMemory.IsVector(text + Lines, LineSize) || (lines[1] - lines[0]) / LineSize <= MaxLines)
             return;
@@ -94,5 +98,18 @@ public unsafe class TextWrap
         _ellipsis[2] = _glyphs + EllipsisGlyphs * GlyphSize;
         _buildGlyphs(text, ellipsis.Ptr, _ellipsis);
         _insertGlyphs(last, last[1], _ellipsis[0], (ulong)((_ellipsis[1] - _ellipsis[0]) / GlyphSize));
+    }
+
+    // Splits each line wider than the wrap width where it stops fitting
+    private void Split(nint text)
+    {
+        nint* lines = (nint*)(text + Lines);
+        for (int i = 0; i < (lines[1] - lines[0]) / LineSize; i++)
+        {
+            nint* line = (nint*)(lines[0] + i * LineSize);
+            int cut = _fitLine(text, *(int*)(text + WrapWidth), line, 0);
+            if (cut != 0)
+                _splitLine(text, i, cut, (int)((line[1] - line[0]) / GlyphSize) - 1);
+        }
     }
 }

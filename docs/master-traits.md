@@ -47,8 +47,8 @@ are drawn at 0.7 times the game's size.
    its rank and position. The captain's board is shown when a picked or unpicked cell's position is past the normal
    board's slots of its rank.
 4. `CardWriter` writes each cell's description with `SetSkillBoardDescription`, through a mock cell component whose
-   only `Text` is the card's cell text. Before the call it sets the text's wrap width and icon size; after it, it cuts
-   the text to two lines.
+   only `Text` is the card's cell text. Before the call it sets the text's wrap width and icon size; after it, it splits
+   the lines still wider than the cell and cuts the text to two lines.
 
 ## Runtime data
 
@@ -93,4 +93,5 @@ cell's 10–39 (rank × 10 plus its 0-based position), or an EX cell's 50 plus i
 | `SetSkillBoardDescription(cell component, character key, slot)` | Sets a master trait cell's description in the loaded language, its `{n}` filled from the effect's action parts. |
 | `SetObjectActive(object, active)` | Shows the picked outlines and the board in use. |
 | `TextComponentSetText`, `TextLookup` | Set the style names, counts and titles. |
+| `TextFitLine`, `TextSplitLine` | Split a description's lines wider than the cell; see [text wrapping](ui.md#text-wrapping). |
 | `TextJoinLines`, `TextFitLine`, `TextBuildGlyphs`, `TextInsertGlyphs` | Cut a description to two lines ending in the ellipsis; see [text wrapping](ui.md#text-wrapping). |

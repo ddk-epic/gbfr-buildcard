@@ -18,8 +18,8 @@ The build points the `CharaInfo` reference `Ability` at the four cards, so `Fill
 card's `AbilityInfo`.
 
 After writing the other sections, `CardWriter` sets each name again: it reads the name's string and text id hash from
-its `Text` component, sets the wrap width, sets the same string with `TextComponentSetText`, and cuts it to two lines;
-see [text wrapping](ui.md#text-wrapping).
+its `Text` component, sets the wrap width, sets the same string with `TextComponentSetText`, splits the lines still
+wider than the width and cuts it to two lines; see [text wrapping](ui.md#text-wrapping).
 
 ## Runtime data
 

@@ -31,6 +31,7 @@ public class CardExport
     private readonly StatusGuide _guide;
     private readonly CardRedraw _redraw;
     private readonly Func<bool> _cardShown;
+    private readonly Func<bool> _addToSteam;
     private readonly ILogger _logger;
     private readonly string _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
         "GBFR Build Cards");
@@ -40,12 +41,14 @@ public class CardExport
     private long _hiddenAt;
     private long _hiddenSince;
 
-    public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, Func<bool> cardShown, ILogger logger)
+    public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, Func<bool> cardShown,
+        Func<bool> addToSteam, ILogger logger)
     {
         _button = button;
         _guide = guide;
         _redraw = redraw;
         _cardShown = cardShown;
+        _addToSteam = addToSteam;
         _logger = logger;
     }
 
@@ -113,7 +116,8 @@ public class CardExport
             Directory.CreateDirectory(_folder);
             string path = Path.Combine(_folder, $"buildcard_{DateTime.Now:yyyyMMdd_HHmmss}.png");
             Png.Write(path, rgb, TargetWidth, TargetHeight);
-            _logger.WriteLine($"[gbfr.qol.buildcard] Card saved to {path}");
+            bool steam = _addToSteam() && SteamScreenshots.Add(path, TargetWidth, TargetHeight);
+            _logger.WriteLine($"[gbfr.qol.buildcard] Card saved to {path}{(steam ? " and added to Steam" : "")}");
         }
         catch (Exception e)
         {

@@ -19,6 +19,7 @@ internal static class CardIds
     public static readonly short[] SkillNames = [2715, 2773, 2831, 2889];
     public static readonly short[] StyleTitles = [506, 507, 508];
     public static readonly short[] SummonSlots = [1895, 1946, 1997, 2048];
+    public const short WeaponTitle = 2103;
 
     public const int ObjectCount = 2954;
 }

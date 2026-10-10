@@ -46,7 +46,9 @@ The wrap and icon size fields apply to the strings set after them.
 ## Text tables
 
 The loaded language's texts, a global pointer loaded by the `mov rdx, [rip + disp32]` at `TextComponentSetText+0x26`.
-`TextLookup` reads a text from it as a pointer and a 64-bit length; the text is null-terminated.
+`TextLookup` reads a text from it as a pointer and a 64-bit length; the text is null-terminated. A text is found by its
+text id hash and a sub-id hash, the name hash of the prefab it is shown in; a text id can have a different text per
+prefab.
 
 ## Text wrapping
 

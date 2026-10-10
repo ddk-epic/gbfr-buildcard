@@ -81474,10 +81474,6 @@ Objects:
         EnableAL: false
         Alignment: 0
       Enable: true
-  - ComponentName: TextSetter
-    Component:
-      TextID: TXT_PAU_ITEM_WEAPON
-      Enable: true
   - ComponentName: ContentSizeFitter
     Component:
       HorizontalFit: 2

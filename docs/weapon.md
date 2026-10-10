@@ -9,6 +9,7 @@ the weapon's art with `WeaponArtHooks`.
 
 | Part | Shows |
 |---|---|
+| Heading | The gear screen's Weapon heading, `TXT_PAU_ITEM_WEAPON` in `equip01_info01`'s sub-id, in the loaded language. |
 | Weapon | The weapon's icon, name, `+` level, level and HP, ATK, critical rate and stun power, as the gear screen's Weapon section shows them, with the weapon's type under the name (the equip screen's `type_text01`, set through `WeaponInfo`'s `TypeText`). |
 | Weapon traits | The weapon's trait rows from the equip screen, their levels at the right edge in the summon rows' gold, as are the sigils' levels. |
 | Wrightstone | The wrightstone's trait rows from the equip screen, styled as the weapon traits. |
@@ -19,6 +20,10 @@ the weapon's art with `WeaponArtHooks`.
 The build points the `CharaInfo` reference `Weapon` at `bc_weapon` and gives its `WeaponInfo` the trait fields
 (`Skills`, `PendulumSkillObj`, `PendulumSkills`, `PendulumNames`) of the equip screen's `WeaponInfo`, so
 `FillCharacterStatus` fills the panel, the weapon traits and the wrightstone traits.
+
+The heading's text, `CardIds.WeaponTitle`, has no `TextSetter`; the text tables hold no `TXT_PAU_ITEM_WEAPON` for
+the `status01` sub-id. After each character fill `CardWriter` looks the text up with `TextLookup` in the sub-id
+`equip01_info01` (`0xDE6482AF`) and sets it with `TextComponentSetText`.
 
 The art is loaded by the game's `ui::icon::LoadWeaponParty`, which loads the art of each weapon in its list while the
 party menu is open. `WeaponArtHooks` hooks two of its vfuncs:

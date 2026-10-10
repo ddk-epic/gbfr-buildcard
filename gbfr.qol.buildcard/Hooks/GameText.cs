@@ -56,9 +56,9 @@ public unsafe class GameText
         return view;
     }
 
-    public string Find(uint hash)
+    public string Find(uint hash, uint subId = EmptyIdHash)
     {
-        var view = Lookup(hash);
+        var view = Lookup(hash, subId);
         return view.Ptr == 0 ? "" : Encoding.UTF8.GetString((byte*)view.Ptr, (int)view.Length);
     }
 

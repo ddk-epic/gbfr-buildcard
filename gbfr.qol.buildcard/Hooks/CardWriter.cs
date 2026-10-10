@@ -102,7 +102,7 @@ public unsafe class CardWriter
                     SetText(obj, text.Value);
                     break;
                 case LocalizedTextWrite localized:
-                    SetLocalizedText(obj, localized.TextId);
+                    SetLocalizedText(obj, localized.TextId, localized.SubId);
                     break;
                 case MasterTraitDescriptionWrite description:
                     SetMasterTraitDescription(obj, description);
@@ -128,11 +128,11 @@ public unsafe class CardWriter
             _text.Set(text, value);
     }
 
-    // Sets the text id's text in the loaded language
-    private void SetLocalizedText(nint obj, uint textId)
+    // Sets the text id's text of the sub-id in the loaded language
+    private void SetLocalizedText(nint obj, uint textId, uint subId)
     {
         if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
-            _text.Set(text, _text.Find(textId), textId);
+            _text.Set(text, _text.Find(textId, subId), textId);
     }
 
     // Sets the cell's description as the Master Traits menu shows it, wrapped to the cell

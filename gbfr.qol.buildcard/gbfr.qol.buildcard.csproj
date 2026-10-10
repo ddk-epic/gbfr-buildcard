@@ -38,7 +38,7 @@
     <None Update="Signatures\*.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="GBFR\**\*.msg;GBFR\**\*.wtb">
+    <None Update="GBFR\**\*.wtb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -241,6 +241,10 @@ def apply(ctx):
     widen_weapon_section(info, row_w)
     gold_levels(panel)
     weapon_type(panel, info, info_weapon01, scale)
+    # the heading's text, set at runtime as equip01_info01's
+    title = info.child("ttl01").child("ttl01_text01")
+    title.drop_component("TextSetter")
+    ctx.export("WeaponTitle", title)
 
     prefab.find("loc_status02/loc_chr_status02").set("Active", False)
     chara_info = prefab.root.component("CharaInfo")

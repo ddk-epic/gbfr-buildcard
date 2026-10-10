@@ -9,10 +9,13 @@ public class CardContents
     private static readonly int Styles = CardIds.CellOn[0].Length;
     private static readonly int[] Budgets = [10, 10, 10, 20];
     private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
+    private const uint WeaponTitleHash = 0x53185300;  // TXT_PAU_ITEM_WEAPON
+    private const uint WeaponTitleSubId = 0xDE6482AF;  // equip01_info01
 
     public List<CardWrite> Compose(CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits, int[]? masteries)
     {
         var writes = new List<CardWrite>();
+        writes.Add(new LocalizedTextWrite(CardIds.WeaponTitle, WeaponTitleHash, WeaponTitleSubId));
         ComposeMasterTraits(writes, build, masterTraits);
         ComposeMasteries(writes, masteries);
         ComposeOverMastery(writes, build);
@@ -113,7 +116,7 @@ public class CardContents
 // A write to a card object, found by its CardIds Id.
 public abstract record CardWrite(int Id);
 public sealed record TextWrite(int Id, string Value) : CardWrite(Id);
-public sealed record LocalizedTextWrite(int Id, uint TextId) : CardWrite(Id);
+public sealed record LocalizedTextWrite(int Id, uint TextId, uint SubId = GameText.EmptyIdHash) : CardWrite(Id);
 public sealed record MasterTraitDescriptionWrite(int Id, uint CharaKey, int Slot) : CardWrite(Id);
 public sealed record ActiveWrite(int Id, bool Active) : CardWrite(Id);
 public sealed record SummonWrite(int Id, uint SummonId) : CardWrite(Id);

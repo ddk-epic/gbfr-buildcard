@@ -84,5 +84,8 @@ no symbols; the names are the signatures' keys.
 | `SetMasteryPercents(screen)` | read | Fills the Masteries screen's percentages; read for the mastery manager. | [masteries](masteries.md) |
 | `SetOverMasteryLine(LimitBonusInfo, line)` | called | Fills an Over Mastery row from a `chara` Over Mastery line. | [Over Mastery](over-mastery.md) |
 | `SetSummonInfo(SummonInfo, summon id)` | called | Fills a summon slot, its trait and equip bonus rows included. | [summons](summons.md) |
+| `SetCharacterDetailsFooter()` | hooked | Builds the Character Details footer from its label list. | [export](export.md) |
+| `UpdateShortcutInput(shortcut)` | hooked | Reads a footer shortcut's button, once per shortcut each frame. | [export](export.md) |
+| `GetButtonBits(context, button, 1, mode)` | called | Returns a button's bits in the input manager; the signature matches a call of it, read for the input manager and the function. | [export](export.md) |
 
 The weapon art hooks are found through RTTI vtables instead of signatures; see [weapon](weapon.md).

@@ -1,6 +1,6 @@
 # `status01` prefab
 
-The main page of the in-game **Character Details** panel (pause menu > character > details). Everything on that page except the background, the Q/E guide and the other pages is in this one prefab.
+The main page of the in-game **Character Details** panel (pause menu > character > details). Everything on that page except the background, the page arrows and the other pages is in this one prefab.
 
 | | |
 |---|---|
@@ -10,7 +10,7 @@ The main page of the in-game **Character Details** panel (pause menu > character
 | Objects | 426 stock + 2528 added (Ids 0-2953) |
 | Size | 20,689 lines stock |
 
-The other pages and parts of the panel are separate prefabs: `chr_status_bg01` (white panel, blue portrait area, frame lines), `status_guide01` (Q/E arrows), `var00_chr_skill_info01` (skill details), `chr_skill_info01/02` (trait details, command list), `chr_sboard_info01` (master traits).
+The other pages and parts of the panel are separate prefabs: `chr_status_bg01` (white panel, blue portrait area, frame lines), `status_guide01` (page arrows and their button prompts), `var00_chr_skill_info01` (skill details), `chr_skill_info01/02` (trait details, command list), `chr_sboard_info01` (master traits).
 
 ## File format
 

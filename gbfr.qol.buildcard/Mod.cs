@@ -65,7 +65,6 @@ public class Mod : ModBase
             return;
         }
 
-        // Signatures exist for Endless Ragnarok only.
         if (userDefinedParams.GetGameVersion() != GameVersion.RelinkEndlessRagnarok)
         {
             _logger.WriteLine($"[{_modConfig.ModId}] ERROR: Unsupported game version {userDefinedParams.GetGameVersion()}", Color.Red);
@@ -109,7 +108,7 @@ public class Mod : ModBase
         _statusGuide = new StatusGuide(_hooks, _logger, _cardWriter.SetActive);
         _statusGuide.Init();
         _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _weaponArtHooks.CardShown,
-            () => _configuration.SteamScreenshots, _logger);
+            _cardWriter.CharaName, () => _configuration.SteamScreenshots, _logger);
         _saveCardButton.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);
         _swapChainHooks.Presenting += _cardExport.OnPresenting;

@@ -193,3 +193,4 @@ def apply(ctx):
     status_top = status_block(status, bottom)
     badges(base, status_top)
     ctx.export("MasteryTexts", texts)
+    ctx.export("CharaName", base.find("loc_name01/name01_01"))

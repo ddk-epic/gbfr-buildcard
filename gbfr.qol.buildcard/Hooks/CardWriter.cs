@@ -11,7 +11,7 @@ namespace gbfr.qol.buildcard.Hooks;
 // Applies CardContents' writes to the card's objects and sets the weapon WeaponArtHooks loads.
 public unsafe class CardWriter
 {
-    // Text component: MSVC std::string at +0x40 (inline up to 15 bytes, else a pointer), text id hash at +0x188
+    // Text component
     private const int TextString = 0x40;
     private const int TextHash = 0x188;
     private const int MaxTextLength = 0x400;
@@ -31,8 +31,8 @@ public unsafe class CardWriter
     private readonly nint _limitBonusInfoVtable;
     private readonly nint _summonInfoVtable;
     private readonly nint _textVtable;
-    // Over Mastery lines passed to SetOverMasteryLine, one per row
     private readonly OverMasteryLine* _overMasteryLines = (OverMasteryLine*)Marshal.AllocHGlobal(sizeof(OverMasteryLine) * CharaBuild.OverMasteryLines);
+    private nint _charaNameObject;
     private bool _loggedBuild;
     private bool _loggedComponents;
     private bool _loggedCount;
@@ -56,8 +56,6 @@ public unsafe class CardWriter
             _logger.WriteLine("[gbfr.qol.buildcard] Text vtable not found", Color.Red);
     }
 
-    // SetObjectActive(object, active), SetOverMasteryLine(LimitBonusInfo component, Over Mastery line),
-    // SetSummonInfo(SummonInfo component, summon id)
     public void Init(IScanManager scanManager, string signatureGroup)
     {
         scanManager.AddScan("SetObjectActive", signatureGroup, address =>
@@ -126,6 +124,13 @@ public unsafe class CardWriter
         }
         WrapSkillNames(objects);
         _weaponArt.Show(chara);
+        _charaNameObject = objects.GetValueOrDefault(CardIds.CharaName);
+    }
+
+    public string CharaName()
+    {
+        nint text = _charaNameObject == 0 ? 0 : FindComponent(_charaNameObject, _textVtable, "Text");
+        return text == 0 ? "" : ReadString(text + TextString);
     }
 
     private void SetText(nint obj, string value)
@@ -134,21 +139,18 @@ public unsafe class CardWriter
             _text.Set(text, value);
     }
 
-    // Sets the text id's text of the sub-id in the loaded language
     private void SetLocalizedText(nint obj, uint textId, uint subId)
     {
         if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
             _text.Set(text, _text.Find(textId, subId), textId);
     }
 
-    // The style name before the title's colon
     private static string StyleName(string title)
     {
         int colon = title.IndexOfAny([':', '：']);
         return colon < 0 ? title : title[..colon].TrimEnd();
     }
 
-    // Sets the cell's description as the Master Traits menu shows it, wrapped to the cell
     private void SetMasterTraitDescription(nint obj, MasterTraitDescriptionWrite write)
     {
         if (FindComponent(obj, _textVtable, "Text") is not (var text and not 0))
@@ -179,7 +181,6 @@ public unsafe class CardWriter
         _setOverMasteryLine(limitBonusInfo, (nint)(_overMasteryLines + index));
     }
 
-    // Sets the skill names again, wrapped to their width
     private void WrapSkillNames(Dictionary<int, nint> objects)
     {
         foreach (short id in CardIds.SkillNames)

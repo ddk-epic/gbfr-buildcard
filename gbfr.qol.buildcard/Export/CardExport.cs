@@ -33,6 +33,7 @@ public class CardExport
     private readonly StatusGuide _guide;
     private readonly CardRedraw _redraw;
     private readonly Func<bool> _cardShown;
+    private readonly Func<string> _charaName;
     private readonly Func<bool> _addToSteam;
     private readonly ILogger _logger;
     private readonly string _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
@@ -43,14 +44,16 @@ public class CardExport
     private long _hiddenAt;
     private long _hiddenSince;
     private long _cardSeenAt;
+    private string _fileNamePrefix = "";
 
     public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, Func<bool> cardShown,
-        Func<bool> addToSteam, ILogger logger)
+        Func<string> charaName, Func<bool> addToSteam, ILogger logger)
     {
         _button = button;
         _guide = guide;
         _redraw = redraw;
         _cardShown = cardShown;
+        _charaName = charaName;
         _addToSteam = addToSteam;
         _logger = logger;
     }
@@ -76,6 +79,7 @@ public class CardExport
         }
         else if (_state == Idle && pressed && _saving == 0 && cardShown)
         {
+            _fileNamePrefix = FileNamePrefix(_charaName());
             _guide.Show(false);
             _hiddenSince = Environment.TickCount64;
             _hiddenAt = Interlocked.Read(ref _presents);
@@ -105,8 +109,9 @@ public class CardExport
             byte[]? rgb = _redraw.End();
             _logger.WriteLine($"[gbfr.qol.buildcard] Redraw {_redraw.Stats}");
             rgb ??= BackbufferReadback.Read(swapChain, CardRect, out width, out height);
+            string fileNamePrefix = _fileNamePrefix;
             _saving = 1;
-            Task.Run(() => Save(rgb, width, height));
+            Task.Run(() => Save(rgb, width, height, fileNamePrefix));
         }
         finally
         {
@@ -114,7 +119,7 @@ public class CardExport
         }
     }
 
-    private void Save(byte[] rgb, int width, int height)
+    private void Save(byte[] rgb, int width, int height, string fileNamePrefix)
     {
         try
         {
@@ -122,7 +127,7 @@ public class CardExport
                 rgb = Resample.Resize(rgb, width, height, TargetWidth, TargetHeight);
 
             Directory.CreateDirectory(_folder);
-            string path = Path.Combine(_folder, $"buildcard_{DateTime.Now:yyyyMMdd_HHmmss}.png");
+            string path = Path.Combine(_folder, $"{fileNamePrefix}{DateTime.Now:yyyyMMdd_HHmmss}.png");
             Png.Write(path, rgb, TargetWidth, TargetHeight);
             bool steam = _addToSteam() && SteamScreenshots.Add(path, TargetWidth, TargetHeight);
             _logger.WriteLine($"[gbfr.qol.buildcard] Card saved to {path}{(steam ? " and added to Steam" : "")}");
@@ -135,6 +140,13 @@ public class CardExport
         {
             _saving = 0;
         }
+    }
+
+    // Invalid file name characters dropped and _ appended; empty for an empty name
+    private static string FileNamePrefix(string charaName)
+    {
+        string cleaned = string.Concat(charaName.Split(Path.GetInvalidFileNameChars())).Trim();
+        return cleaned.Length == 0 ? "" : cleaned + "_";
     }
 
     private static RectangleF CardRectF(int width, int height)

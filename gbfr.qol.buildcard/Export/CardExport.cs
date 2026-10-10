@@ -38,7 +38,7 @@ public class CardExport
     private readonly Func<bool> _addToSteam;
     private readonly ILogger _logger;
     private readonly string _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-        "GBFR Build Cards");
+        "GBFR Character Build Cards");
     private volatile int _state;
     private volatile int _saving;
     private int _saved;

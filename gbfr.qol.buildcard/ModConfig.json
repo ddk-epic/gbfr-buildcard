@@ -1,6 +1,6 @@
 {
   "ModId": "gbfr.qol.buildcard",
-  "ModName": "Build Card",
+  "ModName": "Character Build Card",
   "ModAuthor": "ddk",
   "ModVersion": "1.0.0",
   "ModDescription": "Replaces the Character Details panel with a build card.",

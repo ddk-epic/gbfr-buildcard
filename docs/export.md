@@ -8,7 +8,7 @@ saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 
 | Item | Value |
 |---|---|
-| File | `Pictures/GBFR Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the text of the card's `name01_01` (`CardIds.CharaName`) at the press, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
+| File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the text of the card's `name01_01` (`CardIds.CharaName`) at the press, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
 | Content | The card's rect, `CardIds.CardWidth` x `CardIds.CardHeight` (3528x1764) at `CardIds.CardY` (74) above the centre of the 3840x2160 UI canvas, without the page arrows' button prompts and the saved notice. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
 | Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `SavedNotice.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |

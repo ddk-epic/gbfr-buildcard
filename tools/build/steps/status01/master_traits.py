@@ -14,14 +14,14 @@ INK = (0.19607843, 0.37254903, 0.4901961)
 HEADING_H = 61
 COLUMN_GAP = 6
 BORDER = 5
-PAD_X, PAD_TOP, PAD_BOTTOM = 20, 10, 22
+PAD_TOP, PAD_BOTTOM = 10, 22
 STYLE_HEADING_H = 98
 RANK_LABEL_H = 43
 LABEL_H = 34  # a rank label's text
 LABEL_W, COUNT_W = 367, 245  # a rank label's and its count's text
 STYLE_TITLE_H = 39
 CELL_H, CELL_GAP = 56, 5
-CELL_PAD = 11
+CELL_TEXT_LEFT, CELL_TEXT_RIGHT = 12, 2
 CELL_LINE_SPACING = -35  # Japanese font
 
 # skillboard_window01's Master Traits list
@@ -37,9 +37,10 @@ OFF_COLOR = (0.6392157, 0.6784314, 0.6784314), 1  # text02
 CELL_MATERIAL, CELL_LANGUAGE = "fonts/fot_skipstd_b_sdf_ds01", "data/language/ld_skipstd_b_sdf_ds01"
 CELL_LINE_SPACING_ENG = 4
 GAME_CELL_H, TITLE_H = 252, 74  # game units
-PANEL_X, PANEL_TOP, PANEL_BOTTOM = 12, 6, 7  # card units, the panel around the rank's title and cells
+PANEL_X, PANEL_TOP, PANEL_BOTTOM = 4.5, 6, 7  # card units, the panel around the rank's title and cells
+CELLS_X = 8  # card units
 BAR_INSET, BAR_H = 4, 38  # card units, the title bar's inset in the panel and its height
-TEXT_SHIFT = 9  # card units, the cell texts' left edge past the frame's corner
+LABEL_LEFT, LABEL_RIGHT = 16, 12  # card units
 
 # the picked cell style
 PICKED = (107 / 255, 132 / 255, 155 / 255)  # a quarter of the way from ps_sboard_list01's colour to white
@@ -78,8 +79,8 @@ STARS = ("root/loc_base01/loc_info03/skillboard_info03/root/loc_item01/loc_info0
 
 LEFT_X, TOP_Y, WIDTH, HEIGHT = MASTER_TRAITS
 COLUMN_W = (WIDTH - 2 * COLUMN_GAP) / 3
-CELL_W = (COLUMN_W - 2 * PAD_X - CELL_GAP) / 2
-CELL_TEXT_W = CELL_W - 2 * CELL_PAD - TEXT_SHIFT
+CELL_W = (COLUMN_W - 2 * (PANEL_X + CELLS_X) - CELL_GAP) / 2
+CELL_TEXT_W = CELL_W - CELL_TEXT_LEFT - CELL_TEXT_RIGHT
 CELL_K = CELL_H / GAME_CELL_H  # the cell images' scale
 
 
@@ -180,16 +181,16 @@ def grid(board, name, slots, ranks, active):
             count = rect(f"bc_mt_{s}_{r}_count", text("", COUNT_SIZE, INK, 1, RIGHT), (1, 1))
             set_text(count, TITLE_TEXT_COLOR)
             label_top = rank["label"] + LABEL_H / 2
-            placements.append(lambda n=label, x=card(x0 + PAD_X + 2, 0)[0], y=label_top:
+            placements.append(lambda n=label, x=left + BAR_INSET + LABEL_LEFT, y=label_top:
                               n.place(pos=(x, y), size=(LABEL_W, LABEL_H)))
-            placements.append(lambda n=count, x=card(x0 + COLUMN_W - PAD_X, 0)[0], y=label_top:
+            placements.append(lambda n=count, x=right - BAR_INSET - LABEL_RIGHT, y=label_top:
                               n.place(pos=(x, y), size=(COUNT_W, LABEL_H)))
             rank_texts += [label, count]
 
         cell_texts = []
         for r, rank in enumerate(ranks):
             for c in range(slots[r]):
-                cell_x = x0 + PAD_X + (c % COLUMNS) * (CELL_W + CELL_GAP)
+                cell_x = x0 + PANEL_X + CELLS_X + (c % COLUMNS) * (CELL_W + CELL_GAP)
                 row_top, row_bottom = rank["rows"][c // COLUMNS]
                 base, at = sliced_image(f"bc_mt_{s}_{r}_{c}_base", CELL_COLOR, BASE,
                                         (card(cell_x + CELL_W / 2, 0)[0], (row_top + row_bottom) / 2),
@@ -200,7 +201,7 @@ def grid(board, name, slots, ranks, active):
                     node = rect(f"bc_mt_{s}_{r}_{c}_{state}",
                                 text("", CELL_SIZE, INK, alpha, LEFT, CELL_LINE_SPACING, CELL_LINE_SPACING_ENG), (0, 1))
                     set_text(node, color, cell=True)
-                    x = card(cell_x + CELL_PAD + TEXT_SHIFT, 0)[0]
+                    x = card(cell_x + CELL_TEXT_LEFT, 0)[0]
                     placements.append(lambda n=node, x=x, y=row_top, w=CELL_TEXT_W, h=row_top - row_bottom:
                                       n.place(pos=(x, y), size=(w, h)))
                     cell_texts.append(node)

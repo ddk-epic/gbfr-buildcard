@@ -1,8 +1,9 @@
 # Lays out the skills section: the Skills screen's cards, reduced to icon, name and element tag, in a 2x2 grid.
-from model.components import rect
+from model.components import overwrites, rect
 from model.prefab import copy
 from steps.layout import CARD_ORDER, HEADING_MARGIN, ICON_PAD, PANEL_SCALE, SKILLS, insert
 from steps.panel import Heading, panel
+from steps.status01.master_traits import CELL_LINE_SPACING, CELL_LINE_SPACING_ENG
 
 CARDS = ["ability_set01_btn04", "ability_set01_btn03", "ability_set01_btn01", "ability_set01_btn02"]  # slots 1 to 4
 TITLE_TEXT_ID = "TXT_PAU_ABILITY"
@@ -53,6 +54,8 @@ def skill_card(source):
     name = base.child("text01")
     element = frames.child("loc_elem01")
     name.component("Text").set("Margin", f"{SKILL_NAME_INSET}, 0, 0, 0")
+    name.component("Text").set("LineSpacing", CELL_LINE_SPACING)
+    name.component("LanguageSetter").insert(overwrites(CELL_LINE_SPACING_ENG), after="ContainerData")
     name.add_component(["  - ComponentName: ContentSizeFitter", "    Component:", "      HorizontalFit: 0",
                         "      VerticalFit: 2", "      Enable: true"])
     group = frames.add(text_group(), frames.children.index(element))

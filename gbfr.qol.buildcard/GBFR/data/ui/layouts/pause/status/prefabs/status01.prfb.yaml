@@ -107536,6 +107536,18 @@ Objects:
       ContainerData:
       - data/language/ld_skipstd_b_sdf_material
       - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Eng
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: true
+        LineSpaching: 4
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
       Enable: true
   - ComponentName: Text
     Component:
@@ -107552,7 +107564,7 @@ Objects:
       ColorBL: 1, 1, 1, 1
       ColorBR: 1, 1, 1, 1
       CharacterSpacing: 0
-      LineSpacing: 0
+      LineSpacing: -35
       Alignment: 513
       Enable: true
   - ComponentName: ContentSizeFitter
@@ -109628,6 +109640,18 @@ Objects:
       ContainerData:
       - data/language/ld_skipstd_b_sdf_material
       - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Eng
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: true
+        LineSpaching: 4
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
       Enable: true
   - ComponentName: Text
     Component:
@@ -109644,7 +109668,7 @@ Objects:
       ColorBL: 1, 1, 1, 1
       ColorBR: 1, 1, 1, 1
       CharacterSpacing: 0
-      LineSpacing: 0
+      LineSpacing: -35
       Alignment: 513
       Enable: true
   - ComponentName: ContentSizeFitter
@@ -111720,6 +111744,18 @@ Objects:
       ContainerData:
       - data/language/ld_skipstd_b_sdf_material
       - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Eng
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: true
+        LineSpaching: 4
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
       Enable: true
   - ComponentName: Text
     Component:
@@ -111736,7 +111772,7 @@ Objects:
       ColorBL: 1, 1, 1, 1
       ColorBR: 1, 1, 1, 1
       CharacterSpacing: 0
-      LineSpacing: 0
+      LineSpacing: -35
       Alignment: 513
       Enable: true
   - ComponentName: ContentSizeFitter
@@ -113812,6 +113848,18 @@ Objects:
       ContainerData:
       - data/language/ld_skipstd_b_sdf_material
       - data/language/ld_skipstd_b_sdf_glow_w01
+      Overwrites:
+      - Language: Eng
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: true
+        LineSpaching: 4
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
       Enable: true
   - ComponentName: Text
     Component:
@@ -113828,7 +113876,7 @@ Objects:
       ColorBL: 1, 1, 1, 1
       ColorBR: 1, 1, 1, 1
       CharacterSpacing: 0
-      LineSpacing: 0
+      LineSpacing: -35
       Alignment: 513
       Enable: true
   - ComponentName: ContentSizeFitter

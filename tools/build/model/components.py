@@ -66,9 +66,15 @@ def text(value, size, color, alpha, alignment, line_spacing=0, eng_line_spacing=
 
 def language_setter(eng_line_spacing=None):
     # the font of each language, and the English line spacing if given
-    enable_ls = "true" if eng_line_spacing is not None else "false"
     return ["  - ComponentName: LanguageSetter", "    Component:", "      MultiData: false",
-            "      LanguageData: data/language/ld_skipstd_b_sdf_material", "      Overwrites:", "      - Language: Eng",
-            "        EnableFS: false", "        FontSize: 0", "        EnableCS: false", "        CharacterSpaching: 0",
-            f"        EnableLS: {enable_ls}", f"        LineSpaching: {eng_line_spacing or 0}", "        EnableMG: false",
-            "        Margine: 0, 0, 0, 0", "        EnableAL: false", "        Alignment: 0", "      Enable: true"]
+            "      LanguageData: data/language/ld_skipstd_b_sdf_material", *overwrites(eng_line_spacing),
+            "      Enable: true"]
+
+
+def overwrites(eng_line_spacing=None):
+    # a LanguageSetter's English overwrite, with the line spacing if given
+    enable_ls = "true" if eng_line_spacing is not None else "false"
+    return ["      Overwrites:", "      - Language: Eng", "        EnableFS: false", "        FontSize: 0",
+            "        EnableCS: false", "        CharacterSpaching: 0", f"        EnableLS: {enable_ls}",
+            f"        LineSpaching: {eng_line_spacing or 0}", "        EnableMG: false", "        Margine: 0, 0, 0, 0",
+            "        EnableAL: false", "        Alignment: 0"]

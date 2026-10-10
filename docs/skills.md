@@ -8,7 +8,8 @@ screen's cards, reduced to icon, name and element tag, in a 2×2 grid. The layou
 
 Under the Skills title (`TXT_PAU_ABILITY`), each card shows the skill's icon, its name and its element tag under the
 name. The cards' frames are transparent and their button prompts hidden. A name is wrapped to its card and cut to two
-lines, the second ending in the game's ellipsis.
+lines, the second ending in the game's ellipsis. Its lines are spaced as the master trait cells' are: `LineSpacing` -35,
+and 4 through the `LanguageSetter`'s English overwrite.
 
 `CardIds.SkillNames` holds the four names' Ids, and `CardIds.SkillNameWidth` their wrap width.
 

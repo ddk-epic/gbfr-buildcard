@@ -8,7 +8,6 @@ public class CardContents
     private static readonly int[] CaptainSlots = CardIds.CellOn[1][0].Select(rank => rank.Length).ToArray();
     private static readonly int Styles = CardIds.CellOn[0].Length;
     private static readonly int[] Budgets = [10, 10, 10, 20];
-    private static readonly string[] StyleNames = ["Insight", "Essence", "Crux"];
     private const uint WeaponTitleHash = 0x53185300;  // TXT_PAU_ITEM_WEAPON
     private const uint WeaponTitleSubId = 0xDE6482AF;  // equip01_info01
     private const uint MasteriesLabelHash = 0xB090BB12;  // TXT_PAU_TTL_LB
@@ -61,7 +60,7 @@ public class CardContents
 
         for (int s = 0; s < Styles; s++)
         {
-            writes.Add(new TextWrite(CardIds.PerkNames[s], StyleNames[s]));
+            writes.Add(titles[s] is { } title ? new StyleNameWrite(CardIds.PerkNames[s], title) : new TextWrite(CardIds.PerkNames[s], ""));
             for (int k = 0; k < CardIds.PerkStars[s].Length; k++)
                 writes.Add(new ActiveWrite(CardIds.PerkStars[s][k], k < perks[s]));
         }
@@ -121,6 +120,7 @@ public abstract record CardWrite(int Id);
 public sealed record TextWrite(int Id, string Value) : CardWrite(Id);
 public sealed record LocalizedTextWrite(int Id, uint TextId, uint SubId = GameText.EmptyIdHash) : CardWrite(Id);
 public sealed record LabeledTextWrite(int Id, uint LabelId, string Value) : CardWrite(Id);
+public sealed record StyleNameWrite(int Id, uint TitleId) : CardWrite(Id);
 public sealed record MasterTraitDescriptionWrite(int Id, uint CharaKey, int Slot) : CardWrite(Id);
 public sealed record ActiveWrite(int Id, bool Active) : CardWrite(Id);
 public sealed record SummonWrite(int Id, uint SummonId) : CardWrite(Id);

@@ -107,6 +107,9 @@ public unsafe class CardWriter
                 case LabeledTextWrite labeled:
                     SetText(obj, $"{_text.Find(labeled.LabelId)} {labeled.Value}");
                     break;
+                case StyleNameWrite styleName:
+                    SetText(obj, StyleName(_text.Find(styleName.TitleId)));
+                    break;
                 case MasterTraitDescriptionWrite description:
                     SetMasterTraitDescription(obj, description);
                     break;
@@ -136,6 +139,13 @@ public unsafe class CardWriter
     {
         if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
             _text.Set(text, _text.Find(textId, subId), textId);
+    }
+
+    // The style name before the title's colon
+    private static string StyleName(string title)
+    {
+        int colon = title.IndexOfAny([':', '：']);
+        return colon < 0 ? title : title[..colon].TrimEnd();
     }
 
     // Sets the cell's description as the Master Traits menu shows it, wrapped to the cell

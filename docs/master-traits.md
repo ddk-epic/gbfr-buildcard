@@ -10,7 +10,7 @@ contents are written at runtime by `CardContents`, `MasterTraits` and `CardWrite
 |---|---|
 | Background | The Master Traits menu's scene (`background04`, without the character), clipped to the section. |
 | Heading | The "Master Traits" title (`TXT_PAU_TTL_SKL_BD`) over the page header's line. |
-| Styles row | Each style's name (Insight, Essence, Crux) and three stars, right of the title; a star is lit per picked perk of the style. |
+| Styles row | Each style's name and three stars, right of the title; the name is the style title's text before its colon, empty when the style has no title; a star is lit per picked perk of the style. |
 | Style titles | Above each style's column, the title of the style's rank 1 perk, in the loaded language; empty when the perk has none. |
 | Rank panels | Per style, one panel per rank (STYLE RANK 1, 2, 3, EX) with a `picked/budget` count: the picked cells of that rank over all three styles, out of 10, 10, 10 and 20. |
 | Cells | Per rank, the cells in two columns: 4/8/8/10 slots, or 4/8/8/14 on the captain's board. |

@@ -36,6 +36,8 @@ public class Mod : ModBase
     private WeaponArtHooks? _weaponArtHooks;
     private CardWriter? _cardWriter;
     private SaveCardButton? _saveCardButton;
+    private SwapChainHooks? _swapChainHooks;
+    private CardExport? _cardExport;
 
     public Mod(ModContext context)
     {
@@ -103,6 +105,11 @@ public class Mod : ModBase
         _gameText.Add(CardIds.SaveCardTextId, "Save Card");
         _saveCardButton = new SaveCardButton(_hooks);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
+        _cardExport = new CardExport(_saveCardButton, _weaponArtHooks.CardShown, _logger);
+        _saveCardButton.Tick += _cardExport.OnTick;
+        _swapChainHooks = new SwapChainHooks(_hooks, _logger);
+        _swapChainHooks.Presenting += _cardExport.OnPresenting;
+        _swapChainHooks.Init();
     }
 
     #region Standard Overrides

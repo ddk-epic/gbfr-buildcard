@@ -107,5 +107,6 @@ public unsafe class WeaponArtHooks
         *(long*)(loader + WantedCount) = count + 1;
     }
 
-    private bool CardShown() => _key != NoKey && _statusPageOpen(0) != 0;
+    // Whether the Character Details page is open with a card filled.
+    public bool CardShown() => _key != NoKey && _statusPageOpen(0) != 0;
 }

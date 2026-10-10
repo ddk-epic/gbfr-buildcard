@@ -43,6 +43,7 @@ public unsafe class CardRedraw
 
     private readonly IReloadedHooks _hooks;
     private bool _redrawing;
+    private bool _drawHooksOn;
     private nint _device, _context, _backbuffer;
     private uint _width, _height;
     private uint _outWidth, _outHeight;
@@ -108,6 +109,24 @@ public unsafe class CardRedraw
         _drawInstancedHook = _hooks.CreateHook<DrawInstancedFn>(DrawInstancedImpl, drawInstanced).Activate();
         _setTargetsHook = _hooks.CreateHook<SetRenderTargetsFn>(SetTargetsImpl, setTargets).Activate();
         _setTargetsAndUavsHook = _hooks.CreateHook<SetRenderTargetsAndUavsFn>(SetTargetsAndUavsImpl, setTargetsAndUavs).Activate();
+        _drawHooksOn = true;
+        SetDrawHooks(false);
+    }
+
+    // On the render thread at a Present
+    public void SetDrawHooks(bool on)
+    {
+        if (on == _drawHooksOn || _setTargetsHook == null)
+            return;
+        _drawHooksOn = on;
+        foreach (IHook hook in (IHook[])[_drawIndexedHook!, _drawHook!, _drawIndexedInstancedHook!, _drawInstancedHook!,
+                     _setTargetsHook, _setTargetsAndUavsHook!])
+        {
+            if (on)
+                hook.Enable();
+            else
+                hook.Disable();
+        }
     }
 
     // On the render thread at a Present: redraws the next frame with rect filling width x height.

@@ -20,6 +20,9 @@ public class CardExport
     // milliseconds
     private const long CaptureTimeout = 1000;
 
+    // milliseconds
+    private const long DrawHooksTimeout = 500;
+
     // game thread: Idle to Hidden, Hidden to Idle on the timeout, Captured to Idle; render thread: the rest
     private const int Idle = 0;
     private const int Hidden = 1;
@@ -39,6 +42,7 @@ public class CardExport
     private long _presents;
     private long _hiddenAt;
     private long _hiddenSince;
+    private long _cardSeenAt;
 
     public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, Func<bool> cardShown,
         Func<bool> addToSteam, ILogger logger)
@@ -55,6 +59,10 @@ public class CardExport
     public void OnTick()
     {
         bool pressed = _button.Pressed();
+        bool cardShown = _cardShown();
+        if (cardShown)
+            Interlocked.Exchange(ref _cardSeenAt, Environment.TickCount64);
+
         if (_state == Hidden && Environment.TickCount64 - _hiddenSince > CaptureTimeout
             && Interlocked.CompareExchange(ref _state, Idle, Hidden) == Hidden)
         {
@@ -66,7 +74,7 @@ public class CardExport
             _guide.Show(true);
             _state = Idle;
         }
-        else if (_state == Idle && pressed && _saving == 0 && _cardShown())
+        else if (_state == Idle && pressed && _saving == 0 && cardShown)
         {
             _guide.Show(false);
             _hiddenSince = Environment.TickCount64;
@@ -85,6 +93,7 @@ public class CardExport
         else if (_state == Hidden && presents - _hiddenAt >= HiddenFrames
             && Interlocked.CompareExchange(ref _state, Capturing, Hidden) == Hidden)
             _redraw.Begin(swapChain, CardRectF, TargetWidth, TargetHeight);
+        _redraw.SetDrawHooks(_state == Capturing || Environment.TickCount64 - Interlocked.Read(ref _cardSeenAt) < DrawHooksTimeout);
     }
 
     // Reads the redrawn card, or the backbuffer's, and saves it on a worker thread.

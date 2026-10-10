@@ -80,7 +80,7 @@ texture to the backbuffer. The UI's texture changes from frame to frame.
 
 `CardRedraw` hooks the immediate context's `DrawIndexed` (12), `Draw` (13), `DrawIndexedInstanced` (20),
 `DrawInstanced` (21), `OMSetRenderTargets` (33) and `OMSetRenderTargetsAndUnorderedAccessViews` (34), read from the
-swapchain's device. Outside a redraw frame they pass through; calls on other contexts always pass through.
+swapchain's device. They are turned on at a present while the card was shown (`WeaponArtHooks.CardShown`, polled on the game thread) within the last 500 ms or a redraw runs, and off otherwise. Outside a redraw frame they pass through; calls on other contexts always pass through.
 
 In the redraw frame:
 

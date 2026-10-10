@@ -104,6 +104,9 @@ public unsafe class CardWriter
                 case LocalizedTextWrite localized:
                     SetLocalizedText(obj, localized.TextId, localized.SubId);
                     break;
+                case LabeledTextWrite labeled:
+                    SetText(obj, $"{_text.Find(labeled.LabelId)} {labeled.Value}");
+                    break;
                 case MasterTraitDescriptionWrite description:
                     SetMasterTraitDescription(obj, description);
                     break;

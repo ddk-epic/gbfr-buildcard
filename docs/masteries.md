@@ -8,10 +8,11 @@ its texts are written at runtime by `Masteries`, `CardContents` and `CardWriter`
 
 | Text | Shows |
 |---|---|
-| `bc_masteries_text` | `Masteries: {offense}% / {defense}%` |
-| `bc_collection_text` | `Collection: {collection}% / {transcendence}%` |
+| `bc_masteries_text` | `{Masteries} {offense}% / {defense}%` |
+| `bc_collection_text` | `{Collection} {collection}% / {transcendence}%` |
 
-Each number is the percentage the Masteries screen shows for that category. Offense and defense run from 0 to 150%:
+The labels are the Masteries screen's texts in the loaded language: `TXT_PAU_TTL_LB` (`0xB090BB12`), the screen's
+title, and `TXT_PAU_TREE_TAB_WEAPON` (`0x8278DE48`), its Collection tab. Each number is the percentage the Masteries screen shows for that category. Offense and defense run from 0 to 150%:
 the base nodes fill 0–100% and the extension nodes 100–150%. Both texts are empty when the percentages are unavailable.
 
 `CardIds.MasteryTexts` holds the two texts' Ids.
@@ -20,8 +21,9 @@ the base nodes fill 0–100% and the extension nodes 100–150%. Both texts are 
 
 1. `Masteries.ReadPercents` calls `MasteryPercent` with the mastery manager for each of the four categories and the
    character key.
-2. `CardContents.ComposeMasteries` formats the four numbers into the two texts.
-3. `CardWriter` sets the texts with `TextComponentSetText`.
+2. `CardContents.ComposeMasteries` formats the four numbers into the two texts' values.
+3. `CardWriter` looks up each label with `TextLookup`, puts it before the value and sets the texts with
+   `TextComponentSetText`.
 
 ## Runtime data
 

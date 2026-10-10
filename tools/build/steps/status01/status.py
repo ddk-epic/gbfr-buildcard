@@ -25,7 +25,7 @@ SINK = 0.45  # baseline below a middle-aligned text's centre, per font size
 LABEL_SIZE = 40
 NUMBER_SIZE = 44.8
 PERCENT_SIZE = NUMBER_SIZE * UNIT_SCALE
-MASTERIES_SIZE = 32
+MASTERIES_SIZE = 30
 
 # block units
 W = 1000

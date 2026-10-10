@@ -625,15 +625,15 @@ Objects:
       VerticalFit: 0
       Enable: true
   Active: true
-  Position: -1402, -271.337, 0
+  Position: -1402, -272.492, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.7, 0.7, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 310, 670.663
+  AnchorPoint: 310, 669.508
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: -332.005, 634.663
-  OffsetMax: 952.005, 706.663
+  OffsetMin: -332.005, 633.508
+  OffsetMax: 952.005, 705.508
   SizeDelta: 1284.01, 72
 - Id: 8
   Name: loc_name01_icon
@@ -3151,15 +3151,15 @@ Objects:
   Children:
   - 74
   Active: true
-  Position: -2028.2, -394.416, 0
+  Position: -2028.2, -395.571, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -2028.2, -394.416
+  AnchorPoint: -2028.2, -395.571
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2368, -456.295
-  OffsetMax: -1688.4, -332.537
+  OffsetMin: -2368, -457.45
+  OffsetMax: -1688.4, -333.692
   SizeDelta: 679.6, 123.758
 - Id: 74
   Name: bc_status_panel
@@ -3235,15 +3235,15 @@ Objects:
       Alpha: 1
       Enable: true
   Active: true
-  Position: -2028.2, -394.416, 0
+  Position: -2028.2, -395.571, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.68, 0.68, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -2028.2, -394.416
+  AnchorPoint: -2028.2, -395.571
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -2528.2, -485.468
-  OffsetMax: -1528.2, -303.363
+  OffsetMin: -2528.2, -486.624
+  OffsetMax: -1528.2, -304.519
   SizeDelta: 1000, 182.105
 - Id: 77
   Name: chr_status01
@@ -5118,16 +5118,16 @@ Objects:
   - 115
   - 116
   Active: true
-  Position: -2028.2, -482.287, 0
+  Position: -2028.2, -482.865, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: -2028.2, -482.287
+  AnchorPoint: -2028.2, -482.865
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
   OffsetMin: -2368, -501.03
-  OffsetMax: -1688.4, -463.545
-  SizeDelta: 679.6, 37.485
+  OffsetMax: -1688.4, -464.7
+  SizeDelta: 679.6, 36.33
 - Id: 113
   Name: bc_masteries_panel
   Children:
@@ -5158,9 +5158,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -339.8, -18.742
-  OffsetMax: 339.8, 18.742
-  SizeDelta: 679.6, 37.485
+  OffsetMin: -339.8, -18.165
+  OffsetMax: 339.8, 18.165
+  SizeDelta: 679.6, 36.33
 - Id: 114
   Name: bc_masteries_panel_outline
   Components:
@@ -5189,9 +5189,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -339.8, -18.742
-  OffsetMax: 339.8, 18.742
-  SizeDelta: 679.6, 37.485
+  OffsetMin: -339.8, -18.165
+  OffsetMax: 339.8, 18.165
+  SizeDelta: 679.6, 36.33
 - Id: 115
   Name: bc_masteries_text
   Components:
@@ -5200,7 +5200,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
-      FontSize: 32
+      FontSize: 30
       Color: 0.19607843, 0.37254903, 0.49019608, 1
       Margin: 0, 0, 0, 0
       IsGradient: false
@@ -5322,16 +5322,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -307.8, 1.044, 0
+  Position: -307.8, 1.01, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.68, 0.68, 1
   Pivot: 0, 0.5
-  AnchorPoint: -307.8, 1.044
+  AnchorPoint: -307.8, 1.01
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -307.8, -14.956
-  OffsetMax: 150.264, 17.044
-  SizeDelta: 458.064, 32
+  OffsetMin: -307.8, -13.99
+  OffsetMax: 150.264, 16.01
+  SizeDelta: 458.064, 30
 - Id: 116
   Name: bc_collection_text
   Components:
@@ -5340,7 +5340,7 @@ Objects:
       Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
-      FontSize: 32
+      FontSize: 30
       Color: 0.19607843, 0.37254903, 0.49019608, 1
       Margin: 0, 0, 0, 0
       IsGradient: false
@@ -5462,16 +5462,16 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: 3.5, 1.044, 0
+  Position: 3.5, 1.01, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.68, 0.68, 1
   Pivot: 0, 0.5
-  AnchorPoint: 3.5, 1.044
+  AnchorPoint: 3.5, 1.01
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 3.5, -14.956
-  OffsetMax: 461.564, 17.044
-  SizeDelta: 458.064, 32
+  OffsetMin: 3.5, -13.99
+  OffsetMax: 461.564, 16.01
+  SizeDelta: 458.064, 30
 - Id: 117
   Name: loc_chr_status02
   Children:

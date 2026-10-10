@@ -37,11 +37,13 @@ def main():
     outputs = [(name, path, ctx.prefab(name).text()) for name, path in TARGETS.items()]
     outputs += [(f"{name}.list", path.replace(".prfb.", ".list."), ctx.lists[name]) for name, path in TARGETS.items()]
     outputs.append(("CardIds", codegen.OUTPUT, codegen.generate(ctx.prefab("status01"), ctx.exports)))
+    outputs += [(name, path, data) for name, (path, data) in ctx.binaries.items()]
     for name, path, text in outputs:
         full = os.path.join(REPO, path)
+        binary = isinstance(text, bytes)
         committed = None
         if os.path.exists(full):
-            with open(full, encoding="utf-8", newline="") as file:
+            with open(full, "rb" if binary else "r", **({} if binary else {"encoding": "utf-8", "newline": ""})) as file:
                 committed = file.read()
         if text == committed:
             print(f"{name}: up to date")
@@ -54,13 +56,13 @@ def main():
                 for line in report or ["(no differences beyond the tolerance)" if args.tolerance else
                                        "(same objects, different text)"]:
                     print(f"  {line}")
-            elif committed is not None:
+            elif committed is not None and not binary:
                 for line in difflib.unified_diff(committed.splitlines(), text.splitlines(), n=0, lineterm=""):
                     if not line.startswith(("---", "+++", "@@")):
                         print(f"  {line}")
         else:
             os.makedirs(os.path.dirname(full), exist_ok=True)
-            with open(full, "w", encoding="utf-8", newline="") as file:
+            with open(full, "wb" if binary else "w", **({} if binary else {"encoding": "utf-8", "newline": ""})) as file:
                 file.write(text)
             print(f"{name}: written")
     sys.exit(1 if stale else 0)

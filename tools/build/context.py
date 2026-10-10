@@ -27,6 +27,7 @@ class Context:
         self.exports = {}  # key: node, or nested lists of nodes
         self.lists = {}  # name: the asset list's text
         self.merged = {}  # name: the stock lists merged into its asset list
+        self.binaries = {}  # name: (path, bytes) of a binary output
         self._stock = {}
 
     def prefab(self, name):
@@ -41,6 +42,16 @@ class Context:
     def stock_list(self, name):
         # the game's asset list of the prefab
         return self.stock_file(f"{name}.list")
+
+    def stock_bytes(self, name):
+        # <stock dir>/<name>, a game file as is
+        if self.stock_dir is None:
+            raise SystemExit(f"{name}: this build needs stock files, pass --stock <dir>")
+        path = os.path.join(self.stock_dir, name)
+        if not os.path.exists(path):
+            raise SystemExit(f"{path} not found: extract the game's {name}")
+        with open(path, "rb") as file:
+            return file.read()
 
     def stock_file(self, name):
         # <stock dir>/<name>.yaml

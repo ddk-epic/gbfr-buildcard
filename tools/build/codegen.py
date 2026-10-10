@@ -31,7 +31,10 @@ def generate(prefab, exports):
              "{"]
     for key, value in sorted(exports.items()):
         if isinstance(value, int):
-            lines.append(f"    public const int {key} = {value};")
+            if value > 0x7FFFFFFF:
+                lines.append(f"    public const uint {key} = 0x{value:08X};")
+            else:
+                lines.append(f"    public const int {key} = {value};")
             continue
         for node in nodes(value):
             if node not in ids:

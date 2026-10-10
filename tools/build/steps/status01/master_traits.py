@@ -6,7 +6,6 @@ from steps.layout import CARD_H, CARD_W, MASTER_TRAITS, OUTLINE, card, mt_clip, 
 STYLES = 3
 SLOTS, CAPTAIN_SLOTS = [4, 8, 8, 10], [4, 8, 8, 14]
 COLUMNS = 2
-RANKS = ["1", "2", "3", "EX"]
 RANK_TEXT_IDS = [f"TXT_PAU_SKL_BD_ST_RANK_{n}" for n in range(1, 5)]
 INK = (0.19607843, 0.37254903, 0.4901961)
 
@@ -174,7 +173,7 @@ def grid(board, name, slots, ranks, active):
 
         rank_texts = []
         for r, rank in enumerate(ranks):
-            label = rect(f"bc_mt_{s}_{r}_label", text(f"STYLE RANK {RANKS[r]}", LABEL_SIZE, INK, 0.8, LEFT), (0, 1))
+            label = rect(f"bc_mt_{s}_{r}_label", text("", LABEL_SIZE, INK, 0.8, LEFT), (0, 1))
             set_text(label, TITLE_TEXT_COLOR)
             label.add_component(["  - ComponentName: TextSetter", "    Component:", f"      TextID: {RANK_TEXT_IDS[r]}",
                                  "      Enable: true"])

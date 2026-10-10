@@ -34694,7 +34694,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 1'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -34796,7 +34796,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 2'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -34898,7 +34898,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 3'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -35000,7 +35000,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK EX'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -38042,7 +38042,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 1'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -38144,7 +38144,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 2'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -38246,7 +38246,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 3'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -38348,7 +38348,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK EX'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -41390,7 +41390,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 1'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -41492,7 +41492,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 2'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -41594,7 +41594,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 3'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -41696,7 +41696,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK EX'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -57070,7 +57070,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 1'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -57172,7 +57172,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 2'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -57274,7 +57274,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 3'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -57376,7 +57376,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK EX'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -60810,7 +60810,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 1'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -60912,7 +60912,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 2'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -61014,7 +61014,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 3'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -61116,7 +61116,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK EX'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -64550,7 +64550,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 1'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -64652,7 +64652,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 2'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -64754,7 +64754,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK 3'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17
@@ -64856,7 +64856,7 @@ Objects:
   Components:
   - ComponentName: Text
     Component:
-      Text: 'STYLE RANK EX'
+      Text: ''
       FontPath: fonts/fot_skipstd_b_sdf
       MaterialPath: fonts/fot_skipstd_b_sdf/fot_skipstd_b_sdf_material
       FontSize: 17

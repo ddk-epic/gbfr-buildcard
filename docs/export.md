@@ -9,7 +9,7 @@ saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 | Item | Value |
 |---|---|
 | File | `Pictures/GBFR Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the text of the card's `name01_01` (`CardIds.CharaName`) at the press, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
-| Content | The card's rect, `CardIds.CardWidth` x `CardIds.CardHeight` (3528x1764) at `CardIds.CardY` (74) above the centre of the 3840x2160 UI canvas, without the page arrows' button prompts. |
+| Content | The card's rect, `CardIds.CardWidth` x `CardIds.CardHeight` (3528x1764) at `CardIds.CardY` (74) above the centre of the 3840x2160 UI canvas, without the page arrows' button prompts and the saved notice. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
 | Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `SavedNotice.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
 | Log | See [Log](#log). |
@@ -89,9 +89,9 @@ presents from the press:
 |---|---|
 | 1 | Nothing; the frame may predate the hidden prompts. |
 | 2 or later | `CardRedraw.Begin`: the next frame is redrawn. |
-| The one after | `CardRedraw.End`: the UI's frame buffer is read, the PNG is saved on a worker thread, the prompts are shown. |
+| The one after | `CardRedraw.End`: the UI's frame buffer is read, the PNG is saved on a worker thread, the prompts and notices are shown. |
 
-The game thread hides the prompts and the render thread starts the redraw; once started, the capture is ended only by the render thread. When no redraw starts within 1000 ms of the press, the prompts are shown and `Card export failed: no frame was captured` is logged.
+The game thread hides the prompts and notices and the render thread starts the redraw; once started, the capture is ended only by the render thread. When no redraw starts within 1000 ms of the press, the prompts and notices are shown and `Card export failed: no frame was captured` is logged.
 
 ## Game rendering
 
@@ -187,6 +187,11 @@ Fields of both controllers:
 `ShowInfo`, vfunc 35 of both controllers, sets the controller from an info. `SavedNotice` hooks both: for an info of
 kind 2 and type `0x27` within 5000 ms of the push, it sets the controller's `+0x1D0` to `NoticeDuration` in seconds, and at that controller's next
 info it puts the previous value back.
+
+Each controller's object (`+0x10`) is the shown info: `ShowInfo` activates it and sets `+0x1A8`; when the info has
+finished, the controller clears `+0x1A8` and deactivates the object. On a Save Card press, `SavedNotice` deactivates the
+object of each controller that showed the notice within 5000 ms and still has `+0x1A8` set, and of each controller that
+shows the notice during the capture. After the capture it activates the objects again whose `+0x1A8` is still set.
 
 ## Game functions
 

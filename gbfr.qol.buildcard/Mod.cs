@@ -107,7 +107,7 @@ public class Mod : ModBase
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
         _statusGuide = new StatusGuide(_hooks, _logger, _cardWriter.SetActive);
         _statusGuide.Init();
-        _savedNotice = new SavedNotice(_hooks, _logger);
+        _savedNotice = new SavedNotice(_hooks, _logger, _cardWriter.SetActive);
         _savedNotice.Init(scanManager, "granblue_fantasy_relink_er");
         _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice,
             _weaponArtHooks.CardShown, _cardWriter.CharaName, () => _configuration.SteamScreenshots, _logger);

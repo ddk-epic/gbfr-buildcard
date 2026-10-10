@@ -32,7 +32,9 @@ public unsafe class SavedNotice
     // the controllers' vtable index of ShowInfo
     private const int ShowInfoIndex = 35;
 
-    // controller: seconds an info stays
+    // controller offsets
+    private const int ControllerObject = 0x10;
+    private const int Showing = 0x1A8;
     private const int Duration = 0x1D0;
 
     // milliseconds
@@ -41,21 +43,29 @@ public unsafe class SavedNotice
     // milliseconds
     private const long ShowTimeout = 5000;
 
+    // milliseconds
+    private const long HideWindow = 5000;
+
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
+    private readonly Action<nint, bool> _setActive;
     private nint* _uiManager;
     private nint _emptyCallback;
     private delegate* unmanaged<nint, int, nint, byte, void> _pushInfo;
     private long _pushedAt;
     private readonly Dictionary<nint, float> _shortened = [];
+    private readonly Dictionary<nint, long> _noticeShownAt = [];
+    private readonly List<nint> _hidden = [];
+    private bool _hiding;
 
     private delegate nint ShowInfoFn(nint controller, int* info);
     private readonly List<IHook<ShowInfoFn>> _showInfoHooks = [];
 
-    public SavedNotice(IReloadedHooks hooks, ILogger logger)
+    public SavedNotice(IReloadedHooks hooks, ILogger logger, Action<nint, bool> setActive)
     {
         _hooks = hooks;
         _logger = logger;
+        _setActive = setActive;
     }
 
     // PushInfo(queue, type, callback, add to log)
@@ -88,7 +98,7 @@ public unsafe class SavedNotice
     }
 
     // Queues the notice on the game thread.
-    public void Show()
+    public void Queue()
     {
         if (_uiManager == null || *_uiManager == 0 || _pushInfo == null)
             return;
@@ -102,17 +112,56 @@ public unsafe class SavedNotice
         _pushInfo(queue, PhotoSaved, (nint)callback, 1);
     }
 
+    // On the game thread: hides the shown notices or shows the running ones again.
+    public void Show(bool shown)
+    {
+        _hiding = !shown;
+        if (shown)
+        {
+            foreach (nint controller in _hidden)
+            {
+                if (*(byte*)(controller + Showing) != 0)
+                    _setActive(*(nint*)(controller + ControllerObject), true);
+            }
+            _hidden.Clear();
+            return;
+        }
+        long now = Environment.TickCount64;
+        foreach ((nint controller, long shownAt) in _noticeShownAt.ToList())
+        {
+            if (now - shownAt < HideWindow)
+                Hide(controller);
+            else
+                _noticeShownAt.Remove(controller);
+        }
+    }
+
+    private void Hide(nint controller)
+    {
+        nint obj = *(nint*)(controller + ControllerObject);
+        if (obj == 0 || *(byte*)(controller + Showing) == 0)
+            return;
+        _setActive(obj, false);
+        _hidden.Add(controller);
+    }
+
     // Shortens the controller's duration for the notice until its next info.
     private nint ShowInfoImpl(IHook<ShowInfoFn> hook, nint controller, int* info)
     {
         if (_shortened.Remove(controller, out float duration))
             *(float*)(controller + Duration) = duration;
-        if (info[0] == InfoKind && info[1] == PhotoSaved && _pushedAt != 0
-            && Environment.TickCount64 - _pushedAt < ShowTimeout)
+        _noticeShownAt.Remove(controller);
+        bool notice = info[0] == InfoKind && info[1] == PhotoSaved && _pushedAt != 0
+            && Environment.TickCount64 - _pushedAt < ShowTimeout;
+        if (notice)
         {
             _shortened[controller] = *(float*)(controller + Duration);
             *(float*)(controller + Duration) = NoticeDuration / 1000f;
+            _noticeShownAt[controller] = Environment.TickCount64;
         }
-        return hook.OriginalFunction(controller, info);
+        nint result = hook.OriginalFunction(controller, info);
+        if (notice && _hiding)
+            Hide(controller);
+        return result;
     }
 }

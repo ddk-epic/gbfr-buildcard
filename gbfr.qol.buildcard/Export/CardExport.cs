@@ -61,11 +61,11 @@ public class CardExport
         _logger = logger;
     }
 
-    // On the game thread: hides the page button prompts on a press, shows them after the capture or its timeout.
+    // On the game thread: hides the prompts and notices on a press, shows them after the capture or its timeout.
     public void OnTick()
     {
         if (Interlocked.Exchange(ref _saved, 0) == 1)
-            _notice.Show();
+            _notice.Queue();
         bool pressed = _button.Pressed();
         bool cardShown = _cardShown();
         if (cardShown)
@@ -75,17 +75,20 @@ public class CardExport
             && Interlocked.CompareExchange(ref _state, Idle, Hidden) == Hidden)
         {
             _guide.Show(true);
+            _notice.Show(true);
             _logger.WriteLine("[gbfr.qol.buildcard] Card export failed: no frame was captured", Color.Red);
         }
         else if (_state == Captured)
         {
             _guide.Show(true);
+            _notice.Show(true);
             _state = Idle;
         }
         else if (_state == Idle && pressed && _saving == 0 && cardShown)
         {
             _fileNamePrefix = FileNamePrefix(_charaName());
             _guide.Show(false);
+            _notice.Show(false);
             _hiddenSince = Environment.TickCount64;
             _hiddenAt = Interlocked.Read(ref _presents);
             _state = Hidden;

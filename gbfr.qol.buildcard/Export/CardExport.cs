@@ -9,23 +9,22 @@ namespace gbfr.qol.buildcard.Export;
 // Saves the card as a 2880x1440 PNG on Save Card.
 public class CardExport
 {
-    // the UI canvas, fitted into the backbuffer
     private const int CanvasWidth = 3840;
     private const int CanvasHeight = 2160;
 
-    // the export's size
     private const int TargetWidth = 2880;
     private const int TargetHeight = 1440;
 
-    // frames presented between hiding the page button prompts and the capture
     private const int HiddenFrames = 2;
 
-    // milliseconds the page button prompts stay hidden when no capture comes
+    // milliseconds
     private const long CaptureTimeout = 1000;
 
+    // game thread: Idle to Hidden, Hidden to Idle on the timeout, Captured to Idle; render thread: the rest
     private const int Idle = 0;
     private const int Hidden = 1;
-    private const int Captured = 2;
+    private const int Capturing = 2;
+    private const int Captured = 3;
 
     private readonly SaveCardButton _button;
     private readonly StatusGuide _guide;
@@ -56,10 +55,10 @@ public class CardExport
     public void OnTick()
     {
         bool pressed = _button.Pressed();
-        if (_state == Hidden && Environment.TickCount64 - _hiddenSince > CaptureTimeout)
+        if (_state == Hidden && Environment.TickCount64 - _hiddenSince > CaptureTimeout
+            && Interlocked.CompareExchange(ref _state, Idle, Hidden) == Hidden)
         {
             _guide.Show(true);
-            _state = Idle;
             _logger.WriteLine("[gbfr.qol.buildcard] Card export failed: no frame was captured", Color.Red);
         }
         else if (_state == Captured)
@@ -76,21 +75,21 @@ public class CardExport
         }
     }
 
-    // On the render thread: redraws or captures the card once the frames without the prompts are presented.
+    // On the render thread: redraws and captures the card once the frames without the prompts are presented.
     public void OnPresenting(nint swapChain)
     {
         long presents = Interlocked.Increment(ref _presents);
         _redraw.Init(swapChain);
-        if (_state != Hidden)
-            return;
-        long frame = presents - _hiddenAt;
-        if (frame < HiddenFrames)
-            return;
-        if (frame == HiddenFrames)
-        {
+        if (_state == Capturing)
+            Capture(swapChain);
+        else if (_state == Hidden && presents - _hiddenAt >= HiddenFrames
+            && Interlocked.CompareExchange(ref _state, Capturing, Hidden) == Hidden)
             _redraw.Begin(swapChain, CardRectF, TargetWidth, TargetHeight);
-            return;
-        }
+    }
+
+    // Reads the redrawn card, or the backbuffer's, and saves it on a worker thread.
+    private void Capture(nint swapChain)
+    {
         try
         {
             int width = TargetWidth, height = TargetHeight;
@@ -129,7 +128,6 @@ public class CardExport
         }
     }
 
-    // The card's rect in a width x height backbuffer.
     private static RectangleF CardRectF(int width, int height)
     {
         float scale = Math.Min((float)width / CanvasWidth, (float)height / CanvasHeight);
@@ -138,6 +136,5 @@ public class CardExport
         return new RectangleF(left, top, CardIds.CardWidth * scale, CardIds.CardHeight * scale);
     }
 
-    // The card's rect in a width x height backbuffer, in whole pixels.
     private static Rectangle CardRect(int width, int height) => Rectangle.Round(CardRectF(width, height));
 }

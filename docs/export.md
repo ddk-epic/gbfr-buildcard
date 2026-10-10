@@ -65,10 +65,10 @@ presents from the press:
 | Present after the press | Step |
 |---|---|
 | 1 | Nothing; the frame may predate the hidden prompts. |
-| 2 | `CardRedraw.Begin`: the next frame is redrawn. |
-| 3 | `CardRedraw.End`: the UI's frame buffer is read, the PNG is saved on a worker thread, the prompts are shown. |
+| 2 or later | `CardRedraw.Begin`: the next frame is redrawn. |
+| The one after | `CardRedraw.End`: the UI's frame buffer is read, the PNG is saved on a worker thread, the prompts are shown. |
 
-When no capture comes within 1000 ms, the prompts are shown and `Card export failed: no frame was captured` is logged.
+The game thread hides the prompts and the render thread starts the redraw; once started, the capture is ended only by the render thread. When no redraw starts within 1000 ms of the press, the prompts are shown and `Card export failed: no frame was captured` is logged.
 
 ## Game rendering
 
@@ -80,7 +80,7 @@ texture to the backbuffer. The UI's texture changes from frame to frame.
 
 `CardRedraw` hooks the immediate context's `DrawIndexed` (12), `Draw` (13), `DrawIndexedInstanced` (20),
 `DrawInstanced` (21), `OMSetRenderTargets` (33) and `OMSetRenderTargetsAndUnorderedAccessViews` (34), read from the
-swapchain's device. Outside a redraw frame they pass through.
+swapchain's device. Outside a redraw frame they pass through; calls on other contexts always pass through.
 
 In the redraw frame:
 
@@ -103,7 +103,7 @@ unorm, sRGB), B8G8R8A8 (unorm, sRGB) and R10G10B10A2 are read; the alpha is drop
 
 ## Backbuffer capture
 
-When no UI frame buffer is found, `End` returns nothing and the card's rect is copied from the backbuffer at the third
+When no UI frame buffer is found, `End` returns nothing and the card's rect is copied from the backbuffer at the same
 present instead, then resized to 2880x1440 by `Resample`: averaged when shrinking, interpolated when enlarging.
 
 ## Log
@@ -112,13 +112,13 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 
 | Line | Logged |
 |---|---|
-| `Redraw format <format> scale <x>x<y> offset <x>,<y> frame buffers <count> UI draws <count>` | At the third present, when the UI's frame buffer was found. |
-| `Redraw no UI frame buffer, <count> frame buffers` | At the third present, when it was not; the card comes from the backbuffer. |
+| `Redraw format <format> scale <x>x<y> offset <x>,<y> frame buffers <count> UI draws <count>` | At the present after the redraw, when the UI's frame buffer was found. |
+| `Redraw no UI frame buffer, <count> frame buffers` | At the present after the redraw, when it was not; the card comes from the backbuffer. |
 | `Card saved to <path>` | After the PNG is written; ends in `and added to Steam` when Steam took it. |
 | `Card export failed: <reason>` | When resizing or writing the PNG fails. |
 | The exception with its stack trace | When the redraw or the read throws on the render thread. |
 | `Swapchain methods not found: <reason>` | At startup, when the throwaway D3D11 swapchain cannot be made; there is no export then. |
-| `Card export failed: no frame was captured` | When no capture comes within 1000 ms of the press. |
+| `Card export failed: no frame was captured` | When no redraw starts within 1000 ms of the press. |
 
 The redraw line's fields:
 

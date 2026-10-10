@@ -39,7 +39,6 @@ public unsafe class CardRedraw
     private const int MaxTargets = 8;
     private const int MaxRects = 16;
 
-    // frame buffers kept at once
     private const int MaxFrameBuffers = 6;
 
     private readonly IReloadedHooks _hooks;
@@ -189,7 +188,7 @@ public unsafe class CardRedraw
 
     private void SetTargetsImpl(nint context, uint count, nint* views, nint depth)
     {
-        if (_redrawing)
+        if (_redrawing && context == _context)
             OnBind(count, views, depth, true);
         _setTargetsHook!.OriginalFunction(context, count, views, depth);
     }
@@ -198,7 +197,7 @@ public unsafe class CardRedraw
         nint uavs, nint initialCounts)
     {
         // count -1 keeps the bound render targets
-        if (_redrawing && count != 0xFFFFFFFF)
+        if (_redrawing && context == _context && count != 0xFFFFFFFF)
             OnBind(count, views, depth, false);
         _setTargetsAndUavsHook!.OriginalFunction(context, count, views, depth, uavStart, uavCount, uavs, initialCounts);
     }
@@ -292,9 +291,9 @@ public unsafe class CardRedraw
     }
 
     // Notes the UI's texture; returns the bound frame buffer to redraw into.
-    private FrameBuffer? BeforeDraw()
+    private FrameBuffer? BeforeDraw(nint context)
     {
-        if (!_redrawing)
+        if (!_redrawing || context != _context)
             return null;
         _draws++;
         if (_bound == _backbuffer && _final == 0)
@@ -352,7 +351,7 @@ public unsafe class CardRedraw
 
     private void DrawIndexedImpl(nint context, uint indexCount, uint startIndex, int baseVertex)
     {
-        var frameBuffer = BeforeDraw();
+        var frameBuffer = BeforeDraw(context);
         _drawIndexedHook!.OriginalFunction(context, indexCount, startIndex, baseVertex);
         if (frameBuffer != null)
             Redraw(frameBuffer, () => _drawIndexedHook.OriginalFunction(context, indexCount, startIndex, baseVertex));
@@ -360,7 +359,7 @@ public unsafe class CardRedraw
 
     private void DrawImpl(nint context, uint vertexCount, uint startVertex)
     {
-        var frameBuffer = BeforeDraw();
+        var frameBuffer = BeforeDraw(context);
         _drawHook!.OriginalFunction(context, vertexCount, startVertex);
         if (frameBuffer != null)
             Redraw(frameBuffer, () => _drawHook.OriginalFunction(context, vertexCount, startVertex));
@@ -369,7 +368,7 @@ public unsafe class CardRedraw
     private void DrawIndexedInstancedImpl(nint context, uint indexCount, uint instanceCount, uint startIndex,
         int baseVertex, uint startInstance)
     {
-        var frameBuffer = BeforeDraw();
+        var frameBuffer = BeforeDraw(context);
         _drawIndexedInstancedHook!.OriginalFunction(context, indexCount, instanceCount, startIndex, baseVertex, startInstance);
         if (frameBuffer != null)
             Redraw(frameBuffer, () => _drawIndexedInstancedHook.OriginalFunction(context, indexCount, instanceCount, startIndex,
@@ -379,7 +378,7 @@ public unsafe class CardRedraw
     private void DrawInstancedImpl(nint context, uint vertexCount, uint instanceCount, uint startVertex,
         uint startInstance)
     {
-        var frameBuffer = BeforeDraw();
+        var frameBuffer = BeforeDraw(context);
         _drawInstancedHook!.OriginalFunction(context, vertexCount, instanceCount, startVertex, startInstance);
         if (frameBuffer != null)
             Redraw(frameBuffer, () => _drawInstancedHook.OriginalFunction(context, vertexCount, instanceCount, startVertex, startInstance));

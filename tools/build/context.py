@@ -7,7 +7,6 @@ from model.prefab import Prefab
 REPO = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../.."))
 PREFABS = "gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/prefabs"
 
-# the prefabs the build writes, by name
 TARGETS = {
     "status01": f"{PREFABS}/status01.prfb.yaml",
     "chr_status_bg01": f"{PREFABS}/chr_status_bg01.prfb.yaml",
@@ -40,7 +39,6 @@ class Context:
         return Prefab.parse(self._stock[name])
 
     def stock_list(self, name):
-        # the game's asset list of the prefab
         return self.stock_file(f"{name}.list")
 
     def stock_bytes(self, name):

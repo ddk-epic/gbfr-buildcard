@@ -7,7 +7,7 @@ namespace gbfr.qol.buildcard.Hooks;
 // Reads a chara's master trait cells from the game and fills their descriptions with the game's setter.
 public unsafe class MasterTraits
 {
-    // SetSkillBoardDescription's mov r15, [rip + disp32] loading the skill board tables
+    // SetSkillBoardDescription's mov r15, [rip + disp32]
     private const int TablesLoad = 0x43;
 
     // tables: MSVC unordered_maps, each a node list sentinel pointer and size; nodes are [next, prev, key, value]
@@ -108,7 +108,6 @@ public unsafe class MasterTraits
         return entries.Count == size ? entries : null;
     }
 
-    // A uint-keyed map's entries by key
     private static Dictionary<uint, nint> ByUintKey(List<(ulong Key, nint Value)> entries)
     {
         var map = new Dictionary<uint, nint>(entries.Count);
@@ -118,7 +117,6 @@ public unsafe class MasterTraits
     }
 }
 
-// A master trait cell read from the game.
 public readonly record struct MasterTraitCell(int Slot, uint EffectKey, uint TitleTextId)
 {
     private const int ExSlots = 50;

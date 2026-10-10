@@ -28,7 +28,7 @@ public static class Png
             var row = new byte[stride + 1];
             for (int y = 0; y < height; y++)
             {
-                FilterPaeth(rgb, y * stride, y > 0 ? (y - 1) * stride : -1, stride, row);
+                FilterRow(rgb, y * stride, y > 0 ? (y - 1) * stride : -1, stride, row);
                 zlib.Write(row);
             }
         }
@@ -36,8 +36,8 @@ public static class Png
         WriteChunk(file, "IEND", []);
     }
 
-    // Writes the row at offset with the Paeth filter; above is -1 on the first row.
-    private static void FilterPaeth(byte[] rgb, int offset, int above, int stride, byte[] row)
+    // PNG filter type 4 (Paeth): each byte minus its predicted neighbour; above is -1 on the first row
+    private static void FilterRow(byte[] rgb, int offset, int above, int stride, byte[] row)
     {
         row[0] = 4;
         for (int i = 0; i < stride; i++)

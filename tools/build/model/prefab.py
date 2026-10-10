@@ -48,7 +48,6 @@ class Ref:
 
 
 class Component:
-    # one of a node's components
     def __init__(self, node, name):
         self.node, self.name = node, name
 
@@ -99,7 +98,6 @@ class Component:
         self.node.lines[i:i] = lines
 
     def items(self, name):
-        # a list field's values
         return [line[len("      - "):] for line in self.field(name)[1:]]
 
     def set_items(self, name, items):
@@ -274,7 +272,6 @@ class Node:
         del self.lines[start:end]
 
     def keep_components(self, *names):
-        # drops every component not named
         self.set_components([line for name, start, end in self._spans() if name in names
                              for line in self.lines[start:end]])
 
@@ -435,7 +432,6 @@ class Prefab:
         return node
 
     def paths(self):
-        # every node's path
         result = {self.root: ""}
         for node in self.walk():
             base = result[node] + "/" if node is not self.root else ""

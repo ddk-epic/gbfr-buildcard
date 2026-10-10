@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// A chara's build, read from its memory and checked.
 public sealed record CharaBuild(uint CharaKey, CharaEntry[] Entries, OverMasteryLine?[] OverMastery, uint?[] Summons)
 {
     // chara: 400 entries, masteries [limit_bonus key, taken bit per LimitBonusParamIndex], then the master trait cells

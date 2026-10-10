@@ -7,14 +7,14 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Export;
 
-// Adds Save Card to the Character Details footer and reads its button, polled from the game's shortcut updates.
+// Adds Save Card to the Character Details footer and reads its button.
 public unsafe class SaveCardButton
 {
-    // SetCharacterDetailsFooter's mov rbx, [rip + disp32] loading the footer's label list: a count, then label hashes
+    // SetCharacterDetailsFooter's mov rbx, [rip + disp32]
     private const int ListLoad = 0x36;
     private const int ListCapacity = 10;
 
-    // the GetButtonBits signature's mov r15, [rip + disp32] loading the input manager, and its call of GetButtonBits
+    // offsets in the GetButtonBits signature
     private const int InputLoad = 0x4;
     private const int MaskCall = 0x1A;
 
@@ -49,8 +49,7 @@ public unsafe class SaveCardButton
         _hooks = hooks;
     }
 
-    // SetCharacterDetailsFooter() sets the Character Details footer, UpdateShortcutInput(shortcut) reads a shortcut's
-    // button, GetButtonBits(input context, button, 1, mode) returns a button's input bits
+    // GetButtonBits(input context, button, 1, mode)
     public void Init(IScanManager scanManager, string signatureGroup)
     {
         scanManager.AddScan(nameof(SetCharacterDetailsFooter), signatureGroup, address =>
@@ -97,18 +96,17 @@ public unsafe class SaveCardButton
         _updateHook!.OriginalFunction(shortcut);
     }
 
-    // Appends Save Card's label to the footer's label list once.
     private void AddLabel()
     {
         long count = *_labels;
+        if (count is < 0 or >= ListCapacity)
+            return;
         uint* labels = (uint*)(_labels + 1);
         for (long i = 0; i < count; i++)
         {
             if (labels[i] == CardIds.SaveCardLabel)
                 return;
         }
-        if (count is < 0 or >= ListCapacity)
-            return;
         labels[count] = CardIds.SaveCardLabel;
         *_labels = count + 1;
     }

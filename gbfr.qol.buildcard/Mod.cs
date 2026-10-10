@@ -36,6 +36,7 @@ public class Mod : ModBase
     private WeaponArtHooks? _weaponArtHooks;
     private CardWriter? _cardWriter;
     private SaveCardButton? _saveCardButton;
+    private StatusGuide? _statusGuide;
     private SwapChainHooks? _swapChainHooks;
     private CardExport? _cardExport;
 
@@ -105,7 +106,9 @@ public class Mod : ModBase
         _gameText.Add(CardIds.SaveCardTextId, "Save Card");
         _saveCardButton = new SaveCardButton(_hooks);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
-        _cardExport = new CardExport(_saveCardButton, _weaponArtHooks.CardShown, _logger);
+        _statusGuide = new StatusGuide(_hooks, _logger, _cardWriter.SetActive);
+        _statusGuide.Init();
+        _cardExport = new CardExport(_saveCardButton, _statusGuide, _weaponArtHooks.CardShown, _logger);
         _saveCardButton.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);
         _swapChainHooks.Presenting += _cardExport.OnPresenting;

@@ -159,7 +159,7 @@ public unsafe class CardWriter
         _wrap.Cap(text);
     }
 
-    private void SetActive(nint obj, bool active)
+    public void SetActive(nint obj, bool active)
     {
         if (_setActive != null)
             _setActive(obj, active ? (byte)1 : (byte)0);

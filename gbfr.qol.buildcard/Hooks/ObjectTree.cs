@@ -1,6 +1,6 @@
 namespace gbfr.qol.buildcard.Hooks;
 
-// Finds status01's objects by their Id, walking the tree from the object CharaInfo is on.
+// Finds status01's objects by their Id, walking the tree from the object CharaInfo is on, and objects by name.
 public static unsafe class ObjectTree
 {
     private const int Owner = 0x10;
@@ -27,5 +27,21 @@ public static unsafe class ObjectTree
                 pending.Push(*(nint*)child);
         }
         return objects;
+    }
+
+    // The objects under root, root included, whose name hash is one of names
+    public static List<nint> FindByName(nint root, params uint[] names)
+    {
+        var found = new List<nint>();
+        var pending = new Stack<nint>([root]);
+        for (int visited = 0; pending.Count > 0 && visited < MaxObjects; visited++)
+        {
+            nint obj = pending.Pop();
+            if (names.Contains(*(uint*)(obj + NameHash)))
+                found.Add(obj);
+            for (nint child = *(nint*)(obj + Children); child < *(nint*)(obj + Children + 8); child += 8)
+                pending.Push(*(nint*)child);
+        }
+        return found;
     }
 }

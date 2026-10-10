@@ -6,7 +6,8 @@ using gbfr.qol.buildcard.Hooks;
 
 namespace gbfr.qol.buildcard.Export;
 
-// Saves the card as a 2880x1440 PNG on the footer's Save Card, from the card's rect on the screen.
+// Saves the card as a 2880x1440 PNG on the footer's Save Card, with the page button prompts hidden, from the card's
+// rect on the screen.
 public class CardExport
 {
     // the UI canvas, fitted into the backbuffer
@@ -17,35 +18,66 @@ public class CardExport
     private const int TargetWidth = 2880;
     private const int TargetHeight = 1440;
 
+    // frames presented between hiding the page button prompts and the capture
+    private const int HiddenFrames = 2;
+
+    // milliseconds the page button prompts stay hidden when no capture comes
+    private const long CaptureTimeout = 1000;
+
     private const int Idle = 0;
-    private const int Pending = 1;
+    private const int Hidden = 1;
+    private const int Captured = 2;
 
     private readonly SaveCardButton _button;
+    private readonly StatusGuide _guide;
     private readonly Func<bool> _cardShown;
     private readonly ILogger _logger;
     private readonly string _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
         "GBFR Build Cards");
     private volatile int _state;
     private volatile int _saving;
+    private long _presents;
+    private long _hiddenAt;
+    private long _hiddenSince;
 
-    public CardExport(SaveCardButton button, Func<bool> cardShown, ILogger logger)
+    public CardExport(SaveCardButton button, StatusGuide guide, Func<bool> cardShown, ILogger logger)
     {
         _button = button;
+        _guide = guide;
         _cardShown = cardShown;
         _logger = logger;
     }
 
-    // On the game thread: asks for a capture on a press.
+    // On the game thread: hides the page button prompts on a press, shows them after the capture or its timeout.
     public void OnTick()
     {
-        if (_button.Pressed() && _state == Idle && _saving == 0 && _cardShown())
-            _state = Pending;
+        bool pressed = _button.Pressed();
+        if (_state == Hidden && Environment.TickCount64 - _hiddenSince > CaptureTimeout)
+        {
+            _guide.Show(true);
+            _state = Idle;
+            _logger.WriteLine("[gbfr.qol.buildcard] Card export failed: no frame was captured", Color.Red);
+        }
+        else if (_state == Captured)
+        {
+            _guide.Show(true);
+            _state = Idle;
+        }
+        else if (_state == Idle && pressed && _saving == 0 && _cardShown())
+        {
+            _guide.Show(false);
+            _hiddenSince = Environment.TickCount64;
+            _hiddenAt = Interlocked.Read(ref _presents);
+            _state = Hidden;
+        }
     }
 
-    // On the render thread: captures the card from the backbuffer after a press.
+    // On the render thread: captures the card from the backbuffer once the frames without the page button prompts are
+    // presented.
     public void OnPresenting(nint swapChain)
     {
-        if (_state != Pending)
+        long presents = Interlocked.Increment(ref _presents);
+        if (_state != Hidden || presents - _hiddenAt <= HiddenFrames)
             return;
         try
         {
@@ -55,7 +87,7 @@ public class CardExport
         }
         finally
         {
-            _state = Idle;
+            _state = Captured;
         }
     }
 

@@ -3,7 +3,6 @@ namespace gbfr.qol.buildcard.Hooks;
 // Finds status01's objects by their Id, walking the tree from the object CharaInfo is on.
 public static unsafe class ObjectTree
 {
-    // docs/runtime-data.md
     private const int Owner = 0x10;
     private const int Children = 0x10;
     private const int NameHash = 0x1C4;
@@ -11,7 +10,7 @@ public static unsafe class ObjectTree
     private const uint Status01 = 0xD54E236E;  // name hash
     private const int MaxObjects = 0x4000;
 
-    // the objects by Id, or null when CharaInfo isn't on status01
+    // the objects by Id, or null when CharaInfo is not on status01
     public static Dictionary<int, nint>? Find(nint charaInfo)
     {
         nint root = *(nint*)(charaInfo + Owner);

@@ -21,7 +21,7 @@ python -m unittest discover -s tests -t .    # from tools/build
    in `build.py`'s `STEPS` changes it, in order.
 2. The prefabs are written with Ids in depth-first order, assigned only now: steps never see or use Ids.
 3. `codegen.py` writes the exported objects' Ids and `status01`'s object count to `CardIds.g.cs`. `CardWriter` finds
-   the objects by these Ids in `status01`'s tree (`docs/runtime-data.md`), and writes nothing when the count differs.
+   the objects by these Ids in `status01`'s tree ([ui.md](ui.md#ui-objects)), and writes nothing when the count differs.
 4. `lists.py` writes each prefab's asset list, the textures, atlases, materials, animations, image data and language
    data the game loads before building it: stock's list, then the assets the prefab names, then the stock lists a
    step merged with `ctx.merge_list`, except their animations. An asset missing from the list isn't loaded; a missing

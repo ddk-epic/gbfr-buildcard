@@ -7,6 +7,7 @@ using gbfrelink.utility.manager.Interfaces;
 using gbfr.qol.buildcard.Template;
 using gbfr.qol.buildcard.Configuration;
 using gbfr.qol.buildcard.Hooks;
+using gbfr.qol.buildcard.Export;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -34,6 +35,7 @@ public class Mod : ModBase
     private CharaStatusHooks? _charaStatusHooks;
     private WeaponArtHooks? _weaponArtHooks;
     private CardWriter? _cardWriter;
+    private SaveCardButton? _saveCardButton;
 
     public Mod(ModContext context)
     {
@@ -76,7 +78,7 @@ public class Mod : ModBase
         string modFolder = _modLoader.GetDirectoryForModId(_modConfig.ModId);
         scanManager.InitializeScans(Path.Combine(modFolder, "Signatures"), _modConfig.ModId);
 
-        _gameText = new GameText();
+        _gameText = new GameText(_hooks);
         _gameText.Init(scanManager, "granblue_fantasy_relink_er");
 
         _textWrap = new TextWrap(_gameText);
@@ -97,6 +99,10 @@ public class Mod : ModBase
         _cardWriter = new CardWriter(_gameText, _textWrap, _masterTraits, _masteries, _weaponArtHooks, _logger);
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.Filled += _cardWriter.OnFilled;
+
+        _gameText.Add(CardIds.SaveCardTextId, "Save Card");
+        _saveCardButton = new SaveCardButton(_hooks);
+        _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
     }
 
     #region Standard Overrides

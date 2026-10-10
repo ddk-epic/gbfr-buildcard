@@ -2,10 +2,13 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 using NenTools.Reloaded.ScanManager.Interfaces;
+using Reloaded.Hooks.Definitions;
+
+using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Sets UI texts through the game's Text setter and reads the loaded language's texts by id.
+// Sets UI texts through the game's Text setter, reads the loaded language's texts by id and adds the mod's texts.
 // Signature and parameters from Nenkai's gbfr.qol.detailedpercentages (MIT).
 public unsafe class GameText
 {
@@ -22,6 +25,17 @@ public unsafe class GameText
     private delegate* unmanaged<nint, GameString*, uint, int, void> _setText;
     // TextLookup(text tables, string out, text id hash, sub-id hash)
     private delegate* unmanaged<nint, TextView*, uint, uint, void> _lookup;
+    private delegate void TextLookup(nint tables, TextView* view, uint hash, uint subId);
+    private IHook<TextLookup>? _lookupHook;
+
+    private readonly IReloadedHooks _hooks;
+    // text id hash: the mod's text, UTF-8 and null-terminated
+    private readonly Dictionary<uint, (nint Ptr, int Length)> _added = [];
+
+    public GameText(IReloadedHooks hooks)
+    {
+        _hooks = hooks;
+    }
 
     public void Init(IScanManager scanManager, string signatureGroup)
     {
@@ -31,7 +45,30 @@ public unsafe class GameText
             _tables = PeImage.RipGlobal((byte*)address + TablesLoad, [0x48, 0x8B, 0x15]);
         });
         scanManager.AddScan("TextLookup", signatureGroup, address =>
-            _lookup = (delegate* unmanaged<nint, TextView*, uint, uint, void>)(nint)address);
+        {
+            _lookup = (delegate* unmanaged<nint, TextView*, uint, uint, void>)(nint)address;
+            _lookupHook = _hooks.CreateHook<TextLookup>(LookupImpl, address).Activate();
+        });
+    }
+
+    // Gives a text id the text in every language.
+    public void Add(uint hash, string value)
+    {
+        byte[] bytes = Encoding.UTF8.GetBytes(value + "\0");
+        nint ptr = Marshal.AllocHGlobal(bytes.Length);
+        Marshal.Copy(bytes, 0, ptr, bytes.Length);
+        _added[hash] = (ptr, bytes.Length - 1);
+    }
+
+    private void LookupImpl(nint tables, TextView* view, uint hash, uint subId)
+    {
+        if (_added.TryGetValue(hash, out var text))
+        {
+            view->Ptr = text.Ptr;
+            view->Length = text.Length;
+            return;
+        }
+        _lookupHook!.OriginalFunction(tables, view, hash, subId);
     }
 
     // hash: the custom XXHash32 of a text id

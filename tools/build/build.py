@@ -1,5 +1,5 @@
 # Usage: python build.py [--stock <dir>] [--check [--tolerance <t>]]
-# Builds the mod's prefabs, their asset lists and Generated/CardIds.g.cs from the steps below.
+# Builds the mod's prefabs, their asset lists, the footer guide table and Generated/CardIds.g.cs from the steps below.
 import argparse
 import difflib
 import os
@@ -8,6 +8,7 @@ import sys
 import codegen
 import lists
 import start
+import tables
 from steps.chr_status_bg01 import backdrop, lines
 from steps.status01 import frame, gear, master_traits, over_mastery, portrait, skills, status, summons
 from context import REPO, TARGETS, Context
@@ -15,7 +16,7 @@ from diff import diff
 from model.prefab import Prefab
 
 # the build steps in order, each with apply(ctx)
-STEPS = [start, frame, over_mastery, summons, skills, status, portrait, gear, master_traits, backdrop, lines, lists]
+STEPS = [start, frame, over_mastery, summons, skills, status, portrait, gear, master_traits, backdrop, lines, lists, tables]
 
 
 def build(stock=None):

@@ -1,7 +1,8 @@
 # Prefab build
 
-`tools/build/build.py` writes the mod's edited prefabs, `status01` and `chr_status_bg01`, their asset lists, and
-`gbfr.qol.buildcard/Generated/CardIds.g.cs`, the Ids of the objects `CardWriter` sets. The outputs are committed, so
+`tools/build/build.py` writes the mod's edited prefabs, `status01` and `chr_status_bg01`, their asset lists, the footer
+guide table `ui/table/guide_button.msg` with the Save Card row, and `gbfr.qol.buildcard/Generated/CardIds.g.cs`, the Ids
+of the objects `CardWriter` sets and the constants the mod shares with the build. The outputs are committed, so
 building the mod needs neither Python nor the game's files; the build steps are the source, and the outputs are never
 edited by hand.
 
@@ -15,7 +16,7 @@ python tools/build/build.py --stock <dir> --check    # writes nothing; exits 1, 
 python -m unittest discover -s tests -t .    # from tools/build
 ```
 
-## How it builds
+## Build
 
 1. Each prefab starts from stock (`start.py`, which also adds the card's container `loc_buildcard`), then each step
    in `build.py`'s `STEPS` changes it, in order.
@@ -36,6 +37,9 @@ The stock prefabs and asset lists come from `--stock`, a folder of the game's fi
 gbfr.uitools.exe b-convert -i <extracted>/ui/layouts/pause/summon/prefabs/summon_list01.prfb -o <stock>/summon_list01.prfb.yaml
 gbfr.uitools.exe b-convert -i <extracted>/ui/layouts/pause/status/prefabs/status01.list.listb -o <stock>/status01.list.yaml
 ```
+
+`guide_button.msg` is the game's file as is, extracted from `ui/table/guide_button.msg`. `tables.py` re-encodes it with
+map32 and array32 throughout, which reproduces the stock file byte for byte.
 
 The build reads `--stock` only when a step asks, and says which file is missing.
 

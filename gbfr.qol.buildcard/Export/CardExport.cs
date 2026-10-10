@@ -32,6 +32,7 @@ public class CardExport
     private readonly SaveCardButton _button;
     private readonly StatusGuide _guide;
     private readonly CardRedraw _redraw;
+    private readonly SavedNotice _notice;
     private readonly Func<bool> _cardShown;
     private readonly Func<string> _charaName;
     private readonly Func<bool> _addToSteam;
@@ -40,18 +41,20 @@ public class CardExport
         "GBFR Build Cards");
     private volatile int _state;
     private volatile int _saving;
+    private int _saved;
     private long _presents;
     private long _hiddenAt;
     private long _hiddenSince;
     private long _cardSeenAt;
     private string _fileNamePrefix = "";
 
-    public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, Func<bool> cardShown,
-        Func<string> charaName, Func<bool> addToSteam, ILogger logger)
+    public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, SavedNotice notice,
+        Func<bool> cardShown, Func<string> charaName, Func<bool> addToSteam, ILogger logger)
     {
         _button = button;
         _guide = guide;
         _redraw = redraw;
+        _notice = notice;
         _cardShown = cardShown;
         _charaName = charaName;
         _addToSteam = addToSteam;
@@ -61,6 +64,8 @@ public class CardExport
     // On the game thread: hides the page button prompts on a press, shows them after the capture or its timeout.
     public void OnTick()
     {
+        if (Interlocked.Exchange(ref _saved, 0) == 1)
+            _notice.Show();
         bool pressed = _button.Pressed();
         bool cardShown = _cardShown();
         if (cardShown)
@@ -131,6 +136,7 @@ public class CardExport
             Png.Write(path, rgb, TargetWidth, TargetHeight);
             bool steam = _addToSteam() && SteamScreenshots.Add(path, TargetWidth, TargetHeight);
             _logger.WriteLine($"[gbfr.qol.buildcard] Card saved to {path}{(steam ? " and added to Steam" : "")}");
+            Interlocked.Exchange(ref _saved, 1);
         }
         catch (Exception e)
         {

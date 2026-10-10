@@ -11,6 +11,7 @@ saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 | File | `Pictures/GBFR Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the text of the card's `name01_01` (`CardIds.CharaName`) at the press, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
 | Content | The card's rect, `CardIds.CardWidth` x `CardIds.CardHeight` (3528x1764) at `CardIds.CardY` (74) above the centre of the 3840x2160 UI canvas, without the page arrows' button prompts. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
+| Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `SavedNotice.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
 | Log | See [Log](#log). |
 
 ## Save Card
@@ -161,6 +162,32 @@ draws 990`.
 from the game's `steam_api64.dll` with the PNG's path and size. Steam copies the file into its library,
 `userdata/<account>/760/remote/881020/screenshots`.
 
+## Saved notice
+
+The photo mode reports a saved photo through the UI manager's info queue (`+0x310` on the UI manager). `SavedNotice`
+queues the same info on the game thread at the first `Tick` after the PNG is written.
+
+| Part | Source |
+|---|---|
+| Queue push | `PushInfo(queue, type, callback, log)` builds an info of kind 2 with the type, queues it and, when `log` is set, adds it to the message log. The signature `PushInfo` matches the photo mode's call with type `0x27`: the UI manager is the global loaded by the `mov rax, [rip + disp32]` at its start, the empty callback's vtable is loaded by the `lea rax, [rip + disp32]` at `+0x6E`, and the call is at `+0x85`. |
+| Callback | A 0x40-byte callable with the empty callback's vtable first and zeros after it, as the photo mode passes. |
+| Text | Info type `0x27` shows `TXT_INFO_PHT_SAVE_ABLE` ("A photo has been taken and saved.", `0x6086243B`) with the camera icon. |
+| Display | `ui::component::ControllerInformationSystem` and `ui::component::ControllerInformationToast` show the queued infos; both show type `0x27`. |
+
+An info is a 0xB8-byte record: kind at `+0x00`, type at `+0x04`, text hash at `+0x08`, the callback's vtable at `+0x58`.
+Fields of both controllers:
+
+| Offset | Field |
+|---|---|
+| `+0x1B4` | Seconds the current info has been shown, a float; the update adds the frame time. `ControllerInformationSystem` holds it at 0 while some menus are open. |
+| `+0x1D0` | Seconds an info stays, a float, 4.5 from the `ControllerInformationSystem` constructor. The info is hidden when `+0x1B4` reaches it. |
+| `+0x1F8` | The current info's kind. |
+| `+0x1FC` | The current info's type. |
+
+`ShowInfo`, vfunc 35 of both controllers, sets the controller from an info. `SavedNotice` hooks both: for an info of
+kind 2 and type `0x27` within 5000 ms of the push, it sets the controller's `+0x1D0` to `NoticeDuration` in seconds, and at that controller's next
+info it puts the previous value back.
+
 ## Game functions
 
 | Function | Use | Effect |
@@ -170,3 +197,5 @@ from the game's `steam_api64.dll` with the PNG's path and size. Steam copies the
 | `GetButtonBits(context, button, 1, mode)` | called | Returns a button's bits in the input manager; found through a call of it. |
 | `SetUpPageArrows(controller)` | hooked | Sets up the page arrows' shortcuts; vfunc 21 of `ControllerStatusGuide`. |
 | `SetObjectActive(object, active)` | called | Shows or hides an object and its subtree. |
+| `PushInfo(queue, type, callback, log)` | called | Queues an info of kind 2; found through the photo mode's call of it. |
+| `ShowInfo(controller, info)` | hooked | Sets `ControllerInformationSystem` or `ControllerInformationToast` from an info; vfunc 35. |

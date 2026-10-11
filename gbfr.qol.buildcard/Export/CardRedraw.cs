@@ -176,6 +176,11 @@ public unsafe class CardRedraw
             return BackbufferReadback.ReadTexture(_device, _context, frameBuffer.Texture, frameBuffer.Format,
                 new Rectangle(0, 0, (int)_outWidth, (int)_outHeight));
         }
+        catch (Exception e)
+        {
+            Stats += $", read failed: {e.Message}";
+            return null;
+        }
         finally
         {
             Release();

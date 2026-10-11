@@ -21,7 +21,7 @@ LABEL_W, COUNT_W = 367, 245  # a rank label's and its count's text
 STYLE_TITLE_H = 39
 CELL_H, CELL_GAP = 56, 5
 CELL_TEXT_LEFT, CELL_TEXT_RIGHT = 12, 2
-CELL_LINE_SPACING = -35  # Japanese font
+CELL_LINE_SPACING, CELL_LINE_SPACING_JPN = 4, -30
 
 # skillboard_window01's Master Traits list
 ATLAS = "atlas/pause_skillboard"
@@ -34,7 +34,6 @@ TITLE_TEXT_COLOR = (1, 1, 1), 0.69803923  # ttl_text01
 ON_COLOR = (0.98039216, 0.98039216, 0.9411765), 1  # text01
 OFF_COLOR = (0.6392157, 0.6784314, 0.6784314), 1  # text02
 CELL_MATERIAL, CELL_LANGUAGE = "fonts/fot_skipstd_b_sdf_ds01", "data/language/ld_skipstd_b_sdf_ds01"
-CELL_LINE_SPACING_ENG = 4
 GAME_CELL_H, TITLE_H = 252, 74  # game units
 PANEL_X, PANEL_TOP, PANEL_BOTTOM = 4.5, 6, 7  # card units, the panel around the rank's title and cells
 CELLS_X = 8  # card units
@@ -192,9 +191,7 @@ def set_text(node, color, cell=False):
     node.component("Text").set("Color", f"{', '.join(f(c) for c in color[0])}, {f(color[1])}")
     if cell:
         node.component("Text").set("MaterialPath", CELL_MATERIAL)
-        language = node.component("LanguageSetter")
-        language.set("LanguageData", CELL_LANGUAGE)
-        language.set("LineSpaching", CELL_LINE_SPACING_ENG)
+        node.component("LanguageSetter").set("LanguageData", CELL_LANGUAGE)
 
 
 def count_row(s, r):
@@ -274,7 +271,7 @@ def grid(board, name, slots, ranks, active):
                     placements.append(at)
                 for state, alpha, color in (("on", 1, ON_COLOR), ("off", 0.4, OFF_COLOR)):
                     node = rect(f"bc_mt_{s}_{r}_{c}_{state}",
-                                text("", CELL_SIZE, INK, alpha, LEFT, CELL_LINE_SPACING, CELL_LINE_SPACING_ENG), (0, 1))
+                                text("", CELL_SIZE, INK, alpha, LEFT, CELL_LINE_SPACING, CELL_LINE_SPACING_JPN), (0, 1))
                     set_text(node, color, cell=True)
                     x = card(cell_x + CELL_TEXT_LEFT, 0)[0]
                     placements.append(lambda n=node, x=x, y=row_top, w=CELL_TEXT_W, h=row_top - row_bottom:
@@ -303,7 +300,7 @@ def grid(board, name, slots, ranks, active):
 
 
 def picked_cell(container, key, base, style):
-    # a hidden copy of the cell's base under a picked outline, which CardWriter shows on picked cells
+    # a hidden copy of the cell's base under a picked outline
     picked_color, unpicked_color, unpicked_alpha = style
     s, r, c = key
     group = rect(f"bc_mt_{s}_{r}_{c}_picked", active=False)

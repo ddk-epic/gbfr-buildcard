@@ -53,7 +53,7 @@ FONT = "fonts/fot_skipstd_b_sdf"
 LEFT, CENTER, RIGHT = 513, 514, 516  # Text.Alignment
 
 
-def text(value, size, color, alpha, alignment, line_spacing=0, eng_line_spacing=None):
+def text(value, size, color, alpha, alignment, line_spacing=0, jpn_line_spacing=None):
     # a Text in the game's body font, with its LanguageSetter
     return ["  - ComponentName: Text", "    Component:", f"      Text: '{value}'", f"      FontPath: {FONT}",
             f"      MaterialPath: {FONT}/fot_skipstd_b_sdf_material", f"      FontSize: {f(size)}",
@@ -61,20 +61,20 @@ def text(value, size, color, alpha, alignment, line_spacing=0, eng_line_spacing=
             "      IsGradient: false", "      ColorMode: 3", "      ColorTL: 1, 1, 1, 1", "      ColorTR: 1, 1, 1, 1",
             "      ColorBL: 1, 1, 1, 1", "      ColorBR: 1, 1, 1, 1", "      CharacterSpacing: 0",
             f"      LineSpacing: {line_spacing}", f"      Alignment: {alignment}", "      Enable: true",
-            *language_setter(eng_line_spacing)]
+            *language_setter(jpn_line_spacing)]
 
 
-def language_setter(eng_line_spacing=None):
-    # the font of each language, and the English line spacing if given
+def language_setter(jpn_line_spacing=None):
+    # the font of each language, and the Japanese line spacing if given
     return ["  - ComponentName: LanguageSetter", "    Component:", "      MultiData: false",
-            "      LanguageData: data/language/ld_skipstd_b_sdf_material", *overwrites(eng_line_spacing),
+            "      LanguageData: data/language/ld_skipstd_b_sdf_material", *overwrites(jpn_line_spacing),
             "      Enable: true"]
 
 
-def overwrites(eng_line_spacing=None):
-    # a LanguageSetter's English overwrite, with the line spacing if given
-    enable_ls = "true" if eng_line_spacing is not None else "false"
-    return ["      Overwrites:", "      - Language: Eng", "        EnableFS: false", "        FontSize: 0",
+def overwrites(jpn_line_spacing=None):
+    # a LanguageSetter's Japanese overwrite
+    enable_ls = "true" if jpn_line_spacing is not None else "false"
+    return ["      Overwrites:", "      - Language: Jpn", "        EnableFS: false", "        FontSize: 0",
             "        EnableCS: false", "        CharacterSpaching: 0", f"        EnableLS: {enable_ls}",
-            f"        LineSpaching: {eng_line_spacing or 0}", "        EnableMG: false", "        Margine: 0, 0, 0, 0",
+            f"        LineSpaching: {jpn_line_spacing or 0}", "        EnableMG: false", "        Margine: 0, 0, 0, 0",
             "        EnableAL: false", "        Alignment: 0"]

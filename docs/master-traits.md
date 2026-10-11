@@ -21,7 +21,8 @@ cell shows it in the dim text at 40% opacity on the palette's unpicked base. A s
 
 A description is the text the Master Traits menu shows for the cell, in the loaded language, with its `{n}` values
 filled in. It is wrapped to the cell's width and cut to two lines, the second ending in the game's ellipsis; its icons
-are drawn at 0.7 times the game's size.
+are drawn at 0.7 times the game's size. Its lines are spaced at `LineSpacing` 4, and -30 through the
+`LanguageSetter`'s Japanese overwrite.
 
 ## Palettes
 

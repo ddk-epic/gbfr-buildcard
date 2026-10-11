@@ -123,14 +123,14 @@ public unsafe class WeaponArtHooks
             return;
 
         long count = *(long*)(loader + WantedCount);
+        if (count is < 0 or >= WantedMax)
+            return;
         for (int i = 0; i < count; i++)
         {
             nint entry = loader + Wanted + i * 8;
             if (*(uint*)entry == _key && *(byte*)(entry + 4) == (_alternate ? 1 : 0))
                 return;
         }
-        if (count >= WantedMax)
-            return;
         nint added = loader + Wanted + (nint)count * 8;
         *(uint*)added = _key;
         *(byte*)(added + 4) = _alternate ? (byte)1 : (byte)0;

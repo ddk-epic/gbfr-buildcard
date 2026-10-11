@@ -21,6 +21,9 @@ public unsafe partial class SwapChainHooks
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
 
+    [ThreadStatic]
+    private static bool _inPresent;
+
     // Raised on the render thread before the game presents a swapchain.
     public event Action<nint>? Presenting;
 
@@ -92,14 +95,34 @@ public unsafe partial class SwapChainHooks
 
     private int PresentImpl(nint swapChain, uint syncInterval, uint flags)
     {
-        OnPresenting(swapChain);
-        return _presentHook!.OriginalFunction(swapChain, syncInterval, flags);
+        if (_inPresent)
+            return _presentHook!.OriginalFunction(swapChain, syncInterval, flags);
+        _inPresent = true;
+        try
+        {
+            OnPresenting(swapChain);
+            return _presentHook!.OriginalFunction(swapChain, syncInterval, flags);
+        }
+        finally
+        {
+            _inPresent = false;
+        }
     }
 
     private int Present1Impl(nint swapChain, uint syncInterval, uint flags, nint parameters)
     {
-        OnPresenting(swapChain);
-        return _present1Hook!.OriginalFunction(swapChain, syncInterval, flags, parameters);
+        if (_inPresent)
+            return _present1Hook!.OriginalFunction(swapChain, syncInterval, flags, parameters);
+        _inPresent = true;
+        try
+        {
+            OnPresenting(swapChain);
+            return _present1Hook!.OriginalFunction(swapChain, syncInterval, flags, parameters);
+        }
+        finally
+        {
+            _inPresent = false;
+        }
     }
 
     private void OnPresenting(nint swapChain)

@@ -105,8 +105,9 @@ and `loc_button_system01_r` (`0xFB687EBB`) under the component's object (`+0x10`
 ## Frame timing
 
 `SwapChainHooks` hooks DXGI's `Present` (vtable index 8) and `Present1` (22), read from a swapchain made on a hidden
-window with `D3D11CreateDeviceAndSwapChain`; both raise `Presenting` on the render thread. `CardExport` counts the
-presents from the press:
+window with `D3D11CreateDeviceAndSwapChain`; both raise `Presenting` on the render thread. A present
+called from inside another hooked present on the same thread raises nothing: DXVK's and Wine's `Present` call their
+`Present1`. `CardExport` counts the presents from the press:
 
 | Present after the press | Step |
 |---|---|

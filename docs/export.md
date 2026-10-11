@@ -169,6 +169,7 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 | `Redraw no UI frame buffer, <count> frame buffers` | At the present after the redraw, when it was not; the card comes from the backbuffer. |
 | `Card saved to <path>` | After the PNG is written. |
 | `Card added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and Steam took the file. |
+| `Card not added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and the game runs without Steam or Steam refused the file. |
 | `Card export failed: <reason>` | When resizing or writing the PNG fails. |
 | The exception with its stack trace | When the redraw or the read throws on the render thread. |
 | `Swapchain methods not found: <reason>` | At startup, when the throwaway D3D11 swapchain cannot be made; there is no export then. |

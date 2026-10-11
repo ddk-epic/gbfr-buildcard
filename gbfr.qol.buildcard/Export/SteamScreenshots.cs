@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -20,8 +21,12 @@ public unsafe partial class SteamScreenshots
     // On the worker thread: adds the card's file.
     public void OnSaved(string path, int width, int height)
     {
-        if (_enabled() && Add(path, width, height))
+        if (!_enabled())
+            return;
+        if (Add(path, width, height))
             _logger.WriteLine("[gbfr.qol.buildcard] Card added to Steam");
+        else
+            _logger.WriteLine("[gbfr.qol.buildcard] Card not added to Steam", Color.Yellow);
     }
 
     // Whether Steam took the file; false when the game runs without Steam.

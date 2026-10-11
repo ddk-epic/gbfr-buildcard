@@ -52,6 +52,7 @@ public unsafe class SavedNotice
     private nint* _uiManager;
     private nint _emptyCallback;
     private delegate* unmanaged<nint, int, nint, byte, void> _pushInfo;
+    private int _saved;
     private long _pushedAt;
     private readonly Dictionary<nint, float> _shortened = [];
     private readonly Dictionary<nint, long> _noticeShownAt = [];
@@ -97,8 +98,20 @@ public unsafe class SavedNotice
         }
     }
 
-    // Queues the notice on the game thread.
-    public void Queue()
+    // On the worker thread: queues the notice at the next tick.
+    public void OnSaved(string path, int width, int height)
+    {
+        Interlocked.Exchange(ref _saved, 1);
+    }
+
+    // On the game thread: queues the notice after a card was saved.
+    public void OnTick()
+    {
+        if (Interlocked.Exchange(ref _saved, 0) == 1)
+            Queue();
+    }
+
+    private void Queue()
     {
         if (_uiManager == null || *_uiManager == 0 || _pushInfo == null)
             return;

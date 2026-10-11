@@ -39,6 +39,8 @@ public class Mod : ModBase
     private StatusGuide? _statusGuide;
     private SavedNotice? _savedNotice;
     private SwapChainHooks? _swapChainHooks;
+    private CardFile? _cardFile;
+    private SteamScreenshots? _steamScreenshots;
     private CardExport? _cardExport;
 
     public Mod(ModContext context)
@@ -109,8 +111,13 @@ public class Mod : ModBase
         _statusGuide.Init();
         _savedNotice = new SavedNotice(_hooks, _logger, _cardWriter.SetActive);
         _savedNotice.Init(scanManager, "granblue_fantasy_relink_er");
-        _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice,
-            _weaponArtHooks.CardShown, _cardWriter.CharaName, () => _configuration.SteamScreenshots, _logger);
+        _cardFile = new CardFile(_logger);
+        _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);
+        _cardFile.Saved += _savedNotice.OnSaved;
+        _cardFile.Saved += _steamScreenshots.OnSaved;
+        _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice, _cardFile,
+            _weaponArtHooks.CardShown, _cardWriter.CharaName, _logger);
+        _saveCardButton.Tick += _savedNotice.OnTick;
         _saveCardButton.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);
         _swapChainHooks.Presenting += _cardExport.OnPresenting;

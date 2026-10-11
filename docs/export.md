@@ -69,7 +69,7 @@ call is at its `+0x1A`.
 
 Save Card is down when the lock is below 1 and either `+0x84` has a bit of `GetButtonBits(+0xA8, 12, 1, 3)` or `+0x0C`
 has `0x4000`. `SaveCardButton.Pressed` returns true on the tick it goes down. A press counts only while the card is
-shown (`WeaponArtHooks.CardShown`) and no export is saving.
+shown (`WeaponArtHooks.CardShown`) and `CardFile` is not writing a card.
 
 ## Page button prompts
 
@@ -89,7 +89,7 @@ presents from the press:
 |---|---|
 | 1 | Nothing; the frame may predate the hidden prompts. |
 | 2 or later | `CardRedraw.Begin`: the next frame is redrawn. |
-| The one after | `CardRedraw.End`: the UI's frame buffer is read, the PNG is saved on a worker thread, the prompts and notices are shown. |
+| The one after | `CardRedraw.End`: the UI's frame buffer is read and handed to `CardFile`, the prompts and notices are shown. |
 
 The game thread hides the prompts and notices and the render thread starts the redraw; once started, the capture is ended only by the render thread. When no redraw starts within 1000 ms of the press, the prompts and notices are shown and `Card export failed: no frame was captured` is logged.
 
@@ -127,7 +127,13 @@ unorm, sRGB), B8G8R8A8 (unorm, sRGB) and R10G10B10A2 are read; the alpha is drop
 ## Backbuffer capture
 
 When no UI frame buffer is found, `End` returns nothing and the card's rect is copied from the backbuffer at the same
-present instead, then resized to 2880x1440 by `Resample`: averaged when shrinking, interpolated when enlarging.
+present instead, then resized to 2880x1440 by `Resample` in `CardFile`: averaged when shrinking, interpolated when enlarging.
+
+## Card file
+
+`CardFile.Save` writes the card's PNG on a worker thread; `CardFile.Saving` is set until the write ends. After the PNG is
+written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `SavedNotice` and
+`SteamScreenshots` handle it.
 
 ## Log
 
@@ -137,7 +143,8 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 |---|---|
 | `Redraw format <format> scale <x>x<y> offset <x>,<y> frame buffers <count> UI draws <count>` | At the present after the redraw, when the UI's frame buffer was found. |
 | `Redraw no UI frame buffer, <count> frame buffers` | At the present after the redraw, when it was not; the card comes from the backbuffer. |
-| `Card saved to <path>` | After the PNG is written; ends in `and added to Steam` when Steam took it. |
+| `Card saved to <path>` | After the PNG is written. |
+| `Card added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and Steam took the file. |
 | `Card export failed: <reason>` | When resizing or writing the PNG fails. |
 | The exception with its stack trace | When the redraw or the read throws on the render thread. |
 | `Swapchain methods not found: <reason>` | At startup, when the throwaway D3D11 swapchain cannot be made; there is no export then. |
@@ -158,14 +165,14 @@ draws 990`.
 
 ## Steam screenshots
 
-`SteamScreenshots.Add` calls `SteamAPI_SteamScreenshots_v003` and `SteamAPI_ISteamScreenshots_AddScreenshotToLibrary`
+With the config option on, `SteamScreenshots` adds each saved card on `CardFile.Saved`. It calls `SteamAPI_SteamScreenshots_v003` and `SteamAPI_ISteamScreenshots_AddScreenshotToLibrary`
 from the game's `steam_api64.dll` with the PNG's path and size. Steam copies the file into its library,
 `userdata/<account>/760/remote/881020/screenshots`.
 
 ## Saved notice
 
 The photo mode reports a saved photo through the UI manager's info queue (`+0x310` on the UI manager). `SavedNotice`
-queues the same info on the game thread at the first `Tick` after the PNG is written.
+queues the same info on the game thread at the first `Tick` after `CardFile.Saved`.
 
 | Part | Source |
 |---|---|

@@ -1,13 +1,31 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
+using Reloaded.Mod.Interfaces;
+
 namespace gbfr.qol.buildcard.Export;
 
-// Adds image files to the player's Steam screenshot library through the game's steam_api64.dll.
-public static unsafe class SteamScreenshots
+// Adds saved cards to the player's Steam screenshot library through the game's steam_api64.dll when enabled.
+public unsafe class SteamScreenshots
 {
+    private readonly Func<bool> _enabled;
+    private readonly ILogger _logger;
+
+    public SteamScreenshots(Func<bool> enabled, ILogger logger)
+    {
+        _enabled = enabled;
+        _logger = logger;
+    }
+
+    // On the worker thread: adds the card's file.
+    public void OnSaved(string path, int width, int height)
+    {
+        if (_enabled() && Add(path, width, height))
+            _logger.WriteLine("[gbfr.qol.buildcard] Card added to Steam");
+    }
+
     // Whether Steam took the file; false when the game runs without Steam.
-    public static bool Add(string path, int width, int height)
+    private static bool Add(string path, int width, int height)
     {
         if (!NativeLibrary.TryLoad("steam_api64.dll", out nint steamApi)
             || !NativeLibrary.TryGetExport(steamApi, "SteamAPI_SteamScreenshots_v003", out nint getInterface)

@@ -6,14 +6,11 @@ using gbfr.qol.buildcard.Hooks;
 
 namespace gbfr.qol.buildcard.Export;
 
-// Saves the card as a 2880x1440 PNG on Save Card.
+// Captures the card on Save Card and hands it to CardFile.
 public class CardExport
 {
     private const int CanvasWidth = 3840;
     private const int CanvasHeight = 2160;
-
-    private const int TargetWidth = 2880;
-    private const int TargetHeight = 1440;
 
     private const int HiddenFrames = 2;
 
@@ -33,39 +30,33 @@ public class CardExport
     private readonly StatusGuide _guide;
     private readonly CardRedraw _redraw;
     private readonly SavedNotice _notice;
+    private readonly CardFile _file;
     private readonly Func<bool> _cardShown;
     private readonly Func<string> _charaName;
-    private readonly Func<bool> _addToSteam;
     private readonly ILogger _logger;
-    private readonly string _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
-        "GBFR Character Build Cards");
     private volatile int _state;
-    private volatile int _saving;
-    private int _saved;
     private long _presents;
     private long _hiddenAt;
     private long _hiddenSince;
     private long _cardSeenAt;
-    private string _fileNamePrefix = "";
+    private string _pressedCharaName = "";
 
-    public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, SavedNotice notice,
-        Func<bool> cardShown, Func<string> charaName, Func<bool> addToSteam, ILogger logger)
+    public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, SavedNotice notice, CardFile file,
+        Func<bool> cardShown, Func<string> charaName, ILogger logger)
     {
         _button = button;
         _guide = guide;
         _redraw = redraw;
         _notice = notice;
+        _file = file;
         _cardShown = cardShown;
         _charaName = charaName;
-        _addToSteam = addToSteam;
         _logger = logger;
     }
 
     // On the game thread: hides the prompts and notices on a press, shows them after the capture or its timeout.
     public void OnTick()
     {
-        if (Interlocked.Exchange(ref _saved, 0) == 1)
-            _notice.Queue();
         bool pressed = _button.Pressed();
         bool cardShown = _cardShown();
         if (cardShown)
@@ -74,21 +65,18 @@ public class CardExport
         if (_state == Hidden && Environment.TickCount64 - _hiddenSince > CaptureTimeout
             && Interlocked.CompareExchange(ref _state, Idle, Hidden) == Hidden)
         {
-            _guide.Show(true);
-            _notice.Show(true);
+            ShowOverlays(true);
             _logger.WriteLine("[gbfr.qol.buildcard] Card export failed: no frame was captured", Color.Red);
         }
         else if (_state == Captured)
         {
-            _guide.Show(true);
-            _notice.Show(true);
+            ShowOverlays(true);
             _state = Idle;
         }
-        else if (_state == Idle && pressed && _saving == 0 && cardShown)
+        else if (_state == Idle && pressed && !_file.Saving && cardShown)
         {
-            _fileNamePrefix = FileNamePrefix(_charaName());
-            _guide.Show(false);
-            _notice.Show(false);
+            _pressedCharaName = _charaName();
+            ShowOverlays(false);
             _hiddenSince = Environment.TickCount64;
             _hiddenAt = Interlocked.Read(ref _presents);
             _state = Hidden;
@@ -104,22 +92,20 @@ public class CardExport
             Capture(swapChain);
         else if (_state == Hidden && presents - _hiddenAt >= HiddenFrames
             && Interlocked.CompareExchange(ref _state, Capturing, Hidden) == Hidden)
-            _redraw.Begin(swapChain, CardRectF, TargetWidth, TargetHeight);
+            _redraw.Begin(swapChain, CardRectF, CardFile.Width, CardFile.Height);
         _redraw.SetDrawHooks(_state == Capturing || Environment.TickCount64 - Interlocked.Read(ref _cardSeenAt) < DrawHooksTimeout);
     }
 
-    // Reads the redrawn card, or the backbuffer's, and saves it on a worker thread.
+    // Reads the redrawn card, or the backbuffer's, and saves it.
     private void Capture(nint swapChain)
     {
         try
         {
-            int width = TargetWidth, height = TargetHeight;
+            int width = CardFile.Width, height = CardFile.Height;
             byte[]? rgb = _redraw.End();
             _logger.WriteLine($"[gbfr.qol.buildcard] Redraw {_redraw.Stats}");
             rgb ??= BackbufferReadback.Read(swapChain, CardRect, out width, out height);
-            string fileNamePrefix = _fileNamePrefix;
-            _saving = 1;
-            Task.Run(() => Save(rgb, width, height, fileNamePrefix));
+            _file.Save(rgb, width, height, _pressedCharaName);
         }
         finally
         {
@@ -127,35 +113,10 @@ public class CardExport
         }
     }
 
-    private void Save(byte[] rgb, int width, int height, string fileNamePrefix)
+    private void ShowOverlays(bool shown)
     {
-        try
-        {
-            if (width != TargetWidth || height != TargetHeight)
-                rgb = Resample.Resize(rgb, width, height, TargetWidth, TargetHeight);
-
-            Directory.CreateDirectory(_folder);
-            string path = Path.Combine(_folder, $"{fileNamePrefix}{DateTime.Now:yyyyMMdd_HHmmss}.png");
-            Png.Write(path, rgb, TargetWidth, TargetHeight);
-            bool steam = _addToSteam() && SteamScreenshots.Add(path, TargetWidth, TargetHeight);
-            _logger.WriteLine($"[gbfr.qol.buildcard] Card saved to {path}{(steam ? " and added to Steam" : "")}");
-            Interlocked.Exchange(ref _saved, 1);
-        }
-        catch (Exception e)
-        {
-            _logger.WriteLine($"[gbfr.qol.buildcard] Card export failed: {e.Message}", Color.Red);
-        }
-        finally
-        {
-            _saving = 0;
-        }
-    }
-
-    // Invalid file name characters dropped and _ appended; empty for an empty name
-    private static string FileNamePrefix(string charaName)
-    {
-        string cleaned = string.Concat(charaName.Split(Path.GetInvalidFileNameChars())).Trim();
-        return cleaned.Length == 0 ? "" : cleaned + "_";
+        _guide.Show(shown);
+        _notice.Show(shown);
     }
 
     private static RectangleF CardRectF(int width, int height)

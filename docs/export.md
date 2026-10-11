@@ -70,9 +70,9 @@ call is at its `+0x1A`.
 Save Card is down when the lock is below 1 and either `+0x84` has a bit of `GetButtonBits(+0xA8, 12, 1, 3)` or `+0x0C`
 has `0x4000`. `SaveCardButton.Pressed` returns true on the tick it goes down while `status01`'s shortcut for button 12
 takes input (see [Shortcut input](#shortcut-input)). A press counts only while the card is
-shown and `CardFile` is not writing a card. The card is shown while a card is filled and the Character Details menu
-(`PauseStatus`) is open, checked through `WeaponArtHooks.CardShown`; other menus that read the
-same key, such as Master Traits, do not start an export.
+open and `CardFile` is not writing a card. The card is open while a card is filled and the Character Details menu
+(`PauseStatus`) is in the open menus with state 1, checked through `WeaponArtHooks.CardOpen`; a menu that is only
+requested to open does not count. Other menus that read the same key, such as Master Traits, do not start an export.
 
 ## Shortcut input
 
@@ -126,7 +126,7 @@ texture to the backbuffer. The UI's texture changes from frame to frame.
 
 `CardRedraw` hooks the immediate context's `DrawIndexed` (12), `Draw` (13), `DrawIndexedInstanced` (20),
 `DrawInstanced` (21), `OMSetRenderTargets` (33) and `OMSetRenderTargetsAndUnorderedAccessViews` (34), read from the
-swapchain's device. They are turned on at a present while the card was shown (`WeaponArtHooks.CardShown`, polled on the game thread) within the last 500 ms or a redraw runs, and off otherwise. Outside a redraw frame they pass through; calls on other contexts always pass through.
+swapchain's device. They are turned on at a present while the card was open (`WeaponArtHooks.CardOpen`, polled on the game thread) within the last 500 ms or a redraw runs, and off otherwise. Outside a redraw frame they pass through; calls on other contexts always pass through.
 
 In the redraw frame:
 

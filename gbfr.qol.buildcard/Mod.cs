@@ -117,7 +117,7 @@ public class Mod : ModBase
         _cardFile.Saved += _savedNotice.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;
         _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice, _cardFile,
-            _weaponArtHooks.CardShown, _cardWriter.CharaName, _logger);
+            _weaponArtHooks.CardOpen, _cardWriter.CharaName, _logger);
         _saveCardButton.Tick += _savedNotice.OnTick;
         _saveCardButton.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);

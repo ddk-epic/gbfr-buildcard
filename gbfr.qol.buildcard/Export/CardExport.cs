@@ -31,7 +31,7 @@ public class CardExport
     private readonly CardRedraw _redraw;
     private readonly SavedNotice _notice;
     private readonly CardFile _file;
-    private readonly Func<bool> _cardShown;
+    private readonly Func<bool> _cardOpen;
     private readonly Func<string> _charaName;
     private readonly ILogger _logger;
     private volatile int _state;
@@ -42,14 +42,14 @@ public class CardExport
     private string _pressedCharaName = "";
 
     public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, SavedNotice notice, CardFile file,
-        Func<bool> cardShown, Func<string> charaName, ILogger logger)
+        Func<bool> cardOpen, Func<string> charaName, ILogger logger)
     {
         _button = button;
         _guide = guide;
         _redraw = redraw;
         _notice = notice;
         _file = file;
-        _cardShown = cardShown;
+        _cardOpen = cardOpen;
         _charaName = charaName;
         _logger = logger;
     }
@@ -58,8 +58,8 @@ public class CardExport
     public void OnTick()
     {
         bool pressed = _button.Pressed();
-        bool cardShown = _cardShown();
-        if (cardShown)
+        bool cardOpen = _cardOpen();
+        if (cardOpen)
             Interlocked.Exchange(ref _cardSeenAt, Environment.TickCount64);
 
         if (_state == Hidden && Environment.TickCount64 - _hiddenSince > CaptureTimeout
@@ -73,7 +73,7 @@ public class CardExport
             ShowOverlays(true);
             _state = Idle;
         }
-        else if (_state == Idle && pressed && !_file.Saving && cardShown)
+        else if (_state == Idle && pressed && !_file.Saving && cardOpen)
         {
             _pressedCharaName = _charaName();
             ShowOverlays(false);

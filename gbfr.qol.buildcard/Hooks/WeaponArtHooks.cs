@@ -137,11 +137,13 @@ public unsafe class WeaponArtHooks
         *(long*)(loader + WantedCount) = count + 1;
     }
 
-    // Whether the Character Details page is open with a card filled.
-    public bool CardShown() => _key != NoKey && StatusMenuOpen();
+    // Whether the Character Details page is open or opening with a card filled.
+    public bool CardShown() => _key != NoKey && StatusMenuOpen(true);
 
-    // Whether PauseStatus is open or requested to open.
-    private bool StatusMenuOpen()
+    public bool CardOpen() => _key != NoKey && StatusMenuOpen(false);
+
+    // Whether PauseStatus is open, or requested to open when requested is set.
+    private bool StatusMenuOpen(bool requested)
     {
         if (_menus == null || *_menus == 0)
             return false;
@@ -156,7 +158,7 @@ public unsafe class WeaponArtHooks
                 return *(int*)(menu + MenuOpenState) == 1;
         }
         nint* requests = (nint*)(manager + Requests);
-        if (!GameMemory.IsVector((nint)requests, RequestSize))
+        if (!requested || !GameMemory.IsVector((nint)requests, RequestSize))
             return false;
         for (nint request = requests[0], end = requests[1]; request < end; request += RequestSize)
         {

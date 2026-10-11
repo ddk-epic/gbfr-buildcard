@@ -18,6 +18,8 @@ public unsafe partial class SwapChainHooks
     private const int DriverHardware = 1;
     private const uint SdkVersion = 7;
 
+    private const uint PresentTest = 0x1;
+
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
 
@@ -100,7 +102,7 @@ public unsafe partial class SwapChainHooks
         _inPresent = true;
         try
         {
-            OnPresenting(swapChain);
+            OnPresenting(swapChain, flags);
             return _presentHook!.OriginalFunction(swapChain, syncInterval, flags);
         }
         finally
@@ -116,7 +118,7 @@ public unsafe partial class SwapChainHooks
         _inPresent = true;
         try
         {
-            OnPresenting(swapChain);
+            OnPresenting(swapChain, flags);
             return _present1Hook!.OriginalFunction(swapChain, syncInterval, flags, parameters);
         }
         finally
@@ -125,8 +127,10 @@ public unsafe partial class SwapChainHooks
         }
     }
 
-    private void OnPresenting(nint swapChain)
+    private void OnPresenting(nint swapChain, uint flags)
     {
+        if ((flags & PresentTest) != 0)
+            return;
         try
         {
             Presenting?.Invoke(swapChain);

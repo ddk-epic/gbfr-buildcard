@@ -104,8 +104,8 @@ public unsafe class GameText
     }
 
     // Wraps the object's current text
-    public void Rewrap(nint obj, int width, int maxLines = 2) =>
-        Wrap(obj, width, text => SetString(text, ReadString(text), *(uint*)(text + Hash)), maxLines: maxLines);
+    public void Rewrap(nint obj, int width, int maxLines = 2, string suffix = "") =>
+        Wrap(obj, width, text => SetString(text, ReadString(text) + suffix, *(uint*)(text + Hash)), maxLines: maxLines);
 
     public string Find(uint hash, uint subId = EmptyIdHash)
     {

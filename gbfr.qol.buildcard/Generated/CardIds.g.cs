@@ -16,7 +16,10 @@ internal static class CardIds
     public const short Cells = 538;
     public const short CharaName = 12;
     public static readonly short[] MasteryTexts = [115, 116];
+    public const int OverMasteryNameWidth = 766;
+    public static readonly short[] OverMasteryNames = [2667, 2699, 2731, 2763];
     public static readonly short[] OverMasteryRows = [2661, 2693, 2725, 2757];
+    public static readonly short[][] OverMasteryValues = [[2668, 2670, 2671], [2700, 2702, 2703], [2732, 2734, 2735], [2764, 2766, 2767]];
     public static readonly short[][] Palettes = [[551, 1550], [936, 1983]];
     public static readonly short[] PerkNames = [499, 511, 523];
     public static readonly short[][] PerkStars = [[502, 505, 508], [514, 517, 520], [526, 529, 532]];

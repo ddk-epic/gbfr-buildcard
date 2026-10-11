@@ -8,9 +8,14 @@ are filled at runtime by `CardContents` and `CardWriter`.
 
 Under the Over Mastery title (`TXT_PAU_LB_TAB_LIMIT_OVER`), four rows, `bc_om_0` to `bc_om_3`, copies of
 `lb_ovtli02`'s row. Each shows a line's icon, name and value in ink, without the row's separator and stars. A row is
-hidden when its line is empty.
+hidden when its line is empty. The value follows the name in the name's text, as `+`, the number and the percent sign
+when the game shows one; the row's own plus icon, number and percent sign are hidden. The text is wrapped to the panel's
+content width and cut to two lines, the second ending in the game's ellipsis; the two lines are centred on the row. Its lines are spaced at
+`LineSpacing` -6, and -40 through the `LanguageSetter`'s Japanese overwrite.
 
-`CardIds.OverMasteryRows` holds the four rows' Ids.
+`CardIds.OverMasteryRows` holds the four rows' Ids, `CardIds.OverMasteryNames` their names' Ids,
+`CardIds.OverMasteryValues` each row's plus icon, number and percent sign Ids, and `CardIds.OverMasteryNameWidth` the
+names' wrap width.
 
 ## Implementation
 
@@ -19,6 +24,9 @@ hidden when its line is empty.
 2. `CardContents.ComposeOverMastery` shows the row of each line read and hides the others.
 3. `CardWriter` copies each line into memory the mod owns and calls `SetOverMasteryLine` with the row's
    `LimitBonusInfo` component, found by its RTTI vtable (`.?AVLimitBonusInfo@component@ui@@`).
+4. After writing the other sections, `CardWriter` reads each shown row's number and, when its object is active, its
+   percent sign, sets the name again with them appended as it does the skill names, wrapped to the width and cut to
+   two lines, and hides the value's objects; see [text wrapping](ui.md#text-wrapping).
 
 ## Runtime data
 

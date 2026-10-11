@@ -1,5 +1,5 @@
 # Lays out the Over Mastery section: lb_ovtli02's rows on a panel under a title bar.
-from model.components import rect
+from model.components import overwrites, rect
 from model.prefab import copy, f
 from steps.layout import CARD_ORDER, HEADING_MARGIN, ICON_PAD, OVER_MASTERY, insert
 from steps.panel import Heading, panel
@@ -10,9 +10,11 @@ ROWS = 4
 ROW_ICON = 88  # icon01's size, in row units
 ROW_SCALE = 1.1
 ICON = 51  # card units, before ROW_SCALE
-LINE_H, LINE_GAP = 44, 5  # card units, before ROW_SCALE
+LINE_H, LINE_GAP = 44, 9  # card units, before ROW_SCALE
 ICON_X_ROW = -482  # icon01's left edge in the row
 TEXT_X_ROW = -384  # loc_text01's left edge in the row
+BONUS_LINE_SPACING, BONUS_LINE_SPACING_JPN = -4, -40
+VALUE_PARTS = ("loc_icon_plus01", "num01", "percent01")
 
 
 def row(source, name):
@@ -23,6 +25,9 @@ def row(source, name):
         node.find(hidden).set("Active", False)
     for colored, component in (("text01", "Text"), ("icon_plus01", "Image"), ("num01", "Text"), ("percent01", "Text")):
         node.find(colored).component(component).set("Color", f"{', '.join(f(c) for c in INK)}, 1")
+    name_text = node.find("text01")
+    name_text.component("Text").set("LineSpacing", BONUS_LINE_SPACING)
+    name_text.component("LanguageSetter").insert(overwrites(BONUS_LINE_SPACING_JPN), after="LanguageData")
     return node
 
 
@@ -49,3 +54,6 @@ def apply(ctx):
         node.place(pos=(x, rows_top - i * (line_h + line_gap) - line_h / 2))
         rows.append(node)
     ctx.export("OverMasteryRows", rows)
+    ctx.export("OverMasteryNames", [node.find("text01") for node in rows])
+    ctx.export("OverMasteryValues", [[node.find(part) for part in VALUE_PARTS] for node in rows])
+    ctx.export("OverMasteryNameWidth", int((box.right - x) / row_scale - TEXT_X_ROW))

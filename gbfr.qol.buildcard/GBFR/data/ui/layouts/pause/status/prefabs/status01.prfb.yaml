@@ -94404,15 +94404,15 @@ Objects:
         ObjectRefId: 2671
       Enable: true
   Active: true
-  Position: 34.785, 53.165, 0
+  Position: 34.785, 59.765, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.638, 0.638, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 34.785, 53.165
+  AnchorPoint: 34.785, 59.765
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -465.215, -69.835
-  OffsetMax: 534.785, 176.165
+  OffsetMin: -465.215, -63.235
+  OffsetMax: 534.785, 182.765
   SizeDelta: 1000, 246
 - Id: 2662
   Name: root
@@ -94554,6 +94554,18 @@ Objects:
     Component:
       MultiData: false
       LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Jpn
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: true
+        LineSpaching: -40
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
       Enable: true
   - ComponentName: Text
     Component:
@@ -94570,7 +94582,7 @@ Objects:
       ColorBL: 1, 1, 1, 1
       ColorBR: 1, 1, 1, 1
       CharacterSpacing: 0
-      LineSpacing: 0
+      LineSpacing: -4
       Alignment: 513
       Enable: true
   - ComponentName: ContentSizeFitter
@@ -95495,15 +95507,15 @@ Objects:
         ObjectRefId: 2703
       Enable: true
   Active: true
-  Position: 34.785, -0.735, 0
+  Position: 34.785, 1.465, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.638, 0.638, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 34.785, -0.735
+  AnchorPoint: 34.785, 1.465
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -465.215, -123.735
-  OffsetMax: 534.785, 122.265
+  OffsetMin: -465.215, -121.535
+  OffsetMax: 534.785, 124.465
   SizeDelta: 1000, 246
 - Id: 2694
   Name: root
@@ -95645,6 +95657,18 @@ Objects:
     Component:
       MultiData: false
       LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Jpn
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: true
+        LineSpaching: -40
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
       Enable: true
   - ComponentName: Text
     Component:
@@ -95661,7 +95685,7 @@ Objects:
       ColorBL: 1, 1, 1, 1
       ColorBR: 1, 1, 1, 1
       CharacterSpacing: 0
-      LineSpacing: 0
+      LineSpacing: -4
       Alignment: 513
       Enable: true
   - ComponentName: ContentSizeFitter
@@ -96586,15 +96610,15 @@ Objects:
         ObjectRefId: 2735
       Enable: true
   Active: true
-  Position: 34.785, -54.635, 0
+  Position: 34.785, -56.835, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.638, 0.638, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 34.785, -54.635
+  AnchorPoint: 34.785, -56.835
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -465.215, -177.635
-  OffsetMax: 534.785, 68.365
+  OffsetMin: -465.215, -179.835
+  OffsetMax: 534.785, 66.165
   SizeDelta: 1000, 246
 - Id: 2726
   Name: root
@@ -96736,6 +96760,18 @@ Objects:
     Component:
       MultiData: false
       LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Jpn
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: true
+        LineSpaching: -40
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
       Enable: true
   - ComponentName: Text
     Component:
@@ -96752,7 +96788,7 @@ Objects:
       ColorBL: 1, 1, 1, 1
       ColorBR: 1, 1, 1, 1
       CharacterSpacing: 0
-      LineSpacing: 0
+      LineSpacing: -4
       Alignment: 513
       Enable: true
   - ComponentName: ContentSizeFitter
@@ -97677,15 +97713,15 @@ Objects:
         ObjectRefId: 2767
       Enable: true
   Active: true
-  Position: 34.785, -108.535, 0
+  Position: 34.785, -115.135, 0
   Rotation: 0, 0, 0, 1
   Scale: 0.638, 0.638, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 34.785, -108.535
+  AnchorPoint: 34.785, -115.135
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -465.215, -231.535
-  OffsetMax: 534.785, 14.465
+  OffsetMin: -465.215, -238.135
+  OffsetMax: 534.785, 7.865
   SizeDelta: 1000, 246
 - Id: 2758
   Name: root
@@ -97827,6 +97863,18 @@ Objects:
     Component:
       MultiData: false
       LanguageData: data/language/ld_skipstd_b_sdf_material
+      Overwrites:
+      - Language: Jpn
+        EnableFS: false
+        FontSize: 0
+        EnableCS: false
+        CharacterSpaching: 0
+        EnableLS: true
+        LineSpaching: -40
+        EnableMG: false
+        Margine: 0, 0, 0, 0
+        EnableAL: false
+        Alignment: 0
       Enable: true
   - ComponentName: Text
     Component:
@@ -97843,7 +97891,7 @@ Objects:
       ColorBL: 1, 1, 1, 1
       ColorBR: 1, 1, 1, 1
       CharacterSpacing: 0
-      LineSpacing: 0
+      LineSpacing: -4
       Alignment: 513
       Enable: true
   - ComponentName: ContentSizeFitter

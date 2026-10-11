@@ -14,6 +14,7 @@ public unsafe class UiObjects
     private const int Components = 0x28;
     private const int NameHash = 0x1C4;
     private const int Id = 0x1CC;
+    private const int Active = 0x1D0;
 
     // component
     private const int ComponentObject = 0x10;
@@ -84,6 +85,8 @@ public unsafe class UiObjects
         if (_setActive != null)
             _setActive(obj, active ? (byte)1 : (byte)0);
     }
+
+    public bool IsActive(nint obj) => *(byte*)(obj + Active) != 0;
 
     // The vtable of the RTTI type, or 0
     public nint FindVtable(string typeName)

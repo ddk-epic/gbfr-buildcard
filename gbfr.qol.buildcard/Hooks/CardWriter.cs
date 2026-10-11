@@ -101,6 +101,7 @@ public unsafe class CardWriter
             }
         }
         WrapSkillNames(objects);
+        InlineOverMasteryValues(objects, build);
         TruncateSigilTraitNames(objects);
         _weaponArt.Show(chara);
         _charaNameObject = objects.GetValueOrDefault(CardIds.CharaName);
@@ -129,6 +130,22 @@ public unsafe class CardWriter
     {
         foreach (short id in CardIds.SkillNames)
             _text.Rewrap(objects[id], CardIds.SkillNameWidth);
+    }
+
+    // Appends each shown row's value to its name
+    private void InlineOverMasteryValues(Dictionary<int, nint> objects, CharaBuild build)
+    {
+        for (int i = 0; i < CharaBuild.OverMasteryLines; i++)
+        {
+            if (build.OverMastery[i] == null)
+                continue;
+            nint[] parts = [.. CardIds.OverMasteryValues[i].Select(id => objects[id])];
+            nint num = parts[1], percent = parts[2];
+            string value = $" +{_text.Read(num)}{(_objects.IsActive(percent) ? _text.Read(percent) : "")}";
+            _text.Rewrap(objects[CardIds.OverMasteryNames[i]], CardIds.OverMasteryNameWidth, suffix: value);
+            foreach (nint part in parts)
+                _objects.SetActive(part, false);
+        }
     }
 
     private void TruncateSigilTraitNames(Dictionary<int, nint> objects)

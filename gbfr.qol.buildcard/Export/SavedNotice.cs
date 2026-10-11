@@ -33,7 +33,6 @@ public unsafe class SavedNotice
     private const int ShowInfoIndex = 35;
 
     // controller offsets
-    private const int ControllerObject = 0x10;
     private const int Showing = 0x1A8;
     private const int Duration = 0x1D0;
 
@@ -48,7 +47,7 @@ public unsafe class SavedNotice
 
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
-    private readonly Action<nint, bool> _setActive;
+    private readonly UiObjects _objects;
     private nint* _uiManager;
     private nint _emptyCallback;
     private delegate* unmanaged<nint, int, nint, byte, void> _pushInfo;
@@ -62,11 +61,11 @@ public unsafe class SavedNotice
     private delegate nint ShowInfoFn(nint controller, int* info);
     private readonly List<IHook<ShowInfoFn>> _showInfoHooks = [];
 
-    public SavedNotice(IReloadedHooks hooks, ILogger logger, Action<nint, bool> setActive)
+    public SavedNotice(IReloadedHooks hooks, ILogger logger, UiObjects objects)
     {
         _hooks = hooks;
         _logger = logger;
-        _setActive = setActive;
+        _objects = objects;
     }
 
     // PushInfo(queue, type, callback, add to log)
@@ -134,7 +133,7 @@ public unsafe class SavedNotice
             foreach (nint controller in _hidden)
             {
                 if (*(byte*)(controller + Showing) != 0)
-                    _setActive(*(nint*)(controller + ControllerObject), true);
+                    _objects.SetActive(_objects.ObjectOf(controller), true);
             }
             _hidden.Clear();
             return;
@@ -151,10 +150,10 @@ public unsafe class SavedNotice
 
     private void Hide(nint controller)
     {
-        nint obj = *(nint*)(controller + ControllerObject);
+        nint obj = _objects.ObjectOf(controller);
         if (obj == 0 || *(byte*)(controller + Showing) == 0)
             return;
-        _setActive(obj, false);
+        _objects.SetActive(obj, false);
         _hidden.Add(controller);
     }
 

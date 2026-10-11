@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,50 +16,43 @@ public unsafe class CardWriter
     private const int MaxTextLength = 0x400;
     private const float IconScale = 0.7f;  // times the game's icon size
 
+
     private readonly GameText _text;
     private readonly TextWrap _wrap;
     private readonly MasterTraits _masterTraits;
     private readonly Masteries _masteries;
     private readonly WeaponArtHooks _weaponArt;
+    private readonly UiObjects _objects;
     private readonly ILogger _logger;
     private readonly CardContents _contents;
-    private delegate* unmanaged<nint, byte, void> _setActive;
     private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
     private delegate* unmanaged<nint, uint, void> _setSummonInfo;
-    private readonly nint _exeBase = Process.GetCurrentProcess().MainModule!.BaseAddress;
-    private readonly nint _limitBonusInfoVtable;
-    private readonly nint _summonInfoVtable;
     private readonly nint _textVtable;
+    private readonly nint _summonInfoVtable;
+    private readonly nint _limitBonusInfoVtable;
     private readonly OverMasteryLine* _overMasteryLines = (OverMasteryLine*)Marshal.AllocHGlobal(sizeof(OverMasteryLine) * CharaBuild.OverMasteryLines);
     private nint _charaNameObject;
     private bool _loggedBuild;
-    private bool _loggedComponents;
     private bool _loggedCount;
 
-    public CardWriter(GameText text, TextWrap wrap, MasterTraits masterTraits, Masteries masteries, WeaponArtHooks weaponArt, ILogger logger)
+    public CardWriter(GameText text, TextWrap wrap, MasterTraits masterTraits, Masteries masteries, WeaponArtHooks weaponArt,
+        UiObjects objects, ILogger logger)
     {
         _text = text;
         _wrap = wrap;
         _masterTraits = masterTraits;
         _masteries = masteries;
         _weaponArt = weaponArt;
+        _objects = objects;
         _logger = logger;
         _contents = new CardContents(text.Find);
-        _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
-        if (_limitBonusInfoVtable == 0)
-            _logger.WriteLine("[gbfr.qol.buildcard] LimitBonusInfo vtable not found", Color.Red);
-        _summonInfoVtable = PeImage.FindVtable(_exeBase, ".?AVSummonInfo@component@ui@@");
-        if (_summonInfoVtable == 0)
-            _logger.WriteLine("[gbfr.qol.buildcard] SummonInfo vtable not found", Color.Red);
-        _textVtable = PeImage.FindVtable(_exeBase, ".?AVText@component@ui@@");
-        if (_textVtable == 0)
-            _logger.WriteLine("[gbfr.qol.buildcard] Text vtable not found", Color.Red);
+        _textVtable = objects.FindVtable(".?AVText@component@ui@@");
+        _summonInfoVtable = objects.FindVtable(".?AVSummonInfo@component@ui@@");
+        _limitBonusInfoVtable = objects.FindVtable(".?AVLimitBonusInfo@component@ui@@");
     }
 
     public void Init(IScanManager scanManager, string signatureGroup)
     {
-        scanManager.AddScan("SetObjectActive", signatureGroup, address =>
-            _setActive = (delegate* unmanaged<nint, byte, void>)(nint)address);
         scanManager.AddScan("SetOverMasteryLine", signatureGroup, address =>
             _setOverMasteryLine = (delegate* unmanaged<nint, nint, void>)(nint)address);
         scanManager.AddScan("SetSummonInfo", signatureGroup, address =>
@@ -81,7 +73,7 @@ public unsafe class CardWriter
 
     private void Write(nint charaInfo, nint chara)
     {
-        var objects = ObjectTree.Find(charaInfo);
+        var objects = _objects.Find(charaInfo);
         if (objects == null)
             return;
         if (objects.Count != CardIds.ObjectCount)
@@ -104,7 +96,7 @@ public unsafe class CardWriter
                     SetMasterTraitDescription(obj, description);
                     break;
                 case ActiveWrite active:
-                    SetActive(obj, active.Active);
+                    _objects.SetActive(obj, active.Active);
                     break;
                 case SummonWrite summon:
                     SetSummonInfo(obj, summon.SummonId);
@@ -121,19 +113,19 @@ public unsafe class CardWriter
 
     public string CharaName()
     {
-        nint text = _charaNameObject == 0 ? 0 : FindComponent(_charaNameObject, _textVtable, "Text");
+        nint text = _charaNameObject == 0 ? 0 : _objects.FindComponent(_charaNameObject, _textVtable);
         return text == 0 ? "" : ReadString(text + TextString);
     }
 
     private void SetText(nint obj, string value, uint hash)
     {
-        if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
+        if (_objects.FindComponent(obj, _textVtable) is var text and not 0)
             _text.Set(text, value, hash);
     }
 
     private void SetMasterTraitDescription(nint obj, MasterTraitDescriptionWrite write)
     {
-        if (FindComponent(obj, _textVtable, "Text") is not (var text and not 0))
+        if (_objects.FindComponent(obj, _textVtable) is not (var text and not 0))
             return;
         _wrap.Limit(text, CardIds.CellTextWidth);
         _wrap.ScaleIcons(text, IconScale);
@@ -141,21 +133,15 @@ public unsafe class CardWriter
         _wrap.Cap(text);
     }
 
-    public void SetActive(nint obj, bool active)
-    {
-        if (_setActive != null)
-            _setActive(obj, active ? (byte)1 : (byte)0);
-    }
-
     private void SetSummonInfo(nint obj, uint summonId)
     {
-        if (_setSummonInfo != null && FindComponent(obj, _summonInfoVtable, "SummonInfo") is var summonInfo and not 0)
+        if (_setSummonInfo != null && _objects.FindComponent(obj, _summonInfoVtable) is var summonInfo and not 0)
             _setSummonInfo(summonInfo, summonId);
     }
 
     private void SetOverMasteryLine(nint obj, int index, OverMasteryLine line)
     {
-        if (_setOverMasteryLine == null || FindComponent(obj, _limitBonusInfoVtable, "LimitBonusInfo") is not (var limitBonusInfo and not 0))
+        if (_setOverMasteryLine == null || _objects.FindComponent(obj, _limitBonusInfoVtable) is not (var limitBonusInfo and not 0))
             return;
         _overMasteryLines[index] = line;
         _setOverMasteryLine(limitBonusInfo, (nint)(_overMasteryLines + index));
@@ -165,7 +151,7 @@ public unsafe class CardWriter
     {
         foreach (short id in CardIds.SkillNames)
         {
-            nint text = FindComponent(objects[id], _textVtable, "Text");
+            nint text = _objects.FindComponent(objects[id], _textVtable);
             if (text == 0)
                 continue;
             _wrap.Limit(text, CardIds.SkillNameWidth);
@@ -181,34 +167,6 @@ public unsafe class CardWriter
             return "";
         nint data = *(long*)(str + 0x18) > 15 ? *(nint*)str : str;
         return Encoding.UTF8.GetString((byte*)data, (int)size);
-    }
-
-    // Components: 0x20-byte entries from +0x28, component at +0x18.
-    private nint FindComponent(nint obj, nint vtable, string name)
-    {
-        if (vtable == 0)
-            return 0;
-        for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
-        {
-            nint component = *(nint*)(entry + 0x18);
-            if (component != 0 && *(nint*)component == vtable)
-                return component;
-        }
-        LogComponentsOnce(obj, name, vtable);
-        return 0;
-    }
-
-    private void LogComponentsOnce(nint obj, string name, nint vtable)
-    {
-        if (_loggedComponents)
-            return;
-        var vtables = new List<string>();
-        for (nint entry = *(nint*)(obj + 0x28); entry < *(nint*)(obj + 0x30); entry += 0x20)
-        {
-            nint component = *(nint*)(entry + 0x18);
-            vtables.Add(component == 0 ? "null" : $"exe+{*(nint*)component - _exeBase:X}");
-        }
-        LogOnce(ref _loggedComponents, $"No {name} on a card object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
     }
 
     private void LogOnce(ref bool logged, string message, Color color)

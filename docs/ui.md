@@ -23,7 +23,7 @@ A loaded prefab is a tree of `ui::Object`s, one per object in the file, `status0
 | `+0x1CC` | The object's `Id` from the file, an int32. `CardIds.g.cs` holds the Ids of the objects the mod writes to. |
 | `+0x1D0`, `+0x1D1` | Active flags, both written by `SetObjectActive`. |
 
-`ObjectTree.Find` walks the tree from the object the `CharaInfo` component is on and maps every object by its `Id`.
+`UiObjects.Find` walks the tree from the object the `CharaInfo` component is on and maps every object by its `Id`.
 
 An object reference is 0x20 bytes: vtable, the object at `+0x08`, the component at `+0x10` (0 for a reference to the
 object itself), the component name hash at `+0x18`, and the file's `ObjectRefId` at `+0x1E`.

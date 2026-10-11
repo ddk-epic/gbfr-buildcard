@@ -16,26 +16,23 @@ public unsafe class StatusGuide
     // ControllerStatusGuide's vtable index of SetUpPageArrows
     private const int SetUpPageArrowsIndex = 21;
 
-    // component: the object it is on
-    private const int ComponentObject = 0x10;
-
     // name hashes of loc_button_system01_l and loc_button_system01_r
     private const uint ButtonLeft = 0x6030E86D;
     private const uint ButtonRight = 0xFB687EBB;
 
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
-    private readonly Action<nint, bool> _setActive;
+    private readonly UiObjects _objects;
     private List<nint> _buttons = [];
 
     private delegate void SetUpPageArrowsFn(nint controller);
     private IHook<SetUpPageArrowsFn>? _setUpPageArrowsHook;
 
-    public StatusGuide(IReloadedHooks hooks, ILogger logger, Action<nint, bool> setActive)
+    public StatusGuide(IReloadedHooks hooks, ILogger logger, UiObjects objects)
     {
         _hooks = hooks;
         _logger = logger;
-        _setActive = setActive;
+        _objects = objects;
     }
 
     public void Init()
@@ -53,13 +50,13 @@ public unsafe class StatusGuide
     public void Show(bool shown)
     {
         foreach (nint button in _buttons)
-            _setActive(button, shown);
+            _objects.SetActive(button, shown);
     }
 
     private void SetUpPageArrowsImpl(nint controller)
     {
         _setUpPageArrowsHook!.OriginalFunction(controller);
-        nint obj = *(nint*)(controller + ComponentObject);
-        _buttons = obj == 0 ? [] : ObjectTree.FindByName(obj, ButtonLeft, ButtonRight);
+        nint obj = _objects.ObjectOf(controller);
+        _buttons = obj == 0 ? [] : _objects.FindByName(obj, ButtonLeft, ButtonRight);
     }
 }

@@ -56,8 +56,7 @@ public unsafe class UiObjects
         {
             nint obj = pending.Pop();
             objects[*(int*)(obj + Id)] = obj;
-            for (nint child = *(nint*)(obj + Children); child < *(nint*)(obj + Children + 8); child += 8)
-                pending.Push(*(nint*)child);
+            PushChildren(pending, obj);
         }
         return objects;
     }
@@ -72,10 +71,20 @@ public unsafe class UiObjects
             nint obj = pending.Pop();
             if (names.Contains(*(uint*)(obj + NameHash)))
                 found.Add(obj);
-            for (nint child = *(nint*)(obj + Children); child < *(nint*)(obj + Children + 8); child += 8)
-                pending.Push(*(nint*)child);
+            PushChildren(pending, obj);
         }
         return found;
+    }
+
+    private static void PushChildren(Stack<nint> pending, nint obj)
+    {
+        if (!GameMemory.IsVector(obj + Children, sizeof(nint)))
+            return;
+        for (nint child = *(nint*)(obj + Children); child < *(nint*)(obj + Children + 8); child += 8)
+        {
+            if (*(nint*)child != 0)
+                pending.Push(*(nint*)child);
+        }
     }
 
     public nint ObjectOf(nint component) => *(nint*)(component + ComponentObject);
@@ -102,7 +111,7 @@ public unsafe class UiObjects
     // The object's component with the vtable, or 0
     public nint FindComponent(nint obj, nint vtable)
     {
-        if (vtable == 0)
+        if (vtable == 0 || !GameMemory.IsVector(obj + Components, EntrySize))
             return 0;
         for (nint entry = *(nint*)(obj + Components); entry < *(nint*)(obj + Components + 8); entry += EntrySize)
         {

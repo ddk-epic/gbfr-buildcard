@@ -26,7 +26,7 @@ public unsafe class CardWriter
     private readonly nint _summonInfoVtable;
     private readonly nint _limitBonusInfoVtable;
     private readonly OverMasteryLine* _overMasteryLines = (OverMasteryLine*)Marshal.AllocHGlobal(sizeof(OverMasteryLine) * CharaBuild.OverMasteryLines);
-    private nint _charaNameObject;
+    private string _charaName = "";
     private bool _loggedBuild;
     private bool _loggedCount;
 
@@ -104,10 +104,10 @@ public unsafe class CardWriter
         InlineOverMasteryValues(objects, build);
         TruncateSigilTraitNames(objects);
         _weaponArt.Show(chara);
-        _charaNameObject = objects.GetValueOrDefault(CardIds.CharaName);
+        _charaName = _text.Read(objects[CardIds.CharaName]);
     }
 
-    public string CharaName() => _charaNameObject == 0 ? "" : _text.Read(_charaNameObject);
+    public string CharaName() => _charaName;
 
     private void SetMasterTraitDescription(nint obj, MasterTraitDescriptionWrite write) =>
         _text.Wrap(obj, CardIds.CellTextWidth, text => _masterTraits.FillDescription(text, write.CharaKey, write.Slot), IconScale);

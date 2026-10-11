@@ -47,6 +47,18 @@ public static unsafe class PeImage
         return 0;
     }
 
+    // Whether the code at address starts with pattern's hex bytes, ?? matching any byte
+    public static bool Matches(nint address, string pattern)
+    {
+        string[] bytes = pattern.Split(' ');
+        for (int i = 0; i < bytes.Length; i++)
+        {
+            if (bytes[i] != "??" && ((byte*)address)[i] != Convert.ToByte(bytes[i], 16))
+                return false;
+        }
+        return true;
+    }
+
     // Returns the .data global read by the mov reg, [rip + disp32] at load whose opcode bytes are mov, or null.
     public static nint* RipGlobal(byte* load, ReadOnlySpan<byte> mov)
     {

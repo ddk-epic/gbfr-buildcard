@@ -16,6 +16,9 @@ public unsafe class WeaponArtHooks
     private const int Wanted = 0x48;
     private const int WantedMax = 6;
 
+    // LoadWeaponParty's IsOpen first bytes
+    private const string IsOpenStart = "48 8B 05 ?? ?? ?? ?? 48 8B 48 40 48 8B 50 48 48 39 D1";
+
     private const int WeaponKey = 0x54;
     private const int MirageKey = 0x58;
     private const int WeaponFlags = 0x5C;
@@ -72,19 +75,25 @@ public unsafe class WeaponArtHooks
             return;
         }
         byte* collect = *(byte**)(party + 5 * 8);
-        if (collect[0x26] != 0x48 || collect[0x27] != 0x8B || collect[0x28] != 0x0D)
+        _settings = PeImage.RipGlobal(collect + 0x26, [0x48, 0x8B, 0x0D]);
+        if (_settings == null)
         {
             _logger.WriteLine("[gbfr.qol.buildcard] Settings object not found", Color.Red);
             return;
         }
-        _settings = (nint*)(collect + 0x2D + *(int*)(collect + 0x29));
         _menus = PeImage.RipGlobal(*(byte**)(status + 4 * 8), [0x48, 0x8B, 0x0D]);
         if (_menus == null)
         {
             _logger.WriteLine("[gbfr.qol.buildcard] Menu manager not found", Color.Red);
             return;
         }
-        _isOpenHook = _hooks.CreateHook<IsOpen>(IsOpenImpl, *(long*)(party + 4 * 8)).Activate();
+        nint isOpen = *(nint*)(party + 4 * 8);
+        if (!PeImage.Matches(isOpen, IsOpenStart))
+        {
+            _logger.WriteLine("[gbfr.qol.buildcard] Weapon art loader check not found", Color.Red);
+            return;
+        }
+        _isOpenHook = _hooks.CreateHook<IsOpen>(IsOpenImpl, isOpen).Activate();
         _collectHook = _hooks.CreateHook<Collect>(CollectImpl, (long)collect).Activate();
     }
 

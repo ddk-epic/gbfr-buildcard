@@ -25,9 +25,12 @@ public unsafe class SavedNotice
     private const int InfoKind = 2;
     private const int PhotoSaved = 0x27;
 
-    // the controllers that show infos
-    private static readonly string[] Controllers =
-        [".?AVControllerInformationSystem@component@ui@@", ".?AVControllerInformationToast@component@ui@@"];
+    // the controllers that show infos and their ShowInfo's first bytes
+    private static readonly (string Name, string ShowInfoStart)[] Controllers =
+    [
+        (".?AVControllerInformationSystem@component@ui@@", "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 18 03 00 00"),
+        (".?AVControllerInformationToast@component@ui@@", "41 57 41 56 41 55 41 54 56 57 55 53 48 81 EC 78 01 00 00 48 89 D7"),
+    ];
 
     // the controllers' vtable index of ShowInfo
     private const int ShowInfoIndex = 35;
@@ -82,7 +85,7 @@ public unsafe class SavedNotice
         });
 
         nint image = Process.GetCurrentProcess().MainModule!.BaseAddress;
-        foreach (string controller in Controllers)
+        foreach ((string controller, string showInfoStart) in Controllers)
         {
             nint vtable = PeImage.FindVtable(image, controller);
             if (vtable == 0)
@@ -90,9 +93,14 @@ public unsafe class SavedNotice
                 _logger.WriteLine($"[gbfr.qol.buildcard] {controller} vtable not found", Color.Red);
                 continue;
             }
+            nint showInfo = *(nint*)(vtable + ShowInfoIndex * 8);
+            if (!PeImage.Matches(showInfo, showInfoStart))
+            {
+                _logger.WriteLine($"[gbfr.qol.buildcard] {controller} ShowInfo not found", Color.Red);
+                continue;
+            }
             IHook<ShowInfoFn>? hook = null;
-            hook = _hooks.CreateHook<ShowInfoFn>((c, info) => ShowInfoImpl(hook!, c, info),
-                *(long*)(vtable + ShowInfoIndex * 8)).Activate();
+            hook = _hooks.CreateHook<ShowInfoFn>((c, info) => ShowInfoImpl(hook!, c, info), showInfo).Activate();
             _showInfoHooks.Add(hook);
         }
     }

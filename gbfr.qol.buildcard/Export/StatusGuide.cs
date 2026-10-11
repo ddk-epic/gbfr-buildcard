@@ -15,6 +15,7 @@ public unsafe class StatusGuide
 {
     // ControllerStatusGuide's vtable index of SetUpPageArrows
     private const int SetUpPageArrowsIndex = 21;
+    private const string SetUpPageArrowsStart = "56 57 48 83 EC 78 48 89 CE 48 81 C1 A0 01 00 00";
 
     // name hashes of loc_button_system01_l and loc_button_system01_r
     private const uint ButtonLeft = 0x6030E86D;
@@ -44,7 +45,13 @@ public unsafe class StatusGuide
             _logger.WriteLine("[gbfr.qol.buildcard] ControllerStatusGuide vtable not found", Color.Red);
             return;
         }
-        _setUpPageArrowsHook = _hooks.CreateHook<SetUpPageArrowsFn>(SetUpPageArrowsImpl, *(long*)(vtable + SetUpPageArrowsIndex * 8)).Activate();
+        nint setUpPageArrows = *(nint*)(vtable + SetUpPageArrowsIndex * 8);
+        if (!PeImage.Matches(setUpPageArrows, SetUpPageArrowsStart))
+        {
+            _logger.WriteLine("[gbfr.qol.buildcard] ControllerStatusGuide SetUpPageArrows not found", Color.Red);
+            return;
+        }
+        _setUpPageArrowsHook = _hooks.CreateHook<SetUpPageArrowsFn>(SetUpPageArrowsImpl, setUpPageArrows).Activate();
     }
 
     public void Show(bool shown)

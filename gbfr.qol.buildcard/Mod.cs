@@ -28,13 +28,12 @@ public class Mod : ModBase
 
     private readonly IModConfig _modConfig;
 
+    private UiObjects? _uiObjects;
     private GameText? _gameText;
-    private TextWrap? _textWrap;
     private MasterTraits? _masterTraits;
     private Masteries? _masteries;
     private CharaStatusHooks? _charaStatusHooks;
     private WeaponArtHooks? _weaponArtHooks;
-    private UiObjects? _uiObjects;
     private CardWriter? _cardWriter;
     private SaveCardButton? _saveCardButton;
     private StatusGuide? _statusGuide;
@@ -84,11 +83,11 @@ public class Mod : ModBase
         string modFolder = _modLoader.GetDirectoryForModId(_modConfig.ModId);
         scanManager.InitializeScans(Path.Combine(modFolder, "Signatures"), _modConfig.ModId);
 
-        _gameText = new GameText();
-        _gameText.Init(scanManager, "granblue_fantasy_relink_er");
+        _uiObjects = new UiObjects(_logger);
+        _uiObjects.Init(scanManager, "granblue_fantasy_relink_er");
 
-        _textWrap = new TextWrap(_gameText);
-        _textWrap.Init(scanManager, "granblue_fantasy_relink_er");
+        _gameText = new GameText(_uiObjects);
+        _gameText.Init(scanManager, "granblue_fantasy_relink_er");
 
         _masterTraits = new MasterTraits();
         _masterTraits.Init(scanManager, "granblue_fantasy_relink_er");
@@ -102,10 +101,7 @@ public class Mod : ModBase
         _weaponArtHooks = new WeaponArtHooks(_hooks, _logger);
         _weaponArtHooks.Init();
 
-        _uiObjects = new UiObjects(_logger);
-        _uiObjects.Init(scanManager, "granblue_fantasy_relink_er");
-
-        _cardWriter = new CardWriter(_gameText, _textWrap, _masterTraits, _masteries, _weaponArtHooks, _uiObjects, _logger);
+        _cardWriter = new CardWriter(_gameText, _masterTraits, _masteries, _weaponArtHooks, _uiObjects, _logger);
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.Filled += _cardWriter.OnFilled;
 

@@ -56,11 +56,11 @@ prefab.
 
 ## Text wrapping
 
-`TextWrap` wraps a text to a width with the `Text` component's own wrap fields. The reflow wrap breaks a line after its
-last space that fits, or where it stops fitting when no space does, and only when `+0x198` is 1 to 6. `TextWrap` then splits each line still wider than the width where it stops fitting. A text of more than
+`GameText` wraps a text to a width with the `Text` component's own wrap fields. The reflow wrap breaks a line after its
+last space that fits, or where it stops fitting when no space does, and only when `+0x198` is 1 to 6. `GameText` then splits each line still wider than the width where it stops fitting. A text of more than
 two lines is then cut to two: the lines from the second onward are joined into the second, its glyphs past what fits the width with the
 ellipsis are dropped, and the ellipsis's glyphs are inserted at its end. The ellipsis is `TXT_HUD_COMMUNICATION_OVER`
-(`0x6895D7BB`) in the text's sub-id. `TextWrap` also scales a text's icons by a factor of the icon size the game first
+(`0x6895D7BB`) in the text's sub-id. `GameText` also scales a text's icons by a factor of the icon size the game first
 set.
 
 ## Game functions

@@ -41,7 +41,15 @@ public class CardFile
 
             Directory.CreateDirectory(_folder);
             string path = Path.Combine(_folder, $"{FileNamePrefix(charaName)}{DateTime.Now:yyyyMMdd_HHmmss}.png");
-            Png.Write(path, rgb, Width, Height);
+            try
+            {
+                Png.Write(path, rgb, Width, Height);
+            }
+            catch
+            {
+                File.Delete(path);
+                throw;
+            }
             _logger.WriteLine($"[gbfr.qol.buildcard] Card saved to {path}");
             Saved?.Invoke(path, Width, Height);
         }

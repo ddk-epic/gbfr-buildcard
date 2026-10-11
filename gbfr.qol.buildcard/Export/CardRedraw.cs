@@ -88,13 +88,13 @@ public unsafe class CardRedraw
         _hooks = hooks;
     }
 
-    // On the render thread: hooks the immediate context's draws and render target binds, read from the swapchain, once.
+    // On the render thread: hooks the immediate context's draws and render target binds, read from the first D3D11 swapchain.
     public void Init(nint swapChain)
     {
-        if (_initialized)
+        nint backbuffer = 0, device = 0, context = 0;
+        if (_initialized || GetBuffer(swapChain, &backbuffer) < 0)
             return;
         _initialized = true;
-        nint backbuffer = Backbuffer(swapChain), device = 0, context = 0;
         ((delegate* unmanaged<nint, nint*, void>)Com.Method(backbuffer, ChildGetDevice))(backbuffer, &device);
         ((delegate* unmanaged<nint, nint*, void>)Com.Method(device, DeviceGetImmediateContext))(device, &context);
         nint drawIndexed = Com.Method(context, DrawIndexed), draw = Com.Method(context, Draw),
@@ -206,11 +206,16 @@ public unsafe class CardRedraw
 
     private static nint Backbuffer(nint swapChain)
     {
-        Guid iid = Com.ID3D11Texture2D;
         nint backbuffer = 0;
-        Com.Check(((delegate* unmanaged<nint, uint, Guid*, nint*, int>)Com.Method(swapChain, SwapChainGetBuffer))(
-            swapChain, 0, &iid, &backbuffer), "GetBuffer");
+        Com.Check(GetBuffer(swapChain, &backbuffer), "GetBuffer");
         return backbuffer;
+    }
+
+    private static int GetBuffer(nint swapChain, nint* backbuffer)
+    {
+        Guid iid = Com.ID3D11Texture2D;
+        return ((delegate* unmanaged<nint, uint, Guid*, nint*, int>)Com.Method(swapChain, SwapChainGetBuffer))(
+            swapChain, 0, &iid, backbuffer);
     }
 
     private void SetTargetsImpl(nint context, uint count, nint* views, nint depth)

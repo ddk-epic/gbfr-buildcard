@@ -6,7 +6,7 @@ using Reloaded.Mod.Interfaces;
 namespace gbfr.qol.buildcard.Export;
 
 // Adds saved cards to the player's Steam screenshot library through the game's steam_api64.dll when enabled.
-public unsafe class SteamScreenshots
+public unsafe partial class SteamScreenshots
 {
     private readonly Func<bool> _enabled;
     private readonly ILogger _logger;
@@ -27,7 +27,8 @@ public unsafe class SteamScreenshots
     // Whether Steam took the file; false when the game runs without Steam.
     private static bool Add(string path, int width, int height)
     {
-        if (!NativeLibrary.TryLoad("steam_api64.dll", out nint steamApi)
+        nint steamApi = GetModuleHandleW("steam_api64.dll");
+        if (steamApi == 0
             || !NativeLibrary.TryGetExport(steamApi, "SteamAPI_SteamScreenshots_v003", out nint getInterface)
             || !NativeLibrary.TryGetExport(steamApi, "SteamAPI_ISteamScreenshots_AddScreenshotToLibrary", out nint add))
             return false;
@@ -39,4 +40,8 @@ public unsafe class SteamScreenshots
         fixed (byte* name = file)
             return ((delegate* unmanaged<nint, byte*, byte*, int, int, uint>)add)(screenshots, name, null, width, height) != 0;
     }
+
+    // an already loaded module's handle, or 0
+    [LibraryImport("kernel32.dll", StringMarshalling = StringMarshalling.Utf16)]
+    private static partial nint GetModuleHandleW(string name);
 }

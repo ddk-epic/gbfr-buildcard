@@ -13,10 +13,17 @@ public class CardContents
     private const uint MasteriesLabelHash = 0xB090BB12;  // TXT_PAU_TTL_LB
     private const uint CollectionLabelHash = 0x8278DE48;  // TXT_PAU_TREE_TAB_WEAPON
 
+    private readonly Func<uint, uint, string> _findText;
+
+    public CardContents(Func<uint, uint, string> findText)
+    {
+        _findText = findText;
+    }
+
     public List<CardWrite> Compose(CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits, int[]? masteries)
     {
         var writes = new List<CardWrite>();
-        writes.Add(new LocalizedTextWrite(CardIds.WeaponTitle, WeaponTitleHash, WeaponTitleSubId));
+        writes.Add(LocalizedText(CardIds.WeaponTitle, WeaponTitleHash, WeaponTitleSubId));
         ComposeMasterTraits(writes, build, masterTraits);
         ComposeMasteries(writes, masteries);
         ComposeOverMastery(writes, build);
@@ -24,7 +31,7 @@ public class CardContents
         return writes;
     }
 
-    private static void ComposeMasterTraits(List<CardWrite> writes, CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits)
+    private void ComposeMasterTraits(List<CardWrite> writes, CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits)
     {
         var cells = new Dictionary<uint, MasterTraitCell>();
         foreach (var cell in masterTraits)
@@ -60,12 +67,12 @@ public class CardContents
 
         for (int s = 0; s < Styles; s++)
         {
-            writes.Add(titles[s] is { } title ? new StyleNameWrite(CardIds.PerkNames[s], title) : new TextWrite(CardIds.PerkNames[s], ""));
+            writes.Add(new TextWrite(CardIds.PerkNames[s], titles[s] is { } title ? StyleName(_findText(title, GameText.EmptyIdHash)) : ""));
             for (int k = 0; k < CardIds.PerkStars[s].Length; k++)
                 writes.Add(new ActiveWrite(CardIds.PerkStars[s][k], k < perks[s]));
         }
         for (int s = 0; s < Styles; s++)
-            writes.Add(titles[s] is { } title ? new LocalizedTextWrite(CardIds.StyleTitles[s], title) : new TextWrite(CardIds.StyleTitles[s], ""));
+            writes.Add(titles[s] is { } title ? LocalizedText(CardIds.StyleTitles[s], title) : new TextWrite(CardIds.StyleTitles[s], ""));
         writes.Add(new ActiveWrite(CardIds.Cells, !captain));
         writes.Add(new ActiveWrite(CardIds.CaptainCells, captain));
         for (int s = 0; s < Styles; s++)
@@ -85,17 +92,26 @@ public class CardContents
         }
     }
 
+    private TextWrite LocalizedText(int id, uint textId, uint subId = GameText.EmptyIdHash) =>
+        new(id, _findText(textId, subId), textId);
+
+    private static string StyleName(string title)
+    {
+        int colon = title.IndexOfAny([':', '：']);
+        return colon < 0 ? title : title[..colon].TrimEnd();
+    }
+
     private static CardWrite CellWrite(int id, uint charaKey, MasterTraitCell? cell) =>
         cell is { } c ? new MasterTraitDescriptionWrite(id, charaKey, c.Slot) : new TextWrite(id, "");
 
-    private static void ComposeMasteries(List<CardWrite> writes, int[]? masteries)
+    private void ComposeMasteries(List<CardWrite> writes, int[]? masteries)
     {
         writes.Add(MasteryWrite(CardIds.MasteryTexts[0], MasteriesLabelHash, masteries, Masteries.Offense, Masteries.Defense));
         writes.Add(MasteryWrite(CardIds.MasteryTexts[1], CollectionLabelHash, masteries, Masteries.Collection, Masteries.Transcendence));
     }
 
-    private static CardWrite MasteryWrite(int id, uint labelId, int[]? masteries, int first, int second) =>
-        masteries == null ? new TextWrite(id, "") : new LabeledTextWrite(id, labelId, $"{masteries[first]}% / {masteries[second]}%");
+    private TextWrite MasteryWrite(int id, uint labelId, int[]? masteries, int first, int second) =>
+        new(id, masteries == null ? "" : $"{_findText(labelId, GameText.EmptyIdHash)} {masteries[first]}% / {masteries[second]}%");
 
     private static void ComposeOverMastery(List<CardWrite> writes, CharaBuild build)
     {
@@ -117,10 +133,7 @@ public class CardContents
 
 // A write to a card object, found by its CardIds Id.
 public abstract record CardWrite(int Id);
-public sealed record TextWrite(int Id, string Value) : CardWrite(Id);
-public sealed record LocalizedTextWrite(int Id, uint TextId, uint SubId = GameText.EmptyIdHash) : CardWrite(Id);
-public sealed record LabeledTextWrite(int Id, uint LabelId, string Value) : CardWrite(Id);
-public sealed record StyleNameWrite(int Id, uint TitleId) : CardWrite(Id);
+public sealed record TextWrite(int Id, string Value, uint Hash = GameText.EmptyIdHash) : CardWrite(Id);
 public sealed record MasterTraitDescriptionWrite(int Id, uint CharaKey, int Slot) : CardWrite(Id);
 public sealed record ActiveWrite(int Id, bool Active) : CardWrite(Id);
 public sealed record SummonWrite(int Id, uint SummonId) : CardWrite(Id);

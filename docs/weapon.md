@@ -22,8 +22,8 @@ The build points the `CharaInfo` reference `Weapon` at `bc_weapon` and gives its
 `FillCharacterStatus` fills the panel, the weapon traits and the wrightstone traits.
 
 The heading's text, `CardIds.WeaponTitle`, has no `TextSetter`; the text tables hold no `TXT_PAU_ITEM_WEAPON` for
-the `status01` sub-id. After each character fill `CardWriter` looks the text up with `TextLookup` in the sub-id
-`equip01_info01` (`0xDE6482AF`) and sets it with `TextComponentSetText`.
+the `status01` sub-id. After each character fill `CardContents` looks the text up with `TextLookup` in the sub-id
+`equip01_info01` (`0xDE6482AF`) and `CardWriter` sets it with `TextComponentSetText`.
 
 The art is loaded by the game's `ui::icon::LoadWeaponParty`, which loads the art of each weapon in its list while the
 party menu is open. `WeaponArtHooks` hooks two of its vfuncs:

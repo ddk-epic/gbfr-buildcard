@@ -23,7 +23,7 @@ public unsafe class CardWriter
     private readonly Masteries _masteries;
     private readonly WeaponArtHooks _weaponArt;
     private readonly ILogger _logger;
-    private readonly CardContents _contents = new();
+    private readonly CardContents _contents;
     private delegate* unmanaged<nint, byte, void> _setActive;
     private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
     private delegate* unmanaged<nint, uint, void> _setSummonInfo;
@@ -45,6 +45,7 @@ public unsafe class CardWriter
         _masteries = masteries;
         _weaponArt = weaponArt;
         _logger = logger;
+        _contents = new CardContents(text.Find);
         _limitBonusInfoVtable = PeImage.FindVtable(_exeBase, ".?AVLimitBonusInfo@component@ui@@");
         if (_limitBonusInfoVtable == 0)
             _logger.WriteLine("[gbfr.qol.buildcard] LimitBonusInfo vtable not found", Color.Red);
@@ -97,16 +98,7 @@ public unsafe class CardWriter
             switch (write)
             {
                 case TextWrite text:
-                    SetText(obj, text.Value);
-                    break;
-                case LocalizedTextWrite localized:
-                    SetLocalizedText(obj, localized.TextId, localized.SubId);
-                    break;
-                case LabeledTextWrite labeled:
-                    SetText(obj, $"{_text.Find(labeled.LabelId)} {labeled.Value}");
-                    break;
-                case StyleNameWrite styleName:
-                    SetText(obj, StyleName(_text.Find(styleName.TitleId)));
+                    SetText(obj, text.Value, text.Hash);
                     break;
                 case MasterTraitDescriptionWrite description:
                     SetMasterTraitDescription(obj, description);
@@ -133,22 +125,10 @@ public unsafe class CardWriter
         return text == 0 ? "" : ReadString(text + TextString);
     }
 
-    private void SetText(nint obj, string value)
+    private void SetText(nint obj, string value, uint hash)
     {
         if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
-            _text.Set(text, value);
-    }
-
-    private void SetLocalizedText(nint obj, uint textId, uint subId)
-    {
-        if (FindComponent(obj, _textVtable, "Text") is var text and not 0)
-            _text.Set(text, _text.Find(textId, subId), textId);
-    }
-
-    private static string StyleName(string title)
-    {
-        int colon = title.IndexOfAny([':', '：']);
-        return colon < 0 ? title : title[..colon].TrimEnd();
+            _text.Set(text, value, hash);
     }
 
     private void SetMasterTraitDescription(nint obj, MasterTraitDescriptionWrite write)

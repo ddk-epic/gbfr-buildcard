@@ -21,9 +21,8 @@ the base nodes fill 0–100% and the extension nodes 100–150%. Both texts are 
 
 1. `Masteries.ReadPercents` calls `MasteryPercent` with the mastery manager for each of the four categories and the
    character key.
-2. `CardContents.ComposeMasteries` formats the four numbers into the two texts' values.
-3. `CardWriter` looks up each label with `TextLookup`, puts it before the value and sets the texts with
-   `TextComponentSetText`.
+2. `CardContents.ComposeMasteries` looks up each label with `TextLookup` and puts it before its two numbers.
+3. `CardWriter` sets the texts with `TextComponentSetText`.
 
 ## Runtime data
 

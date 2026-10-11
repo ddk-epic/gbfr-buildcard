@@ -63,6 +63,10 @@ class Component:
             raise KeyError(f"{self.node.path}.{self.name}: {key}")
         return found
 
+    def has(self, key):
+        start, end = self._span()
+        return any(key_of(self.node.lines[i]) == key for i in range(start, end))
+
     def get(self, key):
         # the first line with the key, at any depth
         return self.node.lines[self._keyed(key)[0]].split(": ", 1)[1]

@@ -370,12 +370,14 @@ def apply(ctx):
     for node in scenes[0].walk():
         if "Image" not in node.components():
             continue
+        if node.name not in SCENE_TINTS:
+            raise KeyError(f"{node.path}: no scene tint")
         image_component = node.component("Image")
         stop, brightness, alpha = SCENE_TINTS[node.name]
         if alpha is None:
             alpha = float(image_component.get("Color").rsplit(", ", 1)[1])
         image_component.set("Color", f"{', '.join(f(c) for c in scene_tint(stop, brightness))}, {f(alpha)}")
-        if "TexturePath" in "".join(node.lines) and not any(line.strip().startswith("MaterialPath:") for line in node.lines):
+        if image_component.has("TexturePath") and not image_component.has("MaterialPath"):
             image_component.insert(["      MaterialPath: material/uimonochrome"], after="Type")
     k = max(WIDTH / SCENE_W, HEIGHT / SCENE_H)
     clip.set("Scale", (k, k, 1))

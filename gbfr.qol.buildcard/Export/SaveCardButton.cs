@@ -1,5 +1,8 @@
+using System.Drawing;
+
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Hooks.Definitions;
+using Reloaded.Mod.Interfaces;
 
 using gbfr.qol.buildcard.Hooks;
 
@@ -46,6 +49,7 @@ public unsafe class SaveCardButton
     private const uint DefaultMode = 3;
 
     private readonly IReloadedHooks _hooks;
+    private readonly ILogger _logger;
     private long* _labels;
     private nint* _input;
     private delegate* unmanaged<uint, int, byte, uint, uint> _getButtonBits;
@@ -60,9 +64,10 @@ public unsafe class SaveCardButton
     private IHook<SetCharacterDetailsFooter>? _footerHook;
     private IHook<UpdateShortcutInput>? _updateHook;
 
-    public SaveCardButton(IReloadedHooks hooks)
+    public SaveCardButton(IReloadedHooks hooks, ILogger logger)
     {
         _hooks = hooks;
+        _logger = logger;
     }
 
     // GetButtonBits(input context, button, 1, mode)
@@ -109,9 +114,16 @@ public unsafe class SaveCardButton
     private void UpdateImpl(nint shortcut)
     {
         nint component = shortcut - UpdateableBase;
-        if (*(int*)(component + ButtonType) == CardIds.SaveCardButton && OnStatus01(component))
-            _enabled = TakesInput(component);
-        Tick?.Invoke();
+        try
+        {
+            if (*(int*)(component + ButtonType) == CardIds.SaveCardButton && OnStatus01(component))
+                _enabled = TakesInput(component);
+            Tick?.Invoke();
+        }
+        catch (Exception e)
+        {
+            _logger.WriteLine($"[gbfr.qol.buildcard] {e}", Color.Red);
+        }
         _updateHook!.OriginalFunction(shortcut);
     }
 

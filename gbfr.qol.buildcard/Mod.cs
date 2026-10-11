@@ -106,7 +106,7 @@ public class Mod : ModBase
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.Filled += _cardWriter.OnFilled;
 
-        _saveCardButton = new SaveCardButton(_hooks);
+        _saveCardButton = new SaveCardButton(_hooks, _logger);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
         _statusGuide = new StatusGuide(_hooks, _logger, _uiObjects);
         _statusGuide.Init();

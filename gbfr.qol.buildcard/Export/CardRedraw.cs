@@ -42,6 +42,7 @@ public unsafe class CardRedraw
     private const int MaxFrameBuffers = 6;
 
     private readonly IReloadedHooks _hooks;
+    private bool _initialized;
     private bool _redrawing;
     private bool _drawHooksOn;
     private nint _device, _context, _backbuffer;
@@ -87,11 +88,12 @@ public unsafe class CardRedraw
         _hooks = hooks;
     }
 
-    // On the render thread: hooks the immediate context's draws and render target binds, read from the swapchain.
+    // On the render thread: hooks the immediate context's draws and render target binds, read from the swapchain, once.
     public void Init(nint swapChain)
     {
-        if (_setTargetsHook != null)
+        if (_initialized)
             return;
+        _initialized = true;
         nint backbuffer = Backbuffer(swapChain), device = 0, context = 0;
         ((delegate* unmanaged<nint, nint*, void>)Com.Method(backbuffer, ChildGetDevice))(backbuffer, &device);
         ((delegate* unmanaged<nint, nint*, void>)Com.Method(device, DeviceGetImmediateContext))(device, &context);
@@ -116,11 +118,11 @@ public unsafe class CardRedraw
     // On the render thread at a Present
     public void SetDrawHooks(bool on)
     {
-        if (on == _drawHooksOn || _setTargetsHook == null)
+        if (on == _drawHooksOn || _setTargetsAndUavsHook == null)
             return;
         _drawHooksOn = on;
         foreach (IHook hook in (IHook[])[_drawIndexedHook!, _drawHook!, _drawIndexedInstancedHook!, _drawInstancedHook!,
-                     _setTargetsHook, _setTargetsAndUavsHook!])
+                     _setTargetsHook!, _setTargetsAndUavsHook])
         {
             if (on)
                 hook.Enable();

@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Unicode;
 
 using NenTools.Reloaded.ScanManager.Interfaces;
 
@@ -117,7 +118,8 @@ public unsafe class GameText
     {
         if (_setText == null)
             return;
-        int length = Encoding.UTF8.GetBytes(value, new Span<byte>((void*)_buffer, BufferSize));
+        // cut at the buffer's size
+        Utf8.FromUtf16(value, new Span<byte>((void*)_buffer, BufferSize), out _, out int length);
         var str = new GameString { Ptr = _buffer, Length = (uint)length };
         _setText(text, &str, hash, -1);
     }

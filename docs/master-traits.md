@@ -66,8 +66,9 @@ are solved from.
 3. A perk counts toward its style's stars; the rank 1 perk's title is the style's title. Every other cell is placed at
    its rank and position. The captain's board is shown when a picked or unpicked cell's position is past the normal
    board's slots of its rank.
-4. The configured palette's scene and its group in the shown board are activated, the other palette's deactivated. In
-   that palette, each picked cell's picked base is shown and its unpicked base hidden.
+4. The configured palette's scene and its group in the shown board are activated, the other palette's deactivated; an
+   undefined `MasterTraitsPalette` value shows Blue. In that palette, each picked cell's picked base is shown and its
+   unpicked base hidden.
 5. `CardWriter` writes each cell's description with `SetSkillBoardDescription`, through a mock cell component whose
    only `Text` is the card's cell text. Before the call it sets the text's wrap width and icon size; after it, it splits
    the lines still wider than the cell and cuts the text to two lines.

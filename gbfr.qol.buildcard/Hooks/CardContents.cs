@@ -68,6 +68,7 @@ public class CardContents
         }
         var slots = captain ? CaptainSlots : Slots;
         int layout = captain ? 1 : 0;
+        int shown = (int)(Enum.IsDefined(palette) ? palette : MasterTraitsPalette.Blue);
 
         for (int s = 0; s < Styles; s++)
         {
@@ -81,8 +82,8 @@ public class CardContents
         writes.Add(new ActiveWrite(CardIds.CaptainCells, captain));
         for (int p = 0; p < CardIds.Scenes.Length; p++)
         {
-            writes.Add(new ActiveWrite(CardIds.Scenes[p], p == (int)palette));
-            writes.Add(new ActiveWrite(CardIds.Palettes[layout][p], p == (int)palette));
+            writes.Add(new ActiveWrite(CardIds.Scenes[p], p == shown));
+            writes.Add(new ActiveWrite(CardIds.Palettes[layout][p], p == shown));
         }
         for (int s = 0; s < Styles; s++)
         {
@@ -95,8 +96,8 @@ public class CardContents
                     var slot = placed[s, r, c];
                     writes.Add(CellWrite(CardIds.CellOn[layout][s][r][c], build.CharaKey, slot is { Picked: true } ? slot.Value.Cell : null));
                     writes.Add(CellWrite(CardIds.CellOff[layout][s][r][c], build.CharaKey, slot is { Picked: false } ? slot.Value.Cell : null));
-                    writes.Add(new ActiveWrite(CardIds.CellPicked[(int)palette][layout][s][r][c], slot is { Picked: true }));
-                    writes.Add(new ActiveWrite(CardIds.CellBases[(int)palette][layout][s][r][c], slot is not { Picked: true }));
+                    writes.Add(new ActiveWrite(CardIds.CellPicked[shown][layout][s][r][c], slot is { Picked: true }));
+                    writes.Add(new ActiveWrite(CardIds.CellBases[shown][layout][s][r][c], slot is not { Picked: true }));
                 }
             }
         }

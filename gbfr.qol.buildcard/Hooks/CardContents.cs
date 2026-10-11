@@ -83,7 +83,7 @@ public class CardContents
         for (int p = 0; p < CardIds.Scenes.Length; p++)
         {
             writes.Add(new ActiveWrite(CardIds.Scenes[p], p == shown));
-            writes.Add(new ActiveWrite(CardIds.Palettes[layout][p], p == shown));
+            writes.Add(new ActiveWrite(CardIds.Palettes[p][layout], p == shown));
         }
         for (int s = 0; s < Styles; s++)
         {

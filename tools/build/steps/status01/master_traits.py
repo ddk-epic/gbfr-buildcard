@@ -279,7 +279,7 @@ def grid(board, name, slots, ranks, active):
     for palette in PALETTES:
         for key, base in sorted(cells[palette], key=lambda item: item[0]):
             groups[palette].add(picked_cell(groups[palette], key, base, CELL_STYLES[palette]))
-    return container, [groups[palette] for palette in PALETTES]
+    return container, groups
 
 
 def picked_cell(container, key, base, style):
@@ -427,8 +427,8 @@ def apply(ctx):
         title.place(pos=(card(column_x(s), 0)[0], (old_line_y + panel_top) / 2 + STYLE_TITLE_H / 2), size=(COLUMN_W, STYLE_TITLE_H))
         titles.append(title)
 
-    cells, cell_palettes = grid(board, "bc_mt_cells", SLOTS, stock, True)
-    captain, captain_palettes = grid(board, "bc_mt_cells_captain", CAPTAIN_SLOTS, captain_ranks(stock), False)
+    cells, cell_groups = grid(board, "bc_mt_cells", SLOTS, stock, True)
+    captain, captain_groups = grid(board, "bc_mt_cells_captain", CAPTAIN_SLOTS, captain_ranks(stock), False)
 
     perk_rows = [perk_row.child(f"bc_mt_perk_{s}") for s in range(STYLES)]
     ctx.export("PerkNames", perk_names)
@@ -437,7 +437,7 @@ def apply(ctx):
     ctx.export("Cells", cells)
     ctx.export("CaptainCells", captain)
     ctx.export("Scenes", scenes)
-    ctx.export("Palettes", [cell_palettes, captain_palettes])
+    ctx.export("Palettes", [[cell_groups[palette], captain_groups[palette]] for palette in PALETTES])
     boards = [(cells, SLOTS), (captain, CAPTAIN_SLOTS)]
 
     def cell_nodes(suffix, containers=(cells, captain)):
@@ -445,7 +445,7 @@ def apply(ctx):
                  for s in range(STYLES)] for container, slots in zip(containers, (SLOTS, CAPTAIN_SLOTS))]
 
     def palette_cell_nodes(suffix):
-        return [cell_nodes(suffix, layouts) for layouts in zip(cell_palettes, captain_palettes)]
+        return [cell_nodes(suffix, (cell_groups[palette], captain_groups[palette])) for palette in PALETTES]
     ctx.export("RankCounts", [[[container.child(f"bc_mt_{s}_{r}_count") for r in range(len(SLOTS))]
                                for s in range(STYLES)] for container, _ in boards])
     ctx.export("CellPicked", palette_cell_nodes("picked"))

@@ -17,7 +17,7 @@ internal static class CardIds
     public const short CharaName = 12;
     public static readonly short[] MasteryTexts = [115, 116];
     public static readonly short[] OverMasteryRows = [2613, 2645, 2677, 2709];
-    public static readonly short[][] Palettes = [[551, 936], [1526, 1959]];
+    public static readonly short[][] Palettes = [[551, 1526], [936, 1959]];
     public static readonly short[] PerkNames = [499, 511, 523];
     public static readonly short[][] PerkStars = [[502, 505, 508], [514, 517, 520], [526, 529, 532]];
     public static readonly short[][][] RankCounts = [[[1310, 1312, 1314, 1316], [1378, 1380, 1382, 1384], [1446, 1448, 1450, 1452]], [[2381, 2383, 2385, 2387], [2457, 2459, 2461, 2463], [2533, 2535, 2537, 2539]]];

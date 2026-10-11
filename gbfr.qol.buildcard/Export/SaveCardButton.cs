@@ -27,6 +27,21 @@ public unsafe class SaveCardButton
     // keyboard 1 in the held menu keys
     private const uint MenuKey = 0x4000;
 
+    // Shortcut component
+    private const int UpdateableBase = 0x68;
+    private const int ComponentObject = 0x10;
+    private const int InputFlags = 0x20;
+    private const int InputBlocked = 0x24;
+    private const int ButtonType = 0x70;
+
+    // input flags
+    private const uint InputEnabled = 0x1;
+    private const uint InputButtons = 0x4;
+
+    // name hash
+    private const uint Status01 = 0xD54E236E;
+    private const int NameHash = 0x1C4;
+
     // the mode a Shortcut without a context passes
     private const uint DefaultMode = 3;
 
@@ -35,6 +50,7 @@ public unsafe class SaveCardButton
     private nint* _input;
     private delegate* unmanaged<uint, int, byte, uint, uint> _getButtonBits;
     private bool _held;
+    private bool _enabled;
 
     // Raised on the game thread for each shortcut update.
     public event Action? Tick;
@@ -70,7 +86,7 @@ public unsafe class SaveCardButton
         });
     }
 
-    // Whether the button went down since the last call.
+    // Whether the button went down since the last call while status01's shortcut takes input.
     public bool Pressed()
     {
         if (_input == null || *_input == 0 || _getButtonBits == null)
@@ -81,7 +97,7 @@ public unsafe class SaveCardButton
             && ((*(uint*)(input + HeldButtons) & mask) != 0 || (*(uint*)(input + HeldMenuKeys) & MenuKey) != 0);
         bool pressed = down && !_held;
         _held = down;
-        return pressed;
+        return pressed && _enabled;
     }
 
     private void FooterImpl()
@@ -92,8 +108,24 @@ public unsafe class SaveCardButton
 
     private void UpdateImpl(nint shortcut)
     {
+        nint component = shortcut - UpdateableBase;
+        if (*(int*)(component + ButtonType) == CardIds.SaveCardButton && OnStatus01(component))
+            _enabled = TakesInput(component);
         Tick?.Invoke();
         _updateHook!.OriginalFunction(shortcut);
+    }
+
+    private static bool OnStatus01(nint component)
+    {
+        nint obj = *(nint*)(component + ComponentObject);
+        return obj != 0 && *(uint*)(obj + NameHash) == Status01;
+    }
+
+    // UpdateShortcutInput's input check
+    private static bool TakesInput(nint component)
+    {
+        uint flags = *(uint*)(component + InputFlags);
+        return *(byte*)(component + InputBlocked) == 0 && (flags & InputEnabled) != 0 && (flags & InputButtons) != 0;
     }
 
     private void AddLabel()

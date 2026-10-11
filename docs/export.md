@@ -68,10 +68,31 @@ call is at its `+0x1A`.
 | `+0xB0` | Input lock, an int32; input is read when it is below 1. |
 
 Save Card is down when the lock is below 1 and either `+0x84` has a bit of `GetButtonBits(+0xA8, 12, 1, 3)` or `+0x0C`
-has `0x4000`. `SaveCardButton.Pressed` returns true on the tick it goes down. A press counts only while the card is
+has `0x4000`. `SaveCardButton.Pressed` returns true on the tick it goes down while `status01`'s shortcut for button 12
+takes input (see [Shortcut input](#shortcut-input)). A press counts only while the card is
 shown and `CardFile` is not writing a card. The card is shown while a card is filled and the Character Details menu
 (`PauseStatus`) is open, checked through `WeaponArtHooks.CardShown`; other menus that read the
 same key, such as Master Traits, do not start an export.
+
+## Shortcut input
+
+`ui::component::Shortcut` binds a button. `status01` holds eight, one with `ButtonType` 12, Save Card's button.
+`UpdateShortcutInput` is vfunc 1 of the Shortcut's `IUpdateable` base at `+0x68` and gets that base.
+
+| Offset | Field |
+|---|---|
+| `+0x10` | The component's object. |
+| `+0x20` | Input flags: `0x1` enabled, `0x2` buttons 10 and 13, `0x4` the other buttons. |
+| `+0x24` | Input block, a byte. |
+| `+0x70` | `ButtonType`. |
+| `+0x75` | `Always`: the button is read without the input check. |
+
+Without `Always`, `UpdateShortcutInput` reads the button only when `+0x24` is 0 and `+0x20` has `0x1` and the bit of
+the button. The sub-menus of Character Details, such as Trait Details and Command List, turn the page's shortcuts off
+with the FSM action `SetControlEnable` (`ui::fsm::action`): for each component of the listed types on the listed
+layouts it sets or clears bits `0x2` and `0x4` of `+0x20`, then does the same on each child in the component's input
+tree (children at `+0x28`..`+0x30`). `SaveCardButton` reads the gate of `status01`'s button 12 shortcut at each of
+its updates, found by its `ButtonType` and its object's name hash.
 
 ## Page button prompts
 

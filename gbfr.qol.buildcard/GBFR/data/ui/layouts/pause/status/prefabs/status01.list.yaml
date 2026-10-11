@@ -26,9 +26,9 @@ TextureData:
   - layouts/pause/background04/noatlastextures/ps_bg04_image08
   - layouts/pause/status/noatlastextures/bc_white
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base01
+  - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base04
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base02
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base03
-  - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base04
   - layouts/pause/status/noatlastextures/bc_outline
   - layouts/pause/status/noatlastextures/bc_rounded
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_wave_eff04_add
@@ -121,6 +121,7 @@ Materials:
 - fonts/fot_tsukuoldminpro_r_sdf_ds10
 - fonts/fot_tsukuoldminpro_r_sdf_glow_w01
 - material/uiaddalphaa
+- material/uimonochrome
 - fonts/fot_skipstd_b_sdf_skill_down01
 - fonts/fot_skipstd_b_sdf_ds01
 - fonts/fot_skipstd_b_sdf_ol09

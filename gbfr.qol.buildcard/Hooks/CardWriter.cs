@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Mod.Interfaces;
+using gbfr.qol.buildcard.Configuration;
 
 namespace gbfr.qol.buildcard.Hooks;
 
@@ -19,6 +20,7 @@ public unsafe class CardWriter
     private readonly UiObjects _objects;
     private readonly ILogger _logger;
     private readonly CardContents _contents;
+    private readonly Func<MasterTraitsPalette> _palette;
     private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
     private delegate* unmanaged<nint, uint, void> _setSummonInfo;
     private readonly nint _summonInfoVtable;
@@ -29,13 +31,14 @@ public unsafe class CardWriter
     private bool _loggedCount;
 
     public CardWriter(GameText text, MasterTraits masterTraits, Masteries masteries, WeaponArtHooks weaponArt,
-        UiObjects objects, ILogger logger)
+        UiObjects objects, Func<MasterTraitsPalette> palette, ILogger logger)
     {
         _text = text;
         _masterTraits = masterTraits;
         _masteries = masteries;
         _weaponArt = weaponArt;
         _objects = objects;
+        _palette = palette;
         _logger = logger;
         _contents = new CardContents(text.Find);
         _summonInfoVtable = objects.FindVtable(".?AVSummonInfo@component@ui@@");
@@ -74,7 +77,7 @@ public unsafe class CardWriter
         }
 
         var build = CharaBuild.Decode(chara, message => LogOnce(ref _loggedBuild, $"Chara build: {message}", Color.Yellow));
-        foreach (var write in _contents.Compose(build, _masterTraits.ReadCells(build.CharaKey), _masteries.ReadPercents(build.CharaKey)))
+        foreach (var write in _contents.Compose(build, _masterTraits.ReadCells(build.CharaKey), _masteries.ReadPercents(build.CharaKey), _palette()))
         {
             if (!objects.TryGetValue(write.Id, out nint obj))
                 continue;

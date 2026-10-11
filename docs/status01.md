@@ -79,6 +79,21 @@ Objects:
 | `*IconSetter` | Picks the icon sprite for a character, weapon, sigil, skill, ... |
 | `ControllerStatus`, `ControllerCharaStatus02` | The page's controllers. |
 
+### Materials
+
+An `Image`'s `MaterialPath` sets how it is drawn; without one it is alpha blended, its sprite multiplied by `Color`.
+
+| Material | Draws |
+|---|---|
+| `material/uiadd` | The sprite times `Color`, added to what is under it. |
+| `material/uimonochrome` | The sprite in grey, times the brightness of `Color`; the hue of `Color` is dropped. |
+| `material/uialphaa` | `Color` in the sprite's shape, from its alpha alone. |
+| `material/uiaddalphaa` | `Color` in the sprite's shape, from its alpha alone, added to what is under it. |
+| `material/uimultiply` | On the build card, no visible change to what is under it. |
+| `material/uimultiplymonochrome` | On the build card, darkens what is under it. |
+
+A `Color` channel above 1 brightens the sprite further. A negative X `Scale` mirrors an object.
+
 ## Data binding
 
 The game fills the page through the components on the root object. **An object referenced here must not be removed**; hiding (`Active: false`), moving and scaling are safe.
@@ -206,9 +221,9 @@ Ids, names and components; `(inactive)` marks `Active: false` in the stock file.
       │                                                       update icons 384-400 (inactive)
       └─ 434 loc_buildcard      added: the build card, 3528x1764
          ├─ 435 bc_mtraits      master traits
-         ├─ 1759 bc_om          Over Mastery
-         ├─ 1892 bc_smn         summons
-         ├─ 2099 bc_weapon      weapon
-         ├─ 2703 bc_skills      skills
-         └─ 2940 bc_frame       the ornate frame over the card
+         ├─ 2608 bc_om          Over Mastery
+         ├─ 2741 bc_smn         summons
+         ├─ 2948 bc_weapon      weapon
+         ├─ 3552 bc_skills      skills
+         └─ 3789 bc_frame       the ornate frame over the card
 ```

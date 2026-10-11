@@ -101,7 +101,8 @@ public class Mod : ModBase
         _weaponArtHooks = new WeaponArtHooks(_hooks, _logger);
         _weaponArtHooks.Init();
 
-        _cardWriter = new CardWriter(_gameText, _masterTraits, _masteries, _weaponArtHooks, _uiObjects, _logger);
+        _cardWriter = new CardWriter(_gameText, _masterTraits, _masteries, _weaponArtHooks, _uiObjects,
+            () => _configuration.MasterTraitsPalette, _logger);
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.Filled += _cardWriter.OnFilled;
 

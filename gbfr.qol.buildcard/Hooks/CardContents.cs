@@ -1,3 +1,5 @@
+using gbfr.qol.buildcard.Configuration;
+
 namespace gbfr.qol.buildcard.Hooks;
 
 // Turns a chara's build into the card's writes, by CardIds.
@@ -20,18 +22,20 @@ public class CardContents
         _findText = findText;
     }
 
-    public List<CardWrite> Compose(CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits, int[]? masteries)
+    public List<CardWrite> Compose(CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits, int[]? masteries,
+        MasterTraitsPalette palette)
     {
         var writes = new List<CardWrite>();
         writes.Add(LocalizedText(CardIds.WeaponTitle, WeaponTitleHash, WeaponTitleSubId));
-        ComposeMasterTraits(writes, build, masterTraits);
+        ComposeMasterTraits(writes, build, masterTraits, palette);
         ComposeMasteries(writes, masteries);
         ComposeOverMastery(writes, build);
         ComposeSummons(writes, build);
         return writes;
     }
 
-    private void ComposeMasterTraits(List<CardWrite> writes, CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits)
+    private void ComposeMasterTraits(List<CardWrite> writes, CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits,
+        MasterTraitsPalette palette)
     {
         var cells = new Dictionary<uint, MasterTraitCell>();
         foreach (var cell in masterTraits)
@@ -75,6 +79,11 @@ public class CardContents
             writes.Add(titles[s] is { } title ? LocalizedText(CardIds.StyleTitles[s], title) : new TextWrite(CardIds.StyleTitles[s], ""));
         writes.Add(new ActiveWrite(CardIds.Cells, !captain));
         writes.Add(new ActiveWrite(CardIds.CaptainCells, captain));
+        for (int p = 0; p < CardIds.Scenes.Length; p++)
+        {
+            writes.Add(new ActiveWrite(CardIds.Scenes[p], p == (int)palette));
+            writes.Add(new ActiveWrite(CardIds.Palettes[layout][p], p == (int)palette));
+        }
         for (int s = 0; s < Styles; s++)
         {
             for (int r = 0; r < slots.Length; r++)
@@ -86,7 +95,8 @@ public class CardContents
                     var slot = placed[s, r, c];
                     writes.Add(CellWrite(CardIds.CellOn[layout][s][r][c], build.CharaKey, slot is { Picked: true } ? slot.Value.Cell : null));
                     writes.Add(CellWrite(CardIds.CellOff[layout][s][r][c], build.CharaKey, slot is { Picked: false } ? slot.Value.Cell : null));
-                    writes.Add(new ActiveWrite(CardIds.CellPicked[layout][s][r][c], slot is { Picked: true }));
+                    writes.Add(new ActiveWrite(CardIds.CellPicked[(int)palette][layout][s][r][c], slot is { Picked: true }));
+                    writes.Add(new ActiveWrite(CardIds.CellBases[(int)palette][layout][s][r][c], slot is not { Picked: true }));
                 }
             }
         }

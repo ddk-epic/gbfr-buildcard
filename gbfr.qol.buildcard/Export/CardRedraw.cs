@@ -381,7 +381,7 @@ public unsafe class CardRedraw
         var frameBuffer = BeforeDraw(context);
         _drawIndexedHook!.OriginalFunction(context, indexCount, startIndex, baseVertex);
         if (frameBuffer != null)
-            Redraw(frameBuffer, () => _drawIndexedHook.OriginalFunction(context, indexCount, startIndex, baseVertex));
+            RedrawIndexed(frameBuffer, context, indexCount, startIndex, baseVertex);
     }
 
     private void DrawImpl(nint context, uint vertexCount, uint startVertex)
@@ -389,7 +389,7 @@ public unsafe class CardRedraw
         var frameBuffer = BeforeDraw(context);
         _drawHook!.OriginalFunction(context, vertexCount, startVertex);
         if (frameBuffer != null)
-            Redraw(frameBuffer, () => _drawHook.OriginalFunction(context, vertexCount, startVertex));
+            RedrawVertices(frameBuffer, context, vertexCount, startVertex);
     }
 
     private void DrawIndexedInstancedImpl(nint context, uint indexCount, uint instanceCount, uint startIndex,
@@ -398,8 +398,7 @@ public unsafe class CardRedraw
         var frameBuffer = BeforeDraw(context);
         _drawIndexedInstancedHook!.OriginalFunction(context, indexCount, instanceCount, startIndex, baseVertex, startInstance);
         if (frameBuffer != null)
-            Redraw(frameBuffer, () => _drawIndexedInstancedHook.OriginalFunction(context, indexCount, instanceCount, startIndex,
-                baseVertex, startInstance));
+            RedrawIndexedInstanced(frameBuffer, context, indexCount, instanceCount, startIndex, baseVertex, startInstance);
     }
 
     private void DrawInstancedImpl(nint context, uint vertexCount, uint instanceCount, uint startVertex,
@@ -408,6 +407,22 @@ public unsafe class CardRedraw
         var frameBuffer = BeforeDraw(context);
         _drawInstancedHook!.OriginalFunction(context, vertexCount, instanceCount, startVertex, startInstance);
         if (frameBuffer != null)
-            Redraw(frameBuffer, () => _drawInstancedHook.OriginalFunction(context, vertexCount, instanceCount, startVertex, startInstance));
+            RedrawInstanced(frameBuffer, context, vertexCount, instanceCount, startVertex, startInstance);
     }
+
+    private void RedrawIndexed(FrameBuffer frameBuffer, nint context, uint indexCount, uint startIndex, int baseVertex) =>
+        Redraw(frameBuffer, () => _drawIndexedHook!.OriginalFunction(context, indexCount, startIndex, baseVertex));
+
+    private void RedrawVertices(FrameBuffer frameBuffer, nint context, uint vertexCount, uint startVertex) =>
+        Redraw(frameBuffer, () => _drawHook!.OriginalFunction(context, vertexCount, startVertex));
+
+    private void RedrawIndexedInstanced(FrameBuffer frameBuffer, nint context, uint indexCount, uint instanceCount,
+        uint startIndex, int baseVertex, uint startInstance) =>
+        Redraw(frameBuffer, () => _drawIndexedInstancedHook!.OriginalFunction(context, indexCount, instanceCount, startIndex,
+            baseVertex, startInstance));
+
+    private void RedrawInstanced(FrameBuffer frameBuffer, nint context, uint vertexCount, uint instanceCount,
+        uint startVertex, uint startInstance) =>
+        Redraw(frameBuffer, () => _drawInstancedHook!.OriginalFunction(context, vertexCount, instanceCount, startVertex,
+            startInstance));
 }

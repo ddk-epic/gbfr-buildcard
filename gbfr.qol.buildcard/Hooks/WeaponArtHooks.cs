@@ -8,8 +8,7 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Adds the card's weapon to the art ui::icon::LoadWeaponParty loads, and reports the loader open while the Character
-// Details page is open.
+// Adds the card's weapon to the art ui::icon::LoadWeaponParty loads while the Character Details page is open.
 public unsafe class WeaponArtHooks
 {
     // loader entries: [weapon key, alternate art]
@@ -26,9 +25,26 @@ public unsafe class WeaponArtHooks
     private const int ShowMirage = 0x1113;
     private const int ShowAlternateArt = 0x1114;
 
+    // menu manager: open menus
+    private const int OpenMenus = 0x40;
+    private const int OpenMenuSize = 0x20;
+    private const int OpenMenu = 0x18;
+
+    // menu manager: menu requests
+    private const int Requests = 0xD8;
+    private const int RequestSize = 0x48;
+    private const int OpenRequest = 1;
+
+    // menu
+    private const int MenuOpenState = 0x110;
+    private const int MenuName = 0x148;
+
+    // name hash
+    private const uint PauseStatus = 0xF355AE9C;
+
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
-    private delegate* unmanaged<nint, byte> _statusPageOpen;
+    private nint* _menus;
     private nint* _settings;
     private uint _key = NoKey;
     private bool _alternate;
@@ -62,7 +78,12 @@ public unsafe class WeaponArtHooks
             return;
         }
         _settings = (nint*)(collect + 0x2D + *(int*)(collect + 0x29));
-        _statusPageOpen = (delegate* unmanaged<nint, byte>)*(nint*)(status + 4 * 8);
+        _menus = PeImage.RipGlobal(*(byte**)(status + 4 * 8), [0x48, 0x8B, 0x0D]);
+        if (_menus == null)
+        {
+            _logger.WriteLine("[gbfr.qol.buildcard] Menu manager not found", Color.Red);
+            return;
+        }
         _isOpenHook = _hooks.CreateHook<IsOpen>(IsOpenImpl, *(long*)(party + 4 * 8)).Activate();
         _collectHook = _hooks.CreateHook<Collect>(CollectImpl, (long)collect).Activate();
     }
@@ -108,5 +129,27 @@ public unsafe class WeaponArtHooks
     }
 
     // Whether the Character Details page is open with a card filled.
-    public bool CardShown() => _key != NoKey && _statusPageOpen(0) != 0;
+    public bool CardShown() => _key != NoKey && StatusMenuOpen();
+
+    // Whether PauseStatus is open or requested to open.
+    private bool StatusMenuOpen()
+    {
+        if (_menus == null || *_menus == 0)
+            return false;
+        nint manager = *_menus;
+        nint end = *(nint*)(manager + OpenMenus + 8);
+        for (nint entry = *(nint*)(manager + OpenMenus); entry != end; entry += OpenMenuSize)
+        {
+            nint menu = *(nint*)(entry + OpenMenu);
+            if (menu != 0 && *(uint*)(menu + MenuName) == PauseStatus)
+                return *(int*)(menu + MenuOpenState) == 1;
+        }
+        end = *(nint*)(manager + Requests + 8);
+        for (nint request = *(nint*)(manager + Requests); request != end; request += RequestSize)
+        {
+            if (*(int*)request == OpenRequest && *(uint*)(request + 4) == PauseStatus)
+                return true;
+        }
+        return false;
+    }
 }

@@ -69,7 +69,9 @@ call is at its `+0x1A`.
 
 Save Card is down when the lock is below 1 and either `+0x84` has a bit of `GetButtonBits(+0xA8, 12, 1, 3)` or `+0x0C`
 has `0x4000`. `SaveCardButton.Pressed` returns true on the tick it goes down. A press counts only while the card is
-shown (`WeaponArtHooks.CardShown`) and `CardFile` is not writing a card.
+shown and `CardFile` is not writing a card. The card is shown while a card is filled and the Character Details menu
+(`PauseStatus`) is open, checked through `WeaponArtHooks.CardShown`; other menus that read the
+same key, such as Master Traits, do not start an export.
 
 ## Page button prompts
 

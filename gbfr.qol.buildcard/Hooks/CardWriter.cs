@@ -101,6 +101,7 @@ public unsafe class CardWriter
             }
         }
         WrapSkillNames(objects);
+        TruncateSigilTraitNames(objects);
         _weaponArt.Show(chara);
         _charaNameObject = objects.GetValueOrDefault(CardIds.CharaName);
     }
@@ -128,6 +129,13 @@ public unsafe class CardWriter
     {
         foreach (short id in CardIds.SkillNames)
             _text.Rewrap(objects[id], CardIds.SkillNameWidth);
+    }
+
+    private void TruncateSigilTraitNames(Dictionary<int, nint> objects)
+    {
+        foreach (short[] row in CardIds.SigilTraitNames)
+            foreach (short id in row)
+                _text.Rewrap(objects[id], CardIds.SigilTraitNameWidth, 1);
     }
 
     private void LogOnce(ref bool logged, string message, Color color)

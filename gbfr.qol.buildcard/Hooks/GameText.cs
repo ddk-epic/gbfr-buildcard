@@ -27,7 +27,6 @@ public unsafe class GameText
     private const int LineSize = 0x18;
     private const int GlyphSize = 0x50;
     private const int Reflow = 1;  // wrap mode
-    private const int MaxLines = 2;
     private const uint EllipsisHash = 0x6895D7BB;  // TXT_HUD_COMMUNICATION_OVER
     private const int EllipsisGlyphs = 16;
 
@@ -92,8 +91,8 @@ public unsafe class GameText
         return text == 0 ? "" : ReadString(text);
     }
 
-    // Wraps what fill sets to width and caps it at two lines
-    public void Wrap(nint obj, int width, Action<nint> fill, float? iconScale = null)
+    // Wraps what fill sets to width and caps it at maxLines lines
+    public void Wrap(nint obj, int width, Action<nint> fill, float? iconScale = null, int maxLines = 2)
     {
         if (_objects.FindComponent(obj, _textVtable) is not (var text and not 0))
             return;
@@ -101,12 +100,12 @@ public unsafe class GameText
         if (iconScale is { } scale)
             ScaleIcons(text, scale);
         fill(text);
-        Cap(text);
+        Cap(text, maxLines);
     }
 
     // Wraps the object's current text
-    public void Rewrap(nint obj, int width) =>
-        Wrap(obj, width, text => SetString(text, ReadString(text), *(uint*)(text + Hash)));
+    public void Rewrap(nint obj, int width, int maxLines = 2) =>
+        Wrap(obj, width, text => SetString(text, ReadString(text), *(uint*)(text + Hash)), maxLines: maxLines);
 
     public string Find(uint hash, uint subId = EmptyIdHash)
     {
@@ -160,25 +159,25 @@ public unsafe class GameText
         *(byte*)(text + IconSize) = (byte)MathF.Round(_iconSize.Value * scale);
     }
 
-    // Caps the text at two lines, the second ending in the game's ellipsis
-    private void Cap(nint text)
+    // Caps the text at maxLines lines, the last ending in the game's ellipsis
+    private void Cap(nint text, int maxLines)
     {
         if (_joinLines == null || _fitLine == null || _splitLine == null || _buildGlyphs == null || _insertGlyphs == null)
             return;
         Split(text);
         nint* lines = (nint*)(text + Lines);
-        if (!GameMemory.IsVector(text + Lines, LineSize) || (lines[1] - lines[0]) / LineSize <= MaxLines)
+        if (!GameMemory.IsVector(text + Lines, LineSize) || (lines[1] - lines[0]) / LineSize <= maxLines)
             return;
         var ellipsis = Lookup(EllipsisHash, *(uint*)(text + SubId));
         if (ellipsis.Ptr == 0 || ellipsis.Length > EllipsisGlyphs)
             return;
 
         nint first = lines[0];
-        lines[0] = first + (MaxLines - 1) * LineSize;
+        lines[0] = first + (maxLines - 1) * LineSize;
         _joinLines(text);
         lines[0] = first;
 
-        nint* last = (nint*)(first + (MaxLines - 1) * LineSize);
+        nint* last = (nint*)(first + (maxLines - 1) * LineSize);
         if (!GameMemory.IsVector((nint)last, GlyphSize))
             return;
         int cut = _fitLine(text, *(int*)(text + WrapWidth), last, 1);

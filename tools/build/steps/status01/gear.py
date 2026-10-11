@@ -15,6 +15,7 @@ ICON_W = 72
 ICON_X = 40  # the icon's centre from the column's left edge
 NAME_X = 86  # the name's left edge from the column's left edge
 NAME_GAP = 8  # the name's right edge to the next icon or the level
+ELLIPSIS_ROOM = 32  # the cut name's wrap width past its box
 SKILLS_INSET = 40  # loc_icon_skill's pivot, its right edge, from the row's right edge
 FONT_SIZE = 40
 
@@ -111,6 +112,7 @@ def rework_sigil_row(row, row_w):
         skills.child(f"icon_skill0{n + 1}").place(pos=(columns[n] + ICON_X - skills_right, 0), size=(ICON_W, ICON_W))
         skills.child(f"bc_trait0{n + 1}").place(pos=(columns[n] + NAME_X - skills_right, 0),
                                                  size=(name_w, ROW_H))
+    return name_w
 
 
 def raise_level(level):
@@ -234,7 +236,7 @@ def apply(ctx):
     row_w = width / scale - 8
     gene_h = gene.vec("SizeDelta")[1]
     for i, row in enumerate(sigil_rows):
-        rework_sigil_row(row, row_w)
+        name_w = rework_sigil_row(row, row_w)
         row.place(pos=(0, gene_h / 2 - ROW_H / 2 - ROW_H * i))
     match_trait_rows(traits, sigil_rows, row_w)
     info = panel.child("root").child("loc_info01")
@@ -250,3 +252,5 @@ def apply(ctx):
     chara_info = prefab.root.component("CharaInfo")
     chara_info.set_refs("Weapon", [panel])
     chara_info.set_refs("Gem", sigil_rows)
+    ctx.export("SigilTraitNames", [[row.find(f"bc_trait0{n + 1}") for n in range(2)] for row in sigil_rows])
+    ctx.export("SigilTraitNameWidth", int(name_w + ELLIPSIS_ROOM))

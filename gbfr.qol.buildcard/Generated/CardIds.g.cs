@@ -25,6 +25,8 @@ internal static class CardIds
     public const int SaveCardButton = 12;
     public const int SaveCardLabel = 1480930329;
     public static readonly short[] Scenes = [437, 466];
+    public const int SigilTraitNameWidth = 488;
+    public static readonly short[][] SigilTraitNames = [[3433, 3434], [3448, 3449], [3463, 3464], [3478, 3479], [3493, 3494], [3508, 3509], [3523, 3524], [3538, 3539], [3553, 3554], [3568, 3569], [3583, 3584], [3598, 3599]];
     public const int SkillNameWidth = 296;
     public static readonly short[] SkillNames = [3612, 3670, 3728, 3786];
     public static readonly short[] StyleTitles = [535, 536, 537];

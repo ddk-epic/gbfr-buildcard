@@ -52,7 +52,7 @@ public unsafe class UiObjects
 
         var objects = new Dictionary<int, nint>();
         var pending = new Stack<nint>([root]);
-        while (pending.Count > 0 && objects.Count < MaxObjects)
+        for (int visited = 0; pending.Count > 0 && visited < MaxObjects; visited++)
         {
             nint obj = pending.Pop();
             objects[*(int*)(obj + Id)] = obj;

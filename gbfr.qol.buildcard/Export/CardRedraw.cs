@@ -337,9 +337,13 @@ public unsafe class CardRedraw
     private void Redraw(FrameBuffer frameBuffer, Action draw)
     {
         nint context = _context;
-        uint viewportCount = MaxRects, rectCount = MaxRects;
+        uint viewportCount = 0, rectCount = 0;
         float* viewports = stackalloc float[6 * MaxRects];
         int* rects = stackalloc int[4 * MaxRects];
+        ((delegate* unmanaged<nint, uint*, float*, void>)Com.Method(context, GetViewports))(context, &viewportCount, null);
+        ((delegate* unmanaged<nint, uint*, int*, void>)Com.Method(context, GetScissorRects))(context, &rectCount, null);
+        viewportCount = Math.Min(viewportCount, MaxRects);
+        rectCount = Math.Min(rectCount, MaxRects);
         ((delegate* unmanaged<nint, uint*, float*, void>)Com.Method(context, GetViewports))(context, &viewportCount, viewports);
         ((delegate* unmanaged<nint, uint*, int*, void>)Com.Method(context, GetScissorRects))(context, &rectCount, rects);
 

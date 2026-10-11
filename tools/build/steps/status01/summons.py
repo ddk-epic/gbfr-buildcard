@@ -9,8 +9,7 @@ COLUMN_GAP = 12  # card units
 PAD = 15  # card units
 KEEP = ["loc_text01"]  # loc_item01's children kept
 ICON_W, ICON_H = 320, 440  # cmn_icsmn sprites
-FADE = ("atlas/pause_pause_common", "ps_cmn_mask_list_w01")
-FADE_PADDING = 243.07613 / 1152  # the fade sprite's transparent left padding, of its width
+FADE = ("layouts/pause/status/noatlastextures/bc_smn_art_mask", "bc_smn_art_mask")
 BAND_FADE = ("atlas/pause_pause_common", "ps_cmn_list02_mask")
 BAND_FADE_PADDING = 390.0761 / 1112  # the band fade sprite's transparent right padding, of its width
 NAME_COLOR = "0.98039216, 0.98039216, 0.9411765, 1"  # online_text01
@@ -101,11 +100,10 @@ def slot(sources, name, scale):
     language.insert([f"      LanguageData: {NAME_LANGUAGE}"], after="MultiData")
     text.place(pos=(band_left + NAME_X, band_top - BAND_H / 2))
 
-    # the fade's opaque part over the last third, the icon centred on it
-    fade_w = ART_W / (1 - FADE_PADDING)
-    fade.place(pos=(-left - fade_w / 2, top - cell_h / 2), size=(fade_w, cell_h))
+    # the mask over the cell's last third, the icon centred on it
+    fade.place(pos=(-left - ART_W / 2, top - cell_h / 2), size=(ART_W, cell_h))
     w = ART_W * PORTRAIT_W
-    icon.place(pos=(fade_w / 2 - ART_W / 2, -portrait_y), size=(w, w * ICON_H / ICON_W))
+    icon.place(pos=(0, -portrait_y), size=(w, w * ICON_H / ICON_W))
 
     for row, y, k in ((trait, TRAIT_Y, PANEL_SCALE / scale), (bonus, BONUS_Y, 1)):
         # the trait row at the status panel labels' size; the rows' icons at the band's left edge

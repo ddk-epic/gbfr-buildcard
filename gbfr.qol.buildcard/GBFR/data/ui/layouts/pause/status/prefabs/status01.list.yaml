@@ -31,6 +31,7 @@ TextureData:
   - layouts/pause/skillboard/noatlastextures/ps_sboard_ttl_base03
   - layouts/pause/status/noatlastextures/bc_outline
   - layouts/pause/status/noatlastextures/bc_rounded
+  - layouts/pause/status/noatlastextures/bc_smn_art_mask
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_wave_eff04_add
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff01_add
   - layouts/common/image_equip/noatlastextures/cmn_imgequ_wp_eff01_mask

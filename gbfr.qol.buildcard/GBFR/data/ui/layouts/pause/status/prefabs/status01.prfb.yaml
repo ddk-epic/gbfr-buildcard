@@ -98887,24 +98887,24 @@ Objects:
   - ComponentName: Mask
     Component:
       Sprite:
-        TexturePath: atlas/pause_pause_common
-        SpriteName: ps_cmn_mask_list_w01
+        TexturePath: layouts/pause/status/noatlastextures/bc_smn_art_mask
+        SpriteName: bc_smn_art_mask
       Offset: 0, 0
       ChannelWeights: 0, 0, 0, 1
       InvertMask: false
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 328.033, -84.17, 0
+  Position: 378.667, -84.17, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 328.033, -84.17
+  AnchorPoint: 378.667, -84.17
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 88.065, -238.34
+  OffsetMin: 189.333, -238.34
   OffsetMax: 568, 70
-  SizeDelta: 479.935, 308.34
+  SizeDelta: 378.667, 308.34
 - Id: 2797
   Name: icon01
   Components:
@@ -98936,15 +98936,15 @@ Objects:
       Resetting: false
       Enable: true
   Active: true
-  Position: 50.634, -42.397, 0
+  Position: 0, -42.397, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 50.634, -42.397
+  AnchorPoint: 0, -42.397
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -176.566, -354.797
-  OffsetMax: 277.834, 270.003
+  OffsetMin: -227.2, -354.797
+  OffsetMax: 227.2, 270.003
   SizeDelta: 454.4, 624.8
 - Id: 2798
   Name: bc_smn_band
@@ -100960,24 +100960,24 @@ Objects:
   - ComponentName: Mask
     Component:
       Sprite:
-        TexturePath: atlas/pause_pause_common
-        SpriteName: ps_cmn_mask_list_w01
+        TexturePath: layouts/pause/status/noatlastextures/bc_smn_art_mask
+        SpriteName: bc_smn_art_mask
       Offset: 0, 0
       ChannelWeights: 0, 0, 0, 1
       InvertMask: false
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 328.033, -84.17, 0
+  Position: 378.667, -84.17, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 328.033, -84.17
+  AnchorPoint: 378.667, -84.17
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 88.065, -238.34
+  OffsetMin: 189.333, -238.34
   OffsetMax: 568, 70
-  SizeDelta: 479.935, 308.34
+  SizeDelta: 378.667, 308.34
 - Id: 2848
   Name: icon01
   Components:
@@ -101009,15 +101009,15 @@ Objects:
       Resetting: false
       Enable: true
   Active: true
-  Position: 50.634, -42.397, 0
+  Position: 0, -42.397, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 50.634, -42.397
+  AnchorPoint: 0, -42.397
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -176.566, -354.797
-  OffsetMax: 277.834, 270.003
+  OffsetMin: -227.2, -354.797
+  OffsetMax: 227.2, 270.003
   SizeDelta: 454.4, 624.8
 - Id: 2849
   Name: bc_smn_band
@@ -103033,24 +103033,24 @@ Objects:
   - ComponentName: Mask
     Component:
       Sprite:
-        TexturePath: atlas/pause_pause_common
-        SpriteName: ps_cmn_mask_list_w01
+        TexturePath: layouts/pause/status/noatlastextures/bc_smn_art_mask
+        SpriteName: bc_smn_art_mask
       Offset: 0, 0
       ChannelWeights: 0, 0, 0, 1
       InvertMask: false
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 328.033, -84.17, 0
+  Position: 378.667, -84.17, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 328.033, -84.17
+  AnchorPoint: 378.667, -84.17
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 88.065, -238.34
+  OffsetMin: 189.333, -238.34
   OffsetMax: 568, 70
-  SizeDelta: 479.935, 308.34
+  SizeDelta: 378.667, 308.34
 - Id: 2899
   Name: icon01
   Components:
@@ -103082,15 +103082,15 @@ Objects:
       Resetting: false
       Enable: true
   Active: true
-  Position: 50.634, -42.397, 0
+  Position: 0, -42.397, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 50.634, -42.397
+  AnchorPoint: 0, -42.397
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -176.566, -354.797
-  OffsetMax: 277.834, 270.003
+  OffsetMin: -227.2, -354.797
+  OffsetMax: 227.2, 270.003
   SizeDelta: 454.4, 624.8
 - Id: 2900
   Name: bc_smn_band
@@ -105106,24 +105106,24 @@ Objects:
   - ComponentName: Mask
     Component:
       Sprite:
-        TexturePath: atlas/pause_pause_common
-        SpriteName: ps_cmn_mask_list_w01
+        TexturePath: layouts/pause/status/noatlastextures/bc_smn_art_mask
+        SpriteName: bc_smn_art_mask
       Offset: 0, 0
       ChannelWeights: 0, 0, 0, 1
       InvertMask: false
       InvertOutsides: false
       Enable: true
   Active: true
-  Position: 328.033, -84.17, 0
+  Position: 378.667, -84.17, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 328.033, -84.17
+  AnchorPoint: 378.667, -84.17
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 88.065, -238.34
+  OffsetMin: 189.333, -238.34
   OffsetMax: 568, 70
-  SizeDelta: 479.935, 308.34
+  SizeDelta: 378.667, 308.34
 - Id: 2950
   Name: icon01
   Components:
@@ -105155,15 +105155,15 @@ Objects:
       Resetting: false
       Enable: true
   Active: true
-  Position: 50.634, -42.397, 0
+  Position: 0, -42.397, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 50.634, -42.397
+  AnchorPoint: 0, -42.397
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -176.566, -354.797
-  OffsetMax: 277.834, 270.003
+  OffsetMin: -227.2, -354.797
+  OffsetMax: 227.2, 270.003
   SizeDelta: 454.4, 624.8
 - Id: 2951
   Name: bc_smn_band

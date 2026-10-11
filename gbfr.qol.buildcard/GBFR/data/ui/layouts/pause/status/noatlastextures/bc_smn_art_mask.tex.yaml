@@ -1,0 +1,10 @@
+Wrap: true
+Filter: true
+Size: 512, 512
+Sprites:
+- Name: bc_smn_art_mask
+  Rect: 0, 0, 512, 512
+  Border: 0, 0, 0, 0
+  Padding: 0, 0, 0, 0
+  Uv: 0, 0, 1, 1
+  MinSize: 0, 0

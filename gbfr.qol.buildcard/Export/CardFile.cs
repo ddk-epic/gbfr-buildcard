@@ -11,7 +11,8 @@ public class CardFile
     public const int Height = 1440;
 
     private readonly ILogger _logger;
-    private readonly string _folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+    private readonly string _folder = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.MyPictures, Environment.SpecialFolderOption.DoNotVerify),
         "GBFR Character Build Cards");
     private volatile int _saving;
 

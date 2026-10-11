@@ -146,15 +146,19 @@ public unsafe class WeaponArtHooks
         if (_menus == null || *_menus == 0)
             return false;
         nint manager = *_menus;
-        nint end = *(nint*)(manager + OpenMenus + 8);
-        for (nint entry = *(nint*)(manager + OpenMenus); entry != end; entry += OpenMenuSize)
+        nint* open = (nint*)(manager + OpenMenus);
+        if (!GameMemory.IsVector((nint)open, OpenMenuSize))
+            return false;
+        for (nint entry = open[0], end = open[1]; entry < end; entry += OpenMenuSize)
         {
             nint menu = *(nint*)(entry + OpenMenu);
             if (menu != 0 && *(uint*)(menu + MenuName) == PauseStatus)
                 return *(int*)(menu + MenuOpenState) == 1;
         }
-        end = *(nint*)(manager + Requests + 8);
-        for (nint request = *(nint*)(manager + Requests); request != end; request += RequestSize)
+        nint* requests = (nint*)(manager + Requests);
+        if (!GameMemory.IsVector((nint)requests, RequestSize))
+            return false;
+        for (nint request = requests[0], end = requests[1]; request < end; request += RequestSize)
         {
             if (*(int*)request == OpenRequest && *(uint*)(request + 4) == PauseStatus)
                 return true;

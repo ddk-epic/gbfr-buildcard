@@ -144,6 +144,8 @@ public unsafe class CardRedraw
 
         uint* desc = stackalloc uint[11];
         ((delegate* unmanaged<nint, uint*, void>)Com.Method(_backbuffer, TextureGetDesc))(_backbuffer, desc);
+        // kept as an address only
+        Com.Release(_backbuffer);
         _width = desc[0];
         _height = desc[1];
         RectangleF source = rect((int)_width, (int)_height);
@@ -186,7 +188,6 @@ public unsafe class CardRedraw
             ReleaseFrameBuffer(frameBuffer);
         _frameBuffers.Clear();
         _skipped.Clear();
-        Com.Release(_backbuffer);
         Com.Release(_context);
         Com.Release(_device);
         _backbuffer = _context = _device = 0;

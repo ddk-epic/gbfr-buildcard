@@ -164,7 +164,8 @@ public unsafe class GameText
     // Caps the text at maxLines lines, the last ending in the game's ellipsis
     private void Cap(nint text, int maxLines)
     {
-        if (_joinLines == null || _fitLine == null || _splitLine == null || _buildGlyphs == null || _insertGlyphs == null)
+        if (_joinLines == null || _fitLine == null || _splitLine == null || _buildGlyphs == null || _insertGlyphs == null
+            || !GameMemory.IsVector(text + Lines, LineSize))
             return;
         Split(text);
         nint* lines = (nint*)(text + Lines);
@@ -200,9 +201,12 @@ public unsafe class GameText
         for (int i = 0; i < (lines[1] - lines[0]) / LineSize; i++)
         {
             nint* line = (nint*)(lines[0] + i * LineSize);
+            if (!GameMemory.IsVector((nint)line, GlyphSize))
+                return;
             int cut = _fitLine(text, *(int*)(text + WrapWidth), line, 0);
-            if (cut != 0)
-                _splitLine(text, i, cut, (int)((line[1] - line[0]) / GlyphSize) - 1);
+            int glyphs = (int)((line[1] - line[0]) / GlyphSize);
+            if (cut > 0 && cut < glyphs)
+                _splitLine(text, i, cut, glyphs - 1);
         }
     }
 

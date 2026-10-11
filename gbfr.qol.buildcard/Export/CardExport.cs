@@ -65,18 +65,18 @@ public class CardExport
         if (_state == Hidden && Environment.TickCount64 - _hiddenSince > CaptureTimeout
             && Interlocked.CompareExchange(ref _state, Idle, Hidden) == Hidden)
         {
-            ShowOverlays(true);
+            ShowOverlays(true, cardOpen);
             _logger.WriteLine("[gbfr.qol.buildcard] Card export failed: no frame was captured", Color.Red);
         }
         else if (_state == Captured)
         {
-            ShowOverlays(true);
+            ShowOverlays(true, cardOpen);
             _state = Idle;
         }
         else if (_state == Idle && pressed && !_file.Saving && cardOpen)
         {
             _pressedCharaName = _charaName();
-            ShowOverlays(false);
+            ShowOverlays(false, true);
             _hiddenSince = Environment.TickCount64;
             _hiddenAt = Interlocked.Read(ref _presents);
             _state = Hidden;
@@ -113,9 +113,10 @@ public class CardExport
         }
     }
 
-    private void ShowOverlays(bool shown)
+    private void ShowOverlays(bool shown, bool cardOpen)
     {
-        _guide.Show(shown);
+        if (cardOpen)
+            _guide.Show(shown);
         _notice.Show(shown);
     }
 

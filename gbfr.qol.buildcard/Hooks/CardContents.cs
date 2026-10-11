@@ -88,7 +88,10 @@ public class CardContents
         for (int s = 0; s < Styles; s++)
         {
             for (int r = 0; r < slots.Length; r++)
-                writes.Add(new TextWrite(CardIds.RankCounts[layout][s][r], $"{spent[r]}/{Budgets[r]}"));
+            {
+                writes.Add(new TextWrite(CardIds.RankCounts[layout][s][r], $"{spent[r]}"));
+                writes.Add(new TextWrite(CardIds.RankBudgets[layout][s][r], $"/{Budgets[r]}"));
+            }
             for (int r = 0; r < slots.Length; r++)
             {
                 for (int c = 0; c < slots[r]; c++)

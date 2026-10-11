@@ -13,7 +13,7 @@ picked by the config option `MasterTraitsPalette` ("Master Traits Palette"): Blu
 | Heading | The "Master Traits" title (`TXT_PAU_TTL_SKL_BD`) over the page header's line. |
 | Styles row | Each style's name and three stars, right of the title; the name is the style title's text before its colon, empty when the style has no title; a star is lit per picked perk of the style. |
 | Style titles | Above each style's column, the title of the style's rank 1 perk, in the loaded language; empty when the perk has none. |
-| Rank panels | Per style, one panel per rank (STYLE RANK 1, 2, 3, EX) under a title bar, with a `picked/budget` count: the picked cells of that rank over all three styles, out of 10, 10, 10 and 20. |
+| Rank panels | Per style, one panel per rank (STYLE RANK 1, 2, 3, EX) under a title bar, with a `picked/budget` count: the picked cells of that rank over all three styles, out of 10, 10, 10 and 20. The `/budget` is at 0.8 of the picked count's font size, the two vertically centred in a right-aligned row, the budget 1 unit lower. |
 | Cells | Per rank, the cells in two columns: 4/8/8/10 slots, or 4/8/8/14 on the captain's board. |
 
 A picked cell shows its description in the bright text on its palette's picked base under an outline. An unpicked
@@ -48,13 +48,13 @@ are solved from.
 | `bc_mt_cells` | The 4/8/8/10-slot board; active unless the captain's board is shown. |
 | `bc_mt_cells_captain` | The 4/8/8/14-slot board, inactive in the file. |
 | `{board}_{palette}` | In each board, each palette's title bars and cell bases; only the blue one active in the file. |
-| `bc_mt_{s}_{r}_count` | Rank `r`'s count in style `s`'s column, in each board. |
+| `bc_mt_{s}_{r}_count` | Rank `r`'s count row in style `s`'s column, in each board, holding `bc_mt_{s}_{r}_spent` and `bc_mt_{s}_{r}_budget`. |
 | `bc_mt_{s}_{r}_{c}_on`, `_off` | Cell `c` of rank `r`'s picked and unpicked description; the unused one is empty. |
 | `bc_mt_{s}_{r}_{c}_base` | Cell `c` of rank `r`'s unpicked base, in each palette. |
 | `bc_mt_{s}_{r}_{c}_picked` | Cell `c` of rank `r`'s picked base and outline, in each palette, inactive in the file. |
 
 `CardIds.g.cs` holds these objects' Ids: `PerkNames`, `PerkStars`, `StyleTitles`, `Scenes`, `Cells`, `CaptainCells`,
-`Palettes`, `RankCounts`, `CellOn`, `CellOff`, `CellBases` and `CellPicked`. A palette's index is its
+`Palettes`, `RankCounts`, `RankBudgets`, `CellOn`, `CellOff`, `CellBases` and `CellPicked`. A palette's index is its
 `MasterTraitsPalette` value.
 
 ## Implementation

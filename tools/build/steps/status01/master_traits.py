@@ -107,6 +107,14 @@ PERK_GAP, PERKS_GAP = 6, 24  # a name to its stars, a style's stars to the next 
 MIDDLE_LEFT, MIDDLE_RIGHT = 3, 5  # ChildAlignment
 
 LABEL_SIZE, COUNT_SIZE, CELL_SIZE, STYLE_TITLE_SIZE = 17, 19, 19, 26
+BUDGET_SCALE = 0.8
+BUDGET_DROP = 1  # card units
+COUNT_LAYOUT = ["  - ComponentName: HorizontalLayoutGroup", "    Component:", "      Padding: 0, 0, 0, 0", "      Spacing: 0",
+                f"      ChildAlignment: {MIDDLE_RIGHT}", "      ChildControlWidth: false", "      ChildControlHeight: false",
+                "      ChildScaleWidth: false", "      ChildScaleHeight: false", "      ChildForceExpandWidth: false",
+                "      ChildForceExpandHeight: false", "      Enable: true"]
+COUNT_FIT = ["  - ComponentName: ContentSizeFitter", "    Component:", "      HorizontalFit: 2", "      VerticalFit: 0",
+             "      Enable: true"]
 SCALE = LABEL_SIZE / RANK_TITLE_SIZE  # the header's
 PERK_NAME_SIZE = PAGE_TITLE_SIZE / STAR_PAGE_SCALE  # the style names' font size
 ROW_SCALE = (STYLE_TITLE_SIZE + CELL_SIZE) / 2 / PERK_NAME_SIZE  # the style names' row
@@ -189,6 +197,19 @@ def set_text(node, color, cell=False):
         language.set("LineSpaching", CELL_LINE_SPACING_ENG)
 
 
+def count_row(s, r):
+    # the rank's picked count and its smaller budget in a right-aligned row
+    row = rect(f"bc_mt_{s}_{r}_count", COUNT_LAYOUT, (1, 1))
+    for part, size, drop in (("spent", COUNT_SIZE, 0), ("budget", COUNT_SIZE * BUDGET_SCALE, BUDGET_DROP)):
+        node = row.add(rect(f"bc_mt_{s}_{r}_{part}", text("", size, INK, 1, RIGHT) + COUNT_FIT, (0, 1)))
+        set_text(node, TITLE_TEXT_COLOR)
+        node.component("Text").set("Margin", f"0, {f(2 * drop)}, 0, 0")
+        node.set("AnchorMin", "0, 1")
+        node.set("AnchorMax", "0, 1")
+        node.set("SizeDelta", f"0, {LABEL_H}")
+    return row
+
+
 def title_bar(palette, s, r, centre, size):
     # the rank's title bar layers in the palette
     scale = BAR_H / TITLE_H
@@ -233,8 +254,7 @@ def grid(board, name, slots, ranks, active):
             set_text(label, TITLE_TEXT_COLOR)
             label.add_component(["  - ComponentName: TextSetter", "    Component:", f"      TextID: {RANK_TEXT_IDS[r]}",
                                  "      Enable: true"])
-            count = rect(f"bc_mt_{s}_{r}_count", text("", COUNT_SIZE, INK, 1, RIGHT), (1, 1))
-            set_text(count, TITLE_TEXT_COLOR)
+            count = count_row(s, r)
             label_top = rank["label"] + LABEL_H / 2
             placements.append(lambda n=label, x=left + BAR_INSET + LABEL_LEFT, y=label_top:
                               n.place(pos=(x, y), size=(LABEL_W, LABEL_H)))
@@ -448,8 +468,11 @@ def apply(ctx):
 
     def palette_cell_nodes(suffix):
         return [cell_nodes(suffix, (cell_groups[palette], captain_groups[palette])) for palette in PALETTES]
-    ctx.export("RankCounts", [[[container.child(f"bc_mt_{s}_{r}_count") for r in range(len(SLOTS))]
-                               for s in range(STYLES)] for container, _ in boards])
+    def count_nodes(part):
+        return [[[container.child(f"bc_mt_{s}_{r}_count").child(f"bc_mt_{s}_{r}_{part}") for r in range(len(SLOTS))]
+                 for s in range(STYLES)] for container, _ in boards]
+    ctx.export("RankCounts", count_nodes("spent"))
+    ctx.export("RankBudgets", count_nodes("budget"))
     ctx.export("CellPicked", palette_cell_nodes("picked"))
     ctx.export("CellBases", palette_cell_nodes("base"))
     ctx.export("CellOn", cell_nodes("on"))

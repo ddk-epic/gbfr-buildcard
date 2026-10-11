@@ -28,12 +28,26 @@ are drawn at 0.7 times the game's size. Its lines are spaced at `LineSpacing` 4,
 
 | Part | Blue | Original |
 |---|---|---|
-| Scene | Each layer tinted with a stop of the portrait backdrop's gradient, `#0f486f` to `#27a1b7`, 15% toward its grey; the textured layers without a material greyed by `uimonochrome`; `vignette01` at alpha 0.2, `add01` at 0.2. | The stock scene. |
-| Title bars | The bar's shape in `uialphaa`, under the EX bar's texture added in `uiadd` (mirrored on ranks 3 and EX), so each bar runs from navy `#0f486f` to a highlight halfway between `#14678f` and `#1282a5`; rank 3's highlight at half strength. | The stock bars. |
-| Picked base | `#0b3653` (navy at 75%) at 0.7. | `#1e1a3d` (deep indigo) at 0.7. |
-| Unpicked base | `#0f5a81` at 0.6. | `#2a2a5b` (the stock bars' indigo) at 0.6. |
+| Scene | Each layer tinted with a stop of the [portrait gradient](#portrait-gradient), 15% toward its grey; the textured layers without a material greyed by `uimonochrome`; `vignette01` at alpha 0.2, `add01` at 0.2. | The stock scene. |
+| Title bars | The bar's shape in `uialphaa`, under the EX bar's texture added in `uiadd` (mirrored on ranks 3 and EX), so each bar runs from stop 0 to a highlight halfway between stops 2 and 3; rank 3's highlight at half strength. | The stock bars. |
+| Picked base | `#0b3653` (stop 0 at 75%) at 0.7. | `#1e1a3d` (deep indigo) at 0.7. |
+| Unpicked base | Stop 1 at 0.6. | `#2a2a5b` (the stock bars' indigo) at 0.6. |
 
 The picked base replaces the unpicked one: the unpicked base is hidden on picked cells.
+
+### Portrait gradient
+
+The blue of the portrait backdrop in `status01`, as six stops from darkest to lightest. Each stop is the mean colour of
+an equal lightness band of the backdrop's blue pixels, between their 1st and 99th lightness percentiles.
+
+| Stop | Colour |
+|---|---|
+| 0 | `#0f486f` |
+| 1 | `#0f5a81` |
+| 2 | `#14678f` |
+| 3 | `#1282a5` |
+| 4 | `#1491b2` |
+| 5 | `#27a1b7` |
 
 The Blue colours are in `master_traits.py`: `GRADIENT`, `SCENE_TINTS`, `SCENE_DESATURATE`, `BAR_HIGHLIGHT`,
 `BAR_RAMPS` and `CELL_STYLES`. `EX_DARK` and `EX_LIGHT` are the EX texture's two ends as drawn, which the bars' colours

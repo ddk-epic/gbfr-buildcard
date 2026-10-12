@@ -23,7 +23,6 @@ public unsafe class CardRedraw
     private const int GetScissorRects = 96;
 
     // other vtable indices
-    private const int SwapChainGetBuffer = 9;
     private const int ChildGetDevice = 3;
     private const int ResourceGetType = 7;
     private const int ViewGetResource = 7;
@@ -89,10 +88,10 @@ public unsafe class CardRedraw
     }
 
     // On the render thread: hooks the immediate context's draws and render target binds, read from the first D3D11 swapchain.
-    public void Init(nint swapChain)
+    public void Init(SwapChain swapChain)
     {
-        nint backbuffer = 0, device = 0, context = 0;
-        if (_initialized || GetBuffer(swapChain, &backbuffer) < 0)
+        nint device = 0, context = 0;
+        if (_initialized || swapChain.GetBackbuffer(out nint backbuffer) < 0)
             return;
         _initialized = true;
         ((delegate* unmanaged<nint, nint*, void>)Com.Method(backbuffer, ChildGetDevice))(backbuffer, &device);
@@ -132,7 +131,7 @@ public unsafe class CardRedraw
     }
 
     // On the render thread at a Present: redraws the next frame with rect filling width x height.
-    public void Begin(nint swapChain, Func<int, int, RectangleF> rect, int width, int height)
+    public void Begin(SwapChain swapChain, Func<int, int, RectangleF> rect, int width, int height)
     {
         Release();
         _backbuffer = Backbuffer(swapChain);
@@ -142,12 +141,12 @@ public unsafe class CardRedraw
         _device = device;
         _context = context;
 
-        uint* desc = stackalloc uint[11];
-        ((delegate* unmanaged<nint, uint*, void>)Com.Method(_backbuffer, TextureGetDesc))(_backbuffer, desc);
+        TextureDesc desc;
+        ((delegate* unmanaged<nint, TextureDesc*, void>)Com.Method(_backbuffer, TextureGetDesc))(_backbuffer, &desc);
         // kept as an address only
         Com.Release(_backbuffer);
-        _width = desc[0];
-        _height = desc[1];
+        _width = desc.Width;
+        _height = desc.Height;
         RectangleF source = rect((int)_width, (int)_height);
         _outWidth = (uint)width;
         _outHeight = (uint)height;
@@ -204,18 +203,10 @@ public unsafe class CardRedraw
         Com.Release(frameBuffer.Texture);
     }
 
-    private static nint Backbuffer(nint swapChain)
+    private static nint Backbuffer(SwapChain swapChain)
     {
-        nint backbuffer = 0;
-        Com.Check(GetBuffer(swapChain, &backbuffer), "GetBuffer");
+        Com.Check(swapChain.GetBackbuffer(out nint backbuffer), "GetBuffer");
         return backbuffer;
-    }
-
-    private static int GetBuffer(nint swapChain, nint* backbuffer)
-    {
-        Guid iid = Com.ID3D11Texture2D;
-        return ((delegate* unmanaged<nint, uint, Guid*, nint*, int>)Com.Method(swapChain, SwapChainGetBuffer))(
-            swapChain, 0, &iid, backbuffer);
     }
 
     private void SetTargetsImpl(nint context, uint count, nint* views, nint depth)
@@ -260,10 +251,10 @@ public unsafe class CardRedraw
 
         int type = 0;
         ((delegate* unmanaged<nint, int*, void>)Com.Method(texture, ResourceGetType))(texture, &type);
-        uint* desc = stackalloc uint[11];
+        TextureDesc desc = default;
         if (type == DimensionTexture2D)
-            ((delegate* unmanaged<nint, uint*, void>)Com.Method(texture, TextureGetDesc))(texture, desc);
-        if (type != DimensionTexture2D || desc[0] != _width || desc[1] != _height || desc[5] != 1)
+            ((delegate* unmanaged<nint, TextureDesc*, void>)Com.Method(texture, TextureGetDesc))(texture, &desc);
+        if (type != DimensionTexture2D || desc.Width != _width || desc.Height != _height || desc.SampleCount != 1)
         {
             _skipped.Add(texture);
             return null;
@@ -276,31 +267,28 @@ public unsafe class CardRedraw
             _frameBuffers.Remove(oldest.Key);
         }
 
-        uint* viewDesc = stackalloc uint[5];
-        ((delegate* unmanaged<nint, uint*, void>)Com.Method(view, ViewGetDesc))(view, viewDesc);
-        frameBuffer = new FrameBuffer { Format = viewDesc[0], LastDraw = _draws };
-        desc[0] = _outWidth;
-        desc[1] = _outHeight;
-        desc[2] = 1;
-        desc[3] = 1;
-        desc[6] = 0;
-        desc[7] = 0;
-        desc[8] = BindRenderTarget;
-        desc[9] = 0;
-        desc[10] = 0;
+        RenderTargetViewDesc viewDesc;
+        ((delegate* unmanaged<nint, RenderTargetViewDesc*, void>)Com.Method(view, ViewGetDesc))(view, &viewDesc);
+        frameBuffer = new FrameBuffer { Format = viewDesc.Format, LastDraw = _draws };
+        desc.Width = _outWidth;
+        desc.Height = _outHeight;
+        desc.MipLevels = 1;
+        desc.ArraySize = 1;
+        desc.SampleQuality = 0;
+        desc.Usage = 0;
+        desc.BindFlags = BindRenderTarget;
+        desc.CpuAccessFlags = 0;
+        desc.MiscFlags = 0;
         nint bufferTexture = 0, bufferView = 0;
-        if (((delegate* unmanaged<nint, uint*, void*, nint*, int>)Com.Method(_device, DeviceCreateTexture2D))(
-                _device, desc, null, &bufferTexture) < 0)
+        if (((delegate* unmanaged<nint, TextureDesc*, void*, nint*, int>)Com.Method(_device, DeviceCreateTexture2D))(
+                _device, &desc, null, &bufferTexture) < 0)
         {
             _skipped.Add(texture);
             return null;
         }
-        uint* bufferViewDesc = stackalloc uint[5];
-        bufferViewDesc[0] = frameBuffer.Format;
-        bufferViewDesc[1] = ViewTexture2D;
-        bufferViewDesc[2] = bufferViewDesc[3] = bufferViewDesc[4] = 0;
-        if (((delegate* unmanaged<nint, nint, uint*, nint*, int>)Com.Method(_device, DeviceCreateRenderTargetView))(
-                _device, bufferTexture, bufferViewDesc, &bufferView) < 0)
+        var bufferViewDesc = new RenderTargetViewDesc { Format = frameBuffer.Format, ViewDimension = ViewTexture2D };
+        if (((delegate* unmanaged<nint, nint, RenderTargetViewDesc*, nint*, int>)Com.Method(_device, DeviceCreateRenderTargetView))(
+                _device, bufferTexture, &bufferViewDesc, &bufferView) < 0)
         {
             Com.Release(bufferTexture);
             _skipped.Add(texture);
@@ -343,46 +331,52 @@ public unsafe class CardRedraw
     {
         nint context = _context;
         uint viewportCount = 0, rectCount = 0;
-        float* viewports = stackalloc float[6 * MaxRects];
-        int* rects = stackalloc int[4 * MaxRects];
-        ((delegate* unmanaged<nint, uint*, float*, void>)Com.Method(context, GetViewports))(context, &viewportCount, null);
-        ((delegate* unmanaged<nint, uint*, int*, void>)Com.Method(context, GetScissorRects))(context, &rectCount, null);
+        Viewport* viewports = stackalloc Viewport[MaxRects];
+        ScissorRect* rects = stackalloc ScissorRect[MaxRects];
+        ((delegate* unmanaged<nint, uint*, Viewport*, void>)Com.Method(context, GetViewports))(context, &viewportCount, null);
+        ((delegate* unmanaged<nint, uint*, ScissorRect*, void>)Com.Method(context, GetScissorRects))(context, &rectCount, null);
         viewportCount = Math.Min(viewportCount, MaxRects);
         rectCount = Math.Min(rectCount, MaxRects);
-        ((delegate* unmanaged<nint, uint*, float*, void>)Com.Method(context, GetViewports))(context, &viewportCount, viewports);
-        ((delegate* unmanaged<nint, uint*, int*, void>)Com.Method(context, GetScissorRects))(context, &rectCount, rects);
+        ((delegate* unmanaged<nint, uint*, Viewport*, void>)Com.Method(context, GetViewports))(context, &viewportCount, viewports);
+        ((delegate* unmanaged<nint, uint*, ScissorRect*, void>)Com.Method(context, GetScissorRects))(context, &rectCount, rects);
 
-        float* scaledViewports = stackalloc float[6 * MaxRects];
-        int* scaledRects = stackalloc int[4 * MaxRects];
+        Viewport* scaledViewports = stackalloc Viewport[MaxRects];
+        ScissorRect* scaledRects = stackalloc ScissorRect[MaxRects];
         for (int i = 0; i < viewportCount; i++)
         {
-            float* v = viewports + i * 6, s = scaledViewports + i * 6;
-            s[0] = v[0] * _scaleX + _offsetX;
-            s[1] = v[1] * _scaleY + _offsetY;
-            s[2] = v[2] * _scaleX;
-            s[3] = v[3] * _scaleY;
-            s[4] = v[4];
-            s[5] = v[5];
+            Viewport v = viewports[i];
+            scaledViewports[i] = new Viewport
+            {
+                TopLeftX = v.TopLeftX * _scaleX + _offsetX,
+                TopLeftY = v.TopLeftY * _scaleY + _offsetY,
+                Width = v.Width * _scaleX,
+                Height = v.Height * _scaleY,
+                MinDepth = v.MinDepth,
+                MaxDepth = v.MaxDepth,
+            };
         }
         for (int i = 0; i < rectCount; i++)
         {
-            int* r = rects + i * 4, s = scaledRects + i * 4;
-            s[0] = (int)MathF.Floor(r[0] * _scaleX + _offsetX);
-            s[1] = (int)MathF.Floor(r[1] * _scaleY + _offsetY);
-            s[2] = (int)MathF.Ceiling(r[2] * _scaleX + _offsetX);
-            s[3] = (int)MathF.Ceiling(r[3] * _scaleY + _offsetY);
+            ScissorRect r = rects[i];
+            scaledRects[i] = new ScissorRect
+            {
+                Left = (int)MathF.Floor(r.Left * _scaleX + _offsetX),
+                Top = (int)MathF.Floor(r.Top * _scaleY + _offsetY),
+                Right = (int)MathF.Ceiling(r.Right * _scaleX + _offsetX),
+                Bottom = (int)MathF.Ceiling(r.Bottom * _scaleY + _offsetY),
+            };
         }
 
         nint view = frameBuffer.View;
         _setTargetsHook!.OriginalFunction(context, 1, &view, 0);
-        ((delegate* unmanaged<nint, uint, float*, void>)Com.Method(context, SetViewports))(context, viewportCount, scaledViewports);
-        ((delegate* unmanaged<nint, uint, int*, void>)Com.Method(context, SetScissorRects))(context, rectCount, scaledRects);
+        ((delegate* unmanaged<nint, uint, Viewport*, void>)Com.Method(context, SetViewports))(context, viewportCount, scaledViewports);
+        ((delegate* unmanaged<nint, uint, ScissorRect*, void>)Com.Method(context, SetScissorRects))(context, rectCount, scaledRects);
         draw();
 
         fixed (nint* views = _boundViews)
             _setTargetsHook.OriginalFunction(context, _boundCount, views, 0);
-        ((delegate* unmanaged<nint, uint, float*, void>)Com.Method(context, SetViewports))(context, viewportCount, viewports);
-        ((delegate* unmanaged<nint, uint, int*, void>)Com.Method(context, SetScissorRects))(context, rectCount, rects);
+        ((delegate* unmanaged<nint, uint, Viewport*, void>)Com.Method(context, SetViewports))(context, viewportCount, viewports);
+        ((delegate* unmanaged<nint, uint, ScissorRect*, void>)Com.Method(context, SetScissorRects))(context, rectCount, rects);
     }
 
     private void DrawIndexedImpl(nint context, uint indexCount, uint startIndex, int baseVertex)

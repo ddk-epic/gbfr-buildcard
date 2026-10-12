@@ -89,7 +89,7 @@ public class CardExport
     }
 
     // On the render thread: redraws and captures the card once the frames without the prompts are presented.
-    public void OnPresenting(nint swapChain)
+    public void OnPresenting(SwapChain swapChain)
     {
         long presents = Interlocked.Increment(ref _presents);
         _redraw.Init(swapChain);
@@ -102,7 +102,7 @@ public class CardExport
     }
 
     // Reads the redrawn card, or the backbuffer's, and saves it.
-    private void Capture(nint swapChain)
+    private void Capture(SwapChain swapChain)
     {
         try
         {

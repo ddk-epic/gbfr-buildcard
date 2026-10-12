@@ -7,7 +7,6 @@ namespace gbfr.qol.buildcard.Export;
 public static unsafe class BackbufferReadback
 {
     // vtable indices
-    private const int SwapChainGetBuffer = 9;
     private const int ChildGetDevice = 3;
     private const int TextureGetDesc = 10;
     private const int DeviceCreateTexture2D = 5;
@@ -31,14 +30,12 @@ public static unsafe class BackbufferReadback
     private const uint MapRead = 1;
 
     // On the render thread: returns the rect crop picks from the backbuffer's width and height, as rows of 8-bit RGB.
-    public static byte[] Read(nint swapChain, Func<int, int, Rectangle> crop, out int width, out int height)
+    public static byte[] Read(SwapChain swapChain, Func<int, int, Rectangle> crop, out int width, out int height)
     {
         nint backbuffer = 0, device = 0, context = 0;
         try
         {
-            Guid iid = Com.ID3D11Texture2D;
-            Com.Check(((delegate* unmanaged<nint, uint, Guid*, nint*, int>)Com.Method(swapChain, SwapChainGetBuffer))(
-                swapChain, 0, &iid, &backbuffer), "GetBuffer");
+            Com.Check(swapChain.GetBackbuffer(out backbuffer), "GetBuffer");
 
             TextureDesc desc;
             ((delegate* unmanaged<nint, TextureDesc*, void>)Com.Method(backbuffer, TextureGetDesc))(backbuffer, &desc);
@@ -167,23 +164,6 @@ public static unsafe class BackbufferReadback
             }
         }
         return rgb;
-    }
-
-    // D3D11_TEXTURE2D_DESC
-    [StructLayout(LayoutKind.Sequential)]
-    private struct TextureDesc
-    {
-        public uint Width;
-        public uint Height;
-        public uint MipLevels;
-        public uint ArraySize;
-        public uint Format;
-        public uint SampleCount;
-        public uint SampleQuality;
-        public uint Usage;
-        public uint BindFlags;
-        public uint CpuAccessFlags;
-        public uint MiscFlags;
     }
 
     // D3D11_MAPPED_SUBRESOURCE

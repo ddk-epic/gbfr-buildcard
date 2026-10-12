@@ -27,7 +27,7 @@ public unsafe partial class SwapChainHooks
     private static bool _inPresent;
 
     // Raised on the render thread before the game presents a swapchain.
-    public event Action<nint>? Presenting;
+    public event Action<SwapChain>? Presenting;
 
     private delegate int Present(nint swapChain, uint syncInterval, uint flags);
     private delegate int Present1(nint swapChain, uint syncInterval, uint flags, nint parameters);
@@ -134,7 +134,7 @@ public unsafe partial class SwapChainHooks
             return;
         try
         {
-            Presenting?.Invoke(swapChain);
+            Presenting?.Invoke(new SwapChain(swapChain));
         }
         catch (Exception e)
         {

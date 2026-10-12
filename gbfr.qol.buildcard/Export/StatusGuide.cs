@@ -17,20 +17,26 @@ public class StatusGuide
     private const uint ButtonRight = 0xFB687EBB;
 
     private readonly Vtables _vtables;
+    private readonly UiControllers _controllers;
     private readonly UiObjects _objects;
+    private UiComponent? _controller;
     private List<UiObject> _buttons = [];
 
     private delegate void SetUpPageArrowsFn(nint controller);
     private IHook<SetUpPageArrowsFn>? _setUpPageArrowsHook;
 
-    public StatusGuide(Vtables vtables, UiObjects objects)
+    public StatusGuide(Vtables vtables, UiControllers controllers, UiObjects objects)
     {
         _vtables = vtables;
+        _controllers = controllers;
         _objects = objects;
+        controllers.Destroyed += OnDestroyed;
     }
 
     public void Init()
     {
+        if (!_controllers.IsHooked)
+            return;
         _setUpPageArrowsHook = _vtables.HookFunction<SetUpPageArrowsFn>(ControllerStatusGuide, SetUpPageArrowsIndex,
             SetUpPageArrowsStart, SetUpPageArrowsImpl);
     }
@@ -44,6 +50,15 @@ public class StatusGuide
     private void SetUpPageArrowsImpl(nint controller)
     {
         _setUpPageArrowsHook!.OriginalFunction(controller);
-        _buttons = new UiComponent(controller).Object is { } obj ? _objects.FindByName(obj, ButtonLeft, ButtonRight) : [];
+        _controller = new UiComponent(controller);
+        _buttons = _controller.Value.Object is { } obj ? _objects.FindByName(obj, ButtonLeft, ButtonRight) : [];
+    }
+
+    private void OnDestroyed(UiComponent controller)
+    {
+        if (controller != _controller)
+            return;
+        _controller = null;
+        _buttons = [];
     }
 }

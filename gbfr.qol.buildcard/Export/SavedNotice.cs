@@ -38,6 +38,7 @@ public unsafe class SavedNotice
     private const long HideWindow = 5000;
 
     private readonly Vtables _vtables;
+    private readonly UiControllers _controllers;
     private readonly UiObjects _objects;
     private UiManager** _uiManager;
     private nint _emptyCallback;
@@ -52,10 +53,12 @@ public unsafe class SavedNotice
     private delegate nint ShowInfoFn(nint controller, int* info);
     private readonly List<IHook<ShowInfoFn>> _showInfoHooks = [];
 
-    public SavedNotice(Vtables vtables, UiObjects objects)
+    public SavedNotice(Vtables vtables, UiControllers controllers, UiObjects objects)
     {
         _vtables = vtables;
+        _controllers = controllers;
         _objects = objects;
+        controllers.Destroyed += OnDestroyed;
     }
 
     // PushInfo(queue, type, callback, add to log)
@@ -71,6 +74,8 @@ public unsafe class SavedNotice
             _pushInfo = (delegate* unmanaged<nint, int, nint, byte, void>)(call + 5 + *(int*)(call + 1));
         });
 
+        if (!_controllers.IsHooked)
+            return;
         foreach ((string controller, string showInfoStart) in Controllers)
         {
             IHook<ShowInfoFn>? hook = null;
@@ -138,6 +143,13 @@ public unsafe class SavedNotice
             return;
         _objects.SetActive(obj, false);
         _hidden.Add(controller);
+    }
+
+    private void OnDestroyed(UiComponent controller)
+    {
+        _shortened.Remove(controller);
+        _noticeShownAt.Remove(controller);
+        _hidden.Remove(controller);
     }
 
     // Shortens the controller's duration for the notice until its next info.

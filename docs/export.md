@@ -100,7 +100,8 @@ The page arrows' button prompts show the input bound to switching pages on the d
 `SetUpPageArrows`, vfunc 21 of `ui::component::ControllerStatusGuide`, found through RTTI, which sets up the page
 arrows' shortcuts. After it, `StatusGuide` finds the prompts, the objects named `loc_button_system01_l` (`0x6030E86D`)
 and `loc_button_system01_r` (`0xFB687EBB`) under the component's object (`+0x10`). The export hides them with
-`SetObjectActive` and shows them again after the capture; the arrows stay.
+`SetObjectActive` and shows them again after the capture; the arrows stay. The prompts are dropped when the controller
+is destroyed ([ui](ui.md#controller-lifetimes)).
 
 ## Frame timing
 
@@ -155,8 +156,8 @@ present instead, then resized to 2880x1440 by `Resample` in `CardFile`: averaged
 
 ## Card file
 
-`CardExport` keeps the `CharaInfo` of the latest `CharacterShown` ([character](character.md#implementation)) and, at
-the press, reads the name from `status01`'s objects found from it. `CardFile.Save` writes the card's PNG on a worker thread; `CardFile.Saving` is set until the write ends. After the PNG is
+At each `CharacterShown` ([character](character.md#implementation)) `CardExport` reads the character's name from
+`status01`'s objects and saves the card under the name read last before the press. `CardFile.Save` writes the card's PNG on a worker thread; `CardFile.Saving` is set until the write ends. After the PNG is
 written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `SavedNotice` and
 `SteamScreenshots` handle it.
 
@@ -224,7 +225,8 @@ info it puts the previous value back.
 Each controller's object (`+0x10`) is the shown info: `ShowInfo` activates it and sets `+0x1A8`; when the info has
 finished, the controller clears `+0x1A8` and deactivates the object. On a Save Card press, `SavedNotice` deactivates the
 object of each controller that showed the notice within 5000 ms and still has `+0x1A8` set, and of each controller that
-shows the notice during the capture. After the capture it activates the objects again whose `+0x1A8` is still set.
+shows the notice during the capture. After the capture it activates the objects again whose `+0x1A8` is still set. A
+destroyed controller is forgotten ([ui](ui.md#controller-lifetimes)).
 
 ## Game functions
 

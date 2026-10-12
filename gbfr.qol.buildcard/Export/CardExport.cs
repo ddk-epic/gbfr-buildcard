@@ -40,7 +40,7 @@ public class CardExport
     private long _hiddenAt;
     private long _hiddenSince;
     private long _cardSeenAt;
-    private CharaInfo? _charaInfo;
+    private string _charaName = "";
     private string _pressedCharaName = "";
 
     public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, SavedNotice notice, CardFile file,
@@ -57,7 +57,7 @@ public class CardExport
         _logger = logger;
     }
 
-    public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build) => _charaInfo = charaInfo;
+    public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build) => _charaName = CharaName(charaInfo);
 
     // On the game thread: hides the prompts and notices on a press, shows them after the capture or its timeout.
     public void OnTick()
@@ -80,7 +80,7 @@ public class CardExport
         }
         else if (_state == Idle && pressed && !_file.Saving && cardOpen)
         {
-            _pressedCharaName = CharaName();
+            _pressedCharaName = _charaName;
             ShowOverlays(false, true);
             _hiddenSince = Environment.TickCount64;
             _hiddenAt = Interlocked.Read(ref _presents);
@@ -119,8 +119,8 @@ public class CardExport
     }
 
     // The card's shown name, empty when it has none
-    private string CharaName() =>
-        _charaInfo is { } charaInfo && _objects.Find(charaInfo) is { } objects && objects.TryGetValue(CardIds.CharaName, out UiObject name)
+    private string CharaName(CharaInfo charaInfo) =>
+        _objects.Find(charaInfo) is { } objects && objects.TryGetValue(CardIds.CharaName, out UiObject name)
             ? _text.Read(name)
             : "";
 

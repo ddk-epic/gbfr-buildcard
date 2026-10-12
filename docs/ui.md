@@ -87,9 +87,15 @@ on the game thread after each change. `IsOpen` is true from Opening to Closing.
 `StatusBackground` shows `chr_status_bg01`'s card panel and lines on the status page and stock's on another page,
 reading `CharacterDetailsMenu` at each `Changed` and when `chr_status_bg01` is set up; while the menu opens, closes or
 is closed it keeps the variant shown ([build.md](build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
-entries 8 and 7 are functions every controller shares, a setup run once the prefab is built and the scalar deleting
-destructor; `StatusBackground` hooks both and keeps the controller whose vtable is `ControllerStatusBg`'s from one to
-the other.
+entry 8 is a setup every controller shares, run once the prefab is built. `StatusBackground` hooks it and keeps the
+controller whose vtable is `ControllerStatusBg`'s until `UiControllers` raises `Destroyed` for it.
+
+## Controller lifetimes
+
+`UiControllers` hooks the scalar deleting destructor, vtable entry 7, of `ControllerStatusBg`, which
+`ControllerStatusGuide` and `ControllerInformationSystem` share, and of `ControllerInformationToast`. It raises
+`Destroyed` with the controller on the game thread before each runs. It hooks both or neither; `StatusBackground`,
+`StatusGuide` and `SavedNotice` hook nothing and keep no controller without them.
 
 ## `Text` component
 
@@ -166,7 +172,8 @@ function is then not hooked.
 
 | Class | Index | Function | Doc |
 |---|---|---|---|
-| `ControllerStatusBg` | 8, 7 | The setup and the destructor every controller shares. | [status background](#status-background) |
+| `ControllerStatusBg` | 8 | The setup every controller shares. | [status background](#status-background) |
+| `ControllerStatusBg`, `ControllerInformationToast` | 7 | The scalar deleting destructor. | [controller lifetimes](#controller-lifetimes) |
 | `ControllerStatusGuide` | 21 | `SetUpPageArrows` | [export](export.md#page-button-prompts) |
 | `ControllerInformationSystem`, `ControllerInformationToast` | 35 | `ShowInfo` | [export](export.md#saved-notice) |
 | `LoadWeaponParty` | 4, 5 | Whether the loader is open; collecting its list, not checked. | [weapon](weapon.md) |

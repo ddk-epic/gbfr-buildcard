@@ -29,6 +29,7 @@ public class Mod : ModBase
     private readonly IModConfig _modConfig;
 
     private Vtables? _vtables;
+    private UiControllers? _uiControllers;
     private UiObjects? _uiObjects;
     private GameText? _gameText;
     private MasterTraits? _masterTraits;
@@ -87,6 +88,8 @@ public class Mod : ModBase
         scanManager.InitializeScans(Path.Combine(modFolder, "Signatures"), _modConfig.ModId);
 
         _vtables = new Vtables(_hooks, _logger);
+        _uiControllers = new UiControllers(_vtables);
+        _uiControllers.Init();
 
         _uiObjects = new UiObjects(_logger, _vtables);
         _uiObjects.Init(scanManager, "granblue_fantasy_relink_er");
@@ -118,11 +121,11 @@ public class Mod : ModBase
 
         _saveCardButton = new SaveCardButton(_hooks, _logger);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
-        _statusGuide = new StatusGuide(_vtables, _uiObjects);
+        _statusGuide = new StatusGuide(_vtables, _uiControllers, _uiObjects);
         _statusGuide.Init();
-        _statusBackground = new StatusBackground(_vtables, _logger, _uiObjects, _menu);
+        _statusBackground = new StatusBackground(_vtables, _uiControllers, _logger, _uiObjects, _menu);
         _statusBackground.Init();
-        _savedNotice = new SavedNotice(_vtables, _uiObjects);
+        _savedNotice = new SavedNotice(_vtables, _uiControllers, _uiObjects);
         _savedNotice.Init(scanManager, "granblue_fantasy_relink_er");
         _cardFile = new CardFile(_logger);
         _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);

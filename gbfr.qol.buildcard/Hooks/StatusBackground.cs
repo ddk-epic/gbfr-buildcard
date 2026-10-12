@@ -9,13 +9,12 @@ namespace gbfr.qol.buildcard.Hooks;
 public unsafe class StatusBackground
 {
     private const string ControllerStatusBg = ".?AVControllerStatusBg@component@ui@@";
-    // ControllerStatusBg's vtable indexes of the controllers' shared setup and destructor
+    // ControllerStatusBg's vtable index of the controllers' shared setup
     private const int SetUpIndex = 8;
-    private const int DestroyIndex = 7;
     private const string SetUpStart = "41 57 41 56 56 57 53 48 83 EC 30";
-    private const string DestroyStart = "56 57 48 83 EC 28 ?? ?? ?? ?? ?? E8";
 
     private readonly Vtables _vtables;
+    private readonly UiControllers _controllers;
     private readonly ILogger _logger;
     private readonly UiObjects _objects;
     private readonly CharacterDetailsMenu _menu;
@@ -26,28 +25,25 @@ public unsafe class StatusBackground
     private bool _cardShown;
 
     private delegate long SetUpFn(nint controller);
-    private delegate nint DestroyFn(nint controller, int flags);
     private IHook<SetUpFn>? _setUpHook;
-    private IHook<DestroyFn>? _destroyHook;
 
-    public StatusBackground(Vtables vtables, ILogger logger, UiObjects objects, CharacterDetailsMenu menu)
+    public StatusBackground(Vtables vtables, UiControllers controllers, ILogger logger, UiObjects objects,
+        CharacterDetailsMenu menu)
     {
         _vtables = vtables;
+        _controllers = controllers;
         _logger = logger;
         _objects = objects;
         _menu = menu;
         menu.Changed += Update;
+        controllers.Destroyed += OnDestroyed;
     }
 
     public void Init()
     {
         _controllerVtable = _vtables.Find(ControllerStatusBg);
-        // both or neither
-        if (_vtables.Function(ControllerStatusBg, SetUpIndex, SetUpStart) == 0
-            || _vtables.Function(ControllerStatusBg, DestroyIndex, DestroyStart) == 0)
-            return;
-        _setUpHook = _vtables.HookFunction<SetUpFn>(ControllerStatusBg, SetUpIndex, SetUpStart, SetUpImpl);
-        _destroyHook = _vtables.HookFunction<DestroyFn>(ControllerStatusBg, DestroyIndex, DestroyStart, DestroyImpl);
+        if (_controllers.IsHooked)
+            _setUpHook = _vtables.HookFunction<SetUpFn>(ControllerStatusBg, SetUpIndex, SetUpStart, SetUpImpl);
     }
 
     private long SetUpImpl(nint controller)
@@ -70,14 +66,12 @@ public unsafe class StatusBackground
         return result;
     }
 
-    private nint DestroyImpl(nint controller, int flags)
+    private void OnDestroyed(UiComponent controller)
     {
-        if (_controller?.Address == controller)
-        {
-            _controller = null;
-            _stock = _card = [];
-        }
-        return _destroyHook!.OriginalFunction(controller, flags);
+        if (controller != _controller)
+            return;
+        _controller = null;
+        _stock = _card = [];
     }
 
     // Keeps the variant shown while the menu opens, closes or is closed

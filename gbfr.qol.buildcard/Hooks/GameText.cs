@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Unicode;
@@ -16,17 +17,6 @@ public unsafe class GameText
     // TextComponentSetText's mov rdx, [rip + disp32] loading the text tables
     private const int TablesLoad = 0x26;
 
-    // Text component
-    private const int String = 0x40;
-    private const int Lines = 0xA0;
-    private const int Hash = 0x188;
-    private const int SubId = 0x18C;
-    private const int WrapWidth = 0x1D0;
-    private const int WrapMode = 0x1D4;
-    private const int WrapOn = 0x1D8;
-    private const int IconSize = 0x1DF;  // percent of the font size
-    private const int LineSize = 0x18;
-    private const int GlyphSize = 0x50;
     private const int Reflow = 1;  // wrap mode
     private const uint EllipsisHash = 0x6895D7BB;  // TXT_HUD_COMMUNICATION_OVER
     private const int EllipsisGlyphs = 16;
@@ -38,19 +28,19 @@ public unsafe class GameText
     private nint* _tables;
     private byte? _iconSize;  // the cell texts' original icon size
     // glyph vector the ellipsis is built into
-    private readonly nint* _ellipsis = (nint*)NativeMemory.Alloc(3, (nuint)sizeof(nint));
+    private readonly GameVector<Glyph>* _ellipsis = (GameVector<Glyph>*)NativeMemory.Alloc((nuint)sizeof(GameVector<Glyph>));
     // the ellipsis glyphs, 16-byte aligned
-    private readonly nint _glyphs = (nint)NativeMemory.AlignedAlloc(EllipsisGlyphs * GlyphSize, 16);
+    private readonly Glyph* _glyphs = (Glyph*)NativeMemory.AlignedAlloc(EllipsisGlyphs * (nuint)sizeof(Glyph), 16);
 
     // TextComponentSetText(text, string, text id hash, unknown)
     private delegate* unmanaged<nint, GameString*, uint, int, void> _setText;
     // TextLookup(text tables, string out, text id hash, sub-id hash)
     private delegate* unmanaged<nint, TextView*, uint, uint, void> _lookup;
     private delegate* unmanaged<nint, void> _joinLines;
-    private delegate* unmanaged<nint, float, nint*, byte, int> _fitLine;  // (text, width, line, with ellipsis)
+    private delegate* unmanaged<nint, float, GameVector<Glyph>*, byte, int> _fitLine;  // (text, width, line, with ellipsis)
     private delegate* unmanaged<nint, int, int, int, void> _splitLine;  // (text, line index, at, last glyph)
-    private delegate* unmanaged<nint, nint, nint*, nint> _buildGlyphs;  // (text, string, glyphs)
-    private delegate* unmanaged<nint*, nint, nint, ulong, void> _insertGlyphs;  // (line, at, glyphs, count)
+    private delegate* unmanaged<nint, nint, GameVector<Glyph>*, nint> _buildGlyphs;  // (text, string, glyphs)
+    private delegate* unmanaged<GameVector<Glyph>*, Glyph*, Glyph*, ulong, void> _insertGlyphs;  // (line, at, glyphs, count)
 
     public GameText(UiObjects objects, Vtables vtables)
     {
@@ -71,13 +61,13 @@ public unsafe class GameText
         scanManager.AddScan("TextJoinLines", signatureGroup, address =>
             _joinLines = (delegate* unmanaged<nint, void>)(nint)address);
         scanManager.AddScan("TextFitLine", signatureGroup, address =>
-            _fitLine = (delegate* unmanaged<nint, float, nint*, byte, int>)(nint)address);
+            _fitLine = (delegate* unmanaged<nint, float, GameVector<Glyph>*, byte, int>)(nint)address);
         scanManager.AddScan("TextSplitLine", signatureGroup, address =>
             _splitLine = (delegate* unmanaged<nint, int, int, int, void>)(nint)address);
         scanManager.AddScan("TextBuildGlyphs", signatureGroup, address =>
-            _buildGlyphs = (delegate* unmanaged<nint, nint, nint*, nint>)(nint)address);
+            _buildGlyphs = (delegate* unmanaged<nint, nint, GameVector<Glyph>*, nint>)(nint)address);
         scanManager.AddScan("TextInsertGlyphs", signatureGroup, address =>
-            _insertGlyphs = (delegate* unmanaged<nint*, nint, nint, ulong, void>)(nint)address);
+            _insertGlyphs = (delegate* unmanaged<GameVector<Glyph>*, Glyph*, Glyph*, ulong, void>)(nint)address);
     }
 
     // hash: the custom XXHash32 of a text id
@@ -104,7 +94,7 @@ public unsafe class GameText
 
     // Wraps the object's current text
     public void Rewrap(UiObject obj, int width, int maxLines = 2, string suffix = "") =>
-        Wrap(obj, width, text => SetString(text, ReadString(text) + suffix, *(uint*)(text.Address + Hash)), maxLines: maxLines);
+        Wrap(obj, width, text => SetString(text, ReadString(text) + suffix, Data(text).Hash), maxLines: maxLines);
 
     public string Find(uint hash, uint subId = EmptyIdHash)
     {
@@ -114,6 +104,8 @@ public unsafe class GameText
 
     private TextComponent? FindText(UiObject obj) =>
         _objects.FindComponent(obj, TextType) is { } component ? new TextComponent(component.Address) : null;
+
+    private static ref TextData Data(TextComponent text) => ref *(TextData*)text.Address;
 
     private void SetString(TextComponent text, string value, uint hash)
     {
@@ -127,12 +119,8 @@ public unsafe class GameText
 
     private static string ReadString(TextComponent text)
     {
-        nint str = text.Address + String;
-        long size = *(long*)(str + 0x10);
-        if (size <= 0 || size > BufferSize)
-            return "";
-        nint data = *(long*)(str + 0x18) > 15 ? *(nint*)str : str;
-        return Encoding.UTF8.GetString((byte*)data, (int)size);
+        ref var str = ref Data(text).String;
+        return str.Size <= 0 || str.Size > BufferSize ? "" : Encoding.UTF8.GetString(str.Data, (int)str.Size);
     }
 
     // The text of a text id in the loaded language, null-terminated; Ptr 0 when unavailable
@@ -150,67 +138,96 @@ public unsafe class GameText
     // Wraps the text's next strings to width
     private static void Limit(TextComponent text, int width)
     {
-        *(int*)(text.Address + WrapWidth) = width;
-        *(int*)(text.Address + WrapMode) = Reflow;
-        *(byte*)(text.Address + WrapOn) = 1;
+        ref var data = ref Data(text);
+        data.WrapWidth = width;
+        data.WrapMode = Reflow;
+        data.WrapOn = 1;
     }
 
     // Scales the icons of the text's next strings from the first scaled text's original icon size
     private void ScaleIcons(TextComponent text, float scale)
     {
-        _iconSize ??= *(byte*)(text.Address + IconSize);
-        *(byte*)(text.Address + IconSize) = (byte)MathF.Round(_iconSize.Value * scale);
+        ref var data = ref Data(text);
+        _iconSize ??= data.IconSize;
+        data.IconSize = (byte)MathF.Round(_iconSize.Value * scale);
     }
 
     // Caps the text at maxLines lines, the last ending in the game's ellipsis
-    private void Cap(TextComponent component, int maxLines)
+    private void Cap(TextComponent text, int maxLines)
     {
-        nint text = component.Address;
+        ref var data = ref Data(text);
         if (_joinLines == null || _fitLine == null || _splitLine == null || _buildGlyphs == null || _insertGlyphs == null
-            || !GameMemory.IsVector(text + Lines, LineSize))
+            || !data.Lines.IsValid)
             return;
         Split(text);
-        nint* lines = (nint*)(text + Lines);
-        if (!GameMemory.IsVector(text + Lines, LineSize) || (lines[1] - lines[0]) / LineSize <= maxLines)
+        if (!data.Lines.IsValid || data.Lines.Count <= maxLines)
             return;
-        var ellipsis = Lookup(EllipsisHash, *(uint*)(text + SubId));
+        var ellipsis = Lookup(EllipsisHash, data.SubId);
         if (ellipsis.Ptr == 0 || ellipsis.Length > EllipsisGlyphs)
             return;
 
-        nint first = lines[0];
-        lines[0] = first + (maxLines - 1) * LineSize;
-        _joinLines(text);
-        lines[0] = first;
+        var first = data.Lines.Begin;
+        data.Lines.Begin = first + (maxLines - 1);
+        _joinLines(text.Address);
+        data.Lines.Begin = first;
 
-        nint* last = (nint*)(first + (maxLines - 1) * LineSize);
-        if (!GameMemory.IsVector((nint)last, GlyphSize))
+        var last = first + (maxLines - 1);
+        if (!last->IsValid)
             return;
-        int cut = _fitLine(text, *(int*)(text + WrapWidth), last, 1);
-        if (cut <= 0 || cut >= (last[1] - last[0]) / GlyphSize)
+        int cut = _fitLine(text.Address, data.WrapWidth, last, 1);
+        if (cut <= 0 || cut >= last->Count)
             return;
-        last[1] = last[0] + cut * GlyphSize;
+        last->End = last->Begin + cut;
 
-        _ellipsis[0] = _ellipsis[1] = _glyphs;
-        _ellipsis[2] = _glyphs + EllipsisGlyphs * GlyphSize;
-        _buildGlyphs(text, ellipsis.Ptr, _ellipsis);
-        _insertGlyphs(last, last[1], _ellipsis[0], (ulong)((_ellipsis[1] - _ellipsis[0]) / GlyphSize));
+        _ellipsis->Begin = _ellipsis->End = _glyphs;
+        _ellipsis->Capacity = _glyphs + EllipsisGlyphs;
+        _buildGlyphs(text.Address, ellipsis.Ptr, _ellipsis);
+        _insertGlyphs(last, last->End, _ellipsis->Begin, (ulong)_ellipsis->Count);
     }
 
     // Splits each line wider than the wrap width where it stops fitting
-    private void Split(nint text)
+    private void Split(TextComponent text)
     {
-        nint* lines = (nint*)(text + Lines);
-        for (int i = 0; i < (lines[1] - lines[0]) / LineSize; i++)
+        ref var data = ref Data(text);
+        for (int i = 0; i < data.Lines.Count; i++)
         {
-            nint* line = (nint*)(lines[0] + i * LineSize);
-            if (!GameMemory.IsVector((nint)line, GlyphSize))
+            var line = data.Lines.Begin + i;
+            if (!line->IsValid)
                 return;
-            int cut = _fitLine(text, *(int*)(text + WrapWidth), line, 0);
-            int glyphs = (int)((line[1] - line[0]) / GlyphSize);
+            int cut = _fitLine(text.Address, data.WrapWidth, line, 0);
+            int glyphs = line->Count;
             if (cut > 0 && cut < glyphs)
-                _splitLine(text, i, cut, glyphs - 1);
+                _splitLine(text.Address, i, cut, glyphs - 1);
         }
     }
+
+    // ui::component::Text
+    [StructLayout(LayoutKind.Explicit)]
+    private struct TextData
+    {
+        [FieldOffset(0x40)] public StdString String;
+        [FieldOffset(0xA0)] public GameVector<GameVector<Glyph>> Lines;
+        [FieldOffset(0x188)] public uint Hash;
+        [FieldOffset(0x18C)] public uint SubId;
+        [FieldOffset(0x1D0)] public int WrapWidth;
+        [FieldOffset(0x1D4)] public int WrapMode;
+        [FieldOffset(0x1D8)] public byte WrapOn;
+        [FieldOffset(0x1DF)] public byte IconSize;  // percent of the font size
+    }
+
+    // An MSVC string, inline up to 15 bytes.
+    [StructLayout(LayoutKind.Explicit, Size = 0x20)]
+    private struct StdString
+    {
+        [FieldOffset(0x0)] public byte* Pointer;
+        [FieldOffset(0x10)] public long Size;
+        [FieldOffset(0x18)] public long Capacity;
+
+        public byte* Data => Capacity > 15 ? Pointer : (byte*)Unsafe.AsPointer(ref this);
+    }
+
+    [StructLayout(LayoutKind.Sequential, Size = 0x50)]
+    private struct Glyph;
 
     private struct GameString
     {

@@ -112,7 +112,7 @@ public class Mod : ModBase
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
         _statusGuide = new StatusGuide(_hooks, _logger, _uiObjects);
         _statusGuide.Init();
-        _views = new Views(_hooks);
+        _views = new Views(_hooks, _logger);
         _views.Init(scanManager, "granblue_fantasy_relink_er");
         _statusBackground = new StatusBackground(_hooks, _logger, _uiObjects, _views);
         _statusBackground.Init();

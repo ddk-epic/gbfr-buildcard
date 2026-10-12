@@ -1,5 +1,8 @@
+using System.Drawing;
+
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Hooks.Definitions;
+using Reloaded.Mod.Interfaces;
 
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
@@ -12,6 +15,7 @@ public unsafe class Views
     private const int Open = 0x38;
 
     private readonly IReloadedHooks _hooks;
+    private readonly ILogger _logger;
     private nint _manager;
 
     // Raised after a view opens, with its name hash.
@@ -26,9 +30,10 @@ public unsafe class Views
     private IHook<CloseViewFn>? _closeViewHook;
     private delegate* unmanaged<nint, nint*, uint, void> _findView;
 
-    public Views(IReloadedHooks hooks)
+    public Views(IReloadedHooks hooks, ILogger logger)
     {
         _hooks = hooks;
+        _logger = logger;
     }
 
     public void Init(IScanManager scanManager, string signatureGroup)
@@ -59,7 +64,7 @@ public unsafe class Views
         bool wasOpen = IsOpen(manager, view);
         _openViewHook!.OriginalFunction(manager, view, layer, flag, reset);
         if (!wasOpen && IsOpen(manager, view))
-            Opened?.Invoke(view);
+            Raise(Opened, view);
     }
 
     private void CloseViewImpl(nint manager, uint view, byte remove, int flag)
@@ -68,6 +73,18 @@ public unsafe class Views
         bool wasOpen = IsOpen(manager, view);
         _closeViewHook!.OriginalFunction(manager, view, remove, flag);
         if (wasOpen && !IsOpen(manager, view))
-            Closed?.Invoke(view);
+            Raise(Closed, view);
+    }
+
+    private void Raise(Action<uint>? handlers, uint view)
+    {
+        try
+        {
+            handlers?.Invoke(view);
+        }
+        catch (Exception e)
+        {
+            _logger.WriteLine($"[gbfr.qol.buildcard] Handling view {view:X8} failed: {e}", Color.Red);
+        }
     }
 }

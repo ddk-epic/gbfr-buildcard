@@ -79,7 +79,14 @@ public unsafe class StatusBackground
         {
             _controller = controller;
             _stock = _card = [];
-            Update();
+            try
+            {
+                Update();
+            }
+            catch (Exception e)
+            {
+                _logger.WriteLine($"[gbfr.qol.buildcard] Showing chr_status_bg01's variant failed: {e}", Color.Red);
+            }
         }
         return result;
     }

@@ -8,7 +8,7 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Adds the card's weapon to the art ui::icon::LoadWeaponParty loads while the Character Details page is open.
+// Adds the card's weapon to the art ui::icon::LoadWeaponParty loads while the Character Details menu is open.
 public unsafe class WeaponArtHooks
 {
     // loader entries: [weapon key, alternate art]
@@ -28,26 +28,9 @@ public unsafe class WeaponArtHooks
     private const int ShowMirage = 0x1113;
     private const int ShowAlternateArt = 0x1114;
 
-    // menu manager: open menus
-    private const int OpenMenus = 0x40;
-    private const int OpenMenuSize = 0x20;
-    private const int OpenMenu = 0x18;
-
-    // menu manager: menu requests
-    private const int Requests = 0xD8;
-    private const int RequestSize = 0x48;
-    private const int OpenRequest = 1;
-
-    // menu
-    private const int MenuOpenState = 0x110;
-    private const int MenuName = 0x148;
-
-    // name hash
-    private const uint PauseStatus = 0xF355AE9C;
-
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
-    private nint* _menus;
+    private readonly CharacterDetailsMenu _menu;
     private nint* _settings;
     private uint _key = NoKey;
     private bool _alternate;
@@ -57,21 +40,20 @@ public unsafe class WeaponArtHooks
     private IHook<IsOpen>? _isOpenHook;
     private IHook<Collect>? _collectHook;
 
-    public WeaponArtHooks(IReloadedHooks hooks, ILogger logger)
+    public WeaponArtHooks(IReloadedHooks hooks, ILogger logger, CharacterDetailsMenu menu)
     {
         _hooks = hooks;
         _logger = logger;
+        _menu = menu;
     }
 
     // Reads the settings object's address from the mov rcx, [rip + disp32] at LoadWeaponParty vfunc 5 + 0x26.
     public void Init()
     {
-        nint exeBase = Process.GetCurrentProcess().MainModule!.BaseAddress;
-        nint party = PeImage.FindVtable(exeBase, ".?AVLoadWeaponParty@icon@ui@@");
-        nint status = PeImage.FindVtable(exeBase, ".?AVLoadSkillBoardCategoryStatus@icon@ui@@");
-        if (party == 0 || status == 0)
+        nint party = PeImage.FindVtable(Process.GetCurrentProcess().MainModule!.BaseAddress, ".?AVLoadWeaponParty@icon@ui@@");
+        if (party == 0)
         {
-            _logger.WriteLine("[gbfr.qol.buildcard] Weapon art loaders not found", Color.Red);
+            _logger.WriteLine("[gbfr.qol.buildcard] Weapon art loader not found", Color.Red);
             return;
         }
         byte* collect = *(byte**)(party + 5 * 8);
@@ -79,12 +61,6 @@ public unsafe class WeaponArtHooks
         if (_settings == null)
         {
             _logger.WriteLine("[gbfr.qol.buildcard] Settings object not found", Color.Red);
-            return;
-        }
-        _menus = PeImage.RipGlobal(*(byte**)(status + 4 * 8), [0x48, 0x8B, 0x0D]);
-        if (_menus == null)
-        {
-            _logger.WriteLine("[gbfr.qol.buildcard] Menu manager not found", Color.Red);
             return;
         }
         nint isOpen = *(nint*)(party + 4 * 8);
@@ -108,7 +84,7 @@ public unsafe class WeaponArtHooks
         _alternate = (*(byte*)(chara + WeaponFlags) & AlternateArt) != 0 && *(byte*)(settings + ShowAlternateArt) != 0;
     }
 
-    // Open while the party menu is open, or while the Character Details page is open and a card weapon is set.
+    // Open while the party menu is open, or while the Character Details menu is open and a card weapon is set.
     private byte IsOpenImpl(nint loader)
     {
         return _isOpenHook!.OriginalFunction(loader) != 0 || CardShown() ? (byte)1 : (byte)0;
@@ -137,34 +113,6 @@ public unsafe class WeaponArtHooks
         *(long*)(loader + WantedCount) = count + 1;
     }
 
-    // Whether the Character Details page is open or opening with a card filled.
-    public bool CardShown() => _key != NoKey && StatusMenuOpen(true);
-
-    public bool CardOpen() => _key != NoKey && StatusMenuOpen(false);
-
-    // Whether PauseStatus is open, or requested to open when requested is set.
-    private bool StatusMenuOpen(bool requested)
-    {
-        if (_menus == null || *_menus == 0)
-            return false;
-        nint manager = *_menus;
-        nint* open = (nint*)(manager + OpenMenus);
-        if (!GameMemory.IsVector((nint)open, OpenMenuSize))
-            return false;
-        for (nint entry = open[0], end = open[1]; entry < end; entry += OpenMenuSize)
-        {
-            nint menu = *(nint*)(entry + OpenMenu);
-            if (menu != 0 && *(uint*)(menu + MenuName) == PauseStatus)
-                return *(int*)(menu + MenuOpenState) == 1;
-        }
-        nint* requests = (nint*)(manager + Requests);
-        if (!requested || !GameMemory.IsVector((nint)requests, RequestSize))
-            return false;
-        for (nint request = requests[0], end = requests[1]; request < end; request += RequestSize)
-        {
-            if (*(int*)request == OpenRequest && *(uint*)(request + 4) == PauseStatus)
-                return true;
-        }
-        return false;
-    }
+    // Whether the Character Details menu is open with a card filled.
+    private bool CardShown() => _key != NoKey && _menu.IsOpen;
 }

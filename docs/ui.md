@@ -1,6 +1,6 @@
 # UI
 
-The game's UI memory the mod reads and writes on the Character Details page, shared by every section of the card.
+The game's UI memory the mod reads and writes on the Character Details menu's status page, shared by every section of the card.
 Offsets are from the start of each structure; pointers are 8 bytes; keys are the game's 32-bit hashes of table keys,
 `0x887AE0B0` being the hash of an empty string (no key, no text id).
 
@@ -33,8 +33,7 @@ object itself), the component name hash at `+0x18`, and the file's `ObjectRefId`
 A screen is made of views, each placing a prefab, opened and closed by the view manager by name hash. A view's byte at
 `+0x38` is 1 while it is open. `OpenView` and `CloseView` can leave a view as it was: a listener of the view manager can
 stop either, `OpenView` skips a view already in the manager's open list and `CloseView` a view it cannot find. Other
-game code also closes views without `CloseView`. `Views` hooks `OpenView` and `CloseView`, reads the view's open byte
-through `FindView` before and after each, and raises `Opened` after a view opens and `Closed` after one closes.
+game code also closes views without `CloseView`.
 
 The Character Details menu's FSM (`system/fsm/ui/ui_pausestatus_v1_0_1_fsm_ingame.msg`) switches pages by opening and
 closing views. The status page is the view `PauseStatus` (`0xF355AE9C`); Trait Details and Skill Details are
@@ -44,12 +43,50 @@ updates it without closing it. Closing the menu closes `PauseStatusBg` before `P
 another page, such as Master Traits Details, without opening `PauseStatus`. `chr_status_bg01` stays loaded while the
 menu is closed.
 
+The Command List (`CommandListDialog`) and the captain's menu (`GenderChangeMenu`, with `PauseCharaColor` and the
+name input) open over the status page and leave `PauseStatus` open.
+
+## Flows
+
+A menu runs as an FSM flow, named by a hash. The FSM action `FlowStart` starts one with
+`StartFlow(flow manager, flow hash, callback, param, …, 1)`, which queues a start request; `FlowEnd` jumps to
+`EndFlow(flow manager, flow hash, result)`, which moves the running flow from state 1 to 2, stores the result at its
+`+0x140` and drops its start requests. `FlowStart`'s abort calls `EndFlow` while its flow is running or requested. The
+flow manager is a global pointer, loaded by the `mov rcx, [rip + disp32]` at the start of
+`LoadSkillBoardCategoryStatus`'s vfunc 4.
+
+| Structure | Offset | Data |
+|---|---|---|
+| Flow manager | `+0x40` | Flows, begin and end: entries of 0x20 bytes, the flow at `+0x18`. |
+| Flow manager | `+0xD8` | Start requests, begin and end: entries of 0x48 bytes, kind (1 to start) then the flow's hash. |
+| Flow | `+0x110` | State: 1 while running, 2 once ended. |
+| Flow | `+0x148` | Name hash. |
+
+The Character Details menu is the flow `PauseStatus` (`0xF355AE9C`), started by the pause menu's FSM.
+`LoadSkillBoardCategoryStatus`'s vfunc 4 (`.?AVLoadSkillBoardCategoryStatus@icon@ui@@`) returns whether the flow
+`PauseSkillBoard` (`0xE0458EF5`) or `PauseStatus` is running in state 1 or requested to start.
+
+## Character Details menu
+
+`CharacterDetailsMenu` hooks `StartFlow`, `EndFlow`, `OpenView` and `CloseView` and keeps the menu in one state:
+
+| State | Entered when |
+|---|---|
+| Closed | `EndFlow` ends `PauseStatus`. |
+| Opening | `StartFlow` starts `PauseStatus` while the menu is closed. |
+| On the status page | `PauseStatusBg` and `PauseStatus` are both open. |
+| On another page | `PauseStatusBg` is open and `PauseStatus` is not. |
+| Closing | `PauseStatusBg` closes after it opened. |
+
+At each `OpenView` and `CloseView` of `PauseStatus` or `PauseStatusBg` it reads both views' open bytes through
+`FindView`, before and after the call, and updates the state when the view's open state changed. It raises `Changed`
+on the game thread after each change. `IsOpen` is true from Opening to Closing.
+
 ## Status background
 
-`StatusBackground` shows `chr_status_bg01`'s card panel and lines while `PauseStatusBg` and `PauseStatus` are both
-open and stock's while only `PauseStatusBg` is, reading both views' state whenever either opens or closes and when
-`chr_status_bg01` is set up; while `PauseStatusBg` is closed it keeps the variant shown
-([build.md](build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
+`StatusBackground` shows `chr_status_bg01`'s card panel and lines on the status page and stock's on another page,
+reading `CharacterDetailsMenu` at each `Changed` and when `chr_status_bg01` is set up; while the menu opens, closes or
+is closed it keeps the variant shown ([build.md](build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
 entries 8 and 7 are functions every controller shares, a setup run once the prefab is built and the scalar deleting
 destructor; `StatusBackground` hooks both and keeps the controller whose vtable is `ControllerStatusBg`'s from one to
 the other.
@@ -108,6 +145,8 @@ no symbols; the names are the signatures' keys.
 | `FindView(view manager, out view, view hash)` | called | Looks up a view by name hash, writing 0 when there is none. | |
 | `OpenView(view manager, view hash, layer, flag, reset)` | hooked | Opens a view; the FSM action `ViewOpen` calls it. | |
 | `CloseView(view manager, view hash, remove, flag)` | hooked | Closes a view; the FSM action `ViewClose` calls it. | |
+| `StartFlow(flow manager, flow hash, callback, param, …, 1)` | hooked | Queues a flow's start; the FSM action `FlowStart` calls it. | |
+| `EndFlow(flow manager, flow hash, result)` | hooked | Ends a running flow and drops its start requests; the FSM action `FlowEnd` jumps to it. | |
 | `SetSkillBoardDescription(cell component, character key, slot)` | called | Sets a master trait cell's description in the loaded language. | [master traits](master-traits.md) |
 | `MasteryPercent(mastery manager, category, character key)` | called | Returns a mastery category's percentage. | [masteries](masteries.md) |
 | `SetMasteryPercents(screen)` | read | Fills the Masteries screen's percentages; read for the mastery manager. | [masteries](masteries.md) |

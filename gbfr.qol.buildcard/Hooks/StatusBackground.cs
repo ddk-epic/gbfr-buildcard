@@ -7,7 +7,7 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Shows the card's panel and lines in chr_status_bg01 while the status page's view is open and stock's otherwise.
+// Shows the card's panel and lines in chr_status_bg01 on the status page and stock's on the menu's other pages.
 public unsafe class StatusBackground
 {
     // ControllerStatusBg's vtable indexes of the controllers' shared setup and destructor
@@ -16,14 +16,10 @@ public unsafe class StatusBackground
     private const string SetUpStart = "41 57 41 56 56 57 53 48 83 EC 30";
     private const string DestroyStart = "56 57 48 83 EC 28 ?? ?? ?? ?? ?? E8";
 
-    // view name hashes
-    private const uint PauseStatus = 0xF355AE9C;
-    private const uint PauseStatusBg = 0x4BE58B5D;
-
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
     private readonly UiObjects _objects;
-    private readonly Views _views;
+    private readonly CharacterDetailsMenu _menu;
     private nint _controllerVtable;
     private nint _controller;
     private nint[] _stock = [];
@@ -35,14 +31,13 @@ public unsafe class StatusBackground
     private IHook<SetUpFn>? _setUpHook;
     private IHook<DestroyFn>? _destroyHook;
 
-    public StatusBackground(IReloadedHooks hooks, ILogger logger, UiObjects objects, Views views)
+    public StatusBackground(IReloadedHooks hooks, ILogger logger, UiObjects objects, CharacterDetailsMenu menu)
     {
         _hooks = hooks;
         _logger = logger;
         _objects = objects;
-        _views = views;
-        views.Opened += OnViewChanged;
-        views.Closed += OnViewChanged;
+        _menu = menu;
+        menu.Changed += Update;
     }
 
     public void Init()
@@ -59,12 +54,6 @@ public unsafe class StatusBackground
         }
         _setUpHook = _hooks.CreateHook<SetUpFn>(SetUpImpl, setUp).Activate();
         _destroyHook = _hooks.CreateHook<DestroyFn>(DestroyImpl, destroy).Activate();
-    }
-
-    private void OnViewChanged(uint view)
-    {
-        if (view == PauseStatus || view == PauseStatusBg)
-            Update();
     }
 
     private long SetUpImpl(nint controller)
@@ -96,11 +85,11 @@ public unsafe class StatusBackground
         return _destroyHook!.OriginalFunction(controller, flags);
     }
 
-    // Shows the card's while both views are open and stock's while only the background is
+    // Keeps the variant shown while the menu opens, closes or is closed
     private void Update()
     {
-        if (_views.IsOpen(PauseStatusBg))
-            _cardShown = _views.IsOpen(PauseStatus);
+        if (_menu.IsOnStatusPage || _menu.IsOnOtherPage)
+            _cardShown = _menu.IsOnStatusPage;
         Apply();
     }
 

@@ -1,6 +1,6 @@
 # Export
 
-The build card saved as a 2880x1440 PNG from the Character Details page. The footer's Save Card starts it; the mod hides
+The build card saved as a 2880x1440 PNG from the Character Details menu's status page. The footer's Save Card starts it; the mod hides
 the page arrows' button prompts, redraws one frame into off-screen frame buffers with the card filling 2880x1440, and
 saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 
@@ -70,9 +70,9 @@ call is at its `+0x1A`.
 Save Card is down when the lock is below 1 and either `+0x84` has a bit of `GetButtonBits(+0xA8, 12, 1, 3)` or `+0x0C`
 has `0x4000`. `SaveCardButton.Pressed` returns true on the tick it goes down while `status01`'s shortcut for button 12
 takes input (see [Shortcut input](#shortcut-input)). A press counts only while the card is
-open and `CardFile` is not writing a card. The card is open while a card is filled and the Character Details menu
-(`PauseStatus`) is in the open menus with state 1, checked through `WeaponArtHooks.CardOpen`; a menu that is only
-requested to open does not count. Other menus that read the same key, such as Master Traits, do not start an export.
+open and `CardFile` is not writing a card. The card is open while `CharacterDetailsMenu` is on the status page
+([ui](ui.md#character-details-menu)); the character fill that writes the card runs before the status page's view
+opens. Other menus that read the same key, such as Master Traits, do not start an export.
 
 ## Shortcut input
 
@@ -119,7 +119,7 @@ The game thread hides the prompts and notices and the render thread starts the r
 
 ## Game rendering
 
-The game renders with D3D11 on one immediate context. On the Character Details page the UI is drawn last, onto a
+The game renders with D3D11 on one immediate context. On the status page the UI is drawn last, onto a
 backbuffer-sized RGBA8 texture that holds the 3D scene, bound alone with no depth buffer; one draw then copies that
 texture to the backbuffer. The UI's texture changes from frame to frame.
 
@@ -127,7 +127,7 @@ texture to the backbuffer. The UI's texture changes from frame to frame.
 
 `CardRedraw` hooks the immediate context's `DrawIndexed` (12), `Draw` (13), `DrawIndexedInstanced` (20),
 `DrawInstanced` (21), `OMSetRenderTargets` (33) and `OMSetRenderTargetsAndUnorderedAccessViews` (34), read from the
-device of the first presented swapchain whose backbuffer is a D3D11 texture. They are turned on at a present while the card was open (`WeaponArtHooks.CardOpen`, polled on the game thread) within the last 500 ms or a redraw runs, and off otherwise. Outside a redraw frame they pass through; calls on other contexts always pass through.
+device of the first presented swapchain whose backbuffer is a D3D11 texture. They are turned on at a present while the card was open (polled on the game thread) within the last 500 ms or a redraw runs, and off otherwise. Outside a redraw frame they pass through; calls on other contexts always pass through.
 
 In the redraw frame:
 

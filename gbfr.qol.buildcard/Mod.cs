@@ -33,11 +33,11 @@ public class Mod : ModBase
     private MasterTraits? _masterTraits;
     private Masteries? _masteries;
     private CharaStatusHooks? _charaStatusHooks;
+    private CharacterDetailsMenu? _menu;
     private WeaponArtHooks? _weaponArtHooks;
     private CardWriter? _cardWriter;
     private SaveCardButton? _saveCardButton;
     private StatusGuide? _statusGuide;
-    private Views? _views;
     private StatusBackground? _statusBackground;
     private SavedNotice? _savedNotice;
     private SwapChainHooks? _swapChainHooks;
@@ -100,7 +100,10 @@ public class Mod : ModBase
         _charaStatusHooks = new CharaStatusHooks(_hooks);
         _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
 
-        _weaponArtHooks = new WeaponArtHooks(_hooks, _logger);
+        _menu = new CharacterDetailsMenu(_hooks, _logger);
+        _menu.Init(scanManager, "granblue_fantasy_relink_er");
+
+        _weaponArtHooks = new WeaponArtHooks(_hooks, _logger, _menu);
         _weaponArtHooks.Init();
 
         _cardWriter = new CardWriter(_gameText, _masterTraits, _masteries, _weaponArtHooks, _uiObjects,
@@ -112,9 +115,7 @@ public class Mod : ModBase
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
         _statusGuide = new StatusGuide(_hooks, _logger, _uiObjects);
         _statusGuide.Init();
-        _views = new Views(_hooks, _logger);
-        _views.Init(scanManager, "granblue_fantasy_relink_er");
-        _statusBackground = new StatusBackground(_hooks, _logger, _uiObjects, _views);
+        _statusBackground = new StatusBackground(_hooks, _logger, _uiObjects, _menu);
         _statusBackground.Init();
         _savedNotice = new SavedNotice(_hooks, _logger, _uiObjects);
         _savedNotice.Init(scanManager, "granblue_fantasy_relink_er");
@@ -123,7 +124,7 @@ public class Mod : ModBase
         _cardFile.Saved += _savedNotice.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;
         _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice, _cardFile,
-            _weaponArtHooks.CardOpen, _cardWriter.CharaName, _logger);
+            _menu, _cardWriter.CharaName, _logger);
         _saveCardButton.Tick += _savedNotice.OnTick;
         _saveCardButton.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);

@@ -31,7 +31,7 @@ public class CardExport
     private readonly CardRedraw _redraw;
     private readonly SavedNotice _notice;
     private readonly CardFile _file;
-    private readonly Func<bool> _cardOpen;
+    private readonly CharacterDetailsMenu _menu;
     private readonly Func<string> _charaName;
     private readonly ILogger _logger;
     private volatile int _state;
@@ -42,14 +42,14 @@ public class CardExport
     private string _pressedCharaName = "";
 
     public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, SavedNotice notice, CardFile file,
-        Func<bool> cardOpen, Func<string> charaName, ILogger logger)
+        CharacterDetailsMenu menu, Func<string> charaName, ILogger logger)
     {
         _button = button;
         _guide = guide;
         _redraw = redraw;
         _notice = notice;
         _file = file;
-        _cardOpen = cardOpen;
+        _menu = menu;
         _charaName = charaName;
         _logger = logger;
     }
@@ -58,7 +58,7 @@ public class CardExport
     public void OnTick()
     {
         bool pressed = _button.Pressed();
-        bool cardOpen = _cardOpen();
+        bool cardOpen = _menu.IsOnStatusPage;
         if (cardOpen)
             Interlocked.Exchange(ref _cardSeenAt, Environment.TickCount64);
 

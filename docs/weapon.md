@@ -30,8 +30,8 @@ party menu is open. `WeaponArtHooks` hooks two of its vfuncs:
 
 1. `CardWriter` calls `WeaponArtHooks.Show` after each character fill with the weapon key and the alternate art flag
    to load, chosen from the character's weapon, mirage and flags and the settings.
-2. The hooked vfunc 4, whether the loader is open, also returns true while the Character Details page is open and a
-   card weapon is set.
+2. The hooked vfunc 4, whether the loader is open, also returns true while the Character Details menu is open
+   ([ui](ui.md#character-details-menu)) and a card weapon is set.
 3. The hooked vfunc 5, which collects the list, collects the party's weapons only while the party menu is open, then
    adds the card's weapon when the list does not hold it and has room.
 
@@ -56,19 +56,3 @@ party menu is open. `WeaponArtHooks` hooks two of its vfuncs:
 
 The loader's vtable is found through the exe's RTTI (`.?AVLoadWeaponParty@icon@ui@@`). The settings object's address
 is read from the `mov rcx, [rip + disp32]` at `LoadWeaponParty`'s vfunc 5 + 0x26.
-
-### Menus
-
-`LoadSkillBoardCategoryStatus`'s vfunc 4 (`.?AVLoadSkillBoardCategoryStatus@icon@ui@@`) returns whether the Master
-Traits menu (`PauseSkillBoard`, `0xE0458EF5`) or the Character Details menu (`PauseStatus`, `0xF355AE9C`) is open.
-`WeaponArtHooks` reads the menu manager from the `mov rcx, [rip + disp32]` at its start and checks `PauseStatus` alone
-the same way.
-
-| Structure | Offset | Data |
-|---|---|---|
-| Menu manager | `+0x40` | Open menus, begin and end: entries of 0x20 bytes, the menu at `+0x18`. |
-| Menu manager | `+0xD8` | Menu requests, begin and end: entries of 0x48 bytes, kind (1 to open) then the menu's name hash. |
-| Menu | `+0x110` | 1 while open. |
-| Menu | `+0x148` | Name hash. |
-
-A menu is open when it is in the open menus with state 1, or, when it is not in them, when an open request names it.

@@ -1,4 +1,6 @@
 using System.Drawing;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
@@ -8,9 +10,6 @@ namespace gbfr.qol.buildcard.Hooks;
 // Adds the card's weapon to the art ui::icon::LoadWeaponParty loads while the Character Details menu is open.
 public unsafe class WeaponArtHooks
 {
-    // loader entries: [weapon key, alternate art]
-    private const int WantedCount = 0x40;
-    private const int Wanted = 0x48;
     private const int WantedMax = 6;
 
     private const string LoadWeaponParty = ".?AVLoadWeaponParty@icon@ui@@";
@@ -20,13 +19,10 @@ public unsafe class WeaponArtHooks
 
     private const uint NoKey = 0x887AE0B0;
 
-    private const int ShowMirage = 0x1113;
-    private const int ShowAlternateArt = 0x1114;
-
     private readonly Vtables _vtables;
     private readonly ILogger _logger;
     private readonly CharacterDetailsMenu _menu;
-    private nint* _settings;
+    private Settings** _settings;
     private uint _key = NoKey;
     private bool _alternate;
 
@@ -48,7 +44,7 @@ public unsafe class WeaponArtHooks
         byte* collect = (byte*)_vtables.Function(LoadWeaponParty, CollectIndex, null);
         if (collect == null)
             return;
-        _settings = PeImage.RipGlobal(collect + 0x26, [0x48, 0x8B, 0x0D]);
+        _settings = (Settings**)PeImage.RipGlobal(collect + 0x26, [0x48, 0x8B, 0x0D]);
         if (_settings == null)
         {
             _logger.WriteLine("[gbfr.qol.buildcard] Settings object not found", Color.Red);
@@ -62,11 +58,11 @@ public unsafe class WeaponArtHooks
     // Sets the weapon whose art is loaded, following the mirage and alternate art settings.
     public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build)
     {
-        if (_settings == null || *_settings == 0)
+        if (_settings == null || *_settings == null)
             return;
-        nint settings = *_settings;
-        _key = build.MirageKey != NoKey && *(byte*)(settings + ShowMirage) != 0 ? build.MirageKey : build.WeaponKey;
-        _alternate = build.AlternateArt && *(byte*)(settings + ShowAlternateArt) != 0;
+        ref var settings = ref **_settings;
+        _key = build.MirageKey != NoKey && settings.ShowMirage != 0 ? build.MirageKey : build.WeaponKey;
+        _alternate = build.AlternateArt && settings.ShowAlternateArt != 0;
     }
 
     // Open while the party menu is open, or while the Character Details menu is open and a card weapon is set.
@@ -83,21 +79,50 @@ public unsafe class WeaponArtHooks
         if (!CardShown())
             return;
 
-        long count = *(long*)(loader + WantedCount);
+        ref var list = ref *(Loader*)loader;
+        long count = list.Count;
         if (count is < 0 or >= WantedMax)
             return;
+        byte alternate = _alternate ? (byte)1 : (byte)0;
         for (int i = 0; i < count; i++)
         {
-            nint entry = loader + Wanted + i * 8;
-            if (*(uint*)entry == _key && *(byte*)(entry + 4) == (_alternate ? 1 : 0))
+            if (list.Wanted[i].Key == _key && list.Wanted[i].Alternate == alternate)
                 return;
         }
-        nint added = loader + Wanted + (nint)count * 8;
-        *(uint*)added = _key;
-        *(byte*)(added + 4) = _alternate ? (byte)1 : (byte)0;
-        *(long*)(loader + WantedCount) = count + 1;
+        ref var added = ref list.Wanted[(int)count];
+        added.Key = _key;
+        added.Alternate = alternate;
+        list.Count = count + 1;
     }
 
     // Whether the Character Details menu is open with a card filled.
     private bool CardShown() => _key != NoKey && _menu.IsOpen;
+
+    // ui::icon::LoadWeaponParty
+    [StructLayout(LayoutKind.Explicit)]
+    private struct Loader
+    {
+        [FieldOffset(0x40)] public long Count;
+        [FieldOffset(0x48)] public WantedArray Wanted;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 8)]
+    private struct WantedEntry
+    {
+        [FieldOffset(0x0)] public uint Key;
+        [FieldOffset(0x4)] public byte Alternate;
+    }
+
+    [InlineArray(WantedMax)]
+    private struct WantedArray
+    {
+        private WantedEntry _element;
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    private struct Settings
+    {
+        [FieldOffset(0x1113)] public byte ShowMirage;
+        [FieldOffset(0x1114)] public byte ShowAlternateArt;
+    }
 }

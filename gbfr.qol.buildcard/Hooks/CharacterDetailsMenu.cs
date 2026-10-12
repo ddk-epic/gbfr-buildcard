@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Hooks.Definitions;
@@ -11,9 +12,6 @@ namespace gbfr.qol.buildcard.Hooks;
 // Tracks the Character Details menu and its page from its flow and views.
 public unsafe class CharacterDetailsMenu
 {
-    // view
-    private const int Open = 0x38;
-
     // flow and view name hashes
     private const uint PauseStatus = 0xF355AE9C;
     private const uint PauseStatusBg = 0x4BE58B5D;
@@ -35,7 +33,7 @@ public unsafe class CharacterDetailsMenu
     private IHook<EndFlowFn>? _endFlowHook;
     private IHook<OpenViewFn>? _openViewHook;
     private IHook<CloseViewFn>? _closeViewHook;
-    private delegate* unmanaged<nint, nint*, uint, void> _findView;
+    private delegate* unmanaged<nint, View**, uint, void> _findView;
 
     public CharacterDetailsMenu(IReloadedHooks hooks, ILogger logger)
     {
@@ -50,7 +48,7 @@ public unsafe class CharacterDetailsMenu
         scanManager.AddScan("EndFlow", signatureGroup, address =>
             _endFlowHook = _hooks.CreateHook<EndFlowFn>(EndFlowImpl, address).Activate());
         scanManager.AddScan("FindView", signatureGroup, address =>
-            _findView = (delegate* unmanaged<nint, nint*, uint, void>)(nint)address);
+            _findView = (delegate* unmanaged<nint, View**, uint, void>)(nint)address);
         scanManager.AddScan("OpenView", signatureGroup, address =>
             _openViewHook = _hooks.CreateHook<OpenViewFn>(OpenViewImpl, address).Activate());
         scanManager.AddScan("CloseView", signatureGroup, address =>
@@ -111,9 +109,9 @@ public unsafe class CharacterDetailsMenu
     {
         if (manager == 0 || _findView == null)
             return false;
-        nint found;
+        View* found;
         _findView(manager, &found, view);
-        return found != 0 && *(byte*)(found + Open) != 0;
+        return found != null && found->Open != 0;
     }
 
     private void Set(State state)
@@ -129,5 +127,11 @@ public unsafe class CharacterDetailsMenu
         {
             _logger.WriteLine($"[gbfr.qol.buildcard] Handling the Character Details menu's {state} failed: {e}", Color.Red);
         }
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    private struct View
+    {
+        [FieldOffset(0x38)] public byte Open;
     }
 }

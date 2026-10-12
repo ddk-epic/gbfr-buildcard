@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Hooks.Definitions;
 
@@ -13,9 +15,6 @@ public unsafe class SavedNotice
     private const int EmptyCallbackLoad = 0x6E;
     private const int PushCall = 0x85;
 
-    // UI manager: the info queue
-    private const int InfoQueue = 0x310;
-
     private const int InfoKind = 2;
     private const int PhotoSaved = 0x27;
 
@@ -29,10 +28,6 @@ public unsafe class SavedNotice
     // the controllers' vtable index of ShowInfo
     private const int ShowInfoIndex = 35;
 
-    // controller offsets
-    private const int Showing = 0x1A8;
-    private const int Duration = 0x1D0;
-
     // milliseconds
     private const int NoticeDuration = 1500;
 
@@ -44,7 +39,7 @@ public unsafe class SavedNotice
 
     private readonly Vtables _vtables;
     private readonly UiObjects _objects;
-    private nint* _uiManager;
+    private UiManager** _uiManager;
     private nint _emptyCallback;
     private delegate* unmanaged<nint, int, nint, byte, void> _pushInfo;
     private int _saved;
@@ -71,7 +66,7 @@ public unsafe class SavedNotice
             byte* code = (byte*)address;
             byte* lea = code + EmptyCallbackLoad;
             byte* call = code + PushCall;
-            _uiManager = PeImage.RipGlobal(code + UiManagerLoad, [0x48, 0x8B, 0x05]);
+            _uiManager = (UiManager**)PeImage.RipGlobal(code + UiManagerLoad, [0x48, 0x8B, 0x05]);
             _emptyCallback = (nint)(lea + 7 + *(int*)(lea + 3));
             _pushInfo = (delegate* unmanaged<nint, int, nint, byte, void>)(call + 5 + *(int*)(call + 1));
         });
@@ -101,9 +96,9 @@ public unsafe class SavedNotice
 
     private void Queue()
     {
-        if (_uiManager == null || *_uiManager == 0 || _pushInfo == null)
+        if (_uiManager == null || *_uiManager == null || _pushInfo == null)
             return;
-        nint queue = *(nint*)(*_uiManager + InfoQueue);
+        nint queue = (*_uiManager)->InfoQueue;
         if (queue == 0)
             return;
         nint* callback = stackalloc nint[8];
@@ -121,7 +116,7 @@ public unsafe class SavedNotice
         {
             foreach (var controller in _hidden)
             {
-                if (*(byte*)(controller.Address + Showing) != 0 && controller.Object is { } obj)
+                if (Data(controller).Showing != 0 && controller.Object is { } obj)
                     _objects.SetActive(obj, true);
             }
             _hidden.Clear();
@@ -139,7 +134,7 @@ public unsafe class SavedNotice
 
     private void Hide(UiComponent controller)
     {
-        if (controller.Object is not { } obj || *(byte*)(controller.Address + Showing) == 0)
+        if (controller.Object is not { } obj || Data(controller).Showing == 0)
             return;
         _objects.SetActive(obj, false);
         _hidden.Add(controller);
@@ -149,20 +144,37 @@ public unsafe class SavedNotice
     private nint ShowInfoImpl(IHook<ShowInfoFn> hook, nint address, int* info)
     {
         var controller = new UiComponent(address);
+        ref var data = ref Data(controller);
         if (_shortened.Remove(controller, out float duration))
-            *(float*)(address + Duration) = duration;
+            data.Duration = duration;
         _noticeShownAt.Remove(controller);
         bool notice = info[0] == InfoKind && info[1] == PhotoSaved && _pushedAt != 0
             && Environment.TickCount64 - _pushedAt < ShowTimeout;
         if (notice)
         {
-            _shortened[controller] = *(float*)(address + Duration);
-            *(float*)(address + Duration) = NoticeDuration / 1000f;
+            _shortened[controller] = data.Duration;
+            data.Duration = NoticeDuration / 1000f;
             _noticeShownAt[controller] = Environment.TickCount64;
         }
         nint result = hook.OriginalFunction(address, info);
         if (notice && _hiding)
             Hide(controller);
         return result;
+    }
+
+    private static ref InfoController Data(UiComponent controller) => ref *(InfoController*)controller.Address;
+
+    [StructLayout(LayoutKind.Explicit)]
+    private struct UiManager
+    {
+        [FieldOffset(0x310)] public nint InfoQueue;
+    }
+
+    // ControllerInformationSystem and ControllerInformationToast
+    [StructLayout(LayoutKind.Explicit)]
+    private struct InfoController
+    {
+        [FieldOffset(0x1A8)] public byte Showing;
+        [FieldOffset(0x1D0)] public float Duration;  // seconds
     }
 }

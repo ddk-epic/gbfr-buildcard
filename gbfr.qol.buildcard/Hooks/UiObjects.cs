@@ -27,14 +27,15 @@ public unsafe class UiObjects
     private const int MaxObjects = 0x4000;
 
     private readonly ILogger _logger;
+    private readonly Vtables _vtables;
     private readonly nint _exeBase = Process.GetCurrentProcess().MainModule!.BaseAddress;
-    private readonly Dictionary<nint, string> _typeNames = [];
     private delegate* unmanaged<nint, byte, void> _setActive;
     private bool _loggedComponents;
 
-    public UiObjects(ILogger logger)
+    public UiObjects(ILogger logger, Vtables vtables)
     {
         _logger = logger;
+        _vtables = vtables;
     }
 
     public void Init(IScanManager scanManager, string signatureGroup)
@@ -103,20 +104,10 @@ public unsafe class UiObjects
 
     public bool IsActive(nint obj) => *(byte*)(obj + Active) != 0;
 
-    // The vtable of the RTTI type, or 0
-    public nint FindVtable(string typeName)
+    // The object's component of the RTTI type, or 0
+    public nint FindComponent(nint obj, string typeName)
     {
-        nint vtable = PeImage.FindVtable(_exeBase, typeName);
-        if (vtable == 0)
-            _logger.WriteLine($"[gbfr.qol.buildcard] {typeName} vtable not found", Color.Red);
-        else
-            _typeNames[vtable] = typeName;
-        return vtable;
-    }
-
-    // The object's component with the vtable, or 0
-    public nint FindComponent(nint obj, nint vtable)
-    {
+        nint vtable = _vtables.Find(typeName);
         if (vtable == 0 || !GameMemory.IsVector(obj + Components, EntrySize))
             return 0;
         for (nint entry = *(nint*)(obj + Components); entry < *(nint*)(obj + Components + 8); entry += EntrySize)
@@ -125,11 +116,11 @@ public unsafe class UiObjects
             if (component != 0 && *(nint*)component == vtable)
                 return component;
         }
-        LogComponentsOnce(obj, vtable);
+        LogComponentsOnce(obj, typeName, vtable);
         return 0;
     }
 
-    private void LogComponentsOnce(nint obj, nint vtable)
+    private void LogComponentsOnce(nint obj, string typeName, nint vtable)
     {
         if (_loggedComponents)
             return;
@@ -140,6 +131,6 @@ public unsafe class UiObjects
             nint component = *(nint*)(entry + EntryComponent);
             vtables.Add(component == 0 ? "null" : $"exe+{*(nint*)component - _exeBase:X}");
         }
-        _logger.WriteLine($"[gbfr.qol.buildcard] No {_typeNames.GetValueOrDefault(vtable)} on an object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
+        _logger.WriteLine($"[gbfr.qol.buildcard] No {typeName} on an object (vtable exe+{vtable - _exeBase:X}); components: {string.Join(", ", vtables)}", Color.Yellow);
     }
 }

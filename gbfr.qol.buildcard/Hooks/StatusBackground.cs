@@ -3,20 +3,19 @@ using System.Drawing;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
 
-using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
-
 namespace gbfr.qol.buildcard.Hooks;
 
 // Shows the card's panel and lines in chr_status_bg01 on the status page and stock's on the menu's other pages.
 public unsafe class StatusBackground
 {
+    private const string ControllerStatusBg = ".?AVControllerStatusBg@component@ui@@";
     // ControllerStatusBg's vtable indexes of the controllers' shared setup and destructor
     private const int SetUpIndex = 8;
     private const int DestroyIndex = 7;
     private const string SetUpStart = "41 57 41 56 56 57 53 48 83 EC 30";
     private const string DestroyStart = "56 57 48 83 EC 28 ?? ?? ?? ?? ?? E8";
 
-    private readonly IReloadedHooks _hooks;
+    private readonly Vtables _vtables;
     private readonly ILogger _logger;
     private readonly UiObjects _objects;
     private readonly CharacterDetailsMenu _menu;
@@ -31,9 +30,9 @@ public unsafe class StatusBackground
     private IHook<SetUpFn>? _setUpHook;
     private IHook<DestroyFn>? _destroyHook;
 
-    public StatusBackground(IReloadedHooks hooks, ILogger logger, UiObjects objects, CharacterDetailsMenu menu)
+    public StatusBackground(Vtables vtables, ILogger logger, UiObjects objects, CharacterDetailsMenu menu)
     {
-        _hooks = hooks;
+        _vtables = vtables;
         _logger = logger;
         _objects = objects;
         _menu = menu;
@@ -42,18 +41,13 @@ public unsafe class StatusBackground
 
     public void Init()
     {
-        _controllerVtable = _objects.FindVtable(".?AVControllerStatusBg@component@ui@@");
-        if (_controllerVtable == 0)
+        _controllerVtable = _vtables.Find(ControllerStatusBg);
+        // both or neither
+        if (_vtables.Function(ControllerStatusBg, SetUpIndex, SetUpStart) == 0
+            || _vtables.Function(ControllerStatusBg, DestroyIndex, DestroyStart) == 0)
             return;
-        nint setUp = *(nint*)(_controllerVtable + SetUpIndex * 8);
-        nint destroy = *(nint*)(_controllerVtable + DestroyIndex * 8);
-        if (!PeImage.Matches(setUp, SetUpStart) || !PeImage.Matches(destroy, DestroyStart))
-        {
-            _logger.WriteLine("[gbfr.qol.buildcard] ControllerStatusBg setup or destructor not found", Color.Red);
-            return;
-        }
-        _setUpHook = _hooks.CreateHook<SetUpFn>(SetUpImpl, setUp).Activate();
-        _destroyHook = _hooks.CreateHook<DestroyFn>(DestroyImpl, destroy).Activate();
+        _setUpHook = _vtables.HookFunction<SetUpFn>(ControllerStatusBg, SetUpIndex, SetUpStart, SetUpImpl);
+        _destroyHook = _vtables.HookFunction<DestroyFn>(ControllerStatusBg, DestroyIndex, DestroyStart, DestroyImpl);
     }
 
     private long SetUpImpl(nint controller)

@@ -1,10 +1,7 @@
-using System.Diagnostics;
 using System.Drawing;
 
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
-
-using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
 
@@ -16,7 +13,9 @@ public unsafe class WeaponArtHooks
     private const int Wanted = 0x48;
     private const int WantedMax = 6;
 
-    // LoadWeaponParty's IsOpen first bytes
+    private const string LoadWeaponParty = ".?AVLoadWeaponParty@icon@ui@@";
+    private const int IsOpenIndex = 4;
+    private const int CollectIndex = 5;
     private const string IsOpenStart = "48 8B 05 ?? ?? ?? ?? 48 8B 48 40 48 8B 50 48 48 39 D1";
 
     private const int WeaponKey = 0x54;
@@ -28,7 +27,7 @@ public unsafe class WeaponArtHooks
     private const int ShowMirage = 0x1113;
     private const int ShowAlternateArt = 0x1114;
 
-    private readonly IReloadedHooks _hooks;
+    private readonly Vtables _vtables;
     private readonly ILogger _logger;
     private readonly CharacterDetailsMenu _menu;
     private nint* _settings;
@@ -40,9 +39,9 @@ public unsafe class WeaponArtHooks
     private IHook<IsOpen>? _isOpenHook;
     private IHook<Collect>? _collectHook;
 
-    public WeaponArtHooks(IReloadedHooks hooks, ILogger logger, CharacterDetailsMenu menu)
+    public WeaponArtHooks(Vtables vtables, ILogger logger, CharacterDetailsMenu menu)
     {
-        _hooks = hooks;
+        _vtables = vtables;
         _logger = logger;
         _menu = menu;
     }
@@ -50,27 +49,18 @@ public unsafe class WeaponArtHooks
     // Reads the settings object's address from the mov rcx, [rip + disp32] at LoadWeaponParty vfunc 5 + 0x26.
     public void Init()
     {
-        nint party = PeImage.FindVtable(Process.GetCurrentProcess().MainModule!.BaseAddress, ".?AVLoadWeaponParty@icon@ui@@");
-        if (party == 0)
-        {
-            _logger.WriteLine("[gbfr.qol.buildcard] Weapon art loader not found", Color.Red);
+        byte* collect = (byte*)_vtables.Function(LoadWeaponParty, CollectIndex, null);
+        if (collect == null)
             return;
-        }
-        byte* collect = *(byte**)(party + 5 * 8);
         _settings = PeImage.RipGlobal(collect + 0x26, [0x48, 0x8B, 0x0D]);
         if (_settings == null)
         {
             _logger.WriteLine("[gbfr.qol.buildcard] Settings object not found", Color.Red);
             return;
         }
-        nint isOpen = *(nint*)(party + 4 * 8);
-        if (!PeImage.Matches(isOpen, IsOpenStart))
-        {
-            _logger.WriteLine("[gbfr.qol.buildcard] Weapon art loader check not found", Color.Red);
-            return;
-        }
-        _isOpenHook = _hooks.CreateHook<IsOpen>(IsOpenImpl, isOpen).Activate();
-        _collectHook = _hooks.CreateHook<Collect>(CollectImpl, (long)collect).Activate();
+        _isOpenHook = _vtables.HookFunction<IsOpen>(LoadWeaponParty, IsOpenIndex, IsOpenStart, IsOpenImpl);
+        if (_isOpenHook != null)
+            _collectHook = _vtables.HookFunction<Collect>(LoadWeaponParty, CollectIndex, null, CollectImpl);
     }
 
     // Sets the weapon whose art is loaded, following the mirage and alternate art settings.

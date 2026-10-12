@@ -9,6 +9,9 @@ namespace gbfr.qol.buildcard.Hooks;
 // Applies CardContents' writes to the card's objects.
 public unsafe class CardWriter
 {
+    private const string SummonInfoType = ".?AVSummonInfo@component@ui@@";
+    private const string LimitBonusInfoType = ".?AVLimitBonusInfo@component@ui@@";
+
     private readonly CardContents _contents;
     private readonly GameText _text;
     private readonly MasterTraits _masterTraits;
@@ -16,20 +19,20 @@ public unsafe class CardWriter
     private readonly ILogger _logger;
     private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
     private delegate* unmanaged<nint, uint, void> _setSummonInfo;
-    private readonly nint _summonInfoVtable;
-    private readonly nint _limitBonusInfoVtable;
     private readonly OverMasteryLine* _overMasteryLines = (OverMasteryLine*)Marshal.AllocHGlobal(sizeof(OverMasteryLine) * CharaBuild.OverMasteryLines);
     private bool _loggedCount;
 
-    public CardWriter(CardContents contents, GameText text, MasterTraits masterTraits, UiObjects objects, ILogger logger)
+    public CardWriter(CardContents contents, GameText text, MasterTraits masterTraits, UiObjects objects, Vtables vtables,
+        ILogger logger)
     {
         _contents = contents;
         _text = text;
         _masterTraits = masterTraits;
         _objects = objects;
         _logger = logger;
-        _summonInfoVtable = objects.FindVtable(".?AVSummonInfo@component@ui@@");
-        _limitBonusInfoVtable = objects.FindVtable(".?AVLimitBonusInfo@component@ui@@");
+        // found at load
+        vtables.Find(SummonInfoType);
+        vtables.Find(LimitBonusInfoType);
     }
 
     public void Init(IScanManager scanManager, string signatureGroup)
@@ -99,13 +102,13 @@ public unsafe class CardWriter
 
     private void SetSummonInfo(nint obj, uint summonId)
     {
-        if (_setSummonInfo != null && _objects.FindComponent(obj, _summonInfoVtable) is var summonInfo and not 0)
+        if (_setSummonInfo != null && _objects.FindComponent(obj, SummonInfoType) is var summonInfo and not 0)
             _setSummonInfo(summonInfo, summonId);
     }
 
     private void SetOverMasteryLine(nint obj, int index, OverMasteryLine line)
     {
-        if (_setOverMasteryLine == null || _objects.FindComponent(obj, _limitBonusInfoVtable) is not (var limitBonusInfo and not 0))
+        if (_setOverMasteryLine == null || _objects.FindComponent(obj, LimitBonusInfoType) is not (var limitBonusInfo and not 0))
             return;
         _overMasteryLines[index] = line;
         _setOverMasteryLine(limitBonusInfo, (nint)(_overMasteryLines + index));

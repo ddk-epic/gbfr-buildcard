@@ -1,13 +1,7 @@
-using System.Diagnostics;
-using System.Drawing;
-
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Hooks.Definitions;
-using Reloaded.Mod.Interfaces;
 
 using gbfr.qol.buildcard.Hooks;
-
-using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Export;
 
@@ -48,8 +42,7 @@ public unsafe class SavedNotice
     // milliseconds
     private const long HideWindow = 5000;
 
-    private readonly IReloadedHooks _hooks;
-    private readonly ILogger _logger;
+    private readonly Vtables _vtables;
     private readonly UiObjects _objects;
     private nint* _uiManager;
     private nint _emptyCallback;
@@ -64,10 +57,9 @@ public unsafe class SavedNotice
     private delegate nint ShowInfoFn(nint controller, int* info);
     private readonly List<IHook<ShowInfoFn>> _showInfoHooks = [];
 
-    public SavedNotice(IReloadedHooks hooks, ILogger logger, UiObjects objects)
+    public SavedNotice(Vtables vtables, UiObjects objects)
     {
-        _hooks = hooks;
-        _logger = logger;
+        _vtables = vtables;
         _objects = objects;
     }
 
@@ -84,24 +76,13 @@ public unsafe class SavedNotice
             _pushInfo = (delegate* unmanaged<nint, int, nint, byte, void>)(call + 5 + *(int*)(call + 1));
         });
 
-        nint image = Process.GetCurrentProcess().MainModule!.BaseAddress;
         foreach ((string controller, string showInfoStart) in Controllers)
         {
-            nint vtable = PeImage.FindVtable(image, controller);
-            if (vtable == 0)
-            {
-                _logger.WriteLine($"[gbfr.qol.buildcard] {controller} vtable not found", Color.Red);
-                continue;
-            }
-            nint showInfo = *(nint*)(vtable + ShowInfoIndex * 8);
-            if (!PeImage.Matches(showInfo, showInfoStart))
-            {
-                _logger.WriteLine($"[gbfr.qol.buildcard] {controller} ShowInfo not found", Color.Red);
-                continue;
-            }
             IHook<ShowInfoFn>? hook = null;
-            hook = _hooks.CreateHook<ShowInfoFn>((c, info) => ShowInfoImpl(hook!, c, info), showInfo).Activate();
-            _showInfoHooks.Add(hook);
+            hook = _vtables.HookFunction<ShowInfoFn>(controller, ShowInfoIndex, showInfoStart,
+                (c, info) => ShowInfoImpl(hook!, c, info));
+            if (hook != null)
+                _showInfoHooks.Add(hook);
         }
     }
 

@@ -28,6 +28,7 @@ public class Mod : ModBase
 
     private readonly IModConfig _modConfig;
 
+    private Vtables? _vtables;
     private UiObjects? _uiObjects;
     private GameText? _gameText;
     private MasterTraits? _masterTraits;
@@ -85,10 +86,12 @@ public class Mod : ModBase
         string modFolder = _modLoader.GetDirectoryForModId(_modConfig.ModId);
         scanManager.InitializeScans(Path.Combine(modFolder, "Signatures"), _modConfig.ModId);
 
-        _uiObjects = new UiObjects(_logger);
+        _vtables = new Vtables(_hooks, _logger);
+
+        _uiObjects = new UiObjects(_logger, _vtables);
         _uiObjects.Init(scanManager, "granblue_fantasy_relink_er");
 
-        _gameText = new GameText(_uiObjects);
+        _gameText = new GameText(_uiObjects, _vtables);
         _gameText.Init(scanManager, "granblue_fantasy_relink_er");
 
         _masterTraits = new MasterTraits();
@@ -103,23 +106,23 @@ public class Mod : ModBase
         _menu = new CharacterDetailsMenu(_hooks, _logger);
         _menu.Init(scanManager, "granblue_fantasy_relink_er");
 
-        _weaponArtHooks = new WeaponArtHooks(_hooks, _logger, _menu);
+        _weaponArtHooks = new WeaponArtHooks(_vtables, _logger, _menu);
         _weaponArtHooks.Init();
         _charaStatusHooks.CharacterShown += _weaponArtHooks.OnCharacterShown;
 
         var cardContents = new CardContents(_gameText.Find, _masterTraits, _masteries,
             () => _configuration.MasterTraitsPalette, _logger);
-        _cardWriter = new CardWriter(cardContents, _gameText, _masterTraits, _uiObjects, _logger);
+        _cardWriter = new CardWriter(cardContents, _gameText, _masterTraits, _uiObjects, _vtables, _logger);
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.CharacterShown += _cardWriter.OnCharacterShown;
 
         _saveCardButton = new SaveCardButton(_hooks, _logger);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
-        _statusGuide = new StatusGuide(_hooks, _logger, _uiObjects);
+        _statusGuide = new StatusGuide(_vtables, _uiObjects);
         _statusGuide.Init();
-        _statusBackground = new StatusBackground(_hooks, _logger, _uiObjects, _menu);
+        _statusBackground = new StatusBackground(_vtables, _logger, _uiObjects, _menu);
         _statusBackground.Init();
-        _savedNotice = new SavedNotice(_hooks, _logger, _uiObjects);
+        _savedNotice = new SavedNotice(_vtables, _uiObjects);
         _savedNotice.Init(scanManager, "granblue_fantasy_relink_er");
         _cardFile = new CardFile(_logger);
         _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);

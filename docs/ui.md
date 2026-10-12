@@ -156,4 +156,17 @@ no symbols; the names are the signatures' keys.
 | `UpdateShortcutInput(shortcut)` | hooked | Reads a footer shortcut's button, once per shortcut each frame. | [export](export.md) |
 | `GetButtonBits(context, button, 1, mode)` | called | Returns a button's bits in the input manager; the signature matches a call of it, read for the input manager and the function. | [export](export.md) |
 
-The weapon art hooks are found through RTTI vtables instead of signatures; see [weapon](weapon.md).
+## Virtual functions
+
+Functions of game classes found through the class's vtable instead of a signature. `Vtables` finds a class's vtable
+through the exe's RTTI by its type name, reads the function at its vtable index and checks that its code starts with
+the expected bytes. It hooks the function's code, so every class sharing the function runs the hook. A missing vtable is
+logged as `<class> vtable not found` and code that does not match as `<class> function <index> not found`; the
+function is then not hooked.
+
+| Class | Index | Function | Doc |
+|---|---|---|---|
+| `ControllerStatusBg` | 8, 7 | The setup and the destructor every controller shares. | [status background](#status-background) |
+| `ControllerStatusGuide` | 21 | `SetUpPageArrows` | [export](export.md#page-button-prompts) |
+| `ControllerInformationSystem`, `ControllerInformationToast` | 35 | `ShowInfo` | [export](export.md#saved-notice) |
+| `LoadWeaponParty` | 4, 5 | Whether the loader is open; collecting its list, not checked. | [weapon](weapon.md) |

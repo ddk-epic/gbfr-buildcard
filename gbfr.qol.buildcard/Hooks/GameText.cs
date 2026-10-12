@@ -31,8 +31,9 @@ public unsafe class GameText
     private const uint EllipsisHash = 0x6895D7BB;  // TXT_HUD_COMMUNICATION_OVER
     private const int EllipsisGlyphs = 16;
 
+    private const string TextType = ".?AVText@component@ui@@";
+
     private readonly UiObjects _objects;
-    private readonly nint _textVtable;
     private readonly nint _buffer = Marshal.AllocHGlobal(BufferSize);
     private nint* _tables;
     private byte? _iconSize;  // the cell texts' original icon size
@@ -51,10 +52,11 @@ public unsafe class GameText
     private delegate* unmanaged<nint, nint, nint*, nint> _buildGlyphs;  // (text, string, glyphs)
     private delegate* unmanaged<nint*, nint, nint, ulong, void> _insertGlyphs;  // (line, at, glyphs, count)
 
-    public GameText(UiObjects objects)
+    public GameText(UiObjects objects, Vtables vtables)
     {
         _objects = objects;
-        _textVtable = objects.FindVtable(".?AVText@component@ui@@");
+        // found at load
+        vtables.Find(TextType);
     }
 
     public void Init(IScanManager scanManager, string signatureGroup)
@@ -81,21 +83,21 @@ public unsafe class GameText
     // hash: the custom XXHash32 of a text id
     public void Set(nint obj, string value, uint hash = EmptyIdHash)
     {
-        if (_objects.FindComponent(obj, _textVtable) is var text and not 0)
+        if (_objects.FindComponent(obj, TextType) is var text and not 0)
             SetString(text, value, hash);
     }
 
     // The object's text, empty when it has none
     public string Read(nint obj)
     {
-        nint text = _objects.FindComponent(obj, _textVtable);
+        nint text = _objects.FindComponent(obj, TextType);
         return text == 0 ? "" : ReadString(text);
     }
 
     // Wraps what fill sets to width and caps it at maxLines lines
     public void Wrap(nint obj, int width, Action<nint> fill, float? iconScale = null, int maxLines = 2)
     {
-        if (_objects.FindComponent(obj, _textVtable) is not (var text and not 0))
+        if (_objects.FindComponent(obj, TextType) is not (var text and not 0))
             return;
         Limit(text, width);
         if (iconScale is { } scale)

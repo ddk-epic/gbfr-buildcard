@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Drawing;
 
 using Reloaded.Hooks.Definitions;
@@ -48,13 +47,9 @@ public unsafe class StatusBackground
 
     public void Init()
     {
-        _controllerVtable = PeImage.FindVtable(Process.GetCurrentProcess().MainModule!.BaseAddress,
-            ".?AVControllerStatusBg@component@ui@@");
+        _controllerVtable = _objects.FindVtable(".?AVControllerStatusBg@component@ui@@");
         if (_controllerVtable == 0)
-        {
-            _logger.WriteLine("[gbfr.qol.buildcard] ControllerStatusBg vtable not found", Color.Red);
             return;
-        }
         nint setUp = *(nint*)(_controllerVtable + SetUpIndex * 8);
         nint destroy = *(nint*)(_controllerVtable + DestroyIndex * 8);
         if (!PeImage.Matches(setUp, SetUpStart) || !PeImage.Matches(destroy, DestroyStart))

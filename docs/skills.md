@@ -18,7 +18,7 @@ and -30 through the `LanguageSetter`'s Japanese overwrite.
 The build points the `CharaInfo` reference `Ability` at the four cards, so `FillCharacterStatus` fills them through each
 card's `AbilityInfo`.
 
-After writing the other sections, `CardWriter` sets each name again: it reads the name's string and text id hash from
+`CardContents` ends the writes with each name's rewrap, and `CardWriter` sets each name again: it reads the name's string and text id hash from
 its `Text` component, sets the wrap width, sets the same string with `TextComponentSetText`, splits the lines still
 wider than the width and cuts it to two lines; see [text wrapping](ui.md#text-wrapping).
 

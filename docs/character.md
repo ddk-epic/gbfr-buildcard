@@ -15,10 +15,12 @@ the status panel. They are the stock page's objects, moved and restyled by `tool
 
 ## Implementation
 
-1. `CharaStatusHooks` hooks `FillCharacterStatus`. After the game fills a `CharaInfo`, it raises `Filled` with the
-   component and the character.
-2. `CardWriter.OnFilled` finds `status01`'s objects by Id. When their count matches `CardIds.ObjectCount`, it decodes the
-   character with `CharaBuild.Decode` and writes every section; otherwise it writes nothing.
+1. `CharaStatusHooks` hooks `FillCharacterStatus`. After the game fills a `CharaInfo` on `status01`, it raises
+   `CharacterShown` with the component and the character. `CardWriter`, `WeaponArtHooks` ([weapon](weapon.md)) and
+   `CardExport` ([export](export.md#card-file)) handle it.
+2. `CardWriter` finds `status01`'s objects by Id. When their count matches `CardIds.ObjectCount`, it applies the writes
+   of `CardContents.Compose` in order; otherwise it writes nothing. `CardContents` decodes the character with
+   `CharaBuild.Decode` and composes every section's writes.
 3. `CharaBuild.Decode` reads the character key, the skill board entries with a non-zero key, the Over Mastery lines
    with a non-zero value, and the summons with a non-zero id. A line whose value is not finite or whose level bit is not
    a single bit is left out.

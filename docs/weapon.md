@@ -28,8 +28,8 @@ the `status01` sub-id. After each character fill `CardContents` looks the text u
 The art is loaded by the game's `ui::icon::LoadWeaponParty`, which loads the art of each weapon in its list while the
 party menu is open. `WeaponArtHooks` hooks two of its vfuncs:
 
-1. `CardWriter` calls `WeaponArtHooks.Show` after each character fill with the weapon key and the alternate art flag
-   to load, chosen from the character's weapon, mirage and flags and the settings.
+1. At each `CharacterShown` ([character](character.md#implementation)) `WeaponArtHooks` sets the weapon key and the
+   alternate art flag to load, chosen from the character's weapon, mirage and flags and the settings.
 2. The hooked vfunc 4, whether the loader is open, also returns true while the Character Details menu is open
    ([ui](ui.md#character-details-menu)) and a card weapon is set.
 3. The hooked vfunc 5, which collects the list, collects the party's weapons only while the party menu is open, then

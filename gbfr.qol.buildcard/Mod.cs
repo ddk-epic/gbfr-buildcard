@@ -97,7 +97,7 @@ public class Mod : ModBase
         _masteries = new Masteries();
         _masteries.Init(scanManager, "granblue_fantasy_relink_er");
 
-        _charaStatusHooks = new CharaStatusHooks(_hooks);
+        _charaStatusHooks = new CharaStatusHooks(_hooks, _uiObjects);
         _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
 
         _menu = new CharacterDetailsMenu(_hooks, _logger);
@@ -105,11 +105,13 @@ public class Mod : ModBase
 
         _weaponArtHooks = new WeaponArtHooks(_hooks, _logger, _menu);
         _weaponArtHooks.Init();
+        _charaStatusHooks.CharacterShown += _weaponArtHooks.OnCharacterShown;
 
-        _cardWriter = new CardWriter(_gameText, _masterTraits, _masteries, _weaponArtHooks, _uiObjects,
+        var cardContents = new CardContents(_gameText.Find, _masterTraits, _masteries,
             () => _configuration.MasterTraitsPalette, _logger);
+        _cardWriter = new CardWriter(cardContents, _gameText, _masterTraits, _uiObjects, _logger);
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
-        _charaStatusHooks.Filled += _cardWriter.OnFilled;
+        _charaStatusHooks.CharacterShown += _cardWriter.OnCharacterShown;
 
         _saveCardButton = new SaveCardButton(_hooks, _logger);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
@@ -124,7 +126,8 @@ public class Mod : ModBase
         _cardFile.Saved += _savedNotice.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;
         _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice, _cardFile,
-            _menu, _cardWriter.CharaName, _logger);
+            _menu, _uiObjects, _gameText, _logger);
+        _charaStatusHooks.CharacterShown += _cardExport.OnCharacterShown;
         _saveCardButton.Tick += _savedNotice.OnTick;
         _saveCardButton.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);

@@ -18,8 +18,8 @@ The build points the `CharaInfo` reference `Gem` at the 12 rows, so `FillCharact
 `GemInfo`. Each trait's name is a `bc_trait01` or `bc_trait02` text, which the trait's `SkillInfo` fills through its
 `Names` reference. The sigil icon is dropped from `GemInfo`'s `Sets`.
 
-After writing the other sections, `CardWriter` sets each trait name again as it does the skill names, and cuts it to one
-line; see [text wrapping](ui.md#text-wrapping).
+`CardContents` ends the writes with each trait name's rewrap, and `CardWriter` sets each trait name again as it does
+the skill names, and cuts it to one line; see [text wrapping](ui.md#text-wrapping).
 
 ## Runtime data
 

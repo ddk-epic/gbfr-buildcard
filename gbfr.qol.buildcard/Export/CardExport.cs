@@ -32,17 +32,19 @@ public class CardExport
     private readonly SavedNotice _notice;
     private readonly CardFile _file;
     private readonly CharacterDetailsMenu _menu;
-    private readonly Func<string> _charaName;
+    private readonly UiObjects _objects;
+    private readonly GameText _text;
     private readonly ILogger _logger;
     private volatile int _state;
     private long _presents;
     private long _hiddenAt;
     private long _hiddenSince;
     private long _cardSeenAt;
+    private nint _charaInfo;
     private string _pressedCharaName = "";
 
     public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, SavedNotice notice, CardFile file,
-        CharacterDetailsMenu menu, Func<string> charaName, ILogger logger)
+        CharacterDetailsMenu menu, UiObjects objects, GameText text, ILogger logger)
     {
         _button = button;
         _guide = guide;
@@ -50,9 +52,12 @@ public class CardExport
         _notice = notice;
         _file = file;
         _menu = menu;
-        _charaName = charaName;
+        _objects = objects;
+        _text = text;
         _logger = logger;
     }
+
+    public void OnCharacterShown(nint charaInfo, nint chara) => _charaInfo = charaInfo;
 
     // On the game thread: hides the prompts and notices on a press, shows them after the capture or its timeout.
     public void OnTick()
@@ -75,7 +80,7 @@ public class CardExport
         }
         else if (_state == Idle && pressed && !_file.Saving && cardOpen)
         {
-            _pressedCharaName = _charaName();
+            _pressedCharaName = CharaName();
             ShowOverlays(false, true);
             _hiddenSince = Environment.TickCount64;
             _hiddenAt = Interlocked.Read(ref _presents);
@@ -112,6 +117,12 @@ public class CardExport
             _state = Captured;
         }
     }
+
+    // The card's shown name, empty when it has none
+    private string CharaName() =>
+        _charaInfo != 0 && _objects.Find(_charaInfo) is { } objects && objects.TryGetValue(CardIds.CharaName, out nint name)
+            ? _text.Read(name)
+            : "";
 
     private void ShowOverlays(bool shown, bool cardOpen)
     {

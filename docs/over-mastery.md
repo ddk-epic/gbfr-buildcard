@@ -24,9 +24,10 @@ names' wrap width.
 2. `CardContents.ComposeOverMastery` shows the row of each line read and hides the others.
 3. `CardWriter` copies each line into memory the mod owns and calls `SetOverMasteryLine` with the row's
    `LimitBonusInfo` component, found by its RTTI vtable (`.?AVLimitBonusInfo@component@ui@@`).
-4. After writing the other sections, `CardWriter` reads each shown row's number and, when its object is active, its
-   percent sign, sets the name again with them appended as it does the skill names, wrapped to the width and cut to
-   two lines, and hides the value's objects; see [text wrapping](ui.md#text-wrapping).
+4. After each shown row's line, `CardContents` writes its value after its name. `CardWriter` reads the row's number
+   and, when its object is active, its percent sign, sets the name again with ` +` and them appended as it does the
+   skill names, wrapped to the width and cut to two lines, and hides the value's objects, the plus icon included; see
+   [text wrapping](ui.md#text-wrapping).
 
 ## Runtime data
 

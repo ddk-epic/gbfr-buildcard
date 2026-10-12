@@ -1,8 +1,11 @@
+using System.Drawing;
+
+using Reloaded.Mod.Interfaces;
 using gbfr.qol.buildcard.Configuration;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Turns a chara's build into the card's writes, by CardIds.
+// Turns a chara into the card's writes, by CardIds.
 public class CardContents
 {
     // slots per rank of the normal and the captain's board, from the cells' Ids
@@ -14,23 +17,38 @@ public class CardContents
     private const uint WeaponTitleSubId = 0xDE6482AF;  // equip01_info01
     private const uint MasteriesLabelHash = 0xB090BB12;  // TXT_PAU_TTL_LB
     private const uint CollectionLabelHash = 0x8278DE48;  // TXT_PAU_TREE_TAB_WEAPON
+    private const float IconScale = 0.7f;  // times the game's icon size
+    private const string OverMasteryValuePrefix = " +";
 
     private readonly Func<uint, uint, string> _findText;
+    private readonly MasterTraits _masterTraits;
+    private readonly Masteries _masteries;
+    private readonly Func<MasterTraitsPalette> _palette;
+    private readonly ILogger _logger;
+    private bool _loggedBuild;
 
-    public CardContents(Func<uint, uint, string> findText)
+    public CardContents(Func<uint, uint, string> findText, MasterTraits masterTraits, Masteries masteries,
+        Func<MasterTraitsPalette> palette, ILogger logger)
     {
         _findText = findText;
+        _masterTraits = masterTraits;
+        _masteries = masteries;
+        _palette = palette;
+        _logger = logger;
     }
 
-    public List<CardWrite> Compose(CharaBuild build, IReadOnlyList<MasterTraitCell> masterTraits, int[]? masteries,
-        MasterTraitsPalette palette)
+    // The card's writes, to apply in order
+    public List<CardWrite> Compose(nint chara)
     {
+        var build = CharaBuild.Decode(chara, LogBuildOnce);
         var writes = new List<CardWrite>();
         writes.Add(LocalizedText(CardIds.WeaponTitle, WeaponTitleHash, WeaponTitleSubId));
-        ComposeMasterTraits(writes, build, masterTraits, palette);
-        ComposeMasteries(writes, masteries);
+        ComposeMasterTraits(writes, build, _masterTraits.ReadCells(build.CharaKey), _palette());
+        ComposeMasteries(writes, _masteries.ReadPercents(build.CharaKey));
         ComposeOverMastery(writes, build);
         ComposeSummons(writes, build);
+        ComposeSkills(writes);
+        ComposeSigils(writes);
         return writes;
     }
 
@@ -116,7 +134,7 @@ public class CardContents
     }
 
     private static CardWrite CellWrite(int id, uint charaKey, MasterTraitCell? cell) =>
-        cell is { } c ? new MasterTraitDescriptionWrite(id, charaKey, c.Slot) : new TextWrite(id, "");
+        cell is { } c ? new MasterTraitDescriptionWrite(id, charaKey, c.Slot, CardIds.CellTextWidth, IconScale) : new TextWrite(id, "");
 
     private void ComposeMasteries(List<CardWrite> writes, int[]? masteries)
     {
@@ -135,6 +153,10 @@ public class CardContents
             if (build.OverMastery[i] is { } line)
                 writes.Add(new OverMasteryWrite(id, i, line));
             writes.Add(new ActiveWrite(id, build.OverMastery[i] != null));
+            // the row's value after its name
+            if (build.OverMastery[i] != null)
+                writes.Add(new SuffixWrite(CardIds.OverMasteryNames[i], CardIds.OverMasteryNameWidth, OverMasteryValuePrefix,
+                    [CardIds.OverMasteryValues[i][1]], [CardIds.OverMasteryValues[i][2]], CardIds.OverMasteryValues[i]));
         }
     }
 
@@ -143,12 +165,35 @@ public class CardContents
         for (int i = 0; i < CharaBuild.SummonCount; i++)
             writes.Add(new SummonWrite(CardIds.SummonSlots[i], build.Summons[i] ?? 0));
     }
+
+    private static void ComposeSkills(List<CardWrite> writes)
+    {
+        foreach (short id in CardIds.SkillNames)
+            writes.Add(new RewrapWrite(id, CardIds.SkillNameWidth, 2));
+    }
+
+    private static void ComposeSigils(List<CardWrite> writes)
+    {
+        foreach (short[] row in CardIds.SigilTraitNames)
+            foreach (short id in row)
+                writes.Add(new RewrapWrite(id, CardIds.SigilTraitNameWidth, 1));
+    }
+
+    private void LogBuildOnce(string message)
+    {
+        if (_loggedBuild)
+            return;
+        _loggedBuild = true;
+        _logger.WriteLine($"[gbfr.qol.buildcard] Chara build: {message}", Color.Yellow);
+    }
 }
 
 // A write to a card object, found by its CardIds Id.
 public abstract record CardWrite(int Id);
 public sealed record TextWrite(int Id, string Value, uint Hash = GameText.EmptyIdHash) : CardWrite(Id);
-public sealed record MasterTraitDescriptionWrite(int Id, uint CharaKey, int Slot) : CardWrite(Id);
+public sealed record MasterTraitDescriptionWrite(int Id, uint CharaKey, int Slot, int Width, float IconScale) : CardWrite(Id);
 public sealed record ActiveWrite(int Id, bool Active) : CardWrite(Id);
 public sealed record SummonWrite(int Id, uint SummonId) : CardWrite(Id);
 public sealed record OverMasteryWrite(int Id, int Line, OverMasteryLine Value) : CardWrite(Id);
+public sealed record RewrapWrite(int Id, int Width, int MaxLines) : CardWrite(Id);
+public sealed record SuffixWrite(int Id, int Width, string Prefix, short[] Values, short[] ActiveValues, short[] Hidden) : CardWrite(Id);

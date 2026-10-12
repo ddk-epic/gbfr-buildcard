@@ -46,10 +46,10 @@ public unsafe class UiObjects
     // the objects by Id, or null when CharaInfo is not on status01
     public Dictionary<int, nint>? Find(nint charaInfo)
     {
-        nint root = ObjectOf(charaInfo);
-        if (root == 0 || *(uint*)(root + NameHash) != Status01)
+        if (!IsOnCard(charaInfo))
             return null;
 
+        nint root = ObjectOf(charaInfo);
         var objects = new Dictionary<int, nint>();
         var pending = new Stack<nint>([root]);
         for (int visited = 0; pending.Count > 0 && visited < MaxObjects; visited++)
@@ -59,6 +59,12 @@ public unsafe class UiObjects
             PushChildren(pending, obj);
         }
         return objects;
+    }
+
+    public bool IsOnCard(nint charaInfo)
+    {
+        nint root = ObjectOf(charaInfo);
+        return root != 0 && *(uint*)(root + NameHash) == Status01;
     }
 
     // The objects under root, root included, whose name hash is one of names

@@ -12,7 +12,7 @@ SEAM = 705  # the first column's right edge
 BLEED = 392
 OFFSET_X = 61
 ART_SCALE = 1.35
-MASK_W = 1225  # bc_portrait_mask's width
+MASK_W = 1000  # bc_portrait_mask's width
 
 # bc_portrait_mask texels
 TEX_SIZE = 640

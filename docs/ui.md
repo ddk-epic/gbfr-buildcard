@@ -28,6 +28,19 @@ A loaded prefab is a tree of `ui::Object`s, one per object in the file, `status0
 An object reference is 0x20 bytes: vtable, the object at `+0x08`, the component at `+0x10` (0 for a reference to the
 object itself), the component name hash at `+0x18`, and the file's `ObjectRefId` at `+0x1E`.
 
+## Views
+
+A screen is made of views, each placing a prefab, opened and closed by the view manager by name hash. `Views` hooks
+`OpenView` and `CloseView` and raises `Opened` after a view opens and `Closed` before one closes.
+
+The Character Details menu's FSM (`system/fsm/ui/ui_pausestatus_v1_0_1_fsm_ingame.msg`) switches pages by opening and
+closing views. The status page is the view `PauseStatus` (`0xF355AE9C`); Trait Details and Skill Details are
+`PauseStatusSkill`, Master Traits Details is `PauseStatusSkillBoard`, and `PauseStatusBg` (`0x4BE58B5D`) holds
+`chr_status_bg01`. Leaving the status page closes `PauseStatus`, returning opens it again, and a character change
+updates it without closing it. Closing the menu closes `PauseStatusBg` before `PauseStatus`. The menu can open on
+another page, such as Master Traits Details, without opening `PauseStatus`. `chr_status_bg01` stays loaded while the
+menu is closed.
+
 ## `Text` component
 
 | Offset | Data |
@@ -79,6 +92,8 @@ no symbols; the names are the signatures' keys.
 | `TextBuildGlyphs(text, string, glyphs)` | called | Builds a null-terminated string's glyphs in the `Text` component's font into a glyph vector. | |
 | `TextInsertGlyphs(line, at, glyphs, count)` | called | Inserts glyphs into a line's glyph vector. | |
 | `SetObjectActive(object, active)` | called | Shows or hides an object and its subtree. | |
+| `OpenView(view manager, view hash, layer, flag, reset)` | hooked | Opens a view; the FSM action `ViewOpen` calls it. | |
+| `CloseView(view manager, view hash, remove, flag)` | hooked | Closes a view; the FSM action `ViewClose` calls it. | |
 | `SetSkillBoardDescription(cell component, character key, slot)` | called | Sets a master trait cell's description in the loaded language. | [master traits](master-traits.md) |
 | `MasteryPercent(mastery manager, category, character key)` | called | Returns a mastery category's percentage. | [masteries](masteries.md) |
 | `SetMasteryPercents(screen)` | read | Fills the Masteries screen's percentages; read for the mastery manager. | [masteries](masteries.md) |

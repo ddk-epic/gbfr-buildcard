@@ -37,6 +37,7 @@ public class Mod : ModBase
     private CardWriter? _cardWriter;
     private SaveCardButton? _saveCardButton;
     private StatusGuide? _statusGuide;
+    private Views? _views;
     private SavedNotice? _savedNotice;
     private SwapChainHooks? _swapChainHooks;
     private CardFile? _cardFile;
@@ -110,6 +111,8 @@ public class Mod : ModBase
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
         _statusGuide = new StatusGuide(_hooks, _logger, _uiObjects);
         _statusGuide.Init();
+        _views = new Views(_hooks);
+        _views.Init(scanManager, "granblue_fantasy_relink_er");
         _savedNotice = new SavedNotice(_hooks, _logger, _uiObjects);
         _savedNotice.Init(scanManager, "granblue_fantasy_relink_er");
         _cardFile = new CardFile(_logger);

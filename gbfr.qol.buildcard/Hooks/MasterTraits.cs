@@ -10,42 +10,29 @@ public unsafe class MasterTraits
     // SetSkillBoardDescription's mov r15, [rip + disp32]
     private const int TablesLoad = 0x43;
 
-    // tables: MSVC unordered_maps, each a node list sentinel pointer and size; nodes are [next, prev, key, value]
-    private const int LayoutNodes = 0x6D0;  // chara key | slot << 32 | LayoutType << 48 to layout id
     private const long MaxMapSize = 0x100000;
-    private const int LayoutRecordNodes = 0x320;  // layout id to layout record
-    private const int EffectNodes = 0x8;  // skillboard_effect key to effect row
     private const ulong LayoutType = 4;
-    private const int LayoutEffect = 0x48;  // in a layout record
-    private const int EffectTitle = 0x44;  // in an effect row
 
-    // fake Master Traits cell component
-    private const int ComponentSize = 0x88;
-    private const int ComponentTexts = 0x60;
-    private const int EntrySize = 0x20;
-    private const int EntryText = 0x10;
-
-    private readonly nint _component = (nint)NativeMemory.AllocZeroed(ComponentSize);
-    private readonly nint _entry = (nint)NativeMemory.AllocZeroed(EntrySize);
+    private readonly CellComponent* _component = (CellComponent*)NativeMemory.AllocZeroed((nuint)sizeof(CellComponent));
+    private readonly TextEntry* _entry = (TextEntry*)NativeMemory.AllocZeroed((nuint)sizeof(TextEntry));
     private readonly Dictionary<uint, List<MasterTraitCell>> _cells = [];
-    private nint* _tables;
+    private SkillBoardTables** _tables;
 
     // SetSkillBoardDescription(cell component, chara key, slot)
-    private delegate* unmanaged<nint, uint, int, void> _setDescription;
+    private delegate* unmanaged<CellComponent*, uint, int, void> _setDescription;
 
     public MasterTraits()
     {
-        nint* texts = (nint*)(_component + ComponentTexts);
-        texts[0] = _entry;
-        texts[1] = texts[2] = _entry + EntrySize;
+        _component->Texts.Begin = _entry;
+        _component->Texts.End = _component->Texts.Capacity = _entry + 1;
     }
 
     public void Init(IScanManager scanManager, string signatureGroup)
     {
         scanManager.AddScan("SetSkillBoardDescription", signatureGroup, address =>
         {
-            _setDescription = (delegate* unmanaged<nint, uint, int, void>)(nint)address;
-            _tables = PeImage.RipGlobal((byte*)address + TablesLoad, [0x4C, 0x8B, 0x3D]);
+            _setDescription = (delegate* unmanaged<CellComponent*, uint, int, void>)(nint)address;
+            _tables = (SkillBoardTables**)PeImage.RipGlobal((byte*)address + TablesLoad, [0x4C, 0x8B, 0x3D]);
         });
     }
 
@@ -54,12 +41,12 @@ public unsafe class MasterTraits
     {
         if (_cells.TryGetValue(charaKey, out var cells))
             return cells;
-        if (_tables == null || *_tables == 0)
+        if (_tables == null || *_tables == null)
             return [];
-        nint tables = *_tables;
-        if (ReadMap(tables + LayoutNodes) is not { } layouts
-            || ReadMap(tables + LayoutRecordNodes) is not { } records
-            || ReadMap(tables + EffectNodes) is not { } effects)
+        ref var tables = ref **_tables;
+        if (ReadMap(tables.Layouts) is not { } layouts
+            || ReadMap(tables.LayoutRecords) is not { } records
+            || ReadMap(tables.Effects) is not { } effects)
             return [];
         var recordsById = ByUintKey(records);
         var effectsByKey = ByUintKey(effects);
@@ -71,9 +58,9 @@ public unsafe class MasterTraits
                 continue;
             if (!recordsById.TryGetValue((uint)value, out nint record) || record == 0)
                 continue;
-            uint effect = *(uint*)(record + LayoutEffect);
+            uint effect = ((LayoutRecord*)record)->Effect;
             uint title = effectsByKey.TryGetValue(effect, out nint row) && row != 0
-                ? *(uint*)(row + EffectTitle) : GameText.EmptyIdHash;
+                ? ((EffectRow*)row)->Title : GameText.EmptyIdHash;
             cells.Add(new MasterTraitCell((int)(key >> 32 & 0xFFFF), effect, title));
         }
         _cells[charaKey] = cells;
@@ -85,27 +72,26 @@ public unsafe class MasterTraits
     {
         if (_setDescription == null)
             return;
-        *(nint*)(_entry + EntryText) = text.Address;
+        _entry->Text = text.Address;
         _setDescription(_component, charaKey, slot);
-        *(nint*)(_entry + EntryText) = 0;
+        _entry->Text = 0;
     }
 
-    // Every node's key and value in the map at map, in list order; null when the list is broken
-    private static List<(ulong Key, nint Value)>? ReadMap(nint map)
+    // Every node's key and value in the map, in list order; null when the list is broken
+    private static List<(ulong Key, nint Value)>? ReadMap(in GameMap map)
     {
-        nint head = *(nint*)map;
-        long size = *(long*)(map + 8);
-        if (size < 0 || size > MaxMapSize || head == 0)
+        var head = map.Head;
+        if (map.Size < 0 || map.Size > MaxMapSize || head == null)
             return null;
-        var entries = new List<(ulong, nint)>((int)size);
-        nint prev = head;
-        for (nint node = *(nint*)head; node != head; prev = node, node = *(nint*)node)
+        var entries = new List<(ulong, nint)>((int)map.Size);
+        var prev = head;
+        for (var node = head->Next; node != head; prev = node, node = node->Next)
         {
-            if (entries.Count == size || node == 0 || *(nint*)(node + 8) != prev)
+            if (entries.Count == map.Size || node == null || node->Prev != prev)
                 return null;
-            entries.Add((*(ulong*)(node + 0x10), *(nint*)(node + 0x18)));
+            entries.Add((node->Key, node->Value));
         }
-        return entries.Count == size ? entries : null;
+        return entries.Count == map.Size ? entries : null;
     }
 
     private static Dictionary<uint, nint> ByUintKey(List<(ulong Key, nint Value)> entries)
@@ -114,6 +100,39 @@ public unsafe class MasterTraits
         foreach (var (key, value) in entries)
             map.TryAdd((uint)key, value);
         return map;
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    private struct SkillBoardTables
+    {
+        [FieldOffset(0x8)] public GameMap Effects;  // skillboard_effect key to effect row
+        [FieldOffset(0x320)] public GameMap LayoutRecords;  // layout id to layout record
+        [FieldOffset(0x6D0)] public GameMap Layouts;  // chara key | slot << 32 | LayoutType << 48 to layout id
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    private struct LayoutRecord
+    {
+        [FieldOffset(0x48)] public uint Effect;
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    private struct EffectRow
+    {
+        [FieldOffset(0x44)] public uint Title;
+    }
+
+    // fake Master Traits cell component
+    [StructLayout(LayoutKind.Explicit, Size = 0x88)]
+    private struct CellComponent
+    {
+        [FieldOffset(0x60)] public GameVector<TextEntry> Texts;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x20)]
+    private struct TextEntry
+    {
+        [FieldOffset(0x10)] public nint Text;
     }
 }
 

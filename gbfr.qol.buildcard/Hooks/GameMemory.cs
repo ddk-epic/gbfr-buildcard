@@ -42,3 +42,20 @@ public unsafe struct GameVector<T> where T : unmanaged
 
     public readonly ref T this[int index] => ref Begin[index];
 }
+
+// An MSVC unordered map's node list: the sentinel node and the size.
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct GameMap
+{
+    public MapNode* Head;
+    public long Size;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct MapNode
+{
+    public MapNode* Next;
+    public MapNode* Prev;
+    public ulong Key;
+    public nint Value;
+}

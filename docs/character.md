@@ -28,6 +28,21 @@ the status panel. They are the stock page's objects, moved and restyled by `tool
 The portrait, badges, name band and status panel are filled by `FillCharacterStatus` itself, through the `CharaInfo`
 component's references in the prefab file.
 
+### Portrait placement
+
+`loc_chr` is turned 180° so `bc_portrait_mask` lies with its opaque side at the card's left edge. Its child
+`bc_chr_art` turns back and scales the art; `chr_img01` and `chr_img01_mask` sit under it with their stock transforms,
+in a frame the size of stock `loc_chr` (2886x2932). The scale is not on `loc_chr` itself: `status01_in01` animates
+`loc_chr`'s scale from 1.2 to 1.
+
+The game sizes and offsets the art per character:
+
+- `CharaIconSetter` (Type 100) sets only the texture, `cmn_imgchr_{name}` in
+  `layouts/common/image_chara/noatlastextures`, picked from the character's image names by the fill's variant index.
+- `ControllerStatus` keeps each object in its `_5955CB0C` list (`chr_img01`, `chr_img01_mask`) with its size and
+  anchor point as loaded. When the character changes, it sets a per-character size and adds a per-character y offset
+  to the loaded anchor point, both in the parent's frame.
+
 ## Runtime data
 
 ### Character fill

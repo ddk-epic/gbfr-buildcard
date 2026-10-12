@@ -30,8 +30,11 @@ object itself), the component name hash at `+0x18`, and the file's `ObjectRefId`
 
 ## Views
 
-A screen is made of views, each placing a prefab, opened and closed by the view manager by name hash. `Views` hooks
-`OpenView` and `CloseView` and raises `Opened` after a view opens and `Closed` before one closes.
+A screen is made of views, each placing a prefab, opened and closed by the view manager by name hash. A view's byte at
+`+0x38` is 1 while it is open. `OpenView` and `CloseView` can leave a view as it was: a listener of the view manager can
+stop either, `OpenView` skips a view already in the manager's open list and `CloseView` a view it cannot find. Other
+game code also closes views without `CloseView`. `Views` hooks `OpenView` and `CloseView`, reads the view's open byte
+through `FindView` before and after each, and raises `Opened` after a view opens and `Closed` after one closes.
 
 The Character Details menu's FSM (`system/fsm/ui/ui_pausestatus_v1_0_1_fsm_ingame.msg`) switches pages by opening and
 closing views. The status page is the view `PauseStatus` (`0xF355AE9C`); Trait Details and Skill Details are
@@ -101,6 +104,7 @@ no symbols; the names are the signatures' keys.
 | `TextBuildGlyphs(text, string, glyphs)` | called | Builds a null-terminated string's glyphs in the `Text` component's font into a glyph vector. | |
 | `TextInsertGlyphs(line, at, glyphs, count)` | called | Inserts glyphs into a line's glyph vector. | |
 | `SetObjectActive(object, active)` | called | Shows or hides an object and its subtree. | |
+| `FindView(view manager, out view, view hash)` | called | Looks up a view by name hash, writing 0 when there is none. | |
 | `OpenView(view manager, view hash, layer, flag, reset)` | hooked | Opens a view; the FSM action `ViewOpen` calls it. | |
 | `CloseView(view manager, view hash, remove, flag)` | hooked | Closes a view; the FSM action `ViewClose` calls it. | |
 | `SetSkillBoardDescription(cell component, character key, slot)` | called | Sets a master trait cell's description in the loaded language. | [master traits](master-traits.md) |

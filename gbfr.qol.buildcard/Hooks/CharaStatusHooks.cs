@@ -1,5 +1,8 @@
+using System.Drawing;
+
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Hooks.Definitions;
+using Reloaded.Mod.Interfaces;
 
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
@@ -10,17 +13,20 @@ public unsafe class CharaStatusHooks
 {
     private readonly IReloadedHooks _hooks;
     private readonly UiObjects _objects;
+    private readonly ILogger _logger;
+    private bool _loggedBuild;
 
-    // Raised after the game fills the card's CharaInfo: the component and the character struct.
-    public event Action<nint, nint>? CharacterShown;
+    // Raised after the game fills the card's CharaInfo.
+    public event Action<nint, CharaBuild>? CharacterShown;
 
     private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private IHook<FillCharacterStatus>? _fillHook;
 
-    public CharaStatusHooks(IReloadedHooks hooks, UiObjects objects)
+    public CharaStatusHooks(IReloadedHooks hooks, UiObjects objects, ILogger logger)
     {
         _hooks = hooks;
         _objects = objects;
+        _logger = logger;
     }
 
     public void Init(IScanManager scanManager, string signatureGroup)
@@ -33,6 +39,14 @@ public unsafe class CharaStatusHooks
     {
         _fillHook!.OriginalFunction(charaInfo, chara, index);
         if (chara != 0 && _objects.IsOnCard(charaInfo))
-            CharacterShown?.Invoke(charaInfo, chara);
+            CharacterShown?.Invoke(charaInfo, CharaBuild.Decode(chara, LogBuildOnce));
+    }
+
+    private void LogBuildOnce(string message)
+    {
+        if (_loggedBuild)
+            return;
+        _loggedBuild = true;
+        _logger.WriteLine($"[gbfr.qol.buildcard] Chara build: {message}", Color.Yellow);
     }
 }

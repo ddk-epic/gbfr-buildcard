@@ -3,8 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-public sealed record CharaBuild(uint CharaKey, CharaEntry[] Entries, OverMasteryLine?[] OverMastery, uint?[] Summons)
+public sealed record CharaBuild(uint CharaKey, uint WeaponKey, uint MirageKey, bool AlternateArt, CharaEntry[] Entries,
+    OverMasteryLine?[] OverMastery, uint?[] Summons)
 {
+    private const int WeaponKeyOffset = 0x54;
+    private const int MirageKeyOffset = 0x58;
+    private const int WeaponFlagsOffset = 0x5C;
+    private const byte AlternateArtFlag = 0x20;
+
     // chara: 400 entries, masteries [limit_bonus key, taken bit per LimitBonusParamIndex], then the master trait cells
     private const int EntriesOffset = 0x138;
     private const int EntriesEnd = 0x58B8;
@@ -25,6 +31,9 @@ public sealed record CharaBuild(uint CharaKey, CharaEntry[] Entries, OverMastery
         uint charaKey = *(uint*)(chara + CharaKeyOffset);
         if (charaKey == 0)
             logOnce("chara key is 0");
+        uint weaponKey = *(uint*)(chara + WeaponKeyOffset);
+        uint mirageKey = *(uint*)(chara + MirageKeyOffset);
+        bool alternateArt = (*(byte*)(chara + WeaponFlagsOffset) & AlternateArtFlag) != 0;
 
         var entries = new List<CharaEntry>();
         for (int offset = EntriesOffset; offset < EntriesEnd; offset += EntrySize)
@@ -53,7 +62,7 @@ public sealed record CharaBuild(uint CharaKey, CharaEntry[] Entries, OverMastery
             summons[i] = id != 0 ? id : null;
         }
 
-        return new CharaBuild(charaKey, entries.ToArray(), overMastery, summons);
+        return new CharaBuild(charaKey, weaponKey, mirageKey, alternateArt, entries.ToArray(), overMastery, summons);
     }
 }
 

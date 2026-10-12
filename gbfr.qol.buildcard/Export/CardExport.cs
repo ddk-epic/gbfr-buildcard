@@ -57,7 +57,7 @@ public class CardExport
         _logger = logger;
     }
 
-    public void OnCharacterShown(nint charaInfo, nint chara) => _charaInfo = charaInfo;
+    public void OnCharacterShown(nint charaInfo, CharaBuild build) => _charaInfo = charaInfo;
 
     // On the game thread: hides the prompts and notices on a press, shows them after the capture or its timeout.
     public void OnTick()

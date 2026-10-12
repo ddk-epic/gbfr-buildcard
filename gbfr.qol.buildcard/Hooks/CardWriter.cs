@@ -43,11 +43,11 @@ public unsafe class CardWriter
             _setSummonInfo = (delegate* unmanaged<nint, uint, void>)(nint)address);
     }
 
-    public void OnCharacterShown(nint charaInfo, nint chara)
+    public void OnCharacterShown(nint charaInfo, CharaBuild build)
     {
         try
         {
-            Write(charaInfo, chara);
+            Write(charaInfo, build);
         }
         catch (Exception e)
         {
@@ -55,7 +55,7 @@ public unsafe class CardWriter
         }
     }
 
-    private void Write(nint charaInfo, nint chara)
+    private void Write(nint charaInfo, CharaBuild build)
     {
         var objects = _objects.Find(charaInfo);
         if (objects == null)
@@ -68,7 +68,7 @@ public unsafe class CardWriter
             return;
         }
 
-        foreach (var write in _contents.Compose(chara))
+        foreach (var write in _contents.Compose(build))
         {
             if (!objects.TryGetValue(write.Id, out nint obj))
                 continue;

@@ -1,11 +1,8 @@
-using System.Drawing;
-
-using Reloaded.Mod.Interfaces;
 using gbfr.qol.buildcard.Configuration;
 
 namespace gbfr.qol.buildcard.Hooks;
 
-// Turns a chara into the card's writes, by CardIds.
+// Turns a chara build into the card's writes, by CardIds.
 public class CardContents
 {
     // slots per rank of the normal and the captain's board, from the cells' Ids
@@ -24,23 +21,19 @@ public class CardContents
     private readonly MasterTraits _masterTraits;
     private readonly Masteries _masteries;
     private readonly Func<MasterTraitsPalette> _palette;
-    private readonly ILogger _logger;
-    private bool _loggedBuild;
 
     public CardContents(Func<uint, uint, string> findText, MasterTraits masterTraits, Masteries masteries,
-        Func<MasterTraitsPalette> palette, ILogger logger)
+        Func<MasterTraitsPalette> palette)
     {
         _findText = findText;
         _masterTraits = masterTraits;
         _masteries = masteries;
         _palette = palette;
-        _logger = logger;
     }
 
     // The card's writes, to apply in order
-    public List<CardWrite> Compose(nint chara)
+    public List<CardWrite> Compose(CharaBuild build)
     {
-        var build = CharaBuild.Decode(chara, LogBuildOnce);
         var writes = new List<CardWrite>();
         writes.Add(LocalizedText(CardIds.WeaponTitle, WeaponTitleHash, WeaponTitleSubId));
         ComposeMasterTraits(writes, build, _masterTraits.ReadCells(build.CharaKey), _palette());
@@ -177,14 +170,6 @@ public class CardContents
         foreach (short[] row in CardIds.SigilTraitNames)
             foreach (short id in row)
                 writes.Add(new RewrapWrite(id, CardIds.SigilTraitNameWidth, 1));
-    }
-
-    private void LogBuildOnce(string message)
-    {
-        if (_loggedBuild)
-            return;
-        _loggedBuild = true;
-        _logger.WriteLine($"[gbfr.qol.buildcard] Chara build: {message}", Color.Yellow);
     }
 }
 

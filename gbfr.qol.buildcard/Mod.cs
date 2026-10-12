@@ -100,7 +100,7 @@ public class Mod : ModBase
         _masteries = new Masteries();
         _masteries.Init(scanManager, "granblue_fantasy_relink_er");
 
-        _charaStatusHooks = new CharaStatusHooks(_hooks, _uiObjects);
+        _charaStatusHooks = new CharaStatusHooks(_hooks, _uiObjects, _logger);
         _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
 
         _menu = new CharacterDetailsMenu(_hooks, _logger);
@@ -111,7 +111,7 @@ public class Mod : ModBase
         _charaStatusHooks.CharacterShown += _weaponArtHooks.OnCharacterShown;
 
         var cardContents = new CardContents(_gameText.Find, _masterTraits, _masteries,
-            () => _configuration.MasterTraitsPalette, _logger);
+            () => _configuration.MasterTraitsPalette);
         _cardWriter = new CardWriter(cardContents, _gameText, _masterTraits, _uiObjects, _vtables, _logger);
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
         _charaStatusHooks.CharacterShown += _cardWriter.OnCharacterShown;

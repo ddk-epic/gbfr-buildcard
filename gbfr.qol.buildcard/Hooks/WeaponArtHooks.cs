@@ -18,10 +18,6 @@ public unsafe class WeaponArtHooks
     private const int CollectIndex = 5;
     private const string IsOpenStart = "48 8B 05 ?? ?? ?? ?? 48 8B 48 40 48 8B 50 48 48 39 D1";
 
-    private const int WeaponKey = 0x54;
-    private const int MirageKey = 0x58;
-    private const int WeaponFlags = 0x5C;
-    private const byte AlternateArt = 0x20;
     private const uint NoKey = 0x887AE0B0;
 
     private const int ShowMirage = 0x1113;
@@ -64,14 +60,13 @@ public unsafe class WeaponArtHooks
     }
 
     // Sets the weapon whose art is loaded, following the mirage and alternate art settings.
-    public void OnCharacterShown(nint charaInfo, nint chara)
+    public void OnCharacterShown(nint charaInfo, CharaBuild build)
     {
         if (_settings == null || *_settings == 0)
             return;
         nint settings = *_settings;
-        uint mirage = *(uint*)(chara + MirageKey);
-        _key = mirage != NoKey && *(byte*)(settings + ShowMirage) != 0 ? mirage : *(uint*)(chara + WeaponKey);
-        _alternate = (*(byte*)(chara + WeaponFlags) & AlternateArt) != 0 && *(byte*)(settings + ShowAlternateArt) != 0;
+        _key = build.MirageKey != NoKey && *(byte*)(settings + ShowMirage) != 0 ? build.MirageKey : build.WeaponKey;
+        _alternate = build.AlternateArt && *(byte*)(settings + ShowAlternateArt) != 0;
     }
 
     // Open while the party menu is open, or while the Character Details menu is open and a card weapon is set.

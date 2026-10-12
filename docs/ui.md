@@ -125,7 +125,7 @@ prefab.
 
 ## Text wrapping
 
-`GameText` wraps a text to a width with the `Text` component's own wrap fields. The reflow wrap breaks a line after its
+`GameText` wraps a text to a width with the `Text` component's own wrap fields. A rewrap sets an empty string before the text's own string, so the string is laid out again with the wrap fields. The reflow wrap breaks a line after its
 last space that fits, or where it stops fitting when no space does, and only when `+0x198` is 1 to 6. `GameText` then splits each line still wider than the width where it stops fitting. A text of more
 lines than its cap, two or one, is then cut to the cap: the lines from the last kept onward are joined into it, its glyphs past what fits the width with the
 ellipsis are dropped, and the ellipsis's glyphs are inserted at its end. The ellipsis is `TXT_HUD_COMMUNICATION_OVER`
@@ -140,7 +140,7 @@ no symbols; the names are the signatures' keys.
 | Function | Use | Effect | Doc |
 |---|---|---|---|
 | `FillCharacterStatus(charaInfo, chara, index)` | hooked | Fills a `CharaInfo` from a character; the mod writes the card after it. | [character](character.md) |
-| `TextComponentSetText(text, string, text id hash, -1)` | called | Sets a `Text` component's string and its text id hash. | |
+| `TextComponentSetText(text, string, text id hash, -1)` | called | Sets a `Text` component's string and its text id hash; it skips the layout when the string and hash are the ones shown and the text has lines. | |
 | `TextLookup(text tables, text out, text id hash, sub-id hash)` | called | Reads a text id's text in the loaded language. | |
 | `TextJoinLines(text)` | called | Joins a `Text` component's lines from its lines' begin onward into the first of them. | |
 | `TextFitLine(text, width, line, with ellipsis)` | called | Returns how many of a line's glyphs fit in the width, leaving room for the ellipsis. | |

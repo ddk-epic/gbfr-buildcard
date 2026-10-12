@@ -54,6 +54,7 @@ public unsafe partial class SwapChainHooks
         }
         _presentHook = _hooks.CreateHook<Present>(PresentImpl, present).Activate();
         _present1Hook = _hooks.CreateHook<Present1>(Present1Impl, present1).Activate();
+        _logger.WriteLine("[gbfr.qol.buildcard] Swapchain hooked");
     }
 
     // Reads the methods from the vtable of a swapchain on a hidden window.

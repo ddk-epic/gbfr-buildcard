@@ -129,6 +129,8 @@ public class Mod : ModBase
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);
         _swapChainHooks.Presenting += _cardExport.OnPresenting;
         _swapChainHooks.Init();
+
+        _logger.WriteLine($"[{_modConfig.ModId}] Loaded");
     }
 
     #region Standard Overrides

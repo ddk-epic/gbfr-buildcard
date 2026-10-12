@@ -33,3 +33,20 @@ public static unsafe partial class GameMemory
         public uint Type;
     }
 }
+
+// An MSVC vector of T.
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct GameVector<T> where T : unmanaged
+{
+    public T* Begin;
+    public T* End;
+    public T* Capacity;
+
+    // Whether it holds whole elements
+    public readonly bool IsValid => (Begin != null || Capacity == null) && Begin <= End && End <= Capacity
+        && ((nint)End - (nint)Begin) % sizeof(T) == 0 && ((nint)Capacity - (nint)Begin) % sizeof(T) == 0;
+
+    public readonly int Count => (int)(End - Begin);
+
+    public readonly ref T this[int index] => ref Begin[index];
+}

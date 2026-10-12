@@ -41,6 +41,15 @@ updates it without closing it. Closing the menu closes `PauseStatusBg` before `P
 another page, such as Master Traits Details, without opening `PauseStatus`. `chr_status_bg01` stays loaded while the
 menu is closed.
 
+## Status background
+
+`StatusBackground` shows `chr_status_bg01`'s stock panel and lines when `PauseStatusBg` opens, the card's when
+`PauseStatus` opens, and stock's when `PauseStatus` closes while `PauseStatusBg` is open
+([build.md](build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
+entries 8 and 7 are functions every controller shares, a setup run once the prefab is built and the scalar deleting
+destructor; `StatusBackground` hooks both and keeps the controller whose vtable is `ControllerStatusBg`'s from one to
+the other.
+
 ## `Text` component
 
 | Offset | Data |

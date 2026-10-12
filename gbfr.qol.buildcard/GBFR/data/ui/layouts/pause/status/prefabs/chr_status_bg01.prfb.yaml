@@ -49,7 +49,7 @@ Objects:
       _4198DC44:
         ComponentName: ''
         Index: -1
-        ObjectRefId: 4
+        ObjectRefId: 5
       Enable: true
   - ComponentName: AnimationHandle
     Component:
@@ -124,7 +124,8 @@ Objects:
   Name: loc_bg
   Children:
   - 3
-  - 5
+  - 8
+  - 13
   Components:
   - ComponentName: CanvasGroup
     Component:
@@ -145,6 +146,26 @@ Objects:
   Name: bg01
   Children:
   - 4
+  - 5
+  - 6
+  Components:
+  - ComponentName: CanvasGroup
+    Component:
+      Alpha: 1
+      Enable: true
+  Active: true
+  Position: 0, 74, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 74
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -1712, -868
+  OffsetMax: 1712, 1016
+  SizeDelta: 3424, 1884
+- Id: 4
+  Name: bc_panel_stock
   Components:
   - ComponentName: Image
     Component:
@@ -163,9 +184,86 @@ Objects:
       PreserveAspect: false
       E3ED5266: 0
       Enable: true
-  - ComponentName: CanvasGroup
+  Active: true
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 5
+  Name: bg02
+  Components:
+  - ComponentName: Image
     Component:
-      Alpha: 1
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/pause/pause_common/noatlastextures/ps_cmn_base_st01
+        SpriteName: ps_cmn_base_st01
+      Type: 0
+      MaterialPath: material/uidissolve
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: Dissolve
+    Component:
+      DissolveTexture:
+        TexturePath: layouts/pause/pause_common/noatlastextures/ps_cmn_mask_st01
+        SpriteName: ''
+      Cutoff: 0
+      AddColor1Enabled: false
+      AddColor1: 0, 0.11764706, 0.3490566, 1
+      BorderWidth1: 0
+      AddColor2Enabled: false
+      AddColor2: 0, 0.11493367, 0.3207547, 1
+      BorderWidth2: 0
+      TrailEnabled: true
+      TrailWidth: 0.1
+      RenderType: 0
+      Enable: true
+  Active: true
+  Position: -1684, 914, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 1
+  AnchorPoint: 28, -28
+  AnchorMin: 0, 1
+  AnchorMax: 0, 1
+  OffsetMin: 28, -1852
+  OffsetMax: 1428, -28
+  SizeDelta: 1400, 1824
+- Id: 6
+  Name: bc_bg01
+  Children:
+  - 7
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: atlas/pause_pause_common
+        SpriteName: ps_cmn_base53
+      Type: 1
+      FillCenter: true
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
       Enable: true
   - ComponentName: Mask
     Component:
@@ -177,19 +275,19 @@ Objects:
       InvertMask: false
       InvertOutsides: false
       Enable: true
-  Active: true
-  Position: 0, 72.5, 0
+  Active: false
+  Position: 0, -1.5, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 0, 72.5
+  AnchorPoint: 0, -1.5
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: -1788, -835
-  OffsetMax: 1788, 980
+  OffsetMin: -1788, -909
+  OffsetMax: 1788, 906
   SizeDelta: 3576, 1815
-- Id: 4
-  Name: bg02
+- Id: 7
+  Name: bc_bg02
   Components:
   - ComponentName: Image
     Component:
@@ -236,13 +334,13 @@ Objects:
   OffsetMin: 7.103, -1793.841
   OffsetMax: 1149.632, -18.159
   SizeDelta: 1142.529, 1775.682
-- Id: 5
+- Id: 8
   Name: loc_line
   Children:
-  - 6
-  - 7
-  - 8
   - 9
+  - 10
+  - 11
+  - 12
   Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
@@ -254,7 +352,7 @@ Objects:
   OffsetMin: 0, 0
   OffsetMax: 0, 0
   SizeDelta: 0, 0
-- Id: 6
+- Id: 9
   Name: line01_01
   Components:
   - ComponentName: Image
@@ -272,17 +370,147 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: -1767, -1080, 0
+  Position: -1715, -1080, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 0
-  AnchorPoint: 153, 0
+  AnchorPoint: 205, 0
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: 151, 0
-  OffsetMax: 155, 552
+  OffsetMin: 203, 0
+  OffsetMax: 207, 552
   SizeDelta: 4, 552
-- Id: 7
+- Id: 10
+  Name: line01_02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1920, -867, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0, 0.5
+  AnchorPoint: 0, 213
+  AnchorMin: 0, 0
+  AnchorMax: 0, 0
+  OffsetMin: 0, 211
+  OffsetMax: 1600, 215
+  SizeDelta: 1600, 4
+- Id: 11
+  Name: line02_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1713, 1080, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 1
+  AnchorPoint: -207, 0
+  AnchorMin: 1, 1
+  AnchorMax: 1, 1
+  OffsetMin: -209, -400
+  OffsetMax: -205, 0
+  SizeDelta: 4, 400
+- Id: 12
+  Name: line02_02
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: 1920, 1017, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 1, 0.5
+  AnchorPoint: 0, -63
+  AnchorMin: 1, 1
+  AnchorMax: 1, 1
+  OffsetMin: -1600, -65
+  OffsetMax: 0, -61
+  SizeDelta: 1600, 4
+- Id: 13
+  Name: bc_loc_line
+  Children:
+  - 14
+  - 15
+  - 16
+  - 17
+  Active: false
+  Position: 0, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: 0, 0
+  AnchorMin: 0, 0
+  AnchorMax: 1, 1
+  OffsetMin: 0, 0
+  OffsetMax: 0, 0
+  SizeDelta: 0, 0
+- Id: 14
+  Name: line01_01
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  Active: true
+  Position: -1849, -1080, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0
+  AnchorPoint: 71, 0
+  AnchorMin: 0, 0
+  AnchorMax: 0, 0
+  OffsetMin: 69, 0
+  OffsetMax: 73, 552
+  SizeDelta: 4, 552
+- Id: 15
   Name: line01_02
   Components:
   - ComponentName: Image
@@ -310,7 +538,7 @@ Objects:
   OffsetMin: 0, 185
   OffsetMax: 1600, 189
   SizeDelta: 1600, 4
-- Id: 8
+- Id: 16
   Name: line02_01
   Components:
   - ComponentName: Image
@@ -328,17 +556,17 @@ Objects:
       E3ED5266: 0
       Enable: true
   Active: true
-  Position: 1765, 1080, 0
+  Position: 1851, 1080, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0.5, 1
-  AnchorPoint: -155, 0
+  AnchorPoint: -69, 0
   AnchorMin: 1, 1
   AnchorMax: 1, 1
-  OffsetMin: -157, -400
-  OffsetMax: -153, 0
+  OffsetMin: -71, -400
+  OffsetMax: -67, 0
   SizeDelta: 4, 400
-- Id: 9
+- Id: 17
   Name: line02_02
   Components:
   - ComponentName: Image

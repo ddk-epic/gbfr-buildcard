@@ -87,3 +87,11 @@ earlier step left in the tree, so steps depend on each other only through the ob
 | `status01` | master traits | `steps/status01/master_traits.py` |
 | `chr_status_bg01` | panel, backdrop | `steps/chr_status_bg01/backdrop.py` |
 | `chr_status_bg01` | decoration lines | `steps/chr_status_bg01/lines.py` |
+
+## Background variants
+
+`chr_status_bg01` is shared by every page of Character Details. Its stock objects are the panel's image, moved from
+`bg01` to its child `bc_panel_stock`, the portrait backdrop `bg02` and the lines `loc_line`. The card's are the panel
+`bc_bg01`, a child of `bg01` with its backdrop `bc_bg02`, and the lines `bc_loc_line`, inactive. `bg01` keeps its
+`CanvasGroup` and rect, so the animations slide and fade both panels. The mod shows one set and hides the
+other ([ui.md](ui.md#status-background)).

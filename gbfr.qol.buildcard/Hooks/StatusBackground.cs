@@ -24,11 +24,11 @@ public unsafe class StatusBackground
     private readonly IReloadedHooks _hooks;
     private readonly ILogger _logger;
     private readonly UiObjects _objects;
+    private readonly Views _views;
     private nint _controllerVtable;
     private nint _controller;
     private nint[] _stock = [];
     private nint[] _card = [];
-    private bool _backgroundOpen;
     private bool _cardShown;
 
     private delegate long SetUpFn(nint controller);
@@ -41,8 +41,9 @@ public unsafe class StatusBackground
         _hooks = hooks;
         _logger = logger;
         _objects = objects;
-        views.Opened += OnOpened;
-        views.Closed += OnClosed;
+        _views = views;
+        views.Opened += OnViewChanged;
+        views.Closed += OnViewChanged;
     }
 
     public void Init()
@@ -65,25 +66,10 @@ public unsafe class StatusBackground
         _destroyHook = _hooks.CreateHook<DestroyFn>(DestroyImpl, destroy).Activate();
     }
 
-    // Starts each opening of the background on stock's
-    private void OnOpened(uint view)
+    private void OnViewChanged(uint view)
     {
-        if (view == PauseStatusBg && !_backgroundOpen)
-        {
-            _backgroundOpen = true;
-            Show(false);
-        }
-        else if (view == PauseStatus && _backgroundOpen)
-            Show(true);
-    }
-
-    // Keeps the variant shown while the background closes with the page
-    private void OnClosed(uint view)
-    {
-        if (view == PauseStatusBg)
-            _backgroundOpen = false;
-        else if (view == PauseStatus && _backgroundOpen)
-            Show(false);
+        if (view == PauseStatus || view == PauseStatusBg)
+            Update();
     }
 
     private long SetUpImpl(nint controller)
@@ -93,7 +79,7 @@ public unsafe class StatusBackground
         {
             _controller = controller;
             _stock = _card = [];
-            Apply();
+            Update();
         }
         return result;
     }
@@ -108,9 +94,11 @@ public unsafe class StatusBackground
         return _destroyHook!.OriginalFunction(controller, flags);
     }
 
-    private void Show(bool card)
+    // Shows the card's while both views are open and stock's while only the background is
+    private void Update()
     {
-        _cardShown = card;
+        if (_views.IsOpen(PauseStatusBg))
+            _cardShown = _views.IsOpen(PauseStatus);
         Apply();
     }
 

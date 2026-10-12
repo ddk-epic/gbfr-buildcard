@@ -46,8 +46,9 @@ menu is closed.
 
 ## Status background
 
-`StatusBackground` shows `chr_status_bg01`'s stock panel and lines when `PauseStatusBg` opens, the card's when
-`PauseStatus` opens, and stock's when `PauseStatus` closes while `PauseStatusBg` is open
+`StatusBackground` shows `chr_status_bg01`'s card panel and lines while `PauseStatusBg` and `PauseStatus` are both
+open and stock's while only `PauseStatusBg` is, reading both views' state whenever either opens or closes and when
+`chr_status_bg01` is set up; while `PauseStatusBg` is closed it keeps the variant shown
 ([build.md](build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
 entries 8 and 7 are functions every controller shares, a setup run once the prefab is built and the scalar deleting
 destructor; `StatusBackground` hooks both and keeps the controller whose vtable is `ControllerStatusBg`'s from one to

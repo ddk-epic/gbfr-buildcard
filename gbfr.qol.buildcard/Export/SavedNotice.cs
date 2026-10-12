@@ -49,9 +49,9 @@ public unsafe class SavedNotice
     private delegate* unmanaged<nint, int, nint, byte, void> _pushInfo;
     private int _saved;
     private long _pushedAt;
-    private readonly Dictionary<nint, float> _shortened = [];
-    private readonly Dictionary<nint, long> _noticeShownAt = [];
-    private readonly List<nint> _hidden = [];
+    private readonly Dictionary<UiComponent, float> _shortened = [];
+    private readonly Dictionary<UiComponent, long> _noticeShownAt = [];
+    private readonly List<UiComponent> _hidden = [];
     private bool _hiding;
 
     private delegate nint ShowInfoFn(nint controller, int* info);
@@ -119,16 +119,16 @@ public unsafe class SavedNotice
         _hiding = !shown;
         if (shown)
         {
-            foreach (nint controller in _hidden)
+            foreach (var controller in _hidden)
             {
-                if (*(byte*)(controller + Showing) != 0)
-                    _objects.SetActive(_objects.ObjectOf(controller), true);
+                if (*(byte*)(controller.Address + Showing) != 0 && controller.Object is { } obj)
+                    _objects.SetActive(obj, true);
             }
             _hidden.Clear();
             return;
         }
         long now = Environment.TickCount64;
-        foreach ((nint controller, long shownAt) in _noticeShownAt.ToList())
+        foreach ((var controller, long shownAt) in _noticeShownAt.ToList())
         {
             if (now - shownAt < HideWindow)
                 Hide(controller);
@@ -137,30 +137,30 @@ public unsafe class SavedNotice
         }
     }
 
-    private void Hide(nint controller)
+    private void Hide(UiComponent controller)
     {
-        nint obj = _objects.ObjectOf(controller);
-        if (obj == 0 || *(byte*)(controller + Showing) == 0)
+        if (controller.Object is not { } obj || *(byte*)(controller.Address + Showing) == 0)
             return;
         _objects.SetActive(obj, false);
         _hidden.Add(controller);
     }
 
     // Shortens the controller's duration for the notice until its next info.
-    private nint ShowInfoImpl(IHook<ShowInfoFn> hook, nint controller, int* info)
+    private nint ShowInfoImpl(IHook<ShowInfoFn> hook, nint address, int* info)
     {
+        var controller = new UiComponent(address);
         if (_shortened.Remove(controller, out float duration))
-            *(float*)(controller + Duration) = duration;
+            *(float*)(address + Duration) = duration;
         _noticeShownAt.Remove(controller);
         bool notice = info[0] == InfoKind && info[1] == PhotoSaved && _pushedAt != 0
             && Environment.TickCount64 - _pushedAt < ShowTimeout;
         if (notice)
         {
-            _shortened[controller] = *(float*)(controller + Duration);
-            *(float*)(controller + Duration) = NoticeDuration / 1000f;
+            _shortened[controller] = *(float*)(address + Duration);
+            *(float*)(address + Duration) = NoticeDuration / 1000f;
             _noticeShownAt[controller] = Environment.TickCount64;
         }
-        nint result = hook.OriginalFunction(controller, info);
+        nint result = hook.OriginalFunction(address, info);
         if (notice && _hiding)
             Hide(controller);
         return result;

@@ -43,7 +43,7 @@ public unsafe class CardWriter
             _setSummonInfo = (delegate* unmanaged<nint, uint, void>)(nint)address);
     }
 
-    public void OnCharacterShown(nint charaInfo, CharaBuild build)
+    public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build)
     {
         try
         {
@@ -55,7 +55,7 @@ public unsafe class CardWriter
         }
     }
 
-    private void Write(nint charaInfo, CharaBuild build)
+    private void Write(CharaInfo charaInfo, CharaBuild build)
     {
         var objects = _objects.Find(charaInfo);
         if (objects == null)
@@ -70,7 +70,7 @@ public unsafe class CardWriter
 
         foreach (var write in _contents.Compose(build))
         {
-            if (!objects.TryGetValue(write.Id, out nint obj))
+            if (!objects.TryGetValue(write.Id, out UiObject obj))
                 continue;
             switch (write)
             {
@@ -100,24 +100,24 @@ public unsafe class CardWriter
         }
     }
 
-    private void SetSummonInfo(nint obj, uint summonId)
+    private void SetSummonInfo(UiObject obj, uint summonId)
     {
-        if (_setSummonInfo != null && _objects.FindComponent(obj, SummonInfoType) is var summonInfo and not 0)
-            _setSummonInfo(summonInfo, summonId);
+        if (_setSummonInfo != null && _objects.FindComponent(obj, SummonInfoType) is { } summonInfo)
+            _setSummonInfo(summonInfo.Address, summonId);
     }
 
-    private void SetOverMasteryLine(nint obj, int index, OverMasteryLine line)
+    private void SetOverMasteryLine(UiObject obj, int index, OverMasteryLine line)
     {
-        if (_setOverMasteryLine == null || _objects.FindComponent(obj, LimitBonusInfoType) is not (var limitBonusInfo and not 0))
+        if (_setOverMasteryLine == null || _objects.FindComponent(obj, LimitBonusInfoType) is not { } limitBonusInfo)
             return;
         _overMasteryLines[index] = line;
-        _setOverMasteryLine(limitBonusInfo, (nint)(_overMasteryLines + index));
+        _setOverMasteryLine(limitBonusInfo.Address, (nint)(_overMasteryLines + index));
     }
 
-    private void SetSuffix(nint obj, SuffixWrite write, Dictionary<int, nint> objects)
+    private void SetSuffix(UiObject obj, SuffixWrite write, Dictionary<int, UiObject> objects)
     {
         var values = write.Values.Select(id => objects[id])
-            .Concat(write.ActiveValues.Select(id => objects[id]).Where(_objects.IsActive))
+            .Concat(write.ActiveValues.Select(id => objects[id]).Where(value => value.IsActive))
             .Select(_text.Read);
         _text.Rewrap(obj, write.Width, suffix: write.Prefix + string.Concat(values));
         foreach (short id in write.Hidden)

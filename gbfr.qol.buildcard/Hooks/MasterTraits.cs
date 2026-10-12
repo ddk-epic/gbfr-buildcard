@@ -81,11 +81,11 @@ public unsafe class MasterTraits
     }
 
     // Sets text to the cell's description in the loaded language, as the Master Traits menu shows it
-    public void FillDescription(nint text, uint charaKey, int slot)
+    public void FillDescription(TextComponent text, uint charaKey, int slot)
     {
         if (_setDescription == null)
             return;
-        *(nint*)(_entry + EntryText) = text;
+        *(nint*)(_entry + EntryText) = text.Address;
         _setDescription(_component, charaKey, slot);
         *(nint*)(_entry + EntryText) = 0;
     }

@@ -20,9 +20,9 @@ public unsafe class StatusBackground
     private readonly UiObjects _objects;
     private readonly CharacterDetailsMenu _menu;
     private nint _controllerVtable;
-    private nint _controller;
-    private nint[] _stock = [];
-    private nint[] _card = [];
+    private UiComponent? _controller;
+    private UiObject[] _stock = [];
+    private UiObject[] _card = [];
     private bool _cardShown;
 
     private delegate long SetUpFn(nint controller);
@@ -53,9 +53,10 @@ public unsafe class StatusBackground
     private long SetUpImpl(nint controller)
     {
         long result = _setUpHook!.OriginalFunction(controller);
-        if (*(nint*)controller == _controllerVtable)
+        var component = new UiComponent(controller);
+        if (component.Vtable == _controllerVtable)
         {
-            _controller = controller;
+            _controller = component;
             _stock = _card = [];
             try
             {
@@ -71,9 +72,9 @@ public unsafe class StatusBackground
 
     private nint DestroyImpl(nint controller, int flags)
     {
-        if (controller == _controller)
+        if (_controller?.Address == controller)
         {
-            _controller = 0;
+            _controller = null;
             _stock = _card = [];
         }
         return _destroyHook!.OriginalFunction(controller, flags);
@@ -89,11 +90,11 @@ public unsafe class StatusBackground
 
     private void Apply()
     {
-        if (_controller == 0 || !FindVariants())
+        if (!FindVariants())
             return;
-        foreach (nint obj in _stock)
+        foreach (var obj in _stock)
             _objects.SetActive(obj, !_cardShown);
-        foreach (nint obj in _card)
+        foreach (var obj in _card)
             _objects.SetActive(obj, _cardShown);
     }
 
@@ -102,13 +103,14 @@ public unsafe class StatusBackground
     {
         if (_card.Length != 0)
             return true;
-        nint background = _objects.ObjectOf(_controller);
+        if (_controller?.Object is not { } background)
+            return false;
         _stock = [.. _objects.FindByName(background, (uint)CardIds.StockPanel, (uint)CardIds.StockBackdrop, (uint)CardIds.StockLines)];
         _card = [.. _objects.FindByName(background, (uint)CardIds.CardPanel, (uint)CardIds.CardLines)];
         if (_stock.Length == 3 && _card.Length == 2)
             return true;
         _logger.WriteLine($"[gbfr.qol.buildcard] chr_status_bg01 has {_stock.Length} stock and {_card.Length} card objects, not 3 and 2", Color.Red);
-        _controller = 0;
+        _controller = null;
         _stock = _card = [];
         return false;
     }

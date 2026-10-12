@@ -17,7 +17,7 @@ public unsafe class CharaStatusHooks
     private bool _loggedBuild;
 
     // Raised after the game fills the card's CharaInfo.
-    public event Action<nint, CharaBuild>? CharacterShown;
+    public event Action<CharaInfo, CharaBuild>? CharacterShown;
 
     private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private IHook<FillCharacterStatus>? _fillHook;
@@ -38,8 +38,9 @@ public unsafe class CharaStatusHooks
     private void FillImpl(nint charaInfo, nint chara, int index)
     {
         _fillHook!.OriginalFunction(charaInfo, chara, index);
-        if (chara != 0 && _objects.IsOnCard(charaInfo))
-            CharacterShown?.Invoke(charaInfo, CharaBuild.Decode(chara, LogBuildOnce));
+        var info = new CharaInfo(charaInfo);
+        if (chara != 0 && _objects.IsOnCard(info))
+            CharacterShown?.Invoke(info, CharaBuild.Decode(chara, LogBuildOnce));
     }
 
     private void LogBuildOnce(string message)

@@ -60,7 +60,7 @@ public unsafe class WeaponArtHooks
     }
 
     // Sets the weapon whose art is loaded, following the mirage and alternate art settings.
-    public void OnCharacterShown(nint charaInfo, CharaBuild build)
+    public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build)
     {
         if (_settings == null || *_settings == 0)
             return;

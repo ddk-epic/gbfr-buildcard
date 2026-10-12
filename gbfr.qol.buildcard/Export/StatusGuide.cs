@@ -18,7 +18,7 @@ public class StatusGuide
 
     private readonly Vtables _vtables;
     private readonly UiObjects _objects;
-    private List<nint> _buttons = [];
+    private List<UiObject> _buttons = [];
 
     private delegate void SetUpPageArrowsFn(nint controller);
     private IHook<SetUpPageArrowsFn>? _setUpPageArrowsHook;
@@ -37,14 +37,13 @@ public class StatusGuide
 
     public void Show(bool shown)
     {
-        foreach (nint button in _buttons)
+        foreach (var button in _buttons)
             _objects.SetActive(button, shown);
     }
 
     private void SetUpPageArrowsImpl(nint controller)
     {
         _setUpPageArrowsHook!.OriginalFunction(controller);
-        nint obj = _objects.ObjectOf(controller);
-        _buttons = obj == 0 ? [] : _objects.FindByName(obj, ButtonLeft, ButtonRight);
+        _buttons = new UiComponent(controller).Object is { } obj ? _objects.FindByName(obj, ButtonLeft, ButtonRight) : [];
     }
 }

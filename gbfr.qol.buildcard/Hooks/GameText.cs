@@ -81,23 +81,19 @@ public unsafe class GameText
     }
 
     // hash: the custom XXHash32 of a text id
-    public void Set(nint obj, string value, uint hash = EmptyIdHash)
+    public void Set(UiObject obj, string value, uint hash = EmptyIdHash)
     {
-        if (_objects.FindComponent(obj, TextType) is var text and not 0)
+        if (FindText(obj) is { } text)
             SetString(text, value, hash);
     }
 
     // The object's text, empty when it has none
-    public string Read(nint obj)
-    {
-        nint text = _objects.FindComponent(obj, TextType);
-        return text == 0 ? "" : ReadString(text);
-    }
+    public string Read(UiObject obj) => FindText(obj) is { } text ? ReadString(text) : "";
 
     // Wraps what fill sets to width and caps it at maxLines lines
-    public void Wrap(nint obj, int width, Action<nint> fill, float? iconScale = null, int maxLines = 2)
+    public void Wrap(UiObject obj, int width, Action<TextComponent> fill, float? iconScale = null, int maxLines = 2)
     {
-        if (_objects.FindComponent(obj, TextType) is not (var text and not 0))
+        if (FindText(obj) is not { } text)
             return;
         Limit(text, width);
         if (iconScale is { } scale)
@@ -107,8 +103,8 @@ public unsafe class GameText
     }
 
     // Wraps the object's current text
-    public void Rewrap(nint obj, int width, int maxLines = 2, string suffix = "") =>
-        Wrap(obj, width, text => SetString(text, ReadString(text) + suffix, *(uint*)(text + Hash)), maxLines: maxLines);
+    public void Rewrap(UiObject obj, int width, int maxLines = 2, string suffix = "") =>
+        Wrap(obj, width, text => SetString(text, ReadString(text) + suffix, *(uint*)(text.Address + Hash)), maxLines: maxLines);
 
     public string Find(uint hash, uint subId = EmptyIdHash)
     {
@@ -116,19 +112,22 @@ public unsafe class GameText
         return view.Ptr == 0 ? "" : Encoding.UTF8.GetString((byte*)view.Ptr, (int)view.Length);
     }
 
-    private void SetString(nint text, string value, uint hash)
+    private TextComponent? FindText(UiObject obj) =>
+        _objects.FindComponent(obj, TextType) is { } component ? new TextComponent(component.Address) : null;
+
+    private void SetString(TextComponent text, string value, uint hash)
     {
         if (_setText == null)
             return;
         // cut at the buffer's size
         Utf8.FromUtf16(value, new Span<byte>((void*)_buffer, BufferSize), out _, out int length);
         var str = new GameString { Ptr = _buffer, Length = (uint)length };
-        _setText(text, &str, hash, -1);
+        _setText(text.Address, &str, hash, -1);
     }
 
-    private static string ReadString(nint text)
+    private static string ReadString(TextComponent text)
     {
-        nint str = text + String;
+        nint str = text.Address + String;
         long size = *(long*)(str + 0x10);
         if (size <= 0 || size > BufferSize)
             return "";
@@ -149,23 +148,24 @@ public unsafe class GameText
     }
 
     // Wraps the text's next strings to width
-    private static void Limit(nint text, int width)
+    private static void Limit(TextComponent text, int width)
     {
-        *(int*)(text + WrapWidth) = width;
-        *(int*)(text + WrapMode) = Reflow;
-        *(byte*)(text + WrapOn) = 1;
+        *(int*)(text.Address + WrapWidth) = width;
+        *(int*)(text.Address + WrapMode) = Reflow;
+        *(byte*)(text.Address + WrapOn) = 1;
     }
 
     // Scales the icons of the text's next strings from the first scaled text's original icon size
-    private void ScaleIcons(nint text, float scale)
+    private void ScaleIcons(TextComponent text, float scale)
     {
-        _iconSize ??= *(byte*)(text + IconSize);
-        *(byte*)(text + IconSize) = (byte)MathF.Round(_iconSize.Value * scale);
+        _iconSize ??= *(byte*)(text.Address + IconSize);
+        *(byte*)(text.Address + IconSize) = (byte)MathF.Round(_iconSize.Value * scale);
     }
 
     // Caps the text at maxLines lines, the last ending in the game's ellipsis
-    private void Cap(nint text, int maxLines)
+    private void Cap(TextComponent component, int maxLines)
     {
+        nint text = component.Address;
         if (_joinLines == null || _fitLine == null || _splitLine == null || _buildGlyphs == null || _insertGlyphs == null
             || !GameMemory.IsVector(text + Lines, LineSize))
             return;

@@ -18,7 +18,7 @@ number and percent sign Ids, and `NameWidth` the names' wrap width.
 
 ## Implementation
 
-1. `CharaBuild.Decode` reads the four lines, leaving out an empty line (value 0) and an invalid one (a value that is not
+1. `CharaSnapshot.Decode` reads the four lines, leaving out an empty line (value 0) and an invalid one (a value that is not
    finite, or a level field that is not a single bit).
 2. In the Write phase, `OverMasteryBinder` copies each line into memory the mod owns and calls `SetOverMasteryLine`
    with the row's `LimitBonusInfo` component, found by its RTTI vtable (`.?AVLimitBonusInfo@component@ui@@`). It shows

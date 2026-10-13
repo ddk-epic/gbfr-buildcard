@@ -1,11 +1,11 @@
-using gbfr.qol.buildcard.Hooks;
 using gbfr.qol.buildcard.Model;
+using gbfr.qol.buildcard.Sources;
 
 namespace gbfr.qol.buildcard.Tests;
 
 public class BuildCardAssemblerTests
 {
-    private const uint Empty = GameText.EmptyIdHash;
+    private const uint Empty = TextTable.EmptyIdHash;
 
     private static readonly Dictionary<uint, string> Texts = new()
     {
@@ -15,7 +15,7 @@ public class BuildCardAssemblerTests
 
     private static BuildCard Build(MasterTraitCell[] cells, CharaEntry[] entries, int[]? percents = null) =>
         BuildCardAssembler.Build(
-            new CharaBuild(1, 2, 3, false, entries, new OverMasteryLine?[4], new uint?[4]),
+            new CharaSnapshot(1, 2, 3, false, entries, new OverMasteryLine?[4], new uint?[4]),
             cells, percents, (id, _) => Texts.GetValueOrDefault(id, ""));
 
     // slot: style * 100 + perk rank, 10 * (rank + 1) + position - 1, or 50 + position - 1

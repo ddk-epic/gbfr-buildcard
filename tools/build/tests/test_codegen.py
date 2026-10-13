@@ -29,7 +29,7 @@ class CodegenTest(unittest.TestCase):
         self.a = self.prefab.find("a")
 
     def test_prefab_hash_matches_the_runtime(self):
-        # UiObjectsTests.PrefabHashMatchesTheBuild asserts the same value
+        # UiTreeTests.PrefabHashMatchesTheBuild asserts the same value
         self.assertEqual(codegen.prefab_hash({NamedNode("status01"): 0, NamedNode("a"): 1}), 0xBB11DC59)
 
     def test_prefab_hash_unquotes_names(self):

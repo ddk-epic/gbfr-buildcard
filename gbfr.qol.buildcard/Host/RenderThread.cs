@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 
 using Reloaded.Mod.Interfaces;
 
-using gbfr.qol.buildcard.Export;
+using gbfr.qol.buildcard.Interop.D3D11;
 
 namespace gbfr.qol.buildcard.Host;
 

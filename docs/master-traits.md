@@ -2,7 +2,7 @@
 
 The build card's master traits section, `bc_mtraits` in `status01`. It shows the character's Master Traits board as the
 game's Master Traits menu lays it out. The layout is built by `tools/build/steps/status01/master_traits.py`; the
-contents are written at runtime by `BuildCardAssembler`, `MasterTraits` and `MasterTraitsBinder`. Its colours are one of two palettes,
+contents are written at runtime by `BuildCardAssembler`, `TraitTables` and `MasterTraitsBinder`. Its colours are one of two palettes,
 picked by the config option `MasterTraitsPalette` ("Master Traits Palette"): Blue by default, or Original.
 
 ## Display
@@ -75,7 +75,7 @@ budget and each cell's on and off texts and picked and unpicked bases per palett
 
 ## Implementation
 
-1. `MasterTraits.ReadCells` reads the character's cells from the skill board tables: each cell's slot, its
+1. `TraitTables.ReadCells` reads the character's cells from the skill board tables: each cell's slot, its
    `skillboard_effect` key and its title's text id. The cells are read once per character key.
 2. `BuildCardAssembler` matches the character's skill board entries to the cells by key. An entry whose
    value is 1 is a picked cell. When two cells share an effect key, the first one read is kept.

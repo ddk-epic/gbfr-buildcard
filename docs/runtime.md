@@ -2,6 +2,55 @@
 
 How the mod's parts pass events to each other and which thread runs them.
 
+## Source layout
+
+| Folder | Holds |
+|---|---|
+| `Host/` | `Mod`, the features, the game and render threads, `SwapChainHooks` and `Dispatch`. |
+| `Interop/Native/` | The exe's sections, RTTI vtables and game containers (`PeImage`, `Vtables`, `GameMemory`). |
+| `Interop/Game/` | `GameApi` and UI objects and components as structs (`UiHandles`). |
+| `Interop/D3D11/` | COM calls by vtable index and the backbuffer read (`Com`, `BackbufferReadback`). |
+| `Game/` | Services on the game's UI: `UiTree`, `TextService`, `ControllerLifetimes`, `MenuState`, `Input`, `CharaStatusHooks`. |
+| `Sources/` | What the card reads from the game: `CharaSnapshot`, `TraitTables`, `MasteryReader`, `TextTable`. |
+| `Model/` | `BuildCard`, `BuildCardAssembler`, `BuildCardJson`, `CardSession`. |
+| `Card/` | `CardView`, its binders in `Card/Binders/`, `StatusBackground`, `WeaponArt`. |
+| `Export/` | `ExportController`, `UiFrameCapture`, `UiRedraw`, `SaveCardFooter`; `StatusGuide` and `SavedNotice` in `Overlays/`, `Png` and `Resample` in `Encoders/`, `CardFile`, `SteamScreenshots` and `NoticeSink` in `Sinks/`. |
+| `Generated/` | `CardLayout.g.cs` ([build](build.md)). |
+
+## Features
+
+`GameApi` holds every game function and vtable the mod uses as a named `Capability`: the signatures' scans are added
+when the mod loads and found when the loader runs them, and the vtables and virtual functions are found at once. Each
+part of the mod that calls or hooks game code is an `IFeature` that lists the capabilities it requires. When the mod
+loader is initialized, after the scans have run, `Features` starts each feature in order whose capabilities were all
+found. A feature left out does nothing; the others still start.
+
+| Feature | Requires |
+|---|---|
+| `ControllerLifetimes` | `ControllerStatusBg function 7`, `ControllerInformationToast function 7` |
+| `UiTree` | `SetObjectActive` |
+| `TextTable` | `TextComponentSetText`, `TextLookup` |
+| `TextService` | `TextComponentSetText`, `Text vtable`; the wrapping functions when found |
+| `TraitTables` | `SetSkillBoardDescription` |
+| `MasteryReader` | `MasteryPercent`, `SetMasteryPercents` |
+| `MenuState` | `StartFlow`, `EndFlow`, `FindView`, `OpenView`, `CloseView` |
+| `CharaStatusHooks` | `FillCharacterStatus` |
+| `WeaponArt` | `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |
+| `OverMasteryBinder` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |
+| `SummonsBinder` | `SetSummonInfo`, `SummonInfo vtable` |
+| `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8` and `ControllerLifetimes`' capabilities |
+| `Input` | `UpdateShortcutInput`, `GetButtonBits` |
+| `SaveCardFooter` | `SetCharacterDetailsFooter` |
+| `StatusGuide` | `ControllerStatusGuide function 21` and `ControllerLifetimes`' capabilities |
+| `NoticeSink` | `PushInfo` |
+| `SavedNotice` | `ControllerLifetimes`' capabilities; each controller's `ShowInfo` (function 35) when found |
+| `SwapChainHooks` | Nothing; it finds `Present` itself ([export](export.md#frame-timing)) |
+
+| Log line | Logged |
+|---|---|
+| `<feature> disabled: <capabilities> not found` | At start, for each feature left out. |
+| `<feature> failed to start: <exception>` | At start, when a feature throws while starting. |
+
 ## Events
 
 `Dispatch.Raise` raises every event of the mod's parts: it calls the handlers one by one, and a handler that throws is
@@ -12,9 +61,9 @@ way.
 |---|---|---|
 | `CharacterShown` | `CharaStatusHooks`, after the game fills the card's `CharaInfo` | game |
 | `Shown` | `CardSession`, after it assembles the card | game |
-| `Changed` | `CharacterDetailsMenu`, after the menu's state changes | game |
-| `Destroyed` | `UiControllers`, before a controller's destructor runs | game |
-| `ShortcutUpdated` | `SaveCardButton`, at each `UpdateShortcutInput` | game |
+| `Changed` | `MenuState`, after the menu's state changes | game |
+| `Destroyed` | `ControllerLifetimes`, before a controller's destructor runs | game |
+| `ShortcutUpdated` | `Input`, at each `UpdateShortcutInput` | game |
 | `Tick` | `GameThread`, once per presented frame | game |
 | `Presenting` | `SwapChainHooks` and then `RenderThread`, before each present | render |
 | `Saved` | `CardFile`, after the PNG is written | worker |

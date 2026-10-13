@@ -16,7 +16,7 @@ on it.
 
 ## Implementation
 
-1. `CharaBuild.Decode` reads each slot's summon id, leaving out 0.
+1. `CharaSnapshot.Decode` reads each slot's summon id, leaving out 0.
 2. `SummonsBinder` calls `SetSummonInfo` for every slot with the cell's `SummonInfo` component, found by its RTTI
    vtable (`.?AVSummonInfo@component@ui@@`), and the summon id, 0 for an empty slot.
 

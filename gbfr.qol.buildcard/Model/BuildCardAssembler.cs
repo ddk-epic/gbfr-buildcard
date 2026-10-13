@@ -1,4 +1,4 @@
-using gbfr.qol.buildcard.Hooks;
+using gbfr.qol.buildcard.Sources;
 
 namespace gbfr.qol.buildcard.Model;
 
@@ -11,17 +11,17 @@ public static class BuildCardAssembler
     public static readonly int[] Budgets = [10, 10, 10, 20];
 
     // findText(text id, sub-id): the text in the loaded language
-    public static BuildCard Build(CharaBuild build, IReadOnlyList<MasterTraitCell> cells, int[]? percents,
+    public static BuildCard Build(CharaSnapshot build, IReadOnlyList<MasterTraitCell> cells, int[]? percents,
         Func<uint, uint, string> findText) =>
         new(build.CharaKey,
             new WeaponPart(build.WeaponKey, build.MirageKey, build.AlternateArt),
             BuildTraits(build, cells, findText),
-            percents == null ? null : new MasteryPercents(percents[Masteries.Offense], percents[Masteries.Defense],
-                percents[Masteries.Collection], percents[Masteries.Transcendence]),
+            percents == null ? null : new MasteryPercents(percents[MasteryReader.Offense], percents[MasteryReader.Defense],
+                percents[MasteryReader.Collection], percents[MasteryReader.Transcendence]),
             build.OverMastery,
             build.Summons);
 
-    private static TraitBoard BuildTraits(CharaBuild build, IReadOnlyList<MasterTraitCell> cells,
+    private static TraitBoard BuildTraits(CharaSnapshot build, IReadOnlyList<MasterTraitCell> cells,
         Func<uint, uint, string> findText)
     {
         var byKey = new Dictionary<uint, MasterTraitCell>();
@@ -42,7 +42,7 @@ public static class BuildCardAssembler
             bool picked = entry.Bits == 1;
             if (cell.IsPerk)
             {
-                if (cell.Rank == 0 && cell.TitleTextId != GameText.EmptyIdHash)
+                if (cell.Rank == 0 && cell.TitleTextId != TextTable.EmptyIdHash)
                     titles[cell.Style] = cell.TitleTextId;
                 perks[cell.Style] += picked ? 1 : 0;
             }
@@ -58,7 +58,7 @@ public static class BuildCardAssembler
         var styles = new StyleBoard[Styles];
         for (int s = 0; s < Styles; s++)
         {
-            string title = titles[s] is { } id ? findText(id, GameText.EmptyIdHash) : "";
+            string title = titles[s] is { } id ? findText(id, TextTable.EmptyIdHash) : "";
             var ranks = new TraitCell?[slots.Length][];
             for (int r = 0; r < slots.Length; r++)
             {

@@ -24,7 +24,7 @@ A loaded prefab is a tree of `ui::Object`s, one per object in the file, `status0
 | `+0x1CC` | The object's `Id` from the file, an int32. `CardLayout.g.cs` holds the Ids of the objects the mod writes to. |
 | `+0x1D0`, `+0x1D1` | Active flags, both written by `SetObjectActive`. |
 
-`UiObjects.Find` walks the tree from the object the `CharaInfo` component is on and maps every object by its `Id`.
+`UiTree.Find` walks the tree from the object the `CharaInfo` component is on and maps every object by its `Id`.
 
 An object reference is 0x20 bytes: vtable, the object at `+0x08`, the component at `+0x10` (0 for a reference to the
 object itself), the component name hash at `+0x18`, and the file's `ObjectRefId` at `+0x1E`.
@@ -83,7 +83,7 @@ The Character Details menu is the flow `PauseStatus` (`0xF355AE9C`), started by 
 
 ## Character Details menu
 
-`CharacterDetailsMenu` hooks `StartFlow`, `EndFlow`, `OpenView` and `CloseView` and keeps the menu in one state:
+`MenuState` hooks `StartFlow`, `EndFlow`, `OpenView` and `CloseView` and keeps the menu in one state:
 
 | State | Entered when |
 |---|---|
@@ -101,14 +101,14 @@ on the game thread after each change. `IsOpen` is true from Opening to Closing.
 ## Status background
 
 `StatusBackground` shows `chr_status_bg01`'s card panel and lines on the status page and stock's on another page,
-reading `CharacterDetailsMenu` at each `Changed` and when `chr_status_bg01` is set up; while the menu opens, closes or
+reading `MenuState` at each `Changed` and when `chr_status_bg01` is set up; while the menu opens, closes or
 is closed it keeps the variant shown ([build.md](build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
 entry 8 is a setup every controller shares, run once the prefab is built. `StatusBackground` hooks it and keeps the
-controller whose vtable is `ControllerStatusBg`'s until `UiControllers` raises `Destroyed` for it.
+controller whose vtable is `ControllerStatusBg`'s until `ControllerLifetimes` raises `Destroyed` for it.
 
 ## Controller lifetimes
 
-`UiControllers` hooks the scalar deleting destructor, vtable entry 7, of `ControllerStatusBg`, which
+`ControllerLifetimes` hooks the scalar deleting destructor, vtable entry 7, of `ControllerStatusBg`, which
 `ControllerStatusGuide` and `ControllerInformationSystem` share, and of `ControllerInformationToast`. It raises
 `Destroyed` with the controller on the game thread before each runs. It hooks both or neither; `StatusBackground`,
 `StatusGuide` and `SavedNotice` hook nothing and keep no controller without them.
@@ -141,17 +141,18 @@ prefab.
 
 ## Text wrapping
 
-`GameText` wraps a text to a width with the `Text` component's own wrap fields. A rewrap sets an empty string before the text's own string, so the string is laid out again with the wrap fields. The reflow wrap breaks a line after its
-last space that fits, or where it stops fitting when no space does, and only when `+0x198` is 1 to 6. `GameText` then splits each line still wider than the width where it stops fitting. A text of more
+`TextService` wraps a text to a width with the `Text` component's own wrap fields. A rewrap sets an empty string before the text's own string, so the string is laid out again with the wrap fields. The reflow wrap breaks a line after its
+last space that fits, or where it stops fitting when no space does, and only when `+0x198` is 1 to 6. `TextService` then splits each line still wider than the width where it stops fitting. A text of more
 lines than its cap, two or one, is then cut to the cap: the lines from the last kept onward are joined into it, its glyphs past what fits the width with the
 ellipsis are dropped, and the ellipsis's glyphs are inserted at its end. The ellipsis is `TXT_HUD_COMMUNICATION_OVER`
-(`0x6895D7BB`) in the text's sub-id. `GameText` also scales a text's icons by a factor of the icon size the game first
+(`0x6895D7BB`) in the text's sub-id. `TextService` also scales a text's icons by a factor of the icon size the game first
 set.
 
 ## Game functions
 
 Functions in the game's exe, found by the byte signatures in `Signatures/granblue_fantasy_relink_er.ini`. The exe has
-no symbols; the names are the signatures' keys.
+no symbols; the names are the signatures' keys. `GameApi` adds each signature's scan; see
+[features](runtime.md#features).
 
 | Function | Use | Effect | Doc |
 |---|---|---|---|
@@ -182,9 +183,10 @@ no symbols; the names are the signatures' keys.
 
 Functions of game classes found through the class's vtable instead of a signature. `Vtables` finds a class's vtable
 through the exe's RTTI by its type name, reads the function at its vtable index and checks that its code starts with
-the expected bytes. It hooks the function's code, so every class sharing the function runs the hook. A missing vtable is
-logged as `<class> vtable not found` and code that does not match as `<class> function <index> not found`; the
-function is then not hooked.
+the expected bytes; `GameApi` does this for each function below when the mod loads. The feature that needs it hooks the
+function's code, so every class sharing the function runs the hook. A missing vtable is logged as
+`<class> vtable not found` and code that does not match as `<class> function <index> not found`; the feature is then
+disabled ([features](runtime.md#features)).
 
 | Class | Index | Function | Doc |
 |---|---|---|---|

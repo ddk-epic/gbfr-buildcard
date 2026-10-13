@@ -2,7 +2,8 @@ using System.Drawing;
 
 using Reloaded.Mod.Interfaces;
 
-using gbfr.qol.buildcard.Hooks;
+using gbfr.qol.buildcard.Export.Sinks;
+using gbfr.qol.buildcard.Game;
 using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Model;
 
@@ -16,8 +17,8 @@ public class ExportController
     // milliseconds
     private const long CaptureTimeout = 1000;
 
-    private readonly SaveCardButton _button;
-    private readonly CharacterDetailsMenu _menu;
+    private readonly Input _input;
+    private readonly MenuState _menu;
     private readonly CardSession _session;
     private readonly UiFrameCapture _capture;
     private readonly CardFile _file;
@@ -27,10 +28,10 @@ public class ExportController
     private CaptureRequest? _request;
     private long _requestedAt;
 
-    public ExportController(SaveCardButton button, CharacterDetailsMenu menu, CardSession session, UiFrameCapture capture,
+    public ExportController(Input input, MenuState menu, CardSession session, UiFrameCapture capture,
         CardFile file, GameThread gameThread, ILogger logger, params IOverlay[] overlays)
     {
-        _button = button;
+        _input = input;
         _menu = menu;
         _session = session;
         _capture = capture;
@@ -43,7 +44,7 @@ public class ExportController
     // On the game thread: starts a capture on a press while the card is open, cancels it on its timeout.
     public void OnTick()
     {
-        bool pressed = _button.Pressed();
+        bool pressed = _input.Pressed();
         bool cardOpen = _menu.IsOnStatusPage;
         if (cardOpen)
             _capture.KeepDrawHooks();

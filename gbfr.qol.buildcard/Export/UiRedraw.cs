@@ -2,6 +2,8 @@ using System.Drawing;
 
 using Reloaded.Hooks.Definitions;
 
+using gbfr.qol.buildcard.Interop.D3D11;
+
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Export;

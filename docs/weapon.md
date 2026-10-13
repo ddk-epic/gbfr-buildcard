@@ -3,7 +3,7 @@
 The build card's weapon panel, `bc_weapon` in `status01`, and the weapon's art behind the portrait column. The panel
 stacks the gear screen's Weapon section, the equip screen's weapon trait and wrightstone trait rows, and the
 [sigils](sigils.md) under them; it is built by `tools/build/steps/status01/gear.py`. The game fills it; the mod loads
-the weapon's art with `WeaponArtHooks`.
+the weapon's art with `WeaponArt`.
 
 ## Display
 
@@ -22,13 +22,13 @@ The build points the `CharaInfo` reference `Weapon` at `bc_weapon` and gives its
 `FillCharacterStatus` fills the panel, the weapon traits and the wrightstone traits.
 
 The heading's text, `CardLayout.Gear.WeaponTitle`, has no `TextSetter`; the text tables hold no `TXT_PAU_ITEM_WEAPON` for
-the `status01` sub-id. After each character fill `GearBinder` looks the text up with `TextLookup` in the sub-id
+the `status01` sub-id. After each character fill `GearBinder` looks the text up with `TextTable` (`TextLookup`) in the sub-id
 `equip01_info01` (`0xDE6482AF`) and sets it with `TextComponentSetText`.
 
 The art is loaded by the game's `ui::icon::LoadWeaponParty`, which loads the art of each weapon in its list while the
-party menu is open. `WeaponArtHooks` hooks two of its vfuncs:
+party menu is open. `WeaponArt` hooks two of its vfuncs:
 
-1. At each `CardSession.Shown` ([character](character.md#implementation)) `WeaponArtHooks` sets the weapon key and the
+1. At each `CardSession.Shown` ([character](character.md#implementation)) `WeaponArt` sets the weapon key and the
    alternate art flag to load, chosen from the card's weapon key, mirage key and alternate art flag and the settings.
 2. The hooked vfunc 4, whether the loader is open, also returns true while the Character Details menu is open
    ([ui](ui.md#character-details-menu)) and a card weapon is set.

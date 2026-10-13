@@ -2,15 +2,15 @@ using System.Buffers.Binary;
 using System.Text;
 using System.Text.Json;
 
-using gbfr.qol.buildcard.Export;
-using gbfr.qol.buildcard.Hooks;
+using gbfr.qol.buildcard.Export.Encoders;
 using gbfr.qol.buildcard.Model;
+using gbfr.qol.buildcard.Sources;
 
 namespace gbfr.qol.buildcard.Tests;
 
 public class CardFileTests
 {
-    private static BuildCard Card() => new(1, new WeaponPart(2, GameText.EmptyIdHash, false),
+    private static BuildCard Card() => new(1, new WeaponPart(2, TextTable.EmptyIdHash, false),
         new TraitBoard(false, [1, 0, 0, 0], [10, 10, 10, 20],
             [new StyleBoard(0x20, "猛攻：攻撃力アップ", "猛攻", 1, [[new TraitCell(110, true)], [], [], []])]),
         new MasteryPercents(150, 100, 50, 0), [new OverMasteryLine(3, 1, 0, 2.5f), null, null, null], [7, null, null, null])

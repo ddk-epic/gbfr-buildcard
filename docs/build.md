@@ -21,7 +21,7 @@ python -m unittest discover -s tests -t .    # from tools/build
 1. Each prefab starts from stock (`start.py`, which also adds the card's container `loc_buildcard`), then each step
    in `build.py`'s `STEPS` changes it, in order.
 2. The prefabs are written with Ids in depth-first order, assigned only now: steps never see or use Ids.
-3. `codegen.py` writes the exports to `CardLayout.g.cs`, each export key's section (`MasterTraits.Boards`) as a nested
+3. `codegen.py` writes the exports to `CardLayout.g.cs`, each export key's section (`TraitTables.Boards`) as a nested
    class, with `status01`'s object count and prefab hash: FNV-1a over each object's Id and the hash of its
    unquoted name (`'loc_ring '` is `loc_ring `), in Id order.
    `CardView` finds the objects by these Ids in `status01`'s tree ([ui.md](ui.md#ui-objects)), and writes nothing

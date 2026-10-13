@@ -2,7 +2,8 @@
 
 The build card saved as a 2880x1440 PNG from the Character Details menu's status page. The footer's Save Card starts it; the mod hides
 the page arrows' button prompts, redraws one frame into off-screen frame buffers with the card filling 2880x1440, and
-saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
+saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`, the swapchain hook in `Host/` and the
+D3D11 calls in `Interop/D3D11/`.
 
 ## Output
 
@@ -20,7 +21,7 @@ saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 | Part | Source |
 |---|---|
 | Footer entry | The row `SaveCard` in `ui/table/guide_button.msg`, written by `tools/build/tables.py` ([build](build.md)): button `L3` (index 13), text id `TXT_PAU_PHT_SHOOT`, color `Guide`. |
-| Footer list | `SetCharacterDetailsFooter` builds the Character Details footer from a static list loaded by the `mov rbx, [rip + disp32]` at `SetCharacterDetailsFooter+0x36`: a 64-bit count, then 32-bit label hashes, room for 10. The stock list is Close, CommandList and SkillConfirm. `SaveCardButton` appends `CardLayout.Footer.SaveCardLabel` once before the original runs. |
+| Footer list | `SetCharacterDetailsFooter` builds the Character Details footer from a static list loaded by the `mov rbx, [rip + disp32]` at `SetCharacterDetailsFooter+0x36`: a 64-bit count, then 32-bit label hashes, room for 10. The stock list is Close, CommandList and SkillConfirm. `SaveCardFooter` appends `CardLayout.Footer.SaveCardLabel` once before the original runs. |
 | Text | "Take Photo", the stock text of `TXT_PAU_PHT_SHOOT`, the photo mode shutter's prompt, in the loaded language. |
 | Button | 1 on the keyboard, L3 on a controller. |
 
@@ -50,7 +51,7 @@ string at `+0x10`. Loading the table frees the map's nodes with the game's alloc
 
 ## Input
 
-`UpdateShortcutInput(shortcut)` runs on the game thread once per shortcut each frame; `SaveCardButton` raises
+`UpdateShortcutInput(shortcut)` runs on the game thread once per shortcut each frame; `Input` raises
 `ShortcutUpdated` from it, which drives `GameThread`'s `Tick` ([runtime](runtime.md#game-thread)). The signature `GetButtonBits` matches a call of `GetButtonBits(context, button, 1, mode)`, which returns a
 button's bits: the input manager is a global pointer loaded by the `mov r15, [rip + disp32]` at its `+0x4`, and the
 call is at its `+0x1A`.
@@ -69,9 +70,9 @@ call is at its `+0x1A`.
 | `+0xB0` | Input lock, an int32; input is read when it is below 1. |
 
 Save Card is down when the lock is below 1 and either `+0x84` has a bit of `GetButtonBits(+0xA8, 12, 1, 3)` or `+0x0C`
-has `0x4000`. `SaveCardButton.Pressed` returns true on the tick it goes down while `status01`'s shortcut for button 12
+has `0x4000`. `Input.Pressed` returns true on the tick it goes down while `status01`'s shortcut for button 12
 takes input (see [Shortcut input](#shortcut-input)). A press counts only while the card is
-open and `CardFile` is not writing a card. The card is open while `CharacterDetailsMenu` is on the status page
+open and `CardFile` is not writing a card. The card is open while `MenuState` is on the status page
 ([ui](ui.md#character-details-menu)); the character fill that writes the card runs before the status page's view
 opens. Other menus that read the same key, such as Master Traits, do not start an export.
 
@@ -92,7 +93,7 @@ Without `Always`, `UpdateShortcutInput` reads the button only when `+0x24` is 0 
 the button. The sub-menus of Character Details, such as Trait Details and Command List, turn the page's shortcuts off
 with the FSM action `SetControlEnable` (`ui::fsm::action`): for each component of the listed types on the listed
 layouts it sets or clears bits `0x2` and `0x4` of `+0x20`, then does the same on each child in the component's input
-tree (children at `+0x28`..`+0x30`). `SaveCardButton` reads the gate of `status01`'s button 12 shortcut at each of
+tree (children at `+0x28`..`+0x30`). `Input` reads the gate of `status01`'s button 12 shortcut at each of
 its updates, found by its `ButtonType` and its object's name hash.
 
 ## Page button prompts
@@ -167,7 +168,7 @@ present instead, then resized to 2880x1440 by `Resample` in `CardFile`: averaged
 `ExportController` keeps `CardSession.Current` at the press ([runtime](runtime.md#card-view)) and hands it to
 `CardFile.Save` with the frame. `CardFile.Save` names the PNG after the card's name, writes it with the card's JSON
 on a worker thread, and keeps `CardFile.Saving` set on the game thread until the worker posts the write's end. After the PNG is
-written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `SavedNotice` and
+written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `NoticeSink` and
 `SteamScreenshots` handle it.
 
 ## Log
@@ -183,7 +184,7 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 | `Card not added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and the game runs without Steam or Steam refused the file. |
 | `Card export failed: <reason>` | When resizing, serializing or writing the PNG fails. |
 | `Presenting handler UiFrameCapture.OnPresenting failed: <exception>` | When the redraw or the read throws on the render thread; the overlays are shown and nothing is saved. |
-| `Swapchain methods not found: <reason>` | At startup, when the throwaway D3D11 swapchain cannot be made; there is no export then. |
+| `Swapchain methods not found: <reason>` | When `SwapChainHooks` starts and the throwaway D3D11 swapchain cannot be made; there is no export then. |
 | `Card export failed: no frame was captured` | When no redraw starts within 1000 ms of the press. |
 
 The redraw line's fields:
@@ -207,7 +208,7 @@ from the game's `steam_api64.dll` with the PNG's path and size. Steam copies the
 
 ## Saved notice
 
-The photo mode reports a saved photo through the UI manager's info queue (`+0x310` on the UI manager). `SavedNotice`
+The photo mode reports a saved photo through the UI manager's info queue (`+0x310` on the UI manager). `NoticeSink`
 posts the same info to `GameThread` at `CardFile.Saved` and queues it at the next tick
 ([runtime](runtime.md#game-thread)).
 

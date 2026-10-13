@@ -8,6 +8,7 @@ using Reloaded.Mod.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
 using gbfr.qol.buildcard.Template.Configuration;
 using gbfr.qol.buildcard.Configuration;
+using gbfr.qol.buildcard.Host;
 
 namespace gbfr.qol.buildcard.Template;
 

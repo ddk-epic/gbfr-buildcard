@@ -13,10 +13,6 @@ namespace gbfr.qol.buildcard.Export;
 // Hooks DXGI's Present, found on a throwaway D3D11 device and swapchain.
 public unsafe partial class SwapChainHooks
 {
-    // vtable indices
-    private const int SwapChainPresent = 8;
-    private const int SwapChainPresent1 = 22;
-
     private const int DriverHardware = 1;
     private const uint SdkVersion = 7;
 
@@ -85,8 +81,8 @@ public unsafe partial class SwapChainHooks
             Com.Check(createDevice(0, DriverHardware, 0, 0, null, 0, SdkVersion, &desc, &swapChain, &device, &level, &context),
                 "D3D11CreateDeviceAndSwapChain");
 
-            present = Com.Method(swapChain, SwapChainPresent);
-            present1 = Com.Method(swapChain, SwapChainPresent1);
+            present = Com.Method(swapChain, Com.IDXGISwapChain.Present);
+            present1 = Com.Method(swapChain, Com.IDXGISwapChain.Present1);
         }
         finally
         {

@@ -1,52 +1,62 @@
 using System.Drawing;
+using System.Text.Json;
 
 using Reloaded.Mod.Interfaces;
 
 using gbfr.qol.buildcard.Host;
+using gbfr.qol.buildcard.Model;
 
 namespace gbfr.qol.buildcard.Export;
 
-// Writes the card as a 2880x1440 PNG in Pictures on a worker thread.
+// Writes the card as a 2880x1440 PNG with its BuildCard JSON in Pictures on a worker thread.
 public class CardFile
 {
     public const int Width = 2880;
     public const int Height = 1440;
+    public const string JsonKeyword = "BuildCard";
 
+    private readonly GameThread _gameThread;
     private readonly ILogger _logger;
+    private readonly Action _written;
     private readonly string _folder = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.MyPictures, Environment.SpecialFolderOption.DoNotVerify),
         "GBFR Character Build Cards");
-    private volatile int _saving;
+    private bool _saving;
 
     // Raised on the worker thread after the PNG is written.
     public event Action<string, int, int>? Saved;
 
-    public CardFile(ILogger logger)
+    public CardFile(GameThread gameThread, ILogger logger)
     {
+        _gameThread = gameThread;
         _logger = logger;
+        _written = () => _saving = false;
     }
 
-    public bool Saving => _saving != 0;
+    // On the game thread
+    public bool Saving => _saving;
 
-    // Resizes the image to 2880x1440 and writes it on a worker thread, named after the chara.
-    public void Save(byte[] rgb, int width, int height, string charaName)
+    // On the game thread: resizes the frame to 2880x1440 and writes it on a worker thread, named after the card's chara.
+    public void Save(CapturedFrame frame, BuildCard? card)
     {
-        _saving = 1;
-        Task.Run(() => Write(rgb, width, height, charaName));
+        _saving = true;
+        Task.Run(() => Write(frame, card));
     }
 
-    private void Write(byte[] rgb, int width, int height, string charaName)
+    private void Write(CapturedFrame frame, BuildCard? card)
     {
         try
         {
-            if (width != Width || height != Height)
-                rgb = Resample.Resize(rgb, width, height, Width, Height);
+            byte[] rgb = frame.Rgb;
+            if (frame.Width != Width || frame.Height != Height)
+                rgb = Resample.Resize(rgb, frame.Width, frame.Height, Width, Height);
+            (string, string)[] texts = card == null ? [] : [(JsonKeyword, JsonSerializer.Serialize(card, BuildCardJson.Default.BuildCard))];
 
             Directory.CreateDirectory(_folder);
-            string path = Path.Combine(_folder, $"{FileNamePrefix(charaName)}{DateTime.Now:yyyyMMdd_HHmmss}.png");
+            string path = Path.Combine(_folder, $"{FileNamePrefix(card?.CharaName ?? "")}{DateTime.Now:yyyyMMdd_HHmmss}.png");
             try
             {
-                Png.Write(path, rgb, Width, Height);
+                Png.Write(path, rgb, Width, Height, texts);
             }
             catch
             {
@@ -62,7 +72,7 @@ public class CardFile
         }
         finally
         {
-            _saving = 0;
+            _gameThread.Post(_written);
         }
     }
 

@@ -7,31 +7,8 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 namespace gbfr.qol.buildcard.Export;
 
 // Redraws one frame into off-screen frame buffers with a rect of the screen filling a given size.
-public unsafe class CardRedraw
+public unsafe class UiRedraw
 {
-    // context vtable indices
-    private const int DrawIndexed = 12;
-    private const int Draw = 13;
-    private const int DrawIndexedInstanced = 20;
-    private const int DrawInstanced = 21;
-    private const int SetRenderTargets = 33;
-    private const int SetRenderTargetsAndUavs = 34;
-    private const int SetViewports = 44;
-    private const int SetScissorRects = 45;
-    private const int ClearRenderTargetView = 50;
-    private const int GetViewports = 95;
-    private const int GetScissorRects = 96;
-
-    // other vtable indices
-    private const int ChildGetDevice = 3;
-    private const int ResourceGetType = 7;
-    private const int ViewGetResource = 7;
-    private const int ViewGetDesc = 8;
-    private const int TextureGetDesc = 10;
-    private const int DeviceCreateTexture2D = 5;
-    private const int DeviceCreateRenderTargetView = 9;
-    private const int DeviceGetImmediateContext = 40;
-
     private const int DimensionTexture2D = 3;
     private const uint BindRenderTarget = 0x20;
     private const uint ViewTexture2D = 4;
@@ -82,7 +59,7 @@ public unsafe class CardRedraw
     private IHook<SetRenderTargetsFn>? _setTargetsHook;
     private IHook<SetRenderTargetsAndUavsFn>? _setTargetsAndUavsHook;
 
-    public CardRedraw(IReloadedHooks hooks)
+    public UiRedraw(IReloadedHooks hooks)
     {
         _hooks = hooks;
     }
@@ -90,16 +67,17 @@ public unsafe class CardRedraw
     // On the render thread: hooks the immediate context's draws and render target binds, read from the first D3D11 swapchain.
     public void Init(SwapChain swapChain)
     {
-        nint device = 0, context = 0;
         if (_initialized || swapChain.GetBackbuffer(out nint backbuffer) < 0)
             return;
         _initialized = true;
-        ((delegate* unmanaged<nint, nint*, void>)Com.Method(backbuffer, ChildGetDevice))(backbuffer, &device);
-        ((delegate* unmanaged<nint, nint*, void>)Com.Method(device, DeviceGetImmediateContext))(device, &context);
-        nint drawIndexed = Com.Method(context, DrawIndexed), draw = Com.Method(context, Draw),
-            drawIndexedInstanced = Com.Method(context, DrawIndexedInstanced),
-            drawInstanced = Com.Method(context, DrawInstanced), setTargets = Com.Method(context, SetRenderTargets),
-            setTargetsAndUavs = Com.Method(context, SetRenderTargetsAndUavs);
+        nint device = Com.Device(backbuffer);
+        nint context = Com.ImmediateContext(device);
+        nint drawIndexed = Com.Method(context, Com.ID3D11DeviceContext.DrawIndexed),
+            draw = Com.Method(context, Com.ID3D11DeviceContext.Draw),
+            drawIndexedInstanced = Com.Method(context, Com.ID3D11DeviceContext.DrawIndexedInstanced),
+            drawInstanced = Com.Method(context, Com.ID3D11DeviceContext.DrawInstanced),
+            setTargets = Com.Method(context, Com.ID3D11DeviceContext.OMSetRenderTargets),
+            setTargetsAndUavs = Com.Method(context, Com.ID3D11DeviceContext.OMSetRenderTargetsAndUnorderedAccessViews);
         Com.Release(context);
         Com.Release(device);
         Com.Release(backbuffer);
@@ -135,14 +113,10 @@ public unsafe class CardRedraw
     {
         Release();
         _backbuffer = Backbuffer(swapChain);
-        nint device = 0, context = 0;
-        ((delegate* unmanaged<nint, nint*, void>)Com.Method(_backbuffer, ChildGetDevice))(_backbuffer, &device);
-        ((delegate* unmanaged<nint, nint*, void>)Com.Method(device, DeviceGetImmediateContext))(device, &context);
-        _device = device;
-        _context = context;
+        _device = Com.Device(_backbuffer);
+        _context = Com.ImmediateContext(_device);
 
-        TextureDesc desc;
-        ((delegate* unmanaged<nint, TextureDesc*, void>)Com.Method(_backbuffer, TextureGetDesc))(_backbuffer, &desc);
+        TextureDesc desc = Com.GetTextureDesc(_backbuffer);
         // kept as an address only
         Com.Release(_backbuffer);
         _width = desc.Width;
@@ -250,10 +224,10 @@ public unsafe class CardRedraw
             return null;
 
         int type = 0;
-        ((delegate* unmanaged<nint, int*, void>)Com.Method(texture, ResourceGetType))(texture, &type);
+        ((delegate* unmanaged<nint, int*, void>)Com.Method(texture, Com.ID3D11Resource.GetType))(texture, &type);
         TextureDesc desc = default;
         if (type == DimensionTexture2D)
-            ((delegate* unmanaged<nint, TextureDesc*, void>)Com.Method(texture, TextureGetDesc))(texture, &desc);
+            desc = Com.GetTextureDesc(texture);
         if (type != DimensionTexture2D || desc.Width != _width || desc.Height != _height || desc.SampleCount != 1)
         {
             _skipped.Add(texture);
@@ -268,7 +242,7 @@ public unsafe class CardRedraw
         }
 
         RenderTargetViewDesc viewDesc;
-        ((delegate* unmanaged<nint, RenderTargetViewDesc*, void>)Com.Method(view, ViewGetDesc))(view, &viewDesc);
+        ((delegate* unmanaged<nint, RenderTargetViewDesc*, void>)Com.Method(view, Com.ID3D11View.GetDesc))(view, &viewDesc);
         frameBuffer = new FrameBuffer { Format = viewDesc.Format, LastDraw = _draws };
         desc.Width = _outWidth;
         desc.Height = _outHeight;
@@ -280,14 +254,14 @@ public unsafe class CardRedraw
         desc.CpuAccessFlags = 0;
         desc.MiscFlags = 0;
         nint bufferTexture = 0, bufferView = 0;
-        if (((delegate* unmanaged<nint, TextureDesc*, void*, nint*, int>)Com.Method(_device, DeviceCreateTexture2D))(
+        if (((delegate* unmanaged<nint, TextureDesc*, void*, nint*, int>)Com.Method(_device, Com.ID3D11Device.CreateTexture2D))(
                 _device, &desc, null, &bufferTexture) < 0)
         {
             _skipped.Add(texture);
             return null;
         }
         var bufferViewDesc = new RenderTargetViewDesc { Format = frameBuffer.Format, ViewDimension = ViewTexture2D };
-        if (((delegate* unmanaged<nint, nint, RenderTargetViewDesc*, nint*, int>)Com.Method(_device, DeviceCreateRenderTargetView))(
+        if (((delegate* unmanaged<nint, nint, RenderTargetViewDesc*, nint*, int>)Com.Method(_device, Com.ID3D11Device.CreateRenderTargetView))(
                 _device, bufferTexture, &bufferViewDesc, &bufferView) < 0)
         {
             Com.Release(bufferTexture);
@@ -297,7 +271,7 @@ public unsafe class CardRedraw
         frameBuffer.Texture = bufferTexture;
         frameBuffer.View = bufferView;
         float* black = stackalloc float[4];
-        ((delegate* unmanaged<nint, nint, float*, void>)Com.Method(_context, ClearRenderTargetView))(_context, bufferView, black);
+        ((delegate* unmanaged<nint, nint, float*, void>)Com.Method(_context, Com.ID3D11DeviceContext.ClearRenderTargetView))(_context, bufferView, black);
         _frameBuffers[texture] = frameBuffer;
         return frameBuffer;
     }
@@ -305,7 +279,7 @@ public unsafe class CardRedraw
     private static nint Resource(nint view)
     {
         nint resource = 0;
-        ((delegate* unmanaged<nint, nint*, void>)Com.Method(view, ViewGetResource))(view, &resource);
+        ((delegate* unmanaged<nint, nint*, void>)Com.Method(view, Com.ID3D11View.GetResource))(view, &resource);
         Com.Release(resource);
         return resource;
     }
@@ -333,12 +307,12 @@ public unsafe class CardRedraw
         uint viewportCount = 0, rectCount = 0;
         Viewport* viewports = stackalloc Viewport[MaxRects];
         ScissorRect* rects = stackalloc ScissorRect[MaxRects];
-        ((delegate* unmanaged<nint, uint*, Viewport*, void>)Com.Method(context, GetViewports))(context, &viewportCount, null);
-        ((delegate* unmanaged<nint, uint*, ScissorRect*, void>)Com.Method(context, GetScissorRects))(context, &rectCount, null);
+        ((delegate* unmanaged<nint, uint*, Viewport*, void>)Com.Method(context, Com.ID3D11DeviceContext.RSGetViewports))(context, &viewportCount, null);
+        ((delegate* unmanaged<nint, uint*, ScissorRect*, void>)Com.Method(context, Com.ID3D11DeviceContext.RSGetScissorRects))(context, &rectCount, null);
         viewportCount = Math.Min(viewportCount, MaxRects);
         rectCount = Math.Min(rectCount, MaxRects);
-        ((delegate* unmanaged<nint, uint*, Viewport*, void>)Com.Method(context, GetViewports))(context, &viewportCount, viewports);
-        ((delegate* unmanaged<nint, uint*, ScissorRect*, void>)Com.Method(context, GetScissorRects))(context, &rectCount, rects);
+        ((delegate* unmanaged<nint, uint*, Viewport*, void>)Com.Method(context, Com.ID3D11DeviceContext.RSGetViewports))(context, &viewportCount, viewports);
+        ((delegate* unmanaged<nint, uint*, ScissorRect*, void>)Com.Method(context, Com.ID3D11DeviceContext.RSGetScissorRects))(context, &rectCount, rects);
 
         Viewport* scaledViewports = stackalloc Viewport[MaxRects];
         ScissorRect* scaledRects = stackalloc ScissorRect[MaxRects];
@@ -369,14 +343,14 @@ public unsafe class CardRedraw
 
         nint view = frameBuffer.View;
         _setTargetsHook!.OriginalFunction(context, 1, &view, 0);
-        ((delegate* unmanaged<nint, uint, Viewport*, void>)Com.Method(context, SetViewports))(context, viewportCount, scaledViewports);
-        ((delegate* unmanaged<nint, uint, ScissorRect*, void>)Com.Method(context, SetScissorRects))(context, rectCount, scaledRects);
+        ((delegate* unmanaged<nint, uint, Viewport*, void>)Com.Method(context, Com.ID3D11DeviceContext.RSSetViewports))(context, viewportCount, scaledViewports);
+        ((delegate* unmanaged<nint, uint, ScissorRect*, void>)Com.Method(context, Com.ID3D11DeviceContext.RSSetScissorRects))(context, rectCount, scaledRects);
         draw();
 
         fixed (nint* views = _boundViews)
             _setTargetsHook.OriginalFunction(context, _boundCount, views, 0);
-        ((delegate* unmanaged<nint, uint, Viewport*, void>)Com.Method(context, SetViewports))(context, viewportCount, viewports);
-        ((delegate* unmanaged<nint, uint, ScissorRect*, void>)Com.Method(context, SetScissorRects))(context, rectCount, rects);
+        ((delegate* unmanaged<nint, uint, Viewport*, void>)Com.Method(context, Com.ID3D11DeviceContext.RSSetViewports))(context, viewportCount, viewports);
+        ((delegate* unmanaged<nint, uint, ScissorRect*, void>)Com.Method(context, Com.ID3D11DeviceContext.RSSetScissorRects))(context, rectCount, rects);
     }
 
     private void DrawIndexedImpl(nint context, uint indexCount, uint startIndex, int baseVertex)

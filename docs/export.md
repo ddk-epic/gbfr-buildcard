@@ -9,6 +9,7 @@ saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 | Item | Value |
 |---|---|
 | File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the name of the card shown at the press, as `CardView` read it from `name01_01` (`CardLayout.Status.CharaName`), without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
+| Metadata | A `tEXt` chunk with the keyword `BuildCard` (`CardFile.JsonKeyword`) after the header: the shown card's `BuildCard` ([runtime](runtime.md#card-model)) as JSON, its non-ASCII characters escaped as `\uXXXX`. Absent when no card was shown. |
 | Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the saved notice. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
 | Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `SavedNotice.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
@@ -106,17 +107,24 @@ is destroyed ([ui](ui.md#controller-lifetimes)).
 ## Frame timing
 
 `SwapChainHooks` hooks DXGI's `Present` (vtable index 8) and `Present1` (22), read from a swapchain made on a hidden
-window with `D3D11CreateDeviceAndSwapChain`; both raise `Presenting` on the render thread. A present with
-`DXGI_PRESENT_TEST` raises nothing, and a present called from inside another hooked present on the same thread raises
-nothing: DXVK's and Wine's `Present` call their `Present1`. `CardExport` counts the presents from the press:
+window with `D3D11CreateDeviceAndSwapChain`; both raise `Presenting` on the render thread, which drives `RenderThread`
+([runtime](runtime.md#render-thread)). A present with `DXGI_PRESENT_TEST` raises nothing, and a present called from
+inside another hooked present on the same thread raises nothing: DXVK's and Wine's `Present` call their `Present1`.
 
-| Present after the press | Step |
+On a press, `ExportController` hides the overlays, the page button prompts and the saved notice (`IOverlay`), and posts
+a `CaptureRequest` for the card's rect at 2880x1440 to `UiFrameCapture`. `UiFrameCapture` counts the presents from the
+request:
+
+| Present after the request | Step |
 |---|---|
-| 1 | Nothing; the frame may predate the hidden prompts. |
-| 2 or later | `CardRedraw.Begin`: the next frame is redrawn. |
-| The one after | `CardRedraw.End`: the UI's frame buffer is read and handed to `CardFile`, the prompts and notices are shown. |
+| 1 | Nothing; the frame may predate the hidden overlays. |
+| 2 | `UiRedraw.Begin`: the next frame is redrawn. |
+| The one after | `UiRedraw.End`: the UI's frame buffer, or the backbuffer's rect, is handed back to the request. |
 
-The game thread hides the prompts and notices and the render thread starts the redraw; once started, the capture is ended only by the render thread. When no redraw starts within 1000 ms of the press, the prompts and notices are shown and `Card export failed: no frame was captured` is logged.
+The request is then posted to the game thread, where `ExportController` shows the overlays and hands the frame to
+`CardFile`. A request is started by `UiFrameCapture` or cancelled by `ExportController`, whichever comes first. When it
+is not started within 1000 ms of the press, `ExportController` cancels it, shows the overlays and logs
+`Card export failed: no frame was captured`.
 
 ## Game rendering
 
@@ -126,9 +134,9 @@ texture to the backbuffer. The UI's texture changes from frame to frame.
 
 ## Redraw
 
-`CardRedraw` hooks the immediate context's `DrawIndexed` (12), `Draw` (13), `DrawIndexedInstanced` (20),
+`UiRedraw` hooks the immediate context's `DrawIndexed` (12), `Draw` (13), `DrawIndexedInstanced` (20),
 `DrawInstanced` (21), `OMSetRenderTargets` (33) and `OMSetRenderTargetsAndUnorderedAccessViews` (34), read from the
-device of the first presented swapchain whose backbuffer is a D3D11 texture. They are turned on at a present while the card was open (polled on the game thread) within the last 500 ms or a redraw runs, and off otherwise. Outside a redraw frame they pass through; calls on other contexts always pass through.
+device of the first presented swapchain whose backbuffer is a D3D11 texture. They are turned on at a present while a redraw runs or within 500 ms of a game thread tick on the status page, which `ExportController` posts to the render thread, and off otherwise. Outside a redraw frame they pass through; calls on other contexts always pass through.
 
 In the redraw frame:
 
@@ -156,7 +164,9 @@ present instead, then resized to 2880x1440 by `Resample` in `CardFile`: averaged
 
 ## Card file
 
-`CardExport` saves the card under the name of `CardSession.Current` at the press ([runtime](runtime.md#card-view)). `CardFile.Save` writes the card's PNG on a worker thread; `CardFile.Saving` is set until the write ends. After the PNG is
+`ExportController` keeps `CardSession.Current` at the press ([runtime](runtime.md#card-view)) and hands it to
+`CardFile.Save` with the frame. `CardFile.Save` names the PNG after the card's name, writes it with the card's JSON
+on a worker thread, and keeps `CardFile.Saving` set on the game thread until the worker posts the write's end. After the PNG is
 written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `SavedNotice` and
 `SteamScreenshots` handle it.
 
@@ -171,8 +181,8 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 | `Card saved to <path>` | After the PNG is written. |
 | `Card added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and Steam took the file. |
 | `Card not added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and the game runs without Steam or Steam refused the file. |
-| `Card export failed: <reason>` | When resizing or writing the PNG fails. |
-| `Presenting handler CardExport.OnPresenting failed: <exception>` | When the redraw or the read throws on the render thread. |
+| `Card export failed: <reason>` | When resizing, serializing or writing the PNG fails. |
+| `Presenting handler UiFrameCapture.OnPresenting failed: <exception>` | When the redraw or the read throws on the render thread; the overlays are shown and nothing is saved. |
 | `Swapchain methods not found: <reason>` | At startup, when the throwaway D3D11 swapchain cannot be made; there is no export then. |
 | `Card export failed: no frame was captured` | When no redraw starts within 1000 ms of the press. |
 

@@ -47,9 +47,11 @@ public class Mod : ModBase
     private StatusBackground? _statusBackground;
     private SavedNotice? _savedNotice;
     private SwapChainHooks? _swapChainHooks;
+    private RenderThread? _renderThread;
+    private UiFrameCapture? _capture;
     private CardFile? _cardFile;
     private SteamScreenshots? _steamScreenshots;
-    private CardExport? _cardExport;
+    private ExportController? _exportController;
 
     public Mod(ModContext context)
     {
@@ -134,23 +136,26 @@ public class Mod : ModBase
 
         _saveCardButton = new SaveCardButton(_hooks, _logger);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
-        _statusGuide = new StatusGuide(_vtables, _uiControllers, _uiObjects);
+        _statusGuide = new StatusGuide(_vtables, _uiControllers, _uiObjects, _menu);
         _statusGuide.Init();
         _statusBackground = new StatusBackground(_vtables, _uiControllers, _logger, _uiObjects, _menu);
         _statusBackground.Init();
         _savedNotice = new SavedNotice(_vtables, _uiControllers, _uiObjects, _gameThread);
         _savedNotice.Init(scanManager, "granblue_fantasy_relink_er");
-        _cardFile = new CardFile(_logger);
+        _cardFile = new CardFile(_gameThread, _logger);
         _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);
         _cardFile.Saved += _savedNotice.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;
-        _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice, _cardFile,
-            _menu, _cardSession, _logger);
+        _renderThread = new RenderThread(_logger);
+        _capture = new UiFrameCapture(new UiRedraw(_hooks), _renderThread, _logger);
+        _exportController = new ExportController(_saveCardButton, _menu, _cardSession, _capture, _cardFile, _gameThread,
+            _logger, _statusGuide, _savedNotice);
         _saveCardButton.ShortcutUpdated += _gameThread.Pump;
-        _gameThread.Tick += _cardExport.OnTick;
+        _gameThread.Tick += _exportController.OnTick;
+        _renderThread.Presenting += _ => _gameThread.OnPresenting();
+        _renderThread.Presenting += _capture.OnPresenting;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);
-        _swapChainHooks.Presenting += _ => _gameThread.OnPresenting();
-        _swapChainHooks.Presenting += _cardExport.OnPresenting;
+        _swapChainHooks.Presenting += _renderThread.OnPresenting;
         _swapChainHooks.Init();
 
         _logger.WriteLine($"[{_modConfig.ModId}] Loaded");

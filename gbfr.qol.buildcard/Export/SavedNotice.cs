@@ -9,7 +9,7 @@ using gbfr.qol.buildcard.Host;
 namespace gbfr.qol.buildcard.Export;
 
 // Shows the photo mode's saved notice.
-public unsafe class SavedNotice
+public unsafe class SavedNotice : IOverlay
 {
     // offsets in the PushInfo signature
     private const int UiManagerLoad = 0x0;

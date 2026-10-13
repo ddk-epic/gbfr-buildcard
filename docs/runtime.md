@@ -16,7 +16,7 @@ way.
 | `Destroyed` | `UiControllers`, before a controller's destructor runs | game |
 | `ShortcutUpdated` | `SaveCardButton`, at each `UpdateShortcutInput` | game |
 | `Tick` | `GameThread`, once per presented frame | game |
-| `Presenting` | `SwapChainHooks`, before each present | render |
+| `Presenting` | `SwapChainHooks` and then `RenderThread`, before each present | render |
 | `Saved` | `CardFile`, after the PNG is written | worker |
 
 | Log line | Logged |
@@ -27,20 +27,28 @@ way.
 
 `GameThread` runs work on the game thread. `UpdateShortcutInput` runs once per shortcut each frame
 ([export](export.md#input)); `GameThread.Pump`, called at each `ShortcutUpdated`, ticks at the first call after each
-present that `SwapChainHooks` counts, and at every call while nothing was presented yet. A tick runs the actions
+present that `RenderThread` raises, and at every call while nothing was presented yet. A tick runs the actions
 posted with `GameThread.Post` from any thread, in order, then raises `Tick`. Ticks come only while some shortcut
 updates.
+
+## Render thread
+
+`RenderThread` runs work on the render thread. At each `SwapChainHooks.Presenting` it runs the actions posted with
+`RenderThread.Post` from any thread, in order, then raises its own `Presenting`. `GameThread` counts the presents and
+`UiFrameCapture` captures at them ([export](export.md#frame-timing)).
 
 ## Card model
 
 `BuildCard` is the card's content: the character key, the weapon, mirage and alternate art flag, the Master Traits
 board, the mastery percentages, the Over Mastery lines, the summons and the character's name. `CardSession` holds the
-card last shown as `Current`. `BuildCardAssembler` builds it from the
+card last shown as `Current`. `BuildCardJson` serializes it with source-generated metadata, as the export's PNG holds
+it ([export](export.md#output)). `BuildCardAssembler` builds it from the
 character's build, its master trait cells, its mastery percentages and a text lookup, and uses no UI objects. It holds
 the game's board rules: three styles, 4, 8, 8 and 10 slots per rank on the normal board, 4, 8, 8 and 14 on the
 captain's, and budgets of 10, 10, 10 and 20 points per rank.
 
-`tests/gbfr.qol.buildcard.Tests` tests `BuildCardAssembler` with xunit:
+`tests/gbfr.qol.buildcard.Tests` tests `BuildCardAssembler`, the prefab hash, the card's JSON and the PNG's text
+chunk with xunit:
 
 ```
 dotnet test tests/gbfr.qol.buildcard.Tests

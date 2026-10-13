@@ -6,16 +6,6 @@ namespace gbfr.qol.buildcard.Export;
 // Copies a rect of the backbuffer or a texture to the CPU through the game's D3D11 immediate context.
 public static unsafe class BackbufferReadback
 {
-    // vtable indices
-    private const int ChildGetDevice = 3;
-    private const int TextureGetDesc = 10;
-    private const int DeviceCreateTexture2D = 5;
-    private const int DeviceGetImmediateContext = 40;
-    private const int ContextMap = 14;
-    private const int ContextUnmap = 15;
-    private const int ContextCopySubresourceRegion = 46;
-    private const int ContextResolveSubresource = 57;
-
     // DXGI formats
     private const uint R10G10B10A2 = 24;
     private const uint R8G8B8A8Typeless = 27;
@@ -37,8 +27,7 @@ public static unsafe class BackbufferReadback
         {
             Com.Check(swapChain.GetBackbuffer(out backbuffer), "GetBuffer");
 
-            TextureDesc desc;
-            ((delegate* unmanaged<nint, TextureDesc*, void>)Com.Method(backbuffer, TextureGetDesc))(backbuffer, &desc);
+            TextureDesc desc = Com.GetTextureDesc(backbuffer);
             uint format = desc.Format;
             if (format is not (R10G10B10A2 or R8G8B8A8 or R8G8B8A8Srgb or B8G8R8A8 or B8G8R8A8Srgb))
                 throw new NotSupportedException($"Backbuffer format {format} not supported");
@@ -50,8 +39,8 @@ public static unsafe class BackbufferReadback
             width = rect.Width;
             height = rect.Height;
 
-            ((delegate* unmanaged<nint, nint*, void>)Com.Method(backbuffer, ChildGetDevice))(backbuffer, &device);
-            ((delegate* unmanaged<nint, nint*, void>)Com.Method(device, DeviceGetImmediateContext))(device, &context);
+            device = Com.Device(backbuffer);
+            context = Com.ImmediateContext(device);
             return ReadTexture(device, context, backbuffer, format, rect);
         }
         finally
@@ -68,8 +57,7 @@ public static unsafe class BackbufferReadback
         nint resolved = 0, staging = 0;
         try
         {
-            TextureDesc desc;
-            ((delegate* unmanaged<nint, TextureDesc*, void>)Com.Method(texture, TextureGetDesc))(texture, &desc);
+            TextureDesc desc = Com.GetTextureDesc(texture);
             if (format is not (R10G10B10A2 or R8G8B8A8Typeless or R8G8B8A8 or R8G8B8A8Srgb or B8G8R8A8 or B8G8R8A8Srgb))
                 throw new NotSupportedException($"Texture format {format} not supported");
             int width = rect.Width, height = rect.Height;
@@ -84,8 +72,8 @@ public static unsafe class BackbufferReadback
                 resolveDesc.BindFlags = 0;
                 resolveDesc.CpuAccessFlags = 0;
                 resolveDesc.MiscFlags = 0;
-                CreateTexture(device, &resolveDesc, &resolved);
-                ((delegate* unmanaged<nint, nint, uint, nint, uint, uint, void>)Com.Method(context, ContextResolveSubresource))(
+                Com.CreateTexture(device, &resolveDesc, &resolved);
+                ((delegate* unmanaged<nint, nint, uint, nint, uint, uint, void>)Com.Method(context, Com.ID3D11DeviceContext.ResolveSubresource))(
                     context, resolved, 0, texture, 0, format);
                 source = resolved;
             }
@@ -95,7 +83,7 @@ public static unsafe class BackbufferReadback
                 Width = (uint)width, Height = (uint)height, MipLevels = 1, ArraySize = 1, Format = desc.Format,
                 SampleCount = 1, Usage = UsageStaging, CpuAccessFlags = CpuAccessRead,
             };
-            CreateTexture(device, &stagingDesc, &staging);
+            Com.CreateTexture(device, &stagingDesc, &staging);
 
             Box box = new()
             {
@@ -103,10 +91,10 @@ public static unsafe class BackbufferReadback
                 Right = (uint)rect.Right, Bottom = (uint)rect.Bottom, Back = 1,
             };
             ((delegate* unmanaged<nint, nint, uint, uint, uint, uint, nint, uint, Box*, void>)
-                Com.Method(context, ContextCopySubresourceRegion))(context, staging, 0, 0, 0, 0, source, 0, &box);
+                Com.Method(context, Com.ID3D11DeviceContext.CopySubresourceRegion))(context, staging, 0, 0, 0, 0, source, 0, &box);
 
             MappedSubresource mapped;
-            Com.Check(((delegate* unmanaged<nint, nint, uint, uint, uint, MappedSubresource*, int>)Com.Method(context, ContextMap))(
+            Com.Check(((delegate* unmanaged<nint, nint, uint, uint, uint, MappedSubresource*, int>)Com.Method(context, Com.ID3D11DeviceContext.Map))(
                 context, staging, 0, MapRead, 0, &mapped), "Map");
             try
             {
@@ -114,7 +102,7 @@ public static unsafe class BackbufferReadback
             }
             finally
             {
-                ((delegate* unmanaged<nint, nint, uint, void>)Com.Method(context, ContextUnmap))(context, staging, 0);
+                ((delegate* unmanaged<nint, nint, uint, void>)Com.Method(context, Com.ID3D11DeviceContext.Unmap))(context, staging, 0);
             }
         }
         finally
@@ -122,12 +110,6 @@ public static unsafe class BackbufferReadback
             Com.Release(staging);
             Com.Release(resolved);
         }
-    }
-
-    private static void CreateTexture(nint device, TextureDesc* desc, nint* texture)
-    {
-        Com.Check(((delegate* unmanaged<nint, TextureDesc*, void*, nint*, int>)Com.Method(device, DeviceCreateTexture2D))(
-            device, desc, null, texture), "CreateTexture2D");
     }
 
     private static byte[] ToRgb(byte* data, uint rowPitch, int width, int height, uint format)

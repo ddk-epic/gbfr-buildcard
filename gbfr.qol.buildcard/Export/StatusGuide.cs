@@ -5,7 +5,7 @@ using gbfr.qol.buildcard.Hooks;
 namespace gbfr.qol.buildcard.Export;
 
 // Hides and shows the page arrows' button prompts (status_guide01), found through their controller's setup.
-public class StatusGuide
+public class StatusGuide : IOverlay
 {
     private const string ControllerStatusGuide = ".?AVControllerStatusGuide@component@ui@@";
     // vtable index of SetUpPageArrows
@@ -19,17 +19,19 @@ public class StatusGuide
     private readonly Vtables _vtables;
     private readonly UiControllers _controllers;
     private readonly UiObjects _objects;
+    private readonly CharacterDetailsMenu _menu;
     private UiComponent? _controller;
     private List<UiObject> _buttons = [];
 
     private delegate void SetUpPageArrowsFn(nint controller);
     private IHook<SetUpPageArrowsFn>? _setUpPageArrowsHook;
 
-    public StatusGuide(Vtables vtables, UiControllers controllers, UiObjects objects)
+    public StatusGuide(Vtables vtables, UiControllers controllers, UiObjects objects, CharacterDetailsMenu menu)
     {
         _vtables = vtables;
         _controllers = controllers;
         _objects = objects;
+        _menu = menu;
         controllers.Destroyed += OnDestroyed;
     }
 
@@ -41,8 +43,11 @@ public class StatusGuide
             SetUpPageArrowsStart, SetUpPageArrowsImpl);
     }
 
+    // Shows the prompts only on the status page
     public void Show(bool shown)
     {
+        if (shown && !_menu.IsOnStatusPage)
+            return;
         foreach (var button in _buttons)
             _objects.SetActive(button, shown);
     }

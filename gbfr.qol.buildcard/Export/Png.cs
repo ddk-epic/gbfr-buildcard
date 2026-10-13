@@ -4,12 +4,13 @@ using System.Text;
 
 namespace gbfr.qol.buildcard.Export;
 
-// Writes 8-bit RGB images as PNG.
+// Writes 8-bit RGB images as PNG with tEXt chunks.
 public static class Png
 {
     private static readonly uint[] CrcTable = MakeCrcTable();
 
-    public static void Write(string path, byte[] rgb, int width, int height)
+    // texts: each tEXt chunk's keyword and Latin-1 text
+    public static void Write(string path, byte[] rgb, int width, int height, params (string Keyword, string Text)[] texts)
     {
         using var file = File.Create(path);
         file.Write([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]);
@@ -20,6 +21,8 @@ public static class Png
         header[8] = 8;
         header[9] = 2;
         WriteChunk(file, "IHDR", header);
+        foreach ((string keyword, string text) in texts)
+            WriteChunk(file, "tEXt", TextChunk(keyword, text));
 
         using var data = new MemoryStream();
         using (var zlib = new ZLibStream(data, CompressionLevel.Optimal, leaveOpen: true))
@@ -50,6 +53,14 @@ public static class Png
             int predictor = pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
             row[i + 1] = (byte)(rgb[offset + i] - predictor);
         }
+    }
+
+    // keyword, a 0 separator and the text, both Latin-1
+    private static byte[] TextChunk(string keyword, string text)
+    {
+        if (keyword.Length is 0 or > 79 || (keyword + text).Any(c => c is '\0' or > '\u00FF'))
+            throw new ArgumentException($"tEXt {keyword}: the keyword must be 1 to 79 characters and both Latin-1 without 0");
+        return [.. Encoding.Latin1.GetBytes(keyword), 0, .. Encoding.Latin1.GetBytes(text)];
     }
 
     private static void WriteChunk(Stream stream, string type, byte[] data)

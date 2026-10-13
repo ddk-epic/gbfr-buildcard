@@ -83,7 +83,8 @@ updates.
 ## Render thread
 
 `RenderThread` runs work on the render thread. At each `SwapChainHooks.Presenting` it runs the actions posted with
-`RenderThread.Post` from any thread, in order, then raises its own `Presenting`. `GameThread` counts the presents and
+`RenderThread.Post` from any thread, in order, then raises its own `Presenting`. While `SwapChainHooks` has not hooked
+`Present`, `RenderThread.Post` drops the action. `GameThread` counts the presents and
 `UiFrameCapture` captures at them ([export](export.md#frame-timing)).
 
 ## Card model

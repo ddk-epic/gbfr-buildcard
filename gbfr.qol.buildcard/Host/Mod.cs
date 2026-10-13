@@ -144,7 +144,8 @@ public class Mod : ModBase
         _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);
         _cardFile.Saved += _noticeSink.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;
-        _renderThread = new RenderThread(_logger);
+        _swapChainHooks = new SwapChainHooks(_hooks, _logger);
+        _renderThread = new RenderThread(_logger, _swapChainHooks);
         _capture = new UiFrameCapture(new UiRedraw(_hooks), _renderThread, _logger);
         _exportController = new ExportController(_input, _menu, _cardSession, _capture, _cardFile, _gameThread,
             _logger, _statusGuide, _savedNotice);
@@ -152,7 +153,6 @@ public class Mod : ModBase
         _gameThread.Tick += _exportController.OnTick;
         _renderThread.Presenting += _ => _gameThread.OnPresenting();
         _renderThread.Presenting += _capture.OnPresenting;
-        _swapChainHooks = new SwapChainHooks(_hooks, _logger);
         _swapChainHooks.Presenting += _renderThread.OnPresenting;
 
         _features.Add(_lifetimes, _uiTree, _textTable, _textService, _traitTables, _masteryReader, _menu,

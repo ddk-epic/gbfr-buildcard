@@ -11,7 +11,7 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Host;
 
-// Hooks DXGI's Present, found on a throwaway D3D11 device and swapchain.
+// Hooks DXGI's Present.
 public unsafe partial class SwapChainHooks : IFeature
 {
     private const int DriverHardware = 1;
@@ -41,6 +41,8 @@ public unsafe partial class SwapChainHooks : IFeature
 
     // the swapchain's methods are found at start
     public Capability[] Requires => [];
+
+    public bool IsHooked => _presentHook != null;
 
     public void Start()
     {

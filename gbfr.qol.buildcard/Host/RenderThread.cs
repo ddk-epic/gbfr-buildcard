@@ -10,17 +10,23 @@ namespace gbfr.qol.buildcard.Host;
 public class RenderThread
 {
     private readonly ILogger _logger;
+    private readonly SwapChainHooks _swapChain;
     private readonly ConcurrentQueue<Action> _posted = new();
 
     public event Action<SwapChain>? Presenting;
 
-    public RenderThread(ILogger logger)
+    public RenderThread(ILogger logger, SwapChainHooks swapChain)
     {
         _logger = logger;
+        _swapChain = swapChain;
     }
 
-    // From any thread: runs action on the render thread before the next Presenting.
-    public void Post(Action action) => _posted.Enqueue(action);
+    // From any thread: runs action before the next Presenting when Present is hooked.
+    public void Post(Action action)
+    {
+        if (_swapChain.IsHooked)
+            _posted.Enqueue(action);
+    }
 
     // On the render thread: runs the posted actions in order, then raises Presenting.
     public void OnPresenting(SwapChain swapChain)

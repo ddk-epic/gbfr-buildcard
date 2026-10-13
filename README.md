@@ -8,7 +8,7 @@ A Granblue Fantasy: Relink mod that replaces the Character Details panel with a 
 
 - **One card with the character's whole build**: portrait, level, Master Lvl and PWR, stats, masteries, Master Traits,
   Over Mastery, skills, summons, weapon with its weapon and wrightstone traits, and sigils.
-- **A custom 'Take Photo' option**: Saves the card as a 2880x1440 PNG to
+- **A custom 'Take Photo' option**: Saves the card as a 2880x1440 PNG, or JPEG with the config option, to
   `Pictures/GBFR Character Build Cards/`.
 - **All game languages supported**: English, Japanese, French, Italian, German, Spanish, Portuguese, Korean and Chinese (Simplified / Traditional).
 

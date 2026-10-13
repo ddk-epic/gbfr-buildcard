@@ -141,7 +141,7 @@ public class Mod : ModBase
         _statusGuide = new StatusGuide(_hooks, _api, _lifetimes, _uiTree, _menu);
         _noticeSink = new NoticeSink(_api, _gameThread);
         _savedNotice = new SavedNotice(_hooks, _api, _lifetimes, _uiTree, _noticeSink);
-        _cardFile = new CardFile(_gameThread, _logger);
+        _cardFile = new CardFile(() => _configuration.CardFormat, _gameThread, _logger);
         _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);
         _cardFile.Saved += _noticeSink.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;

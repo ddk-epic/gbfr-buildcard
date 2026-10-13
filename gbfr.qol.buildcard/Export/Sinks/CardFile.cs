@@ -3,6 +3,7 @@ using System.Text.Json;
 
 using Reloaded.Mod.Interfaces;
 
+using gbfr.qol.buildcard.Configuration;
 using gbfr.qol.buildcard.Export;
 using gbfr.qol.buildcard.Export.Encoders;
 using gbfr.qol.buildcard.Host;
@@ -10,13 +11,17 @@ using gbfr.qol.buildcard.Model;
 
 namespace gbfr.qol.buildcard.Export.Sinks;
 
-// Writes the card as a 2880x1440 PNG with its BuildCard JSON in Pictures on a worker thread.
+// Writes the card as a 2880x1440 PNG or JPEG with its BuildCard JSON in Pictures on a worker thread.
 public class CardFile
 {
     public const int Width = 2880;
     public const int Height = 1440;
     public const string JsonKeyword = "BuildCard";
 
+    // Steam's screenshot quality
+    public const int JpegQuality = 90;
+
+    private readonly Func<CardFormat> _format;
     private readonly GameThread _gameThread;
     private readonly ILogger _logger;
     private readonly Action _written;
@@ -25,11 +30,12 @@ public class CardFile
         "GBFR Character Build Cards");
     private bool _saving;
 
-    // Raised on the worker thread after the PNG is written.
+    // Raised on the worker thread after the file is written.
     public event Action<string, int, int>? Saved;
 
-    public CardFile(GameThread gameThread, ILogger logger)
+    public CardFile(Func<CardFormat> format, GameThread gameThread, ILogger logger)
     {
+        _format = format;
         _gameThread = gameThread;
         _logger = logger;
         _written = () => _saving = false;
@@ -42,10 +48,11 @@ public class CardFile
     public void Save(CapturedFrame frame, BuildCard? card)
     {
         _saving = true;
-        Task.Run(() => Write(frame, card));
+        CardFormat format = _format();
+        Task.Run(() => Write(frame, card, format));
     }
 
-    private void Write(CapturedFrame frame, BuildCard? card)
+    private void Write(CapturedFrame frame, BuildCard? card, CardFormat format)
     {
         try
         {
@@ -55,10 +62,13 @@ public class CardFile
             (string, string)[] texts = card == null ? [] : [(JsonKeyword, JsonSerializer.Serialize(card, BuildCardJson.Default.BuildCard))];
 
             Directory.CreateDirectory(_folder);
-            string path = Path.Combine(_folder, $"{FileNamePrefix(card?.CharaName ?? "")}{DateTime.Now:yyyyMMdd_HHmmss}.png");
+            string path = Path.Combine(_folder, $"{FileNamePrefix(card?.CharaName ?? "")}{DateTime.Now:yyyyMMdd_HHmmss}{(format == CardFormat.Jpeg ? ".jpg" : ".png")}");
             try
             {
-                Png.Write(path, rgb, Width, Height, texts);
+                if (format == CardFormat.Jpeg)
+                    Jpeg.Write(path, rgb, Width, Height, JpegQuality, texts);
+                else
+                    Png.Write(path, rgb, Width, Height, texts);
             }
             catch
             {

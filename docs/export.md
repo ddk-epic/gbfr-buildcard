@@ -1,6 +1,6 @@
 # Export
 
-The build card saved as a 2880x1440 PNG from the Character Details menu's status page. The footer's Save Card starts it; the mod hides
+The build card saved as a 2880x1440 PNG or JPEG from the Character Details menu's status page. The footer's Save Card starts it; the mod hides
 the page arrows' button prompts, redraws one frame into off-screen frame buffers with the card filling 2880x1440, and
 saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`, the swapchain hook in `Host/` and the
 D3D11 calls in `Interop/D3D11/`.
@@ -9,8 +9,8 @@ D3D11 calls in `Interop/D3D11/`.
 
 | Item | Value |
 |---|---|
-| File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the name of the card shown at the press, as `CharaStatusHooks` read it from the `CharaInfo`'s first `Names` text, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
-| Metadata | A `tEXt` chunk with the keyword `BuildCard` (`CardFile.JsonKeyword`) after the header: the shown card's `BuildCard` ([runtime](runtime.md#card-model)) as JSON, its non-ASCII characters escaped as `\uXXXX`. Absent when no card was shown. |
+| File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB, or `.jpg` with the config option `CardFormat` set to `Jpeg`. See [Formats](#formats). `<name>` is the name of the card shown at the press, as `CharaStatusHooks` read it from the `CharaInfo`'s first `Names` text, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>` and the extension. |
+| Metadata | `BuildCard` (`CardFile.JsonKeyword`), a 0 byte and the JSON, in a PNG's `tEXt` chunk after the header or a JPEG's COM segment after the JFIF header: the shown card's `BuildCard` ([runtime](runtime.md#card-model)) as JSON, its non-ASCII characters escaped as `\uXXXX`. Absent when no card was shown. |
 | Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the saved notice. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
 | Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `SavedNotice.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
@@ -166,10 +166,23 @@ present instead, then resized to 2880x1440 by `Resample` in `CardFile`: averaged
 ## Card file
 
 `ExportController` keeps `CardSession.Current` at the press ([runtime](runtime.md#card-view)) and hands it to
-`CardFile.Save` with the frame. `CardFile.Save` names the PNG after the card's name, writes it with the card's JSON
-on a worker thread, and keeps `CardFile.Saving` set on the game thread until the worker posts the write's end. After the PNG is
+`CardFile.Save` with the frame. `CardFile.Save` reads `CardFormat` at the press, names the file after the card's name, writes it with the card's JSON
+on a worker thread, and keeps `CardFile.Saving` set on the game thread until the worker posts the write's end. After the file is
 written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `NoticeSink` and
 `SteamScreenshots` handle it.
+
+## Formats
+
+`CardFormat` ("Card File Format") is `Png` by default. Both encoders are managed code in `Encoders/`.
+
+| Format | Encoder | Size of a card |
+|---|---|---|
+| `Png` | `Png`: 8-bit RGB, filter type 4 (Paeth) on every row, one zlib `IDAT` at `CompressionLevel.Optimal`. | About 3.2 MB. |
+| `Jpeg` | `Jpeg`: baseline JFIF, YCbCr with 4:2:0 chroma (16x16 MCUs), the ITU T.81 Annex K quantization tables scaled to quality `CardFile.JpegQuality` (90) on libjpeg's scale, and the Annex K Huffman tables. | About 1.1 MB. |
+
+Steam's screenshots of the game are the same kind of JPEG: libjpeg's quality 90 tables, 4:2:0, the Annex K Huffman
+tables and a JFIF header. A JPEG COM segment holds at most 65533 bytes (`Jpeg.MaxCommentLength`); a longer JSON fails the
+export.
 
 ## Log
 
@@ -179,10 +192,10 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 |---|---|
 | `Redraw format <format> scale <x>x<y> offset <x>,<y> frame buffers <count> UI draws <count>` | At the present after the redraw, when the UI's frame buffer was found. |
 | `Redraw no UI frame buffer, <count> frame buffers` | At the present after the redraw, when it was not; the card comes from the backbuffer. |
-| `Card saved to <path>` | After the PNG is written. |
+| `Card saved to <path>` | After the file is written. |
 | `Card added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and Steam took the file. |
 | `Card not added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and the game runs without Steam or Steam refused the file. |
-| `Card export failed: <reason>` | When resizing, serializing or writing the PNG fails. |
+| `Card export failed: <reason>` | When resizing, serializing or writing the file fails. |
 | `Presenting handler UiFrameCapture.OnPresenting failed: <exception>` | When the redraw or the read throws on the render thread; the overlays are shown and nothing is saved. |
 | `Swapchain methods not found: <reason>` | When `SwapChainHooks` starts and the throwaway D3D11 swapchain cannot be made; there is no export then. |
 | `Card export failed: no frame was captured` | When no redraw starts within 1000 ms of the press. |
@@ -203,7 +216,7 @@ draws 990`.
 ## Steam screenshots
 
 With the config option on, `SteamScreenshots` adds each saved card on `CardFile.Saved`. It calls `SteamAPI_SteamScreenshots_v003` and `SteamAPI_ISteamScreenshots_AddScreenshotToLibrary`
-from the game's `steam_api64.dll` with the PNG's path and size. Steam copies the file into its library,
+from the game's `steam_api64.dll` with the file's path and size. Steam copies the file into its library,
 `userdata/<account>/760/remote/881020/screenshots`.
 
 ## Saved notice

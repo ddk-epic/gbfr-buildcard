@@ -14,7 +14,7 @@ How the mod's parts pass events to each other and which thread runs them.
 | `Sources/` | What the card reads from the game: `CharaSnapshot`, `TraitTables`, `MasteryReader`, `OverMasteryParams`, `TextTable`. |
 | `Model/` | `BuildCard`, `BuildCardAssembler`, `BuildCardJson`, `CardSession`. |
 | `Card/` | `CardView`, its binders in `Card/Binders/`, `StatusBackground`, `WeaponArt`. |
-| `Export/` | `ExportController`, `UiFrameCapture`, `UiRedraw`, `SaveCardFooter`; `StatusGuide` and `SavedNotice` in `Overlays/`, `Png` and `Resample` in `Encoders/`, `CardFile`, `SteamScreenshots` and `NoticeSink` in `Sinks/`. |
+| `Export/` | `ExportController`, `UiFrameCapture`, `UiRedraw`, `SaveCardFooter`; `StatusGuide` and `SavedNotice` in `Overlays/`, `Png`, `Jpeg` and `Resample` in `Encoders/`, `CardFile`, `SteamScreenshots` and `NoticeSink` in `Sinks/`. |
 | `Generated/` | `CardLayout.g.cs` ([build](build.md)). |
 
 ## Features
@@ -71,7 +71,7 @@ way.
 | `ShortcutUpdated` | `Input`, at each `UpdateShortcutInput` | game |
 | `Tick` | `GameThread`, once per presented frame; `ExportController` handles it once started | game |
 | `Presenting` | `SwapChainHooks` and then `RenderThread`, before each present | render |
-| `Saved` | `CardFile`, after the PNG is written | worker |
+| `Saved` | `CardFile`, after the file is written | worker |
 
 | Log line | Logged |
 |---|---|
@@ -96,15 +96,15 @@ updates.
 
 `BuildCard` is the card's content: the character key, the weapon, skin and effect off flag, the Master Traits
 board, the mastery percentages, the Over Mastery lines with their shown values, the summons, the character's name and the language of its texts. `CardSession` holds the
-card last shown as `Current`. `BuildCardJson` serializes it with source-generated metadata, as the export's PNG holds
+card last shown as `Current`. `BuildCardJson` serializes it with source-generated metadata, as the export's file holds
 it ([export](export.md#output)). `BuildCardAssembler` builds it from the
 character's build, its master trait cells, its mastery percentages, a text lookup and a `limit_bonus_param` lookup, and uses no UI objects. It takes
 the board's shape from `CardLayout.MasterTraits`: `StyleCount` styles, `Slots` slots per rank on the normal board
 and `CaptainSlots` on the captain's, as `master_traits.py` builds them. It holds the budgets of 10, 10, 10 and 20
 points per rank.
 
-`tests/gbfr.qol.buildcard.Tests` tests `BuildCardAssembler`, the prefab hash, the card's JSON and the PNG's text
-chunk with xunit:
+`tests/gbfr.qol.buildcard.Tests` tests `BuildCardAssembler`, the prefab hash, the card's JSON, the PNG's text
+chunk and the JPEG's segments with xunit:
 
 ```
 dotnet test tests/gbfr.qol.buildcard.Tests

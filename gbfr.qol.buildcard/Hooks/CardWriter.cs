@@ -45,18 +45,6 @@ public unsafe class CardWriter
 
     public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build)
     {
-        try
-        {
-            Write(charaInfo, build);
-        }
-        catch (Exception e)
-        {
-            _logger.WriteLine($"[gbfr.qol.buildcard] Writing the card failed: {e}", Color.Red);
-        }
-    }
-
-    private void Write(CharaInfo charaInfo, CharaBuild build)
-    {
         var objects = _objects.Find(charaInfo);
         if (objects == null)
             return;

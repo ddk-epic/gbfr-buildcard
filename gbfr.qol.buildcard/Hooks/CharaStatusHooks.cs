@@ -4,6 +4,8 @@ using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
 
+using gbfr.qol.buildcard.Host;
+
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Hooks;
@@ -40,7 +42,7 @@ public unsafe class CharaStatusHooks
         _fillHook!.OriginalFunction(charaInfo, chara, index);
         var info = new CharaInfo(charaInfo);
         if (chara != 0 && _objects.IsOnCard(info))
-            CharacterShown?.Invoke(info, CharaBuild.Decode(chara, LogBuildOnce));
+            Dispatch.Raise(_logger, nameof(CharacterShown), CharacterShown, info, CharaBuild.Decode(chara, LogBuildOnce));
     }
 
     private void LogBuildOnce(string message)

@@ -49,8 +49,8 @@ string at `+0x10`. Loading the table frees the map's nodes with the game's alloc
 
 ## Input
 
-`UpdateShortcutInput(shortcut)` runs on the game thread once per shortcut each frame; `SaveCardButton` raises `Tick` from
-it. The signature `GetButtonBits` matches a call of `GetButtonBits(context, button, 1, mode)`, which returns a
+`UpdateShortcutInput(shortcut)` runs on the game thread once per shortcut each frame; `SaveCardButton` raises
+`ShortcutUpdated` from it, which drives `GameThread`'s `Tick` ([runtime](runtime.md#game-thread)). The signature `GetButtonBits` matches a call of `GetButtonBits(context, button, 1, mode)`, which returns a
 button's bits: the input manager is a global pointer loaded by the `mov r15, [rip + disp32]` at its `+0x4`, and the
 call is at its `+0x1A`.
 
@@ -173,7 +173,7 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 | `Card added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and Steam took the file. |
 | `Card not added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and the game runs without Steam or Steam refused the file. |
 | `Card export failed: <reason>` | When resizing or writing the PNG fails. |
-| The exception with its stack trace | When the redraw or the read throws on the render thread. |
+| `Presenting handler CardExport.OnPresenting failed: <exception>` | When the redraw or the read throws on the render thread. |
 | `Swapchain methods not found: <reason>` | At startup, when the throwaway D3D11 swapchain cannot be made; there is no export then. |
 | `Card export failed: no frame was captured` | When no redraw starts within 1000 ms of the press. |
 
@@ -199,7 +199,8 @@ from the game's `steam_api64.dll` with the PNG's path and size. Steam copies the
 ## Saved notice
 
 The photo mode reports a saved photo through the UI manager's info queue (`+0x310` on the UI manager). `SavedNotice`
-queues the same info on the game thread at the first `Tick` after `CardFile.Saved`.
+posts the same info to `GameThread` at `CardFile.Saved` and queues it at the next tick
+([runtime](runtime.md#game-thread)).
 
 | Part | Source |
 |---|---|

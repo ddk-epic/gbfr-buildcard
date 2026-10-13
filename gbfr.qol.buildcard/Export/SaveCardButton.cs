@@ -5,6 +5,7 @@ using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
 
 using gbfr.qol.buildcard.Hooks;
+using gbfr.qol.buildcard.Host;
 
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
@@ -57,7 +58,7 @@ public unsafe class SaveCardButton
     private bool _enabled;
 
     // Raised on the game thread for each shortcut update.
-    public event Action? Tick;
+    public event Action? ShortcutUpdated;
 
     private delegate void SetCharacterDetailsFooter();
     private delegate void UpdateShortcutInput(nint shortcut);
@@ -118,12 +119,12 @@ public unsafe class SaveCardButton
         {
             if (*(int*)(component + ButtonType) == CardIds.SaveCardButton && OnStatus01(component))
                 _enabled = TakesInput(component);
-            Tick?.Invoke();
         }
         catch (Exception e)
         {
             _logger.WriteLine($"[gbfr.qol.buildcard] {e}", Color.Red);
         }
+        Dispatch.Raise(_logger, nameof(ShortcutUpdated), ShortcutUpdated);
         _updateHook!.OriginalFunction(shortcut);
     }
 

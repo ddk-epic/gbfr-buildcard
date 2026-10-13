@@ -4,6 +4,8 @@ using System.Runtime.InteropServices;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
 
+using gbfr.qol.buildcard.Host;
+
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Export;
@@ -130,16 +132,8 @@ public unsafe partial class SwapChainHooks
 
     private void OnPresenting(nint swapChain, uint flags)
     {
-        if ((flags & PresentTest) != 0)
-            return;
-        try
-        {
-            Presenting?.Invoke(new SwapChain(swapChain));
-        }
-        catch (Exception e)
-        {
-            _logger.WriteLine($"[gbfr.qol.buildcard] {e}", Color.Red);
-        }
+        if ((flags & PresentTest) == 0)
+            Dispatch.Raise(_logger, nameof(Presenting), Presenting, new SwapChain(swapChain));
     }
 
     // DXGI_SWAP_CHAIN_DESC

@@ -2,6 +2,8 @@ using System.Drawing;
 
 using Reloaded.Mod.Interfaces;
 
+using gbfr.qol.buildcard.Host;
+
 namespace gbfr.qol.buildcard.Export;
 
 // Writes the card as a 2880x1440 PNG in Pictures on a worker thread.
@@ -52,7 +54,7 @@ public class CardFile
                 throw;
             }
             _logger.WriteLine($"[gbfr.qol.buildcard] Card saved to {path}");
-            Saved?.Invoke(path, Width, Height);
+            Dispatch.Raise(_logger, nameof(Saved), Saved, path, Width, Height);
         }
         catch (Exception e)
         {

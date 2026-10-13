@@ -1,9 +1,10 @@
-using System.Drawing;
 using System.Runtime.InteropServices;
 
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
+
+using gbfr.qol.buildcard.Host;
 
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
@@ -116,14 +117,7 @@ public unsafe class CharacterDetailsMenu
         if (state == _state)
             return;
         _state = state;
-        try
-        {
-            Changed?.Invoke();
-        }
-        catch (Exception e)
-        {
-            _logger.WriteLine($"[gbfr.qol.buildcard] Handling the Character Details menu's {state} failed: {e}", Color.Red);
-        }
+        Dispatch.Raise(_logger, nameof(Changed), Changed);
     }
 
     [StructLayout(LayoutKind.Explicit)]

@@ -6,7 +6,8 @@ Offsets are from the start of each structure; pointers are 8 bytes; keys are the
 
 The sections' own data is in their docs: [character](character.md), [master traits](master-traits.md),
 [masteries](masteries.md), [Over Mastery](over-mastery.md), [summons](summons.md), [weapon](weapon.md),
-[sigils](sigils.md) and [skills](skills.md).
+[sigils](sigils.md) and [skills](skills.md). How the mod's parts raise events and which thread runs them is in
+[runtime](runtime.md).
 
 ## UI objects
 

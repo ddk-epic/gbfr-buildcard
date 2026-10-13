@@ -8,6 +8,7 @@ using gbfr.qol.buildcard.Template;
 using gbfr.qol.buildcard.Configuration;
 using gbfr.qol.buildcard.Hooks;
 using gbfr.qol.buildcard.Export;
+using gbfr.qol.buildcard.Host;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -28,6 +29,7 @@ public class Mod : ModBase
 
     private readonly IModConfig _modConfig;
 
+    private GameThread? _gameThread;
     private Vtables? _vtables;
     private UiControllers? _uiControllers;
     private UiObjects? _uiObjects;
@@ -87,8 +89,9 @@ public class Mod : ModBase
         string modFolder = _modLoader.GetDirectoryForModId(_modConfig.ModId);
         scanManager.InitializeScans(Path.Combine(modFolder, "Signatures"), _modConfig.ModId);
 
+        _gameThread = new GameThread(_logger);
         _vtables = new Vtables(_hooks, _logger);
-        _uiControllers = new UiControllers(_vtables);
+        _uiControllers = new UiControllers(_vtables, _logger);
         _uiControllers.Init();
 
         _uiObjects = new UiObjects(_logger, _vtables);
@@ -125,7 +128,7 @@ public class Mod : ModBase
         _statusGuide.Init();
         _statusBackground = new StatusBackground(_vtables, _uiControllers, _logger, _uiObjects, _menu);
         _statusBackground.Init();
-        _savedNotice = new SavedNotice(_vtables, _uiControllers, _uiObjects);
+        _savedNotice = new SavedNotice(_vtables, _uiControllers, _uiObjects, _gameThread);
         _savedNotice.Init(scanManager, "granblue_fantasy_relink_er");
         _cardFile = new CardFile(_logger);
         _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);
@@ -134,9 +137,10 @@ public class Mod : ModBase
         _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice, _cardFile,
             _menu, _uiObjects, _gameText, _logger);
         _charaStatusHooks.CharacterShown += _cardExport.OnCharacterShown;
-        _saveCardButton.Tick += _savedNotice.OnTick;
-        _saveCardButton.Tick += _cardExport.OnTick;
+        _saveCardButton.ShortcutUpdated += _gameThread.Pump;
+        _gameThread.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);
+        _swapChainHooks.Presenting += _ => _gameThread.OnPresenting();
         _swapChainHooks.Presenting += _cardExport.OnPresenting;
         _swapChainHooks.Init();
 

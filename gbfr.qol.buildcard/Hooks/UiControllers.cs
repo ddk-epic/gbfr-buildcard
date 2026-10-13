@@ -1,4 +1,7 @@
 using Reloaded.Hooks.Definitions;
+using Reloaded.Mod.Interfaces;
+
+using gbfr.qol.buildcard.Host;
 
 namespace gbfr.qol.buildcard.Hooks;
 
@@ -17,6 +20,7 @@ public class UiControllers
     ];
 
     private readonly Vtables _vtables;
+    private readonly ILogger _logger;
     private readonly List<IHook<DestroyFn>> _destroyHooks = [];
 
     // Raised on the game thread.
@@ -24,9 +28,10 @@ public class UiControllers
 
     private delegate nint DestroyFn(nint controller, int flags);
 
-    public UiControllers(Vtables vtables)
+    public UiControllers(Vtables vtables, ILogger logger)
     {
         _vtables = vtables;
+        _logger = logger;
     }
 
     public bool IsHooked => _destroyHooks.Count == Destructors.Length;
@@ -48,7 +53,7 @@ public class UiControllers
 
     private nint DestroyImpl(IHook<DestroyFn> hook, nint controller, int flags)
     {
-        Destroyed?.Invoke(new UiComponent(controller));
+        Dispatch.Raise(_logger, nameof(Destroyed), Destroyed, new UiComponent(controller));
         return hook.OriginalFunction(controller, flags);
     }
 }

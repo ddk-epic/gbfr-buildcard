@@ -9,7 +9,7 @@ are filled at runtime by `OverMasteryBinder`.
 Under the Over Mastery title (`TXT_PAU_LB_TAB_LIMIT_OVER`), four rows, `bc_om_0` to `bc_om_3`, copies of
 `lb_ovtli02`'s row. Each shows a line's icon, name and value in ink, without the row's separator and stars. A row is
 hidden when its line is empty or was not filled. The value follows the name in the name's text, as `+`, the number and the percent sign
-when the game shows one; the row's own plus icon, number and percent sign are hidden. The text is wrapped to the panel's
+when the game shows one; the row's own plus icon, number and percent sign are hidden. The value stays on one line. The text is wrapped to the panel's
 content width and cut to two lines, the second ending in the game's ellipsis; the two lines are centred on the row. Its lines are spaced at
 `LineSpacing` -6, and -40 through the `LanguageSetter`'s Japanese overwrite.
 

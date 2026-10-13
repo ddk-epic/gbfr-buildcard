@@ -73,7 +73,7 @@ public unsafe class TextService : IFeature
     public string Read(TextComponent text) => ReadString(text);
 
     // Wraps what fill sets to width and caps it at maxLines lines
-    public void Wrap(UiObject obj, int width, Action<TextComponent> fill, float? iconScale = null, int maxLines = 2)
+    public void Wrap(UiObject obj, int width, Action<TextComponent> fill, float? iconScale = null, int maxLines = 2, int keep = 0)
     {
         if (FindText(obj) is not { } text)
             return;
@@ -81,10 +81,10 @@ public unsafe class TextService : IFeature
         if (iconScale is { } scale)
             ScaleIcons(text, scale);
         fill(text);
-        Cap(text, maxLines);
+        Cap(text, maxLines, keep);
     }
 
-    // Wraps the object's current text
+    // Wraps the object's current text, the suffix appended on one line
     public void Rewrap(UiObject obj, int width, int maxLines = 2, string suffix = "") =>
         Wrap(obj, width, text =>
         {
@@ -92,7 +92,7 @@ public unsafe class TextService : IFeature
             uint hash = Data(text).Hash;
             SetString(text, "", hash);
             SetString(text, value, hash);
-        }, maxLines: maxLines);
+        }, maxLines: maxLines, keep: suffix.TrimStart().EnumerateRunes().Count());
 
     private TextComponent? FindText(UiObject obj) =>
         _tree.FindComponent(obj, _api.TextVtable) is { } component ? new TextComponent(component.Address) : null;
@@ -133,14 +133,17 @@ public unsafe class TextService : IFeature
     }
 
     // Caps the text at maxLines lines, the last ending in the game's ellipsis
-    private void Cap(TextComponent text, int maxLines)
+    private void Cap(TextComponent text, int maxLines, int keep)
     {
         ref var data = ref Data(text);
         if (_joinLines == null || _fitLine == null || _splitLine == null || _buildGlyphs == null || _insertGlyphs == null
             || !data.Lines.IsValid)
             return;
         Split(text);
-        if (!data.Lines.IsValid || data.Lines.Count <= maxLines)
+        if (!data.Lines.IsValid)
+            return;
+        Keep(text, keep);
+        if (data.Lines.Count <= maxLines)
             return;
         var ellipsis = _table.Lookup(EllipsisHash, data.SubId);
         if (ellipsis.Ptr == 0 || ellipsis.Length > EllipsisGlyphs)
@@ -181,6 +184,25 @@ public unsafe class TextService : IFeature
         }
     }
 
+    // Moves the last glyphs on the line above the last down to it
+    private void Keep(TextComponent text, int glyphs)
+    {
+        ref var data = ref Data(text);
+        int last = data.Lines.Count - 1;
+        if (last < 1)
+            return;
+        var tail = data.Lines.Begin + last;
+        var above = tail - 1;
+        if (!tail->IsValid || !above->IsValid)
+            return;
+        int count = tail->Count;
+        if (count > 0 && (*tail)[count - 1].Kind == Glyph.End)
+            count--;
+        int moved = glyphs - count;
+        if (moved > 0 && moved < above->Count)
+            _splitLine(text.Address, last - 1, above->Count - moved, above->Count - 1);
+    }
+
     // ui::component::Text
     [StructLayout(LayoutKind.Explicit)]
     private struct TextData
@@ -206,8 +228,13 @@ public unsafe class TextService : IFeature
         public byte* Data => Capacity > 15 ? Pointer : (byte*)Unsafe.AsPointer(ref this);
     }
 
-    [StructLayout(LayoutKind.Sequential, Size = 0x50)]
-    private struct Glyph;
+    [StructLayout(LayoutKind.Explicit, Size = 0x50)]
+    private struct Glyph
+    {
+        public const byte End = 2;
+
+        [FieldOffset(0x4F)] public byte Kind;
+    }
 
     private struct GameString
     {

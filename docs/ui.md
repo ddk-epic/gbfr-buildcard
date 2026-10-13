@@ -153,7 +153,9 @@ string. `TextTable.Language` reads it.
 ## Text wrapping
 
 `TextService` wraps a text to a width with the `Text` component's own wrap fields. A rewrap sets an empty string before the text's own string, so the string is laid out again with the wrap fields. The reflow wrap breaks a line after its
-last space that fits, or where it stops fitting when no space does, and only when `+0x198` is 1 to 6. `TextService` then splits each line still wider than the width where it stops fitting. A text of more
+last space that fits, or where it stops fitting when no space does, and only when `+0x198` is 1 to 6. `TextService` then splits each line still wider than the width where it stops fitting. A rewrap's suffix, from its
+first word on, is kept on one line: when it starts on the line above the last, its glyphs there are moved to the last
+line's start. Each UTF-8 code point is one glyph, and the last line ends in an end glyph, `2` at the glyph's `+0x4F`. A text of more
 lines than its cap, two or one, is then cut to the cap: the lines from the last kept onward are joined into it, its glyphs past what fits the width with the
 ellipsis are dropped, and the ellipsis's glyphs are inserted at its end. The ellipsis is `TXT_HUD_COMMUNICATION_OVER`
 (`0x6895D7BB`) in the text's sub-id. `TextService` also scales a text's icons by a factor of the icon size the game first

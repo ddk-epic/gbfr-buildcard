@@ -45,8 +45,10 @@ public unsafe class TextService : IFeature
         _api = api;
     }
 
-    // the wrapping functions are used when found
     public Capability[] Requires => [_api.TextComponentSetText, _api.TextVtable];
+
+    public Capability[] Optional =>
+        [_api.TextJoinLines, _api.TextFitLine, _api.TextSplitLine, _api.TextBuildGlyphs, _api.TextInsertGlyphs];
 
     public void Start()
     {

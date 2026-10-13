@@ -42,7 +42,10 @@ public unsafe partial class SwapChainHooks : IFeature
     // the swapchain's methods are found at start
     public Capability[] Requires => [];
 
-    public bool IsHooked => _presentHook != null;
+    // found and hooked at start
+    public Capability PresentFunction { get; } = new("Present");
+
+    public bool IsHooked => PresentFunction.Found;
 
     public void Start()
     {
@@ -58,6 +61,7 @@ public unsafe partial class SwapChainHooks : IFeature
         }
         _presentHook = _hooks.CreateHook<Present>(PresentImpl, present).Activate();
         _present1Hook = _hooks.CreateHook<Present1>(Present1Impl, present1).Activate();
+        PresentFunction.Address = present;
         _logger.WriteLine("[gbfr.qol.buildcard] Swapchain hooked");
     }
 

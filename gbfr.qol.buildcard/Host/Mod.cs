@@ -128,13 +128,12 @@ public class Mod : ModBase
 
         var overMasteryBinder = new OverMasteryBinder(_textService, _textTable, _uiTree, _api);
         var summonsBinder = new SummonsBinder(_uiTree, _api);
-        _cardView = new CardView(_uiTree, _lifetimes, _api, _logger,
+        _cardView = new CardView(_uiTree, _cardSession, _lifetimes, _api, _logger,
             new GearBinder(_textService, _textTable),
             new MasterTraitsBinder(_textService, _traitTables, _uiTree, () => _configuration.MasterTraitsPalette),
             new MasteriesBinder(_textService, _textTable),
             overMasteryBinder,
             summonsBinder);
-        _cardSession.Shown += _cardView.OnShown;
         _statusBackground = new StatusBackground(_hooks, _api, _lifetimes, _logger, _uiTree, _menu);
 
         _input = new Input(_hooks, _api, _logger);
@@ -150,17 +149,19 @@ public class Mod : ModBase
         _renderThread = new RenderThread(_logger, _swapChainHooks);
         _capture = new UiFrameCapture(new UiRedraw(_hooks), _renderThread, _logger);
         _exportController = new ExportController(_input, _menu, _cardSession, _capture, _cardFile, _gameThread,
-            _logger, _statusGuide, _savedNotice);
+            _swapChainHooks, _logger, _statusGuide, _savedNotice);
         _input.ShortcutUpdated += _gameThread.Pump;
-        _gameThread.Tick += _exportController.OnTick;
         _renderThread.Presenting += _ => _gameThread.OnPresenting();
         _renderThread.Presenting += _capture.OnPresenting;
         _swapChainHooks.Presenting += _renderThread.OnPresenting;
 
         _features.Add(_lifetimes, _uiTree, _textTable, _textService, _traitTables, _masteryReader, _overMasteryParams, _menu,
-            _charaStatusHooks, _weaponArt, overMasteryBinder, summonsBinder, _statusBackground, _input, _saveCardFooter,
-            _statusGuide, _noticeSink, _savedNotice, _swapChainHooks);
+            _charaStatusHooks, _weaponArt, overMasteryBinder, summonsBinder, _cardView, _statusBackground, _input,
+            _saveCardFooter, _statusGuide, _noticeSink, _savedNotice, _swapChainHooks, _exportController);
+        _api.ScansFound += _features.Start;
         _modLoader.OnModLoaderInitialized += _features.Start;
+        if (_api.AllScansFound)
+            _features.Start();
 
         _logger.WriteLine($"[{_modConfig.ModId}] Loaded");
     }

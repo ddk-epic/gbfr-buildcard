@@ -3,15 +3,17 @@ using System.Drawing;
 using Reloaded.Mod.Interfaces;
 
 using gbfr.qol.buildcard.Game;
+using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Model;
 
 namespace gbfr.qol.buildcard.Card;
 
 // Writes the card to status01 through its binders: Write, then Layout.
-public class CardView
+public class CardView : IFeature
 {
     private readonly UiTree _tree;
+    private readonly CardSession _session;
     private readonly ControllerLifetimes _lifetimes;
     private readonly GameApi _api;
     private readonly ICardBinder[] _binders;
@@ -20,15 +22,22 @@ public class CardView
     private Dictionary<int, UiObject>? _objects;  // null when the prefab hash differs
     private bool _loggedHash;
 
-    public CardView(UiTree tree, ControllerLifetimes lifetimes, GameApi api, ILogger logger, params ICardBinder[] binders)
+    public CardView(UiTree tree, CardSession session, ControllerLifetimes lifetimes, GameApi api, ILogger logger,
+        params ICardBinder[] binders)
     {
         _tree = tree;
+        _session = session;
         _lifetimes = lifetimes;
         _api = api;
         _logger = logger;
         _binders = binders;
         lifetimes.Destroyed += OnDestroyed;
     }
+
+    public Capability[] Requires =>
+        [_api.FillCharacterStatus, _api.SetObjectActive, _api.TextComponentSetText, _api.TextVtable];
+
+    public void Start() => _session.Shown += OnShown;
 
     public void OnShown(CharaInfo charaInfo, BuildCard card)
     {

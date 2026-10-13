@@ -5,12 +5,13 @@ using Reloaded.Mod.Interfaces;
 using gbfr.qol.buildcard.Export.Sinks;
 using gbfr.qol.buildcard.Game;
 using gbfr.qol.buildcard.Host;
+using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Model;
 
 namespace gbfr.qol.buildcard.Export;
 
 // Exports the shown card on Save Card: hides the overlays, captures the card's rect and hands it to CardFile.
-public class ExportController
+public class ExportController : IFeature
 {
     private const int HiddenFrames = 2;
 
@@ -23,13 +24,14 @@ public class ExportController
     private readonly UiFrameCapture _capture;
     private readonly CardFile _file;
     private readonly GameThread _gameThread;
+    private readonly SwapChainHooks _swapChain;
     private readonly ILogger _logger;
     private readonly IOverlay[] _overlays;
     private CaptureRequest? _request;
     private long _requestedAt;
 
     public ExportController(Input input, MenuState menu, CardSession session, UiFrameCapture capture,
-        CardFile file, GameThread gameThread, ILogger logger, params IOverlay[] overlays)
+        CardFile file, GameThread gameThread, SwapChainHooks swapChain, ILogger logger, params IOverlay[] overlays)
     {
         _input = input;
         _menu = menu;
@@ -37,9 +39,14 @@ public class ExportController
         _capture = capture;
         _file = file;
         _gameThread = gameThread;
+        _swapChain = swapChain;
         _logger = logger;
         _overlays = overlays;
     }
+
+    public Capability[] Requires => [.. _input.Requires, .. _menu.Requires, _swapChain.PresentFunction];
+
+    public void Start() => _gameThread.Tick += OnTick;
 
     // On the game thread: starts a capture on a press while the card is open, cancels it on its timeout.
     public void OnTick()

@@ -21,9 +21,10 @@ How the mod's parts pass events to each other and which thread runs them.
 
 `GameApi` holds every game function and vtable the mod uses as a named `Capability`: the signatures' scans are added
 when the mod loads and found when the loader runs them, and the vtables and virtual functions are found at once. Each
-part of the mod that calls or hooks game code is an `IFeature` that lists the capabilities it requires. When the mod
-loader is initialized, after the scans have run, `Features` starts each feature in order whose capabilities were all
-found. A feature left out does nothing; the others still start.
+part of the mod that calls or hooks game code is an `IFeature` that lists the capabilities it requires and the ones it
+uses when found. `Features` starts once, at the first of: `GameApi.ScansFound`, raised when every signature is found,
+`OnModLoaderInitialized`, and the mod's load when every signature is found by then. It starts each feature in order
+whose required capabilities were all found. A feature left out does nothing; the others still start.
 
 | Feature | Requires |
 |---|---|
@@ -45,12 +46,15 @@ found. A feature left out does nothing; the others still start.
 | `StatusGuide` | `ControllerStatusGuide function 21` and `ControllerLifetimes`' capabilities |
 | `NoticeSink` | `PushInfo` |
 | `SavedNotice` | `ControllerLifetimes`' capabilities; each controller's `ShowInfo` (function 35) when found |
+| `CardView` | `FillCharacterStatus`, `SetObjectActive`, `TextComponentSetText`, `Text vtable` |
 | `SwapChainHooks` | Nothing; it finds `Present` itself ([export](export.md#frame-timing)) |
+| `ExportController` | `Input`'s and `MenuState`'s capabilities and `Present`, which `SwapChainHooks` found and hooked |
 
 | Log line | Logged |
 |---|---|
 | `<feature> disabled: <capabilities> not found` | At start, for each feature left out. |
 | `<feature> failed to start: <exception>` | At start, when a feature throws while starting. |
+| `<feature> started without <capabilities>` | At start, for each started feature with capabilities it uses when found that were not found. |
 
 ## Events
 
@@ -65,7 +69,7 @@ way.
 | `Changed` | `MenuState`, after the menu's state changes | game |
 | `Destroyed` | `ControllerLifetimes`, before a controller's destructor runs | game |
 | `ShortcutUpdated` | `Input`, at each `UpdateShortcutInput` | game |
-| `Tick` | `GameThread`, once per presented frame | game |
+| `Tick` | `GameThread`, once per presented frame; `ExportController` handles it once started | game |
 | `Presenting` | `SwapChainHooks` and then `RenderThread`, before each present | render |
 | `Saved` | `CardFile`, after the PNG is written | worker |
 

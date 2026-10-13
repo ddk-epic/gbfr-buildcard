@@ -11,6 +11,7 @@ public sealed class Features
 {
     private readonly ILogger _logger;
     private readonly List<IFeature> _features = [];
+    private int _started;
 
     public Features(ILogger logger)
     {
@@ -19,9 +20,11 @@ public sealed class Features
 
     public void Add(params IFeature[] features) => _features.AddRange(features);
 
-    // After the loader runs the scans
+    // Runs once
     public void Start()
     {
+        if (Interlocked.Exchange(ref _started, 1) != 0)
+            return;
         foreach (var feature in _features)
         {
             string name = feature.GetType().Name;
@@ -38,7 +41,11 @@ public sealed class Features
             catch (Exception e)
             {
                 _logger.WriteLine($"[gbfr.qol.buildcard] {name} failed to start: {e}", Color.Red);
+                continue;
             }
+            var skipped = feature.Optional.Where(capability => !capability.Found).Select(capability => capability.Name).Distinct().ToList();
+            if (skipped.Count != 0)
+                _logger.WriteLine($"[gbfr.qol.buildcard] {name} started without {string.Join(", ", skipped)}", Color.Yellow);
         }
     }
 }
@@ -47,6 +54,9 @@ public sealed class Features
 public interface IFeature
 {
     Capability[] Requires { get; }
+
+    // used when found
+    Capability[] Optional => [];
 
     void Start();
 }

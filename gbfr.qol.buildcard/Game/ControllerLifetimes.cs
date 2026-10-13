@@ -37,10 +37,11 @@ public class ControllerLifetimes : IFeature
     // Whether the destructor's controllers raise Destroyed
     public bool Hooks(Capability destructor) => _hooked.Contains(destructor);
 
-    // ControllerStatus's destructor is hooked when found
+    public Capability[] Optional => [_api.ControllerStatusDestroy];
+
     public void Start()
     {
-        foreach (var destructor in (Capability[])[.. Requires, _api.ControllerStatusDestroy])
+        foreach (var destructor in (Capability[])[.. Requires, .. Optional])
         {
             if (!destructor.Found)
                 continue;

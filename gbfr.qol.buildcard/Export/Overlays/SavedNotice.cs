@@ -49,14 +49,15 @@ public unsafe class SavedNotice : IOverlay, IFeature
         lifetimes.Destroyed += OnDestroyed;
     }
 
-    // the controllers' ShowInfo are hooked when found
     public Capability[] Requires => _lifetimes.Requires;
+
+    public Capability[] Optional => [_api.ControllerInformationSystemShowInfo, _api.ControllerInformationToastShowInfo];
 
     public void Start()
     {
         if (!_lifetimes.IsHooked)
             return;
-        foreach (var showInfo in (Capability[])[_api.ControllerInformationSystemShowInfo, _api.ControllerInformationToastShowInfo])
+        foreach (var showInfo in Optional)
         {
             if (!showInfo.Found)
                 continue;

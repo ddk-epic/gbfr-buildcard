@@ -23,6 +23,7 @@ public sealed class GameApi
 
     private readonly IScanManager _scanManager;
     private readonly Vtables _vtables;
+    private int _pending = 1;  // the scans not found yet and the constructor
 
     // Signatures/granblue_fantasy_relink_er.ini
     public readonly Capability FillCharacterStatus;
@@ -65,6 +66,11 @@ public sealed class GameApi
     public readonly Capability ControllerInformationToastShowInfo;
     public readonly Capability LoadWeaponPartyIsOpen;
     public readonly Capability LoadWeaponPartyCollect;
+
+    // Raised once every signature is found, on the thread that found the last one.
+    public event Action? ScansFound;
+
+    public bool AllScansFound => Volatile.Read(ref _pending) == 0;
 
     public GameApi(IScanManager scanManager, Vtables vtables)
     {
@@ -113,13 +119,25 @@ public sealed class GameApi
             "41 57 41 56 41 55 41 54 56 57 55 53 48 81 EC 78 01 00 00 48 89 D7");
         LoadWeaponPartyIsOpen = Function(LoadWeaponPartyType, 4, "48 8B 05 ?? ?? ?? ?? 48 8B 48 40 48 8B 50 48 48 39 D1");
         LoadWeaponPartyCollect = Function(LoadWeaponPartyType, 5, null);
+        Resolve();
     }
 
     private Capability Scan(string name)
     {
         var capability = new Capability(name);
-        _scanManager.AddScan(name, SignatureGroup, address => capability.Address = (nint)address);
+        Interlocked.Increment(ref _pending);
+        _scanManager.AddScan(name, SignatureGroup, address =>
+        {
+            capability.Address = (nint)address;
+            Resolve();
+        });
         return capability;
+    }
+
+    private void Resolve()
+    {
+        if (Interlocked.Decrement(ref _pending) == 0)
+            ScansFound?.Invoke();
     }
 
     private Capability Vtable(string typeName) =>

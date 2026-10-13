@@ -88,4 +88,13 @@
            Text="Converting %(UiSource.Identity) failed; run the tool on it for the error." />
   </Target>
 
+  <!-- Converted UI binaries -->
+  <Target Name="PublishUiSources" AfterTargets="ComputeResolvedFilesToPublishList" Condition="'@(UiSource)' != ''">
+    <ItemGroup>
+      <ResolvedFileToPublish Include="$(OutDir)GBFR\%(UiSource.RecursiveDir)%(UiSource.Binary)"
+                             RelativePath="GBFR\%(UiSource.RecursiveDir)%(UiSource.Binary)"
+                             CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+  </Target>
+
 </Project>

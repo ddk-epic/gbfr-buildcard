@@ -5,9 +5,9 @@ namespace gbfr.qol.buildcard.Model;
 // Assembles a BuildCard from a chara build and the game's tables.
 public static class BuildCardAssembler
 {
-    public const int Styles = 3;
-    public static readonly int[] Slots = [4, 8, 8, 10];
-    public static readonly int[] CaptainSlots = [4, 8, 8, 14];
+    private const int Styles = CardLayout.MasterTraits.StyleCount;
+    private static readonly int[] Slots = CardLayout.MasterTraits.Slots;
+    private static readonly int[] CaptainSlots = CardLayout.MasterTraits.CaptainSlots;
     public static readonly int[] Budgets = [10, 10, 10, 20];
 
     // findText(text id, sub-id): the text in the loaded language

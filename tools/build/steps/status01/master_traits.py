@@ -456,6 +456,9 @@ def apply(ctx):
     ctx.export("MasterTraits.PerkStars", [[row.find(f"base0{k + 1}/icon0{k + 1}_add") for k in range(3)] for row in perk_rows])
     ctx.export("MasterTraits.StyleTitles", titles)
     ctx.export("MasterTraits.Scenes", scenes)
+    ctx.export("MasterTraits.StyleCount", STYLES)
+    ctx.export("MasterTraits.Slots", SLOTS)
+    ctx.export("MasterTraits.CaptainSlots", CAPTAIN_SLOTS)
     ctx.export("MasterTraits.Boards", [board_ids(cells, [cell_groups[p] for p in PALETTES], SLOTS),
                                        board_ids(captain, [captain_groups[p] for p in PALETTES], CAPTAIN_SLOTS)])
     ctx.export("MasterTraits.CellTextWidth", int(CELL_TEXT_W))

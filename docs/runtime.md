@@ -94,9 +94,10 @@ updates.
 board, the mastery percentages, the Over Mastery lines with their shown values, the summons and the character's name. `CardSession` holds the
 card last shown as `Current`. `BuildCardJson` serializes it with source-generated metadata, as the export's PNG holds
 it ([export](export.md#output)). `BuildCardAssembler` builds it from the
-character's build, its master trait cells, its mastery percentages, a text lookup and a `limit_bonus_param` lookup, and uses no UI objects. It holds
-the game's board rules: three styles, 4, 8, 8 and 10 slots per rank on the normal board, 4, 8, 8 and 14 on the
-captain's, and budgets of 10, 10, 10 and 20 points per rank.
+character's build, its master trait cells, its mastery percentages, a text lookup and a `limit_bonus_param` lookup, and uses no UI objects. It takes
+the board's shape from `CardLayout.MasterTraits`: `StyleCount` styles, `Slots` slots per rank on the normal board
+and `CaptainSlots` on the captain's, as `master_traits.py` builds them. It holds the budgets of 10, 10, 10 and 20
+points per rank.
 
 `tests/gbfr.qol.buildcard.Tests` tests `BuildCardAssembler`, the prefab hash, the card's JSON and the PNG's text
 chunk with xunit:

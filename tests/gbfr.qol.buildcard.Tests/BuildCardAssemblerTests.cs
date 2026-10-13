@@ -114,6 +114,13 @@ public class BuildCardAssemblerTests
     }
 
     [Fact]
+    public void HasABudgetPerRank()
+    {
+        Assert.Equal(Build([], []).Traits.Styles[0].Cells.Length, BuildCardAssembler.Budgets.Length);
+        Assert.Equal(Build([Cell(60, 1)], [new(1, 0)]).Traits.Styles[0].Cells.Length, BuildCardAssembler.Budgets.Length);
+    }
+
+    [Fact]
     public void KeepsTheSnapshotsName()
     {
         var build = new CharaSnapshot(1, 2, 3, false, [], new OverMasteryLine?[4], new uint?[4]) { CharaName = "グラン" };

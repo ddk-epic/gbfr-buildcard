@@ -25,7 +25,7 @@ the status panel. They are the stock page's objects, moved and restyled by `tool
    master trait cells, mastery percentages and text lookup. It keeps the card as `Current` and raises `Shown` with the
    component and the card. `CardWriter`, `WeaponArtHooks` ([weapon](weapon.md)) and `CardExport`
    ([export](export.md#card-file)) handle it.
-4. `CardWriter` finds `status01`'s objects by Id. When their count matches `CardIds.ObjectCount`, it applies the writes
+4. `CardWriter` finds `status01`'s objects by Id. When their hash matches `CardLayout.Status01.PrefabHash`, it applies the writes
    of `CardContents.Compose` in order; otherwise it writes nothing. `CardContents` composes every section's writes from
    the card.
 

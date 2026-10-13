@@ -119,5 +119,5 @@ def apply(ctx):
     for block in ("loc_chr_status03", "loc_chr_status04"):
         prefab.find(f"loc_status02/{block}").set("Active", False)
     prefab.root.component("CharaInfo").set_refs("Ability", cards)
-    ctx.export("SkillNames", [node.find("bc_skill_text/text01") for node in cards])
-    ctx.export("SkillNameWidth", int(wrap_w))
+    ctx.export("Skills.Names", [node.find("bc_skill_text/text01") for node in cards])
+    ctx.export("Skills.NameWidth", int(wrap_w))

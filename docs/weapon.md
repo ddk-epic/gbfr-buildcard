@@ -21,7 +21,7 @@ The build points the `CharaInfo` reference `Weapon` at `bc_weapon` and gives its
 (`Skills`, `PendulumSkillObj`, `PendulumSkills`, `PendulumNames`) of the equip screen's `WeaponInfo`, so
 `FillCharacterStatus` fills the panel, the weapon traits and the wrightstone traits.
 
-The heading's text, `CardIds.WeaponTitle`, has no `TextSetter`; the text tables hold no `TXT_PAU_ITEM_WEAPON` for
+The heading's text, `CardLayout.Gear.WeaponTitle`, has no `TextSetter`; the text tables hold no `TXT_PAU_ITEM_WEAPON` for
 the `status01` sub-id. After each character fill `CardContents` looks the text up with `TextLookup` in the sub-id
 `equip01_info01` (`0xDE6482AF`) and `CardWriter` sets it with `TextComponentSetText`.
 

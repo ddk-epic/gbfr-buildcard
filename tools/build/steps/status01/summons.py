@@ -145,4 +145,4 @@ def apply(ctx):
         node.set("Scale", (scale, scale, 1))
         node.place(pos=(width * (2 * (i % 2) - 1) / 4, height / 2 * (1 - i // 2) - slot_h / 2))
         slots.append(node)
-    ctx.export("SummonSlots", slots)
+    ctx.export("Summons.Slots", slots)

@@ -11,7 +11,7 @@ name. The cards' frames are transparent and their button prompts hidden. A name 
 lines, the second ending in the game's ellipsis. Its lines are spaced as the master trait cells' are: `LineSpacing` 4,
 and -30 through the `LanguageSetter`'s Japanese overwrite.
 
-`CardIds.SkillNames` holds the four names' Ids, and `CardIds.SkillNameWidth` their wrap width.
+`CardLayout.Skills.Names` holds the four names' Ids, and `CardLayout.Skills.NameWidth` their wrap width.
 
 ## Implementation
 

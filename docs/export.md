@@ -8,8 +8,8 @@ saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 
 | Item | Value |
 |---|---|
-| File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the text of the card's `name01_01` (`CardIds.CharaName`) at the press, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
-| Content | The card's rect, `CardIds.CardWidth` x `CardIds.CardHeight` (3528x1764) at `CardIds.CardY` (74) above the centre of the 3840x2160 UI canvas, without the page arrows' button prompts and the saved notice. |
+| File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the text of the card's `name01_01` (`CardLayout.Status.CharaName`) at the press, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
+| Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the saved notice. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
 | Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `SavedNotice.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
 | Log | See [Log](#log). |
@@ -19,11 +19,11 @@ saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`.
 | Part | Source |
 |---|---|
 | Footer entry | The row `SaveCard` in `ui/table/guide_button.msg`, written by `tools/build/tables.py` ([build](build.md)): button `L3` (index 13), text id `TXT_PAU_PHT_SHOOT`, color `Guide`. |
-| Footer list | `SetCharacterDetailsFooter` builds the Character Details footer from a static list loaded by the `mov rbx, [rip + disp32]` at `SetCharacterDetailsFooter+0x36`: a 64-bit count, then 32-bit label hashes, room for 10. The stock list is Close, CommandList and SkillConfirm. `SaveCardButton` appends `CardIds.SaveCardLabel` once before the original runs. |
+| Footer list | `SetCharacterDetailsFooter` builds the Character Details footer from a static list loaded by the `mov rbx, [rip + disp32]` at `SetCharacterDetailsFooter+0x36`: a 64-bit count, then 32-bit label hashes, room for 10. The stock list is Close, CommandList and SkillConfirm. `SaveCardButton` appends `CardLayout.Footer.SaveCardLabel` once before the original runs. |
 | Text | "Take Photo", the stock text of `TXT_PAU_PHT_SHOOT`, the photo mode shutter's prompt, in the loaded language. |
 | Button | 1 on the keyboard, L3 on a controller. |
 
-A footer button's shortcut enum is its `guide_button.msg` index minus 1; Save Card's is `CardIds.SaveCardButton` (12).
+A footer button's shortcut enum is its `guide_button.msg` index minus 1; Save Card's is `CardLayout.Footer.SaveCardButton` (12).
 
 ## Guide table
 

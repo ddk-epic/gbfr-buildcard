@@ -10,7 +10,8 @@ Each row shows the sigil's two traits, each with its icon and name, side by side
 edge in the summon rows' gold. The sigil's own icon and name are hidden. A trait name is cut to one line, ending in the
 game's ellipsis when it does not fit its column.
 
-`CardIds.SigilTraitNames` holds each row's two names' Ids, and `CardIds.SigilTraitNameWidth` their wrap width.
+`CardLayout.Gear.SigilTraitNames` holds each row's two names' Ids, and `CardLayout.Gear.SigilTraitNameWidth` their wrap
+width.
 
 ## Implementation
 

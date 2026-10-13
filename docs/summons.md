@@ -12,7 +12,7 @@ art, and the summon's trait and equip bonus rows, the trait's level after its na
 The art sits under `bc_smn_art`, a mask with `bc_smn_art_mask` over the cell's last third, the summon's icon centred
 on it.
 
-`CardIds.SummonSlots` holds the four cells' Ids.
+`CardLayout.Summons.Slots` holds the four cells' Ids.
 
 ## Implementation
 

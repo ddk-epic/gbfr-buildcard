@@ -9,8 +9,8 @@ namespace gbfr.qol.buildcard.Hooks;
 // Finds UI objects and their components and shows or hides objects.
 public unsafe class UiObjects
 {
-    private const uint Status01 = 0xD54E236E;  // name hash
     private const int MaxObjects = 0x4000;
+    private const uint FnvOffset = 0x811C9DC5, FnvPrime = 0x01000193;
 
     private readonly ILogger _logger;
     private readonly Vtables _vtables;
@@ -47,7 +47,7 @@ public unsafe class UiObjects
         return objects;
     }
 
-    public bool IsOnCard(CharaInfo charaInfo) => charaInfo.Object is { NameHash: Status01 };
+    public bool IsOnCard(CharaInfo charaInfo) => charaInfo.Object is { NameHash: CardLayout.Status01.NameHash };
 
     // The objects under root, root included, whose name hash is one of names
     public List<UiObject> FindByName(UiObject root, params uint[] names)
@@ -62,6 +62,26 @@ public unsafe class UiObjects
             PushChildren(pending, obj);
         }
         return found;
+    }
+
+    // FNV-1a over each object's Id and name hash in Id order, as codegen.py; 0 for a missing Id
+    public static uint PrefabHash(Dictionary<int, UiObject> objects)
+    {
+        uint hash = FnvOffset;
+        for (int id = 0; id < objects.Count; id++)
+        {
+            if (!objects.TryGetValue(id, out UiObject obj))
+                return 0;
+            hash = Fnv(Fnv(hash, (uint)id), obj.NameHash);
+        }
+        return hash;
+    }
+
+    private static uint Fnv(uint hash, uint value)
+    {
+        for (int i = 0; i < 4; i++, value >>= 8)
+            hash = (hash ^ (value & 0xFF)) * FnvPrime;
+        return hash;
     }
 
     private static void PushChildren(Stack<UiObject> pending, UiObject obj)

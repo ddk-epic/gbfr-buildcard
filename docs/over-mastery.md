@@ -13,9 +13,8 @@ when the game shows one; the row's own plus icon, number and percent sign are hi
 content width and cut to two lines, the second ending in the game's ellipsis; the two lines are centred on the row. Its lines are spaced at
 `LineSpacing` -6, and -40 through the `LanguageSetter`'s Japanese overwrite.
 
-`CardIds.OverMasteryRows` holds the four rows' Ids, `CardIds.OverMasteryNames` their names' Ids,
-`CardIds.OverMasteryValues` each row's plus icon, number and percent sign Ids, and `CardIds.OverMasteryNameWidth` the
-names' wrap width.
+`CardLayout.OverMastery.Rows` holds the four rows' Ids, `Names` their names' Ids, `Values` each row's plus icon,
+number and percent sign Ids, and `NameWidth` the names' wrap width.
 
 ## Implementation
 

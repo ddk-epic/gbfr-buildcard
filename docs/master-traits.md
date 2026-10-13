@@ -68,9 +68,10 @@ are solved from.
 | `bc_mt_{s}_{r}_{c}_base` | Cell `c` of rank `r`'s unpicked base, in each palette. |
 | `bc_mt_{s}_{r}_{c}_picked` | Cell `c` of rank `r`'s picked base and outline, in each palette, inactive in the file. |
 
-`CardIds.g.cs` holds these objects' Ids: `PerkNames`, `PerkStars`, `StyleTitles`, `Scenes`, `Cells`, `CaptainCells`,
-`Palettes`, `RankCounts`, `RankBudgets`, `CellOn`, `CellOff`, `CellBases` and `CellPicked`. A palette's index is its
-`MasterTraitsPalette` value.
+`CardLayout.MasterTraits` holds these objects' Ids: `PerkNames`, `PerkStars`, `StyleTitles` and `Scenes`, and `Boards`,
+the normal and the captain's board, each with its root, its group per palette and, per style and rank, the count, the
+budget and each cell's on and off texts and picked and unpicked bases per palette. A palette's index is its
+`MasterTraitsPalette` value. `CellTextWidth` and `CellIconScale` (0.7 of the game's icon size) size the cell texts.
 
 ## Implementation
 

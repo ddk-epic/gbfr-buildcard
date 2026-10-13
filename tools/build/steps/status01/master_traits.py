@@ -1,4 +1,5 @@
 # Lays out the master traits board like the game's Master Traits menu, with a hidden captain board of 14 EX cells.
+from codegen import Record
 from model.components import CENTER, LEFT, RECT, RIGHT, image, mask, rect, single, text
 from model.prefab import copy, f
 from steps.layout import CARD_H, CARD_W, MASTER_TRAITS, OUTLINE, card, mt_clip, section
@@ -125,6 +126,7 @@ LEFT_X, TOP_Y, WIDTH, HEIGHT = MASTER_TRAITS
 COLUMN_W = (WIDTH - 2 * COLUMN_GAP) / 3
 CELL_W = (COLUMN_W - 2 * (PANEL_X + CELLS_X) - CELL_GAP) / 2
 CELL_TEXT_W = CELL_W - CELL_TEXT_LEFT - CELL_TEXT_RIGHT
+CELL_ICON_SCALE = 0.7  # times the game's icon size
 CELL_K = CELL_H / GAME_CELL_H  # the cell images' scale
 
 
@@ -450,28 +452,28 @@ def apply(ctx):
     captain, captain_groups = grid(board, "bc_mt_cells_captain", CAPTAIN_SLOTS, captain_ranks(stock), False)
 
     perk_rows = [perk_row.child(f"bc_mt_perk_{s}") for s in range(STYLES)]
-    ctx.export("PerkNames", perk_names)
-    ctx.export("PerkStars", [[row.find(f"base0{k + 1}/icon0{k + 1}_add") for k in range(3)] for row in perk_rows])
-    ctx.export("StyleTitles", titles)
-    ctx.export("Cells", cells)
-    ctx.export("CaptainCells", captain)
-    ctx.export("Scenes", scenes)
-    ctx.export("Palettes", [[cell_groups[palette], captain_groups[palette]] for palette in PALETTES])
-    boards = [(cells, SLOTS), (captain, CAPTAIN_SLOTS)]
+    ctx.export("MasterTraits.PerkNames", perk_names)
+    ctx.export("MasterTraits.PerkStars", [[row.find(f"base0{k + 1}/icon0{k + 1}_add") for k in range(3)] for row in perk_rows])
+    ctx.export("MasterTraits.StyleTitles", titles)
+    ctx.export("MasterTraits.Scenes", scenes)
+    ctx.export("MasterTraits.Boards", [board_ids(cells, [cell_groups[p] for p in PALETTES], SLOTS),
+                                       board_ids(captain, [captain_groups[p] for p in PALETTES], CAPTAIN_SLOTS)])
+    ctx.export("MasterTraits.CellTextWidth", int(CELL_TEXT_W))
+    ctx.export("MasterTraits.CellIconScale", CELL_ICON_SCALE)
 
-    def cell_nodes(suffix, containers=(cells, captain)):
-        return [[[[container.child(f"bc_mt_{s}_{r}_{c}_{suffix}") for c in range(slots[r])] for r in range(len(slots))]
-                 for s in range(STYLES)] for container, slots in zip(containers, (SLOTS, CAPTAIN_SLOTS))]
 
-    def palette_cell_nodes(suffix):
-        return [cell_nodes(suffix, (cell_groups[palette], captain_groups[palette])) for palette in PALETTES]
-    def count_nodes(part):
-        return [[[container.child(f"bc_mt_{s}_{r}_count").child(f"bc_mt_{s}_{r}_{part}") for r in range(len(SLOTS))]
-                 for s in range(STYLES)] for container, _ in boards]
-    ctx.export("RankCounts", count_nodes("spent"))
-    ctx.export("RankBudgets", count_nodes("budget"))
-    ctx.export("CellPicked", palette_cell_nodes("picked"))
-    ctx.export("CellBases", palette_cell_nodes("base"))
-    ctx.export("CellOn", cell_nodes("on"))
-    ctx.export("CellOff", cell_nodes("off"))
-    ctx.export("CellTextWidth", int(CELL_TEXT_W))
+def board_ids(container, groups, slots):
+    # a board's objects; groups by palette
+    def cell(s, r, c):
+        name = f"bc_mt_{s}_{r}_{c}"
+        return Record("MasterTraits.Cell", On=container.child(f"{name}_on"), Off=container.child(f"{name}_off"),
+                      Picked=[group.child(f"{name}_picked") for group in groups],
+                      Base=[group.child(f"{name}_base") for group in groups])
+
+    def rank(s, r):
+        count = container.child(f"bc_mt_{s}_{r}_count")
+        return Record("MasterTraits.Rank", Count=count.child(f"bc_mt_{s}_{r}_spent"),
+                      Budget=count.child(f"bc_mt_{s}_{r}_budget"), Cells=[cell(s, r, c) for c in range(slots[r])])
+
+    return Record("MasterTraits.Board", Root=container, Palettes=groups,
+                  Styles=[[rank(s, r) for r in range(len(slots))] for s in range(STYLES)])

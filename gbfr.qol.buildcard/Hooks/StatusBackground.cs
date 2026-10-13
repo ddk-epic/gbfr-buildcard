@@ -99,8 +99,8 @@ public unsafe class StatusBackground
             return true;
         if (_controller?.Object is not { } background)
             return false;
-        _stock = [.. _objects.FindByName(background, (uint)CardIds.StockPanel, (uint)CardIds.StockBackdrop, (uint)CardIds.StockLines)];
-        _card = [.. _objects.FindByName(background, (uint)CardIds.CardPanel, (uint)CardIds.CardLines)];
+        _stock = [.. _objects.FindByName(background, CardLayout.Background.StockPanel, CardLayout.Background.StockBackdrop, CardLayout.Background.StockLines)];
+        _card = [.. _objects.FindByName(background, CardLayout.Background.CardPanel, CardLayout.Background.CardLines)];
         if (_stock.Length == 3 && _card.Length == 2)
             return true;
         _logger.WriteLine($"[gbfr.qol.buildcard] chr_status_bg01 has {_stock.Length} stock and {_card.Length} card objects, not 3 and 2", Color.Red);

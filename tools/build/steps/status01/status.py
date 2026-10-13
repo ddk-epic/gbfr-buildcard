@@ -192,5 +192,5 @@ def apply(ctx):
     bottom, texts = masteries_block(status, status.find("loc_crt/crt_text01"))
     status_top = status_block(status, bottom)
     badges(base, status_top)
-    ctx.export("MasteryTexts", texts)
-    ctx.export("CharaName", base.find("loc_name01/name01_01"))
+    ctx.export("Status.MasteryTexts", texts)
+    ctx.export("Status.CharaName", base.find("loc_name01/name01_01"))

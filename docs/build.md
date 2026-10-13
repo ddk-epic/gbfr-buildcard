@@ -1,8 +1,8 @@
 # Prefab build
 
 `tools/build/build.py` writes the mod's edited prefabs, `status01` and `chr_status_bg01`, their asset lists, the footer
-guide table `ui/table/guide_button.msg` with the Save Card row, and `gbfr.qol.buildcard/Generated/CardIds.g.cs`, the Ids
-of the objects `CardWriter` sets and the constants the mod shares with the build. The outputs are committed, so
+guide table `ui/table/guide_button.msg` with the Save Card row, and `gbfr.qol.buildcard/Generated/CardLayout.g.cs`, the
+Ids of the objects `CardWriter` sets and the constants the mod shares with the build. The outputs are committed, so
 building the mod needs neither Python nor the game's files; the build steps are the source, and the outputs are never
 edited by hand.
 
@@ -21,8 +21,11 @@ python -m unittest discover -s tests -t .    # from tools/build
 1. Each prefab starts from stock (`start.py`, which also adds the card's container `loc_buildcard`), then each step
    in `build.py`'s `STEPS` changes it, in order.
 2. The prefabs are written with Ids in depth-first order, assigned only now: steps never see or use Ids.
-3. `codegen.py` writes the exported objects' Ids and `status01`'s object count to `CardIds.g.cs`. `CardWriter` finds
-   the objects by these Ids in `status01`'s tree ([ui.md](ui.md#ui-objects)), and writes nothing when the count differs.
+3. `codegen.py` writes the exports to `CardLayout.g.cs`, each export key's section (`MasterTraits.Boards`) as a nested
+   class, with `status01`'s object count and prefab hash: FNV-1a over each object's Id and the hash of its
+   unquoted name (`'loc_ring '` is `loc_ring `), in Id order.
+   `CardWriter` finds the objects by these Ids in `status01`'s tree ([ui.md](ui.md#ui-objects)), and writes nothing
+   when the tree's hash differs.
 4. `lists.py` writes each prefab's asset list, the textures, atlases, materials, animations, image data and language
    data the game loads before building it: stock's list, then the assets the prefab names, then the stock lists a
    step merged with `ctx.merge_list`, except their animations. An asset missing from the list isn't loaded; a missing
@@ -51,7 +54,7 @@ A step is a module with `apply(ctx)`, listed in `STEPS`. `ctx` (`context.py`) ha
 |---|---|
 | `ctx.prefab("status01")` | the prefab being built |
 | `ctx.stock(name)` | a fresh copy of a stock prefab |
-| `ctx.export("SummonSlots", [node, ...])` | the nodes' Ids in `CardIds.g.cs`, as a constant or nested arrays |
+| `ctx.export("Summons.Slots", [node, ...])` | the value in `CardLayout.g.cs`: a node as its Id, a list as an array, an int, a float, a `Hash` as a uint, a `Record("Section.Type", **fields)` as a record struct |
 | `ctx.merge_list("status01", "equip01_info02")` | merges a stock list into the prefab's asset list, for assets the game loads through code |
 
 Objects are `Node`s (`model/prefab.py`):

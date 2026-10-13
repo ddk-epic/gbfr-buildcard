@@ -42,10 +42,6 @@ public unsafe class SaveCardButton
     private const uint InputEnabled = 0x1;
     private const uint InputButtons = 0x4;
 
-    // name hash
-    private const uint Status01 = 0xD54E236E;
-    private const int NameHash = 0x1C4;
-
     // the mode a Shortcut without a context passes
     private const uint DefaultMode = 3;
 
@@ -98,7 +94,7 @@ public unsafe class SaveCardButton
         if (_input == null || *_input == 0 || _getButtonBits == null)
             return false;
         nint input = *_input;
-        uint mask = _getButtonBits(*(uint*)(input + InputContext), CardIds.SaveCardButton, 1, DefaultMode);
+        uint mask = _getButtonBits(*(uint*)(input + InputContext), CardLayout.Footer.SaveCardButton, 1, DefaultMode);
         bool down = *(int*)(input + InputLock) < 1
             && ((*(uint*)(input + HeldButtons) & mask) != 0 || (*(uint*)(input + HeldMenuKeys) & MenuKey) != 0);
         bool pressed = down && !_held;
@@ -117,7 +113,7 @@ public unsafe class SaveCardButton
         nint component = shortcut - UpdateableBase;
         try
         {
-            if (*(int*)(component + ButtonType) == CardIds.SaveCardButton && OnStatus01(component))
+            if (*(int*)(component + ButtonType) == CardLayout.Footer.SaveCardButton && OnStatus01(component))
                 _enabled = TakesInput(component);
         }
         catch (Exception e)
@@ -131,7 +127,7 @@ public unsafe class SaveCardButton
     private static bool OnStatus01(nint component)
     {
         nint obj = *(nint*)(component + ComponentObject);
-        return obj != 0 && *(uint*)(obj + NameHash) == Status01;
+        return obj != 0 && new UiObject(obj).NameHash == CardLayout.Status01.NameHash;
     }
 
     // UpdateShortcutInput's input check
@@ -149,10 +145,10 @@ public unsafe class SaveCardButton
         uint* labels = (uint*)(_labels + 1);
         for (long i = 0; i < count; i++)
         {
-            if (labels[i] == CardIds.SaveCardLabel)
+            if (labels[i] == CardLayout.Footer.SaveCardLabel)
                 return;
         }
-        labels[count] = CardIds.SaveCardLabel;
+        labels[count] = CardLayout.Footer.SaveCardLabel;
         *_labels = count + 1;
     }
 }

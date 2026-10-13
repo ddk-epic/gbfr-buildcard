@@ -10,9 +10,6 @@ namespace gbfr.qol.buildcard.Export;
 // Captures the card on Save Card and hands it to CardFile.
 public class CardExport
 {
-    private const int CanvasWidth = 3840;
-    private const int CanvasHeight = 2160;
-
     private const int HiddenFrames = 2;
 
     // milliseconds
@@ -121,7 +118,7 @@ public class CardExport
 
     // The card's shown name, empty when it has none
     private string CharaName(CharaInfo charaInfo) =>
-        _objects.Find(charaInfo) is { } objects && objects.TryGetValue(CardIds.CharaName, out UiObject name)
+        _objects.Find(charaInfo) is { } objects && objects.TryGetValue(CardLayout.Status.CharaName, out UiObject name)
             ? _text.Read(name)
             : "";
 
@@ -134,10 +131,10 @@ public class CardExport
 
     private static RectangleF CardRectF(int width, int height)
     {
-        float scale = Math.Min((float)width / CanvasWidth, (float)height / CanvasHeight);
-        float left = (width - CanvasWidth * scale) / 2 + (CanvasWidth - CardIds.CardWidth) / 2f * scale;
-        float top = (height - CanvasHeight * scale) / 2 + (CanvasHeight - CardIds.CardHeight) / 2f * scale - CardIds.CardY * scale;
-        return new RectangleF(left, top, CardIds.CardWidth * scale, CardIds.CardHeight * scale);
+        float scale = Math.Min((float)width / CardLayout.Canvas.Width, (float)height / CardLayout.Canvas.Height);
+        float left = (width - CardLayout.Canvas.Width * scale) / 2 + (CardLayout.Canvas.Width - CardLayout.Card.Width) / 2f * scale;
+        float top = (height - CardLayout.Canvas.Height * scale) / 2 + (CardLayout.Canvas.Height - CardLayout.Card.Height) / 2f * scale - CardLayout.Card.Y * scale;
+        return new RectangleF(left, top, CardLayout.Card.Width * scale, CardLayout.Card.Height * scale);
     }
 
     private static Rectangle CardRect(int width, int height) => Rectangle.Round(CardRectF(width, height));

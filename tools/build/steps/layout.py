@@ -1,6 +1,9 @@
 # Measurements and orders shared by the steps.
 from model.components import mask, rect
 
+# the UI's reference resolution
+CANVAS_W, CANVAS_H = 3840, 2160
+
 # loc_buildcard's size, in card units
 CARD_W, CARD_H = 3528, 1764
 

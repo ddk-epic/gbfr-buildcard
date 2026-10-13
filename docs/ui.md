@@ -21,7 +21,7 @@ A loaded prefab is a tree of `ui::Object`s, one per object in the file, `status0
 | `+0x100` | The prefab's root object. |
 | `+0x108` | The parent object. |
 | `+0x1C4` | The object's `Name`, hashed with the game's string hash (`status01`: `0xD54E236E`). |
-| `+0x1CC` | The object's `Id` from the file, an int32. `CardIds.g.cs` holds the Ids of the objects the mod writes to. |
+| `+0x1CC` | The object's `Id` from the file, an int32. `CardLayout.g.cs` holds the Ids of the objects the mod writes to. |
 | `+0x1D0`, `+0x1D1` | Active flags, both written by `SetObjectActive`. |
 
 `UiObjects.Find` walks the tree from the object the `CharaInfo` component is on and maps every object by its `Id`.

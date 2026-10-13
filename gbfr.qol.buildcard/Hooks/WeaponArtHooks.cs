@@ -19,13 +19,11 @@ public unsafe class WeaponArtHooks
     private const int CollectIndex = 5;
     private const string IsOpenStart = "48 8B 05 ?? ?? ?? ?? 48 8B 48 40 48 8B 50 48 48 39 D1";
 
-    private const uint NoKey = 0x887AE0B0;
-
     private readonly Vtables _vtables;
     private readonly ILogger _logger;
     private readonly CharacterDetailsMenu _menu;
     private Settings** _settings;
-    private uint _key = NoKey;
+    private uint _key = GameText.EmptyIdHash;
     private bool _alternate;
 
     private delegate byte IsOpen(nint loader);
@@ -63,7 +61,7 @@ public unsafe class WeaponArtHooks
         if (_settings == null || *_settings == null)
             return;
         ref var settings = ref **_settings;
-        _key = card.Weapon.MirageKey != NoKey && settings.ShowMirage != 0 ? card.Weapon.MirageKey : card.Weapon.Key;
+        _key = card.Weapon.MirageKey != GameText.EmptyIdHash && settings.ShowMirage != 0 ? card.Weapon.MirageKey : card.Weapon.Key;
         _alternate = card.Weapon.AlternateArt && settings.ShowAlternateArt != 0;
     }
 
@@ -98,7 +96,7 @@ public unsafe class WeaponArtHooks
     }
 
     // Whether the Character Details menu is open with a card filled.
-    private bool CardShown() => _key != NoKey && _menu.IsOpen;
+    private bool CardShown() => _key != GameText.EmptyIdHash && _menu.IsOpen;
 
     // ui::icon::LoadWeaponParty
     [StructLayout(LayoutKind.Explicit)]

@@ -22,7 +22,7 @@ public unsafe class CardWriter
     private delegate* unmanaged<nint, nint, void> _setOverMasteryLine;
     private delegate* unmanaged<nint, uint, void> _setSummonInfo;
     private readonly OverMasteryLine* _overMasteryLines = (OverMasteryLine*)Marshal.AllocHGlobal(sizeof(OverMasteryLine) * CharaBuild.OverMasteryLines);
-    private bool _loggedCount;
+    private bool _loggedHash;
 
     public CardWriter(CardContents contents, GameText text, MasterTraits masterTraits, UiObjects objects, Vtables vtables,
         ILogger logger)
@@ -50,11 +50,12 @@ public unsafe class CardWriter
         var objects = _objects.Find(charaInfo);
         if (objects == null)
             return;
-        if (objects.Count != CardIds.ObjectCount)
+        uint hash = UiObjects.PrefabHash(objects);
+        if (hash != CardLayout.Status01.PrefabHash)
         {
-            if (!_loggedCount)
-                _logger.WriteLine($"[gbfr.qol.buildcard] status01 has {objects.Count} objects, the build {CardIds.ObjectCount}: card not written", Color.Red);
-            _loggedCount = true;
+            if (!_loggedHash)
+                _logger.WriteLine($"[gbfr.qol.buildcard] status01 has {objects.Count} objects hashing to {hash:X8}, the build {CardLayout.Status01.ObjectCount} hashing to {CardLayout.Status01.PrefabHash:X8}: card not written", Color.Red);
+            _loggedHash = true;
             return;
         }
 

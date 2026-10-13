@@ -15,7 +15,7 @@ The labels are the Masteries screen's texts in the loaded language: `TXT_PAU_TTL
 title, and `TXT_PAU_TREE_TAB_WEAPON` (`0x8278DE48`), its Collection tab. Each number is the percentage the Masteries screen shows for that category. Offense and defense run from 0 to 150%:
 the base nodes fill 0–100% and the extension nodes 100–150%. Both texts are empty when the percentages are unavailable.
 
-`CardIds.MasteryTexts` holds the two texts' Ids.
+`CardLayout.Status.MasteryTexts` holds the two texts' Ids.
 
 ## Implementation
 

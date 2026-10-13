@@ -246,11 +246,11 @@ def apply(ctx):
     # the heading's text, set at runtime as equip01_info01's
     title = info.child("ttl01").child("ttl01_text01")
     title.drop_component("TextSetter")
-    ctx.export("WeaponTitle", title)
+    ctx.export("Gear.WeaponTitle", title)
 
     prefab.find("loc_status02/loc_chr_status02").set("Active", False)
     chara_info = prefab.root.component("CharaInfo")
     chara_info.set_refs("Weapon", [panel])
     chara_info.set_refs("Gem", sigil_rows)
-    ctx.export("SigilTraitNames", [[row.find(f"bc_trait0{n + 1}") for n in range(2)] for row in sigil_rows])
-    ctx.export("SigilTraitNameWidth", int(name_w + ELLIPSIS_ROOM))
+    ctx.export("Gear.SigilTraitNames", [[row.find(f"bc_trait0{n + 1}") for n in range(2)] for row in sigil_rows])
+    ctx.export("Gear.SigilTraitNameWidth", int(name_w + ELLIPSIS_ROOM))

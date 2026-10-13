@@ -2,6 +2,7 @@
 import os
 import sys
 
+from codegen import Hash
 from model.components import mask, single
 from model.prefab import copy
 from steps.layout import CARD_H, CARD_W
@@ -54,6 +55,6 @@ def apply(ctx):
     backdrop.place(pos=(x - pw / 2, ph / 2 - y), size=(TEX_W * kx, TEX_H * ky))
 
     panel.add_component(mask((MASK, MASK.rsplit("/", 1)[1])))
-    ctx.export("StockPanel", xxhash32_custom(STOCK_PANEL))
-    ctx.export("StockBackdrop", xxhash32_custom(bg01.child("bg02").name))
-    ctx.export("CardPanel", xxhash32_custom(CARD_PANEL))
+    ctx.export("Background.StockPanel", Hash(xxhash32_custom(STOCK_PANEL)))
+    ctx.export("Background.StockBackdrop", Hash(xxhash32_custom(bg01.child("bg02").name)))
+    ctx.export("Background.CardPanel", Hash(xxhash32_custom(CARD_PANEL)))

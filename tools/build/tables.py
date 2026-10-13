@@ -5,6 +5,8 @@ import sys
 
 import msgpack
 
+from codegen import Hash
+
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data"))
 from hashing import xxhash32_custom  # noqa: E402
 
@@ -41,6 +43,6 @@ def apply(ctx):
     table = msgpack.unpackb(ctx.stock_bytes("guide_button.msg"), raw=False)
     table["GuideList"]["datas_"].append(row())
     ctx.binaries["guide_button"] = (OUTPUT, pack(table))
-    ctx.export("SaveCardLabel", xxhash32_custom(LABEL))
+    ctx.export("Footer.SaveCardLabel", Hash(xxhash32_custom(LABEL)))
     # the Shortcut enum counts from one below the guide table's
-    ctx.export("SaveCardButton", BUTTON[1] - 1)
+    ctx.export("Footer.SaveCardButton", BUTTON[1] - 1)

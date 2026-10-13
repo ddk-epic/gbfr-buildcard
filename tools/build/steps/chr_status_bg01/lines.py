@@ -1,4 +1,5 @@
 # Adds the card's copy of the decoration lines, each vertical line as far from the card as its horizontal one, hidden.
+from codegen import Hash
 from model.prefab import copy
 from steps.chr_status_bg01.backdrop import CARD_Y, xxhash32_custom
 from steps.layout import CARD_H, CARD_W
@@ -22,5 +23,5 @@ def apply(ctx):
         gap = side * (y - CARD_Y) - CARD_H / 2
         line = lines.child(vertical)
         line.place(pos=(side * (CARD_W / 2 + gap), line.vec("Position")[1]))
-    ctx.export("StockLines", xxhash32_custom(stock.name))
-    ctx.export("CardLines", xxhash32_custom(CARD_LINES))
+    ctx.export("Background.StockLines", Hash(xxhash32_custom(stock.name)))
+    ctx.export("Background.CardLines", Hash(xxhash32_custom(CARD_LINES)))

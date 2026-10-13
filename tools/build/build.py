@@ -1,5 +1,5 @@
 # Usage: python build.py [--stock <dir>] [--check [--tolerance <t>]]
-# Builds the mod's prefabs, their asset lists, the footer guide table and Generated/CardIds.g.cs from the steps below.
+# Builds the mod's prefabs, their asset lists, the footer guide table and Generated/CardLayout.g.cs from the steps below.
 import argparse
 import difflib
 import os
@@ -37,7 +37,7 @@ def main():
     stale = False
     outputs = [(name, path, ctx.prefab(name).text()) for name, path in TARGETS.items()]
     outputs += [(f"{name}.list", path.replace(".prfb.", ".list."), ctx.lists[name]) for name, path in TARGETS.items()]
-    outputs.append(("CardIds", codegen.OUTPUT, codegen.generate(ctx.prefab("status01"), ctx.exports)))
+    outputs.append(("CardLayout", codegen.OUTPUT, codegen.generate(ctx.prefab("status01"), ctx.exports)))
     outputs += [(name, path, data) for name, (path, data) in ctx.binaries.items()]
     for name, path, text in outputs:
         full = os.path.join(REPO, path)

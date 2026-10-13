@@ -14,7 +14,7 @@ HIDDEN = ["loc_icon_pos", "loc_guide_button", "loc_guide_button_key"]
 # block units
 ICON_SIZE = 184  # loc_icon_ability
 NAME_SIZE = 40
-CAP, SINK = 0.85, 0.45  # cap height, and a middle-aligned text's baseline below its centre, per font size
+CAP, BASELINE_DROP = 0.85, 0.45  # cap height, and below a middle-aligned text's centre, per font size
 NAME_H = 50  # one line
 SKILL_NAME_INSET = 23  # loc_elem01's left edge to its element icon
 ELEMENT_RAISE = 14  # the element icon's and text's centre above the bar's
@@ -23,7 +23,7 @@ NAME_GAP = 14  # the name's baseline to the element icon's top
 BAR_H = 28  # loc_elem01
 MIDDLE_LEFT = 3  # VerticalLayoutGroup.ChildAlignment
 
-baseline = NAME_H / 2 - SINK * NAME_SIZE  # above the name rect's bottom
+baseline = NAME_H / 2 - BASELINE_DROP * NAME_SIZE  # above the name rect's bottom
 icon_top = ELEMENT_RAISE + ELEMENT_H / 2  # above the bar's centre
 SPACING = round(icon_top - BAR_H / 2 + NAME_GAP - baseline)
 # bottom padding centres the visible stack, cap top to element icon bottom

@@ -20,7 +20,7 @@ MASTERIES_PAD_LEFT, MASTERIES_PAD_RIGHT = 31, 24
 STACK_GAP = GAP / 4  # between the status and masteries panels
 
 GAME_CAP = 0.85  # cap height per font size
-SINK = 0.45  # baseline below a middle-aligned text's centre, per font size
+BASELINE_DROP = 0.45  # below a middle-aligned text's centre, per font size
 
 LABEL_SIZE = 40
 NUMBER_SIZE = 44.8
@@ -78,7 +78,7 @@ def masteries_block(status, label):
         text.component("Text").set("Alignment", LEFT)
         font_sizes(text, MASTERIES_SIZE, round(MASTERIES_SIZE))
         text.set("Scale", (scale, scale, 1))
-        text.place(pos=(box.left + i * column, box.bottom + SINK * MASTERIES_SIZE * scale),
+        text.place(pos=(box.left + i * column, box.bottom + BASELINE_DROP * MASTERIES_SIZE * scale),
                    size=(column / scale, MASTERIES_SIZE))
         texts.append(text)
     return bottom - STACK_GAP, texts
@@ -103,7 +103,7 @@ def status_block(block, bottom):
     # y from the block's bottom edge
     bottom_baseline = (BORDER + PAD_Y) / scale
     top_baseline = bottom_baseline + value_cap + ROW_GAP / scale
-    top_centre, bottom_centre = top_baseline + SINK * LABEL_SIZE, bottom_baseline + SINK * LABEL_SIZE
+    top_centre, bottom_centre = top_baseline + BASELINE_DROP * LABEL_SIZE, bottom_baseline + BASELINE_DROP * LABEL_SIZE
 
     top = bottom - h * scale
     parent = block.parent
@@ -144,7 +144,7 @@ def status_block(block, bottom):
         number.component("Text").set("Margin", "0, 0, 0, 0")
 
     # numbers raised onto the labels' baseline
-    raised = SINK * (NUMBER_SIZE - LABEL_SIZE)
+    raised = BASELINE_DROP * (NUMBER_SIZE - LABEL_SIZE)
     numbers["hp"].place(pos=(-HP_NUM, ROW_H / 2 + raised))
     numbers["atk"].place(pos=(-HP_NUM, -ROW_H / 2 + raised))
     rows["crt"].child("loc_crt_num").place(pos=(right_w - CRT_NUM, ROW_H / 2 + raised))
@@ -155,7 +155,7 @@ def status_block(block, bottom):
     k = PERCENT_SIZE / 32
     percent_w = PERCENT_RECT[0] * k
     font_sizes(percent, PERCENT_SIZE, round(PERCENT_CJK_SIZE * NUMBER_SIZE / CJK_NUMBER_SIZE))
-    percent.place(pos=(UNIT_GAP / scale + percent_w, UNIT_RAISE / scale - SINK * (NUMBER_SIZE - PERCENT_SIZE)),
+    percent.place(pos=(UNIT_GAP / scale + percent_w, UNIT_RAISE / scale - BASELINE_DROP * (NUMBER_SIZE - PERCENT_SIZE)),
                   size=(percent_w, PERCENT_RECT[1] * k))
     return card(0, top)[1]
 

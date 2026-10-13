@@ -44,8 +44,7 @@ public unsafe class WeaponArt : IFeature
         _menu = menu;
     }
 
-    public Capability[] Requires =>
-        [_api.FillCharacterStatus, _api.EnableSkinViewApply, _api.LoadWeaponPartyIsOpen, _api.LoadWeaponPartyCollect];
+    public Capability[] Requires => [_api.EnableSkinViewApply, _api.LoadWeaponPartyIsOpen, _api.LoadWeaponPartyCollect];
 
     // Reads the skin view's address from the mov rax, [rip + disp32] at EnableSkinView vfunc 9.
     public void Start()

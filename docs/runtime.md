@@ -24,35 +24,37 @@ when the mod loads and found when the loader runs them, and the vtables and virt
 part of the mod that calls or hooks game code is an `IFeature` that lists the capabilities it requires and the ones it
 uses when found. `Features` starts once, at the first of: `GameApi.ScansFound`, raised when every signature is found,
 `OnModLoaderInitialized`, and the mod's load when every signature is found by then. It starts each feature in order
-whose required capabilities were all found. A feature left out does nothing; the others still start.
+whose required capabilities were all found and whose dependencies, features added before it, all started. A feature
+left out does nothing; the others still start.
 
-| Feature | Requires |
-|---|---|
-| `ControllerLifetimes` | Nothing; `ControllerStatus function 7`, `ControllerStatusBg function 7` and `ControllerInformationToast function 7` when found |
-| `UiTree` | `SetObjectActive` |
-| `TextTable` | `TextComponentSetText`, `TextLookup`; `SetOverMasteryLine` when found, for the loaded language |
-| `TextService` | `TextComponentSetText`, `Text vtable`; the wrapping functions when found |
-| `TraitTables` | `SetSkillBoardDescription` |
-| `MasteryReader` | `MasteryPercent`, `SetMasteryPercents` |
-| `OverMasteryParams` | `SetOverMasteryLine` |
-| `MenuState` | `StartFlow`, `EndFlow`, `FindView`, `OpenView`, `CloseView` |
-| `CharaStatusHooks` | `FillCharacterStatus` |
-| `WeaponArt` | `FillCharacterStatus`, `EnableSkinView function 9`, `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |
-| `OverMasteryBinder` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |
-| `SummonsBinder` | `SetSummonInfo`, `SummonInfo vtable` |
-| `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8`, `ControllerStatusBg function 7` |
-| `Input` | `UpdateShortcutInput`, `GetButtonBits` |
-| `SaveCardFooter` | `SetCharacterDetailsFooter` |
-| `StatusGuide` | `ControllerStatusGuide function 21`, `ControllerStatusBg function 7` |
-| `NoticeSink` | `PushInfo` |
-| `SavedNotice` | Nothing; each controller's `ShowInfo` (function 35) and destructor (function 7) when found |
-| `CardView` | `FillCharacterStatus`, `SetObjectActive`, `TextComponentSetText`, `Text vtable` |
-| `SwapChainHooks` | Nothing; it finds `Present` itself ([export](export.md#frame-timing)) |
-| `ExportController` | `Input`'s and `MenuState`'s capabilities and `Present`, which `SwapChainHooks` found and hooked |
+| Feature | Requires | Depends on |
+|---|---|---|
+| `ControllerLifetimes` | Nothing; `ControllerStatus function 7`, `ControllerStatusBg function 7` and `ControllerInformationToast function 7` when found |  |
+| `UiTree` | `SetObjectActive` |  |
+| `TextTable` | `TextComponentSetText`, `TextLookup`; `SetOverMasteryLine` when found, for the loaded language |  |
+| `TextService` | `TextComponentSetText`, `Text vtable`; the wrapping functions when found |  |
+| `TraitTables` | `SetSkillBoardDescription` |  |
+| `MasteryReader` | `MasteryPercent`, `SetMasteryPercents` |  |
+| `OverMasteryParams` | `SetOverMasteryLine` |  |
+| `MenuState` | `StartFlow`, `EndFlow`, `FindView`, `OpenView`, `CloseView` |  |
+| `CharaStatusHooks` | `FillCharacterStatus` |  |
+| `WeaponArt` | `EnableSkinView function 9`, `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |  |
+| `OverMasteryBinder` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |  |
+| `SummonsBinder` | `SetSummonInfo`, `SummonInfo vtable` |  |
+| `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8`, `ControllerStatusBg function 7` | `ControllerLifetimes` |
+| `Input` | `UpdateShortcutInput`, `GetButtonBits` |  |
+| `SaveCardFooter` | `SetCharacterDetailsFooter` |  |
+| `StatusGuide` | `ControllerStatusGuide function 21`, `ControllerStatusBg function 7` | `ControllerLifetimes` |
+| `NoticeSink` | `PushInfo` |  |
+| `SavedNotice` | Nothing; each controller's `ShowInfo` (function 35) and destructor (function 7) when found | `ControllerLifetimes` |
+| `CardView` | Nothing | `UiTree` |
+| `SwapChainHooks` | Nothing; it finds and hooks `Present` itself ([export](export.md#frame-timing)) |  |
+| `ExportController` | Nothing | `Input`, `MenuState`, `SwapChainHooks` |
 
 | Log line | Logged |
 |---|---|
-| `<feature> disabled: <capabilities> not found` | At start, for each feature left out. |
+| `<feature> disabled: <capabilities> not found` | At start, for each feature left out for its capabilities. |
+| `<feature> disabled: <features> not started` | At start, for each feature left out for its dependencies. |
 | `<feature> failed to start: <exception>` | At start, when a feature throws while starting. |
 | `<feature> started without <capabilities>` | At start, for each started feature with capabilities it uses when found that were not found. |
 

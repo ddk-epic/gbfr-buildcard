@@ -1,4 +1,3 @@
-using System.Drawing;
 using System.Runtime.InteropServices;
 
 using Reloaded.Hooks.Definitions;
@@ -42,26 +41,14 @@ public unsafe partial class SwapChainHooks : IFeature
     // the swapchain's methods are found at start
     public Capability[] Requires => [];
 
-    // found and hooked at start
-    public Capability PresentFunction { get; } = new("Present");
-
-    public bool IsHooked => PresentFunction.Found;
+    public bool IsHooked { get; private set; }
 
     public void Start()
     {
-        nint present, present1;
-        try
-        {
-            FindMethods(out present, out present1);
-        }
-        catch (Exception e)
-        {
-            _logger.WriteLine($"[gbfr.qol.buildcard] Swapchain methods not found: {e.Message}", Color.Red);
-            return;
-        }
+        FindMethods(out nint present, out nint present1);
         _presentHook = _hooks.CreateHook<Present>(PresentImpl, present).Activate();
         _present1Hook = _hooks.CreateHook<Present1>(Present1Impl, present1).Activate();
-        PresentFunction.Address = present;
+        IsHooked = true;
         _logger.WriteLine("[gbfr.qol.buildcard] Swapchain hooked");
     }
 

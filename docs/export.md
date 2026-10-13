@@ -197,7 +197,7 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 | `Card not added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and the game runs without Steam or Steam refused the file. |
 | `Card export failed: <reason>` | When resizing, serializing or writing the file fails. |
 | `Presenting handler UiFrameCapture.OnPresenting failed: <exception>` | When the redraw or the read throws on the render thread; the overlays are shown and nothing is saved. |
-| `Swapchain methods not found: <reason>` | When `SwapChainHooks` starts and the throwaway D3D11 swapchain cannot be made; there is no export then. |
+| `SwapChainHooks failed to start: <exception>` | When the throwaway D3D11 swapchain cannot be made; `ExportController` is left out and there is no export. |
 | `Card export failed: no frame was captured` | When no redraw starts within 1000 ms of the press. |
 
 The redraw line's fields:

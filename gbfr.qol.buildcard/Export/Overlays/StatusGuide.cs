@@ -40,12 +40,11 @@ public class StatusGuide : IOverlay, IFeature
 
     public Capability[] Requires => [_api.ControllerStatusGuideSetUpPageArrows, _api.ControllerStatusBgDestroy];
 
-    public void Start()
-    {
-        if (_lifetimes.Hooks(_api.ControllerStatusBgDestroy))
-            _setUpPageArrowsHook = _hooks.CreateHook<SetUpPageArrowsFn>(SetUpPageArrowsImpl,
-                _api.ControllerStatusGuideSetUpPageArrows.Address).Activate();
-    }
+    public IFeature[] DependsOn => [_lifetimes];
+
+    public void Start() =>
+        _setUpPageArrowsHook = _hooks.CreateHook<SetUpPageArrowsFn>(SetUpPageArrowsImpl,
+            _api.ControllerStatusGuideSetUpPageArrows.Address).Activate();
 
     // Shows the prompts only on the status page
     public void Show(bool shown)

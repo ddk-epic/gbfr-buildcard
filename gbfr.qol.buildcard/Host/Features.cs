@@ -25,6 +25,7 @@ public sealed class Features
     {
         if (Interlocked.Exchange(ref _started, 1) != 0)
             return;
+        var started = new HashSet<IFeature>();
         foreach (var feature in _features)
         {
             string name = feature.GetType().Name;
@@ -32,6 +33,12 @@ public sealed class Features
             if (missing.Count != 0)
             {
                 _logger.WriteLine($"[gbfr.qol.buildcard] {name} disabled: {string.Join(", ", missing)} not found", Color.Red);
+                continue;
+            }
+            var stopped = feature.DependsOn.Where(dependency => !started.Contains(dependency)).Select(dependency => dependency.GetType().Name).ToList();
+            if (stopped.Count != 0)
+            {
+                _logger.WriteLine($"[gbfr.qol.buildcard] {name} disabled: {string.Join(", ", stopped)} not started", Color.Red);
                 continue;
             }
             try
@@ -43,6 +50,7 @@ public sealed class Features
                 _logger.WriteLine($"[gbfr.qol.buildcard] {name} failed to start: {e}", Color.Red);
                 continue;
             }
+            started.Add(feature);
             var skipped = feature.Optional.Where(capability => !capability.Found).Select(capability => capability.Name).Distinct().ToList();
             if (skipped.Count != 0)
                 _logger.WriteLine($"[gbfr.qol.buildcard] {name} started without {string.Join(", ", skipped)}", Color.Yellow);
@@ -54,6 +62,8 @@ public sealed class Features
 public interface IFeature
 {
     Capability[] Requires { get; }
+
+    IFeature[] DependsOn => [];
 
     // used when found
     Capability[] Optional => [];

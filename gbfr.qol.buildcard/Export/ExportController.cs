@@ -44,7 +44,9 @@ public class ExportController : IFeature
         _overlays = overlays;
     }
 
-    public Capability[] Requires => [.. _input.Requires, .. _menu.Requires, _swapChain.PresentFunction];
+    public Capability[] Requires => [];
+
+    public IFeature[] DependsOn => [_input, _menu, _swapChain];
 
     public void Start() => _gameThread.Tick += OnTick;
 

@@ -44,11 +44,10 @@ public unsafe class StatusBackground : IFeature
     public Capability[] Requires =>
         [_api.ControllerStatusBgVtable, _api.ControllerStatusBgSetUp, _api.ControllerStatusBgDestroy];
 
-    public void Start()
-    {
-        if (_lifetimes.Hooks(_api.ControllerStatusBgDestroy))
-            _setUpHook = _hooks.CreateHook<SetUpFn>(SetUpImpl, _api.ControllerStatusBgSetUp.Address).Activate();
-    }
+    public IFeature[] DependsOn => [_lifetimes];
+
+    public void Start() =>
+        _setUpHook = _hooks.CreateHook<SetUpFn>(SetUpImpl, _api.ControllerStatusBgSetUp.Address).Activate();
 
     private long SetUpImpl(nint controller)
     {

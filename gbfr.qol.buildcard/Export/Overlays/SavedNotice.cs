@@ -51,6 +51,8 @@ public unsafe class SavedNotice : IOverlay, IFeature
 
     public Capability[] Requires => [];
 
+    public IFeature[] DependsOn => [_lifetimes];
+
     public Capability[] Optional => [.. ShowInfos.SelectMany(pair => (Capability[])[pair.ShowInfo, pair.Destructor])];
 
     private (Capability ShowInfo, Capability Destructor)[] ShowInfos =>

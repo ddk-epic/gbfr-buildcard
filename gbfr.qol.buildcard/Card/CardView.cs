@@ -34,8 +34,9 @@ public class CardView : IFeature
         lifetimes.Destroyed += OnDestroyed;
     }
 
-    public Capability[] Requires =>
-        [_api.FillCharacterStatus, _api.SetObjectActive, _api.TextComponentSetText, _api.TextVtable];
+    public Capability[] Requires => [];
+
+    public IFeature[] DependsOn => [_tree];
 
     public void Start() => _session.Shown += OnShown;
 

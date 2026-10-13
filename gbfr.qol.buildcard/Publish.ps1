@@ -40,7 +40,7 @@ param (
 )
 
 $publishBuildDirectory = "Publish/Builds/CurrentVersion"
-$deltaDirectory = "Publish/Builds/LastVersion"     # Last published version of the mod
+$deltaDirectory = "Publish/Builds/LastVersion"
 
 $PublishGenericDirectory = "$PublishOutputDir/Generic"
 $PublishNuGetDirectory   = "$PublishOutputDir/NuGet"
@@ -50,6 +50,10 @@ $reloadedToolsPath = "./Publish/Tools/Reloaded-Tools"
 $updateToolsPath   = "./Publish/Tools/Update-Tools"
 $reloadedToolPath = "$reloadedToolsPath/Reloaded.Publisher.exe"
 $updateToolPath   = "$updateToolsPath/Sewer56.Update.Tool.dll"
+
+# Runs the .NET 5 tools on the newest installed runtime
+$previousRollForward = $env:DOTNET_ROLL_FORWARD
+$env:DOTNET_ROLL_FORWARD = "Major"
 $changelogFullPath = $null
 $readmeFullPath = $null
 if ($ChangelogPath) { $changelogFullPath = [System.IO.Path]::GetFullPath($ChangelogPath) }
@@ -235,6 +239,7 @@ if ($PublishGameBanana) {
 }
 
 Remove-Item $TempDirectory -Recurse -ErrorAction SilentlyContinue
+$env:DOTNET_ROLL_FORWARD = $previousRollForward
 
 Write-Host "Done."
 Write-Host "Upload the files in folder `"$PublishOutputDir`" to respective location or website."

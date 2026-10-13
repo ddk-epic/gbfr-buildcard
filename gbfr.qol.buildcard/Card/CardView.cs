@@ -9,28 +9,28 @@ using gbfr.qol.buildcard.Model;
 
 namespace gbfr.qol.buildcard.Card;
 
-// Writes the card to status01 through its binders: Write, then Layout.
+// Writes the card to status01 through its sections: Write, then Layout.
 public class CardView : IFeature
 {
     private readonly UiTree _tree;
     private readonly CardSession _session;
     private readonly ControllerLifetimes _lifetimes;
     private readonly GameApi _api;
-    private readonly ICardBinder[] _binders;
+    private readonly ICardSection[] _sections;
     private readonly ILogger _logger;
     private UiObject? _root;
     private Dictionary<int, UiObject>? _objects;  // null when the prefab hash differs
     private bool _loggedHash;
 
     public CardView(UiTree tree, CardSession session, ControllerLifetimes lifetimes, GameApi api, ILogger logger,
-        params ICardBinder[] binders)
+        params ICardSection[] sections)
     {
         _tree = tree;
         _session = session;
         _lifetimes = lifetimes;
         _api = api;
         _logger = logger;
-        _binders = binders;
+        _sections = sections;
         lifetimes.Destroyed += OnDestroyed;
     }
 
@@ -42,16 +42,16 @@ public class CardView : IFeature
 
     public void OnShown(CharaInfo charaInfo, BuildCard card)
     {
-        if (Bind(charaInfo) is not { } objects)
+        if (FindObjects(charaInfo) is not { } objects)
             return;
-        foreach (var binder in _binders)
-            binder.Write(objects, card);
-        foreach (var binder in _binders)
-            binder.Layout(objects, card);
+        foreach (var section in _sections)
+            section.Write(objects, card);
+        foreach (var section in _sections)
+            section.Layout(objects, card);
     }
 
     // status01's objects by Id, kept until its ControllerStatus is destroyed
-    private Dictionary<int, UiObject>? Bind(CharaInfo charaInfo)
+    private Dictionary<int, UiObject>? FindObjects(CharaInfo charaInfo)
     {
         if (charaInfo.Object is not { } root)
             return null;
@@ -83,7 +83,7 @@ public class CardView : IFeature
 }
 
 // Writes one section of the card.
-public interface ICardBinder
+public interface ICardSection
 {
     void Write(IReadOnlyDictionary<int, UiObject> objects, BuildCard card);
 

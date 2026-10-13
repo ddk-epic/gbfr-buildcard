@@ -2,7 +2,7 @@
 
 The build card's summons section, `bc_smn` in `status01`. It shows the character's four summon slots as cells in a
 2×2 grid. The layout is built by `tools/build/steps/status01/summons.py`; the cells are filled at runtime by
-`SummonsBinder`.
+`SummonsSection`.
 
 ## Display
 
@@ -17,7 +17,7 @@ on it.
 ## Implementation
 
 1. `CharaSnapshot.Decode` reads each slot's summon id, leaving out 0.
-2. `SummonsBinder` calls `SetSummonInfo` for every slot with the cell's `SummonInfo` component, found by its RTTI
+2. `SummonsSection` calls `SetSummonInfo` for every slot with the cell's `SummonInfo` component, found by its RTTI
    vtable (`.?AVSummonInfo@component@ui@@`), and the summon id, 0 for an empty slot.
 3. The cell's `SummonInfo` lists `loc_item01`, holding the band, name and art, and the trait and equip bonus rows in
    `Sets`, which `SetSummonInfo` hides for an empty slot.

@@ -4,10 +4,10 @@ using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Model;
 using gbfr.qol.buildcard.Sources;
 
-namespace gbfr.qol.buildcard.Card.Binders;
+namespace gbfr.qol.buildcard.Card.Sections;
 
 // Writes the weapon heading and wraps the skill names and sigil trait names the game filled.
-public class GearBinder : ICardBinder
+public class GearSection : ICardSection
 {
     private const uint WeaponTitleHash = 0x53185300;  // TXT_PAU_ITEM_WEAPON
     private const uint WeaponTitleSubId = 0xDE6482AF;  // equip01_info01
@@ -15,7 +15,7 @@ public class GearBinder : ICardBinder
     private readonly TextService _text;
     private readonly TextTable _table;
 
-    public GearBinder(TextService text, TextTable table)
+    public GearSection(TextService text, TextTable table)
     {
         _text = text;
         _table = table;

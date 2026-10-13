@@ -7,10 +7,10 @@ using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Model;
 using gbfr.qol.buildcard.Sources;
 
-namespace gbfr.qol.buildcard.Card.Binders;
+namespace gbfr.qol.buildcard.Card.Sections;
 
 // Fills the Over Mastery rows and writes each row's value after its name.
-public unsafe class OverMasteryBinder : ICardBinder, IFeature
+public unsafe class OverMasterySection : ICardSection, IFeature
 {
     private const string ValuePrefix = " +";
 
@@ -22,7 +22,7 @@ public unsafe class OverMasteryBinder : ICardBinder, IFeature
     private readonly OverMasteryLine* _lines = (OverMasteryLine*)Marshal.AllocHGlobal(sizeof(OverMasteryLine) * CharaSnapshot.OverMasteryLines);
     private readonly bool[] _filled = new bool[CharaSnapshot.OverMasteryLines];
 
-    public OverMasteryBinder(TextService text, TextTable table, UiTree tree, GameApi api)
+    public OverMasterySection(TextService text, TextTable table, UiTree tree, GameApi api)
     {
         _text = text;
         _table = table;

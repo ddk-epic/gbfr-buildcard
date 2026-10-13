@@ -7,7 +7,7 @@ using gbfrelink.utility.manager.Interfaces;
 using gbfr.qol.buildcard.Template;
 using gbfr.qol.buildcard.Configuration;
 using gbfr.qol.buildcard.Card;
-using gbfr.qol.buildcard.Card.Binders;
+using gbfr.qol.buildcard.Card.Sections;
 using gbfr.qol.buildcard.Export;
 using gbfr.qol.buildcard.Export.Overlays;
 using gbfr.qol.buildcard.Export.Sinks;
@@ -128,14 +128,14 @@ public class Mod : ModBase
         _charaStatusHooks.Filled += _weaponArt.OnFilled;
         _cardSession.Shown += _weaponArt.OnShown;
 
-        var overMasteryBinder = new OverMasteryBinder(_textService, _textTable, _uiTree, _api);
-        var summonsBinder = new SummonsBinder(_uiTree, _api);
+        var overMasterySection = new OverMasterySection(_textService, _textTable, _uiTree, _api);
+        var summonsSection = new SummonsSection(_uiTree, _api);
         _cardView = new CardView(_uiTree, _cardSession, _lifetimes, _api, _logger,
-            new GearBinder(_textService, _textTable),
-            new MasterTraitsBinder(_textService, _traitTables, _uiTree, () => _configuration.MasterTraitsPalette),
-            new MasteriesBinder(_textService, _textTable),
-            overMasteryBinder,
-            summonsBinder);
+            new GearSection(_textService, _textTable),
+            new MasterTraitsSection(_textService, _traitTables, _uiTree, () => _configuration.MasterTraitsPalette),
+            new MasteriesSection(_textService, _textTable),
+            overMasterySection,
+            summonsSection);
         _statusBackground = new StatusBackground(_hooks, _api, _lifetimes, _logger, _uiTree, _menu);
 
         _input = new Input(_hooks, _api, _logger);
@@ -158,7 +158,7 @@ public class Mod : ModBase
         _swapChainHooks.Presenting += _renderThread.OnPresenting;
 
         _features.Add(_lifetimes, _uiTree, _textTable, _textService, _traitTables, _masteryReader, _overMasteryParams, _menu,
-            _charaStatusHooks, _weaponArt, overMasteryBinder, summonsBinder, _cardView, _statusBackground, _input,
+            _charaStatusHooks, _weaponArt, overMasterySection, summonsSection, _cardView, _statusBackground, _input,
             _saveCardFooter, _statusGuide, _noticeSink, _savedNotice, _swapChainHooks, _exportController);
         _api.ScansFound += _features.Start;
         _modLoader.OnModLoaderInitialized += _features.Start;

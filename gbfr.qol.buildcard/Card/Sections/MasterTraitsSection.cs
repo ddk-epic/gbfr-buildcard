@@ -5,17 +5,17 @@ using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Model;
 using gbfr.qol.buildcard.Sources;
 
-namespace gbfr.qol.buildcard.Card.Binders;
+namespace gbfr.qol.buildcard.Card.Sections;
 
 // Writes the Master Traits board in the configured palette.
-public class MasterTraitsBinder : ICardBinder
+public class MasterTraitsSection : ICardSection
 {
     private readonly TextService _text;
     private readonly TraitTables _traitTables;
     private readonly UiTree _tree;
     private readonly Func<MasterTraitsPalette> _palette;
 
-    public MasterTraitsBinder(TextService text, TraitTables traitTables, UiTree tree, Func<MasterTraitsPalette> palette)
+    public MasterTraitsSection(TextService text, TraitTables traitTables, UiTree tree, Func<MasterTraitsPalette> palette)
     {
         _text = text;
         _traitTables = traitTables;

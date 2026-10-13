@@ -2,7 +2,7 @@
 
 The build card's masteries panel, `bc_masteries` in `status01`, under the status panel. It shows the character's mastery
 percentages as the game's Masteries screen shows them. The panel is built by `tools/build/steps/status01/status.py`;
-its texts are written at runtime by `MasteryReader` and `MasteriesBinder`.
+its texts are written at runtime by `MasteryReader` and `MasteriesSection`.
 
 ## Display
 
@@ -22,7 +22,7 @@ the base nodes fill 0–100% and the extension nodes 100–150%. Both texts are 
 1. `MasteryReader.ReadPercents` calls `MasteryPercent` with the mastery manager for each of the four categories and the
    character key.
 2. `BuildCardAssembler` keeps the four percentages.
-3. `MasteriesBinder` looks up each label with `TextTable` (`TextLookup`), puts it before its two numbers and sets the texts with
+3. `MasteriesSection` looks up each label with `TextTable` (`TextLookup`), puts it before its two numbers and sets the texts with
    `TextComponentSetText`.
 
 ## Runtime data

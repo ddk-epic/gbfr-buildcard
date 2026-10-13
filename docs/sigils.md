@@ -19,7 +19,7 @@ The build points the `CharaInfo` reference `Gem` at the 12 rows, so `FillCharact
 `GemInfo`. Each trait's name is a `bc_trait01` or `bc_trait02` text, which the trait's `SkillInfo` fills through its
 `Names` reference. The sigil icon is dropped from `GemInfo`'s `Sets`.
 
-In the Layout phase, `GearBinder` sets each trait name again as it does the skill names, and cuts it to one line; see [text wrapping](ui.md#text-wrapping).
+In the Layout phase, `GearSection` sets each trait name again as it does the skill names, and cuts it to one line; see [text wrapping](ui.md#text-wrapping).
 
 ## Runtime data
 

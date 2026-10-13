@@ -13,7 +13,7 @@ How the mod's parts pass events to each other and which thread runs them.
 | `Game/` | Services on the game's UI: `UiTree`, `TextService`, `ControllerLifetimes`, `MenuState`, `Input`, `CharaStatusHooks`. |
 | `Sources/` | What the card reads from the game: `CharaSnapshot`, `TraitTables`, `MasteryReader`, `OverMasteryParams`, `TextTable`. |
 | `Model/` | `BuildCard`, `BuildCardAssembler`, `BuildCardJson`, `CardSession`. |
-| `Card/` | `CardView`, its binders in `Card/Binders/`, `StatusBackground`, `WeaponArt`. |
+| `Card/` | `CardView`, its sections in `Card/Sections/`, `StatusBackground`, `WeaponArt`. |
 | `Export/` | `ExportController`, `UiFrameCapture`, `UiRedraw`, `SaveCardFooter`; `StatusGuide` and `SavedNotice` in `Overlays/`, `Png`, `Jpeg` and `Resample` in `Encoders/`, `CardFile`, `SteamScreenshots` and `NoticeSink` in `Sinks/`. |
 | `Generated/` | `CardLayout.g.cs` ([build](build.md)). |
 
@@ -39,8 +39,8 @@ left out does nothing; the others still start.
 | `MenuState` | `StartFlow`, `EndFlow`, `FindView`, `OpenView`, `CloseView` |  |
 | `CharaStatusHooks` | `FillCharacterStatus` |  |
 | `WeaponArt` | `EnableSkinView function 9`, `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |  |
-| `OverMasteryBinder` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |  |
-| `SummonsBinder` | `SetSummonInfo`, `SummonInfo vtable` |  |
+| `OverMasterySection` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |  |
+| `SummonsSection` | `SetSummonInfo`, `SummonInfo vtable` |  |
 | `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8`, `ControllerStatusBg function 7` | `ControllerLifetimes` |
 | `Input` | `UpdateShortcutInput`, `StatusL3Action` |  |
 | `SaveCardFooter` | `SetCharacterDetailsFooter` |  |
@@ -120,15 +120,15 @@ dotnet test tests/gbfr.qol.buildcard.Tests
 finds its objects by Id; when their hash differs from `CardLayout.Status01.PrefabHash` it writes nothing to that
 instance ([build](build.md#build)). It keeps the objects until `ControllerLifetimes` raises `Destroyed` for the
 instance's `ControllerStatus`; without that destructor hooked it walks the tree at every fill. For each card it runs
-every binder's two phases.
+every section's two phases.
 
-1. Write: each binder writes its section's objects from the card.
-2. Layout: each binder wraps and joins the texts the game's fill and the Write phase set.
+1. Write: each section writes its objects from the card.
+2. Layout: each section wraps and joins the texts the game's fill and the Write phase set.
 
-| Binder | Write | Layout |
+| Section | Write | Layout |
 |---|---|---|
-| `GearBinder` | The weapon heading ([weapon](weapon.md#implementation)). | The skill names and sigil trait names ([skills](skills.md), [sigils](sigils.md)). |
-| `MasterTraitsBinder` | The Master Traits board ([master traits](master-traits.md#implementation)). | |
-| `MasteriesBinder` | The masteries texts ([masteries](masteries.md#implementation)). | |
-| `OverMasteryBinder` | The Over Mastery rows ([Over Mastery](over-mastery.md#implementation)). | Each row's value after its name. |
-| `SummonsBinder` | The summon cells ([summons](summons.md#implementation)). | |
+| `GearSection` | The weapon heading ([weapon](weapon.md#implementation)). | The skill names and sigil trait names ([skills](skills.md), [sigils](sigils.md)). |
+| `MasterTraitsSection` | The Master Traits board ([master traits](master-traits.md#implementation)). | |
+| `MasteriesSection` | The masteries texts ([masteries](masteries.md#implementation)). | |
+| `OverMasterySection` | The Over Mastery rows ([Over Mastery](over-mastery.md#implementation)). | Each row's value after its name. |
+| `SummonsSection` | The summon cells ([summons](summons.md#implementation)). | |

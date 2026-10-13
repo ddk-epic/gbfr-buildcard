@@ -4,10 +4,10 @@ using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Model;
 using gbfr.qol.buildcard.Sources;
 
-namespace gbfr.qol.buildcard.Card.Binders;
+namespace gbfr.qol.buildcard.Card.Sections;
 
 // Writes the masteries panel's two texts.
-public class MasteriesBinder : ICardBinder
+public class MasteriesSection : ICardSection
 {
     private const uint MasteriesLabelHash = 0xB090BB12;  // TXT_PAU_TTL_LB
     private const uint CollectionLabelHash = 0x8278DE48;  // TXT_PAU_TREE_TAB_WEAPON
@@ -15,7 +15,7 @@ public class MasteriesBinder : ICardBinder
     private readonly TextService _text;
     private readonly TextTable _table;
 
-    public MasteriesBinder(TextService text, TextTable table)
+    public MasteriesSection(TextService text, TextTable table)
     {
         _text = text;
         _table = table;

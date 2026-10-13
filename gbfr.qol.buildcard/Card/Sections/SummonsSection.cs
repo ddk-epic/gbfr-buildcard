@@ -4,16 +4,16 @@ using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Model;
 
-namespace gbfr.qol.buildcard.Card.Binders;
+namespace gbfr.qol.buildcard.Card.Sections;
 
 // Fills the summon cells, an empty slot with summon id 0.
-public unsafe class SummonsBinder : ICardBinder, IFeature
+public unsafe class SummonsSection : ICardSection, IFeature
 {
     private readonly UiTree _tree;
     private readonly GameApi _api;
     private delegate* unmanaged<nint, uint, void> _setSummonInfo;
 
-    public SummonsBinder(UiTree tree, GameApi api)
+    public SummonsSection(UiTree tree, GameApi api)
     {
         _tree = tree;
         _api = api;

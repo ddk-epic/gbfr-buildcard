@@ -24,7 +24,7 @@ The build points the `CharaInfo` reference `Weapon` at `bc_weapon` and gives its
 `FillCharacterStatus` fills the panel, the weapon traits and the wrightstone traits.
 
 The heading's text, `CardLayout.Gear.WeaponTitle`, has no `TextSetter`; the text tables hold no `TXT_PAU_ITEM_WEAPON` for
-the `status01` sub-id. After each character fill `GearBinder` looks the text up with `TextTable` (`TextLookup`) in the sub-id
+the `status01` sub-id. After each character fill `GearSection` looks the text up with `TextTable` (`TextLookup`) in the sub-id
 `equip01_info01` (`0xDE6482AF`) and sets it with `TextComponentSetText`.
 
 `WeaponInfo`'s setter picks the art, the skin tag and the effect tag from the character's weapon and the skin view,

@@ -18,7 +18,7 @@ and -30 through the `LanguageSetter`'s Japanese overwrite.
 The build points the `CharaInfo` reference `Ability` at the four cards, so `FillCharacterStatus` fills them through each
 card's `AbilityInfo`.
 
-In the Layout phase, `GearBinder` sets each name again: it reads the name's string and text id hash from
+In the Layout phase, `GearSection` sets each name again: it reads the name's string and text id hash from
 its `Text` component, sets the wrap width, sets an empty string and then the same string with `TextComponentSetText`, splits the lines still
 wider than the width and cuts it to two lines; see [text wrapping](ui.md#text-wrapping).
 

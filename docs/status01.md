@@ -74,8 +74,8 @@ Objects:
 | `CanvasGroup` | Alpha for a subtree (the animations fade with it). |
 | `HorizontalLayoutGroup`, `ContentSizeFitter`, `LayoutElement` | Automatic layout: these objects' rects are recomputed at runtime. |
 | `Animator`, `AnimationHandle` | Open/close/loop animations (`layouts/pause/status/animations/...`). |
-| `Shortcut` | A button binding (`ButtonType`). |
-| `*Info` (`CharaInfo`, `WeaponInfo`, `GemInfo`, `AbilityInfo`, `UniqueSkillInfo`, `ElementInfo`, ...) | Data binding: lists the objects the game fills with one kind of data. |
+| `Shortcut` | Assigns a button (`ButtonType`). |
+| `*Info` (`CharaInfo`, `WeaponInfo`, `GemInfo`, `AbilityInfo`, `UniqueSkillInfo`, `ElementInfo`, ...) | Lists the objects the game fills with one kind of data. |
 | `*IconSetter` | Picks the icon sprite for a character, weapon, sigil, skill, ... |
 | `ControllerStatus`, `ControllerCharaStatus02` | The page's controllers. |
 
@@ -94,7 +94,7 @@ An `Image`'s `MaterialPath` sets how it is drawn; without one it is alpha blende
 
 A `Color` channel above 1 brightens the sprite further. A negative X `Scale` mirrors an object.
 
-## Data binding
+## Filled objects
 
 The game fills the page through the components on the root object. **An object referenced here must not be removed**; hiding (`Active: false`), moving and scaling are safe.
 
@@ -110,7 +110,7 @@ The game fills the page through the components on the root object. **An object r
 | `_D47C490A` | 46 `masterlevel02` (Master Lvl badge) |
 | `Powers` | 20 `pwr_text01` (PWR) |
 | `HpMaxs`, `Attacks`, `Criticals`, `Breaks` | 91 `hp_num01`, 96 `atk_num01`, 102 `crt_num01`, 108 `brk_num01` |
-| `Weapon` | 114 `chr_status02_p01` (`WeaponInfo`, binds the weapon row) |
+| `Weapon` | 114 `chr_status02_p01` (`WeaponInfo`, fills the weapon row) |
 | `Gem` | 143, 154, ..., 264: the 12 sigil rows (`GemInfo` each) |
 | `Ability` | 281 `btn04`, 303 `btn03`, 325 `btn01`, 347 `btn02`: the 4 skills (`AbilityInfo` each) |
 

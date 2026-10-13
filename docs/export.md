@@ -80,7 +80,7 @@ view opens. Other menus that read the same key, such as Master Traits, do not st
 
 ## Shortcut input
 
-`ui::component::Shortcut` binds a button. `status01` holds eight, one with `ButtonType` 12, Save Card's button.
+`ui::component::Shortcut` assigns a button. `status01` holds eight, one with `ButtonType` 12, Save Card's button.
 `UpdateShortcutInput` is vfunc 1 of the Shortcut's `IUpdateable` base at `+0x68` and gets that base.
 
 | Offset | Field |

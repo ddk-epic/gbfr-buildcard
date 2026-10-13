@@ -4,9 +4,9 @@ The game's UI memory the mod reads and writes on the Character Details menu's st
 Offsets are from the start of each structure; pointers are 8 bytes; keys are the game's 32-bit hashes of table keys,
 `0x887AE0B0` being the hash of an empty string (no key, no text id).
 
-The sections' own data is in their docs: [character](character.md), [master traits](master-traits.md),
-[masteries](masteries.md), [Over Mastery](over-mastery.md), [summons](summons.md), [weapon](weapon.md),
-[sigils](sigils.md) and [skills](skills.md). How the mod's parts raise events and which thread runs them is in
+The sections' own data is in their docs: [character](sections/character.md), [master traits](sections/master-traits.md),
+[masteries](sections/masteries.md), [Over Mastery](sections/over-mastery.md), [summons](sections/summons.md), [weapon](sections/weapon.md),
+[sigils](sections/sigils.md) and [skills](sections/skills.md). How the mod's parts raise events and which thread runs them is in
 [runtime](runtime.md).
 
 ## UI objects
@@ -102,7 +102,7 @@ on the game thread after each change. `IsOpen` is true from Opening to Closing.
 
 `StatusBackground` shows `chr_status_bg01`'s card panel and lines on the status page and stock's on another page,
 reading `MenuState` at each `Changed` and when `chr_status_bg01` is set up; while the menu opens, closes or
-is closed it keeps the variant shown ([build.md](build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
+is closed it keeps the variant shown ([prefab build](assets/build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
 entry 8 is a setup every controller shares, run once the prefab is built. `StatusBackground` hooks it and keeps the
 controller whose vtable is `ControllerStatusBg`'s until `ControllerLifetimes` raises `Destroyed` for it.
 
@@ -170,7 +170,7 @@ no symbols; the names are the signatures' keys. `GameApi` adds each signature's 
 
 | Function | Use | Effect | Doc |
 |---|---|---|---|
-| `FillCharacterStatus(charaInfo, chara, index)` | hooked | Fills a `CharaInfo` from a character; the mod writes the card after it. | [character](character.md) |
+| `FillCharacterStatus(charaInfo, chara, index)` | hooked | Fills a `CharaInfo` from a character; the mod writes the card after it. | [character](sections/character.md) |
 | `TextComponentSetText(text, string, text id hash, -1)` | called | Sets a `Text` component's string and its text id hash; it skips the layout when the string and hash are the ones shown and the text has lines. | |
 | `TextLookup(text tables, text out, text id hash, sub-id hash)` | called | Reads a text id's text in the loaded language. | |
 | `TextJoinLines(text)` | called | Joins a `Text` component's lines from its lines' begin onward into the first of them. | |
@@ -184,11 +184,11 @@ no symbols; the names are the signatures' keys. `GameApi` adds each signature's 
 | `CloseView(view manager, view hash, remove, flag)` | hooked | Closes a view; the FSM action `ViewClose` calls it. | |
 | `StartFlow(flow manager, flow hash, callback, param, …, 1)` | hooked | Queues a flow's start; the FSM action `FlowStart` calls it. | |
 | `EndFlow(flow manager, flow hash, result)` | hooked | Ends a running flow and drops its start requests; the FSM action `FlowEnd` jumps to it. | |
-| `SetSkillBoardDescription(cell component, character key, slot)` | called | Sets a master trait cell's description in the loaded language. | [master traits](master-traits.md) |
-| `MasteryPercent(mastery manager, category, character key)` | called | Returns a mastery category's percentage. | [masteries](masteries.md) |
-| `SetMasteryPercents(screen)` | read | Fills the Masteries screen's percentages; read for the mastery manager. | [masteries](masteries.md) |
-| `SetOverMasteryLine(LimitBonusInfo, line)` | called | Fills an Over Mastery row from a `chara` Over Mastery line. | [Over Mastery](over-mastery.md) |
-| `SetSummonInfo(SummonInfo, summon id)` | called | Fills a summon slot, its trait and equip bonus rows included. | [summons](summons.md) |
+| `SetSkillBoardDescription(cell component, character key, slot)` | called | Sets a master trait cell's description in the loaded language. | [master traits](sections/master-traits.md) |
+| `MasteryPercent(mastery manager, category, character key)` | called | Returns a mastery category's percentage. | [masteries](sections/masteries.md) |
+| `SetMasteryPercents(screen)` | read | Fills the Masteries screen's percentages; read for the mastery manager. | [masteries](sections/masteries.md) |
+| `SetOverMasteryLine(LimitBonusInfo, line)` | called | Fills an Over Mastery row from a `chara` Over Mastery line. | [Over Mastery](sections/over-mastery.md) |
+| `SetSummonInfo(SummonInfo, summon id)` | called | Fills a summon slot, its trait and equip bonus rows included. | [summons](sections/summons.md) |
 | `SetCharacterDetailsFooter()` | hooked | Builds the Character Details footer from its label list. | [export](export.md) |
 | `UpdateShortcutInput(shortcut)` | hooked | Reads a footer shortcut's button, once per shortcut each frame. | [export](export.md) |
 | `StatusL3Action(callable)` | hooked | The status page's action on L3 (1 on the keyboard), the pressed callable `ControllerStatus` gives `status01`'s button 12 shortcut; replaced by Save Card. | [export](export.md) |
@@ -208,5 +208,5 @@ disabled ([features](runtime.md#features)).
 | `ControllerStatusBg`, `ControllerInformationToast` | 7 | The scalar deleting destructor. | [controller lifetimes](#controller-lifetimes) |
 | `ControllerStatusGuide` | 21 | `SetUpPageArrows` | [export](export.md#page-button-prompts) |
 | `ControllerInformationSystem`, `ControllerInformationToast` | 35 | `ShowInfo` | [export](export.md#saved-notice) |
-| `LoadWeaponParty` | 4, 5 | Whether the loader is open; collecting its list, not checked. | [weapon](weapon.md) |
-| `EnableSkinView` | 9 | Applying the action to the skin view. | [weapon](weapon.md) |
+| `LoadWeaponParty` | 4, 5 | Whether the loader is open; collecting its list, not checked. | [weapon](sections/weapon.md) |
+| `EnableSkinView` | 9 | Applying the action to the skin view. | [weapon](sections/weapon.md) |

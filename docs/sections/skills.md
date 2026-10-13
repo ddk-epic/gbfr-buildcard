@@ -20,9 +20,9 @@ card's `AbilityInfo`.
 
 In the Layout phase, `GearSection` sets each name again: it reads the name's string and text id hash from
 its `Text` component, sets the wrap width, sets an empty string and then the same string with `TextComponentSetText`, splits the lines still
-wider than the width and cuts it to two lines; see [text wrapping](ui.md#text-wrapping).
+wider than the width and cuts it to two lines; see [text wrapping](../ui.md#text-wrapping).
 
 ## Runtime data
 
-The names are read from and written to the [`Text` component](ui.md#text-component); the mod reads no other skill
+The names are read from and written to the [`Text` component](../ui.md#text-component); the mod reads no other skill
 data.

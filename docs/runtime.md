@@ -15,7 +15,7 @@ How the mod's parts pass events to each other and which thread runs them.
 | `Model/` | `BuildCard`, `BuildCardAssembler`, `BuildCardJson`, `CardSession`. |
 | `Card/` | `CardView`, its sections in `Card/Sections/`, `StatusBackground`, `WeaponArt`. |
 | `Export/` | `ExportController`, `UiFrameCapture`, `UiRedraw`, `SaveCardFooter`; `StatusGuide` and `NoticeTiming` in `Overlays/`, `Png`, `Jpeg` and `Resample` in `Encoders/`, `CardFile`, `SteamScreenshots` and `Notice` in `Outputs/`. |
-| `Generated/` | `CardLayout.g.cs` ([build](build.md)). |
+| `Generated/` | `CardLayout.g.cs` ([prefab build](assets/build.md)). |
 
 ## Features
 
@@ -118,7 +118,7 @@ dotnet test tests/gbfr.qol.buildcard.Tests
 
 `CardView` writes a shown card to `status01`. At the first fill of a `status01` instance it walks the tree once and
 finds its objects by Id; when their hash differs from `CardLayout.Status01.PrefabHash` it writes nothing to that
-instance ([build](build.md#build)). It keeps the objects until `ControllerLifetimes` raises `Destroyed` for the
+instance ([prefab build](assets/build.md#build)). It keeps the objects until `ControllerLifetimes` raises `Destroyed` for the
 instance's `ControllerStatus`; without that destructor hooked it walks the tree at every fill. For each card it runs
 every section's two phases.
 
@@ -127,8 +127,8 @@ every section's two phases.
 
 | Section | Write | Layout |
 |---|---|---|
-| `GearSection` | The weapon heading ([weapon](weapon.md#implementation)). | The skill names and sigil trait names ([skills](skills.md), [sigils](sigils.md)). |
-| `MasterTraitsSection` | The Master Traits board ([master traits](master-traits.md#implementation)). | |
-| `MasteriesSection` | The masteries texts ([masteries](masteries.md#implementation)). | |
-| `OverMasterySection` | The Over Mastery rows ([Over Mastery](over-mastery.md#implementation)). | Each row's value after its name. |
-| `SummonsSection` | The summon cells ([summons](summons.md#implementation)). | |
+| `GearSection` | The weapon heading ([weapon](sections/weapon.md#implementation)). | The skill names and sigil trait names ([skills](sections/skills.md), [sigils](sections/sigils.md)). |
+| `MasterTraitsSection` | The Master Traits board ([master traits](sections/master-traits.md#implementation)). | |
+| `MasteriesSection` | The masteries texts ([masteries](sections/masteries.md#implementation)). | |
+| `OverMasterySection` | The Over Mastery rows ([Over Mastery](sections/over-mastery.md#implementation)). | Each row's value after its name. |
+| `SummonsSection` | The summon cells ([summons](sections/summons.md#implementation)). | |

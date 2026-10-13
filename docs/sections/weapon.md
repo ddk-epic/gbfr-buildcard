@@ -47,7 +47,7 @@ party menu is open. `WeaponArt` hooks two of its vfuncs:
 1. At each `CardSession.Shown` ([character](character.md#implementation)) `WeaponArt` sets the weapon key and the
    effect off flag to load: the card's skin key when one is set, its weapon key otherwise, and its effect off flag.
 2. The hooked vfunc 4, whether the loader is open, also returns true while the Character Details menu is open
-   ([ui](ui.md#character-details-menu)) and a card weapon is set.
+   ([ui](../ui.md#character-details-menu)) and a card weapon is set.
 3. The hooked vfunc 5, which collects the list, collects the party's weapons only while the party menu is open, then
    adds the card's weapon when the list does not hold it and has room.
 

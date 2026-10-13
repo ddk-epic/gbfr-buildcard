@@ -26,7 +26,7 @@ the status panel. They are the stock page's objects, moved and restyled by `tool
 4. `CardSession` assembles a `BuildCard` from the build with `BuildCardAssembler`, which also takes the character's
    master trait cells, mastery percentages and text lookup. It keeps the card as `Current` and raises `Shown` with the
    component and the card. `WeaponArt` ([weapon](weapon.md)) and `CardView` handle it.
-5. `CardView` writes the card; see [card view](runtime.md#card-view).
+5. `CardView` writes the card; see [card view](../runtime.md#card-view).
 
 The portrait, badges, name band and status panel are filled by `FillCharacterStatus` itself, through the `CharaInfo`
 component's references in the prefab file.

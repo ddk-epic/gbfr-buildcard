@@ -132,5 +132,5 @@ cell's 10–39 (rank × 10 plus its 0-based position), or an EX cell's 50 plus i
 | `SetSkillBoardDescription(cell component, character key, slot)` | Sets a master trait cell's description in the loaded language, its `{n}` filled from the effect's action parts. |
 | `SetObjectActive(object, active)` | Shows the picked outlines and the board in use. |
 | `TextComponentSetText`, `TextLookup` | Set the style names, counts and titles. |
-| `TextFitLine`, `TextSplitLine` | Split a description's lines wider than the cell; see [text wrapping](ui.md#text-wrapping). |
-| `TextJoinLines`, `TextFitLine`, `TextBuildGlyphs`, `TextInsertGlyphs` | Cut a description to two lines ending in the ellipsis; see [text wrapping](ui.md#text-wrapping). |
+| `TextFitLine`, `TextSplitLine` | Split a description's lines wider than the cell; see [text wrapping](../ui.md#text-wrapping). |
+| `TextJoinLines`, `TextFitLine`, `TextBuildGlyphs`, `TextInsertGlyphs` | Cut a description to two lines ending in the ellipsis; see [text wrapping](../ui.md#text-wrapping). |

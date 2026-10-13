@@ -29,7 +29,7 @@ number and percent sign Ids, and `NameWidth` the names' wrap width.
 4. In the Layout phase, for each row it filled, `OverMasterySection` sets the name again with ` +`, the value and, for a
    percentage, the text of `TXT_PAU_PAR` (`CardLayout.OverMastery.PercentText`, `percent01`'s text) appended, as it does
    the skill names, wrapped to the width and cut to two lines, and hides the value's objects, the plus icon included;
-   see [text wrapping](ui.md#text-wrapping).
+   see [text wrapping](../ui.md#text-wrapping).
 
 ## Runtime data
 

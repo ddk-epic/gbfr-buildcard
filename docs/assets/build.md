@@ -24,7 +24,7 @@ python -m unittest discover -s tests -t .    # from tools/build
 3. `codegen.py` writes the exports to `CardLayout.g.cs`, each export key's section (`TraitTables.Boards`) as a nested
    class, with `status01`'s object count and prefab hash: FNV-1a over each object's Id and the hash of its
    unquoted name (`'loc_ring '` is `loc_ring `), in Id order.
-   `CardView` finds the objects by these Ids in `status01`'s tree ([ui.md](ui.md#ui-objects)), and writes nothing
+   `CardView` finds the objects by these Ids in `status01`'s tree ([ui](../ui.md#ui-objects)), and writes nothing
    when the tree's hash differs.
 4. `lists.py` writes each prefab's asset list, the textures, atlases, materials, animations, image data and language
    data the game loads before building it: stock's list, then the assets the prefab names, then the stock lists a
@@ -97,4 +97,4 @@ earlier step left in the tree, so steps depend on each other only through the ob
 `bg01` to its child `bc_panel_stock`, the portrait backdrop `bg02` and the lines `loc_line`. The card's are the panel
 `bc_bg01`, a child of `bg01` with its backdrop `bc_bg02`, and the lines `bc_loc_line`, inactive. `bg01` keeps its
 `CanvasGroup` and rect, so the animations slide and fade both panels. The mod shows one set and hides the
-other ([ui.md](ui.md#status-background)).
+other ([ui](../ui.md#status-background)).

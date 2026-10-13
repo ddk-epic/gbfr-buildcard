@@ -13,6 +13,12 @@
   "IsLibrary": false,
   "ReleaseMetadataFileName": "gbfr.qol.buildcard.ReleaseMetadata.json",
   "PluginData": {
+    "GitHubRelease": {
+      "UserName": "ddk-epic",
+      "RepositoryName": "gbfr-buildcard",
+      "UseReleaseTag": true,
+      "AssetFileName": "gbfr.qol.buildcard*.7z"
+    },
     "GitHubDependencies": {
       "IdToConfigMap": {
         "Reloaded.Memory.SigScan.ReloadedII": {
@@ -44,5 +50,5 @@
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [ "granblue_fantasy_relink.exe" ],
-  "ProjectUrl": ""
+  "ProjectUrl": "https://github.com/ddk-epic/gbfr-buildcard"
 }

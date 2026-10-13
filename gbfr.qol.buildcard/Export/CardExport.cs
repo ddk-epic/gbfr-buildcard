@@ -3,6 +3,7 @@ using System.Drawing;
 using Reloaded.Mod.Interfaces;
 
 using gbfr.qol.buildcard.Hooks;
+using gbfr.qol.buildcard.Model;
 
 namespace gbfr.qol.buildcard.Export;
 
@@ -57,7 +58,7 @@ public class CardExport
         _logger = logger;
     }
 
-    public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build) => _charaName = CharaName(charaInfo);
+    public void OnShown(CharaInfo charaInfo, BuildCard card) => _charaName = CharaName(charaInfo);
 
     // On the game thread: hides the prompts and notices on a press, shows them after the capture or its timeout.
     public void OnTick()

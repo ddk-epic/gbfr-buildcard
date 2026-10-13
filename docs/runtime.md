@@ -11,6 +11,7 @@ way.
 | Event | Raised by | Thread |
 |---|---|---|
 | `CharacterShown` | `CharaStatusHooks`, after the game fills the card's `CharaInfo` | game |
+| `Shown` | `CardSession`, after it assembles the card | game |
 | `Changed` | `CharacterDetailsMenu`, after the menu's state changes | game |
 | `Destroyed` | `UiControllers`, before a controller's destructor runs | game |
 | `ShortcutUpdated` | `SaveCardButton`, at each `UpdateShortcutInput` | game |
@@ -29,3 +30,17 @@ way.
 present that `SwapChainHooks` counts, and at every call while nothing was presented yet. A tick runs the actions
 posted with `GameThread.Post` from any thread, in order, then raises `Tick`. Ticks come only while some shortcut
 updates.
+
+## Card model
+
+`BuildCard` is the card's content: the character key, the weapon, mirage and alternate art flag, the Master Traits
+board, the mastery percentages, the Over Mastery lines and the summons. `BuildCardAssembler` builds it from the
+character's build, its master trait cells, its mastery percentages and a text lookup, and uses no UI objects. It holds
+the game's board rules: three styles, 4, 8, 8 and 10 slots per rank on the normal board, 4, 8, 8 and 14 on the
+captain's, and budgets of 10, 10, 10 and 20 points per rank.
+
+`tests/gbfr.qol.buildcard.Tests` tests `BuildCardAssembler` with xunit:
+
+```
+dotnet test tests/gbfr.qol.buildcard.Tests
+```

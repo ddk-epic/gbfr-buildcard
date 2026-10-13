@@ -156,7 +156,7 @@ present instead, then resized to 2880x1440 by `Resample` in `CardFile`: averaged
 
 ## Card file
 
-At each `CharacterShown` ([character](character.md#implementation)) `CardExport` reads the character's name from
+At each `CardSession.Shown` ([character](character.md#implementation)) `CardExport` reads the character's name from
 `status01`'s objects and saves the card under the name read last before the press. `CardFile.Save` writes the card's PNG on a worker thread; `CardFile.Saving` is set until the write ends. After the PNG is
 written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `SavedNotice` and
 `SteamScreenshots` handle it.

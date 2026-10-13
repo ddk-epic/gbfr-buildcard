@@ -4,6 +4,8 @@ using System.Runtime.InteropServices;
 using NenTools.Reloaded.ScanManager.Interfaces;
 using Reloaded.Mod.Interfaces;
 
+using gbfr.qol.buildcard.Model;
+
 namespace gbfr.qol.buildcard.Hooks;
 
 // Applies CardContents' writes to the card's objects.
@@ -43,7 +45,7 @@ public unsafe class CardWriter
             _setSummonInfo = (delegate* unmanaged<nint, uint, void>)(nint)address);
     }
 
-    public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build)
+    public void OnShown(CharaInfo charaInfo, BuildCard card)
     {
         var objects = _objects.Find(charaInfo);
         if (objects == null)
@@ -56,7 +58,7 @@ public unsafe class CardWriter
             return;
         }
 
-        foreach (var write in _contents.Compose(build))
+        foreach (var write in _contents.Compose(card))
         {
             if (!objects.TryGetValue(write.Id, out UiObject obj))
                 continue;

@@ -2,7 +2,7 @@
 
 The build card's master traits section, `bc_mtraits` in `status01`. It shows the character's Master Traits board as the
 game's Master Traits menu lays it out. The layout is built by `tools/build/steps/status01/master_traits.py`; the
-contents are written at runtime by `CardContents`, `MasterTraits` and `CardWriter`. Its colours are one of two palettes,
+contents are written at runtime by `BuildCardAssembler`, `CardContents`, `MasterTraits` and `CardWriter`. Its colours are one of two palettes,
 picked by the config option `MasterTraitsPalette` ("Master Traits Palette"): Blue by default, or Original.
 
 ## Display
@@ -76,14 +76,14 @@ are solved from.
 
 1. `MasterTraits.ReadCells` reads the character's cells from the skill board tables: each cell's slot, its
    `skillboard_effect` key and its title's text id. The cells are read once per character key.
-2. `CardContents.ComposeMasterTraits` matches the character's skill board entries to the cells by key. An entry whose
+2. `BuildCardAssembler` matches the character's skill board entries to the cells by key. An entry whose
    value is 1 is a picked cell. When two cells share an effect key, the first one read is kept.
 3. A perk counts toward its style's stars; the rank 1 perk's title is the style's title. Every other cell is placed at
    its rank and position. The captain's board is shown when a picked or unpicked cell's position is past the normal
    board's slots of its rank.
-4. The configured palette's scene and its group in the shown board are activated, the other palette's deactivated; an
-   undefined `MasterTraitsPalette` value shows Blue. In that palette, each picked cell's picked base is shown and its
-   unpicked base hidden.
+4. `CardContents.ComposeMasterTraits` writes the board. The configured palette's scene and its group in the shown
+   board are activated, the other palette's deactivated; an undefined `MasterTraitsPalette` value shows Blue. In that
+   palette, each picked cell's picked base is shown and its unpicked base hidden.
 5. `CardWriter` writes each cell's description with `SetSkillBoardDescription`, through a mock cell component whose
    only `Text` is the card's cell text. Before the call it sets the text's wrap width and icon size; after it, it splits
    the lines still wider than the cell and cuts the text to two lines.

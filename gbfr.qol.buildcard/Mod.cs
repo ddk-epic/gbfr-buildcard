@@ -9,6 +9,7 @@ using gbfr.qol.buildcard.Configuration;
 using gbfr.qol.buildcard.Hooks;
 using gbfr.qol.buildcard.Export;
 using gbfr.qol.buildcard.Host;
+using gbfr.qol.buildcard.Model;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -37,6 +38,7 @@ public class Mod : ModBase
     private MasterTraits? _masterTraits;
     private Masteries? _masteries;
     private CharaStatusHooks? _charaStatusHooks;
+    private CardSession? _cardSession;
     private CharacterDetailsMenu? _menu;
     private WeaponArtHooks? _weaponArtHooks;
     private CardWriter? _cardWriter;
@@ -108,19 +110,20 @@ public class Mod : ModBase
 
         _charaStatusHooks = new CharaStatusHooks(_hooks, _uiObjects, _logger);
         _charaStatusHooks.Init(scanManager, "granblue_fantasy_relink_er");
+        _cardSession = new CardSession(_masterTraits, _masteries, _gameText, _logger);
+        _charaStatusHooks.CharacterShown += _cardSession.OnCharacterShown;
 
         _menu = new CharacterDetailsMenu(_hooks, _logger);
         _menu.Init(scanManager, "granblue_fantasy_relink_er");
 
         _weaponArtHooks = new WeaponArtHooks(_vtables, _logger, _menu);
         _weaponArtHooks.Init();
-        _charaStatusHooks.CharacterShown += _weaponArtHooks.OnCharacterShown;
+        _cardSession.Shown += _weaponArtHooks.OnShown;
 
-        var cardContents = new CardContents(_gameText.Find, _masterTraits, _masteries,
-            () => _configuration.MasterTraitsPalette);
+        var cardContents = new CardContents(_gameText.Find, () => _configuration.MasterTraitsPalette);
         _cardWriter = new CardWriter(cardContents, _gameText, _masterTraits, _uiObjects, _vtables, _logger);
         _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
-        _charaStatusHooks.CharacterShown += _cardWriter.OnCharacterShown;
+        _cardSession.Shown += _cardWriter.OnShown;
 
         _saveCardButton = new SaveCardButton(_hooks, _logger);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
@@ -136,7 +139,7 @@ public class Mod : ModBase
         _cardFile.Saved += _steamScreenshots.OnSaved;
         _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice, _cardFile,
             _menu, _uiObjects, _gameText, _logger);
-        _charaStatusHooks.CharacterShown += _cardExport.OnCharacterShown;
+        _cardSession.Shown += _cardExport.OnShown;
         _saveCardButton.ShortcutUpdated += _gameThread.Pump;
         _gameThread.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);

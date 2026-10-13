@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
 
+using gbfr.qol.buildcard.Model;
+
 namespace gbfr.qol.buildcard.Hooks;
 
 // Adds the card's weapon to the art ui::icon::LoadWeaponParty loads while the Character Details menu is open.
@@ -56,13 +58,13 @@ public unsafe class WeaponArtHooks
     }
 
     // Sets the weapon whose art is loaded, following the mirage and alternate art settings.
-    public void OnCharacterShown(CharaInfo charaInfo, CharaBuild build)
+    public void OnShown(CharaInfo charaInfo, BuildCard card)
     {
         if (_settings == null || *_settings == null)
             return;
         ref var settings = ref **_settings;
-        _key = build.MirageKey != NoKey && settings.ShowMirage != 0 ? build.MirageKey : build.WeaponKey;
-        _alternate = build.AlternateArt && settings.ShowAlternateArt != 0;
+        _key = card.Weapon.MirageKey != NoKey && settings.ShowMirage != 0 ? card.Weapon.MirageKey : card.Weapon.Key;
+        _alternate = card.Weapon.AlternateArt && settings.ShowAlternateArt != 0;
     }
 
     // Open while the party menu is open, or while the Character Details menu is open and a card weapon is set.

@@ -42,7 +42,7 @@ left out does nothing; the others still start.
 | `OverMasteryBinder` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |  |
 | `SummonsBinder` | `SetSummonInfo`, `SummonInfo vtable` |  |
 | `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8`, `ControllerStatusBg function 7` | `ControllerLifetimes` |
-| `Input` | `UpdateShortcutInput`, `GetButtonBits` |  |
+| `Input` | `UpdateShortcutInput`, `StatusL3Action` |  |
 | `SaveCardFooter` | `SetCharacterDetailsFooter` |  |
 | `StatusGuide` | `ControllerStatusGuide function 21`, `ControllerStatusBg function 7` | `ControllerLifetimes` |
 | `NoticeSink` | `PushInfo` |  |

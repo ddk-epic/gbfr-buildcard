@@ -52,9 +52,8 @@ string at `+0x10`. Loading the table frees the map's nodes with the game's alloc
 ## Input
 
 `UpdateShortcutInput(shortcut)` runs on the game thread once per shortcut each frame; `Input` raises
-`ShortcutUpdated` from it, which drives `GameThread`'s `Tick` ([runtime](runtime.md#game-thread)). The signature `GetButtonBits` matches a call of `GetButtonBits(context, button, 1, mode)`, which returns a
-button's bits: the input manager is a global pointer loaded by the `mov r15, [rip + disp32]` at its `+0x4`, and the
-call is at its `+0x1A`.
+`ShortcutUpdated` from it, which drives `GameThread`'s `Tick` ([runtime](runtime.md#game-thread)). It reads the
+shortcut's button from the input manager, the global at `0x147C24180`:
 
 | Offset | Data |
 |---|---|
@@ -66,15 +65,18 @@ call is at its `+0x1A`.
 | `+0x84` | Controller buttons held; L3 is `0x1000`. |
 | `+0x88` | Controller buttons triggered. |
 | `+0x8C` | Controller buttons released. |
-| `+0xA8` | Input context, a uint32 passed to `GetButtonBits`. |
+| `+0xA8` | Input context, a uint32 passed to the lookup of a button's bits. |
 | `+0xB0` | Input lock, an int32; input is read when it is below 1. |
 
-Save Card is down when the lock is below 1 and either `+0x84` has a bit of `GetButtonBits(+0xA8, 12, 1, 3)` or `+0x0C`
-has `0x4000`. `Input.Pressed` returns true on the tick it goes down while `status01`'s shortcut for button 12
-takes input (see [Shortcut input](#shortcut-input)). A press counts only while the card is
-open and `CardFile` is not writing a card. The card is open while `MenuState` is on the status page
-([ui](ui.md#character-details-menu)); the character fill that writes the card runs before the status page's view
-opens. Other menus that read the same key, such as Master Traits, do not start an export.
+On a press, `UpdateShortcutInput` calls the shortcut's pressed callable (see [Shortcut input](#shortcut-input)).
+`ControllerStatus` gives `status01`'s button 12 shortcut, Save Card's, a callable whose invoke the signature
+`StatusL3Action` matches; it runs on L3 on a controller and 1 on the keyboard. `Input` hooks it: each call marks a
+press and returns without running the original. The original checks the session mode at `+0xB18` of the global at
+`0x147C49640` and the party list, toggles the flag at `+0xBB8` of that global, and refreshes the object at
+`ControllerStatus+0x1D0`. `Input.Pressed` returns the mark and clears it. A press
+counts only while the card is open and `CardFile` is not writing a card. The card is open while `MenuState` is on the
+status page ([ui](ui.md#character-details-menu)); the character fill that writes the card runs before the status page's
+view opens. Other menus that read the same key, such as Master Traits, do not start an export.
 
 ## Shortcut input
 
@@ -88,13 +90,19 @@ opens. Other menus that read the same key, such as Master Traits, do not start a
 | `+0x24` | Input block, a byte. |
 | `+0x70` | `ButtonType`. |
 | `+0x75` | `Always`: the button is read without the input check. |
+| `+0xD8` | The pressed callable: its vtable, then 0x20 bytes of storage at `+0xE0`. |
+| `+0x100` | The released callable, laid out the same. |
+
+A callable's vtable holds invoke (storage), copy, move (destination, source) and destroy (storage). The empty
+callable's vtable is `0x1460E24D8`; its invoke throws, and `UpdateShortcutInput` calls no empty callable.
+`ControllerStatus`'s vfunc 21 moves a callable into seven of `status01`'s shortcuts with `FUN_143348b50(shortcut,
+callable)`, each holding the controller; the shortcut with `ButtonType` 16 keeps the empty one.
 
 Without `Always`, `UpdateShortcutInput` reads the button only when `+0x24` is 0 and `+0x20` has `0x1` and the bit of
 the button. The sub-menus of Character Details, such as Trait Details and Command List, turn the page's shortcuts off
 with the FSM action `SetControlEnable` (`ui::fsm::action`): for each component of the listed types on the listed
 layouts it sets or clears bits `0x2` and `0x4` of `+0x20`, then does the same on each child in the component's input
-tree (children at `+0x28`..`+0x30`). `Input` reads the gate of `status01`'s button 12 shortcut at each of
-its updates, found by its `ButtonType` and its object's name hash.
+tree (children at `+0x28`..`+0x30`).
 
 ## Page button prompts
 
@@ -252,13 +260,16 @@ object of each controller that showed the notice within 5000 ms and still has `+
 shows the notice during the capture. After the capture it activates the objects again whose `+0x1A8` is still set. A
 destroyed controller is forgotten ([ui](ui.md#controller-lifetimes)).
 
+A shown notice never blocks Save Card, by design: a press while it shows starts the next capture at once, the capture
+hides it, and the controllers queue the next notice behind it.
+
 ## Game functions
 
 | Function | Use | Effect |
 |---|---|---|
 | `SetCharacterDetailsFooter()` | hooked | Builds the Character Details footer from its label list. |
 | `UpdateShortcutInput(shortcut)` | hooked | Reads a footer shortcut's button, once per shortcut each frame on the game thread. |
-| `GetButtonBits(context, button, 1, mode)` | called | Returns a button's bits in the input manager; found through a call of it. |
+| `StatusL3Action(callable)` | hooked | The status page's action on L3 (1 on the keyboard), the pressed callable `ControllerStatus` gives `status01`'s button 12 shortcut; replaced by Save Card. |
 | `SetUpPageArrows(controller)` | hooked | Sets up the page arrows' shortcuts; vfunc 21 of `ControllerStatusGuide`. |
 | `SetObjectActive(object, active)` | called | Shows or hides an object and its subtree. |
 | `PushInfo(queue, type, callback, log)` | called | Queues an info of kind 2; found through the photo mode's call of it. |

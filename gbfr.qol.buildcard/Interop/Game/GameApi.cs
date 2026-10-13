@@ -48,7 +48,7 @@ public sealed class GameApi
     public readonly Capability CloseView;
     public readonly Capability SetCharacterDetailsFooter;
     public readonly Capability UpdateShortcutInput;
-    public readonly Capability GetButtonBits;
+    public readonly Capability StatusL3Action;
     public readonly Capability PushInfo;
 
     // component vtables
@@ -100,7 +100,7 @@ public sealed class GameApi
         CloseView = Scan(nameof(CloseView));
         SetCharacterDetailsFooter = Scan(nameof(SetCharacterDetailsFooter));
         UpdateShortcutInput = Scan(nameof(UpdateShortcutInput));
-        GetButtonBits = Scan(nameof(GetButtonBits));
+        StatusL3Action = Scan(nameof(StatusL3Action));
         PushInfo = Scan(nameof(PushInfo));
 
         TextVtable = Vtable(".?AVText@component@ui@@");

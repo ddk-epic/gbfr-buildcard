@@ -191,7 +191,7 @@ no symbols; the names are the signatures' keys. `GameApi` adds each signature's 
 | `SetSummonInfo(SummonInfo, summon id)` | called | Fills a summon slot, its trait and equip bonus rows included. | [summons](summons.md) |
 | `SetCharacterDetailsFooter()` | hooked | Builds the Character Details footer from its label list. | [export](export.md) |
 | `UpdateShortcutInput(shortcut)` | hooked | Reads a footer shortcut's button, once per shortcut each frame. | [export](export.md) |
-| `GetButtonBits(context, button, 1, mode)` | called | Returns a button's bits in the input manager; the signature matches a call of it, read for the input manager and the function. | [export](export.md) |
+| `StatusL3Action(callable)` | hooked | The status page's action on L3 (1 on the keyboard), the pressed callable `ControllerStatus` gives `status01`'s button 12 shortcut; replaced by Save Card. | [export](export.md) |
 
 ## Virtual functions
 

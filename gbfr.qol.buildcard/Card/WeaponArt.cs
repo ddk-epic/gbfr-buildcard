@@ -25,25 +25,23 @@ public unsafe class WeaponArt : IFeature
     private readonly GameApi _api;
     private readonly ILogger _logger;
     private readonly MenuState _menu;
-    private readonly UiTree _tree;
     private SkinViewOwner** _owner;
+    private SkinViewOwner* _swapped;
+    private SkinView _saved;
     private uint _key = TextTable.EmptyIdHash;
     private bool _effectOff;
 
-    private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private delegate byte IsOpen(nint loader);
     private delegate void Collect(nint loader);
-    private IHook<FillCharacterStatus>? _fillHook;
     private IHook<IsOpen>? _isOpenHook;
     private IHook<Collect>? _collectHook;
 
-    public WeaponArt(IReloadedHooks hooks, GameApi api, ILogger logger, MenuState menu, UiTree tree)
+    public WeaponArt(IReloadedHooks hooks, GameApi api, ILogger logger, MenuState menu)
     {
         _hooks = hooks;
         _api = api;
         _logger = logger;
         _menu = menu;
-        _tree = tree;
     }
 
     public Capability[] Requires =>
@@ -58,7 +56,6 @@ public unsafe class WeaponArt : IFeature
             _logger.WriteLine("[gbfr.qol.buildcard] Skin view not found", Color.Red);
             return;
         }
-        _fillHook = _hooks.CreateHook<FillCharacterStatus>(FillImpl, _api.FillCharacterStatus.Address).Activate();
         _isOpenHook = _hooks.CreateHook<IsOpen>(IsOpenImpl, _api.LoadWeaponPartyIsOpen.Address).Activate();
         _collectHook = _hooks.CreateHook<Collect>(CollectImpl, _api.LoadWeaponPartyCollect.Address).Activate();
     }
@@ -70,27 +67,25 @@ public unsafe class WeaponArt : IFeature
         _effectOff = card.Weapon.EffectOff;
     }
 
-    // Fills the card with the equip menu's skin view, then puts the previous one back.
-    private void FillImpl(nint charaInfo, nint chara, int index)
+    // Fills the card with the equip menu's skin view
+    public void OnFilling()
     {
-        if (*_owner == null || !_tree.IsOnCard(new CharaInfo(charaInfo)))
-        {
-            _fillHook!.OriginalFunction(charaInfo, chara, index);
+        if (_owner == null || *_owner == null)
             return;
-        }
-        ref var view = ref (*_owner)->View;
-        var saved = view;
+        _swapped = *_owner;
+        ref var view = ref _swapped->View;
+        _saved = view;
         view.WeaponSkin = 1;
         view.ForceSkinTag = 0;
         view.WeaponEffectOff = 1;
-        try
-        {
-            _fillHook!.OriginalFunction(charaInfo, chara, index);
-        }
-        finally
-        {
-            view = saved;
-        }
+    }
+
+    public void OnFilled()
+    {
+        if (_swapped == null)
+            return;
+        _swapped->View = _saved;
+        _swapped = null;
     }
 
     // Open while the party menu is open, or while the Character Details menu is open and a card weapon is set.

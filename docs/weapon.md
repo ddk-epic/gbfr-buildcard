@@ -37,8 +37,9 @@ the skin and effect bytes.
 | Force skin tag | `forceEnableSkinTag_` | Shows the skin tag when no skin is shown. |
 | Weapon effect off | `enableWeaponEffectOff_` | Uses the effect off flag for the art and the effect tag. |
 
-`WeaponArt` hooks `FillCharacterStatus` and, while it fills the card's `CharaInfo`, sets the skin view as the equip menu
-does (weapon skin and weapon effect off set, force skin tag clear), then puts the previous bytes back.
+While `FillCharacterStatus` fills the card's `CharaInfo`, `WeaponArt` sets the skin view as the equip menu does (weapon
+skin and weapon effect off set, force skin tag clear): at `CharaStatusHooks`' `Filling`, and it puts the previous bytes
+back at `Filled`.
 
 The art is loaded by the game's `ui::icon::LoadWeaponParty`, which loads the art of each weapon in its list while the
 party menu is open. `WeaponArt` hooks two of its vfuncs:

@@ -21,8 +21,12 @@ public unsafe class CharaStatusHooks : IFeature
     private readonly ILogger _logger;
     private bool _loggedBuild;
 
+    public event Action? Filling;
+
     // Raised after the game fills the card's CharaInfo.
     public event Action<CharaInfo, CharaSnapshot>? CharacterShown;
+
+    public event Action? Filled;
 
     private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private IHook<FillCharacterStatus>? _fillHook;
@@ -43,13 +47,31 @@ public unsafe class CharaStatusHooks : IFeature
 
     private void FillImpl(nint charaInfo, nint chara, int index)
     {
-        _fillHook!.OriginalFunction(charaInfo, chara, index);
+        var info = new CharaInfo(charaInfo);
+        if (!_tree.IsOnCard(info))
+        {
+            _fillHook!.OriginalFunction(charaInfo, chara, index);
+            return;
+        }
+        Dispatch.Raise(_logger, nameof(Filling), Filling);
         try
         {
-            var info = new CharaInfo(charaInfo);
-            if (chara != 0 && _tree.IsOnCard(info))
-                Dispatch.Raise(_logger, nameof(CharacterShown), CharacterShown, info, CharaSnapshot.Decode(chara, LogBuildOnce)
-                    with { CharaName = info.Name is { } name ? _text.Read(name) : "" });
+            _fillHook!.OriginalFunction(charaInfo, chara, index);
+            if (chara != 0)
+                RaiseCharacterShown(info, chara);
+        }
+        finally
+        {
+            Dispatch.Raise(_logger, nameof(Filled), Filled);
+        }
+    }
+
+    private void RaiseCharacterShown(CharaInfo info, nint chara)
+    {
+        try
+        {
+            Dispatch.Raise(_logger, nameof(CharacterShown), CharacterShown, info, CharaSnapshot.Decode(chara, LogBuildOnce)
+                with { CharaName = info.Name is { } name ? _text.Read(name) : "" });
         }
         catch (Exception e)
         {

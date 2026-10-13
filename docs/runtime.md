@@ -64,7 +64,9 @@ way.
 
 | Event | Raised by | Thread |
 |---|---|---|
+| `Filling` | `CharaStatusHooks`, before the game fills the card's `CharaInfo` | game |
 | `CharacterShown` | `CharaStatusHooks`, after the game fills the card's `CharaInfo` | game |
+| `Filled` | `CharaStatusHooks`, after `CharacterShown`, also when the fill throws | game |
 | `Shown` | `CardSession`, after it assembles the card | game |
 | `Changed` | `MenuState`, after the menu's state changes | game |
 | `Destroyed` | `ControllerLifetimes`, before a controller's destructor runs | game |

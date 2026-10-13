@@ -78,19 +78,16 @@ public unsafe class CharacterDetailsMenu
 
     private void OpenViewImpl(nint manager, uint view, int layer, byte flag, byte reset)
     {
-        bool tracked = view is PauseStatus or PauseStatusBg;
-        bool wasOpen = tracked && IsViewOpen(manager, view);
         _openViewHook!.OriginalFunction(manager, view, layer, flag, reset);
-        if (tracked && !wasOpen && IsViewOpen(manager, view))
+        if (view is PauseStatus or PauseStatusBg)
             Update(manager);
     }
 
     private void CloseViewImpl(nint manager, uint view, byte remove, int flag)
     {
-        bool tracked = view is PauseStatus or PauseStatusBg;
-        bool wasOpen = tracked && IsViewOpen(manager, view);
+        bool wasOpen = view == PauseStatusBg && IsViewOpen(manager, view);
         _closeViewHook!.OriginalFunction(manager, view, remove, flag);
-        if (tracked && wasOpen && !IsViewOpen(manager, view))
+        if (wasOpen && !IsViewOpen(manager, view))
             Update(manager);
     }
 

@@ -35,11 +35,25 @@ A screen is made of views, each placing a prefab, opened and closed by the view 
 stop either, `OpenView` skips a view already in the manager's open list and `CloseView` a view it cannot find. Other
 game code also closes views without `CloseView`.
 
+| Structure | Offset | Data |
+|---|---|---|
+| View | `+0x18`, `+0x20` | Prefabs: begin and end of 0x10-byte entries, the prefab at `+0x00`. |
+| View | `+0x38` | Open, 1 byte. |
+| View prefab | `+0x10` | The prefab's root object. |
+| View prefab | `+0x188` | State: 0 closed, 1 opening, 2 open, 3 closing. |
+
+`OpenView` opens a view's prefabs at once, showing their root objects. `CloseView` clears the open byte at once and sets
+each opening or open prefab to closing, playing its close animation. The prefab's own update ends the close on a later
+frame, once the animation is done, hiding the root object and setting the state to 0. Hiding the root object before
+then leaves the prefab closing for good. A closed view's prefab is drawn until its close ends. The FSM condition `IsDisplayView` holds while
+any of the view's prefabs returns true from its vfunc `0x90`.
+
 The Character Details menu's FSM (`system/fsm/ui/ui_pausestatus_v1_0_1_fsm_ingame.msg`) switches pages by opening and
 closing views. The status page is the view `PauseStatus` (`0xF355AE9C`); Trait Details and Skill Details are
 `PauseStatusSkill`, Master Traits Details is `PauseStatusSkillBoard`, and `PauseStatusBg` (`0x4BE58B5D`) holds
-`chr_status_bg01`. Leaving the status page closes `PauseStatus`, returning opens it again, and a character change
-updates it without closing it. Closing the menu closes `PauseStatusBg` before `PauseStatus`. The menu can open on
+`chr_status_bg01`. Leaving a page closes its view, waits until `IsDisplayView` on that view fails, then opens
+`PauseStatusBg`, the next page's view and `CommandFooter`; `PauseStatusBg` is already open and stays as it is. Leaving
+the status page closes `PauseStatus`, returning opens it again, and a character change updates it without closing it. Closing the menu closes `PauseStatusBg` before `PauseStatus`. The menu can open on
 another page, such as Master Traits Details, without opening `PauseStatus`. `chr_status_bg01` stays loaded while the
 menu is closed.
 
@@ -78,8 +92,9 @@ The Character Details menu is the flow `PauseStatus` (`0xF355AE9C`), started by 
 | On another page | `PauseStatusBg` is open and `PauseStatus` is not. |
 | Closing | `PauseStatusBg` closes after it opened. |
 
-At each `OpenView` and `CloseView` of `PauseStatus` or `PauseStatusBg` it reads both views' open bytes through
-`FindView`, before and after the call, and updates the state when the view's open state changed. It raises `Changed`
+It updates the state from both views' open bytes, read through `FindView`, after each `OpenView` of `PauseStatus` or
+`PauseStatusBg` and after each `CloseView` that closes `PauseStatusBg`. Closing `PauseStatus` leaves the state as it is
+until the next page opens `PauseStatusBg`, which comes once `status01` is no longer drawn. It raises `Changed`
 on the game thread after each change. `IsOpen` is true from Opening to Closing.
 
 ## Status background

@@ -1,4 +1,5 @@
 # Lays out the Over Mastery section: lb_ovtli02's rows on a panel under a title bar.
+from codegen import Hash, xxhash32_custom
 from model.components import overwrites, rect
 from model.prefab import copy, f
 from steps.layout import CARD_ORDER, HEADING_MARGIN, ICON_PAD, OVER_MASTERY, insert
@@ -6,6 +7,7 @@ from steps.panel import Heading, panel
 
 INK = (0.19607843, 0.37254903, 0.4901961)
 TITLE_TEXT_ID = "TXT_PAU_LB_TAB_LIMIT_OVER"
+PERCENT_TEXT_ID = "TXT_PAU_PAR"  # percent01's TextSetter
 ROWS = 4
 ROW_ICON = 88  # icon01's size, in row units
 ROW_SCALE = 1.1
@@ -56,4 +58,5 @@ def apply(ctx):
     ctx.export("OverMastery.Rows", rows)
     ctx.export("OverMastery.Names", [node.find("text01") for node in rows])
     ctx.export("OverMastery.Values", [[node.find(part) for part in VALUE_PARTS] for node in rows])
+    ctx.export("OverMastery.PercentText", Hash(xxhash32_custom(PERCENT_TEXT_ID)))
     ctx.export("OverMastery.NameWidth", int((box.right - x) / row_scale - TEXT_X_ROW))

@@ -46,6 +46,7 @@ public class Mod : ModBase
     private TextService? _textService;
     private TraitTables? _traitTables;
     private MasteryReader? _masteryReader;
+    private OverMasteryParams? _overMasteryParams;
     private CharaStatusHooks? _charaStatusHooks;
     private CardSession? _cardSession;
     private MenuState? _menu;
@@ -115,16 +116,17 @@ public class Mod : ModBase
         _textService = new TextService(_uiTree, _textTable, _api);
         _traitTables = new TraitTables(_api);
         _masteryReader = new MasteryReader(_api);
+        _overMasteryParams = new OverMasteryParams(_api);
         _menu = new MenuState(_hooks, _api, _logger);
 
         _charaStatusHooks = new CharaStatusHooks(_hooks, _uiTree, _textService, _api, _logger);
-        _cardSession = new CardSession(_traitTables, _masteryReader, _textTable, _logger);
+        _cardSession = new CardSession(_traitTables, _masteryReader, _overMasteryParams, _textTable, _logger);
         _charaStatusHooks.CharacterShown += _cardSession.OnCharacterShown;
 
         _weaponArt = new WeaponArt(_hooks, _api, _logger, _menu);
         _cardSession.Shown += _weaponArt.OnShown;
 
-        var overMasteryBinder = new OverMasteryBinder(_textService, _uiTree, _api);
+        var overMasteryBinder = new OverMasteryBinder(_textService, _textTable, _uiTree, _api);
         var summonsBinder = new SummonsBinder(_uiTree, _api);
         _cardView = new CardView(_uiTree, _lifetimes, _api, _logger,
             new GearBinder(_textService, _textTable),
@@ -155,7 +157,7 @@ public class Mod : ModBase
         _renderThread.Presenting += _capture.OnPresenting;
         _swapChainHooks.Presenting += _renderThread.OnPresenting;
 
-        _features.Add(_lifetimes, _uiTree, _textTable, _textService, _traitTables, _masteryReader, _menu,
+        _features.Add(_lifetimes, _uiTree, _textTable, _textService, _traitTables, _masteryReader, _overMasteryParams, _menu,
             _charaStatusHooks, _weaponArt, overMasteryBinder, summonsBinder, _statusBackground, _input, _saveCardFooter,
             _statusGuide, _noticeSink, _savedNotice, _swapChainHooks);
         _modLoader.OnModLoaderInitialized += _features.Start;

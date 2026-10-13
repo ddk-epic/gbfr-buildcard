@@ -12,7 +12,6 @@ public unsafe class TraitTables : IFeature
     // SetSkillBoardDescription's mov r15, [rip + disp32]
     private const int TablesLoad = 0x43;
 
-    private const long MaxMapSize = 0x100000;
     private const ulong LayoutType = 4;
 
     private readonly CellComponent* _component = (CellComponent*)NativeMemory.AllocZeroed((nuint)sizeof(CellComponent));
@@ -48,12 +47,10 @@ public unsafe class TraitTables : IFeature
         if (_tables == null || *_tables == null)
             return [];
         ref var tables = ref **_tables;
-        if (ReadMap(tables.Layouts) is not { } layouts
-            || ReadMap(tables.LayoutRecords) is not { } records
-            || ReadMap(tables.Effects) is not { } effects)
+        if (tables.Layouts.Read() is not { } layouts
+            || tables.LayoutRecords.ReadByUintKey() is not { } recordsById
+            || tables.Effects.ReadByUintKey() is not { } effectsByKey)
             return [];
-        var recordsById = ByUintKey(records);
-        var effectsByKey = ByUintKey(effects);
 
         cells = [];
         foreach (var (key, value) in layouts)
@@ -79,31 +76,6 @@ public unsafe class TraitTables : IFeature
         _entry->Text = text.Address;
         _setDescription(_component, charaKey, slot);
         _entry->Text = 0;
-    }
-
-    // Every node's key and value in the map, in list order; null when the list is broken
-    private static List<(ulong Key, nint Value)>? ReadMap(in GameMap map)
-    {
-        var head = map.Head;
-        if (map.Size < 0 || map.Size > MaxMapSize || head == null)
-            return null;
-        var entries = new List<(ulong, nint)>((int)map.Size);
-        var prev = head;
-        for (var node = head->Next; node != head; prev = node, node = node->Next)
-        {
-            if (entries.Count == map.Size || node == null || node->Prev != prev)
-                return null;
-            entries.Add((node->Key, node->Value));
-        }
-        return entries.Count == map.Size ? entries : null;
-    }
-
-    private static Dictionary<uint, nint> ByUintKey(List<(ulong Key, nint Value)> entries)
-    {
-        var map = new Dictionary<uint, nint>(entries.Count);
-        foreach (var (key, value) in entries)
-            map.TryAdd((uint)key, value);
-        return map;
     }
 
     [StructLayout(LayoutKind.Explicit)]

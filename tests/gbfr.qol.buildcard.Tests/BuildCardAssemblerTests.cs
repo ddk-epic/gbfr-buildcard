@@ -16,7 +16,7 @@ public class BuildCardAssemblerTests
     private static BuildCard Build(MasterTraitCell[] cells, CharaEntry[] entries, int[]? percents = null) =>
         BuildCardAssembler.Build(
             new CharaSnapshot(1, 2, 3, false, entries, new OverMasteryLine?[4], new uint?[4]),
-            cells, percents, (id, _) => Texts.GetValueOrDefault(id, ""));
+            cells, percents, (id, _) => Texts.GetValueOrDefault(id, ""), _ => null);
 
     // slot: style * 100 + perk rank, 10 * (rank + 1) + position - 1, or 50 + position - 1
     private static MasterTraitCell Cell(int slot, uint key, uint title = Empty) => new(slot, key, title);
@@ -118,6 +118,22 @@ public class BuildCardAssemblerTests
     {
         var build = new CharaSnapshot(1, 2, 3, false, [], new OverMasteryLine?[4], new uint?[4]) { CharaName = "グラン" };
 
-        Assert.Equal("グラン", BuildCardAssembler.Build(build, [], null, (_, _) => "").CharaName);
+        Assert.Equal("グラン", BuildCardAssembler.Build(build, [], null, (_, _) => "", _ => null).CharaName);
+    }
+
+    [Fact]
+    public void ShowsOverMasteryValuesAsTheGameDoes()
+    {
+        OverMasteryLine?[] lines = [new(1, 1, 0, 0.125f), new(2, 1, 0, 1500f), new(3, 1, 0, 1f), null];
+        var build = new CharaSnapshot(1, 2, 3, false, [], lines, new uint?[4]);
+        var parameters = new Dictionary<uint, OverMasteryParam> { [1] = new(100, true), [2] = new(1, false) };
+
+        var rows = BuildCardAssembler.Build(build, [], null, (_, _) => "",
+            key => parameters.TryGetValue(key, out var param) ? param : null).OverMastery;
+
+        Assert.Equal(new OverMasteryRow(lines[0]!.Value, 12, true), rows[0]);
+        Assert.Equal(new OverMasteryRow(lines[1]!.Value, 1500, false), rows[1]);
+        Assert.Null(rows[2]);
+        Assert.Null(rows[3]);
     }
 }

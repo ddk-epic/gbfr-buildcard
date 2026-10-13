@@ -47,8 +47,38 @@ public unsafe struct GameVector<T> where T : unmanaged
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct GameMap
 {
+    private const long MaxSize = 0x100000;
+
     public MapNode* Head;
     public long Size;
+
+    // Every node's key and value in list order; null when the list is broken
+    public readonly List<(ulong Key, nint Value)>? Read()
+    {
+        var head = Head;
+        if (Size < 0 || Size > MaxSize || head == null)
+            return null;
+        var entries = new List<(ulong, nint)>((int)Size);
+        var prev = head;
+        for (var node = head->Next; node != head; prev = node, node = node->Next)
+        {
+            if (entries.Count == Size || node == null || node->Prev != prev)
+                return null;
+            entries.Add((node->Key, node->Value));
+        }
+        return entries.Count == Size ? entries : null;
+    }
+
+    // The values by the keys' low 32 bits, the first of each; null when the list is broken
+    public readonly Dictionary<uint, nint>? ReadByUintKey()
+    {
+        if (Read() is not { } entries)
+            return null;
+        var map = new Dictionary<uint, nint>(entries.Count);
+        foreach (var (key, value) in entries)
+            map.TryAdd((uint)key, value);
+        return map;
+    }
 }
 
 [StructLayout(LayoutKind.Sequential)]

@@ -13,7 +13,7 @@ public class CardFileTests
     private static BuildCard Card() => new(1, new WeaponPart(2, TextTable.EmptyIdHash, false),
         new TraitBoard(false, [1, 0, 0, 0], [10, 10, 10, 20],
             [new StyleBoard(0x20, "猛攻：攻撃力アップ", "猛攻", 1, [[new TraitCell(110, true)], [], [], []])]),
-        new MasteryPercents(150, 100, 50, 0), [new OverMasteryLine(3, 1, 0, 2.5f), null, null, null], [7, null, null, null])
+        new MasteryPercents(150, 100, 50, 0), [new OverMasteryRow(new OverMasteryLine(3, 1, 0, 2.5f), 25, true), null, null, null], [7, null, null, null])
     {
         CharaName = "グラン",
     };
@@ -28,7 +28,7 @@ public class CardFileTests
         Assert.Equal("グラン", card.CharaName);
         Assert.Equal("猛攻", card.Traits.Styles[0].Name);
         Assert.Equal(new TraitCell(110, true), card.Traits.Styles[0].Cells[0][0]);
-        Assert.Equal(new OverMasteryLine(3, 1, 0, 2.5f), card.OverMastery[0]);
+        Assert.Equal(new OverMasteryRow(new OverMasteryLine(3, 1, 0, 2.5f), 25, true), card.OverMastery[0]);
         Assert.Equal([7u, null, null, null], card.Summons);
     }
 

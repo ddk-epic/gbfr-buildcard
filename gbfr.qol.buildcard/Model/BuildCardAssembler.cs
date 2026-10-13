@@ -12,14 +12,20 @@ public static class BuildCardAssembler
 
     // findText(text id, sub-id): the text in the loaded language
     public static BuildCard Build(CharaSnapshot build, IReadOnlyList<MasterTraitCell> cells, int[]? percents,
-        Func<uint, uint, string> findText) =>
+        Func<uint, uint, string> findText, Func<uint, OverMasteryParam?> findParam) =>
         new(build.CharaKey,
             new WeaponPart(build.WeaponKey, build.MirageKey, build.AlternateArt),
             BuildTraits(build, cells, findText),
             percents == null ? null : new MasteryPercents(percents[MasteryReader.Offense], percents[MasteryReader.Defense],
                 percents[MasteryReader.Collection], percents[MasteryReader.Transcendence]),
-            build.OverMastery,
+            build.OverMastery.Select(line => BuildOverMastery(line, findParam)).ToArray(),
             build.Summons) { CharaName = build.CharaName };
+
+    // null for an empty line or one without a param
+    private static OverMasteryRow? BuildOverMastery(OverMasteryLine? line, Func<uint, OverMasteryParam?> findParam) =>
+        line is { } value && findParam(value.Key) is { } param
+            ? new OverMasteryRow(value, (int)(param.Scale * value.Value), param.Percent)
+            : null;
 
     private static TraitBoard BuildTraits(CharaSnapshot build, IReadOnlyList<MasterTraitCell> cells,
         Func<uint, uint, string> findText)

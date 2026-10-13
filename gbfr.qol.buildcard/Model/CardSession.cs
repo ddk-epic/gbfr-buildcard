@@ -11,16 +11,19 @@ public class CardSession
 {
     private readonly TraitTables _traitTables;
     private readonly MasteryReader _masteryReader;
+    private readonly OverMasteryParams _overMasteryParams;
     private readonly TextTable _table;
     private readonly ILogger _logger;
 
     // Raised on the game thread with the CharaInfo the card is shown on.
     public event Action<CharaInfo, BuildCard>? Shown;
 
-    public CardSession(TraitTables traitTables, MasteryReader masteryReader, TextTable table, ILogger logger)
+    public CardSession(TraitTables traitTables, MasteryReader masteryReader, OverMasteryParams overMasteryParams,
+        TextTable table, ILogger logger)
     {
         _traitTables = traitTables;
         _masteryReader = masteryReader;
+        _overMasteryParams = overMasteryParams;
         _table = table;
         _logger = logger;
     }
@@ -30,7 +33,7 @@ public class CardSession
     public void OnCharacterShown(CharaInfo charaInfo, CharaSnapshot build)
     {
         Current = BuildCardAssembler.Build(build, _traitTables.ReadCells(build.CharaKey),
-            _masteryReader.ReadPercents(build.CharaKey), _table.Find);
+            _masteryReader.ReadPercents(build.CharaKey), _table.Find, _overMasteryParams.Find);
         Dispatch.Raise(_logger, nameof(Shown), Shown, charaInfo, Current);
     }
 }

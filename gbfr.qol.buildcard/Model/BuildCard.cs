@@ -4,7 +4,7 @@ namespace gbfr.qol.buildcard.Model;
 
 // A character's build as the card shows it.
 public sealed record BuildCard(uint CharaKey, WeaponPart Weapon, TraitBoard Traits, MasteryPercents? Masteries,
-    OverMasteryLine?[] OverMastery, uint?[] Summons)
+    OverMasteryRow?[] OverMastery, uint?[] Summons)
 {
     public string CharaName { get; init; } = "";
 }
@@ -18,5 +18,8 @@ public sealed record TraitBoard(bool Captain, int[] Spent, int[] Budgets, StyleB
 public sealed record StyleBoard(uint? TitleTextId, string Title, string Name, int Perks, TraitCell?[][] Cells);
 
 public sealed record TraitCell(int Slot, bool Picked);
+
+// Value as the game shows it, a percentage when Percent
+public sealed record OverMasteryRow(OverMasteryLine Line, int Value, bool Percent);
 
 public sealed record MasteryPercents(int Offense, int Defense, int Collection, int Transcendence);

@@ -11,7 +11,7 @@ How the mod's parts pass events to each other and which thread runs them.
 | `Interop/Game/` | `GameApi` and UI objects and components as structs (`UiHandles`). |
 | `Interop/D3D11/` | COM calls by vtable index and the backbuffer read (`Com`, `BackbufferReadback`). |
 | `Game/` | Services on the game's UI: `UiTree`, `TextService`, `ControllerLifetimes`, `MenuState`, `Input`, `CharaStatusHooks`. |
-| `Sources/` | What the card reads from the game: `CharaSnapshot`, `TraitTables`, `MasteryReader`, `TextTable`. |
+| `Sources/` | What the card reads from the game: `CharaSnapshot`, `TraitTables`, `MasteryReader`, `OverMasteryParams`, `TextTable`. |
 | `Model/` | `BuildCard`, `BuildCardAssembler`, `BuildCardJson`, `CardSession`. |
 | `Card/` | `CardView`, its binders in `Card/Binders/`, `StatusBackground`, `WeaponArt`. |
 | `Export/` | `ExportController`, `UiFrameCapture`, `UiRedraw`, `SaveCardFooter`; `StatusGuide` and `SavedNotice` in `Overlays/`, `Png` and `Resample` in `Encoders/`, `CardFile`, `SteamScreenshots` and `NoticeSink` in `Sinks/`. |
@@ -33,6 +33,7 @@ found. A feature left out does nothing; the others still start.
 | `TextService` | `TextComponentSetText`, `Text vtable`; the wrapping functions when found |
 | `TraitTables` | `SetSkillBoardDescription` |
 | `MasteryReader` | `MasteryPercent`, `SetMasteryPercents` |
+| `OverMasteryParams` | `SetOverMasteryLine` |
 | `MenuState` | `StartFlow`, `EndFlow`, `FindView`, `OpenView`, `CloseView` |
 | `CharaStatusHooks` | `FillCharacterStatus` |
 | `WeaponArt` | `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |
@@ -90,10 +91,10 @@ updates.
 ## Card model
 
 `BuildCard` is the card's content: the character key, the weapon, mirage and alternate art flag, the Master Traits
-board, the mastery percentages, the Over Mastery lines, the summons and the character's name. `CardSession` holds the
+board, the mastery percentages, the Over Mastery lines with their shown values, the summons and the character's name. `CardSession` holds the
 card last shown as `Current`. `BuildCardJson` serializes it with source-generated metadata, as the export's PNG holds
 it ([export](export.md#output)). `BuildCardAssembler` builds it from the
-character's build, its master trait cells, its mastery percentages and a text lookup, and uses no UI objects. It holds
+character's build, its master trait cells, its mastery percentages, a text lookup and a `limit_bonus_param` lookup, and uses no UI objects. It holds
 the game's board rules: three styles, 4, 8, 8 and 10 slots per rank on the normal board, 4, 8, 8 and 14 on the
 captain's, and budgets of 10, 10, 10 and 20 points per rank.
 

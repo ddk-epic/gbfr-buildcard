@@ -57,6 +57,7 @@ internal static class CardLayout
     {
         public const int NameWidth = 766;
         public static readonly short[] Names = [2668, 2700, 2732, 2764];
+        public const uint PercentText = 0x81B0B85F;
         public static readonly short[] Rows = [2662, 2694, 2726, 2758];
         public static readonly short[][] Values = [[2669, 2671, 2672], [2701, 2703, 2704], [2733, 2735, 2736], [2765, 2767, 2768]];
     }

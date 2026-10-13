@@ -37,7 +37,7 @@ whose required capabilities were all found. A feature left out does nothing; the
 | `OverMasteryParams` | `SetOverMasteryLine` |
 | `MenuState` | `StartFlow`, `EndFlow`, `FindView`, `OpenView`, `CloseView` |
 | `CharaStatusHooks` | `FillCharacterStatus` |
-| `WeaponArt` | `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |
+| `WeaponArt` | `FillCharacterStatus`, `EnableSkinView function 9`, `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |
 | `OverMasteryBinder` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |
 | `SummonsBinder` | `SetSummonInfo`, `SummonInfo vtable` |
 | `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8` and `ControllerLifetimes`' capabilities |
@@ -94,7 +94,7 @@ updates.
 
 ## Card model
 
-`BuildCard` is the card's content: the character key, the weapon, mirage and alternate art flag, the Master Traits
+`BuildCard` is the card's content: the character key, the weapon, skin and effect off flag, the Master Traits
 board, the mastery percentages, the Over Mastery lines with their shown values, the summons, the character's name and the language of its texts. `CardSession` holds the
 card last shown as `Current`. `BuildCardJson` serializes it with source-generated metadata, as the export's PNG holds
 it ([export](export.md#output)). `BuildCardAssembler` builds it from the

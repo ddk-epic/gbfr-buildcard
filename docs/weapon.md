@@ -13,7 +13,9 @@ the weapon's art with `WeaponArt`.
 | Weapon | The weapon's icon, name, `+` level, level and HP, ATK, critical rate and stun power, as the gear screen's Weapon section shows them, with the weapon's type under the name (the equip screen's `type_text01`, set through `WeaponInfo`'s `TypeText`). |
 | Weapon traits | The weapon's trait rows from the equip screen, their levels at the right edge in the summon rows' gold, as are the sigils' levels. |
 | Wrightstone | The wrightstone's trait rows from the equip screen, styled as the weapon traits. |
-| Art | The equipped weapon's art, or the mirage's when one is set and mirages are shown in the settings; the alternate art when it is chosen and alternate art is shown in the settings. |
+| Art | The equipped weapon's art, or its skin's when one is set; its effect off art when the effect is turned off. |
+| Skin tag | The equip screen's `tag_skin01` plaque (`WeaponInfo`'s `WeaponSkinText`), shown when a skin is set. |
+| Effect tag | The equip screen's `tag_eff01` (`WeaponInfo`'s `B47B9FCC`), shown when the effect is turned off. |
 
 ## Implementation
 
@@ -25,11 +27,24 @@ The heading's text, `CardLayout.Gear.WeaponTitle`, has no `TextSetter`; the text
 the `status01` sub-id. After each character fill `GearBinder` looks the text up with `TextTable` (`TextLookup`) in the sub-id
 `equip01_info01` (`0xDE6482AF`) and sets it with `TextComponentSetText`.
 
+`WeaponInfo`'s setter picks the art, the skin tag and the effect tag from the character's weapon and the skin view,
+three bytes the menu flows set with `ui::fsm::action::EnableSkinView`. The pause menu clears them; the equip menu sets
+the skin and effect bytes.
+
+| Skin view byte | `EnableSkinView` field | Setter |
+|---|---|---|
+| Weapon skin | `enableWeaponSkin_` | Uses the skin key for the art and the skin tag when it is set. |
+| Force skin tag | `forceEnableSkinTag_` | Shows the skin tag when no skin is shown. |
+| Weapon effect off | `enableWeaponEffectOff_` | Uses the effect off flag for the art and the effect tag. |
+
+`WeaponArt` hooks `FillCharacterStatus` and, while it fills the card's `CharaInfo`, sets the skin view as the equip menu
+does (weapon skin and weapon effect off set, force skin tag clear), then puts the previous bytes back.
+
 The art is loaded by the game's `ui::icon::LoadWeaponParty`, which loads the art of each weapon in its list while the
 party menu is open. `WeaponArt` hooks two of its vfuncs:
 
 1. At each `CardSession.Shown` ([character](character.md#implementation)) `WeaponArt` sets the weapon key and the
-   alternate art flag to load, chosen from the card's weapon key, mirage key and alternate art flag and the settings.
+   effect off flag to load: the card's skin key when one is set, its weapon key otherwise, and its effect off flag.
 2. The hooked vfunc 4, whether the loader is open, also returns true while the Character Details menu is open
    ([ui](ui.md#character-details-menu)) and a card weapon is set.
 3. The hooked vfunc 5, which collects the list, collects the party's weapons only while the party menu is open, then
@@ -42,17 +57,19 @@ party menu is open. `WeaponArt` hooks two of its vfuncs:
 | Offset in `chara` | Size | Data |
 |---|---|---|
 | `+0x054` | 4 | Weapon key: the equipped weapon. |
-| `+0x058` | 4 | Mirage key: the weapon whose look is shown, `0x887AE0B0` when none. |
-| `+0x05C` | 1 | Weapon flags; bit `0x20` set when the weapon's alternate art is chosen. |
+| `+0x058` | 4 | Skin key: the weapon whose look is shown, `0x887AE0B0` when none. |
+| `+0x05C` | 1 | Weapon flags; bit `0x20` set when the weapon's effect is turned off. |
 
 ### Weapon art
 
 | Structure | Offset | Data |
 |---|---|---|
 | Loader | `+0x40` | Number of list entries, at most 6. |
-| Loader | `+0x48` | List entries, 8 bytes each: weapon key, then 1 byte set for the alternate art. |
-| Settings object | `+0x1113` | Non-zero when mirages are shown. |
-| Settings object | `+0x1114` | Non-zero when alternate weapon art is shown. |
+| Loader | `+0x48` | List entries, 8 bytes each: weapon key, then 1 byte set for effect off. |
+| Skin view object | `+0x1112` | Force skin tag. |
+| Skin view object | `+0x1113` | Weapon skin. |
+| Skin view object | `+0x1114` | Weapon effect off. |
 
-The loader's vtable is found through the exe's RTTI (`.?AVLoadWeaponParty@icon@ui@@`). The settings object's address
-is read from the `mov rcx, [rip + disp32]` at `LoadWeaponParty`'s vfunc 5 + 0x26.
+The loader's vtable is found through the exe's RTTI (`.?AVLoadWeaponParty@icon@ui@@`). The skin view object's address
+is read from the `mov rax, [rip + disp32]` that starts `EnableSkinView`'s vfunc 9 (`.?AVEnableSkinView@action@fsm@ui@@`),
+which copies the action's three fields to `+0x1113`, `+0x1112` and `+0x1114`.

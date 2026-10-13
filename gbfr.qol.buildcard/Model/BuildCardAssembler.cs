@@ -14,7 +14,7 @@ public static class BuildCardAssembler
     public static BuildCard Build(CharaSnapshot build, IReadOnlyList<MasterTraitCell> cells, int[]? percents,
         Func<uint, uint, string> findText, Func<uint, OverMasteryParam?> findParam, string language) =>
         new(build.CharaKey,
-            new WeaponPart(build.WeaponKey, build.MirageKey, build.AlternateArt),
+            new WeaponPart(build.WeaponKey, build.SkinKey, build.EffectOff),
             BuildTraits(build, cells, findText),
             percents == null ? null : new MasteryPercents(percents[MasteryReader.Offense], percents[MasteryReader.Defense],
                 percents[MasteryReader.Collection], percents[MasteryReader.Transcendence]),

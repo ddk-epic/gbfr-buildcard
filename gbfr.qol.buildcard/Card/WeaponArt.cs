@@ -16,7 +16,7 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Card;
 
-// Adds the card's weapon to the art ui::icon::LoadWeaponParty loads while the Character Details menu is open.
+// Fills the card's weapon with the equip menu's skin view and loads its art through ui::icon::LoadWeaponParty.
 public unsafe class WeaponArt : IFeature
 {
     private const int WantedMax = 6;
@@ -25,47 +25,72 @@ public unsafe class WeaponArt : IFeature
     private readonly GameApi _api;
     private readonly ILogger _logger;
     private readonly MenuState _menu;
-    private Settings** _settings;
+    private readonly UiTree _tree;
+    private SkinViewOwner** _owner;
     private uint _key = TextTable.EmptyIdHash;
-    private bool _alternate;
+    private bool _effectOff;
 
+    private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private delegate byte IsOpen(nint loader);
     private delegate void Collect(nint loader);
+    private IHook<FillCharacterStatus>? _fillHook;
     private IHook<IsOpen>? _isOpenHook;
     private IHook<Collect>? _collectHook;
 
-    public WeaponArt(IReloadedHooks hooks, GameApi api, ILogger logger, MenuState menu)
+    public WeaponArt(IReloadedHooks hooks, GameApi api, ILogger logger, MenuState menu, UiTree tree)
     {
         _hooks = hooks;
         _api = api;
         _logger = logger;
         _menu = menu;
+        _tree = tree;
     }
 
-    public Capability[] Requires => [_api.LoadWeaponPartyIsOpen, _api.LoadWeaponPartyCollect];
+    public Capability[] Requires =>
+        [_api.FillCharacterStatus, _api.EnableSkinViewApply, _api.LoadWeaponPartyIsOpen, _api.LoadWeaponPartyCollect];
 
-    // Reads the settings object's address from the mov rcx, [rip + disp32] at LoadWeaponParty vfunc 5 + 0x26.
+    // Reads the skin view's address from the mov rax, [rip + disp32] at EnableSkinView vfunc 9.
     public void Start()
     {
-        nint collect = _api.LoadWeaponPartyCollect.Address;
-        _settings = (Settings**)PeImage.RipGlobal((byte*)collect + 0x26, [0x48, 0x8B, 0x0D]);
-        if (_settings == null)
+        _owner = (SkinViewOwner**)PeImage.RipGlobal((byte*)_api.EnableSkinViewApply.Address, [0x48, 0x8B, 0x05]);
+        if (_owner == null)
         {
-            _logger.WriteLine("[gbfr.qol.buildcard] Settings object not found", Color.Red);
+            _logger.WriteLine("[gbfr.qol.buildcard] Skin view not found", Color.Red);
             return;
         }
+        _fillHook = _hooks.CreateHook<FillCharacterStatus>(FillImpl, _api.FillCharacterStatus.Address).Activate();
         _isOpenHook = _hooks.CreateHook<IsOpen>(IsOpenImpl, _api.LoadWeaponPartyIsOpen.Address).Activate();
-        _collectHook = _hooks.CreateHook<Collect>(CollectImpl, collect).Activate();
+        _collectHook = _hooks.CreateHook<Collect>(CollectImpl, _api.LoadWeaponPartyCollect.Address).Activate();
     }
 
-    // Sets the weapon whose art is loaded, following the mirage and alternate art settings.
+    // Sets the weapon whose art is loaded: the skin's when one is set.
     public void OnShown(CharaInfo charaInfo, BuildCard card)
     {
-        if (_settings == null || *_settings == null)
+        _key = card.Weapon.SkinKey != TextTable.EmptyIdHash ? card.Weapon.SkinKey : card.Weapon.Key;
+        _effectOff = card.Weapon.EffectOff;
+    }
+
+    // Fills the card with the equip menu's skin view, then puts the previous one back.
+    private void FillImpl(nint charaInfo, nint chara, int index)
+    {
+        if (*_owner == null || !_tree.IsOnCard(new CharaInfo(charaInfo)))
+        {
+            _fillHook!.OriginalFunction(charaInfo, chara, index);
             return;
-        ref var settings = ref **_settings;
-        _key = card.Weapon.MirageKey != TextTable.EmptyIdHash && settings.ShowMirage != 0 ? card.Weapon.MirageKey : card.Weapon.Key;
-        _alternate = card.Weapon.AlternateArt && settings.ShowAlternateArt != 0;
+        }
+        ref var view = ref (*_owner)->View;
+        var saved = view;
+        view.WeaponSkin = 1;
+        view.ForceSkinTag = 0;
+        view.WeaponEffectOff = 1;
+        try
+        {
+            _fillHook!.OriginalFunction(charaInfo, chara, index);
+        }
+        finally
+        {
+            view = saved;
+        }
     }
 
     // Open while the party menu is open, or while the Character Details menu is open and a card weapon is set.
@@ -86,15 +111,15 @@ public unsafe class WeaponArt : IFeature
         long count = list.Count;
         if (count is < 0 or >= WantedMax)
             return;
-        byte alternate = _alternate ? (byte)1 : (byte)0;
+        byte effectOff = _effectOff ? (byte)1 : (byte)0;
         for (int i = 0; i < count; i++)
         {
-            if (list.Wanted[i].Key == _key && list.Wanted[i].Alternate == alternate)
+            if (list.Wanted[i].Key == _key && list.Wanted[i].EffectOff == effectOff)
                 return;
         }
         ref var added = ref list.Wanted[(int)count];
         added.Key = _key;
-        added.Alternate = alternate;
+        added.EffectOff = effectOff;
         list.Count = count + 1;
     }
 
@@ -113,7 +138,7 @@ public unsafe class WeaponArt : IFeature
     private struct WantedEntry
     {
         [FieldOffset(0x0)] public uint Key;
-        [FieldOffset(0x4)] public byte Alternate;
+        [FieldOffset(0x4)] public byte EffectOff;
     }
 
     [InlineArray(WantedMax)]
@@ -123,9 +148,17 @@ public unsafe class WeaponArt : IFeature
     }
 
     [StructLayout(LayoutKind.Explicit)]
-    private struct Settings
+    private struct SkinViewOwner
     {
-        [FieldOffset(0x1113)] public byte ShowMirage;
-        [FieldOffset(0x1114)] public byte ShowAlternateArt;
+        [FieldOffset(0x1112)] public SkinView View;
+    }
+
+    // the bytes ui::fsm::action::EnableSkinView sets
+    [StructLayout(LayoutKind.Sequential)]
+    private struct SkinView
+    {
+        public byte ForceSkinTag;
+        public byte WeaponSkin;
+        public byte WeaponEffectOff;
     }
 }

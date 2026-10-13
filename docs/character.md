@@ -20,7 +20,7 @@ the status panel. They are the stock page's objects, moved and restyled by `tool
    handles it.
 2. It reads the character's name from the `CharaInfo`'s first `Names` text, which the fill has just set, into the
    build's `CharaName`.
-3. `CharaSnapshot.Decode` reads the character key, the weapon key, the mirage key, the alternate art flag, the skill board
+3. `CharaSnapshot.Decode` reads the character key, the weapon key, the skin key, the effect off flag, the skill board
    entries with a non-zero key, the Over Mastery lines with a non-zero value, and the summons with a non-zero id. A line
    whose value is not finite or whose level bit is not a single bit is left out.
 4. `CardSession` assembles a `BuildCard` from the build with `BuildCardAssembler`, which also takes the character's
@@ -61,8 +61,8 @@ with both pointers:
 | Offset | Size | Data | Doc |
 |---|---|---|---|
 | `+0x054` | 4 | Weapon key: the equipped weapon. | [weapon](weapon.md) |
-| `+0x058` | 4 | Mirage key: the weapon whose look is shown, `0x887AE0B0` when none. | [weapon](weapon.md) |
-| `+0x05C` | 1 | Weapon flags; bit `0x20` set when the weapon's alternate art is chosen. | [weapon](weapon.md) |
+| `+0x058` | 4 | Skin key: the weapon whose look is shown, `0x887AE0B0` when none. | [weapon](weapon.md) |
+| `+0x05C` | 1 | Weapon flags; bit `0x20` set when the weapon's effect is turned off. | [weapon](weapon.md) |
 | `+0x138` to `+0x58B8` | 400 × 0x38 | Skill board entries, below. | |
 | `+0x58B8` | 4 × 0x10 | Over Mastery lines. | [Over Mastery](over-mastery.md) |
 | `+0x5DD8` | 4 × 0x1C | Summons. | [summons](summons.md) |

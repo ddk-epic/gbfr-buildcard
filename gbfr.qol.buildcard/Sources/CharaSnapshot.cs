@@ -4,13 +4,13 @@ using System.Runtime.InteropServices;
 
 namespace gbfr.qol.buildcard.Sources;
 
-public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint MirageKey, bool AlternateArt, CharaEntry[] Entries,
+public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, bool EffectOff, CharaEntry[] Entries,
     OverMasteryLine?[] OverMastery, uint?[] Summons)
 {
     // from the CharaInfo's Names text
     public string CharaName { get; init; } = "";
 
-    private const byte AlternateArtFlag = 0x20;
+    private const byte EffectOffFlag = 0x20;
     public const int OverMasteryLines = 4;
     public const int SummonCount = 4;
 
@@ -44,7 +44,7 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint MirageKey
         for (int i = 0; i < SummonCount; i++)
             summons[i] = chara.Summons[i].SummonId is var id and not 0 ? id : null;
 
-        return new CharaSnapshot(chara.CharaKey, chara.WeaponKey, chara.MirageKey, (chara.WeaponFlags & AlternateArtFlag) != 0,
+        return new CharaSnapshot(chara.CharaKey, chara.WeaponKey, chara.SkinKey, (chara.WeaponFlags & EffectOffFlag) != 0,
             entries.ToArray(), overMastery, summons);
     }
 
@@ -52,7 +52,7 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint MirageKey
     private struct Chara
     {
         [FieldOffset(0x54)] public uint WeaponKey;
-        [FieldOffset(0x58)] public uint MirageKey;
+        [FieldOffset(0x58)] public uint SkinKey;
         [FieldOffset(0x5C)] public byte WeaponFlags;
         [FieldOffset(0x138)] public EntryArray Entries;
         [FieldOffset(0x58B8)] public OverMasteryArray OverMastery;

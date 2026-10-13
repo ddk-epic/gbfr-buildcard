@@ -20,6 +20,7 @@ public sealed class GameApi
     private const string ControllerInformationSystemType = ".?AVControllerInformationSystem@component@ui@@";
     private const string ControllerInformationToastType = ".?AVControllerInformationToast@component@ui@@";
     private const string LoadWeaponPartyType = ".?AVLoadWeaponParty@icon@ui@@";
+    private const string EnableSkinViewType = ".?AVEnableSkinView@action@fsm@ui@@";
 
     private readonly IScanManager _scanManager;
     private readonly Vtables _vtables;
@@ -66,6 +67,7 @@ public sealed class GameApi
     public readonly Capability ControllerInformationToastShowInfo;
     public readonly Capability LoadWeaponPartyIsOpen;
     public readonly Capability LoadWeaponPartyCollect;
+    public readonly Capability EnableSkinViewApply;
 
     // Raised once every signature is found, on the thread that found the last one.
     public event Action? ScansFound;
@@ -119,6 +121,7 @@ public sealed class GameApi
             "41 57 41 56 41 55 41 54 56 57 55 53 48 81 EC 78 01 00 00 48 89 D7");
         LoadWeaponPartyIsOpen = Function(LoadWeaponPartyType, 4, "48 8B 05 ?? ?? ?? ?? 48 8B 48 40 48 8B 50 48 48 39 D1");
         LoadWeaponPartyCollect = Function(LoadWeaponPartyType, 5, null);
+        EnableSkinViewApply = Function(EnableSkinViewType, 9, "48 8B 05 ?? ?? ?? ?? 0F B6 51 30 88 90 13 11 00 00");
         Resolve();
     }
 

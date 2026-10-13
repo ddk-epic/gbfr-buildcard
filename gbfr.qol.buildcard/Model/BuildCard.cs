@@ -12,7 +12,7 @@ public sealed record BuildCard(uint CharaKey, WeaponPart Weapon, TraitBoard Trai
     public string Language { get; init; } = "";
 }
 
-public sealed record WeaponPart(uint Key, uint MirageKey, bool AlternateArt);
+public sealed record WeaponPart(uint Key, uint SkinKey, bool EffectOff);
 
 // Spent and Budgets per rank, shared by the styles
 public sealed record TraitBoard(bool Captain, int[] Spent, int[] Budgets, StyleBoard[] Styles);

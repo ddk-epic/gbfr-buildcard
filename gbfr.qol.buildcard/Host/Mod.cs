@@ -123,7 +123,7 @@ public class Mod : ModBase
         _cardSession = new CardSession(_traitTables, _masteryReader, _overMasteryParams, _textTable, _logger);
         _charaStatusHooks.CharacterShown += _cardSession.OnCharacterShown;
 
-        _weaponArt = new WeaponArt(_hooks, _api, _logger, _menu);
+        _weaponArt = new WeaponArt(_hooks, _api, _logger, _menu, _uiTree);
         _cardSession.Shown += _weaponArt.OnShown;
 
         var overMasteryBinder = new OverMasteryBinder(_textService, _textTable, _uiTree, _api);

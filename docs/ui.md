@@ -208,3 +208,4 @@ disabled ([features](runtime.md#features)).
 | `ControllerStatusGuide` | 21 | `SetUpPageArrows` | [export](export.md#page-button-prompts) |
 | `ControllerInformationSystem`, `ControllerInformationToast` | 35 | `ShowInfo` | [export](export.md#saved-notice) |
 | `LoadWeaponParty` | 4, 5 | Whether the loader is open; collecting its list, not checked. | [weapon](weapon.md) |
+| `EnableSkinView` | 9 | Applying the action to the skin view. | [weapon](weapon.md) |

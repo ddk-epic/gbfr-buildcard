@@ -49,17 +49,21 @@ public unsafe class SavedNotice : IOverlay, IFeature
         lifetimes.Destroyed += OnDestroyed;
     }
 
-    public Capability[] Requires => _lifetimes.Requires;
+    public Capability[] Requires => [];
 
-    public Capability[] Optional => [_api.ControllerInformationSystemShowInfo, _api.ControllerInformationToastShowInfo];
+    public Capability[] Optional => [.. ShowInfos.SelectMany(pair => (Capability[])[pair.ShowInfo, pair.Destructor])];
+
+    private (Capability ShowInfo, Capability Destructor)[] ShowInfos =>
+    [
+        (_api.ControllerInformationSystemShowInfo, _api.ControllerStatusBgDestroy),
+        (_api.ControllerInformationToastShowInfo, _api.ControllerInformationToastDestroy),
+    ];
 
     public void Start()
     {
-        if (!_lifetimes.IsHooked)
-            return;
-        foreach (var showInfo in Optional)
+        foreach ((var showInfo, var destructor) in ShowInfos)
         {
-            if (!showInfo.Found)
+            if (!showInfo.Found || !_lifetimes.Hooks(destructor))
                 continue;
             IHook<ShowInfoFn>? hook = null;
             hook = _hooks.CreateHook<ShowInfoFn>((c, info) => ShowInfoImpl(hook!, c, info), showInfo.Address).Activate();

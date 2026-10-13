@@ -29,19 +29,18 @@ public class ControllerLifetimes : IFeature
         _logger = logger;
     }
 
-    // ControllerStatusBg's destructor is also ControllerStatusGuide's and ControllerInformationSystem's
-    public Capability[] Requires => [_api.ControllerStatusBgDestroy, _api.ControllerInformationToastDestroy];
+    public Capability[] Requires => [];
 
-    public bool IsHooked => Requires.All(Hooks);
+    // ControllerStatusBg's destructor is also ControllerStatusGuide's and ControllerInformationSystem's
+    public Capability[] Optional =>
+        [_api.ControllerStatusDestroy, _api.ControllerStatusBgDestroy, _api.ControllerInformationToastDestroy];
 
     // Whether the destructor's controllers raise Destroyed
     public bool Hooks(Capability destructor) => _hooked.Contains(destructor);
 
-    public Capability[] Optional => [_api.ControllerStatusDestroy];
-
     public void Start()
     {
-        foreach (var destructor in (Capability[])[.. Requires, .. Optional])
+        foreach (var destructor in Optional)
         {
             if (!destructor.Found)
                 continue;

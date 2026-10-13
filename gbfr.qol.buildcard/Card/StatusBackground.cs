@@ -41,11 +41,12 @@ public unsafe class StatusBackground : IFeature
         lifetimes.Destroyed += OnDestroyed;
     }
 
-    public Capability[] Requires => [_api.ControllerStatusBgVtable, _api.ControllerStatusBgSetUp, .. _lifetimes.Requires];
+    public Capability[] Requires =>
+        [_api.ControllerStatusBgVtable, _api.ControllerStatusBgSetUp, _api.ControllerStatusBgDestroy];
 
     public void Start()
     {
-        if (_lifetimes.IsHooked)
+        if (_lifetimes.Hooks(_api.ControllerStatusBgDestroy))
             _setUpHook = _hooks.CreateHook<SetUpFn>(SetUpImpl, _api.ControllerStatusBgSetUp.Address).Activate();
     }
 

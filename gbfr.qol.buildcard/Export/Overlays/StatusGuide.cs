@@ -38,11 +38,11 @@ public class StatusGuide : IOverlay, IFeature
         lifetimes.Destroyed += OnDestroyed;
     }
 
-    public Capability[] Requires => [_api.ControllerStatusGuideSetUpPageArrows, .. _lifetimes.Requires];
+    public Capability[] Requires => [_api.ControllerStatusGuideSetUpPageArrows, _api.ControllerStatusBgDestroy];
 
     public void Start()
     {
-        if (_lifetimes.IsHooked)
+        if (_lifetimes.Hooks(_api.ControllerStatusBgDestroy))
             _setUpPageArrowsHook = _hooks.CreateHook<SetUpPageArrowsFn>(SetUpPageArrowsImpl,
                 _api.ControllerStatusGuideSetUpPageArrows.Address).Activate();
     }

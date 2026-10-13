@@ -28,7 +28,7 @@ whose required capabilities were all found. A feature left out does nothing; the
 
 | Feature | Requires |
 |---|---|
-| `ControllerLifetimes` | `ControllerStatusBg function 7`, `ControllerInformationToast function 7`; `ControllerStatus function 7` when found |
+| `ControllerLifetimes` | Nothing; `ControllerStatus function 7`, `ControllerStatusBg function 7` and `ControllerInformationToast function 7` when found |
 | `UiTree` | `SetObjectActive` |
 | `TextTable` | `TextComponentSetText`, `TextLookup`; `SetOverMasteryLine` when found, for the loaded language |
 | `TextService` | `TextComponentSetText`, `Text vtable`; the wrapping functions when found |
@@ -40,12 +40,12 @@ whose required capabilities were all found. A feature left out does nothing; the
 | `WeaponArt` | `FillCharacterStatus`, `EnableSkinView function 9`, `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |
 | `OverMasteryBinder` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |
 | `SummonsBinder` | `SetSummonInfo`, `SummonInfo vtable` |
-| `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8` and `ControllerLifetimes`' capabilities |
+| `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8`, `ControllerStatusBg function 7` |
 | `Input` | `UpdateShortcutInput`, `GetButtonBits` |
 | `SaveCardFooter` | `SetCharacterDetailsFooter` |
-| `StatusGuide` | `ControllerStatusGuide function 21` and `ControllerLifetimes`' capabilities |
+| `StatusGuide` | `ControllerStatusGuide function 21`, `ControllerStatusBg function 7` |
 | `NoticeSink` | `PushInfo` |
-| `SavedNotice` | `ControllerLifetimes`' capabilities; each controller's `ShowInfo` (function 35) when found |
+| `SavedNotice` | Nothing; each controller's `ShowInfo` (function 35) and destructor (function 7) when found |
 | `CardView` | `FillCharacterStatus`, `SetObjectActive`, `TextComponentSetText`, `Text vtable` |
 | `SwapChainHooks` | Nothing; it finds `Present` itself ([export](export.md#frame-timing)) |
 | `ExportController` | `Input`'s and `MenuState`'s capabilities and `Present`, which `SwapChainHooks` found and hooked |

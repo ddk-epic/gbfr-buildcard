@@ -4,7 +4,7 @@ using Reloaded.Mod.Interfaces;
 
 using gbfr.qol.buildcard.Interop.Game;
 
-namespace gbfr.qol.buildcard.Host;
+namespace gbfr.qol.buildcard.Core;
 
 // Starts each feature whose game functions were found, in the order added; logs one line per feature left out.
 public sealed class Features

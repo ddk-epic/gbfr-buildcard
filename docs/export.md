@@ -2,7 +2,7 @@
 
 The build card saved as a 2880x1440 PNG or JPEG from the Character Details menu's status page. The footer's Save Card starts it; the mod hides
 the page arrows' button prompts, redraws one frame into off-screen frame buffers with the card filling 2880x1440, and
-saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`, the swapchain hook in `Host/` and the
+saves the UI's frame buffer. The code is in `gbfr.qol.buildcard/Export/`, the swapchain hook in `Core/` and the
 D3D11 calls in `Interop/D3D11/`.
 
 ## Output

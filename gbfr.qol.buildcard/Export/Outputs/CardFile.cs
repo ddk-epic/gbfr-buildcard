@@ -6,7 +6,7 @@ using Reloaded.Mod.Interfaces;
 using gbfr.qol.buildcard.Configuration;
 using gbfr.qol.buildcard.Export;
 using gbfr.qol.buildcard.Export.Encoders;
-using gbfr.qol.buildcard.Host;
+using gbfr.qol.buildcard.Core;
 using gbfr.qol.buildcard.Model;
 
 namespace gbfr.qol.buildcard.Export.Outputs;

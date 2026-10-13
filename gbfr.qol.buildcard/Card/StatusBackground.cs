@@ -5,8 +5,8 @@ using Reloaded.Mod.Interfaces;
 
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
+using gbfr.qol.buildcard.Core;
 using gbfr.qol.buildcard.Game;
-using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Interop.Game;
 
 namespace gbfr.qol.buildcard.Card;

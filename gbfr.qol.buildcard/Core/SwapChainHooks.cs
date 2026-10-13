@@ -8,7 +8,7 @@ using gbfr.qol.buildcard.Interop.Game;
 
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
-namespace gbfr.qol.buildcard.Host;
+namespace gbfr.qol.buildcard.Core;
 
 // Hooks DXGI's Present.
 public unsafe partial class SwapChainHooks : IFeature

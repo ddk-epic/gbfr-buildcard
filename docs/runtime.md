@@ -6,7 +6,7 @@ How the mod's parts pass events to each other and which thread runs them.
 
 | Folder | Holds |
 |---|---|
-| `Host/` | `Mod`, the features, the game and render threads, `SwapChainHooks` and `Dispatch`. |
+| `Core/` | `Mod`, the features, the game and render threads, `SwapChainHooks` and `Dispatch`. |
 | `Interop/Native/` | The exe's sections, RTTI vtables and game containers (`PeImage`, `Vtables`, `GameMemory`). |
 | `Interop/Game/` | `GameApi` and UI objects and components as structs (`UiHandles`). |
 | `Interop/D3D11/` | COM calls by vtable index and the backbuffer read (`Com`, `BackbufferReadback`). |

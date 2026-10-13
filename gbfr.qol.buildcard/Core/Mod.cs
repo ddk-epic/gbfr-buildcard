@@ -20,7 +20,7 @@ using gbfr.qol.buildcard.Sources;
 using System.Diagnostics;
 #endif
 
-namespace gbfr.qol.buildcard.Host;
+namespace gbfr.qol.buildcard.Core;
 
 public class Mod : ModBase
 {

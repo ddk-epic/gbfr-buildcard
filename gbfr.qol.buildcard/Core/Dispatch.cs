@@ -2,7 +2,7 @@ using System.Drawing;
 
 using Reloaded.Mod.Interfaces;
 
-namespace gbfr.qol.buildcard.Host;
+namespace gbfr.qol.buildcard.Core;
 
 // Raises an event's handlers one by one, logging each that throws.
 public static class Dispatch

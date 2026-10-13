@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Mod.Interfaces;
 
+using gbfr.qol.buildcard.Core;
 using gbfr.qol.buildcard.Game;
-using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Interop.Native;
 using gbfr.qol.buildcard.Model;

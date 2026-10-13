@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
 
 using gbfr.qol.buildcard.Card;
+using gbfr.qol.buildcard.Core;
 using gbfr.qol.buildcard.Game;
-using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Model;
 using gbfr.qol.buildcard.Sources;

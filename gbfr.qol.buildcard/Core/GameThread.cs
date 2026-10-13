@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 
 using Reloaded.Mod.Interfaces;
 
-namespace gbfr.qol.buildcard.Host;
+namespace gbfr.qol.buildcard.Core;
 
 // Runs posted work and Tick on the game thread once per presented frame.
 public class GameThread

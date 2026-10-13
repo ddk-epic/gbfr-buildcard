@@ -10,28 +10,19 @@ namespace gbfr.qol.buildcard.Export;
 // Captures a rect of one UI frame at a given size: redrawn into off-screen frame buffers, or read from the backbuffer.
 public class UiFrameCapture
 {
-    // milliseconds
-    private const long DrawHooksTimeout = 500;
-
     private readonly UiRedraw _redraw;
     private readonly RenderThread _renderThread;
     private readonly ILogger _logger;
-    private readonly Action _keepDrawHooks;
     private CaptureRequest? _waiting;
     private CaptureRequest? _capturing;
     private int _waited;
-    private long _drawHooksAt;
 
     public UiFrameCapture(UiRedraw redraw, RenderThread renderThread, ILogger logger)
     {
         _redraw = redraw;
         _renderThread = renderThread;
         _logger = logger;
-        _keepDrawHooks = () => _drawHooksAt = Environment.TickCount64;
     }
-
-    // From any thread: keeps the draw hooks on for the next 500 milliseconds.
-    public void KeepDrawHooks() => _renderThread.Post(_keepDrawHooks);
 
     // From any thread: redraws the frame after the request's presents.
     public void Capture(CaptureRequest request) => _renderThread.Post(() =>
@@ -55,7 +46,7 @@ public class UiFrameCapture
             }
             _waiting = null;
         }
-        _redraw.SetDrawHooks(_capturing != null || Environment.TickCount64 - _drawHooksAt < DrawHooksTimeout);
+        _redraw.SetDrawHooks(_waiting != null || _capturing != null);
     }
 
     // Reads the redrawn frame, or the backbuffer's rect, and hands it to the request.

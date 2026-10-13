@@ -53,9 +53,6 @@ public class ExportController : IFeature
     {
         bool pressed = _input.Pressed();
         bool cardOpen = _menu.IsOnStatusPage;
-        if (cardOpen)
-            _capture.KeepDrawHooks();
-
         if (_request != null)
         {
             if (Environment.TickCount64 - _requestedAt > CaptureTimeout && _request.TryCancel())

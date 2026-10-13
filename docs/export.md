@@ -137,7 +137,7 @@ texture to the backbuffer. The UI's texture changes from frame to frame.
 
 `UiRedraw` hooks the immediate context's `DrawIndexed` (12), `Draw` (13), `DrawIndexedInstanced` (20),
 `DrawInstanced` (21), `OMSetRenderTargets` (33) and `OMSetRenderTargetsAndUnorderedAccessViews` (34), read from the
-device of the first presented swapchain whose backbuffer is a D3D11 texture. They are turned on at a present while a redraw runs or within 500 ms of a game thread tick on the status page, which `ExportController` posts to the render thread, and off otherwise. Outside a redraw frame they pass through; calls on other contexts always pass through.
+device of the first presented swapchain whose backbuffer is a D3D11 texture. They are turned on at present 1 after a request and off at the present that runs `UiRedraw.End`, or that drops the request when it was cancelled. Outside a redraw frame they pass through; calls on other contexts always pass through.
 
 In the redraw frame:
 

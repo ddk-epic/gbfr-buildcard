@@ -44,10 +44,17 @@ public unsafe class CharaStatusHooks : IFeature
     private void FillImpl(nint charaInfo, nint chara, int index)
     {
         _fillHook!.OriginalFunction(charaInfo, chara, index);
-        var info = new CharaInfo(charaInfo);
-        if (chara != 0 && _tree.IsOnCard(info))
-            Dispatch.Raise(_logger, nameof(CharacterShown), CharacterShown, info, CharaSnapshot.Decode(chara, LogBuildOnce)
-                with { CharaName = info.Name is { } name ? _text.Read(name) : "" });
+        try
+        {
+            var info = new CharaInfo(charaInfo);
+            if (chara != 0 && _tree.IsOnCard(info))
+                Dispatch.Raise(_logger, nameof(CharacterShown), CharacterShown, info, CharaSnapshot.Decode(chara, LogBuildOnce)
+                    with { CharaName = info.Name is { } name ? _text.Read(name) : "" });
+        }
+        catch (Exception e)
+        {
+            _logger.WriteLine($"[gbfr.qol.buildcard] {e}", Color.Red);
+        }
     }
 
     private void LogBuildOnce(string message)

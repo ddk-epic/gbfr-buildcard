@@ -7,6 +7,9 @@ public sealed record BuildCard(uint CharaKey, WeaponPart Weapon, TraitBoard Trai
     OverMasteryRow?[] OverMastery, uint?[] Summons)
 {
     public string CharaName { get; init; } = "";
+
+    // the language of the card's texts
+    public string Language { get; init; } = "";
 }
 
 public sealed record WeaponPart(uint Key, uint MirageKey, bool AlternateArt);

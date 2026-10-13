@@ -140,6 +140,16 @@ The loaded language's texts, a global pointer loaded by the `mov rdx, [rip + dis
 text id hash and a sub-id hash, the name hash of the prefab it is shown in; a text id can have a different text per
 prefab.
 
+## Loaded language
+
+A global pointer loaded by the `mov rcx, [rip + disp32]` at `SetOverMasteryLine+0x1CF` holds the loaded language's
+index as a signed byte at `+0x50`; the text setters clamp it to 0–9 and set it on a `Text` at `+0x198` before its
+string. `TextTable.Language` reads it.
+
+| Index | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `LanguageSetter` name | `Jpn` | `Eng` | `Fra` | `Ita` | `Deu` | `Esp` | `Por` | `Chs` | `Cht` | `Kor` |
+
 ## Text wrapping
 
 `TextService` wraps a text to a width with the `Text` component's own wrap fields. A rewrap sets an empty string before the text's own string, so the string is laid out again with the wrap fields. The reflow wrap breaks a line after its

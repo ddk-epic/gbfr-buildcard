@@ -30,7 +30,7 @@ whose required capabilities were all found. A feature left out does nothing; the
 |---|---|
 | `ControllerLifetimes` | `ControllerStatusBg function 7`, `ControllerInformationToast function 7`; `ControllerStatus function 7` when found |
 | `UiTree` | `SetObjectActive` |
-| `TextTable` | `TextComponentSetText`, `TextLookup` |
+| `TextTable` | `TextComponentSetText`, `TextLookup`; `SetOverMasteryLine` when found, for the loaded language |
 | `TextService` | `TextComponentSetText`, `Text vtable`; the wrapping functions when found |
 | `TraitTables` | `SetSkillBoardDescription` |
 | `MasteryReader` | `MasteryPercent`, `SetMasteryPercents` |
@@ -95,7 +95,7 @@ updates.
 ## Card model
 
 `BuildCard` is the card's content: the character key, the weapon, mirage and alternate art flag, the Master Traits
-board, the mastery percentages, the Over Mastery lines with their shown values, the summons and the character's name. `CardSession` holds the
+board, the mastery percentages, the Over Mastery lines with their shown values, the summons, the character's name and the language of its texts. `CardSession` holds the
 card last shown as `Current`. `BuildCardJson` serializes it with source-generated metadata, as the export's PNG holds
 it ([export](export.md#output)). `BuildCardAssembler` builds it from the
 character's build, its master trait cells, its mastery percentages, a text lookup and a `limit_bonus_param` lookup, and uses no UI objects. It takes

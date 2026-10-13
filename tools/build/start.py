@@ -1,5 +1,5 @@
 # First build step: starts each prefab from stock and adds the card's container to status01.
-from codegen import Hash, xxhash32_custom
+from codegen import Hash, name_hash
 from context import TARGETS
 from model.components import rect
 from steps.layout import CANVAS_H, CANVAS_W, CARD_H, CARD_W
@@ -16,4 +16,4 @@ def apply(ctx):
     ctx.export("Card.Width", CARD_W)
     ctx.export("Card.Height", CARD_H)
     ctx.export("Card.Y", int(base.vec("Position")[1]))
-    ctx.export("Status01.NameHash", Hash(xxhash32_custom(ctx.prefab("status01").root.name)))
+    ctx.export("Status01.NameHash", Hash(name_hash(ctx.prefab("status01").root)))

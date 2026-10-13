@@ -16,6 +16,7 @@ public class CardFileTests
         new MasteryPercents(150, 100, 50, 0), [new OverMasteryRow(new OverMasteryLine(3, 1, 0, 2.5f), 25, true), null, null, null], [7, null, null, null])
     {
         CharaName = "グラン",
+        Language = "Jpn",
     };
 
     [Fact]
@@ -26,6 +27,7 @@ public class CardFileTests
         Assert.All(json, c => Assert.True(c < 0x80));
         var card = JsonSerializer.Deserialize(json, BuildCardJson.Default.BuildCard)!;
         Assert.Equal("グラン", card.CharaName);
+        Assert.Equal("Jpn", card.Language);
         Assert.Equal("猛攻", card.Traits.Styles[0].Name);
         Assert.Equal(new TraitCell(110, true), card.Traits.Styles[0].Cells[0][0]);
         Assert.Equal(new OverMasteryRow(new OverMasteryLine(3, 1, 0, 2.5f), 25, true), card.OverMastery[0]);

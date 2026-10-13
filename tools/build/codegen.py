@@ -32,11 +32,16 @@ def yaml_string(text):
     return text
 
 
+def name_hash(node):
+    # the game's hash of the node's name
+    return xxhash32_custom(yaml_string(node.name))
+
+
 def prefab_hash(ids):
     # FNV-1a over each object's Id and name hash, in Id order
     h = FNV_OFFSET
     for node, id_ in ids.items():
-        for value in (id_, xxhash32_custom(yaml_string(node.name))):
+        for value in (id_, name_hash(node)):
             for byte in value.to_bytes(4, "little"):
                 h = ((h ^ byte) * FNV_PRIME) & 0xFFFFFFFF
     return h
@@ -62,8 +67,10 @@ def cs_type(value, records):
         return "uint"
     if isinstance(value, float):
         return "float"
+    if isinstance(value, bool):
+        return "bool"
     if isinstance(value, int):
-        return "int"
+        return "uint" if value > 0x7FFFFFFF else "int"
     return "short"
 
 
@@ -76,6 +83,8 @@ def literal(value, ids, key):
         return f"0x{value.value:08X}"
     if isinstance(value, float):
         return f"{value}f"
+    if isinstance(value, bool):
+        return "true" if value else "false"
     if isinstance(value, int):
         return str(value)
     if value not in ids:
@@ -85,7 +94,7 @@ def literal(value, ids, key):
 
 def member(name, value, ids, records, key):
     kind = cs_type(value, records)
-    if kind in ("short", "int", "uint", "float"):
+    if kind in ("short", "int", "uint", "float", "bool"):
         return f"public const {kind} {name} = {literal(value, ids, key)};"
     return f"public static readonly {kind} {name} = {literal(value, ids, key)};"
 

@@ -36,6 +36,14 @@ class CodegenTest(unittest.TestCase):
         quoted = codegen.prefab_hash({NamedNode("'loc_ring '"): 0, NamedNode("'it''s'"): 1})
         self.assertEqual(quoted, codegen.prefab_hash({NamedNode("loc_ring "): 0, NamedNode("it's"): 1}))
 
+    def test_name_hash_unquotes_the_name(self):
+        self.assertEqual(codegen.name_hash(NamedNode("'status01'")), codegen.name_hash(NamedNode("status01")))
+
+    def test_constants_take_the_smallest_fitting_type(self):
+        text = codegen.generate(self.prefab, {"Big": 0x80000000, "On": True})
+        self.assertIn("    public const uint Big = 2147483648;", text)
+        self.assertIn("    public const bool On = true;", text)
+
     def test_sections_become_nested_classes(self):
         text = codegen.generate(self.prefab, {"Card.Width": 10, "Root": self.a, "Card.Name": Hash(0x887AE0B0)})
         self.assertIn("    public const short Root = 1;", text)

@@ -107,7 +107,7 @@ public class Mod : ModBase
 
         _gameThread = new GameThread(_logger);
         _vtables = new Vtables(_logger);
-        _api = new GameApi(scanManager, _vtables);
+        _api = new GameApi(scanManager, _vtables, _logger);
         _features = new Features(_logger);
 
         _lifetimes = new ControllerLifetimes(_hooks, _api, _logger);

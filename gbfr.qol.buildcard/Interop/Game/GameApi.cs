@@ -1,4 +1,7 @@
+using System.Drawing;
+
 using NenTools.Reloaded.ScanManager.Interfaces;
+using Reloaded.Mod.Interfaces;
 
 using gbfr.qol.buildcard.Interop.Native;
 
@@ -24,6 +27,7 @@ public sealed class GameApi
 
     private readonly IScanManager _scanManager;
     private readonly Vtables _vtables;
+    private readonly ILogger _logger;
     private int _pending = 1;  // the scans not found yet and the constructor
 
     // Signatures/granblue_fantasy_relink_er.ini
@@ -74,10 +78,11 @@ public sealed class GameApi
 
     public bool AllScansFound => Volatile.Read(ref _pending) == 0;
 
-    public GameApi(IScanManager scanManager, Vtables vtables)
+    public GameApi(IScanManager scanManager, Vtables vtables, ILogger logger)
     {
         _scanManager = scanManager;
         _vtables = vtables;
+        _logger = logger;
 
         FillCharacterStatus = Scan(nameof(FillCharacterStatus));
         SetObjectActive = Scan(nameof(SetObjectActive));
@@ -133,7 +138,7 @@ public sealed class GameApi
         {
             capability.Address = (nint)address;
             Resolve();
-        });
+        }, () => _logger.WriteLine($"[gbfr.qol.buildcard] {name} not found", Color.Red));
         return capability;
     }
 

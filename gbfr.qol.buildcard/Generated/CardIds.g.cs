@@ -32,7 +32,7 @@ internal static class CardIds
     public static readonly short[] Scenes = [438, 467];
     public const int SigilTraitNameWidth = 488;
     public static readonly short[][] SigilTraitNames = [[3434, 3435], [3449, 3450], [3464, 3465], [3479, 3480], [3494, 3495], [3509, 3510], [3524, 3525], [3539, 3540], [3554, 3555], [3569, 3570], [3584, 3585], [3599, 3600]];
-    public const int SkillNameWidth = 296;
+    public const int SkillNameWidth = 308;
     public static readonly short[] SkillNames = [3613, 3671, 3729, 3787];
     public const uint StockBackdrop = 0xC3D4410C;
     public const int StockLines = 993196888;

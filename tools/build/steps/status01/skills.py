@@ -83,6 +83,8 @@ def apply(ctx):
     name_x = (ICON_PAD + ICON_W + ICON_GAP) / scale
     # the text group, from the element bar's left edge to the cell's right edge
     text_w = cell_w - name_x + SKILL_NAME_INSET
+    # the name's wrap width, to the next cell's icon ink
+    wrap_w = cell_w - name_x + (ICON_PAD + 2) / scale
     content_h = NAME_H + SPACING + BAR_H
 
     for slot, node in enumerate(cards):
@@ -118,4 +120,4 @@ def apply(ctx):
         prefab.find(f"loc_status02/{block}").set("Active", False)
     prefab.root.component("CharaInfo").set_refs("Ability", cards)
     ctx.export("SkillNames", [node.find("bc_skill_text/text01") for node in cards])
-    ctx.export("SkillNameWidth", int(text_w - SKILL_NAME_INSET))
+    ctx.export("SkillNameWidth", int(wrap_w))

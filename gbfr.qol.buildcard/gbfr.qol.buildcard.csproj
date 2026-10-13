@@ -44,6 +44,9 @@
     <None Update="GBFR\**\*.msg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <ContentWithTargetPath Include="GBFR\data\ui\layouts\**\*.wtb"
+                           TargetPath="GBFR\data\ui\fhd\layouts\%(RecursiveDir)%(Filename)%(Extension)"
+                           CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,8 @@
 # Textures
 
 The mod's own textures, in `gbfr.qol.buildcard/GBFR/data/ui/layouts/pause/status/noatlastextures/`. Each is a `.wtb`
-with a hand-written `.tex.yaml` next to it; the mod build converts the `.tex.yaml` to the game's `.texb`.
+with a hand-written `.tex.yaml` next to it; the mod build converts the `.tex.yaml` to the game's `.texb`. The mod build
+also copies each `.wtb` to the same path under `ui/fhd/`: the game reads the `fhd` copy at 1080p, without falling back.
 
 | Texture | Drawn by | Size | Use |
 |---|---|---|---|
@@ -23,8 +24,7 @@ with a hand-written `.tex.yaml` next to it; the mod build converts the `.tex.yam
    `external/GBFRDataTools/ImageSharp.Textures/tests/Tools/`. `texconv` writes to `temp/temp/` while the tool reads
    `temp/`, so `temp/temp` must be a junction to `temp`.
 3. Write `<name>.tex.yaml`: the size, and one sprite with its rect, `Border` for slicing, padding and UV.
-4. Copy the `.wtb` to the same path under `ui/fhd/`: the game reads the `fhd` copy at 1080p, without falling back.
-5. Add the texture to the prefab that uses it; the build adds it to that prefab's asset list.
+4. Add the texture to the prefab that uses it; the build adds it to that prefab's asset list.
 
 The tool's `.tex.yaml` input strips the name with `TrimEnd(".tex.yaml")`, a character set, so a name ending in any of
 those letters loses them.

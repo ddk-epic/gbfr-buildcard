@@ -10,7 +10,7 @@ using gbfr.qol.buildcard.Card;
 using gbfr.qol.buildcard.Card.Sections;
 using gbfr.qol.buildcard.Export;
 using gbfr.qol.buildcard.Export.Overlays;
-using gbfr.qol.buildcard.Export.Sinks;
+using gbfr.qol.buildcard.Export.Outputs;
 using gbfr.qol.buildcard.Game;
 using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Interop.Native;
@@ -56,8 +56,8 @@ public class Mod : ModBase
     private SaveCardFooter? _saveCardFooter;
     private StatusGuide? _statusGuide;
     private StatusBackground? _statusBackground;
-    private NoticeSink? _noticeSink;
-    private SavedNotice? _savedNotice;
+    private Notice? _notice;
+    private NoticeTiming? _noticeTiming;
     private SwapChainHooks? _swapChainHooks;
     private RenderThread? _renderThread;
     private UiFrameCapture? _capture;
@@ -141,17 +141,17 @@ public class Mod : ModBase
         _input = new Input(_hooks, _api, _logger);
         _saveCardFooter = new SaveCardFooter(_hooks, _api);
         _statusGuide = new StatusGuide(_hooks, _api, _lifetimes, _uiTree, _menu);
-        _noticeSink = new NoticeSink(_api, _gameThread);
-        _savedNotice = new SavedNotice(_hooks, _api, _lifetimes, _uiTree, _noticeSink);
+        _notice = new Notice(_api, _gameThread);
+        _noticeTiming = new NoticeTiming(_hooks, _api, _lifetimes, _uiTree, _notice);
         _cardFile = new CardFile(() => _configuration.CardFormat, _gameThread, _logger);
         _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);
-        _cardFile.Saved += _noticeSink.OnSaved;
+        _cardFile.Saved += _notice.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);
         _renderThread = new RenderThread(_logger, _swapChainHooks);
         _capture = new UiFrameCapture(new UiRedraw(_hooks), _renderThread, _logger);
         _exportController = new ExportController(_input, _menu, _cardSession, _capture, _cardFile, _gameThread,
-            _swapChainHooks, _logger, _statusGuide, _savedNotice);
+            _swapChainHooks, _logger, _statusGuide, _noticeTiming);
         _input.ShortcutUpdated += _gameThread.Pump;
         _renderThread.Presenting += _ => _gameThread.OnPresenting();
         _renderThread.Presenting += _capture.OnPresenting;
@@ -159,7 +159,7 @@ public class Mod : ModBase
 
         _features.Add(_lifetimes, _uiTree, _textTable, _textService, _traitTables, _masteryReader, _overMasteryParams, _menu,
             _charaStatusHooks, _weaponArt, overMasterySection, summonsSection, _cardView, _statusBackground, _input,
-            _saveCardFooter, _statusGuide, _noticeSink, _savedNotice, _swapChainHooks, _exportController);
+            _saveCardFooter, _statusGuide, _notice, _noticeTiming, _swapChainHooks, _exportController);
         _api.ScansFound += _features.Start;
         _modLoader.OnModLoaderInitialized += _features.Start;
         if (_api.AllScansFound)

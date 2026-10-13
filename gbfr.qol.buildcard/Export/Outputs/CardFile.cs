@@ -9,7 +9,7 @@ using gbfr.qol.buildcard.Export.Encoders;
 using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Model;
 
-namespace gbfr.qol.buildcard.Export.Sinks;
+namespace gbfr.qol.buildcard.Export.Outputs;
 
 // Writes the card as a 2880x1440 PNG or JPEG with its BuildCard JSON in Pictures on a worker thread.
 public class CardFile

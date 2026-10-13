@@ -4,10 +4,10 @@ using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Interop.Game;
 using gbfr.qol.buildcard.Interop.Native;
 
-namespace gbfr.qol.buildcard.Export.Sinks;
+namespace gbfr.qol.buildcard.Export.Outputs;
 
 // Queues the photo mode's saved notice after a card is saved.
-public unsafe class NoticeSink : IFeature
+public unsafe class Notice : IFeature
 {
     public const int PhotoSaved = 0x27;
 
@@ -22,7 +22,7 @@ public unsafe class NoticeSink : IFeature
     private nint _emptyCallback;
     private delegate* unmanaged<nint, int, nint, byte, void> _pushInfo;
 
-    public NoticeSink(GameApi api, GameThread gameThread)
+    public Notice(GameApi api, GameThread gameThread)
     {
         _api = api;
         _gameThread = gameThread;

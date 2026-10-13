@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using Reloaded.Hooks.Definitions;
 
 using gbfr.qol.buildcard.Export;
-using gbfr.qol.buildcard.Export.Sinks;
+using gbfr.qol.buildcard.Export.Outputs;
 using gbfr.qol.buildcard.Game;
 using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Interop.Game;
@@ -12,8 +12,8 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Export.Overlays;
 
-// Shortens the saved notice NoticeSink queues and hides it while the card is captured.
-public unsafe class SavedNotice : IOverlay, IFeature
+// Shortens the saved notice and hides it while the card is captured.
+public unsafe class NoticeTiming : IOverlay, IFeature
 {
     private const int InfoKind = 2;
 
@@ -30,7 +30,7 @@ public unsafe class SavedNotice : IOverlay, IFeature
     private readonly GameApi _api;
     private readonly ControllerLifetimes _lifetimes;
     private readonly UiTree _tree;
-    private readonly NoticeSink _sink;
+    private readonly Notice _notice;
     private readonly Dictionary<UiComponent, float> _shortened = [];
     private readonly Dictionary<UiComponent, long> _noticeShownAt = [];
     private readonly List<UiComponent> _hidden = [];
@@ -39,13 +39,13 @@ public unsafe class SavedNotice : IOverlay, IFeature
     private delegate nint ShowInfoFn(nint controller, int* info);
     private readonly List<IHook<ShowInfoFn>> _showInfoHooks = [];
 
-    public SavedNotice(IReloadedHooks hooks, GameApi api, ControllerLifetimes lifetimes, UiTree tree, NoticeSink sink)
+    public NoticeTiming(IReloadedHooks hooks, GameApi api, ControllerLifetimes lifetimes, UiTree tree, Notice notice)
     {
         _hooks = hooks;
         _api = api;
         _lifetimes = lifetimes;
         _tree = tree;
-        _sink = sink;
+        _notice = notice;
         lifetimes.Destroyed += OnDestroyed;
     }
 
@@ -120,8 +120,8 @@ public unsafe class SavedNotice : IOverlay, IFeature
         if (_shortened.Remove(controller, out float duration))
             data.Duration = duration;
         _noticeShownAt.Remove(controller);
-        bool notice = info[0] == InfoKind && info[1] == NoticeSink.PhotoSaved && _sink.PushedAt != 0
-            && Environment.TickCount64 - _sink.PushedAt < ShowTimeout;
+        bool notice = info[0] == InfoKind && info[1] == Notice.PhotoSaved && _notice.PushedAt != 0
+            && Environment.TickCount64 - _notice.PushedAt < ShowTimeout;
         if (notice)
         {
             _shortened[controller] = data.Duration;

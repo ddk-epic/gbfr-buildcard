@@ -13,7 +13,7 @@ D3D11 calls in `Interop/D3D11/`.
 | Metadata | `BuildCard` (`CardFile.JsonKeyword`), a 0 byte and the JSON, in a PNG's `tEXt` chunk after the header or a JPEG's COM segment after the JFIF header: the shown card's `BuildCard` ([runtime](runtime.md#card-model)) as JSON, its non-ASCII characters escaped as `\uXXXX`. Absent when no card was shown. |
 | Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the saved notice. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
-| Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `SavedNotice.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
+| Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `NoticeTiming.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
 | Log | See [Log](#log). |
 
 ## Save Card
@@ -176,7 +176,7 @@ present instead, then resized to 2880x1440 by `Resample` in `CardFile`: averaged
 `ExportController` keeps `CardSession.Current` at the press ([runtime](runtime.md#card-view)) and hands it to
 `CardFile.Save` with the frame. `CardFile.Save` reads `CardFormat` at the press, names the file after the card's name, writes it with the card's JSON
 on a worker thread, and keeps `CardFile.Saving` set on the game thread until the worker posts the write's end. After the file is
-written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `NoticeSink` and
+written, `CardFile` raises `Saved` on the worker thread with the file's path and size. `Notice` and
 `SteamScreenshots` handle it.
 
 ## Formats
@@ -229,7 +229,7 @@ from the game's `steam_api64.dll` with the file's path and size. Steam copies th
 
 ## Saved notice
 
-The photo mode reports a saved photo through the UI manager's info queue (`+0x310` on the UI manager). `NoticeSink`
+The photo mode reports a saved photo through the UI manager's info queue (`+0x310` on the UI manager). `Notice`
 posts the same info to `GameThread` at `CardFile.Saved` and queues it at the next tick
 ([runtime](runtime.md#game-thread)).
 
@@ -250,12 +250,12 @@ Fields of both controllers:
 | `+0x1F8` | The current info's kind. |
 | `+0x1FC` | The current info's type. |
 
-`ShowInfo`, vfunc 35 of both controllers, sets the controller from an info. `SavedNotice` hooks both: for an info of
+`ShowInfo`, vfunc 35 of both controllers, sets the controller from an info. `NoticeTiming` hooks both: for an info of
 kind 2 and type `0x27` within 5000 ms of the push, it sets the controller's `+0x1D0` to `NoticeDuration` in seconds, and at that controller's next
 info it puts the previous value back.
 
 Each controller's object (`+0x10`) is the shown info: `ShowInfo` activates it and sets `+0x1A8`; when the info has
-finished, the controller clears `+0x1A8` and deactivates the object. On a Save Card press, `SavedNotice` deactivates the
+finished, the controller clears `+0x1A8` and deactivates the object. On a Save Card press, `NoticeTiming` deactivates the
 object of each controller that showed the notice within 5000 ms and still has `+0x1A8` set, and of each controller that
 shows the notice during the capture. After the capture it activates the objects again whose `+0x1A8` is still set. A
 destroyed controller is forgotten ([ui](ui.md#controller-lifetimes)).

@@ -2,7 +2,7 @@ using System.Drawing;
 
 using Reloaded.Mod.Interfaces;
 
-using gbfr.qol.buildcard.Export.Sinks;
+using gbfr.qol.buildcard.Export.Outputs;
 using gbfr.qol.buildcard.Game;
 using gbfr.qol.buildcard.Host;
 using gbfr.qol.buildcard.Interop.Game;

@@ -14,7 +14,7 @@ How the mod's parts pass events to each other and which thread runs them.
 | `Sources/` | What the card reads from the game: `CharaSnapshot`, `TraitTables`, `MasteryReader`, `OverMasteryParams`, `TextTable`. |
 | `Model/` | `BuildCard`, `BuildCardAssembler`, `BuildCardJson`, `CardSession`. |
 | `Card/` | `CardView`, its sections in `Card/Sections/`, `StatusBackground`, `WeaponArt`. |
-| `Export/` | `ExportController`, `UiFrameCapture`, `UiRedraw`, `SaveCardFooter`; `StatusGuide` and `SavedNotice` in `Overlays/`, `Png`, `Jpeg` and `Resample` in `Encoders/`, `CardFile`, `SteamScreenshots` and `NoticeSink` in `Sinks/`. |
+| `Export/` | `ExportController`, `UiFrameCapture`, `UiRedraw`, `SaveCardFooter`; `StatusGuide` and `NoticeTiming` in `Overlays/`, `Png`, `Jpeg` and `Resample` in `Encoders/`, `CardFile`, `SteamScreenshots` and `Notice` in `Outputs/`. |
 | `Generated/` | `CardLayout.g.cs` ([build](build.md)). |
 
 ## Features
@@ -45,8 +45,8 @@ left out does nothing; the others still start.
 | `Input` | `UpdateShortcutInput`, `StatusL3Action` |  |
 | `SaveCardFooter` | `SetCharacterDetailsFooter` |  |
 | `StatusGuide` | `ControllerStatusGuide function 21`, `ControllerStatusBg function 7` | `ControllerLifetimes` |
-| `NoticeSink` | `PushInfo` |  |
-| `SavedNotice` | Nothing; each controller's `ShowInfo` (function 35) and destructor (function 7) when found | `ControllerLifetimes` |
+| `Notice` | `PushInfo` |  |
+| `NoticeTiming` | Nothing; each controller's `ShowInfo` (function 35) and destructor (function 7) when found | `ControllerLifetimes` |
 | `CardView` | Nothing | `UiTree` |
 | `SwapChainHooks` | Nothing; it finds and hooks `Present` itself ([export](export.md#frame-timing)) |  |
 | `ExportController` | Nothing | `Input`, `MenuState`, `SwapChainHooks` |

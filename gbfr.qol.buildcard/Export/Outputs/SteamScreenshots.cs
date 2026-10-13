@@ -4,7 +4,7 @@ using System.Text;
 
 using Reloaded.Mod.Interfaces;
 
-namespace gbfr.qol.buildcard.Export.Sinks;
+namespace gbfr.qol.buildcard.Export.Outputs;
 
 // Adds saved cards to the player's Steam screenshot library through the game's steam_api64.dll when enabled.
 public unsafe partial class SteamScreenshots

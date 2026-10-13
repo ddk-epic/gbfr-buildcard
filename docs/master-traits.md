@@ -2,7 +2,7 @@
 
 The build card's master traits section, `bc_mtraits` in `status01`. It shows the character's Master Traits board as the
 game's Master Traits menu lays it out. The layout is built by `tools/build/steps/status01/master_traits.py`; the
-contents are written at runtime by `BuildCardAssembler`, `CardContents`, `MasterTraits` and `CardWriter`. Its colours are one of two palettes,
+contents are written at runtime by `BuildCardAssembler`, `MasterTraits` and `MasterTraitsBinder`. Its colours are one of two palettes,
 picked by the config option `MasterTraitsPalette` ("Master Traits Palette"): Blue by default, or Original.
 
 ## Display
@@ -82,10 +82,10 @@ budget and each cell's on and off texts and picked and unpicked bases per palett
 3. A perk counts toward its style's stars; the rank 1 perk's title is the style's title. Every other cell is placed at
    its rank and position. The captain's board is shown when a picked or unpicked cell's position is past the normal
    board's slots of its rank.
-4. `CardContents.ComposeMasterTraits` writes the board. The configured palette's scene and its group in the shown
+4. `MasterTraitsBinder` writes the board. The configured palette's scene and its group in the shown
    board are activated, the other palette's deactivated; an undefined `MasterTraitsPalette` value shows Blue. In that
    palette, each picked cell's picked base is shown and its unpicked base hidden.
-5. `CardWriter` writes each cell's description with `SetSkillBoardDescription`, through a mock cell component whose
+5. `MasterTraitsBinder` writes each cell's description with `SetSkillBoardDescription`, through a mock cell component whose
    only `Text` is the card's cell text. Before the call it sets the text's wrap width and icon size; after it, it splits
    the lines still wider than the cell and cuts the text to two lines.
 

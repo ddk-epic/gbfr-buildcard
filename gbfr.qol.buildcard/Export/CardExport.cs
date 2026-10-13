@@ -30,19 +30,17 @@ public class CardExport
     private readonly SavedNotice _notice;
     private readonly CardFile _file;
     private readonly CharacterDetailsMenu _menu;
-    private readonly UiObjects _objects;
-    private readonly GameText _text;
+    private readonly CardSession _session;
     private readonly ILogger _logger;
     private volatile int _state;
     private long _presents;
     private long _hiddenAt;
     private long _hiddenSince;
     private long _cardSeenAt;
-    private string _charaName = "";
     private string _pressedCharaName = "";
 
     public CardExport(SaveCardButton button, StatusGuide guide, CardRedraw redraw, SavedNotice notice, CardFile file,
-        CharacterDetailsMenu menu, UiObjects objects, GameText text, ILogger logger)
+        CharacterDetailsMenu menu, CardSession session, ILogger logger)
     {
         _button = button;
         _guide = guide;
@@ -50,12 +48,9 @@ public class CardExport
         _notice = notice;
         _file = file;
         _menu = menu;
-        _objects = objects;
-        _text = text;
+        _session = session;
         _logger = logger;
     }
-
-    public void OnShown(CharaInfo charaInfo, BuildCard card) => _charaName = CharaName(charaInfo);
 
     // On the game thread: hides the prompts and notices on a press, shows them after the capture or its timeout.
     public void OnTick()
@@ -78,7 +73,7 @@ public class CardExport
         }
         else if (_state == Idle && pressed && !_file.Saving && cardOpen)
         {
-            _pressedCharaName = _charaName;
+            _pressedCharaName = _session.Current?.CharaName ?? "";
             ShowOverlays(false, true);
             _hiddenSince = Environment.TickCount64;
             _hiddenAt = Interlocked.Read(ref _presents);
@@ -115,12 +110,6 @@ public class CardExport
             _state = Captured;
         }
     }
-
-    // The card's shown name, empty when it has none
-    private string CharaName(CharaInfo charaInfo) =>
-        _objects.Find(charaInfo) is { } objects && objects.TryGetValue(CardLayout.Status.CharaName, out UiObject name)
-            ? _text.Read(name)
-            : "";
 
     private void ShowOverlays(bool shown, bool cardOpen)
     {

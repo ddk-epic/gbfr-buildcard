@@ -23,11 +23,8 @@ the status panel. They are the stock page's objects, moved and restyled by `tool
    whose value is not finite or whose level bit is not a single bit is left out.
 3. `CardSession` assembles a `BuildCard` from the build with `BuildCardAssembler`, which also takes the character's
    master trait cells, mastery percentages and text lookup. It keeps the card as `Current` and raises `Shown` with the
-   component and the card. `CardWriter`, `WeaponArtHooks` ([weapon](weapon.md)) and `CardExport`
-   ([export](export.md#card-file)) handle it.
-4. `CardWriter` finds `status01`'s objects by Id. When their hash matches `CardLayout.Status01.PrefabHash`, it applies the writes
-   of `CardContents.Compose` in order; otherwise it writes nothing. `CardContents` composes every section's writes from
-   the card.
+   component and the card. `WeaponArtHooks` ([weapon](weapon.md)) and `CardView` handle it.
+4. `CardView` writes the card; see [card view](runtime.md#card-view).
 
 The portrait, badges, name band and status panel are filled by `FillCharacterStatus` itself, through the `CharaInfo`
 component's references in the prefab file.

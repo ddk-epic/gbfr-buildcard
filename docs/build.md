@@ -2,7 +2,7 @@
 
 `tools/build/build.py` writes the mod's edited prefabs, `status01` and `chr_status_bg01`, their asset lists, the footer
 guide table `ui/table/guide_button.msg` with the Save Card row, and `gbfr.qol.buildcard/Generated/CardLayout.g.cs`, the
-Ids of the objects `CardWriter` sets and the constants the mod shares with the build. The outputs are committed, so
+Ids of the objects `CardView` sets and the constants the mod shares with the build. The outputs are committed, so
 building the mod needs neither Python nor the game's files; the build steps are the source, and the outputs are never
 edited by hand.
 
@@ -24,7 +24,7 @@ python -m unittest discover -s tests -t .    # from tools/build
 3. `codegen.py` writes the exports to `CardLayout.g.cs`, each export key's section (`MasterTraits.Boards`) as a nested
    class, with `status01`'s object count and prefab hash: FNV-1a over each object's Id and the hash of its
    unquoted name (`'loc_ring '` is `loc_ring `), in Id order.
-   `CardWriter` finds the objects by these Ids in `status01`'s tree ([ui.md](ui.md#ui-objects)), and writes nothing
+   `CardView` finds the objects by these Ids in `status01`'s tree ([ui.md](ui.md#ui-objects)), and writes nothing
    when the tree's hash differs.
 4. `lists.py` writes each prefab's asset list, the textures, atlases, materials, animations, image data and language
    data the game loads before building it: stock's list, then the assets the prefab names, then the stock lists a

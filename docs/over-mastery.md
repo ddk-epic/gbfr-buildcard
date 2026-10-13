@@ -2,7 +2,7 @@
 
 The build card's Over Mastery section, `bc_om` in `status01`. It shows the character's four Over Mastery lines as the
 game's Over Mastery screen lists them. The layout is built by `tools/build/steps/status01/over_mastery.py`; the rows
-are filled at runtime by `CardContents` and `CardWriter`.
+are filled at runtime by `OverMasteryBinder`.
 
 ## Display
 
@@ -20,12 +20,11 @@ number and percent sign Ids, and `NameWidth` the names' wrap width.
 
 1. `CharaBuild.Decode` reads the four lines, leaving out an empty line (value 0) and an invalid one (a value that is not
    finite, or a level field that is not a single bit).
-2. `CardContents.ComposeOverMastery` shows the row of each line read and hides the others.
-3. `CardWriter` copies each line into memory the mod owns and calls `SetOverMasteryLine` with the row's
-   `LimitBonusInfo` component, found by its RTTI vtable (`.?AVLimitBonusInfo@component@ui@@`).
-4. After each shown row's line, `CardContents` writes its value after its name. `CardWriter` reads the row's number
-   and, when its object is active, its percent sign, sets the name again with ` +` and them appended as it does the
-   skill names, wrapped to the width and cut to two lines, and hides the value's objects, the plus icon included; see
+2. In the Write phase, `OverMasteryBinder` copies each line into memory the mod owns and calls `SetOverMasteryLine`
+   with the row's `LimitBonusInfo` component, found by its RTTI vtable (`.?AVLimitBonusInfo@component@ui@@`). It shows
+   the row of each line read and hides the others.
+3. In the Layout phase, for each shown row, `OverMasteryBinder` reads the row's number and, when its object is active,
+   its percent sign, sets the name again with ` +` and them appended as it does the skill names, wrapped to the width and cut to two lines, and hides the value's objects, the plus icon included; see
    [text wrapping](ui.md#text-wrapping).
 
 ## Runtime data

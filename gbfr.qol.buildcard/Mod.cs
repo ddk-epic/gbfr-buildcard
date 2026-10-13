@@ -41,7 +41,7 @@ public class Mod : ModBase
     private CardSession? _cardSession;
     private CharacterDetailsMenu? _menu;
     private WeaponArtHooks? _weaponArtHooks;
-    private CardWriter? _cardWriter;
+    private CardView? _cardView;
     private SaveCardButton? _saveCardButton;
     private StatusGuide? _statusGuide;
     private StatusBackground? _statusBackground;
@@ -120,10 +120,17 @@ public class Mod : ModBase
         _weaponArtHooks.Init();
         _cardSession.Shown += _weaponArtHooks.OnShown;
 
-        var cardContents = new CardContents(_gameText.Find, () => _configuration.MasterTraitsPalette);
-        _cardWriter = new CardWriter(cardContents, _gameText, _masterTraits, _uiObjects, _vtables, _logger);
-        _cardWriter.Init(scanManager, "granblue_fantasy_relink_er");
-        _cardSession.Shown += _cardWriter.OnShown;
+        var overMasteryBinder = new OverMasteryBinder(_gameText, _uiObjects, _vtables);
+        overMasteryBinder.Init(scanManager, "granblue_fantasy_relink_er");
+        var summonsBinder = new SummonsBinder(_uiObjects, _vtables);
+        summonsBinder.Init(scanManager, "granblue_fantasy_relink_er");
+        _cardView = new CardView(_uiObjects, _gameText, _cardSession, _logger,
+            new GearBinder(_gameText),
+            new MasterTraitsBinder(_gameText, _masterTraits, _uiObjects, () => _configuration.MasterTraitsPalette),
+            new MasteriesBinder(_gameText),
+            overMasteryBinder,
+            summonsBinder);
+        _cardSession.Shown += _cardView.OnShown;
 
         _saveCardButton = new SaveCardButton(_hooks, _logger);
         _saveCardButton.Init(scanManager, "granblue_fantasy_relink_er");
@@ -138,8 +145,7 @@ public class Mod : ModBase
         _cardFile.Saved += _savedNotice.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;
         _cardExport = new CardExport(_saveCardButton, _statusGuide, new CardRedraw(_hooks), _savedNotice, _cardFile,
-            _menu, _uiObjects, _gameText, _logger);
-        _cardSession.Shown += _cardExport.OnShown;
+            _menu, _cardSession, _logger);
         _saveCardButton.ShortcutUpdated += _gameThread.Pump;
         _gameThread.Tick += _cardExport.OnTick;
         _swapChainHooks = new SwapChainHooks(_hooks, _logger);

@@ -19,7 +19,7 @@ public static class BuildCardAssembler
             percents == null ? null : new MasteryPercents(percents[MasteryReader.Offense], percents[MasteryReader.Defense],
                 percents[MasteryReader.Collection], percents[MasteryReader.Transcendence]),
             build.OverMastery,
-            build.Summons);
+            build.Summons) { CharaName = build.CharaName };
 
     private static TraitBoard BuildTraits(CharaSnapshot build, IReadOnlyList<MasterTraitCell> cells,
         Func<uint, uint, string> findText)

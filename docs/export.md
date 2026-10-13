@@ -9,7 +9,7 @@ D3D11 calls in `Interop/D3D11/`.
 
 | Item | Value |
 |---|---|
-| File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the name of the card shown at the press, as `CardView` read it from `name01_01` (`CardLayout.Status.CharaName`), without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
+| File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB. `<name>` is the name of the card shown at the press, as `CharaStatusHooks` read it from the `CharaInfo`'s first `Names` text, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>.png`. |
 | Metadata | A `tEXt` chunk with the keyword `BuildCard` (`CardFile.JsonKeyword`) after the header: the shown card's `BuildCard` ([runtime](runtime.md#card-model)) as JSON, its non-ASCII characters escaped as `\uXXXX`. Absent when no card was shown. |
 | Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the saved notice. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |

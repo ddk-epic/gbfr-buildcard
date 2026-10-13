@@ -4,7 +4,7 @@ using gbfr.qol.buildcard.Interop.Native;
 
 namespace gbfr.qol.buildcard.Interop.Game;
 
-// The game functions and vtables the mod uses: signatures resolve when the loader runs the scans, vtables at once.
+// The game functions and vtables the mod uses.
 public sealed class GameApi
 {
     private const string SignatureGroup = "granblue_fantasy_relink_er";
@@ -14,6 +14,7 @@ public sealed class GameApi
     private const string DestroyStart = "56 57 48 83 EC 28 ?? ?? ?? ?? ?? E8";
     private const int ShowInfoIndex = 35;
 
+    private const string ControllerStatusType = ".?AVControllerStatus@component@ui@@";
     private const string ControllerStatusBgType = ".?AVControllerStatusBg@component@ui@@";
     private const string ControllerStatusGuideType = ".?AVControllerStatusGuide@component@ui@@";
     private const string ControllerInformationSystemType = ".?AVControllerInformationSystem@component@ui@@";
@@ -55,6 +56,7 @@ public sealed class GameApi
     public readonly Capability ControllerStatusBgVtable;
 
     // virtual functions
+    public readonly Capability ControllerStatusDestroy;
     public readonly Capability ControllerStatusBgDestroy;
     public readonly Capability ControllerInformationToastDestroy;
     public readonly Capability ControllerStatusBgSetUp;
@@ -98,6 +100,7 @@ public sealed class GameApi
         LimitBonusInfoVtable = Vtable(".?AVLimitBonusInfo@component@ui@@");
         ControllerStatusBgVtable = Vtable(ControllerStatusBgType);
 
+        ControllerStatusDestroy = Function(ControllerStatusType, DestroyIndex, DestroyStart);
         ControllerStatusBgDestroy = Function(ControllerStatusBgType, DestroyIndex, DestroyStart);
         ControllerInformationToastDestroy = Function(ControllerInformationToastType, DestroyIndex, DestroyStart);
         // the controllers' shared setup

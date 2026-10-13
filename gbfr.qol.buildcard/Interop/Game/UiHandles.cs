@@ -38,9 +38,15 @@ public readonly unsafe record struct UiComponent(nint Address)
 public readonly record struct TextComponent(nint Address);
 
 // A ui::component::CharaInfo component.
-public readonly record struct CharaInfo(nint Address)
+public readonly unsafe record struct CharaInfo(nint Address)
 {
+    private ref CharaInfoData Data => ref *(CharaInfoData*)Address;
+
     public UiObject? Object => new UiComponent(Address).Object;
+
+    // The first Names text, null when there is none
+    public TextComponent? Name =>
+        Data.Names is { IsValid: true, Count: > 0 } names && names[0].Component is var text and not 0 ? new TextComponent(text) : null;
 }
 
 [StructLayout(LayoutKind.Explicit)]
@@ -51,6 +57,19 @@ internal struct UiObjectData
     [FieldOffset(0x1C4)] public uint NameHash;
     [FieldOffset(0x1CC)] public int Id;
     [FieldOffset(0x1D0)] public byte Active;
+}
+
+[StructLayout(LayoutKind.Explicit)]
+internal struct CharaInfoData
+{
+    [FieldOffset(0x140)] public GameVector<ObjectRef> Names;
+}
+
+// A component's reference to another object's component.
+[StructLayout(LayoutKind.Explicit, Size = 0x20)]
+internal struct ObjectRef
+{
+    [FieldOffset(0x10)] public nint Component;
 }
 
 [StructLayout(LayoutKind.Explicit, Size = 0x20)]

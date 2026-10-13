@@ -161,7 +161,7 @@ def status_block(block, bottom):
 
 
 def badges(base, status_top):
-    # level badges at the portrait column's top left, the PWR diamond at its top right, the name band above the status
+    # the level badges, the PWR diamond and the name band
     badge_root = base.child("loc_status01")
     level, master_level = badge_root.child("level01"), badge_root.child("loc_ml_level01")
     power, name = badge_root.child("power01"), base.child("loc_name01")
@@ -193,4 +193,3 @@ def apply(ctx):
     status_top = status_block(status, bottom)
     badges(base, status_top)
     ctx.export("Status.MasteryTexts", texts)
-    ctx.export("Status.CharaName", base.find("loc_name01/name01_01"))

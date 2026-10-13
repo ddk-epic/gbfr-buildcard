@@ -111,7 +111,8 @@ controller whose vtable is `ControllerStatusBg`'s until `ControllerLifetimes` ra
 `ControllerLifetimes` hooks the scalar deleting destructor, vtable entry 7, of `ControllerStatusBg`, which
 `ControllerStatusGuide` and `ControllerInformationSystem` share, and of `ControllerInformationToast`. It raises
 `Destroyed` with the controller on the game thread before each runs. It hooks both or neither; `StatusBackground`,
-`StatusGuide` and `SavedNotice` hook nothing and keep no controller without them.
+`StatusGuide` and `SavedNotice` hook nothing and keep no controller without them. It also hooks `ControllerStatus`'s
+when found, which `CardView` needs to keep `status01`'s objects.
 
 ## `Text` component
 

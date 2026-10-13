@@ -8,44 +8,67 @@ using gbfr.qol.buildcard.Model;
 
 namespace gbfr.qol.buildcard.Card;
 
-// Finds status01's objects once per fill and writes the card through its binders: Write, then Layout.
+// Writes the card to status01 through its binders: Write, then Layout.
 public class CardView
 {
     private readonly UiTree _tree;
-    private readonly TextService _text;
-    private readonly CardSession _session;
+    private readonly ControllerLifetimes _lifetimes;
+    private readonly GameApi _api;
     private readonly ICardBinder[] _binders;
     private readonly ILogger _logger;
+    private UiObject? _root;
+    private Dictionary<int, UiObject>? _objects;  // null when the prefab hash differs
     private bool _loggedHash;
 
-    public CardView(UiTree tree, TextService text, CardSession session, ILogger logger, params ICardBinder[] binders)
+    public CardView(UiTree tree, ControllerLifetimes lifetimes, GameApi api, ILogger logger, params ICardBinder[] binders)
     {
         _tree = tree;
-        _text = text;
-        _session = session;
+        _lifetimes = lifetimes;
+        _api = api;
         _logger = logger;
         _binders = binders;
+        lifetimes.Destroyed += OnDestroyed;
     }
 
     public void OnShown(CharaInfo charaInfo, BuildCard card)
     {
+        if (Bind(charaInfo) is not { } objects)
+            return;
+        foreach (var binder in _binders)
+            binder.Write(objects, card);
+        foreach (var binder in _binders)
+            binder.Layout(objects, card);
+    }
+
+    // status01's objects by Id, kept until its ControllerStatus is destroyed
+    private Dictionary<int, UiObject>? Bind(CharaInfo charaInfo)
+    {
+        if (charaInfo.Object is not { } root)
+            return null;
+        if (root == _root)
+            return _objects;
         var objects = _tree.Find(charaInfo);
         if (objects == null)
-            return;
+            return null;
         uint hash = UiTree.PrefabHash(objects);
         if (hash != CardLayout.Status01.PrefabHash)
         {
             if (!_loggedHash)
                 _logger.WriteLine($"[gbfr.qol.buildcard] status01 has {objects.Count} objects hashing to {hash:X8}, the build {CardLayout.Status01.ObjectCount} hashing to {CardLayout.Status01.PrefabHash:X8}: card not written", Color.Red);
             _loggedHash = true;
-            return;
+            objects = null;
         }
+        if (_lifetimes.Hooks(_api.ControllerStatusDestroy))
+            (_root, _objects) = (root, objects);
+        return objects;
+    }
 
-        foreach (var binder in _binders)
-            binder.Write(objects, card);
-        foreach (var binder in _binders)
-            binder.Layout(objects, card);
-        _session.SetCharaName(_text.Read(objects[CardLayout.Status.CharaName]));
+    private void OnDestroyed(UiComponent controller)
+    {
+        if (controller.Object != _root)
+            return;
+        _root = null;
+        _objects = null;
     }
 }
 

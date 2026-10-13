@@ -68,6 +68,8 @@ public unsafe class TextService : IFeature
     // The object's text, empty when it has none
     public string Read(UiObject obj) => FindText(obj) is { } text ? ReadString(text) : "";
 
+    public string Read(TextComponent text) => ReadString(text);
+
     // Wraps what fill sets to width and caps it at maxLines lines
     public void Wrap(UiObject obj, int width, Action<TextComponent> fill, float? iconScale = null, int maxLines = 2)
     {
@@ -120,7 +122,7 @@ public unsafe class TextService : IFeature
         data.WrapOn = 1;
     }
 
-    // Scales the icons of the text's next strings from the first scaled text's original icon size
+    // Scales the icons of the text's next strings
     private void ScaleIcons(TextComponent text, float scale)
     {
         ref var data = ref Data(text);
@@ -161,7 +163,7 @@ public unsafe class TextService : IFeature
         _insertGlyphs(last, last->End, _ellipsis->Begin, (ulong)_ellipsis->Count);
     }
 
-    // Splits each line wider than the wrap width where it stops fitting
+    // Splits each line wider than the wrap width
     private void Split(TextComponent text)
     {
         ref var data = ref Data(text);

@@ -112,4 +112,12 @@ public class BuildCardAssemblerTests
         Assert.Equal(new MasteryPercents(1, 2, 3, 4), Build([], [], [1, 2, 3, 4]).Masteries);
         Assert.Null(Build([], []).Masteries);
     }
+
+    [Fact]
+    public void KeepsTheSnapshotsName()
+    {
+        var build = new CharaSnapshot(1, 2, 3, false, [], new OverMasteryLine?[4], new uint?[4]) { CharaName = "グラン" };
+
+        Assert.Equal("グラン", BuildCardAssembler.Build(build, [], null, (_, _) => "").CharaName);
+    }
 }

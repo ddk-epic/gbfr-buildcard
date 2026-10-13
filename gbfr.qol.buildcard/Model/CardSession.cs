@@ -33,10 +33,4 @@ public class CardSession
             _masteryReader.ReadPercents(build.CharaKey), _table.Find);
         Dispatch.Raise(_logger, nameof(Shown), Shown, charaInfo, Current);
     }
-
-    public void SetCharaName(string name)
-    {
-        if (Current != null)
-            Current = Current with { CharaName = name };
-    }
 }

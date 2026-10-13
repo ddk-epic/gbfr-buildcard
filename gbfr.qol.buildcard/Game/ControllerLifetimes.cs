@@ -15,6 +15,7 @@ public class ControllerLifetimes : IFeature
     private readonly GameApi _api;
     private readonly ILogger _logger;
     private readonly List<IHook<DestroyFn>> _destroyHooks = [];
+    private readonly List<Capability> _hooked = [];
 
     // Raised on the game thread.
     public event Action<UiComponent>? Destroyed;
@@ -31,16 +32,23 @@ public class ControllerLifetimes : IFeature
     // ControllerStatusBg's destructor is also ControllerStatusGuide's and ControllerInformationSystem's
     public Capability[] Requires => [_api.ControllerStatusBgDestroy, _api.ControllerInformationToastDestroy];
 
-    public bool IsHooked => _destroyHooks.Count == Requires.Length;
+    public bool IsHooked => Requires.All(Hooks);
 
+    // Whether the destructor's controllers raise Destroyed
+    public bool Hooks(Capability destructor) => _hooked.Contains(destructor);
+
+    // ControllerStatus's destructor is hooked when found
     public void Start()
     {
-        foreach (var destructor in Requires)
+        foreach (var destructor in (Capability[])[.. Requires, _api.ControllerStatusDestroy])
         {
+            if (!destructor.Found)
+                continue;
             IHook<DestroyFn>? hook = null;
             hook = _hooks.CreateHook<DestroyFn>((controller, flags) => DestroyImpl(hook!, controller, flags),
                 destructor.Address).Activate();
             _destroyHooks.Add(hook);
+            _hooked.Add(destructor);
         }
     }
 

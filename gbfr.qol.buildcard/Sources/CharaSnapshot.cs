@@ -7,6 +7,9 @@ namespace gbfr.qol.buildcard.Sources;
 public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint MirageKey, bool AlternateArt, CharaEntry[] Entries,
     OverMasteryLine?[] OverMastery, uint?[] Summons)
 {
+    // from the CharaInfo's Names text
+    public string CharaName { get; init; } = "";
+
     private const byte AlternateArtFlag = 0x20;
     public const int OverMasteryLines = 4;
     public const int SummonCount = 4;

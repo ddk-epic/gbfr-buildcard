@@ -16,6 +16,7 @@ public unsafe class CharaStatusHooks : IFeature
 {
     private readonly IReloadedHooks _hooks;
     private readonly UiTree _tree;
+    private readonly TextService _text;
     private readonly GameApi _api;
     private readonly ILogger _logger;
     private bool _loggedBuild;
@@ -26,10 +27,11 @@ public unsafe class CharaStatusHooks : IFeature
     private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private IHook<FillCharacterStatus>? _fillHook;
 
-    public CharaStatusHooks(IReloadedHooks hooks, UiTree tree, GameApi api, ILogger logger)
+    public CharaStatusHooks(IReloadedHooks hooks, UiTree tree, TextService text, GameApi api, ILogger logger)
     {
         _hooks = hooks;
         _tree = tree;
+        _text = text;
         _api = api;
         _logger = logger;
     }
@@ -44,7 +46,8 @@ public unsafe class CharaStatusHooks : IFeature
         _fillHook!.OriginalFunction(charaInfo, chara, index);
         var info = new CharaInfo(charaInfo);
         if (chara != 0 && _tree.IsOnCard(info))
-            Dispatch.Raise(_logger, nameof(CharacterShown), CharacterShown, info, CharaSnapshot.Decode(chara, LogBuildOnce));
+            Dispatch.Raise(_logger, nameof(CharacterShown), CharacterShown, info, CharaSnapshot.Decode(chara, LogBuildOnce)
+                with { CharaName = info.Name is { } name ? _text.Read(name) : "" });
     }
 
     private void LogBuildOnce(string message)

@@ -27,7 +27,7 @@ found. A feature left out does nothing; the others still start.
 
 | Feature | Requires |
 |---|---|
-| `ControllerLifetimes` | `ControllerStatusBg function 7`, `ControllerInformationToast function 7` |
+| `ControllerLifetimes` | `ControllerStatusBg function 7`, `ControllerInformationToast function 7`; `ControllerStatus function 7` when found |
 | `UiTree` | `SetObjectActive` |
 | `TextTable` | `TextComponentSetText`, `TextLookup` |
 | `TextService` | `TextComponentSetText`, `Text vtable`; the wrapping functions when found |
@@ -105,10 +105,11 @@ dotnet test tests/gbfr.qol.buildcard.Tests
 
 ## Card view
 
-`CardView` writes a shown card to `status01`. It walks `status01`'s tree once per fill and finds its objects by Id;
-when their hash differs from `CardLayout.Status01.PrefabHash` it writes nothing ([build](build.md#build)). Otherwise it
-runs every binder's two phases, then reads the name `FillCharacterStatus` wrote to `name01_01`
-(`CardLayout.Status.CharaName`) into `CardSession.Current`.
+`CardView` writes a shown card to `status01`. At the first fill of a `status01` instance it walks the tree once and
+finds its objects by Id; when their hash differs from `CardLayout.Status01.PrefabHash` it writes nothing to that
+instance ([build](build.md#build)). It keeps the objects until `ControllerLifetimes` raises `Destroyed` for the
+instance's `ControllerStatus`; without that destructor hooked it walks the tree at every fill. For each card it runs
+every binder's two phases.
 
 1. Write: each binder writes its section's objects from the card.
 2. Layout: each binder wraps and joins the texts the game's fill and the Write phase set.

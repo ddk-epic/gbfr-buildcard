@@ -6,7 +6,6 @@ namespace gbfr.qol.buildcard.Model;
 public sealed record BuildCard(uint CharaKey, WeaponPart Weapon, TraitBoard Traits, MasteryPercents? Masteries,
     OverMasteryLine?[] OverMastery, uint?[] Summons)
 {
-    // the name status01 shows, set by CardView after the fill
     public string CharaName { get; init; } = "";
 }
 

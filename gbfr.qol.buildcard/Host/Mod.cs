@@ -117,7 +117,7 @@ public class Mod : ModBase
         _masteryReader = new MasteryReader(_api);
         _menu = new MenuState(_hooks, _api, _logger);
 
-        _charaStatusHooks = new CharaStatusHooks(_hooks, _uiTree, _api, _logger);
+        _charaStatusHooks = new CharaStatusHooks(_hooks, _uiTree, _textService, _api, _logger);
         _cardSession = new CardSession(_traitTables, _masteryReader, _textTable, _logger);
         _charaStatusHooks.CharacterShown += _cardSession.OnCharacterShown;
 
@@ -126,7 +126,7 @@ public class Mod : ModBase
 
         var overMasteryBinder = new OverMasteryBinder(_textService, _uiTree, _api);
         var summonsBinder = new SummonsBinder(_uiTree, _api);
-        _cardView = new CardView(_uiTree, _textService, _cardSession, _logger,
+        _cardView = new CardView(_uiTree, _lifetimes, _api, _logger,
             new GearBinder(_textService, _textTable),
             new MasterTraitsBinder(_textService, _traitTables, _uiTree, () => _configuration.MasterTraitsPalette),
             new MasteriesBinder(_textService, _textTable),

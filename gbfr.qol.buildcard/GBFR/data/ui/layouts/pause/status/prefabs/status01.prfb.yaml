@@ -98867,6 +98867,16 @@ Objects:
   Components:
   - ComponentName: SummonInfo
     Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2796
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2803
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2824
       _5D33A08E:
         ComponentName: SkillInfo
         Index: 0
@@ -100940,6 +100950,16 @@ Objects:
   Components:
   - ComponentName: SummonInfo
     Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2847
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2854
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2875
       _5D33A08E:
         ComponentName: SkillInfo
         Index: 0
@@ -103013,6 +103033,16 @@ Objects:
   Components:
   - ComponentName: SummonInfo
     Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2898
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2905
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2926
       _5D33A08E:
         ComponentName: SkillInfo
         Index: 0
@@ -105086,6 +105116,16 @@ Objects:
   Components:
   - ComponentName: SummonInfo
     Component:
+      Sets:
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2949
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2956
+      - ComponentName: ''
+        Index: -1
+        ObjectRefId: 2977
       _5D33A08E:
         ComponentName: SkillInfo
         Index: 0

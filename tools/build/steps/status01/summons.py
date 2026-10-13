@@ -1,5 +1,5 @@
 # Lays out the summons section as sharecard's summon cells on a panel.
-from model.components import mask, rect, ref_field, single
+from model.components import mask, object_field, rect, ref_field, single
 from model.prefab import copy, f
 from steps.layout import CARD_ORDER, PANEL_SCALE, SUMMONS, insert
 from steps.panel import panel
@@ -35,9 +35,10 @@ LAYOUT = ["  - ComponentName: HorizontalLayoutGroup", "    Component:", "      P
           "    Component:", "      HorizontalFit: 2", "      VerticalFit: 0", "      Enable: true"]
 
 
-def summon_info(trait, icon, name, bonus):
+def summon_info(item, trait, icon, name, bonus):
     # SummonInfo's fields in the order the tool writes them
     return ["  - ComponentName: SummonInfo", "    Component:",
+            *object_field("Sets", [item, trait, bonus]),  # hidden for an empty slot
             *ref_field("_5D33A08E", "SkillInfo", trait),
             *ref_field("_57A2478C", "SummonIconSetter", icon, listed=True),
             *ref_field("Names", "Text", name, listed=True),
@@ -69,7 +70,7 @@ def slot(sources, name, scale):
     item.add(band_fade, 1)
 
     text = item.find("loc_text01/text01_01")
-    node.set_components(summon_info(trait, icon, text, bonus))
+    node.set_components(summon_info(item, trait, icon, text, bonus))
 
     # the trait level after the trait name, its top on the row's centre
     level = trait.find("loc_skill_lv01")

@@ -33,6 +33,12 @@ def ref_field(name, component, target, listed=False):
     return [f"      {name}:", f"{head}ComponentName: {component}", "        Index: 0", Ref("        ObjectRefId: ", target)]
 
 
+def object_field(name, targets):
+    # a field listing the target objects themselves
+    return [f"      {name}:", *(line for target in targets for line in
+                                ["      - ComponentName: ''", "        Index: -1", Ref("        ObjectRefId: ", target)])]
+
+
 def mask(sprite):
     # sprite: (texture path, sprite name)
     return ["  - ComponentName: Mask", "    Component:", "      Sprite:", f"        TexturePath: {sprite[0]}",

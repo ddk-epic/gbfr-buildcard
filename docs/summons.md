@@ -7,7 +7,7 @@ The build card's summons section, `bc_smn` in `status01`. It shows the character
 ## Display
 
 Each cell, `bc_smn_0` to `bc_smn_3`, is a copy of the summon list's slot: the summon's name on its band, the summon's
-art, and the summon's trait and equip bonus rows, the trait's level after its name.
+art, and the summon's trait and equip bonus rows, the trait's level after its name. An empty slot is blank.
 
 The art sits under `bc_smn_art`, a mask with `bc_smn_art_mask` over the cell's last third, the summon's icon centred
 on it.
@@ -19,6 +19,19 @@ on it.
 1. `CharaSnapshot.Decode` reads each slot's summon id, leaving out 0.
 2. `SummonsBinder` calls `SetSummonInfo` for every slot with the cell's `SummonInfo` component, found by its RTTI
    vtable (`.?AVSummonInfo@component@ui@@`), and the summon id, 0 for an empty slot.
+3. The cell's `SummonInfo` lists `loc_item01`, holding the band, name and art, and the trait and equip bonus rows in
+   `Sets`, which `SetSummonInfo` hides for an empty slot.
+
+## SummonInfo
+
+| Offset | Field | Filled slot | Empty slot |
+|---|---|---|---|
+| `+0x20` | `Sets` | shown | hidden |
+| `+0x38` | `Empties` | hidden | shown |
+| `+0x188` | `_5D33A08E`, the trait's `SkillInfo` | filled | unchanged |
+| `+0x1A8` | `F58112CE`, the equip bonus's `LimitBonusInfo` | filled | unchanged |
+
+The summon menu's `summon_info01` lists its info body in `Sets` and its empty placeholder in `Empties`.
 
 ## Runtime data
 
@@ -40,4 +53,4 @@ Four summons at `chara+0x5DD8`, 0x1C bytes each.
 
 | Function | Effect |
 |---|---|
-| `SetSummonInfo(SummonInfo, summon id)` | Fills a summon cell, its trait and equip bonus rows included. |
+| `SetSummonInfo(SummonInfo, summon id)` | Fills a summon cell, its trait and equip bonus rows included; for an unknown id, 0 included, hides `Sets` and shows `Empties`. |

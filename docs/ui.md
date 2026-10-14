@@ -164,7 +164,7 @@ set.
 
 ## Game functions
 
-Functions in the game's exe, found by the byte signatures in `Signatures/granblue_fantasy_relink_er.ini`. The exe has
+Functions in the game's exe, found by the byte signatures in `Signatures/gbfr.qol.buildcard_er.ini`. The exe has
 no symbols; the names are the signatures' keys. `GameApi` adds each signature's scan; see
 [features](runtime.md#features).
 

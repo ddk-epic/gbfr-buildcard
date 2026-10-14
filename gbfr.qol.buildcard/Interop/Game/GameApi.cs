@@ -10,7 +10,7 @@ namespace gbfr.qol.buildcard.Interop.Game;
 // The game functions and vtables the mod uses.
 public sealed class GameApi
 {
-    private const string SignatureGroup = "granblue_fantasy_relink_er";
+    private const string SignatureGroup = "gbfr.qol.buildcard_er";
 
     // scalar deleting destructor
     private const int DestroyIndex = 7;
@@ -30,7 +30,7 @@ public sealed class GameApi
     private readonly ILogger _logger;
     private int _pending = 1;  // the scans not found yet and the constructor
 
-    // Signatures/granblue_fantasy_relink_er.ini
+    // Signatures/gbfr.qol.buildcard_er.ini
     public readonly Capability FillCharacterStatus;
     public readonly Capability SetObjectActive;
     public readonly Capability TextComponentSetText;

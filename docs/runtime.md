@@ -53,7 +53,7 @@ left out does nothing; the others still start.
 
 | Log line | Logged |
 |---|---|
-| `<signature> not found` | When the scan manager does not find a signature of `Signatures/granblue_fantasy_relink_er.ini`. |
+| `<signature> not found` | When the scan manager does not find a signature of `Signatures/gbfr.qol.buildcard_er.ini`. |
 | `<feature> disabled: <capabilities> not found` | At start, for each feature left out for its capabilities. |
 | `<feature> disabled: <features> not started` | At start, for each feature left out for its dependencies. |
 | `<feature> failed to start: <exception>` | At start, when a feature throws while starting. |

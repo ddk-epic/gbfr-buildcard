@@ -35,7 +35,7 @@ internal static class CardLayout
     public static class Gear
     {
         public const int SigilTraitNameWidth = 488;
-        public static readonly short[][] SigilTraitNames = [[3434, 3435], [3449, 3450], [3464, 3465], [3479, 3480], [3494, 3495], [3509, 3510], [3524, 3525], [3539, 3540], [3554, 3555], [3569, 3570], [3584, 3585], [3599, 3600]];
+        public static readonly short[][] SigilTraitNames = [[3433, 3435], [3448, 3450], [3463, 3465], [3478, 3480], [3493, 3495], [3508, 3510], [3523, 3525], [3538, 3540], [3553, 3555], [3568, 3570], [3583, 3585], [3598, 3600]];
         public const short WeaponTitle = 3001;
     }
 
@@ -80,7 +80,7 @@ internal static class CardLayout
     {
         public const uint NameHash = 0xD54E236E;
         public const int ObjectCount = 3852;
-        public const uint PrefabHash = 0x1FE794F5;
+        public const uint PrefabHash = 0xB95B978D;
     }
 
     public static class Summons

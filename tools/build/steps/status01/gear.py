@@ -93,9 +93,10 @@ def rework_sigil_row(row, row_w):
         trait.drop_component("ContentSizeFitter")
         trait.component("Text").set("FontSize", FONT_SIZE)
         trait.component("Text").set("CharacterSpacing", 0)
-        skills.add(trait)
-        # the trait's SkillInfo fills the name
+        # the name under its icon
         skill_icon = skills.child(f"icon_skill0{n + 1}")
+        skill_icon.add(trait)
+        # the trait's SkillInfo fills the name
         skill_icon.component("SkillInfo").insert(ref_field("Names", "Text", trait, listed=True), after="Icons")
 
     # the sigil icon, out of GemInfo's Sets, and the sigil name
@@ -103,15 +104,15 @@ def rework_sigil_row(row, row_w):
     icon.set("Active", False)
     name.set("Active", False)
 
-    # the content 1 above the centre, where it was before the top was cut
+    # the content 1 above the centre
     row.place(size=(row_w, ROW_H))
     row.repin()
     level.place(pos=(row_w / 2 - EDGE, level.vec("Position")[1] + 1))
     skills.place(pos=(skills_right, 1))
     for n in range(2):
-        skills.child(f"icon_skill0{n + 1}").place(pos=(columns[n] + ICON_X - skills_right, 0), size=(ICON_W, ICON_W))
-        skills.child(f"bc_trait0{n + 1}").place(pos=(columns[n] + NAME_X - skills_right, 0),
-                                                 size=(name_w, ROW_H))
+        skill_icon = skills.child(f"icon_skill0{n + 1}")
+        skill_icon.place(pos=(columns[n] + ICON_X - skills_right, 0), size=(ICON_W, ICON_W))
+        skill_icon.child(f"bc_trait0{n + 1}").place(pos=(NAME_X - ICON_X, 0), size=(name_w, ROW_H))
     return name_w
 
 

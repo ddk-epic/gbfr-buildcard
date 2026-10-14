@@ -123784,7 +123784,7 @@ Objects:
         ObjectRefId: 3432
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3433
+        ObjectRefId: 3434
       Enable: true
   Active: true
   Position: 0, 441, 0
@@ -124297,9 +124297,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3432
-  - 3433
   - 3434
-  - 3435
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -124313,6 +124311,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3432
   Name: icon_skill01
+  Children:
+  - 3433
   Components:
   - ComponentName: Image
     Component:
@@ -124349,7 +124349,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3434
+        ObjectRefId: 3433
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -124370,64 +124370,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3433
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3433
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3433
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3435
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3434
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -124468,16 +124410,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3434
+  Name: icon_skill02
+  Children:
+  - 3435
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3434
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3434
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3435
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3435
   Name: bc_trait02
   Components:
@@ -124519,15 +124521,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3436
   Name: equip01_p01_02
@@ -124561,7 +124563,7 @@ Objects:
         ObjectRefId: 3447
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3448
+        ObjectRefId: 3449
       Enable: true
   Active: true
   Position: 0, 363, 0
@@ -125074,9 +125076,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3447
-  - 3448
   - 3449
-  - 3450
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -125090,6 +125090,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3447
   Name: icon_skill01
+  Children:
+  - 3448
   Components:
   - ComponentName: Image
     Component:
@@ -125126,7 +125128,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3449
+        ObjectRefId: 3448
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -125147,64 +125149,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3448
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3448
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3448
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3450
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3449
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -125245,16 +125189,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3449
+  Name: icon_skill02
+  Children:
+  - 3450
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3449
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3449
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3450
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3450
   Name: bc_trait02
   Components:
@@ -125296,15 +125300,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3451
   Name: equip01_p01_03
@@ -125338,7 +125342,7 @@ Objects:
         ObjectRefId: 3462
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3463
+        ObjectRefId: 3464
       Enable: true
   Active: true
   Position: 0, 285, 0
@@ -125851,9 +125855,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3462
-  - 3463
   - 3464
-  - 3465
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -125867,6 +125869,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3462
   Name: icon_skill01
+  Children:
+  - 3463
   Components:
   - ComponentName: Image
     Component:
@@ -125903,7 +125907,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3464
+        ObjectRefId: 3463
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -125924,64 +125928,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3463
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3463
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3463
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3465
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3464
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -126022,16 +125968,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3464
+  Name: icon_skill02
+  Children:
+  - 3465
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3464
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3464
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3465
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3465
   Name: bc_trait02
   Components:
@@ -126073,15 +126079,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3466
   Name: equip01_p01_04
@@ -126115,7 +126121,7 @@ Objects:
         ObjectRefId: 3477
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3478
+        ObjectRefId: 3479
       Enable: true
   Active: true
   Position: 0, 207, 0
@@ -126628,9 +126634,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3477
-  - 3478
   - 3479
-  - 3480
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -126644,6 +126648,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3477
   Name: icon_skill01
+  Children:
+  - 3478
   Components:
   - ComponentName: Image
     Component:
@@ -126680,7 +126686,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3479
+        ObjectRefId: 3478
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -126701,64 +126707,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3478
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3478
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3478
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3480
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3479
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -126799,16 +126747,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3479
+  Name: icon_skill02
+  Children:
+  - 3480
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3479
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3479
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3480
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3480
   Name: bc_trait02
   Components:
@@ -126850,15 +126858,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3481
   Name: equip01_p01_05
@@ -126892,7 +126900,7 @@ Objects:
         ObjectRefId: 3492
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3493
+        ObjectRefId: 3494
       Enable: true
   Active: true
   Position: 0, 129, 0
@@ -127405,9 +127413,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3492
-  - 3493
   - 3494
-  - 3495
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -127421,6 +127427,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3492
   Name: icon_skill01
+  Children:
+  - 3493
   Components:
   - ComponentName: Image
     Component:
@@ -127457,7 +127465,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3494
+        ObjectRefId: 3493
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -127478,64 +127486,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3493
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3493
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3493
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3495
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3494
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -127576,16 +127526,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3494
+  Name: icon_skill02
+  Children:
+  - 3495
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3494
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3494
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3495
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3495
   Name: bc_trait02
   Components:
@@ -127627,15 +127637,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3496
   Name: equip01_p01_06
@@ -127669,7 +127679,7 @@ Objects:
         ObjectRefId: 3507
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3508
+        ObjectRefId: 3509
       Enable: true
   Active: true
   Position: 0, 51, 0
@@ -128182,9 +128192,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3507
-  - 3508
   - 3509
-  - 3510
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -128198,6 +128206,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3507
   Name: icon_skill01
+  Children:
+  - 3508
   Components:
   - ComponentName: Image
     Component:
@@ -128234,7 +128244,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3509
+        ObjectRefId: 3508
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -128255,64 +128265,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3508
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3508
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3508
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3510
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3509
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -128353,16 +128305,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3509
+  Name: icon_skill02
+  Children:
+  - 3510
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3509
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3509
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3510
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3510
   Name: bc_trait02
   Components:
@@ -128404,15 +128416,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3511
   Name: equip01_p01_07
@@ -128446,7 +128458,7 @@ Objects:
         ObjectRefId: 3522
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3523
+        ObjectRefId: 3524
       Enable: true
   Active: true
   Position: 0, -27, 0
@@ -128959,9 +128971,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3522
-  - 3523
   - 3524
-  - 3525
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -128975,6 +128985,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3522
   Name: icon_skill01
+  Children:
+  - 3523
   Components:
   - ComponentName: Image
     Component:
@@ -129011,7 +129023,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3524
+        ObjectRefId: 3523
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -129032,64 +129044,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3523
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3523
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3523
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3525
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3524
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -129130,16 +129084,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3524
+  Name: icon_skill02
+  Children:
+  - 3525
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3524
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3524
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3525
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3525
   Name: bc_trait02
   Components:
@@ -129181,15 +129195,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3526
   Name: equip01_p01_08
@@ -129223,7 +129237,7 @@ Objects:
         ObjectRefId: 3537
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3538
+        ObjectRefId: 3539
       Enable: true
   Active: true
   Position: 0, -105, 0
@@ -129736,9 +129750,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3537
-  - 3538
   - 3539
-  - 3540
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -129752,6 +129764,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3537
   Name: icon_skill01
+  Children:
+  - 3538
   Components:
   - ComponentName: Image
     Component:
@@ -129788,7 +129802,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3539
+        ObjectRefId: 3538
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -129809,64 +129823,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3538
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3538
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3538
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3540
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3539
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -129907,16 +129863,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3539
+  Name: icon_skill02
+  Children:
+  - 3540
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3539
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3539
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3540
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3540
   Name: bc_trait02
   Components:
@@ -129958,15 +129974,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3541
   Name: equip01_p01_09
@@ -130000,7 +130016,7 @@ Objects:
         ObjectRefId: 3552
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3553
+        ObjectRefId: 3554
       Enable: true
   Active: true
   Position: 0, -183, 0
@@ -130513,9 +130529,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3552
-  - 3553
   - 3554
-  - 3555
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -130529,6 +130543,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3552
   Name: icon_skill01
+  Children:
+  - 3553
   Components:
   - ComponentName: Image
     Component:
@@ -130565,7 +130581,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3554
+        ObjectRefId: 3553
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -130586,64 +130602,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3553
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3553
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3553
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3555
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3554
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -130684,16 +130642,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3554
+  Name: icon_skill02
+  Children:
+  - 3555
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3554
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3554
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3555
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3555
   Name: bc_trait02
   Components:
@@ -130735,15 +130753,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3556
   Name: equip01_p01_10
@@ -130777,7 +130795,7 @@ Objects:
         ObjectRefId: 3567
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3568
+        ObjectRefId: 3569
       Enable: true
   Active: true
   Position: 0, -261, 0
@@ -131290,9 +131308,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3567
-  - 3568
   - 3569
-  - 3570
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -131306,6 +131322,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3567
   Name: icon_skill01
+  Children:
+  - 3568
   Components:
   - ComponentName: Image
     Component:
@@ -131342,7 +131360,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3569
+        ObjectRefId: 3568
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -131363,64 +131381,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3568
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3568
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3568
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3570
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3569
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -131461,16 +131421,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3569
+  Name: icon_skill02
+  Children:
+  - 3570
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3569
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3569
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3570
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3570
   Name: bc_trait02
   Components:
@@ -131512,15 +131532,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3571
   Name: equip01_p01_11
@@ -131554,7 +131574,7 @@ Objects:
         ObjectRefId: 3582
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3583
+        ObjectRefId: 3584
       Enable: true
   Active: true
   Position: 0, -339, 0
@@ -132067,9 +132087,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3582
-  - 3583
   - 3584
-  - 3585
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -132083,6 +132101,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3582
   Name: icon_skill01
+  Children:
+  - 3583
   Components:
   - ComponentName: Image
     Component:
@@ -132119,7 +132139,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3584
+        ObjectRefId: 3583
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -132140,64 +132160,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3583
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3583
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3583
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3585
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3584
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -132238,16 +132200,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3584
+  Name: icon_skill02
+  Children:
+  - 3585
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3584
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3584
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3585
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3585
   Name: bc_trait02
   Components:
@@ -132289,15 +132311,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3586
   Name: equip01_p01_12
@@ -132331,7 +132353,7 @@ Objects:
         ObjectRefId: 3597
       - ComponentName: SkillInfo
         Index: 0
-        ObjectRefId: 3598
+        ObjectRefId: 3599
       Enable: true
   Active: true
   Position: 0, -417, 0
@@ -132844,9 +132866,7 @@ Objects:
   Name: loc_icon_skill
   Children:
   - 3597
-  - 3598
   - 3599
-  - 3600
   Active: true
   Position: 590.63, 1, 0
   Rotation: 0, 0, 0, 1
@@ -132860,6 +132880,8 @@ Objects:
   SizeDelta: 112, 80
 - Id: 3597
   Name: icon_skill01
+  Children:
+  - 3598
   Components:
   - ComponentName: Image
     Component:
@@ -132896,7 +132918,7 @@ Objects:
       Names:
       - ComponentName: Text
         Index: 0
-        ObjectRefId: 3599
+        ObjectRefId: 3598
       ChangeColorDisable: false
       ChangeGemColorDisable: false
       TextColorType: 0
@@ -132917,64 +132939,6 @@ Objects:
   OffsetMax: -1081.26, 36
   SizeDelta: 72, 72
 - Id: 3598
-  Name: icon_skill02
-  Components:
-  - ComponentName: Image
-    Component:
-      Color: 1, 1, 1, 1
-      Sprite:
-        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
-        SpriteName: 517E1C90
-      Type: 0
-      FillCenter: false
-      FillMethod: 0
-      FillOrigin: 0
-      FillAmount: 0
-      UvRect: 0, 0, 0, 0
-      RawImage: false
-      Clockwise: false
-      PreserveAspect: false
-      E3ED5266: 0
-      Enable: true
-  - ComponentName: SkillIconSetter
-    Component:
-      _56C453FF: false
-      Target:
-        ComponentName: Image
-        Index: 0
-        ObjectRefId: 3598
-      Resetting: true
-      Enable: true
-  - ComponentName: SkillInfo
-    Component:
-      Icons:
-      - ComponentName: SkillIconSetter
-        Index: 0
-        ObjectRefId: 3598
-      Names:
-      - ComponentName: Text
-        Index: 0
-        ObjectRefId: 3600
-      ChangeColorDisable: false
-      ChangeGemColorDisable: false
-      TextColorType: 0
-      TextCustomColor: 1, 1, 1, 1
-      TextSelectCustomColor: 1, 1, 1, 1
-      SlvColorChangeType: 0
-      GeenContainerNo: 1
-      Enable: true
-  Active: true
-  Position: -626.63, 0, 0
-  Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
-  Pivot: 0.5, 0.5
-  AnchorPoint: -570.63, 0
-  AnchorMin: 0.5, 0.5
-  AnchorMax: 0.5, 0.5
-  OffsetMin: -606.63, -36
-  OffsetMax: -534.63, 36
-  SizeDelta: 72, 72
-- Id: 3599
   Name: bc_trait01
   Components:
   - ComponentName: Text
@@ -133015,16 +132979,76 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -1127.26, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -1015.26, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -1015.26, -39
-  OffsetMax: -558.63, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
+- Id: 3599
+  Name: icon_skill02
+  Children:
+  - 3600
+  Components:
+  - ComponentName: Image
+    Component:
+      Color: 1, 1, 1, 1
+      Sprite:
+        TexturePath: layouts/common/icon_skill/noatlastextures/cmn_icskill_dummy
+        SpriteName: 517E1C90
+      Type: 0
+      FillCenter: false
+      FillMethod: 0
+      FillOrigin: 0
+      FillAmount: 0
+      UvRect: 0, 0, 0, 0
+      RawImage: false
+      Clockwise: false
+      PreserveAspect: false
+      E3ED5266: 0
+      Enable: true
+  - ComponentName: SkillIconSetter
+    Component:
+      _56C453FF: false
+      Target:
+        ComponentName: Image
+        Index: 0
+        ObjectRefId: 3599
+      Resetting: true
+      Enable: true
+  - ComponentName: SkillInfo
+    Component:
+      Icons:
+      - ComponentName: SkillIconSetter
+        Index: 0
+        ObjectRefId: 3599
+      Names:
+      - ComponentName: Text
+        Index: 0
+        ObjectRefId: 3600
+      ChangeColorDisable: false
+      ChangeGemColorDisable: false
+      TextColorType: 0
+      TextCustomColor: 1, 1, 1, 1
+      TextSelectCustomColor: 1, 1, 1, 1
+      SlvColorChangeType: 0
+      GeenContainerNo: 1
+      Enable: true
+  Active: true
+  Position: -626.63, 0, 0
+  Rotation: 0, 0, 0, 1
+  Scale: 1, 1, 1
+  Pivot: 0.5, 0.5
+  AnchorPoint: -570.63, 0
+  AnchorMin: 0.5, 0.5
+  AnchorMax: 0.5, 0.5
+  OffsetMin: -606.63, -36
+  OffsetMax: -534.63, 36
+  SizeDelta: 72, 72
 - Id: 3600
   Name: bc_trait02
   Components:
@@ -133066,15 +133090,15 @@ Objects:
         Alignment: 0
       Enable: true
   Active: true
-  Position: -580.63, 0, 0
+  Position: 46, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
   Pivot: 0, 0.5
-  AnchorPoint: -468.63, 0
+  AnchorPoint: 82, 0
   AnchorMin: 0, 0.5
   AnchorMax: 0, 0.5
-  OffsetMin: -468.63, -39
-  OffsetMax: -12, 39
+  OffsetMin: 82, -39
+  OffsetMax: 538.63, 39
   SizeDelta: 456.63, 78
 - Id: 3601
   Name: bc_skills

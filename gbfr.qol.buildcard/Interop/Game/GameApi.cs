@@ -47,6 +47,7 @@ public sealed class GameApi
     public readonly Capability SetMasteryPercents;
     public readonly Capability SetOverMasteryLine;
     public readonly Capability SetSummonInfo;
+    public readonly Capability WeaponUpgradeStatus;
     public readonly Capability StartFlow;
     public readonly Capability EndFlow;
     public readonly Capability FindView;
@@ -101,6 +102,7 @@ public sealed class GameApi
         SetMasteryPercents = Scan(nameof(SetMasteryPercents));
         SetOverMasteryLine = Scan(nameof(SetOverMasteryLine));
         SetSummonInfo = Scan(nameof(SetSummonInfo));
+        WeaponUpgradeStatus = Scan(nameof(WeaponUpgradeStatus));
         StartFlow = Scan(nameof(StartFlow));
         EndFlow = Scan(nameof(EndFlow));
         FindView = Scan(nameof(FindView));

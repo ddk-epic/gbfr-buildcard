@@ -45,7 +45,7 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
         }
 
         // a slot by its key for another player's character, by its id otherwise
-        bool remote = chara.Origin is 4 or 5;
+        bool remote = IsRemote(address);
         var summons = new SummonSlot?[SummonCount];
         for (int i = 0; i < SummonCount; i++)
         {
@@ -57,6 +57,9 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
         return new CharaSnapshot(chara.CharaKey, chara.WeaponKey, chara.SkinKey, (chara.WeaponFlags & EffectOffFlag) != 0,
             entries.ToArray(), overMastery, summons) { Remote = remote };
     }
+
+    // Whether chara is another player's character.
+    public static unsafe bool IsRemote(nint address) => ((Chara*)address)->Origin is 4 or 5;
 
     [StructLayout(LayoutKind.Explicit)]
     private struct Chara

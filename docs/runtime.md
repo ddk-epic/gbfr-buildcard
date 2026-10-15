@@ -37,7 +37,7 @@ left out does nothing; the others still start.
 | `MasteryReader` | `MasteryPercent`, `SetMasteryPercents` |  |
 | `OverMasteryParams` | `SetOverMasteryLine` |  |
 | `MenuState` | `StartFlow`, `EndFlow`, `FindView`, `OpenView`, `CloseView` |  |
-| `CharaStatusHooks` | `FillCharacterStatus` |  |
+| `CharaStatusHooks` | `FillCharacterStatus`; `WeaponUpgradeStatus` when found |  |
 | `WeaponArt` | `EnableSkinView function 9`, `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |  |
 | `OverMasterySection` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |  |
 | `SummonsSection` | `SetSummonInfo`, `SummonInfo vtable` |  |

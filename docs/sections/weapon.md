@@ -16,6 +16,7 @@ the weapon's art with `WeaponArt`.
 | Art | The equipped weapon's art, or its skin's when one is set; its effect off art when the effect is turned off. |
 | Skin tag | The equip screen's `tag_skin01` plaque (`WeaponInfo`'s `WeaponSkinText`), shown when a skin is set. |
 | Effect tag | The equip screen's `tag_eff01` (`WeaponInfo`'s `B47B9FCC`), shown when the effect is turned off. |
+| Gauge | The weapon's limit break stars, or its awakening or transcendence bar (`WeaponInfo`'s `_24E49AB7`, an `ItemWeaponGauge`). |
 
 ## Implementation
 
@@ -51,15 +52,38 @@ party menu is open. `WeaponArt` hooks two of its vfuncs:
 3. The hooked vfunc 5, which collects the list, collects the party's weapons only while the party menu is open, then
    adds the card's weapon when the list does not hold it and has room.
 
+### Weapon gauge
+
+`FillCharacterStatus` passes the weapon at `chara+0x50` to `WeaponInfo`'s setter, which fills the gauge only when the
+weapon's inventory id is not 0. The gauge follows the weapon's upgrade status from
+`WeaponUpgradeStatus(weapon manager, weapon key)`, which reads the local weapon inventory's entry with that key.
+
+| Upgrade status | Gauge |
+|---|---|
+| 0, 6, 7 | Hides the stars. |
+| 6, 7 | Shows the transcendence bar, filled to the transcendence level. |
+| Others | Shows the awakening bar, filled to the awakening level, when the awakening level is above 0; the stars otherwise. |
+| 5, 7 | Also shows the gauge's completed state. |
+| 2 | The key is not in the local inventory. |
+
+Another player's weapon has inventory id 0. While the game fills another player's character on the card,
+`CharaStatusHooks` sets the id to `0xFFFFFFFF`, which no inventory weapon has, and sets it back to 0 after. During
+that fill it hooks `WeaponUpgradeStatus` for that weapon's key, returning 6 when its transcendence level is above 0 and 2
+otherwise.
+
 ## Runtime data
 
 ### Character
 
 | Offset in `chara` | Size | Data |
 |---|---|---|
+| `+0x050` | 4 | Weapon inventory id; 0 for another player's character. |
 | `+0x054` | 4 | Weapon key: the equipped weapon. |
 | `+0x058` | 4 | Skin key: the weapon whose look is shown, `0x887AE0B0` when none. |
 | `+0x05C` | 1 | Weapon flags; bit `0x20` set when the weapon's effect is turned off. |
+| `+0x064` | 4 | Limit break stars. |
+| `+0x06C` | 4 | Awakening level. |
+| `+0x090` | 4 | Transcendence level. |
 
 ### Weapon art
 

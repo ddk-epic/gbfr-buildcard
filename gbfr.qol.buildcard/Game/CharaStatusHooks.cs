@@ -28,8 +28,31 @@ public unsafe class CharaStatusHooks : IFeature
 
     public event Action? Filled;
 
+    // chara's weapon inventory id
+    private const int WeaponId = 0x50;
+
+    // in the chara's weapon
+    private const int WeaponKey = 0x04;
+
+    // an id no inventory weapon has
+    private const uint PlaceholderWeaponId = uint.MaxValue;
+
+    // in the chara's weapon
+    private const int Transcendence = 0x40;
+
+    // WeaponUpgradeStatus results
+    private const int NotOwnedStatus = 2;
+    private const int TranscendenceStatus = 6;
+
     private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private IHook<FillCharacterStatus>? _fillHook;
+
+    private delegate int WeaponUpgradeStatus(nint manager, uint weaponKey);
+    private IHook<WeaponUpgradeStatus>? _statusHook;
+
+    // another player's weapon while the game fills it
+    [ThreadStatic]
+    private static byte* _remoteWeapon;
 
     public CharaStatusHooks(IReloadedHooks hooks, UiTree tree, TextService text, GameApi api, ILogger logger)
     {
@@ -42,8 +65,14 @@ public unsafe class CharaStatusHooks : IFeature
 
     public Capability[] Requires => [_api.FillCharacterStatus];
 
-    public void Start() =>
+    public Capability[] Optional => [_api.WeaponUpgradeStatus];
+
+    public void Start()
+    {
         _fillHook = _hooks.CreateHook<FillCharacterStatus>(FillImpl, _api.FillCharacterStatus.Address).Activate();
+        if (_api.WeaponUpgradeStatus.Found)
+            _statusHook = _hooks.CreateHook<WeaponUpgradeStatus>(WeaponUpgradeStatusImpl, _api.WeaponUpgradeStatus.Address).Activate();
+    }
 
     private void FillImpl(nint charaInfo, nint chara, int index)
     {
@@ -56,7 +85,7 @@ public unsafe class CharaStatusHooks : IFeature
         Dispatch.Raise(_logger, nameof(Filling), Filling);
         try
         {
-            _fillHook!.OriginalFunction(charaInfo, chara, index);
+            FillWithWeaponId(charaInfo, chara, index);
             if (chara != 0)
                 RaiseCharacterShown(info, chara);
         }
@@ -64,6 +93,37 @@ public unsafe class CharaStatusHooks : IFeature
         {
             Dispatch.Raise(_logger, nameof(Filled), Filled);
         }
+    }
+
+    // Fills with a placeholder id on another player's weapon
+    private void FillWithWeaponId(nint charaInfo, nint chara, int index)
+    {
+        uint* weaponId = (uint*)(chara + WeaponId);
+        if (chara == 0 || !CharaSnapshot.IsRemote(chara) || *weaponId != 0)
+        {
+            _fillHook!.OriginalFunction(charaInfo, chara, index);
+            return;
+        }
+        *weaponId = PlaceholderWeaponId;
+        _remoteWeapon = (byte*)weaponId;
+        try
+        {
+            _fillHook!.OriginalFunction(charaInfo, chara, index);
+        }
+        finally
+        {
+            _remoteWeapon = null;
+            *weaponId = 0;
+        }
+    }
+
+    // Gives another player's weapon an upgrade status from its own transcendence
+    private int WeaponUpgradeStatusImpl(nint manager, uint weaponKey)
+    {
+        byte* weapon = _remoteWeapon;
+        if (weapon == null || weaponKey != *(uint*)(weapon + WeaponKey))
+            return _statusHook!.OriginalFunction(manager, weaponKey);
+        return *(int*)(weapon + Transcendence) > 0 ? TranscendenceStatus : NotOwnedStatus;
     }
 
     private void RaiseCharacterShown(CharaInfo info, nint chara)

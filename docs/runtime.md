@@ -48,7 +48,7 @@ left out does nothing; the others still start.
 | `Notice` | `PushInfo` |  |
 | `NoticeTiming` | Nothing; each controller's `ShowInfo` (function 35) and destructor (function 7) when found | `ControllerLifetimes` |
 | `CardView` | Nothing | `UiTree` |
-| `SwapChainHooks` | Nothing; it finds and hooks `Present` itself ([export](export.md#frame-timing)) |  |
+| `SwapChainHooks` | `SwapChainImpl function 0` |  |
 | `ExportController` | Nothing | `Input`, `MenuState`, `SwapChainHooks` |
 
 | Log line | Logged |
@@ -93,8 +93,8 @@ updates.
 ## Render thread
 
 `RenderThread` runs work on the render thread. At each `SwapChainHooks.Presenting` it runs the actions posted with
-`RenderThread.Post` from any thread, in order, then raises its own `Presenting`. While `SwapChainHooks` has not hooked
-`Present`, `RenderThread.Post` drops the action. `GameThread` counts the presents and
+`RenderThread.Post` from any thread, in order, then raises its own `Presenting`. While `SwapChainHooks` has not started,
+`RenderThread.Post` drops the action. `GameThread` counts the presents and
 `UiFrameCapture` captures at them ([export](export.md#frame-timing)).
 
 ## Card model

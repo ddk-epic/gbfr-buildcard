@@ -61,9 +61,7 @@ internal static unsafe class Com
 
     public static class IDXGISwapChain
     {
-        public const int Present = 8;
         public const int GetBuffer = 9;
-        public const int Present1 = 22;
     }
 
     public static nint Method(nint obj, int index) => (*(nint**)obj)[index];

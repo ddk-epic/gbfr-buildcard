@@ -147,7 +147,7 @@ public class Mod : ModBase
         _steamScreenshots = new SteamScreenshots(() => _configuration.SteamScreenshots, _logger);
         _cardFile.Saved += _notice.OnSaved;
         _cardFile.Saved += _steamScreenshots.OnSaved;
-        _swapChainHooks = new SwapChainHooks(_hooks, _logger);
+        _swapChainHooks = new SwapChainHooks(_hooks, _api, _logger);
         _renderThread = new RenderThread(_logger, _swapChainHooks);
         _capture = new UiFrameCapture(new UiRedraw(_hooks), _renderThread, _logger);
         _exportController = new ExportController(_input, _menu, _cardSession, _capture, _cardFile, _gameThread,

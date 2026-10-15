@@ -115,10 +115,12 @@ is destroyed ([ui](ui.md#controller-lifetimes)).
 
 ## Frame timing
 
-`SwapChainHooks` hooks DXGI's `Present` (vtable index 8) and `Present1` (22), read from a swapchain made on a hidden
-window with `D3D11CreateDeviceAndSwapChain`; both raise `Presenting` on the render thread, which drives `RenderThread`
-([runtime](runtime.md#render-thread)). A present with `DXGI_PRESENT_TEST` raises nothing, and a present called from
-inside another hooked present on the same thread raises nothing: DXVK's and Wine's `Present` call their `Present1`.
+`SwapChainHooks` hooks the game's present, function 0 of `gpu::SwapChainImpl` ([ui](ui.md#virtual-functions)), and
+patches no DXGI code. The game makes one `SwapChainImpl` with `CreateSwapChainForHwnd` and holds its `IDXGISwapChain3`
+at `+0x8`; the function calls that swapchain's `Present` with the sync interval at `+0x3c` and no flags, then resizes
+the buffers when the window's size changed. Before it runs, the hook raises `Presenting` with the swapchain on the
+render thread, which drives `RenderThread` ([runtime](runtime.md#render-thread)). Overlays that hook DXGI's `Present`,
+such as Steam's, draw after the read, so the card holds none of them.
 
 On a press, `ExportController` hides the overlays, the page button prompts and the saved notice (`IOverlay`), and posts
 a `CaptureRequest` for the card's rect at 2880x1440 to `UiFrameCapture`. `UiFrameCapture` counts the presents from the
@@ -205,7 +207,8 @@ Each export logs its lines to the Reloaded-II log, prefixed with `[gbfr.qol.buil
 | `Card not added to Steam` | After `Card saved to`, when `SteamScreenshots` is on and the game runs without Steam or Steam refused the file. |
 | `Card export failed: <reason>` | When resizing, serializing or writing the file fails. |
 | `Presenting handler UiFrameCapture.OnPresenting failed: <exception>` | When the redraw or the read throws on the render thread; the overlays are shown and nothing is saved. |
-| `SwapChainHooks failed to start: <exception>` | When the throwaway D3D11 swapchain cannot be made; `ExportController` is left out and there is no export. |
+| `SwapChainHooks disabled: SwapChainImpl function 0 not found` | At start, when the game's present is not found; `ExportController` is left out and there is no export. |
+| `SwapChainHooks failed to start: <exception>` | At start, when hooking the game's present throws; `ExportController` is left out and there is no export. |
 | `Card export failed: no frame was captured` | When no redraw starts within 1000 ms of the press. |
 
 The redraw line's fields:

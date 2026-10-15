@@ -21,7 +21,7 @@ public class RenderThread
         _swapChain = swapChain;
     }
 
-    // From any thread: runs action before the next Presenting when Present is hooked.
+    // From any thread: runs action before the next Presenting once SwapChainHooks has started.
     public void Post(Action action)
     {
         if (_swapChain.IsHooked)

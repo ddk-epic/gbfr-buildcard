@@ -4,7 +4,7 @@ namespace gbfr.qol.buildcard.Model;
 
 // A character's build as the card shows it.
 public sealed record BuildCard(uint CharaKey, WeaponPart Weapon, TraitBoard Traits, MasteryPercents? Masteries,
-    OverMasteryRow?[] OverMastery, uint?[] Summons)
+    OverMasteryRow?[] OverMastery, SummonSlot?[] Summons)
 {
     public string CharaName { get; init; } = "";
 

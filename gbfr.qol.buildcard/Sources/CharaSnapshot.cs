@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace gbfr.qol.buildcard.Sources;
 
 public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, bool EffectOff, CharaEntry[] Entries,
-    OverMasteryLine?[] OverMastery, uint?[] Summons)
+    OverMasteryLine?[] OverMastery, SummonSlot?[] Summons)
 {
     // from the CharaInfo's Names text
     public string CharaName { get; init; } = "";
@@ -14,6 +14,7 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
     public bool Remote { get; init; }
 
     private const byte EffectOffFlag = 0x20;
+    private const uint EmptyKey = 0x887AE0B0;
     public const int OverMasteryLines = 4;
     public const int SummonCount = 4;
 
@@ -43,12 +44,18 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
                 overMastery[i] = line;
         }
 
-        var summons = new uint?[SummonCount];
+        // a slot by its key for another player's character, by its id otherwise
+        bool remote = chara.Origin is 4 or 5;
+        var summons = new SummonSlot?[SummonCount];
         for (int i = 0; i < SummonCount; i++)
-            summons[i] = chara.Summons[i].SummonId is var id and not 0 ? id : null;
+        {
+            var slot = chara.Summons[i];
+            if (remote ? slot.Key is not (0 or EmptyKey) : slot.Id != 0)
+                summons[i] = slot;
+        }
 
         return new CharaSnapshot(chara.CharaKey, chara.WeaponKey, chara.SkinKey, (chara.WeaponFlags & EffectOffFlag) != 0,
-            entries.ToArray(), overMastery, summons) { Remote = chara.Origin is 4 or 5 };
+            entries.ToArray(), overMastery, summons) { Remote = remote };
     }
 
     [StructLayout(LayoutKind.Explicit)]
@@ -72,18 +79,6 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
         public int Bits;
     }
 
-    [StructLayout(LayoutKind.Sequential, Size = 0x1C)]
-    private struct Summon
-    {
-        public uint SummonKey;
-        public uint SummonId;
-        public uint TraitKey;
-        public uint EquipBonusKey;
-        public uint TraitLevel;
-        public uint EquipBonusLevel;
-        public uint Unknown;
-    }
-
     [InlineArray(400)]
     private struct EntryArray
     {
@@ -99,7 +94,7 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
     [InlineArray(SummonCount)]
     private struct SummonArray
     {
-        private Summon _element;
+        private SummonSlot _element;
     }
 }
 
@@ -109,3 +104,8 @@ public readonly record struct CharaEntry(uint Key, int Bits);
 // Over Mastery line: [limit_bonus_param key, 1 << (level - 1), unknown, float value]
 [StructLayout(LayoutKind.Sequential, Size = 0x10)]
 public readonly record struct OverMasteryLine(uint Key, uint LevelBit, uint Unknown, float Value);
+
+// Summon slot, laid out as a summon inventory record
+[StructLayout(LayoutKind.Sequential, Size = 0x1C)]
+public readonly record struct SummonSlot(uint Key, uint Id, uint TraitKey, uint EquipBonusKey, uint TraitLevel,
+    uint EquipBonusLevel, uint Unknown);

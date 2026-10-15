@@ -16,11 +16,22 @@ on it.
 
 ## Implementation
 
-1. `CharaSnapshot.Decode` reads each slot's summon id, leaving out 0.
+1. `CharaSnapshot.Decode` reads each slot as a `SummonSlot`. A slot is empty when its summon id is 0, or for another
+   player's character when its summon key is 0 or `0x887AE0B0`.
 2. `SummonsSection` calls `SetSummonInfo` for every slot with the cell's `SummonInfo` component, found by its RTTI
    vtable (`.?AVSummonInfo@component@ui@@`), and the summon id, 0 for an empty slot.
 3. The cell's `SummonInfo` lists `loc_item01`, holding the band, name and art, and the trait and equip bonus rows in
    `Sets`, which `SetSummonInfo` hides for an empty slot.
+
+### Another player's summons
+
+Another player's slots hold the summon key, trait and equip bonus keys and levels, and summon id 0. For such a slot,
+`SummonsSection` writes the slot's fields except the id and `+0x18` over the first record of the summon inventory,
+calls `SetSummonInfo` with that record's id, and writes the record back. With no record in the inventory, the cell is
+empty.
+
+The card's cells reference none of the objects `SetSummonInfo` fills from the summon id (`+0x1E8`, `+0x208`, `+0x248`,
+`+0x358`), so only the record's fields show.
 
 ## SummonInfo
 
@@ -48,6 +59,13 @@ Four summons at `chara+0x5DD8`, 0x1C bytes each.
 | `+0x10` | trait level |
 | `+0x14` | equip bonus level |
 | `+0x18` | unknown |
+
+### Summon inventory
+
+A global pointer, loaded by the `mov rdi, [rip + disp32]` at `SetSummonInfo+0x11`, holds the summon inventory: an MSVC
+`unordered_map` from summon id to a record with the summon's layout above, its list head node at `+0xE6F0`, its buckets
+at `+0xE700` and its bucket mask at `+0xE718`. A list node holds the next node at `+0x00`, the summon id at `+0x10` and
+the record pointer at `+0x18`. `SetSummonInfo` looks the summon id up in it.
 
 ### Game functions
 

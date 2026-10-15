@@ -15,7 +15,7 @@ public class BuildCardAssemblerTests
 
     private static BuildCard Build(MasterTraitCell[] cells, CharaEntry[] entries, int[]? percents = null) =>
         BuildCardAssembler.Build(
-            new CharaSnapshot(1, 2, 3, false, entries, new OverMasteryLine?[4], new uint?[4]),
+            new CharaSnapshot(1, 2, 3, false, entries, new OverMasteryLine?[4], new SummonSlot?[4]),
             cells, percents, (id, _) => Texts.GetValueOrDefault(id, ""), _ => null, "Eng");
 
     // slot: style * 100 + perk rank, 10 * (rank + 1) + position - 1, or 50 + position - 1
@@ -123,7 +123,7 @@ public class BuildCardAssemblerTests
     [Fact]
     public void KeepsTheNameAndLanguage()
     {
-        var build = new CharaSnapshot(1, 2, 3, false, [], new OverMasteryLine?[4], new uint?[4]) { CharaName = "グラン" };
+        var build = new CharaSnapshot(1, 2, 3, false, [], new OverMasteryLine?[4], new SummonSlot?[4]) { CharaName = "グラン" };
 
         var card = BuildCardAssembler.Build(build, [], null, (_, _) => "", _ => null, "Jpn");
 
@@ -135,7 +135,7 @@ public class BuildCardAssemblerTests
     [Fact]
     public void KeepsTheRemoteFlag()
     {
-        var build = new CharaSnapshot(1, 2, 3, false, [], new OverMasteryLine?[4], new uint?[4]) { Remote = true };
+        var build = new CharaSnapshot(1, 2, 3, false, [], new OverMasteryLine?[4], new SummonSlot?[4]) { Remote = true };
 
         Assert.True(BuildCardAssembler.Build(build, [], null, (_, _) => "", _ => null, "Eng").Remote);
     }
@@ -144,7 +144,7 @@ public class BuildCardAssemblerTests
     public void ShowsOverMasteryValuesAsTheGameDoes()
     {
         OverMasteryLine?[] lines = [new(1, 1, 0, 0.125f), new(2, 1, 0, 1500f), new(3, 1, 0, 1f), null];
-        var build = new CharaSnapshot(1, 2, 3, false, [], lines, new uint?[4]);
+        var build = new CharaSnapshot(1, 2, 3, false, [], lines, new SummonSlot?[4]);
         var parameters = new Dictionary<uint, OverMasteryParam> { [1] = new(100, true), [2] = new(1, false) };
 
         var rows = BuildCardAssembler.Build(build, [], null, (_, _) => "",

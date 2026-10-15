@@ -43,6 +43,9 @@ public unsafe class CharaStatusHooks : IFeature
     // WeaponUpgradeStatus results
     private const int NotOwnedStatus = 2;
     private const int TranscendenceStatus = 6;
+    private const int TranscendenceCompleteStatus = 7;
+
+    private const int MaxTranscendence = 7;
 
     private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private IHook<FillCharacterStatus>? _fillHook;
@@ -123,7 +126,10 @@ public unsafe class CharaStatusHooks : IFeature
         byte* weapon = _remoteWeapon;
         if (weapon == null || weaponKey != *(uint*)(weapon + WeaponKey))
             return _statusHook!.OriginalFunction(manager, weaponKey);
-        return *(int*)(weapon + Transcendence) > 0 ? TranscendenceStatus : NotOwnedStatus;
+        int transcendence = *(int*)(weapon + Transcendence);
+        if (transcendence >= MaxTranscendence)
+            return TranscendenceCompleteStatus;
+        return transcendence > 0 ? TranscendenceStatus : NotOwnedStatus;
     }
 
     private void RaiseCharacterShown(CharaInfo info, nint chara)

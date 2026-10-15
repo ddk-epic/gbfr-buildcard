@@ -68,8 +68,8 @@ weapon's inventory id is not 0. The gauge follows the weapon's upgrade status fr
 
 Another player's weapon has inventory id 0. While the game fills another player's character on the card,
 `CharaStatusHooks` sets the id to `0xFFFFFFFF`, which no inventory weapon has, and sets it back to 0 after. During
-that fill it hooks `WeaponUpgradeStatus` for that weapon's key, returning 6 when its transcendence level is above 0 and 2
-otherwise.
+that fill it hooks `WeaponUpgradeStatus` for that weapon's key, returning 7 when its transcendence level is 7 or above, 6
+when it is above 0 and 2 otherwise.
 
 ## Runtime data
 

@@ -31,6 +31,11 @@ the status panel. They are the stock page's objects, moved and restyled by `tool
 The portrait, badges, name band and status panel are filled by `FillCharacterStatus` itself, through the `CharaInfo`
 component's references in the prefab file.
 
+### Player name
+
+`loc_name02`, the platform icon and player name `ControllerStatus` shows for another player's character, sits under
+`bc_player_name`, an inactive holder, so it is never drawn.
+
 ### Portrait placement
 
 `loc_chr` is turned 180° so `bc_portrait_mask` lies with its opaque side at the card's left edge. Its child

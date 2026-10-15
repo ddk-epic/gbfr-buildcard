@@ -186,10 +186,17 @@ def badges(base, status_top):
     move(name, card(COLUMN_X, 0)[0], name_centre)
 
 
+def hide_player_name(base):
+    player_name = base.child("loc_name02")
+    holder = base.add(rect("bc_player_name", active=False), base.children.index(player_name))
+    holder.add(player_name)
+
+
 def apply(ctx):
     base = ctx.prefab("status01").at("root/loc_base01")
     status = base.child("loc_status02").child("loc_chr_status01")
     bottom, texts = masteries_block(status, status.find("loc_crt/crt_text01"))
     status_top = status_block(status, bottom)
     badges(base, status_top)
+    hide_player_name(base)
     ctx.export("Status.MasteryTexts", texts)

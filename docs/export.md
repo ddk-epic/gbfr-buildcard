@@ -11,7 +11,7 @@ D3D11 calls in `Interop/D3D11/`.
 |---|---|
 | File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB, or `.jpg` with the config option `CardFormat` set to `Jpeg`. See [Formats](#formats). `<name>` is the name of the card shown at the press, as `CharaStatusHooks` read it from the `CharaInfo`'s first `Names` text, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>` and the extension. |
 | Metadata | `BuildCard` (`CardFile.JsonKeyword`), a 0 byte and the JSON, in a PNG's `tEXt` chunk after the header or a JPEG's COM segment after the JFIF header: the shown card's `BuildCard` ([runtime](runtime.md#card-model)) as JSON, its non-ASCII characters escaped as `\uXXXX`. Absent when no card was shown. |
-| Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the saved notice. |
+| Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the info notices. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
 | Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `NoticeTiming.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
 | Log | See [Log](#log). |
@@ -122,7 +122,7 @@ the buffers when the window's size changed. Before it runs, the hook raises `Pre
 render thread, which drives `RenderThread` ([runtime](runtime.md#render-thread)). Overlays that hook DXGI's `Present`,
 such as Steam's, draw after the read, so the card holds none of them.
 
-On a press, `ExportController` hides the overlays, the page button prompts and the saved notice (`IOverlay`), and posts
+On a press, `ExportController` hides the overlays, the page button prompts and the info notices (`IOverlay`), and posts
 a `CaptureRequest` for the card's rect at 2880x1440 to `UiFrameCapture`. `UiFrameCapture` counts the presents from the
 request:
 
@@ -259,9 +259,9 @@ info it puts the previous value back.
 
 Each controller's object (`+0x10`) is the shown info: `ShowInfo` activates it and sets `+0x1A8`; when the info has
 finished, the controller clears `+0x1A8` and deactivates the object. On a Save Card press, `NoticeTiming` deactivates the
-object of each controller that showed the notice within 5000 ms and still has `+0x1A8` set, and of each controller that
-shows the notice during the capture. After the capture it activates the objects again whose `+0x1A8` is still set. A
-destroyed controller is forgotten ([ui](ui.md#controller-lifetimes)).
+object of each controller that has shown an info and still has `+0x1A8` set, and of each controller that shows an info
+during the capture. This covers any info, such as another player's lobby notices. After the capture it activates the
+objects again whose `+0x1A8` is still set. A destroyed controller is forgotten ([ui](ui.md#controller-lifetimes)).
 
 A shown notice never blocks Save Card, by design: a press while it shows starts the next capture at once, the capture
 hides it, and the controllers queue the next notice behind it.

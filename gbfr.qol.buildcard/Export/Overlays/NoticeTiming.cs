@@ -12,7 +12,7 @@ using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
 namespace gbfr.qol.buildcard.Export.Overlays;
 
-// Shortens the saved notice and hides it while the card is captured.
+// Shortens the saved notice and hides every shown info while the card is captured.
 public unsafe class NoticeTiming : IOverlay, IFeature
 {
     private const int InfoKind = 2;
@@ -23,17 +23,14 @@ public unsafe class NoticeTiming : IOverlay, IFeature
     // milliseconds
     private const long ShowTimeout = 5000;
 
-    // milliseconds
-    private const long HideWindow = 5000;
-
     private readonly IReloadedHooks _hooks;
     private readonly GameApi _api;
     private readonly ControllerLifetimes _lifetimes;
     private readonly UiTree _tree;
     private readonly Notice _notice;
     private readonly Dictionary<UiComponent, float> _shortened = [];
-    private readonly Dictionary<UiComponent, long> _noticeShownAt = [];
-    private readonly List<UiComponent> _hidden = [];
+    private readonly HashSet<UiComponent> _controllers = [];
+    private readonly HashSet<UiComponent> _hidden = [];
     private bool _hiding;
 
     private delegate nint ShowInfoFn(nint controller, int* info);
@@ -87,14 +84,8 @@ public unsafe class NoticeTiming : IOverlay, IFeature
             _hidden.Clear();
             return;
         }
-        long now = Environment.TickCount64;
-        foreach ((var controller, long shownAt) in _noticeShownAt.ToList())
-        {
-            if (now - shownAt < HideWindow)
-                Hide(controller);
-            else
-                _noticeShownAt.Remove(controller);
-        }
+        foreach (var controller in _controllers)
+            Hide(controller);
     }
 
     private void Hide(UiComponent controller)
@@ -108,7 +99,7 @@ public unsafe class NoticeTiming : IOverlay, IFeature
     private void OnDestroyed(UiComponent controller)
     {
         _shortened.Remove(controller);
-        _noticeShownAt.Remove(controller);
+        _controllers.Remove(controller);
         _hidden.Remove(controller);
     }
 
@@ -119,17 +110,16 @@ public unsafe class NoticeTiming : IOverlay, IFeature
         ref var data = ref Data(controller);
         if (_shortened.Remove(controller, out float duration))
             data.Duration = duration;
-        _noticeShownAt.Remove(controller);
+        _controllers.Add(controller);
         bool notice = info[0] == InfoKind && info[1] == Notice.PhotoSaved && _notice.PushedAt != 0
             && Environment.TickCount64 - _notice.PushedAt < ShowTimeout;
         if (notice)
         {
             _shortened[controller] = data.Duration;
             data.Duration = NoticeDuration / 1000f;
-            _noticeShownAt[controller] = Environment.TickCount64;
         }
         nint result = hook.OriginalFunction(address, info);
-        if (notice && _hiding)
+        if (_hiding)
             Hide(controller);
         return result;
     }

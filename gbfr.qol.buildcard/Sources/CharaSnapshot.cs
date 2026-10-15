@@ -10,6 +10,9 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
     // from the CharaInfo's Names text
     public string CharaName { get; init; } = "";
 
+    // another player's character
+    public bool Remote { get; init; }
+
     private const byte EffectOffFlag = 0x20;
     public const int OverMasteryLines = 4;
     public const int SummonCount = 4;
@@ -45,7 +48,7 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
             summons[i] = chara.Summons[i].SummonId is var id and not 0 ? id : null;
 
         return new CharaSnapshot(chara.CharaKey, chara.WeaponKey, chara.SkinKey, (chara.WeaponFlags & EffectOffFlag) != 0,
-            entries.ToArray(), overMastery, summons);
+            entries.ToArray(), overMastery, summons) { Remote = chara.Origin is 4 or 5 };
     }
 
     [StructLayout(LayoutKind.Explicit)]
@@ -58,6 +61,7 @@ public sealed record CharaSnapshot(uint CharaKey, uint WeaponKey, uint SkinKey, 
         [FieldOffset(0x58B8)] public OverMasteryArray OverMastery;
         [FieldOffset(0x5DD8)] public SummonArray Summons;
         [FieldOffset(0x5EA8)] public uint CharaKey;
+        [FieldOffset(0x5EAC)] public byte Origin;  // 0 or 1 local, 4 or 5 another player's
     }
 
     // masteries [limit_bonus key, taken bit per LimitBonusParamIndex], then the master trait cells

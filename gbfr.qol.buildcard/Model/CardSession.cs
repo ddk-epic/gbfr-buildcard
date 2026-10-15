@@ -33,7 +33,8 @@ public class CardSession
     public void OnCharacterShown(CharaInfo charaInfo, CharaSnapshot build)
     {
         Current = BuildCardAssembler.Build(build, _traitTables.ReadCells(build.CharaKey),
-            _masteryReader.ReadPercents(build.CharaKey), _table.Find, _overMasteryParams.Find, _table.Language);
+            build.Remote ? null : _masteryReader.ReadPercents(build.CharaKey), _table.Find, _overMasteryParams.Find,
+            _table.Language);
         Dispatch.Raise(_logger, nameof(Shown), Shown, charaInfo, Current);
     }
 }

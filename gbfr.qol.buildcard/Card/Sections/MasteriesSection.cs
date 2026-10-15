@@ -11,6 +11,7 @@ public class MasteriesSection : ICardSection
 {
     private const uint MasteriesLabelHash = 0xB090BB12;  // TXT_PAU_TTL_LB
     private const uint CollectionLabelHash = 0x8278DE48;  // TXT_PAU_TREE_TAB_WEAPON
+    private const uint HyphenHash = 0x1B37394A;  // TXT_PAU_HYPHEN_SMALL
 
     private readonly TextService _text;
     private readonly TextTable _table;
@@ -24,10 +25,22 @@ public class MasteriesSection : ICardSection
     public void Write(IReadOnlyDictionary<int, UiObject> objects, BuildCard card)
     {
         var masteries = card.Masteries;
-        SetText(objects[CardLayout.Status.MasteryTexts[0]], MasteriesLabelHash, masteries?.Offense, masteries?.Defense);
-        SetText(objects[CardLayout.Status.MasteryTexts[1]], CollectionLabelHash, masteries?.Collection, masteries?.Transcendence);
+        SetText(objects[CardLayout.Status.MasteryTexts[0]], MasteriesLabelHash, card.Remote, masteries?.Offense,
+            masteries?.Defense);
+        SetText(objects[CardLayout.Status.MasteryTexts[1]], CollectionLabelHash, card.Remote, masteries?.Collection,
+            masteries?.Transcendence);
     }
 
-    private void SetText(UiObject obj, uint labelId, int? first, int? second) =>
-        _text.Set(obj, first == null ? "" : $"{_table.Find(labelId)} {first}% / {second}%");
+    // hyphens for another player's character
+    private void SetText(UiObject obj, uint labelId, bool remote, int? first, int? second)
+    {
+        string label = _table.Find(labelId);
+        if (remote)
+        {
+            string hyphen = _table.Find(HyphenHash);
+            _text.Set(obj, $"{label} {hyphen} / {hyphen}");
+        }
+        else
+            _text.Set(obj, first == null ? "" : $"{label} {first}% / {second}%");
+    }
 }

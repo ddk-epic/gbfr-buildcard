@@ -8,6 +8,9 @@ public sealed record BuildCard(uint CharaKey, WeaponPart Weapon, TraitBoard Trai
 {
     public string CharaName { get; init; } = "";
 
+    // another player's character
+    public bool Remote { get; init; }
+
     // the language of the card's texts
     public string Language { get; init; } = "";
 }

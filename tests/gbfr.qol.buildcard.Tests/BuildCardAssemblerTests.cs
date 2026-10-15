@@ -129,6 +129,15 @@ public class BuildCardAssemblerTests
 
         Assert.Equal("グラン", card.CharaName);
         Assert.Equal("Jpn", card.Language);
+        Assert.False(card.Remote);
+    }
+
+    [Fact]
+    public void KeepsTheRemoteFlag()
+    {
+        var build = new CharaSnapshot(1, 2, 3, false, [], new OverMasteryLine?[4], new uint?[4]) { Remote = true };
+
+        Assert.True(BuildCardAssembler.Build(build, [], null, (_, _) => "", _ => null, "Eng").Remote);
     }
 
     [Fact]

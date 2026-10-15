@@ -15,12 +15,15 @@ The labels are the Masteries screen's texts in the loaded language: `TXT_PAU_TTL
 title, and `TXT_PAU_TREE_TAB_WEAPON` (`0x8278DE48`), its Collection tab. Each number is the percentage the Masteries screen shows for that category. Offense and defense run from 0 to 150%:
 the base nodes fill 0–100% and the extension nodes 100–150%. Both texts are empty when the percentages are unavailable.
 
+For another player's character, each number is `TXT_PAU_HYPHEN_SMALL` (`0x1B37394A`, "-") without the percent sign:
+`MasteryPercent` reads only the local save, and the character's data holds no percentages or collection.
+
 `CardLayout.Status.MasteryTexts` holds the two texts' Ids.
 
 ## Implementation
 
 1. `MasteryReader.ReadPercents` calls `MasteryPercent` with the mastery manager for each of the four categories and the
-   character key.
+   character key. `CardSession` skips it for another player's character (`CharaSnapshot.Remote`).
 2. `BuildCardAssembler` keeps the four percentages.
 3. `MasteriesSection` looks up each label with `TextTable` (`TextLookup`), puts it before its two numbers and sets the texts with
    `TextComponentSetText`.

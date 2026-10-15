@@ -19,7 +19,7 @@ public static class BuildCardAssembler
             percents == null ? null : new MasteryPercents(percents[MasteryReader.Offense], percents[MasteryReader.Defense],
                 percents[MasteryReader.Collection], percents[MasteryReader.Transcendence]),
             build.OverMastery.Select(line => BuildOverMastery(line, findParam)).ToArray(),
-            build.Summons) { CharaName = build.CharaName, Language = language };
+            build.Summons) { CharaName = build.CharaName, Remote = build.Remote, Language = language };
 
     // null for an empty line or one without a param
     private static OverMasteryRow? BuildOverMastery(OverMasteryLine? line, Func<uint, OverMasteryParam?> findParam) =>

@@ -59,6 +59,9 @@ public static unsafe class PeImage
         return true;
     }
 
+    public static nint CallTarget(nint address) =>
+        address == 0 || *(byte*)address != 0xE8 ? 0 : address + 5 + *(int*)(address + 1);
+
     // Returns the .data global read by the mov reg, [rip + disp32] at load whose opcode bytes are mov, or null.
     public static nint* RipGlobal(byte* load, ReadOnlySpan<byte> mov)
     {

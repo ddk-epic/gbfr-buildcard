@@ -29,7 +29,7 @@ left out does nothing; the others still start.
 
 | Feature | Requires | Depends on |
 |---|---|---|
-| `ControllerLifetimes` | Nothing; `ControllerStatus function 7`, `ControllerStatusBg function 7` and `ControllerInformationToast function 7` when found |  |
+| `ControllerLifetimes` | Nothing; `Controller destructor` when found |  |
 | `UiTree` | `SetObjectActive` |  |
 | `TextTable` | `TextComponentSetText`, `TextLookup`; `SetOverMasteryLine` when found, for the loaded language |  |
 | `TextService` | `TextComponentSetText`, `Text vtable`; the wrapping functions when found |  |
@@ -41,12 +41,12 @@ left out does nothing; the others still start.
 | `WeaponArt` | `EnableSkinView function 9`, `LoadWeaponParty function 4`, `LoadWeaponParty function 5` |  |
 | `OverMasterySection` | `SetOverMasteryLine`, `LimitBonusInfo vtable` |  |
 | `SummonsSection` | `SetSummonInfo`, `SummonInfo vtable` |  |
-| `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8`, `ControllerStatusBg function 7` | `ControllerLifetimes` |
+| `StatusBackground` | `ControllerStatusBg vtable`, `ControllerStatusBg function 8`, `Controller destructor` | `ControllerLifetimes` |
 | `Input` | `UpdateShortcutInput`, `StatusL3Action` |  |
 | `SaveCardFooter` | `SetCharacterDetailsFooter` |  |
-| `StatusGuide` | `ControllerStatusGuide function 21`, `ControllerStatusBg function 7` | `ControllerLifetimes` |
+| `StatusGuide` | `ControllerStatusGuide function 21`, `Controller destructor` | `ControllerLifetimes` |
 | `Notice` | `PushInfo` |  |
-| `NoticeTiming` | Nothing; each controller's `ShowInfo` (function 35) and destructor (function 7) when found | `ControllerLifetimes` |
+| `NoticeTiming` | Nothing; each controller's `ShowInfo` (function 35) when found and `Controller destructor` is hooked | `ControllerLifetimes` |
 | `CardView` | Nothing | `UiTree` |
 | `SwapChainHooks` | `SwapChainImpl function 0` |  |
 | `ExportController` | Nothing | `Input`, `MenuState`, `SwapChainHooks` |
@@ -72,7 +72,7 @@ way.
 | `Filled` | `CharaStatusHooks`, after `CharacterShown`, also when the fill throws | game |
 | `Shown` | `CardSession`, after it assembles the card | game |
 | `Changed` | `MenuState`, after the menu's state changes | game |
-| `Destroyed` | `ControllerLifetimes`, before a controller's destructor runs | game |
+| `Destroyed` | `ControllerLifetimes`, before `Controller`'s destructor runs for a controller | game |
 | `ShortcutUpdated` | `Input`, at each `UpdateShortcutInput` | game |
 | `Tick` | `GameThread`, once per presented frame; `ExportController` handles it once started | game |
 | `Presenting` | `SwapChainHooks` and then `RenderThread`, before each present | render |
@@ -120,7 +120,7 @@ dotnet test tests/gbfr.qol.buildcard.Tests
 `CardView` writes a shown card to `status01`. At the first fill of a `status01` instance it walks the tree once and
 finds its objects by Id; when their hash differs from `CardLayout.Status01.PrefabHash` it writes nothing to that
 instance ([prefab build](assets/build.md#build)). It keeps the objects until `ControllerLifetimes` raises `Destroyed` for the
-instance's `ControllerStatus`; without that destructor hooked it walks the tree at every fill. For each card it runs
+instance's `ControllerStatus`; without `Controller`'s destructor hooked it walks the tree at every fill. For each card it runs
 every section's two phases.
 
 1. Write: each section writes its objects from the card.

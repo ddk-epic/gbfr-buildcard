@@ -38,7 +38,7 @@ public class StatusGuide : IOverlay, IFeature
         lifetimes.Destroyed += OnDestroyed;
     }
 
-    public Capability[] Requires => [_api.ControllerStatusGuideSetUpPageArrows, _api.ControllerStatusBgDestroy];
+    public Capability[] Requires => [_api.ControllerStatusGuideSetUpPageArrows, _api.ControllerDestroy];
 
     public IFeature[] DependsOn => [_lifetimes];
 

@@ -104,16 +104,23 @@ on the game thread after each change. `IsOpen` is true from Opening to Closing.
 reading `MenuState` at each `Changed` and when `chr_status_bg01` is set up; while the menu opens, closes or
 is closed it keeps the variant shown ([prefab build](assets/build.md#background-variants)). It finds `chr_status_bg01` through its `ControllerStatusBg`: the vtable's
 entry 8 is a setup every controller shares, run once the prefab is built. `StatusBackground` hooks it and keeps the
-controller whose vtable is `ControllerStatusBg`'s until `ControllerLifetimes` raises `Destroyed` for it.
+controller whose vtable is `ControllerStatusBg`'s until `ControllerLifetimes` raises `Destroyed` for it or its vtable
+is no longer `ControllerStatusBg`'s. It finds the variants' objects again when the controller's object changes.
 
 ## Controller lifetimes
 
-`ControllerLifetimes` hooks the scalar deleting destructor, vtable entry 7, of `ControllerStatusBg`, which
-`ControllerStatusGuide` and `ControllerInformationSystem` share, and of `ControllerInformationToast`. It raises
-`Destroyed` with the controller on the game thread before each runs. It also hooks `ControllerStatus`'s, which
-`CardView` needs to keep `status01`'s objects. It hooks each destructor that was found, and each consumer needs only
-its own controller's: `StatusBackground` and `StatusGuide` need `ControllerStatusBg`'s, and `NoticeTiming` hooks each
-controller's `ShowInfo` only when that controller's destructor is hooked.
+`ControllerLifetimes` hooks `Controller`'s destructor and raises `Destroyed` with the controller on the game thread
+before it runs. It finds the destructor as the call at `+0x0B` of `Controller`'s scalar deleting destructor, vtable
+entry 7.
+
+Every controller's destruction ends in `Controller`'s destructor. A controller is a `Controller` with secondary bases
+at `+0x18`, `+0x40`, `+0x88` and `+0x130`; each secondary vtable's entry 0 is a scalar deleting destructor that
+adjusts the pointer and calls the class's destructor without going through entry 7. `ControllerStatusBg`,
+`ControllerStatusGuide` and `ControllerInformationSystem` have no destructor of their own and use `Controller`'s;
+`ControllerStatus` and `ControllerInformationToast` have their own, which end by jumping to `Controller`'s.
+
+`StatusBackground` and `StatusGuide` need the hook. `CardView` keeps `status01`'s objects and `NoticeTiming` hooks
+each controller's `ShowInfo` only when it is hooked.
 
 ## `Text` component
 
@@ -205,7 +212,7 @@ disabled ([features](runtime.md#features)).
 | Class | Index | Function | Doc |
 |---|---|---|---|
 | `ControllerStatusBg` | 8 | The setup every controller shares. | [status background](#status-background) |
-| `ControllerStatusBg`, `ControllerInformationToast` | 7 | The scalar deleting destructor. | [controller lifetimes](#controller-lifetimes) |
+| `Controller` | 7 | The scalar deleting destructor, whose call at `+0x0B` is `Controller`'s destructor. | [controller lifetimes](#controller-lifetimes) |
 | `ControllerStatusGuide` | 21 | `SetUpPageArrows` | [export](export.md#page-button-prompts) |
 | `ControllerInformationSystem`, `ControllerInformationToast` | 35 | `ShowInfo` | [export](export.md#saved-notice) |
 | `LoadWeaponParty` | 4, 5 | Whether the loader is open; collecting its list, not checked. | [weapon](sections/weapon.md) |

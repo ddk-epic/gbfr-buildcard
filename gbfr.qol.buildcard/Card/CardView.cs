@@ -15,20 +15,18 @@ public class CardView : IFeature
     private readonly UiTree _tree;
     private readonly CardSession _session;
     private readonly ControllerLifetimes _lifetimes;
-    private readonly GameApi _api;
     private readonly ICardSection[] _sections;
     private readonly ILogger _logger;
     private UiObject? _root;
     private Dictionary<int, UiObject>? _objects;  // null when the prefab hash differs
     private bool _loggedHash;
 
-    public CardView(UiTree tree, CardSession session, ControllerLifetimes lifetimes, GameApi api, ILogger logger,
+    public CardView(UiTree tree, CardSession session, ControllerLifetimes lifetimes, ILogger logger,
         params ICardSection[] sections)
     {
         _tree = tree;
         _session = session;
         _lifetimes = lifetimes;
-        _api = api;
         _logger = logger;
         _sections = sections;
         lifetimes.Destroyed += OnDestroyed;
@@ -68,7 +66,7 @@ public class CardView : IFeature
             _loggedHash = true;
             objects = null;
         }
-        if (_lifetimes.Hooks(_api.ControllerStatusDestroy))
+        if (_lifetimes.IsHooked)
             (_root, _objects) = (root, objects);
         return objects;
     }

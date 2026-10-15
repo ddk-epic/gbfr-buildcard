@@ -15,9 +15,10 @@ public sealed class GameApi
     // scalar deleting destructor
     private const int DestroyIndex = 7;
     private const string DestroyStart = "56 57 48 83 EC 28 ?? ?? ?? ?? ?? E8";
+    private const int DestroyCall = 11;
     private const int ShowInfoIndex = 35;
 
-    private const string ControllerStatusType = ".?AVControllerStatus@component@ui@@";
+    private const string ControllerType = ".?AVController@component@ui@@";
     private const string ControllerStatusBgType = ".?AVControllerStatusBg@component@ui@@";
     private const string ControllerStatusGuideType = ".?AVControllerStatusGuide@component@ui@@";
     private const string ControllerInformationSystemType = ".?AVControllerInformationSystem@component@ui@@";
@@ -62,10 +63,10 @@ public sealed class GameApi
     public readonly Capability LimitBonusInfoVtable;
     public readonly Capability ControllerStatusBgVtable;
 
+    // destructor
+    public readonly Capability ControllerDestroy;
+
     // virtual functions
-    public readonly Capability ControllerStatusDestroy;
-    public readonly Capability ControllerStatusBgDestroy;
-    public readonly Capability ControllerInformationToastDestroy;
     public readonly Capability ControllerStatusBgSetUp;
     public readonly Capability ControllerStatusGuideSetUpPageArrows;
     public readonly Capability ControllerInformationSystemShowInfo;
@@ -115,9 +116,11 @@ public sealed class GameApi
         LimitBonusInfoVtable = Vtable(".?AVLimitBonusInfo@component@ui@@");
         ControllerStatusBgVtable = Vtable(ControllerStatusBgType);
 
-        ControllerStatusDestroy = Function(ControllerStatusType, DestroyIndex, DestroyStart);
-        ControllerStatusBgDestroy = Function(ControllerStatusBgType, DestroyIndex, DestroyStart);
-        ControllerInformationToastDestroy = Function(ControllerInformationToastType, DestroyIndex, DestroyStart);
+        nint deletingDestroy = _vtables.Function(ControllerType, DestroyIndex, DestroyStart);
+        ControllerDestroy = new($"{Vtables.ClassName(ControllerType)} destructor")
+        {
+            Address = deletingDestroy == 0 ? 0 : PeImage.CallTarget(deletingDestroy + DestroyCall)
+        };
         // the controllers' shared setup
         ControllerStatusBgSetUp = Function(ControllerStatusBgType, 8, "41 57 41 56 56 57 53 48 83 EC 30");
         ControllerStatusGuideSetUpPageArrows = Function(ControllerStatusGuideType, 21,

@@ -50,19 +50,17 @@ public unsafe class NoticeTiming : IOverlay, IFeature
 
     public IFeature[] DependsOn => [_lifetimes];
 
-    public Capability[] Optional => [.. ShowInfos.SelectMany(pair => (Capability[])[pair.ShowInfo, pair.Destructor])];
+    public Capability[] Optional => [.. ShowInfos, _api.ControllerDestroy];
 
-    private (Capability ShowInfo, Capability Destructor)[] ShowInfos =>
-    [
-        (_api.ControllerInformationSystemShowInfo, _api.ControllerStatusBgDestroy),
-        (_api.ControllerInformationToastShowInfo, _api.ControllerInformationToastDestroy),
-    ];
+    private Capability[] ShowInfos => [_api.ControllerInformationSystemShowInfo, _api.ControllerInformationToastShowInfo];
 
     public void Start()
     {
-        foreach ((var showInfo, var destructor) in ShowInfos)
+        if (!_lifetimes.IsHooked)
+            return;
+        foreach (var showInfo in ShowInfos)
         {
-            if (!showInfo.Found || !_lifetimes.Hooks(destructor))
+            if (!showInfo.Found)
                 continue;
             IHook<ShowInfoFn>? hook = null;
             hook = _hooks.CreateHook<ShowInfoFn>((c, info) => ShowInfoImpl(hook!, c, info), showInfo.Address).Activate();

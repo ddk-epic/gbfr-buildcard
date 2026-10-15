@@ -130,7 +130,7 @@ public class Mod : ModBase
 
         var overMasterySection = new OverMasterySection(_textService, _textTable, _uiTree, _api);
         var summonsSection = new SummonsSection(_uiTree, _api);
-        _cardView = new CardView(_uiTree, _cardSession, _lifetimes, _api, _logger,
+        _cardView = new CardView(_uiTree, _cardSession, _lifetimes, _logger,
             new GearSection(_textService, _textTable),
             new MasterTraitsSection(_textService, _traitTables, _uiTree, () => _configuration.MasterTraitsPalette),
             new MasteriesSection(_textService, _textTable),

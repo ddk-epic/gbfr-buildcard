@@ -14,13 +14,12 @@ public class ControllerLifetimes : IFeature
     private readonly IReloadedHooks _hooks;
     private readonly GameApi _api;
     private readonly ILogger _logger;
-    private readonly List<IHook<DestroyFn>> _destroyHooks = [];
-    private readonly List<Capability> _hooked = [];
+    private IHook<DestroyFn>? _destroyHook;
 
     // Raised on the game thread.
     public event Action<UiComponent>? Destroyed;
 
-    private delegate nint DestroyFn(nint controller, int flags);
+    private delegate void DestroyFn(nint controller);
 
     public ControllerLifetimes(IReloadedHooks hooks, GameApi api, ILogger logger)
     {
@@ -31,30 +30,20 @@ public class ControllerLifetimes : IFeature
 
     public Capability[] Requires => [];
 
-    // ControllerStatusBg's destructor is also ControllerStatusGuide's and ControllerInformationSystem's
-    public Capability[] Optional =>
-        [_api.ControllerStatusDestroy, _api.ControllerStatusBgDestroy, _api.ControllerInformationToastDestroy];
+    public Capability[] Optional => [_api.ControllerDestroy];
 
-    // Whether the destructor's controllers raise Destroyed
-    public bool Hooks(Capability destructor) => _hooked.Contains(destructor);
+    // Whether controllers raise Destroyed
+    public bool IsHooked => _destroyHook != null;
 
     public void Start()
     {
-        foreach (var destructor in Optional)
-        {
-            if (!destructor.Found)
-                continue;
-            IHook<DestroyFn>? hook = null;
-            hook = _hooks.CreateHook<DestroyFn>((controller, flags) => DestroyImpl(hook!, controller, flags),
-                destructor.Address).Activate();
-            _destroyHooks.Add(hook);
-            _hooked.Add(destructor);
-        }
+        if (_api.ControllerDestroy.Found)
+            _destroyHook = _hooks.CreateHook<DestroyFn>(DestroyImpl, _api.ControllerDestroy.Address).Activate();
     }
 
-    private nint DestroyImpl(IHook<DestroyFn> hook, nint controller, int flags)
+    private void DestroyImpl(nint controller)
     {
         Dispatch.Raise(_logger, nameof(Destroyed), Destroyed, new UiComponent(controller));
-        return hook.OriginalFunction(controller, flags);
+        _destroyHook!.OriginalFunction(controller);
     }
 }

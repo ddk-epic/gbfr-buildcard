@@ -21,6 +21,7 @@ public unsafe class StatusBackground : IFeature
     private readonly UiTree _tree;
     private readonly MenuState _menu;
     private UiComponent? _controller;
+    private UiObject? _background;
     private UiObject[] _stock = [];
     private UiObject[] _card = [];
     private bool _cardShown;
@@ -42,7 +43,7 @@ public unsafe class StatusBackground : IFeature
     }
 
     public Capability[] Requires =>
-        [_api.ControllerStatusBgVtable, _api.ControllerStatusBgSetUp, _api.ControllerStatusBgDestroy];
+        [_api.ControllerStatusBgVtable, _api.ControllerStatusBgSetUp, _api.ControllerDestroy];
 
     public IFeature[] DependsOn => [_lifetimes];
 
@@ -95,13 +96,19 @@ public unsafe class StatusBackground : IFeature
             _tree.SetActive(obj, _cardShown);
     }
 
-    // Finds chr_status_bg01's stock and card objects once per controller
+    // Finds chr_status_bg01's stock and card objects once per controller and object
     private bool FindVariants()
     {
-        if (_card.Length != 0)
-            return true;
+        if (_controller is { } controller && controller.Vtable != _api.ControllerStatusBgVtable.Address)
+            _controller = null;
         if (_controller?.Object is not { } background)
+        {
+            _stock = _card = [];
             return false;
+        }
+        if (_card.Length != 0 && background == _background)
+            return true;
+        _background = background;
         _stock = [.. _tree.FindByName(background, CardLayout.Background.StockPanel, CardLayout.Background.StockBackdrop, CardLayout.Background.StockLines)];
         _card = [.. _tree.FindByName(background, CardLayout.Background.CardPanel, CardLayout.Background.CardLines)];
         if (_stock.Length == 3 && _card.Length == 2)

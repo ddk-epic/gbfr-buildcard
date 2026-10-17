@@ -71,6 +71,20 @@ Another player's weapon has inventory id 0. While the game fills another player'
 that fill it hooks `WeaponUpgradeStatus` for that weapon's key, returning 7 when its transcendence level is 7 or above, 6
 when it is above 0 and 2 otherwise.
 
+### Unbound Master
+
+The weapon trait Unbound Master (`0x79027FC8`), unlocked at transcendence level 7, takes the character's Master Lvl as
+its level. The game writes the Master Lvl into the level of the weapon's trait slot holding that key; another player's
+weapon holds 0 there. While the game fills another player's character on the card, `CharaStatusHooks` writes the
+character's Master Lvl into that slot and puts the previous level back after.
+
+### Empty trait slots
+
+The weapon panel shows a row for each trait slot whose key is not `0x887AE0B0`. An empty slot holds `0x887AE0B0`,
+except on another player's weapon, where it can hold 0; a slot with key 0 shows as a row with an icon, no name and level 0. While
+the game fills another player's character on the card, `CharaStatusHooks` sets `0x887AE0B0` in each slot with key 0
+and sets 0 back after.
+
 ## Runtime data
 
 ### Character
@@ -84,6 +98,8 @@ when it is above 0 and 2 otherwise.
 | `+0x064` | 4 | Limit break stars. |
 | `+0x06C` | 4 | Awakening level. |
 | `+0x090` | 4 | Transcendence level. |
+| `+0x0F4` | 5 × 8 | Weapon trait slots: trait key, then level; key `0x887AE0B0` when empty. |
+| `+0x5B60` | 4 | Master Lvl. |
 
 ### Weapon art
 

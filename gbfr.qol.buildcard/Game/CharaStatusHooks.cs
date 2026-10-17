@@ -47,6 +47,18 @@ public unsafe class CharaStatusHooks : IFeature
 
     private const int MaxTranscendence = 7;
 
+    // in the chara's weapon
+    private const int TraitSlots = 0xA4;
+    private const int TraitSlotCount = 5;
+    private const int TraitSlotSize = 8;
+
+    private const uint UnboundMasterKey = 0x79027FC8;
+
+    private const uint NoTraitKey = 0x887AE0B0;
+
+    // in the chara
+    private const int MasterLevel = 0x5B60;
+
     private delegate void FillCharacterStatus(nint charaInfo, nint chara, int index);
     private IHook<FillCharacterStatus>? _fillHook;
 
@@ -98,7 +110,7 @@ public unsafe class CharaStatusHooks : IFeature
         }
     }
 
-    // Fills with a placeholder id on another player's weapon
+    // Fills with another player's weapon prepared as a local one
     private void FillWithWeaponId(nint charaInfo, nint chara, int index)
     {
         uint* weaponId = (uint*)(chara + WeaponId);
@@ -107,6 +119,11 @@ public unsafe class CharaStatusHooks : IFeature
             _fillHook!.OriginalFunction(charaInfo, chara, index);
             return;
         }
+        int emptySlots = MarkEmptyTraitSlots((byte*)weaponId);
+        int* unboundMaster = UnboundMasterLevel((byte*)weaponId);
+        int previousLevel = unboundMaster == null ? 0 : *unboundMaster;
+        if (unboundMaster != null)
+            *unboundMaster = *(int*)(chara + MasterLevel);
         *weaponId = PlaceholderWeaponId;
         _remoteWeapon = (byte*)weaponId;
         try
@@ -117,7 +134,44 @@ public unsafe class CharaStatusHooks : IFeature
         {
             _remoteWeapon = null;
             *weaponId = 0;
+            if (unboundMaster != null)
+                *unboundMaster = previousLevel;
+            ClearEmptyTraitSlots((byte*)weaponId, emptySlots);
         }
+    }
+
+    // Sets no trait in slots with key 0, returning them as bits
+    private static int MarkEmptyTraitSlots(byte* weapon)
+    {
+        int slots = 0;
+        for (int i = 0; i < TraitSlotCount; i++)
+        {
+            uint* key = (uint*)(weapon + TraitSlots + i * TraitSlotSize);
+            if (*key != 0)
+                continue;
+            *key = NoTraitKey;
+            slots |= 1 << i;
+        }
+        return slots;
+    }
+
+    // Sets key 0 back in the given trait slots
+    private static void ClearEmptyTraitSlots(byte* weapon, int slots)
+    {
+        for (int i = 0; i < TraitSlotCount; i++)
+            if ((slots & 1 << i) != 0)
+                *(uint*)(weapon + TraitSlots + i * TraitSlotSize) = 0;
+    }
+
+    private static int* UnboundMasterLevel(byte* weapon)
+    {
+        for (int i = 0; i < TraitSlotCount; i++)
+        {
+            byte* slot = weapon + TraitSlots + i * TraitSlotSize;
+            if (*(uint*)slot == UnboundMasterKey)
+                return (int*)(slot + sizeof(uint));
+        }
+        return null;
     }
 
     // Gives another player's weapon an upgrade status from its own transcendence

@@ -3,16 +3,16 @@ from collections import namedtuple
 
 from model.components import image, rect
 from model.prefab import copy
-from steps.layout import OUTLINE, PAD, TITLE_BAR_H, TITLE_SCALE, card, move, sprite
+from steps.layout import OUTLINE, PAD, TITLE_BAR_H, TITLE_SCALE, card, move, set_scale, sprite
 
 ROUNDED = "layouts/pause/status/noatlastextures/bc_rounded"
 OUTLINE_TOP = "layouts/pause/status/noatlastextures/bc_outline_top"
 ROUNDED_TOP = "layouts/pause/status/noatlastextures/bc_rounded_top"
 FILL = (1, 1, 1), 0.9
 STROKE = (133 / 255, 163 / 255, 181 / 255), 223 / 255  # ps_cmn_base54's
-HEADING_H = 4 * TITLE_BAR_H * TITLE_SCALE  # card units, the bar centred in it
+HEADING_H = 4 * TITLE_BAR_H * TITLE_SCALE  # card pixels, the bar centred in it
 
-# left, top, right, bottom from the panel's centre, in card units
+# left, top, right, bottom from the panel's centre, in card pixels
 Box = namedtuple("Box", "left top right bottom")
 # the bar to copy, its TextID and the margin above it
 Heading = namedtuple("Heading", "source text_id margin_top", defaults=[0])
@@ -38,6 +38,7 @@ def content_box(w, h, heading=None, padding=PAD):
 def panel(node, area, corners="all", heading=None, padding=PAD):
     # places node over the area with all, the top or the bottom corners rounded, and returns its content box
     left, top, w, h = area
+    set_scale(node, 1)
     node.place(size=(w, h))
     move(node, *card(left + w / 2, top + h / 2))
     fill, stroke = (ROUNDED, OUTLINE) if corners == "all" else (ROUNDED_TOP, OUTLINE_TOP)

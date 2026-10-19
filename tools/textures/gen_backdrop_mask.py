@@ -2,7 +2,7 @@
 # Draws the parchment cut as the alpha of a mask over the white panel.
 import math, struct, sys, zlib
 
-CARD_W, CARD_H = 3528, 1764  # card units
+CARD_W, CARD_H = 3528, 1764  # canvas units
 
 W, H = int(sys.argv[1]), int(sys.argv[2])
 
@@ -15,7 +15,7 @@ ART_W, ART_H = 1392, 1813
 EDGE_TOP_X, EDGE_BOT_X = 1390, 622
 SPIKE_TOP_Y, SPIKE_APEX_OFF, SPIKE_INNER_OFF, SPIKE_OUTER_OFF = 453, 8, 26, 78
 ANGLE, PIVOT_Y = 14, 2900
-MASK_W = 1354  # the art's width, in card units
+MASK_W = 1354  # the art's width, in canvas units
 
 SUBROWS = 4
 
@@ -25,14 +25,14 @@ bot_x = top_x - tan * ART_H
 apex = (top_x + (bot_x - top_x) * SPIKE_TOP_Y / ART_H + SPIKE_APEX_OFF, SPIKE_TOP_Y)
 inner, outer = bot_x + SPIKE_INNER_OFF, bot_x + SPIKE_OUTER_OFF
 
-def card_units(x, y):
+def canvas_units(x, y):
     return x * MASK_W / ART_W, y * CARD_H / ART_H
 
-top_x, _ = card_units(top_x, 0)
-bot_x, _ = card_units(bot_x, 0)
-apex = card_units(*apex)
-inner, _ = card_units(inner, 0)
-outer, _ = card_units(outer, 0)
+top_x, _ = canvas_units(top_x, 0)
+bot_x, _ = canvas_units(bot_x, 0)
+apex = canvas_units(*apex)
+inner, _ = canvas_units(inner, 0)
+outer, _ = canvas_units(outer, 0)
 
 def lerp_x(x0, y0, x1, y1, y):
     return x0 + (x1 - x0) * (y - y0) / (y1 - y0)
@@ -47,7 +47,7 @@ def spans(y):
     return result
 
 def to_u(x):
-    # card units to texels
+    # canvas units to texels
     return (x + CARD_LEFT) * W / PANEL_W
 
 coverage = [[0.0] * W for _ in range(H)]

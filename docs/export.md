@@ -11,7 +11,7 @@ D3D11 calls in `Interop/D3D11/`.
 |---|---|
 | File | `Pictures/GBFR Character Build Cards/<name>_<yyyyMMdd_HHmmss>.png`, 2880x1440, 8-bit RGB, or `.jpg` with the config option `CardFormat` set to `Jpeg`. See [Formats](#formats). `<name>` is the name of the card shown at the press, as `CharaStatusHooks` read it from the `CharaInfo`'s first `Names` text, without the characters a file name can't have; without a name the file is `<yyyyMMdd_HHmmss>` and the extension. |
 | Metadata | `BuildCard` (`CardFile.JsonKeyword`), a 0 byte and the JSON, in a PNG's `tEXt` chunk after the header or a JPEG's COM segment after the JFIF header: the shown card's `BuildCard` ([runtime](runtime.md#card-model)) as JSON, its non-ASCII characters escaped as `\uXXXX`. Absent when no card was shown. |
-| Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the info notices. |
+| Content | The card's rect, `CardLayout.Card.Width` x `CardLayout.Card.Height` (3528x1764, `loc_buildcard`'s 2880x1440 at its scale 3528/2880) at `CardLayout.Card.Y` (74) above the centre of the 3840x2160 UI canvas (`CardLayout.Canvas`), without the page arrows' button prompts and the info notices. |
 | Steam | With the config option `SteamScreenshots` ("Add Cards to Steam Screenshots", off by default), the file is also added to the game's Steam screenshots. |
 | Notice | After the file is written, the photo mode's notice "A photo has been taken and saved." shows for `NoticeTiming.NoticeDuration` milliseconds. See [Saved notice](#saved-notice). |
 | Log | See [Log](#log). |

@@ -7,13 +7,13 @@ also copies each `.wtb` to the same path under `ui/fhd/`: the game reads the `fh
 | Texture | Drawn by | Size | Use |
 |---|---|---|---|
 | `bc_white` | `tools/textures/gen_white.py 8 <out.png>` | 8x8 | opaque white, the sprite of rectangular masks |
-| `bc_outline` | `tools/textures/gen_outline.py 20 2 8 <out.png>` | 20x20 | white outline 2 wide with corners of radius 8, sliced with border 8 |
+| `bc_outline` | `tools/textures/gen_outline.py 20 2 7 <out.png>` | 20x20 | white outline 2 wide with corners of radius 7, sliced with border 7 |
 | `bc_backdrop_mask` | `tools/textures/gen_backdrop_mask.py 2048 1024 <out.png>` | 2048x1024 | the parchment cut over `chr_status_bg01`'s white panel |
-| `bc_rounded` | `tools/textures/gen_outline.py 20 10 8 <out.png>` | 20x20 | opaque white square with corners of radius 8, sliced with border 8; the panels' fill under `bc_outline` |
-| `bc_outline_top` | `tools/textures/gen_outline.py 20 2 8 <out.png> top` | 20x20 | `bc_outline` with only the top corners rounded; turned 180° for the bottom ones |
-| `bc_rounded_top` | `tools/textures/gen_outline.py 20 10 8 <out.png> top` | 20x20 | `bc_rounded` with only the top corners rounded; turned 180° for the bottom ones |
-| `bc_mt_clip` | `tools/textures/gen_rounded.py 1024 1024 1800.94 1347.03 8 <out.png>` | 1024x1024 | opaque white over the master traits section's rect in card units, corners of radius 8; that section's mask |
-| `bc_portrait_mask` | `tools/textures/gen_portrait_mask.py <ps_cmn_mask_chara02.dds> 1000 680 740 820 0.7 0.2 -1 700 8000 <out.png>` | 640x640 | opaque on the right; over card units from that edge, an ease to 0.7 over 680-740, an S-curve to 0.2 over 740-820, then a tail to 0 at 1000, joined without kinks; measured out from the center of circles of radius 8000 through card point (680, 700), their axis turned -1°; without the radius argument the fade leans by the angle about the pivot row instead; its rows fade like `ps_cmn_mask_chara02`'s, its source decoded with `texconv -m 1 -f R8G8B8A8_UNORM -ft dds`. The portrait's mask, 1000 card units wide |
+| `bc_rounded` | `tools/textures/gen_outline.py 20 10 7 <out.png>` | 20x20 | opaque white square with corners of radius 7, sliced with border 7; the panels' fill under `bc_outline` |
+| `bc_outline_top` | `tools/textures/gen_outline.py 20 2 7 <out.png> top` | 20x20 | `bc_outline` with only the top corners rounded; turned 180° for the bottom ones |
+| `bc_rounded_top` | `tools/textures/gen_outline.py 20 10 7 <out.png> top` | 20x20 | `bc_rounded` with only the top corners rounded; turned 180° for the bottom ones |
+| `bc_mt_clip` | `tools/textures/gen_rounded.py 1024 1024 1470 1098 7 <out.png>` | 1024x1024 | opaque white over the master traits section's rect in card pixels, corners of radius 7; that section's mask |
+| `bc_portrait_mask` | `tools/textures/gen_portrait_mask.py <ps_cmn_mask_chara02.dds> 816 555 604 669 0.7 0.2 -1 571 6531 <out.png>` | 640x640 | opaque on the right; over card pixels from that edge, an ease to 0.7 over 555-604, an S-curve to 0.2 over 604-669, then a tail to 0 at 816, joined without kinks; measured out from the center of circles of radius 6531 through card point (555, 571), their axis turned -1°; without the radius argument the fade leans by the angle about the pivot row instead; its rows fade like `ps_cmn_mask_chara02`'s, its source decoded with `texconv -m 1 -f R8G8B8A8_UNORM -ft dds`. The portrait's mask, 816 card pixels wide |
 | `bc_smn_art_mask` | `tools/textures/gen_art_mask.py 512 512 378.67 308.34 110 110 33 33 <out.png>` | 512x512 | opaque, fading to 0 at each side with a smoothstep ramp over the left, right, top and bottom widths, in slot units of the summon art's 378.67 x 308.34 rect. The summon art's mask |
 
 ## Building a texture

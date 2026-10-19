@@ -41,7 +41,8 @@ Objects:
 ```
 
 - **Ids** are the object's index in the list and are in depth-first order: a parent comes before its children, and a subtree occupies a contiguous Id range. The build assigns them when it writes the prefab.
-- **Coordinates** are 4K (3840x2160), y up. The rect fields are redundant and must stay consistent:
+- **Coordinates** are 4K (3840x2160), y up. Under `loc_buildcard` they are card pixels, the saved card's: `loc_buildcard`
+  is 2880x1440 with `Scale` 3528/2880, 3528x1764 on the canvas. The rect fields are redundant and must stay consistent:
   - `AnchorMin`/`AnchorMax`: anchor rectangle as fractions of the parent's size (equal = a point).
   - `AnchorPoint`: the pivot's position relative to the anchor point.
   - `Position`: the pivot's position relative to the parent's centre.
@@ -219,7 +220,7 @@ Ids, names and components; `(inactive)` marks `Active: false` in the stock file.
       │                       ├─ 378 loc_base00 (inactive)   text 379
       │                       └─ 380 loc_base01              name 382, description 383,
       │                                                       update icons 384-400 (inactive)
-      └─ 434 loc_buildcard      added: the build card, 3528x1764
+      └─ 434 loc_buildcard      added: the build card, 2880x1440 at scale 3528/2880
          ├─ 435 bc_mtraits      master traits
          ├─ 2608 bc_om          Over Mastery
          ├─ 2741 bc_smn         summons

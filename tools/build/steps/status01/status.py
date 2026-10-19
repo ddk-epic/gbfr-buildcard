@@ -1,22 +1,22 @@
 # Lays out the status section: the stat rows in a 2x2 grid, the masteries panel under it, and the badges above it.
 from model.components import LEFT, rect
 from model.prefab import f
-from steps.layout import FRAME, GAP, INSET, PANEL_SCALE, SKILLS, STATUS, card, move
+from steps.layout import CARD_SCALE, FRAME, GAP, INSET, PANEL_SCALE, SKILLS, STATUS, card, move, set_scale
 from steps.panel import panel
 
-# the status panel, in card units
+# the status panel, in card pixels
 BORDER = 1
-PAD_X, PAD_Y = 24, 21
-COLUMN_GAP = 31
+PAD_X, PAD_Y = 20, 17
+COLUMN_GAP = 25
 LEFT_FR, RIGHT_FR = 9, 11  # the columns' shares
-RIGHT_PAD = 24  # the right column's right padding
-ICON_BOX = 43
-ROW_GAP = 28
-UNIT_SCALE, UNIT_GAP, UNIT_RAISE = 0.65, 3, 1  # the percent sign's
+RIGHT_PAD = 20  # the right column's right padding
+ICON_BOX = 35
+ROW_GAP = 23
+UNIT_SCALE, UNIT_GAP, UNIT_RAISE = 0.65, 2, 1  # the percent sign's
 
-# the masteries panel, in card units
-MASTERIES_PAD_TOP, MASTERIES_PAD_BOTTOM = 8, 9
-MASTERIES_PAD_LEFT, MASTERIES_PAD_RIGHT = 31, 24
+# the masteries panel, in card pixels
+MASTERIES_PAD_TOP, MASTERIES_PAD_BOTTOM = 7, 7
+MASTERIES_PAD_LEFT, MASTERIES_PAD_RIGHT = 25, 20
 STACK_GAP = GAP / 4  # between the status and masteries panels
 
 GAME_CAP = 0.85  # cap height per font size
@@ -35,14 +35,14 @@ CRT_ICON, CRT_NUM = 92, 34
 PERCENT_RECT = (29.38, 32)  # at font size 32
 PERCENT_CJK_SIZE, CJK_NUMBER_SIZE = 36, 56
 
-BADGE_SCALE = 0.7
+BADGE_SCALE = 0.7 / CARD_SCALE
 
-# card units
-MASTER_LEVEL_DX = 144  # loc_ml_level01's centre right of level01's
-MASTER_LEVEL_RAISE = 8  # loc_ml_level01's top above level01's
+# card pixels
+MASTER_LEVEL_DX = 118  # loc_ml_level01's centre right of level01's
+MASTER_LEVEL_RAISE = 7  # loc_ml_level01's top above level01's
 BADGE_INSET = (FRAME + INSET) / 2
-POWER_OVERHANG = 61  # power01's right edge past the column's
-COLUMN_X = 362
+POWER_OVERHANG = 50  # power01's right edge past the column's
+COLUMN_X = 296
 
 # badge rect units, from each badge's pivot
 LEVEL_R = 148  # ps_cmn_icon_base03's radius
@@ -110,7 +110,7 @@ def status_block(block, bottom):
     panel(parent.add(rect("bc_status"), parent.children.index(block)), (left, top, width, h * scale), corners="top")
     block.place(size=(W, h))
     move(block, *card(left + width / 2, top + h * scale / 2))
-    block.set("Scale", (scale, scale, 1))
+    set_scale(block, scale)
 
     chr_status = block.child("chr_status01")
     root = chr_status.child("root")
@@ -175,7 +175,7 @@ def badges(base, status_top):
     name_centre = status_top + gap + overhang + half_height(name)
 
     for node in (level, master_level, power, name):
-        node.set("Scale", (BADGE_SCALE, BADGE_SCALE, 1))
+        set_scale(node, BADGE_SCALE)
     left, top = card(BADGE_INSET, BADGE_INSET)
     right = card(STATUS[0] + STATUS[2] + POWER_OVERHANG, 0)[0]
     level_x = left + LEVEL_R * BADGE_SCALE

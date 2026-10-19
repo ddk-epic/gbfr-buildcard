@@ -10,18 +10,18 @@ COLUMNS = 2
 RANK_TEXT_IDS = [f"TXT_PAU_SKL_BD_ST_RANK_{n}" for n in range(1, 5)]
 INK = (0.19607843, 0.37254903, 0.4901961)
 
-# the board, in card units from the section's top-left corner
-HEADING_H = 61
+# the board, in card pixels from the section's top-left corner
+HEADING_H = 50
 COLUMN_GAP = 6
-BORDER = 5
-PAD_TOP, PAD_BOTTOM = 10, 22
-STYLE_HEADING_H = 98
-RANK_LABEL_H = 43
-LABEL_H = 34  # a rank label's text
-LABEL_W, COUNT_W = 367, 245  # a rank label's and its count's text
-STYLE_TITLE_H = 39
-CELL_H, CELL_GAP = 56, 5
-CELL_TEXT_LEFT, CELL_TEXT_RIGHT = 12, 2
+BORDER = 4
+PAD_TOP, PAD_BOTTOM = 8, 18
+STYLE_HEADING_H = 80
+RANK_LABEL_H = 35
+LABEL_H = 28  # a rank label's text
+LABEL_W, COUNT_W = 300, 200  # a rank label's and its count's text
+STYLE_TITLE_H = 32
+CELL_H, CELL_GAP = 46, 4
+CELL_TEXT_LEFT, CELL_TEXT_RIGHT = 10, 2
 CELL_LINE_SPACING, CELL_LINE_SPACING_JPN = 4, -30
 
 # skillboard_window01's Master Traits list
@@ -36,10 +36,10 @@ ON_COLOR = (0.98039216, 0.98039216, 0.9411765), 1  # text01
 OFF_COLOR = (0.6392157, 0.6784314, 0.6784314), 1  # text02
 CELL_MATERIAL, CELL_LANGUAGE = "fonts/fot_skipstd_b_sdf_ds01", "data/language/ld_skipstd_b_sdf_ds01"
 GAME_CELL_H, TITLE_H = 252, 74  # game units
-PANEL_X, PANEL_TOP, PANEL_BOTTOM = 4.5, 6, 7  # card units, the panel around the rank's title and cells
-CELLS_X = 8  # card units
-BAR_INSET, BAR_H = 4, 38  # card units, the title bar's inset in the panel and its height
-LABEL_LEFT, LABEL_RIGHT = 16, 12  # card units
+PANEL_X, PANEL_TOP, PANEL_BOTTOM = 4, 5, 6  # card pixels, the panel around the rank's title and cells
+CELLS_X = 7  # card pixels
+BAR_INSET, BAR_H = 3, 31  # card pixels, the title bar's inset in the panel and its height
+LABEL_LEFT, LABEL_RIGHT = 13, 10  # card pixels
 
 PALETTES = ["blue", "original"]
 
@@ -103,12 +103,12 @@ STAR_SIZE, STAR_PAGE_SCALE, PAGE_TITLE_SIZE = 144, 0.5, 56  # a star, loc_level0
 STYLE_TITLE_COLOR = "0.98039216, 0.98039216, 0.9411765, 1"  # info01_text01
 STYLE_TITLE_GRADIENT = [("ColorTL", STYLE_TITLE_COLOR), ("ColorTR", STYLE_TITLE_COLOR),
                         ("ColorBL", "0.8627451, 0.9607843, 1, 1"), ("ColorBR", "0.8627451, 0.9607843, 1, 1")]
-PERK_GAP, PERKS_GAP = 6, 24  # a name to its stars, a style's stars to the next name
+PERK_GAP, PERKS_GAP = 5, 20  # a name to its stars, a style's stars to the next name
 MIDDLE_LEFT, MIDDLE_RIGHT = 3, 5  # ChildAlignment
 
-LABEL_SIZE, COUNT_SIZE, CELL_SIZE, STYLE_TITLE_SIZE = 17, 19, 19, 26
+LABEL_SIZE, COUNT_SIZE, CELL_SIZE, STYLE_TITLE_SIZE = 14, 16, 15, 21
 BUDGET_SCALE = 0.8
-BUDGET_DROP = 1  # card units
+BUDGET_DROP = 1  # card pixels
 COUNT_LAYOUT = ["  - ComponentName: HorizontalLayoutGroup", "    Component:", "      Padding: 0, 0, 0, 0", "      Spacing: 0",
                 f"      ChildAlignment: {MIDDLE_RIGHT}", "      ChildControlWidth: false", "      ChildControlHeight: false",
                 "      ChildScaleWidth: false", "      ChildScaleHeight: false", "      ChildForceExpandWidth: false",
@@ -135,7 +135,7 @@ def column_x(s):
 
 
 def rank_tops():
-    # each rank's top, in card units, the ranks spread down the column
+    # each rank's top, in card pixels, the ranks spread down the column
     top = TOP_Y + HEADING_H + BORDER + PAD_TOP + STYLE_HEADING_H
     rows = [(n + 1) // COLUMNS for n in SLOTS]
     heights = [RANK_LABEL_H + r * CELL_H + (r - 1) * CELL_GAP for r in rows]
@@ -144,7 +144,7 @@ def rank_tops():
 
 
 def stock_ranks():
-    # per rank: panel top and bottom, label centre, and the rows' tops and bottoms, in card units
+    # per rank: panel top and bottom, label centre, and the rows' tops and bottoms, in card pixels
     ranks = []
     for r, rank_top in enumerate(rank_tops()):
         rows = []
@@ -429,7 +429,7 @@ def apply(ctx):
 
     # the "Master Traits" title
     heading = board.add(rect("bc_mt_heading", header_title.component_lines(), (0, 0.5)))
-    heading.component("Text").set("FontSize", f(TITLE_SIZE * SCALE))
+    heading.component("Text").set("FontSize", round(TITLE_SIZE * SCALE))
     heading.component("TextSetter").set("TextID", TITLE_TEXT_ID)
     heading.place(pos=(left + HEADER_PAD * SCALE, top - TITLE_Y * SCALE + dy), size=(WIDTH / 2, TITLE_SIZE * SCALE))
 

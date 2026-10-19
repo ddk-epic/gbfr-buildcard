@@ -3,6 +3,7 @@ from model.components import ref_field, single
 from model.prefab import Ref, copy, f
 from steps.layout import (CARD_ORDER, GEAR, GENE_TOP, PENDULUM_TOP, SIGILS_TITLE_TOP, SKILLS_TOP, TITLE_BAR_H, TITLE_SCALE,
                           WEAPON_TOP, card, insert)
+from steps.status01.master_traits import CELL_SIZE
 
 TRAIT_FIELDS = ["Skills", "PendulumSkillObj", "PendulumSkills", "PendulumNames"]
 SIGIL_ROWS = 12
@@ -30,7 +31,6 @@ GOLD_BOTTOM = "1, 0.6862745, 0.4509804, 1"
 OUTLINE_FROM, OUTLINE_TO = "_ol06", "_ol07"
 
 # the weapon type under the name
-CELL_FONT = 19  # bc_mt_0_0_0_off
 TYPE_FONT = 36
 TYPE_GAP = 37  # the name's original centre to the series line's centre
 NAME_RISE = 8
@@ -205,7 +205,7 @@ def weapon_type(panel, info, info_weapon01, scale):
     line.component("Image").set("Enable", False)
     panel.component("WeaponInfo").insert(ref_field("TypeText", "Text", type_text), before="WeaponImageObj")
     name_x, name_y = name.vec("Position")[:2]
-    k = CELL_FONT / (TYPE_FONT * scale)
+    k = CELL_SIZE / (TYPE_FONT * scale)
     type_text.set("Scale", (k, k, 1))
     type_text.place(pos=(0, name_y - TYPE_GAP))
     name.place(pos=(name_x, name_y + NAME_RISE))

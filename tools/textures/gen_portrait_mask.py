@@ -8,7 +8,7 @@ OFF = 128 + (20 if src[84:88] == b"DX10" else 0)
 WIDTH, EASE, START, END, SHOULDER, FLOOR, ANGLE, PIVOT = map(float, sys.argv[2:10])
 RADIUS = float(sys.argv[10]) if len(sys.argv) > 11 else None
 TAN = math.tan(math.radians(ANGLE))
-CARD_H = 1764  # card units
+CARD_H = 1440  # card pixels
 PAD_ROWS = 17.076  # ps_cmn_mask_chara02's transparent rows
 EASE_SLOPE = -2 * (1 - SHOULDER) / (START - EASE)  # the ease's slope at its end
 TAIL_SLOPE = -2 * FLOOR / (WIDTH - END)  # the tail's slope at its start
@@ -19,7 +19,7 @@ if RADIUS is not None:
 
 
 def fade(p):
-    # alpha at p card units from the opaque edge
+    # alpha at p card pixels from the opaque edge
     if p <= EASE:
         return 1
     if p < START:

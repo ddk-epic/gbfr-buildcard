@@ -7,8 +7,8 @@ from steps.status01.master_traits import CELL_LINE_SPACING, CELL_LINE_SPACING_JP
 
 CARDS = ["ability_set01_btn04", "ability_set01_btn03", "ability_set01_btn01", "ability_set01_btn02"]  # slots 1 to 4
 TITLE_TEXT_ID = "TXT_PAU_ABILITY"
-ICON_W = 108  # card units
-ICON_GAP = 12  # card units
+ICON_W = 88  # card pixels
+ICON_GAP = 10  # card pixels
 HIDDEN = ["loc_icon_pos", "loc_guide_button", "loc_guide_button_key"]
 
 # block units

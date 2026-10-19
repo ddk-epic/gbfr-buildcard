@@ -2,9 +2,9 @@
 from codegen import Hash
 from model.prefab import copy
 from steps.chr_status_bg01.backdrop import CARD_Y, xxhash32_custom
-from steps.layout import CARD_H, CARD_W
+from steps.layout import CANVAS_CARD_H as CARD_H, CANVAS_CARD_W as CARD_W
 
-STOCK_H = 1712  # stock card height, in loc_buildcard units
+STOCK_H = 1712  # stock card height, in canvas units
 CARD_LINES = "bc_loc_line"
 
 # each corner's vertical and horizontal line and its side: -1 bottom left, 1 top right

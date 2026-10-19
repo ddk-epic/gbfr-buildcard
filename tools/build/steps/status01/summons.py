@@ -5,8 +5,8 @@ from steps.layout import CARD_ORDER, PANEL_SCALE, SUMMONS, insert
 from steps.panel import panel
 
 SLOTS = 4
-COLUMN_GAP = 12  # card units
-PAD = 15  # card units
+COLUMN_GAP = 10  # card pixels
+PAD = 12  # card pixels
 KEEP = ["loc_text01"]  # loc_item01's children kept
 ICON_W, ICON_H = 320, 440  # cmn_icsmn sprites
 FADE = ("layouts/pause/status/noatlastextures/bc_smn_art_mask", "bc_smn_art_mask")
@@ -85,8 +85,8 @@ def slot(sources, name, scale):
     # the band's top-left corner, PAD inside the section's quarter
     band_left = left + (PAD - COLUMN_GAP / 4) / scale
     band_top = top - PAD / scale
-    cell_h = 160 / scale
-    portrait_y = 22 / scale  # below the cell's centre
+    cell_h = 131 / scale
+    portrait_y = 18 / scale  # below the cell's centre
 
     # the band fade's ramp across the band
     band_fade_w = BAND_W / (1 - BAND_FADE_PADDING)
@@ -134,7 +134,7 @@ def apply(ctx):
 
     width, height = SUMMONS[2:]
     scale = (width - COLUMN_GAP) / 2 / CELL_W
-    slot_h = SLOT_H * scale  # card units
+    slot_h = SLOT_H * scale  # card pixels
 
     summons = insert(ctx.prefab("status01").find("loc_buildcard"), rect("bc_smn"), CARD_ORDER)
     panel(summons, SUMMONS)

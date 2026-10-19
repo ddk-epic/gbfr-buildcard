@@ -5,7 +5,7 @@ import sys
 from codegen import Hash
 from model.components import mask, single
 from model.prefab import copy
-from steps.layout import CARD_H, CARD_W
+from steps.layout import CANVAS_CARD_H as CARD_H, CANVAS_CARD_W as CARD_W
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "data"))
 from hashing import xxhash32_custom  # noqa: E402
@@ -19,7 +19,7 @@ CARD_BACKDROP = "bc_bg02"
 # ps_cmn_base53's transparent margins
 MARGIN_LEFT, MARGIN_TOP, MARGIN_RIGHT, MARGIN_BOTTOM = 24, 24, 24, 27
 
-# the parchment, in card units from the card's top-left corner
+# the parchment, in canvas units from the card's top-left corner
 ART_LEFT, ART_RIGHT, ART_TOP, ART_BOTTOM = -12, 1124, 0, CARD_H
 
 # ps_cmn_base_st01

@@ -4,7 +4,7 @@ Size: 20, 20
 Sprites:
 - Name: bc_rounded
   Rect: 0, 0, 20, 20
-  Border: 8, 8, 8, 8
+  Border: 7, 7, 7, 7
   Padding: 0, 0, 0, 0
   Uv: 0, 0, 1, 1
   MinSize: 0, 0

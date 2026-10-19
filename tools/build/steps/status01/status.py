@@ -44,6 +44,9 @@ BADGE_INSET = (FRAME + INSET) / 2
 POWER_OVERHANG = 50  # power01's right edge past the column's
 COLUMN_X = 296
 
+PLAYER_NAME_SIZE = 19  # name01_02's font size
+PLAYER_NAME_DROP = 1  # loc_name02 below the gap's centre
+
 # badge rect units, from each badge's pivot
 LEVEL_R = 148  # ps_cmn_icon_base03's radius
 MASTER_LEVEL_TOP = 174 * 0.7  # masterlevel02's lv_base01 top, at masterlevel02's scale
@@ -184,12 +187,19 @@ def badges(base, status_top):
     move(power, right - POWER_RIGHT * BADGE_SCALE, top - POWER_TOP * BADGE_SCALE)
     name.place(pivot=(0.5, 0.5))
     move(name, card(COLUMN_X, 0)[0], name_centre)
+    return name_centre - half_height(name)
 
 
-def hide_player_name(base):
-    player_name = base.child("loc_name02")
-    holder = base.add(rect("bc_player_name", active=False), base.children.index(player_name))
-    holder.add(player_name)
+def player_name(base, name_bottom, status_top):
+    row = base.child("loc_name02")
+    holder = base.add(rect("bc_player_name"), base.children.index(row))
+    holder.place(pos=(0, 0), size=base.size())
+    holder.add(row)
+    size = row.child("name01_02").component("Text").get("FontSize")
+    set_scale(row, PLAYER_NAME_SIZE / float(size))
+    row.place(pivot=(0.5, 0.5))
+    move(row, card(COLUMN_X, 0)[0], (name_bottom + status_top) / 2 - PLAYER_NAME_DROP)
+    return holder
 
 
 def apply(ctx):
@@ -197,6 +207,7 @@ def apply(ctx):
     status = base.child("loc_status02").child("loc_chr_status01")
     bottom, texts = masteries_block(status, status.find("loc_crt/crt_text01"))
     status_top = status_block(status, bottom)
-    badges(base, status_top)
-    hide_player_name(base)
+    name_bottom = badges(base, status_top)
+    holder = player_name(base, name_bottom, status_top)
     ctx.export("Status.MasteryTexts", texts)
+    ctx.export("Status.PlayerName", holder)

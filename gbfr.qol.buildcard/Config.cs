@@ -11,15 +11,20 @@ public class Config : Configurable<Config>
     [DefaultValue(CardFormat.Png)]
     public CardFormat CardFormat { get; set; } = CardFormat.Png;
 
-    [DisplayName("Enable Steam Screenshots")]
-    [Description("Adds saved cards to Steam screenshots.")]
-    [DefaultValue(false)]
-    public bool SteamScreenshots { get; set; } = false;
-
     [DisplayName("Master Traits Palette")]
     [Description("Blue: mod default. Original: the game's colours.")]
     [DefaultValue(MasterTraitsPalette.Blue)]
     public MasterTraitsPalette MasterTraitsPalette { get; set; } = MasterTraitsPalette.Blue;
+
+    [DisplayName("Show Player Name")]
+    [Description("Shows a player's name on the card in multiplayer.")]
+    [DefaultValue(true)]
+    public bool ShowPlayerName { get; set; } = true;
+
+    [DisplayName("Enable Steam Screenshots")]
+    [Description("Adds saved cards to Steam screenshots.")]
+    [DefaultValue(false)]
+    public bool SteamScreenshots { get; set; } = false;
 }
 
 public enum CardFormat

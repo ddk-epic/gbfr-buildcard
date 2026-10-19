@@ -134,6 +134,7 @@ public class Mod : ModBase
             new GearSection(_textService, _textTable),
             new MasterTraitsSection(_textService, _traitTables, _uiTree, () => _configuration.MasterTraitsPalette),
             new MasteriesSection(_textService, _textTable),
+            new PlayerNameSection(_uiTree, () => _configuration.ShowPlayerName),
             overMasterySection,
             summonsSection);
         _statusBackground = new StatusBackground(_hooks, _api, _lifetimes, _logger, _uiTree, _menu);

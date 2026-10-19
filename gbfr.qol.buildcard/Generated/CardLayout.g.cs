@@ -74,6 +74,7 @@ internal static class CardLayout
     public static class Status
     {
         public static readonly short[] MasteryTexts = [117, 118];
+        public const short PlayerName = 14;
     }
 
     public static class Status01

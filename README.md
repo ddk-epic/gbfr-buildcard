@@ -28,8 +28,9 @@ Set in Reloaded-II under the mod's **Configure Mod**.
 | Option | Default | Effect |
 |---|---|---|
 | Exported File Format | PNG | File format of saved cards: PNG (lossless, ~3 MB) or JPEG (~1 MB). |
-| Enable Steam Screenshots | Off | Also adds each saved card to the game's Steam screenshots. |
 | Master Traits Palette | Blue | Colours of the Master Traits section: Blue, matching the portrait, or the game's Original. |
+| Show Player Name | On | Shows a player's name on the card in multiplayer. |
+| Enable Steam Screenshots | Off | Also adds each saved card to the game's Steam screenshots. |
 
 ## Compatibility
 

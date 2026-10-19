@@ -34,7 +34,9 @@ component's references in the prefab file.
 ### Player name
 
 `loc_name02`, the platform icon and player name `ControllerStatus` shows for another player's character, sits under
-`bc_player_name`, an inactive holder, so it is never drawn.
+`bc_player_name`, a holder the size of `loc_base01`. `PlayerNameSection` sets the holder active when the Show Player
+Name setting is on and inactive when it is off. `loc_name02` is centred under the name band, 1 card pixel below halfway
+between the band's bottom and the status panel's top. It is scaled so `name01_02`'s text is 19 card pixels high.
 
 ### Portrait placement
 

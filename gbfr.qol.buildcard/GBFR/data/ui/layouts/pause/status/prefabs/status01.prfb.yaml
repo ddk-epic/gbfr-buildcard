@@ -852,7 +852,7 @@ Objects:
   Name: bc_player_name
   Children:
   - 15
-  Active: false
+  Active: true
   Position: 0, 0, 0
   Rotation: 0, 0, 0, 1
   Scale: 1, 1, 1
@@ -860,9 +860,9 @@ Objects:
   AnchorPoint: 0, 0
   AnchorMin: 0.5, 0.5
   AnchorMax: 0.5, 0.5
-  OffsetMin: 0, 0
-  OffsetMax: 0, 0
-  SizeDelta: 0, 0
+  OffsetMin: -1712, -942
+  OffsetMax: 1712, 942
+  SizeDelta: 3424, 1884
 - Id: 15
   Name: loc_name02
   Children:
@@ -882,15 +882,15 @@ Objects:
       ChildForceExpandHeight: false
       Enable: true
   Active: false
-  Position: -1032, -787.68, 0
+  Position: -1401.4, -314.608, 0
   Rotation: 0, 0, 0, 1
-  Scale: 1, 1, 1
+  Scale: 0.416, 0.416, 1
   Pivot: 0.5, 0.5
-  AnchorPoint: 680, 154.32
+  AnchorPoint: 310.6, 627.392
   AnchorMin: 0, 0
   AnchorMax: 0, 0
-  OffsetMin: 130, 118.32001
-  OffsetMax: 1230, 190.32
+  OffsetMin: -239.4, 591.392
+  OffsetMax: 860.6, 663.392
   SizeDelta: 1100, 72
 - Id: 16
   Name: pltfm_icon01
